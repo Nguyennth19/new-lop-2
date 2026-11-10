@@ -1,4 +1,4 @@
-apps-script/.clasp.json
+.clasp.json
 .clasprc.json
 node_modules/
 .env

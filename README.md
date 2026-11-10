@@ -1,54 +1,53 @@
-# Lớp 2 Vui Học – Google Apps Script V2.1
+# Lớp 2 – Dự án Google Apps Script V2.1 (đã sửa đường dẫn)
 
-Dự án chuyển từ file **Demo Lớp 2 V2.1**, giữ giao diện và logic demo; phân tách CSS, hình bìa, icon SVG Material UI, dữ liệu môn học, lộ trình, bài tập, thành tích. Mỗi tệp được đặt tên tiếng Việt **không dấu** để dễ đọc và tương thích Apps Script.
+Mã nguồn dùng cho **Google Apps Script gắn với Google Sheets**, lấy từ giao diện Demo Lớp 2 V2.1. Các tệp `.gs` / `.html` / `appsscript.json` **nằm tại thư mục gốc repository**, không có tiền tố `apps-script/`.
 
-## Cài đặt vào Google Sheets
+## Khắc phục lỗi “Không tìm thấy tệp HTML có tên GiaoDien”
 
-1. Mở **Google Sheets đích → Tiện ích mở rộng → Apps Script**.
-2. Lấy **Script ID** trong **Cài đặt dự án** (khác Spreadsheet ID).
-3. Máy tính cần Node.js, sau đó:
+Apps Script chỉ tìm `createTemplateFromFile('GiaoDien')` khi tên dự án thực tế là **GiaoDien** (không phải `apps-script/GiaoDien`). Bản này chuyển tất cả tệp ứng dụng lên root, giữ nguyên lệnh trong `MayChu.gs`. Khi đồng bộ lại GitHub, kiểm tra danh sách tệp trong Apps Script không còn `apps-script/`; nếu còn, xóa các tệp phiên bản cũ để tránh khai báo `doGet` trùng.
 
+## Ảnh bìa ba môn học
+
+Ảnh gốc lấy từ [thư mục Drive của dự án](https://drive.google.com/drive/folders/12R_DKbSSO6XPTv2gYFztVuSOHmHqwX4m). Đã đưa bản sao PNG lên `hinh-anh/`:
+
+| Môn | Ảnh GitHub | Biến JS |
+|---|---|---|
+| Toán | `hinh-anh/Toan-2.png` | `ANH_TOAN` |
+| Tiếng Việt | `hinh-anh/Tieng-Viet-2.png` | `ANH_TIENG_VIET` |
+| Tiếng Anh | `hinh-anh/Tieng-Anh-2.png` | `ANH_TIENG_ANH` |
+
+Tệp `AnhMonToan.html`, `AnhMonTiengViet.html` và `AnhMonTiengAnh.html` khai báo URL `raw.githubusercontent.com`. Ảnh được tải qua Internet từ repository công khai; không yêu cầu người xem đăng nhập Drive.
+
+## Sơ đồ tệp tại thư mục gốc
+
+| Loại | Tệp |
+|---|---|
+| Máy chủ GAS | `MayChu.gs`, `CauHinh.gs`, `DocDuLieuSheet.gs` |
+| Trang HTML chính | `GiaoDien.html` |
+| CSS | `01_CSS_NenTang.html`, `02_CSS_TrangChu.html`, `03_CSS_ThanhTich.html`, `04_CSS_LoTrinh.html` |
+| Material SVG | `07_BieuTuongMUI.html` |
+| Ảnh môn | `AnhMonToan.html`, `AnhMonTiengViet.html`, `AnhMonTiengAnh.html` |
+| Điều hướng / dữ liệu | `10_DanhSachMonHoc.html`, `11_TrangChuDieuHuong.html`, `12_DuLieuLoTrinh.html` |
+| Lộ trình / bài tập / thành tích | `13_HienThiLoTrinh.html`, `14_BaiTapTuongTac.html`, `15_ThanhTichHoatDong.html` |
+| Apps Script manifest | `appsscript.json` |
+
+## Hai cách đồng bộ
+
+**Cách 1 – Tích hợp GitHub trong Apps Script (như ảnh bạn gửi):** Chọn nhánh `main`, đồng bộ lại repository sau khi merge. Đảm bảo `GiaoDien.html` / `MayChu.gs` nằm tại root. Không để đồng thời bản cũ có tiền tố `apps-script/` trong Apps Script.
+
+**Cách 2 – clasp:** Tạo dự án Apps Script gắn Sheet, copy `.clasp.example.json` → `.clasp.json`, thay Script ID. Từ **thư mục root của repository** chạy:
 ```bash
 npm install -g @google/clasp
 clasp login
-git clone https://github.com/Nguyennth19/new-lop-2.git
-cd new-lop-2
-# Nếu đang dùng nhánh chưa merge:
-git switch feat/google-apps-script-v2-1
-cd apps-script
-cp .clasp.example.json .clasp.json
-# Mở .clasp.json và thay DIEN_SCRIPT_ID_CUA_BAN bằng Script ID thật
 clasp show-file-status
 clasp push
 ```
+Khi sửa GitHub thì dùng `git pull` rồi `clasp push`, không dùng `clasp pull` để gửi mã lên Apps Script. Sao lưu các tệp Apps Script cũ trước khi push.
 
-4. Trong Apps Script chọn **Triển khai → Lần triển khai mới → Ứng dụng web**. Trong giai đoạn kiểm thử, hạn chế quyền truy cập ở mức chủ dự án.
+Sau khi đồng bộ: chọn chạy `doGet` để kiểm tra không còn lỗi thiếu template; tiếp theo triển khai ứng dụng web trong Apps Script. `doGet` kiểm tra việc tạo trang, **không phải** phép thử đầy đủ trình duyệt.
 
-**Chiều đúng:** GitHub → `git pull` → `clasp push` → Apps Script. **`clasp pull` là chiều ngược** (Apps Script → máy tính); không dùng nó để gửi mã lên Google Sheets.
+## Giới hạn bản demo
 
-## Phân chia module
+Giao diện vẫn dùng dữ liệu mẫu V2.1 và lưu tiến độ trong localStorage, chưa đồng bộ theo tài khoản. Bộ API đọc Sheets chỉ là hàm hỗ trợ, chưa dùng trực tiếp để sinh bài học. Không triển khai công khai với học sinh thật trước khi QA phân quyền, lưu dữ liệu và đối chiếu kiến thức từ SGK.
 
-| Mảng | File |
-|---|---|
-| Máy chủ / trang chính | `MayChu.gs`, `GiaoDien.html` |
-| CSS nền, trang chủ, thành tích, lộ trình | `01_CSS_*.html` → `04_CSS_*.html` |
-| Icon SVG chuẩn MUI | `07_BieuTuongMUI.html` |
-| Ảnh minh họa Toán, Tiếng Việt | `08_AnhMonToan.html`, `09_AnhMonTiengViet.html` |
-| Danh sách môn | `10_DanhSachMonHoc.html` |
-| Trang chủ và điều hướng | `11_TrangChuDieuHuong.html` |
-| Dữ liệu và hiển thị lộ trình | `12_DuLieuLoTrinh.html`, `13_HienThiLoTrinh.html` |
-| Bài tập tương tác | `14_BaiTapTuongTac.html` |
-| Thành tích, hoạt động gần đây | `15_ThanhTichHoatDong.html` |
-| Cấu hình/đọc Google Sheets | `CauHinh.gs`, `DocDuLieuSheet.gs` |
-
-`GiaoDien.html` là trang được `doGet()` kết xuất. Các file JS/CSS được ghép bằng `<?!= napThanhPhan('Tên') ?>`. Mọi file cần push nằm trong **apps-script/**.
-
-### Giới hạn V2.1
-
-- Chủ đề, bài học, ảnh, câu hỏi, thành tích vẫn theo dữ liệu mẫu V2.1.
-- Tiến độ học lưu bằng **localStorage**, chưa đồng bộ giữa thiết bị.
-- `layThongTinDuLieuBaiHoc()` là API đọc Sheet **tùy chọn**, chưa kết nối với lộ trình trong giao diện.
-- Chưa triển khai Web App thực tế/QA với tài khoản thật; không mở cho học sinh trước khi kiểm tra phân quyền và bảo vệ dữ liệu trẻ em.
-- Chưa đối chiếu nội dung demo với sách giáo khoa.
-
-Xem [Hướng dẫn triển khai](tai-lieu/HUONG_DAN_TRIEN_KHAI.md) và [Checklist QA](tai-lieu/KIEM_THU.md).
+Xem thêm `tai-lieu/HUONG_DAN_TRIEN_KHAI.md` và `tai-lieu/KIEM_THU.md`.
