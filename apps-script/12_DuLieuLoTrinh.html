@@ -1,0 +1,69 @@
+const subjectRoadmaps={
+ 'Toán 2':[
+  {id:'math-c2',title:'Phép cộng, phép trừ trong phạm vi 20',lessons:[
+   {id:'math-12',title:'Bảng trừ (qua 10)',desc:'Hiểu cách trừ qua 10 và luyện tính nhẩm',levels:['done','doing','new']},
+   {id:'math-14',title:'Luyện tập chung',desc:'Củng cố phép cộng và phép trừ',levels:['done','new','new']},
+   {id:'math-word',title:'Bài toán có lời văn',desc:'Vận dụng phép tính giải quyết tình huống',levels:['new','new','new']}]},
+  {id:'math-c3',title:'Làm quen với khối lượng, dung tích',lessons:[
+   {id:'math-kg',title:'Ki-lô-gam',desc:'Nhận biết đơn vị đo khối lượng',levels:['new','new','new']},
+   {id:'math-lit',title:'Lít',desc:'Làm quen với đơn vị đo dung tích',levels:['new','new','new']}]}
+ ],
+ 'Tiếng Việt 2':[
+  {id:'tv-c2',title:'Đi học vui sao',lessons:[
+   {id:'tv-truong',title:'Yêu lắm trường ơi!',desc:'Đọc hiểu và diễn đạt cảm xúc',levels:['done','done','new']},
+   {id:'tv-sach',title:'Cuốn sách của em',desc:'Đọc và hiểu nội dung văn bản',levels:['done','doing','new']},
+   {id:'tv-trang',title:'Khi trang sách mở ra',desc:'Từ ngữ, câu và luyện viết',levels:['new','new','new']}]},
+  {id:'tv-doc',title:'Niềm vui đọc sách',lessons:[
+   {id:'tv-doc-hieu',title:'Đọc và tìm hiểu văn bản',desc:'Tìm thông tin và nêu ý chính',levels:['new','new','new']},
+   {id:'tv-cau',title:'Luyện từ và câu',desc:'Nhận biết và sử dụng từ, câu',levels:['new','new','new']}]}
+ ],
+ 'Tiếng Anh 2':[
+  {id:'en-school',title:'School things – Đồ dùng học tập',lessons:[
+   {id:'en-objects',title:'School objects',desc:'Nhận biết và gọi tên đồ dùng học tập',levels:['done','doing','new']},
+   {id:'en-bag',title:'My school bag',desc:'Luyện nghe, nói về cặp sách',levels:['new','new','new']}]},
+  {id:'en-family',title:'My family – Gia đình em',lessons:[
+   {id:'en-family1',title:'Family members',desc:'Từ vựng về các thành viên gia đình',levels:['new','new','new']},
+   {id:'en-family2',title:'This is my family',desc:'Giới thiệu người thân bằng câu đơn giản',levels:['new','new','new']}]}
+ ]
+};
+const levelMeta=[
+ {name:'LV1',title:'Học kiến thức',source:'SGK',icon:'book-open'},
+ {name:'LV2',title:'Luyện tập',source:'SBT',icon:'pencil'},
+ {name:'LV3',title:'Vận dụng nâng cao',source:'Tham khảo',icon:'award'}
+];
+let expandedTopicId='math-c2';
+let expandedLessonId='math-12';
+let activeLessonContext=null;
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const TOPIC_STORAGE_KEY='lop2_v19_topic_progress';
+try {
+ const saved=JSON.parse(localStorage.getItem(TOPIC_STORAGE_KEY)||'{}');
+ for(const [sub,topics] of Object.entries(subjectRoadmaps))for(const t of topics)for(const l of t.lessons){
+  const key=sub+'/'+t.id+'/'+l.id;
+  if(Array.isArray(saved[key])&&saved[key].length===3&&saved[key].every(x=>['done','doing','new'].includes(x)))l.levels=saved[key];
+ }
+} catch(error){ /* Dữ liệu trình duyệt không hợp lệ: giữ dữ liệu mặc định */ }
+function persistTopicProgress(){
+ try {const state={};for(const [sub,topics] of Object.entries(subjectRoadmaps))for(const t of topics)for(const l of t.lessons)state[sub+'/'+t.id+'/'+l.id]=l.levels;localStorage.setItem(TOPIC_STORAGE_KEY,JSON.stringify(state));}catch(error){}
+}
+const topicIsDone=t=>t.lessons.length>0&&t.lessons.every(l=>l.levels.every(x=>x==='done'));
+function firstActiveTopic(name){return (subjectRoadmaps[name]||[]).find(t=>!topicIsDone(t));}
+function chooseRoadmapSubject(name){
+ if(!subjectRoadmaps[name])return;
+ currentSubject=name;
+ const next=firstActiveTopic(name);
+ expandedTopicId=next?.id||'';
+ expandedLessonId=next?.lessons.find(l=>!l.levels.every(x=>x==='done'))?.id||next?.lessons[0]?.id||'';
+ renderLessons();
+}
+function findRoadmapLesson(subject,id){for(const topic of subjectRoadmaps[subject]||[]){const found=topic.lessons.find(l=>l.id===id);if(found)return found;}return null;}
+function levelRows(lesson,archived=false){
+ return `<div class="level-classic-list">${lesson.levels.map((state,i)=>{
+  const meta=levelMeta[i],label=state==='done'?'Đã học':state==='doing'?'Đang học':'Chưa học';
+  return `<div class="level-classic level-${i+1} status-${state}">
+   <span class="classic-icon">${muiIcon(state==='done'?'check':meta.icon)}</span>
+   <span class="classic-copy"><strong>${meta.name} – ${meta.title}</strong><small>${state==='done'?'Hoàn thành':state==='doing'?'Đang học':'Chưa học'} · ${meta.source==='SGK'?'Sách giáo khoa':meta.source==='SBT'?'Sách bài tập':'Sách tham khảo'}</small></span>
+   <span class="classic-badge">${label}</span>
+   ${!archived?`<button class="classic-action ${state==='done'?'outlined':''}" data-start-lesson="${lesson.id}" data-start-level="${i}" type="button">${muiIcon(state==='done'?'refresh':'play')} ${state==='done'?'Xem lại':state==='doing'?'Học tiếp':'Vào học'}</button>`:''}
+  </div>`}).join('')}</div>`;
+}
