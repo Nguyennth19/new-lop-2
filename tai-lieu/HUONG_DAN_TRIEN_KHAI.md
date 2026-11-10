@@ -4,7 +4,7 @@
 2. Cài Node.js + `@google/clasp`, đăng nhập với `clasp login`.
 3. Clone repo, chọn nhánh `feat/google-apps-script-v2-1` nếu chưa merge, `cd apps-script`.
 4. Copy `.clasp.example.json` thành `.clasp.json` và điền Script ID.
-5. Dùng `clasp status` kiểm tra → `clasp push`. Khi cập nhật GitHub: `git pull`, sau đó `clasp push`.
+5. Dùng `clasp show-file-status` kiểm tra → `clasp push`. Khi cập nhật GitHub: `git pull`, sau đó `clasp push`.
 6. Apps Script → Triển khai → Ứng dụng web. Khi sửa source cần tạo phiên bản triển khai mới.
 
 ### Kết nối dữ liệu Sheets
