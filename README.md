@@ -18,7 +18,7 @@ git switch feat/google-apps-script-v2-1
 cd apps-script
 cp .clasp.example.json .clasp.json
 # Mở .clasp.json và thay DIEN_SCRIPT_ID_CUA_BAN bằng Script ID thật
-clasp status
+clasp show-file-status
 clasp push
 ```
 
