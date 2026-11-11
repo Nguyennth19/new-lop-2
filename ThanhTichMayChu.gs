@@ -216,7 +216,9 @@ function achSummary_(attemptSheet,pointsSheet){
  for(let i=6;i>=0;i--){const date=new Date(today+'T12:00:00+07:00');date.setUTCDate(date.getUTCDate()-i);
   const day=achDay_(date);
   const mins=attempts.filter(a=>Number(a.answered)>0&&achDay_(achDate_(a.at_utc))===day).reduce((n,a)=>n+Number(a.active_seconds||0),0);
-  bars.push({day,label:['CN','T2','T3','T4','T5','T6','T7'][date.getDay()],minutes:Math.round(mins/60),attempts:attempts.filter(a=>achDay_(achDate_(a.at_utc))===day).length});
+  bars.push({day,label:['CN','T2','T3','T4','T5','T6','T7'][date.getDay()],minutes:Math.round(mins/60),
+   attempts:attempts.filter(a=>achDay_(achDate_(a.at_utc))===day).length,
+   active:attempts.some(a=>Number(a.correct)>0&&achDay_(achDate_(a.at_utc))===day)});
  }
  const accuracy=attempts.reduce((n,a)=>n+Number(a.correct||0),0),total=attempts.reduce((n,a)=>n+Number(a.total||0),0);
  const badges=achBadges_(attempts,events),analysis=achAnalyses_(attempts);
