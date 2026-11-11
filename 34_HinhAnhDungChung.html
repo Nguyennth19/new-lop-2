@@ -4,21 +4,22 @@
  */
 const HINH_ANH_APP=(function(){
  const BASE='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/4177627bbc1a941c5568cf7c5703a8811e0e1999/hinh-anh/pilot-g3/';
+ const BASE_WEBP='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/e16b2098c29bdc9a09226c1efabdfa5af3953008/hinh-anh/webp-g5/';
  const catalog=Object.freeze({
   ROBOT_AVATAR:{file:'robot_avatar_head_96.webp',alt:'Chân dung Robot học tập',w:96,h:96},
   ROBOT_HERO:{file:'robot_hero_wave.webp',alt:'Robot vẫy tay chào em',w:403,h:594},
   ROBOT_PRAISE:{file:'robot_praise.webp',alt:'Robot động viên em học tốt',w:373,h:583},
-  HEN:{file:'math_hen.png',alt:'Hình minh họa một con gà mái',w:2134,h:2134},
-  WRAPPED_CANDY:{file:'math_wrapped_candy.png',alt:'Hình minh họa viên kẹo bọc giấy',w:2134,h:2134},
-  BOOK:{file:'math_book.png',alt:'Hình minh họa một quyển sách',w:2134,h:2134},
-  APPLE:{file:'math_apple.png',alt:'Hình minh họa một quả táo',w:2134,h:2134},
-  RIBBON:{file:'math_ribbon.png',alt:'Hình minh họa một dải ruy băng đỏ',w:2134,h:2134},
-  COOKIE:{file:'math_cookie.png',alt:'Hình minh họa một chiếc bánh quy',w:2134,h:2134}
+  HEN:{file:'math_hen_160.webp',optimized:true,alt:'Hình minh họa một con gà mái',w:160,h:160},
+  WRAPPED_CANDY:{file:'math_wrapped_candy_160.webp',optimized:true,alt:'Hình minh họa viên kẹo bọc giấy',w:2134,h:2134},
+  BOOK:{file:'math_book_160.webp',optimized:true,alt:'Hình minh họa một quyển sách',w:2134,h:2134},
+  APPLE:{file:'math_apple_160.webp',optimized:true,alt:'Hình minh họa một quả táo',w:2134,h:2134},
+  RIBBON:{file:'math_ribbon_160.webp',optimized:true,alt:'Hình minh họa một dải ruy băng đỏ',w:2134,h:2134},
+  COOKIE:{file:'math_cookie_160.webp',optimized:true,alt:'Hình minh họa một chiếc bánh quy',w:2134,h:2134}
  });
  function image(key,decorative){
   const item=catalog[key];if(!item)return null;
   const img=document.createElement('img');
-  img.src=BASE+encodeURIComponent(item.file);
+  img.src=(item.optimized?BASE_WEBP:BASE)+encodeURIComponent(item.file);
   img.alt=decorative?'':item.alt;
   img.width=item.w;img.height=item.h;
   img.loading=key==='ROBOT_AVATAR'||key==='ROBOT_HERO'?'eager':'lazy';
