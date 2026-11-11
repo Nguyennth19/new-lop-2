@@ -141,20 +141,7 @@ function fields(q){return [...shell().querySelectorAll('[data-ml-q="'+q.id+'"]')
 function gradeQuestion(q){
  if(!q.valid)return false;
  const f=fields(q);if(!f.length)return false;
- let ok=false;
- if(q.type==='vertical'){
-  const ans=String(q.answer).padStart(2,'0');
-  const carry=(Number(q.n1)%10+Number(q.n2)%10)>=10?'1':'0';
-  ok=keyValue(q,'ones')===ans[1]&&keyValue(q,'tens')===ans[0]&&keyValue(q,'carry')===carry;
- }else if(q.type==='mental')ok=keyValue(q,'answer')!==''&&Number(keyValue(q,'answer'))===Number(q.answer);
- else if(q.type==='missing_digit')ok=q.puzzle.every((row,ri)=>row.every((v,ci)=>typeof v!=='object'||keyValue(q,'p'+ri+ci)===String(v.ans)));
- else if(q.type==='word_problem'){
-  const a=Number(keyValue(q,'n1')),b=Number(keyValue(q,'n2'));
-  const hasPair=keyValue(q,'n1')!==''&&keyValue(q,'n2')!=='';
-  ok=hasPair&&((a===Number(q.n1)&&b===Number(q.n2))||(a===Number(q.n2)&&b===Number(q.n1)))&&keyValue(q,'op')===q.op&&
-   keyValue(q,'sum')!==''&&Number(keyValue(q,'sum'))===Number(q.answer)&&
-   keyValue(q,'answer')!==''&&Number(keyValue(q,'answer'))===Number(q.answer);
- }
+ const ok=danhGiaCauToan(q,k=>keyValue(q,k));
  f.forEach(el=>el.classList.toggle('ml-right',ok));
  f.forEach(el=>el.classList.toggle('ml-wrong',!ok&&el.value!==''));
  f.forEach(el=>el.classList.toggle('ml-empty',!ok&&el.value===''));
