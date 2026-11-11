@@ -1,0 +1,33 @@
+/* Bộ nhớ bài học dùng chung (memory + sessionStorage), không cache điểm hoặc thông tin học sinh.
+ * Mỗi lần chuyển tab/LV dùng lại cùng object; chỉ gọi GAS khi cache hết hạn. */
+const BO_NHO_BAI_HOC=(function(){
+ const VERSION='v26_b20_20261111',TTL=30*60*1000;
+ const data=new Map(), pending=new Map();
+ function key(id){return 'lop2_lesson_cache_'+VERSION+'_'+id}
+ function valid(x,id){return x&&x.lesson&&x.lesson.id===id&&Array.isArray(x.questions)&&Array.isArray(x.sections)&&Array.isArray(x.levels)}
+ function read(id){
+  const inMemory=data.get(id);
+  if(inMemory&&inMemory.expires>Date.now())return inMemory.value;
+  try{
+   const raw=sessionStorage.getItem(key(id));if(!raw)return null;
+   const obj=JSON.parse(raw);
+   if(obj.expires>Date.now()&&valid(obj.value,id)){data.set(id,obj);return obj.value}
+   sessionStorage.removeItem(key(id));
+  }catch(e){}
+  return null;
+ }
+ function save(id,value){
+  if(!valid(value,id))throw Error('Dữ liệu bài học không hợp lệ');
+  const entry={expires:Date.now()+TTL,value};data.set(id,entry);
+  try{sessionStorage.setItem(key(id),JSON.stringify(entry))}catch(e){}
+  return value;
+ }
+ function fetch(id,load){
+  const cached=read(id);if(cached)return Promise.resolve(cached);
+  if(pending.has(id))return pending.get(id);
+  const p=Promise.resolve().then(load).then(value=>save(id,value)).finally(()=>pending.delete(id));
+  pending.set(id,p);return p;
+ }
+ function clear(id){data.delete(id);try{sessionStorage.removeItem(key(id))}catch(e){}}
+ return Object.freeze({read,save,fetch,clear});
+})();
