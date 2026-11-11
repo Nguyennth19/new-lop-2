@@ -41,7 +41,7 @@ function refreshProgress(){
  nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+muiIcon(id==='THEORY'?'book-open':id==='LV1'?'book':id==='LV2'?'pencil':'award')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
 }
 function start(index){
- level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};
+ level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  const root=shell();root.hidden=false;document.body.classList.add('math-learning');
  root.querySelector('#mlTitle').textContent='Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số';
  root.querySelector('#mlContent').innerHTML='<div class="ml-loading">Đang nạp bài học từ Google Sheets…</div>';
@@ -68,7 +68,7 @@ function exit(){
  navigate('path');
 }
 function choose(id){
- view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};
+ view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
@@ -166,7 +166,7 @@ function gradeLevel(){
  qs.forEach(gradeQuestion);afterGrade();
  const n=qs.filter(q=>cauDaDungToan[q.id]).length;
 
- const record={at:new Date().toISOString(),seconds:Math.max(0,Math.round((Date.now()-levelStart)/1000)),total:qs.length,correct:qs.filter(q=>gradingState[q.id]==='correct').length,answered:qs.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length};
+ const record={at:new Date().toISOString(),seconds:typeof DEM_TUONG_TAC!=='undefined'?DEM_TUONG_TAC.seconds():0,total:qs.length,correct:qs.filter(q=>gradingState[q.id]==='correct').length,answered:qs.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length};
  submissions[view]=record;
  renderResults();
  // Học sinh không thể tự cấp sao: gửi các ô đã nhập cho máy chủ kiểm tra lại.
@@ -181,7 +181,7 @@ function resetLevel(){
  }
  delete submissions[view];
  // Không lưu bản nháp hoặc dấu tích vào localStorage.
- levelStart=Date.now();
+ levelStart=Date.now();if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  render();
 }
 function renderResults(){
@@ -232,6 +232,7 @@ function press(k){
  const all=inputList();if(!all.length)return;
  if(!selected||!all.includes(selected))selected=all.find(x=>!x.value)||all[0];
  const target=selected;
+ if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  if(k==='⌫'){target.value=target.value.slice(0,-1);}
  else if(['+','−','×','÷','='].includes(k)){if(target.dataset.mlField.endsWith(':op'))target.value=({'+':'+','−':'-','×':'*','÷':'/','=':'='})[k];else return;}
  else if(/^[0-9]$/.test(k)){
@@ -262,6 +263,7 @@ document.addEventListener('mousedown',e=>{const key=e.target.closest('#mathFullS
 document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-ml-field]'))pickInput(e.target);});
 document.addEventListener('input',e=>{
  const el=e.target;if(!el.matches('#mathFullScreen [data-ml-field]'))return;
+ if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  const op=el.dataset.mlField.endsWith(':op');
  el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
  drafts[el.dataset.mlField]=el.value;
@@ -269,6 +271,7 @@ document.addEventListener('input',e=>{
 });
 document.addEventListener('keydown',e=>{
  if(!e.target.matches('#mathFullScreen [data-ml-field]'))return;
+ if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  if(e.key==='Enter'){e.preventDefault();const all=inputList(),i=all.indexOf(e.target);if(i>=0&&i<all.length-1)all[i+1].focus();}
 });
 document.addEventListener('lop2:progress',()=>{if(fullData&&document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden)refreshProgress();});
