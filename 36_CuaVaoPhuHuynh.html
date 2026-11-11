@@ -1,0 +1,162 @@
+/* Trang phụ huynh V1.0: cổng riêng + dashboard, không dùng điểm giả.
+   Mọi API ghi cần phiên máy chủ và PIN xác nhận. */
+(function(){
+ 'use strict';
+ let token='',snapshot=null,tab='overview',pin='',pending=false,previousFocus=null,lastRequest=null;
+ const $=id=>document.getElementById(id);
+ const esc=v=>String(v===undefined||v===null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const icon=name=>typeof muiIcon==='function'?muiIcon(name):'';
+ const fmt=(v)=>Number(v||0).toLocaleString('vi-VN');
+ function api(name,args,success){
+  if(!window.google?.script?.run){status('Chỉ sử dụng được trong Web App Google Apps Script.',true);return}
+  const runner=google.script.run.withSuccessHandler(success).withFailureHandler(e=>{pending=false;status(e&&e.message?e.message:'Không kết nối được máy chủ.',true);if(/phiên .*hết hạn|phiên phụ huynh không hợp lệ/i.test(e&&e.message||'')){logout(false);renderLogin();status('Phiên đã hết hạn. Vui lòng đăng nhập lại.',true)}});
+  runner[name].apply(runner,args);
+ }
+ function status(message,error){
+  const n=$('ph-status');if(n){n.textContent=message||'';n.classList.toggle('ph-error',!!error)}
+ }
+ function titleText(t){const x=$('ph-title');if(x)x.textContent=t}
+ function shell(){
+  let root=$('ph-root');if(root)return root;
+  root=document.createElement('div');root.id='ph-root';root.hidden=true;
+  root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Khu vực quản lý phụ huynh');
+  root.innerHTML='<div class="ph-shell"><header class="ph-top"><div class="ph-heading">'+icon('lock')+'<div><strong id="ph-title">Góc của ba mẹ</strong><small>Quản lý việc học và động viên bé</small></div></div><button type="button" class="ph-x" id="ph-close" aria-label="Đóng trang phụ huynh">'+icon('close')+'</button></header><main class="ph-content" id="ph-content"></main><div id="ph-status" role="status" aria-live="polite"></div></div>';
+  document.body.appendChild(root);
+  $('ph-close').addEventListener('click',close);
+  root.addEventListener('click',handle);
+  root.addEventListener('input',ev=>{if(ev.target.matches('[data-ph-pin]')){pin=ev.target.value.replace(/\D/g,'').slice(0,4);ev.target.value=pin}});
+  return root;
+ }
+ function close(){
+  const root=$('ph-root');if(root)root.hidden=true;
+  document.body.classList.remove('ph-open');
+  logout(true);
+  if(previousFocus&&previousFocus.isConnected)previousFocus.focus();
+ }
+ function logout(remote){
+  if(remote&&token)api('phuHuynhDangXuat',[token],()=>{});
+  token='';pin='';snapshot=null;
+ }
+ function open(){
+  previousFocus=document.activeElement;shell().hidden=false;
+  document.body.classList.add('ph-open');
+  titleText('Góc của ba mẹ');renderLogin();
+  api('phuHuynhTrangThai',[],r=>{
+   if(!r?.configured){$('ph-content').innerHTML='<div class="ph-login"><div class="ph-illustration">'+icon('lock')+'</div><h2>Chưa thiết lập mã PIN</h2><p>Phụ huynh cần đặt Script Property <code>PH_PIN_BOOTSTRAP</code> bằng PIN 4 số, sau đó chạy hàm <code>phuHuynhKhoiTaoPin_</code> trong Apps Script Editor.</p><p>Không có mã PIN mặc định trong mã nguồn.</p></div>';}
+  });
+ }
+ function pinGrid(){
+  return '<div class="ph-keygrid">'+['1','2','3','4','5','6','7','8','9','','0','⌫'].map(x=>x?'<button type="button" data-ph-digit="'+esc(x)+'" aria-label="'+(x==='⌫'?'Xóa một số':x)+'">'+esc(x)+'</button>':'<span></span>').join('')+'</div>';
+ }
+ function renderLogin(){
+  titleText('Góc của ba mẹ');
+  $('ph-content').innerHTML='<div class="ph-login"><div class="ph-illustration">'+icon('lock')+'</div><h2>Chào ba mẹ!</h2><p>Nhập mã PIN 4 chữ số để xem thành tích và quản lý sao thưởng.</p><label for="ph-pin-entry">Mã PIN phụ huynh</label><input type="password" id="ph-pin-entry" data-ph-pin maxlength="4" inputmode="none" autocomplete="off" aria-label="Mã PIN gồm 4 chữ số"><div class="ph-pin-dots" aria-hidden="true" id="ph-dots">○ ○ ○ ○</div>'+pinGrid()+'<button type="button" class="ph-primary" data-ph-action="login">Mở trang quản lý</button><p class="ph-hint">Mã PIN được kiểm tra ở máy chủ. Nhập sai 5 lần sẽ tạm khóa 15 phút.</p></div>';
+  pin='';drawPin();setTimeout(()=>{$('ph-pin-entry')?.focus()},30);
+ }
+ function drawPin(){
+  const n=$('ph-pin-entry');if(n)n.value=pin;
+  const d=$('ph-dots');if(d)d.textContent=Array.from({length:4},(_,i)=>i<pin.length?'●':'○').join(' ');
+ }
+ function login(){
+  if(pending)return;
+  if(!/^\d{4}$/.test(pin)){status('Vui lòng nhập đủ 4 chữ số.',true);return}
+  pending=true;status('Đang xác minh mã PIN...');
+  api('phuHuynhDangNhap',[pin],r=>{
+   pending=false;pin='';
+   if(!r?.ok){status(r?.message||'Không đăng nhập được.',true);drawPin();return}
+   token=r.token;tab='overview';status('');load();
+  });
+ }
+ function load(){
+  if(!token){renderLogin();return}
+  status('Đang tải dữ liệu học tập thực...');
+  api('phuHuynhTongQuan',[token],r=>{snapshot=r;status('');render()});
+ }
+ function fmtDate(s){try{return new Date(s).toLocaleString('vi-VN')}catch(e){return ''}}
+ function nav(){
+  const items=[['overview','Tổng quan','home'],['reports','Báo cáo','chart'],['wallet','Quản lý sao','star'],['badges','Huy hiệu','award'],['notes','Ghi chú','pencil'],['settings','Cài đặt','lock']];
+  return '<nav class="ph-nav" aria-label="Các phần quản lý">'+items.map(([id,t,ico])=>'<button type="button" class="'+(tab===id?'active':'')+'" data-ph-tab="'+id+'">'+icon(ico)+esc(t)+'</button>').join('')+'</nav>';
+ }
+ function card(label,value,desc,ico){return '<article class="ph-stat"><span>'+icon(ico)+'</span><strong>'+esc(value)+'</strong><b>'+esc(label)+'</b><small>'+esc(desc)+'</small></article>'}
+ function overview(d){
+  return '<div class="ph-page-title"><div><h2>Tổng quan học tập</h2><p>Thành tích được xác minh từ các lượt nộp, không sử dụng dữ liệu demo.</p></div><button data-ph-action="reload" type="button" class="ph-secondary">'+icon('refresh')+' Làm mới</button></div>'+
+  '<div class="ph-stats">'+card('Sao hành trình',fmt(d.earned)+' ★','Không trừ khi đổi quà','star')+
+  card('Ví sao hiện có',fmt(d.balance)+' ★','Số sao có thể sử dụng','award')+
+  card('Cấp độ hoàn thành',fmt(d.completed),'Đã đạt ít nhất 70%','check')+
+  card('Ngày học hợp lệ',fmt(d.days),'Có ít nhất một câu đúng','calendar')+
+  card('Độ chính xác',fmt(d.accuracy)+'%','Theo tổng lượt nộp','chart')+
+  card('Huy hiệu đạt được',fmt(d.badgeCount)+' / '+(d.badges||[]).length,'Theo điều kiện hệ thống','trophy')+'</div>'+
+  '<div class="ph-panel"><h3>Hoạt động 7 ngày gần nhất</h3><div class="ph-week">'+(d.week||[]).map(w=>'<div class="ph-week-cell"><span>'+esc(w.label)+'</span><b>'+fmt(w.attempts)+'</b><small>'+fmt(w.minutes)+' phút</small></div>').join('')+'</div></div>'+
+  '<div class="ph-panel"><h3>Những lượt nộp gần đây</h3>'+recent(d.recent||[])+'</div>';
+ }
+ function recent(xs){
+  if(!xs.length)return '<p class="ph-empty">Chưa có lượt nộp bài thật.</p>';
+  return '<div class="ph-rows">'+xs.slice(0,12).map(x=>'<div><span><b>'+esc(x.title)+'</b><small>'+esc(x.subject)+' · '+esc(x.level)+' · '+esc(fmtDate(x.at))+'</small></span><strong>'+fmt(x.correct)+' / '+fmt(x.total)+'</strong></div>').join('')+'</div>';
+ }
+ function reports(d){
+  return '<div class="ph-page-title"><h2>Báo cáo theo môn và kỹ năng</h2></div><div class="ph-two">'+
+  '<div class="ph-panel"><h3>Kết quả từng môn</h3>'+(d.subjects||[]).map(x=>'<div class="ph-report-line"><span>'+esc(x.name)+'</span><b>'+(x.percent===null?'Chưa có dữ liệu thật':fmt(x.percent)+'%')+'</b></div>').join('')+'</div>'+
+  '<div class="ph-panel"><h3>Xu hướng 4 tuần</h3>'+(d.week4||[]).map(x=>'<div class="ph-report-line"><span>'+esc(x.label)+'</span><b>'+fmt(x.attempts)+' lượt · '+(x.accuracy===null?'—':fmt(x.accuracy)+'%')+'</b></div>').join('')+'</div></div>'+
+  '<div class="ph-panel"><h3>Nhóm kỹ năng Toán</h3>'+(d.skills&&d.skills.length?d.skills.map(x=>'<div class="ph-report-line"><span>'+esc(x.name)+'</span><b>'+fmt(x.correct)+'/'+fmt(x.total)+' · '+esc(x.status)+'</b></div>').join(''):'<p class="ph-empty">Sau khi bé nộp bài Toán, kết quả từng kỹ năng sẽ xuất hiện.</p>')+'</div>';
+ }
+ function wallet(d,entries){
+  return '<div class="ph-page-title"><h2>Quản lý ví sao</h2></div>'+
+   '<div class="ph-two"><div class="ph-panel ph-wallet-total"><span>Sao hành trình</span><strong>'+fmt(d.earned)+' ★</strong><small>Chỉ ghi nhận sao học tập, không giảm khi đổi thưởng.</small></div><div class="ph-panel ph-wallet-total"><span>Ví sao có thể sử dụng</span><strong>'+fmt(d.balance)+' ★</strong><small>Đã cộng thưởng và trừ các giao dịch đổi thưởng.</small></div></div>'+
+   '<div class="ph-panel"><h3>Thưởng thêm / trừ sao</h3><p>Thao tác này được ghi vĩnh viễn vào sổ sao và yêu cầu xác nhận mã PIN.</p><form id="ph-wallet-form" class="ph-form"><label>Loại giao dịch<select name="kind" required><option value="bonus">Thưởng thêm</option><option value="redeem">Trừ sao / đổi thưởng thủ công</option></select></label><label>Số sao<input name="amount" type="number" min="1" max="10000" step="1" required placeholder="Ví dụ: 50"></label><label class="ph-full">Lý do<input name="note" maxlength="220" minlength="6" required placeholder="Ví dụ: Bé tự giác hoàn thành bài học"></label><label>Mã PIN xác nhận<input name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></label><div class="ph-form-actions"><button class="ph-primary" type="submit">Ghi nhận giao dịch</button></div></form></div>'+
+   '<div class="ph-panel"><h3>Lịch sử sao (120 giao dịch mới nhất)</h3>'+(entries.length?'<div class="ph-rows">'+entries.map(x=>'<div><span><b>'+esc(labelEvent(x.type))+'</b><small>'+esc(x.note||x.level||'')+' · '+esc(fmtDate(x.at))+'</small></span><strong class="'+(x.delta<0?'negative':'positive')+'">'+(x.delta>0?'+':'')+fmt(x.delta)+' ★</strong></div>').join('')+'</div>':'<p class="ph-empty">Chưa có giao dịch nào.</p>')+'</div>';
+ }
+ function labelEvent(t){return ({parent_bonus:'Phụ huynh thưởng',parent_redeem:'Đổi thưởng thủ công',level_done:'Hoàn thành cấp độ',daily:'Chăm học',perfect:'Hoàn hảo',improved:'Tiến bộ',retry_success:'Kiên trì sửa bài'})[t]||t}
+ function badges(d){return '<div class="ph-page-title"><h2>Huy hiệu và mục tiêu</h2></div><div class="ph-badges">'+(d.badges||[]).map(x=>'<div class="ph-badge '+(x.achieved?'earned':'')+'"><span>'+icon(x.achieved?'trophy':'lock')+'</span><b>'+esc(x.name)+'</b><small>'+esc(x.description)+'</small><strong>'+(x.achieved?'Đã đạt':fmt(x.progress)+' / '+fmt(x.target))+'</strong></div>').join('')+'</div><p class="ph-hint">Điều chỉnh mục tiêu tuần sẽ được bổ sung sau. Không cấp huy hiệu không có dữ liệu thật.</p>'}
+ function notes(xs){return '<div class="ph-page-title"><h2>Ghi chú của ba mẹ</h2></div><div class="ph-panel"><form id="ph-note-form" class="ph-form"><label class="ph-full">Ghi lại điều cần luyện hoặc lời động viên<textarea name="note" minlength="3" maxlength="400" rows="4" required placeholder="Ví dụ: Tuần này bé cần luyện thêm toán có lời văn."></textarea></label><button type="submit" class="ph-primary">Lưu ghi chú</button></form></div><div class="ph-panel"><h3>Ghi chú đã lưu</h3>'+(xs.length?xs.map(n=>'<div class="ph-note"><small>'+esc(fmtDate(n.at))+'</small><p>'+esc(n.content)+'</p></div>').join(''):'<p class="ph-empty">Chưa có ghi chú của phụ huynh.</p>')+'</div>'}
+ function settings(){return '<div class="ph-page-title"><h2>Cài đặt bảo mật</h2></div><div class="ph-panel"><h3>Đổi mã PIN phụ huynh</h3><p>PIN chỉ tồn tại ở máy chủ dưới dạng bộ kiểm chứng đã băm. Không ghi PIN vào GitHub.</p><form id="ph-change-pin-form" class="ph-form"><label>PIN hiện tại<input name="old" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="off" required></label><label>PIN mới<input name="new" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="off" required></label><label>Nhập lại PIN mới<input name="repeat" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="off" required></label><button class="ph-primary" type="submit">Đổi PIN và đăng xuất</button></form></div><p class="ph-hint">Phiên tự hết hạn sau khoảng 10 phút không thao tác. Nếu quên PIN, liên hệ chủ ứng dụng để đặt lại bằng quy trình quản trị riêng, không có nút bỏ qua PIN.</p><button type="button" class="ph-secondary" data-ph-action="logout">Đăng xuất phụ huynh</button>'}
+ function render(){
+  if(!snapshot)return;
+  const d=snapshot.summary||{};
+  titleText('Góc của ba mẹ');
+  $('ph-content').innerHTML='<div class="ph-layout">'+nav()+'<section class="ph-workspace">'+({overview:()=>overview(d),reports:()=>reports(d),wallet:()=>wallet(d,snapshot.entries||[]),badges:()=>badges(d),notes:()=>notes(snapshot.notes||[]),settings:()=>settings()}[tab]||(()=>overview(d)))()+'</section></div>';
+ }
+ function actionSubmit(form){
+  if(pending)return;
+  if(form.id==='ph-wallet-form'){
+   const f=new FormData(form),amount=Number(f.get('amount')),delta=f.get('kind')==='redeem'?-amount:amount,note=String(f.get('note')||''),confirmPin=String(f.get('pin')||'');
+   if(!Number.isSafeInteger(amount)||amount<1||amount>10000){status('Số sao không hợp lệ.',true);return}
+   if(delta<0&&snapshot.summary.balance+delta<0){status('Ví sao không đủ để thực hiện.',true);return}
+   if(!window.confirm('Xác nhận '+(delta>0?'thưởng thêm ':'trừ ')+fmt(Math.abs(delta))+' sao? Giao dịch sẽ được lưu vào lịch sử.'))return;
+   // Giữ requestId để thử lại khi mạng chập chờn; chỉ đổi ID khi payload thay đổi.
+   const key=delta+'|'+note;
+   if(!lastRequest||lastRequest.key!==key)lastRequest={key,id:'ph_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,14)};
+   pending=true;status('Đang ghi giao dịch...');
+   api('phuHuynhDieuChinhSao',[token,{delta,note,pin:confirmPin,requestId:lastRequest.id}],r=>{
+    pending=false;lastRequest=null;status('Đã ghi nhận giao dịch vào sổ sao.');
+    if(typeof taiThanhTich==='function')taiThanhTich(true);
+    load();
+   });
+  }else if(form.id==='ph-note-form'){
+   const value=String(new FormData(form).get('note')||'');pending=true;
+   api('phuHuynhGhiChu',[token,value],()=>{pending=false;load()});
+  }else if(form.id==='ph-change-pin-form'){
+   const f=new FormData(form),old=String(f.get('old')),pinNew=String(f.get('new'));
+   if(pinNew!==String(f.get('repeat'))){status('Hai lần nhập PIN mới không khớp.',true);return}
+   pending=true;api('phuHuynhDoiPin',[token,old,pinNew],()=>{pending=false;logout(false);renderLogin();status('Đã đổi mã PIN. Hãy đăng nhập lại.')});
+  }
+ }
+ function handle(e){
+  const digit=e.target.closest('[data-ph-digit]');
+  if(digit){const d=digit.dataset.phDigit;pin=d==='⌫'?pin.slice(0,-1):(pin+d).slice(0,4);drawPin();return}
+  const nav=e.target.closest('[data-ph-tab]');
+  if(nav){tab=nav.dataset.phTab;render();status('');return}
+  const action=e.target.closest('[data-ph-action]');
+  if(action){const a=action.dataset.phAction;if(a==='login')login();else if(a==='reload')load();else if(a==='logout'){logout(true);renderLogin();status('Đã đăng xuất.')}return}
+ }
+ document.addEventListener('submit',e=>{if(e.target.closest('#ph-root')){e.preventDefault();actionSubmit(e.target)}});
+ document.addEventListener('keydown',e=>{
+  if($('ph-root')?.hidden!==false)return;
+  if(e.key==='Escape'){e.preventDefault();close();return}
+  if(!token&&e.key==='Enter'&&e.target.closest('#ph-content')){e.preventDefault();login()}
+ });
+ document.addEventListener('click',e=>{
+  const profile=e.target.closest('#ph-entry');
+  if(profile){e.preventDefault();open()}
+ });
+ window.PHU_HUYNH_PORTAL={open,close};
+})();
