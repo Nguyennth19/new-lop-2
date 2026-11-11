@@ -1,9 +1,16 @@
 // Lịch học và chuyên cần V2.2: chỉ ghi nhận hoạt động hoàn thành thực tế.
 const KHOA_NGAY_HOC='lop2_v22_ngay_hoc';
+const KHOA_BAT_DAU='lop2_v22_bat_dau';
 const LICH_TIET_MAU=[0,2,1,0,2,0,0]; // Số tiết minh họa T2-CN; thay bằng lịch từ Sheet khi tích hợp.
 const NGAY_TRONG_TUAN=['T2','T3','T4','T5','T6','T7','CN'];
 function ngayDiaPhuong(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
 function docNgayHoc(){try{const x=JSON.parse(localStorage.getItem(KHOA_NGAY_HOC)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch(e){return {}}}
+function docNgayBatDau(){try{const x=JSON.parse(localStorage.getItem(KHOA_BAT_DAU)||'{}');return x&&typeof x==='object'?x:{}}catch(e){return {}}}
+function ghiNhanBatDauHoc(){
+ const x=docNgayBatDau(),key=ngayDiaPhuong(new Date());x[key]=true;
+ try{localStorage.setItem(KHOA_BAT_DAU,JSON.stringify(x))}catch(e){}
+ capNhatLichHoc();
+}
 function ghiNhanNgayHoc(){
  const x=docNgayHoc(),key=ngayDiaPhuong(new Date());
  x[key]=(Number(x[key])||0)+1;
@@ -14,7 +21,7 @@ function capNhatLichHoc(){
  const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
  const weekday=(today.getDay()+6)%7;
  const monday=new Date(today);monday.setDate(today.getDate()-weekday);
- const records=docNgayHoc();
+ const records=docNgayHoc(),started=docNgayBatDau();
  const completed=d=>(Number(records[ngayDiaPhuong(d)])||0)>0;
  const days=Array.from({length:7},(_,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);return d});
  const label=document.querySelector('.week-caption');
@@ -23,7 +30,7 @@ function capNhatLichHoc(){
  if(board){
   board.innerHTML=days.map((d,i)=>{
    const isToday=i===weekday,hasCompleted=completed(d),past=d<today;
-   const status=hasCompleted?'done':past&&LICH_TIET_MAU[i]>0?'missed':isToday&&LICH_TIET_MAU[i]>0?'doing':'neutral';
+   const status=hasCompleted?'done':started[ngayDiaPhuong(d)]?'doing':past&&LICH_TIET_MAU[i]>0?'missed':'neutral';
    const symbol=status==='done'?'✓':status==='missed'?'✕':status==='doing'?'◐':'';
    const detail=LICH_TIET_MAU[i]?(LICH_TIET_MAU[i]+' tiết học'):'Không có tiết';
    return '<button type="button" class="school-day '+(isToday?'selected today ':'')+'status-'+status+'" data-day="'+i+'" aria-pressed="'+isToday+'"><strong>'+NGAY_TRONG_TUAN[i]+'</strong><span>'+String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+(isToday?' · Hôm nay':'')+'</span><small>'+(symbol?symbol+' ':'')+detail+'</small></button>';
@@ -31,8 +38,8 @@ function capNhatLichHoc(){
  }
  const week=document.querySelector('.streak .week');
  if(week){week.innerHTML=days.map((d,i)=>{
-  const state=completed(d)?'done':d<today?'missed':d.getTime()===today.getTime()?'current':'future';
-  return '<div class="day '+state+'">'+NGAY_TRONG_TUAN[i]+'<i>'+(state==='done'?'✓':state==='missed'?'✕':state==='current'?'⭐':'•')+'</i></div>';
+  const state=completed(d)?'done':d.getTime()===today.getTime()?'current':started[ngayDiaPhuong(d)]?'doing':d<today?'missed':'future';
+  return '<div class="day '+state+'">'+NGAY_TRONG_TUAN[i]+'<i>'+(state==='done'?'✓':state==='missed'?'✕':state==='doing'?'◐':state==='current'?'⭐':'•')+'</i></div>';
  }).join('');}
  // Chuỗi được tính đến hôm nay hoặc hôm qua, không lấy dữ liệu mẫu.
  let cursor=new Date(today),streak=0;
