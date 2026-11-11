@@ -3,10 +3,9 @@
 (function(){
 let fullData=null, level='LV1', view='LV1', drafts={};
 let gradingState={}, levelStart=Date.now();
-const GRADE_KEY='lop2_b20_submitted_v24';
-let submissions={};try{submissions=JSON.parse(localStorage.getItem(GRADE_KEY)||'{}')||{}}catch(e){submissions={}}
-const LKEY='lop2_b20_drafts_v23';
-try { drafts=JSON.parse(localStorage.getItem(LKEY)||'{}')||{}; } catch(e){drafts={};}
+const GRADE_KEY='lop2_g5_transient_submissions';
+let submissions={}; // Lượt nộp chưa xác nhận chỉ giữ trong phiên đang mở.
+const LKEY='lop2_g5_transient_drafts'; // Không ghi tiến độ cũ vào trình duyệt.
 const E=thoatHtmlToan;
 const themes=['pink','blue','yellow','green','purple','orange'];
 const title={THEORY:'Lý thuyết',LV1:'LV1 – Học kiến thức',LV2:'LV2 – Luyện tập',LV3:'LV3 – Vận dụng nâng cao'};
@@ -33,7 +32,7 @@ function shell(){
 function activeQuestions(){return fullData?chonCauHoiTheoNhom(fullData):[];}
 function completed(){return activeQuestions().filter(q=>cauDaDungToan[q.id]).length;}
 function validCount(){return activeQuestions().length;}
-function levelDone(lv){if(!fullData)return false;const q=activeQuestions().filter(x=>x.level===lv);return q.length>0&&q.every(x=>x.valid&&cauDaDungToan[x.id]);}
+function levelDone(lv){return !!(typeof TIEN_DO_HOC!=='undefined'&&TIEN_DO_HOC.get()?.completedLevels?.[lv]);}
 function refreshProgress(){
  if(!fullData)return;
  const total=validCount(),p=total?Math.round(completed()/total*100):0;
@@ -49,6 +48,7 @@ function start(index){
  document.getElementById('mlDock').hidden=true;
  if(typeof ghiNhanBatDauHoc==='function')ghiNhanBatDauHoc();
  try {history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+level);}catch(e){}
+ if(typeof TIEN_DO_HOC!=='undefined'&&!TIEN_DO_HOC.get())TIEN_DO_HOC.refresh().catch(()=>{});
  if(fullData){render();return;}
  const load=()=>new Promise((resolve,reject)=>{
   if(!window.google||!google.script||!google.script.run){reject(Error('Hãy mở Web App Google Apps Script'));return;}
@@ -151,11 +151,7 @@ function gradeQuestion(q){
  f.forEach(el=>el.classList.toggle('ml-right',ok));
  f.forEach(el=>el.classList.toggle('ml-wrong',!ok&&el.value!==''));
  f.forEach(el=>el.classList.toggle('ml-empty',!ok&&el.value===''));
- if(ok&&!cauDaDungToan[q.id]){
-  cauDaDungToan[q.id]=true;
-  try{localStorage.setItem(KHOA_KET_QUA_TOAN,JSON.stringify(cauDaDungToan));}catch(e){}
-
- }
+ // Dấu tích đã học chỉ được máy chủ xác minh sau khi nộp.
  gradingState[q.id]=ok?'correct':f.every(x=>!x.value.trim())?'empty':'wrong';
  const card=shell().querySelector('[data-ml-q-card="'+q.id+'"]');
  if(card){card.classList.toggle('ml-correct',ok);const star=card.querySelector('.ml-earned');if(star&&ok)star.textContent='✓';}
@@ -163,11 +159,7 @@ function gradeQuestion(q){
 }
 function afterGrade(){
  refreshProgress();
- const q=activeQuestions().filter(x=>x.level===view);
- if(q.length&&q.every(x=>x.valid&&cauDaDungToan[x.id])){
-  const lesson=typeof findRoadmapLesson==='function'?findRoadmapLesson('Toán 2','toan_b20'):null;
-  if(lesson){lesson.levels[Number(view.slice(2))-1]='done';persistTopicProgress();}
- }
+ // Chỉ tiến độ từ layTienDoHocTap mới đánh dấu đã học trên sidebar và lộ trình.
 }
 function gradeLevel(){
  const qs=activeQuestions().filter(q=>q.level===view);
@@ -175,7 +167,7 @@ function gradeLevel(){
  const n=qs.filter(q=>cauDaDungToan[q.id]).length;
 
  const record={at:new Date().toISOString(),seconds:Math.max(0,Math.round((Date.now()-levelStart)/1000)),total:qs.length,correct:qs.filter(q=>gradingState[q.id]==='correct').length,answered:qs.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length};
- submissions[view]=record;try{localStorage.setItem(GRADE_KEY,JSON.stringify(submissions))}catch(e){}
+ submissions[view]=record;
  renderResults();
  // Học sinh không thể tự cấp sao: gửi các ô đã nhập cho máy chủ kiểm tra lại.
  if(typeof THANH_TICH_GUI!=='undefined')THANH_TICH_GUI.send('toan_b20',view,qs,fields,record.seconds);
@@ -188,7 +180,7 @@ function resetLevel(){
   delete gradingState[q.id];
  }
  delete submissions[view];
- try{localStorage.setItem(LKEY,JSON.stringify(drafts));localStorage.setItem(GRADE_KEY,JSON.stringify(submissions))}catch(e){}
+ // Không lưu bản nháp hoặc dấu tích vào localStorage.
  levelStart=Date.now();
  render();
 }
@@ -273,12 +265,13 @@ document.addEventListener('input',e=>{
  const op=el.dataset.mlField.endsWith(':op');
  el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
  drafts[el.dataset.mlField]=el.value;
- try{localStorage.setItem(LKEY,JSON.stringify(drafts))}catch(e){}
+ // Bản nháp chỉ được giữ trong bộ nhớ của trang đang mở.
 });
 document.addEventListener('keydown',e=>{
  if(!e.target.matches('#mathFullScreen [data-ml-field]'))return;
  if(e.key==='Enter'){e.preventDefault();const all=inputList(),i=all.indexOf(e.target);if(i>=0&&i<all.length-1)all[i+1].focus();}
 });
+document.addEventListener('lop2:progress',()=>{if(fullData&&document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden)refreshProgress();});
 window.moBaiToanSheet=start;
 window.dongKhongGianToan=exit;
 })();
