@@ -46,7 +46,7 @@ document.addEventListener('click',e=>{
  let tab=e.target.closest('[data-roadmap-subject]');if(tab){chooseRoadmapSubject(tab.dataset.roadmapSubject);return}
  let awardTab=e.target.closest('[data-award-subject]');if(awardTab){document.getElementById('subjectTopicAchievements').dataset.subject=awardTab.dataset.awardSubject;expandedAwardTopic='';renderTopicAwards();return}
  let awardTopic=e.target.closest('[data-award-topic]');if(awardTopic){const key=document.getElementById('subjectTopicAchievements').dataset.subject+'/'+awardTopic.dataset.awardTopic;expandedAwardTopic=expandedAwardTopic===key?'':key;renderTopicAwards();return}
- let start=e.target.closest('[data-start-lesson]');if(start){activeLessonContext={subject:currentSubject,id:start.dataset.startLesson,level:Number(start.dataset.startLevel)};openQuiz();return}
+ let start=e.target.closest('[data-start-lesson]');if(start){if(currentSubject==='Toán 2'){moBaiToanSheet(start.dataset.startLevel);return;}activeLessonContext={subject:currentSubject,id:start.dataset.startLesson,level:Number(start.dataset.startLevel)};openQuiz();return}
  let nav=e.target.closest('[data-view], [data-open]');if(nav){navigate(nav.dataset.view||nav.dataset.open);return}
  let lvl=e.target.closest('[data-level]');if(lvl){navigate('path');return}
 });
