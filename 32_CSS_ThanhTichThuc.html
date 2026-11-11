@@ -23,3 +23,30 @@
 @media(max-width:1100px){#achievements .achv-badges{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:720px){#achievements .achv-badges{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:440px){#achievements .achv-week-bars{gap:5px}#achievements .achv-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#achievements .achv-stat strong{font-size:19px}}
+
+/* Báo cáo theo môn, 4 tuần và ma trận kỹ năng – V1.1 */
+#achievements .achv-extra-analytics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+#achievements .achv-analysis-card{background:#fff;border:1px solid #e6edf6;border-radius:18px;padding:18px 20px;min-width:0}
+#achievements .achv-analysis-card h3{font-size:15px;color:#0f172a;margin:0 0 16px}
+#achievements .achv-subject-row{margin:13px 0}
+#achievements .achv-subject-row>div:first-child{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:6px;font-size:12px}
+#achievements .achv-subject-row span{font-size:11px;color:#64748b}
+#achievements .achv-track{height:8px;background:#e2e8f0;border-radius:99px;overflow:hidden}
+#achievements .achv-track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#3b82f6,#38bdf8)}
+#achievements .achv-track .subject-1{background:linear-gradient(90deg,#ec4899,#f9a8d4)}
+#achievements .achv-track .subject-2{background:linear-gradient(90deg,#22c55e,#86efac)}
+#achievements .achv-fourweek-row{display:grid;grid-template-columns:minmax(0,1fr) 70px 80px;gap:8px;font-size:12px;padding:12px 0;border-bottom:1px solid #f1f5f9}
+#achievements .achv-fourweek-row:last-child{border:0}
+#achievements .achv-fourweek-row span{text-align:right;color:#64748b}
+#achievements .achv-skills-card{margin-bottom:18px}
+#achievements #achvSkillMatrix{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#achievements .achv-skill{padding:13px;border:1px solid #e0ebf8;border-radius:12px;background:#fafcff;display:grid;gap:8px;min-width:0}
+#achievements .achv-skill span{font-size:12px;font-weight:750;line-height:1.45}
+#achievements .achv-skill strong{font-size:11px;color:#2563eb}
+#achievements .achv-skill small{font-size:10px;color:#64748b}
+#achievements .achv-no-skill{font-size:12px;color:#64748b;margin:0}
+#mathFullScreen .ml-reward-sync{font-size:11px;color:#64748b;line-height:1.6;margin-top:12px;padding:9px 10px;border-radius:9px;background:#f0f9ff}
+#mathFullScreen .ml-reward-sync[data-status=error]{background:#fff1f2;color:#b91c1c}
+@media(max-width:900px){#achievements #achvSkillMatrix{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){#achievements .achv-extra-analytics{grid-template-columns:1fr}}
+@media(max-width:500px){#achievements #achvSkillMatrix{grid-template-columns:1fr}}
