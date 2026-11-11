@@ -44,3 +44,26 @@
  #mathFullScreen .ml-workspace{display:block}
  #mathFullScreen .ml-results{max-width:none;width:100%}
 }
+
+/* V2.7: hai nút cùng một hàng; Làm lại đỏ, Nộp & chấm bên phải. */
+#mathFullScreen .ml-result-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#mathFullScreen .ml-result-actions [data-ml-reset-level]{
+ grid-column:1;grid-row:1;background:#fee2e2!important;color:#b91c1c!important;
+ border:1px solid #fca5a5!important;font-weight:800;
+}
+#mathFullScreen .ml-result-actions [data-ml-submit]{
+ grid-column:2;grid-row:1;background:#16a34a!important;color:#fff!important;
+ border:1px solid #15803d!important;font-weight:800;
+}
+#mathFullScreen .ml-result-actions button{min-height:48px;white-space:normal;line-height:1.35}
+#mathFullScreen .ml-key.math-symbol{background:#f0fdf4;border-color:#86efac;color:#166534}
+#mathFullScreen .ml-dock-keys{grid-template-columns:repeat(16,minmax(0,1fr))}
+#mathFullScreen .ml-section-box,#mathFullScreen .ml-page,#mathFullScreen .ml-content{
+ border-radius:18px;
+}
+#mathFullScreen .ml-section-box{overflow:hidden}
+#mathFullScreen .ml-voice-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+#mathFullScreen .ml-voice-actions label{font-size:12px;font-weight:700;color:#475569}
+#mathFullScreen #mlVoiceChoice{max-width:220px;min-height:36px;padding:6px 8px;border:1px solid #cbd5e1;border-radius:9px;background:white;color:#0f172a;font-size:12px}
+@media(max-width:980px){#mathFullScreen .ml-dock-keys{grid-template-columns:repeat(8,minmax(0,1fr))}}
+@media(max-width:520px){#mathFullScreen .ml-voice-actions{width:100%}#mathFullScreen #mlVoiceChoice{max-width:100%;flex:1}}
