@@ -14,7 +14,7 @@ function shell(){
  let root=document.getElementById('mathFullScreen');
  if(root)return root;
  root=document.createElement('div');root.id='mathFullScreen';root.className='math-screen';root.hidden=true;
- root.innerHTML='<header class="ml-top"><button class="ml-back" data-ml-exit aria-label="Trở về">‹</button><span class="ml-file">▤</span><div class="ml-heading"><div class="ml-heading-meta"><span class="ml-doc-label">Tài liệu</span><strong>Toán 2</strong><span class="ml-progress"><i id="mlBar"></i></span><strong id="mlPct">0%</strong></div><b id="mlTitle">Bài 20</b></div></header><div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">NỘI DUNG BÀI HỌC</b><nav class="ml-navigation" id="mlMenu"></nav></aside><div class="ml-workspace"><main class="ml-content" id="mlContent" tabindex="-1"></main><aside class="ml-results" id="mlResults" aria-live="polite"></aside></div></div><div class="ml-dock" id="mlDock"><div class="ml-dock-heading"><b>🔢 Bàn phím Toán học</b><button type="button" data-ml-keyboard>Ẩn bàn phím ✕</button></div><div class="ml-dock-keys" id="mlKeys"></div></div><button id="mlShowKeyboard" class="ml-show-keyboard" data-ml-keyboard hidden>🔢 Mở bàn phím số</button>';
+ root.innerHTML='<header class="ml-top"><button class="ml-back" data-ml-exit aria-label="Trở về">‹</button><span class="ml-file">'+muiIcon('book-open')+'</span><div class="ml-heading"><div class="ml-heading-meta"><span class="ml-doc-label">Tài liệu</span><strong>Toán 2</strong><span class="ml-progress"><i id="mlBar"></i></span><strong id="mlPct">0%</strong></div><b id="mlTitle">Bài 20</b></div></header><div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">NỘI DUNG BÀI HỌC</b><nav class="ml-navigation" id="mlMenu"></nav></aside><div class="ml-workspace"><main class="ml-content" id="mlContent" tabindex="-1"></main><aside class="ml-results" id="mlResults" aria-live="polite"></aside></div></div><div class="ml-dock" id="mlDock"><div class="ml-dock-heading"><b>Bàn phím Toán học</b><button type="button" data-ml-keyboard>Ẩn bàn phím</button></div><div class="ml-dock-keys" id="mlKeys"></div></div><button id="mlShowKeyboard" class="ml-show-keyboard" data-ml-keyboard hidden>Mở bàn phím số</button>';
  document.body.appendChild(root);
  const keyboard=root.querySelector('#mlKeys');
  ['1','2','3','4','5','6','7','8','9','0','+','−','⌫','Tiếp →'].forEach(k=>{
@@ -23,12 +23,13 @@ function shell(){
  });
  return root;
 }
-function completed(){return fullData?fullData.questions.filter(q=>q.valid&&cauDaDungToan[q.id]).length:0;}
-function validCount(){return fullData?fullData.questions.filter(q=>q.valid).length:0;}
-function levelDone(lv){if(!fullData)return false;const q=fullData.questions.filter(x=>x.level===lv);return q.length>0&&q.every(x=>x.valid&&cauDaDungToan[x.id]);}
+function activeQuestions(){return fullData?chonCauHoiTheoNhom(fullData):[];}
+function completed(){return activeQuestions().filter(q=>cauDaDungToan[q.id]).length;}
+function validCount(){return activeQuestions().length;}
+function levelDone(lv){if(!fullData)return false;const q=activeQuestions().filter(x=>x.level===lv);return q.length>0&&q.every(x=>x.valid&&cauDaDungToan[x.id]);}
 function refreshProgress(){
  if(!fullData)return;
- const total=fullData.questions.length,p=Math.round(completed()/total*100);
+ const total=validCount(),p=total?Math.round(completed()/total*100):0;
  shell().querySelector('#mlPct').textContent=p+'%';shell().querySelector('#mlBar').style.width=p+'%';
  const nav=shell().querySelector('#mlMenu');
  nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+(id==='THEORY'?'▤':'▣')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
@@ -66,7 +67,7 @@ function choose(id){
 }
 function render(){
  if(!fullData)return;
- const root=shell();refreshProgress();
+ const root=shell();refreshProgress();root.classList.toggle('ml-theory-mode',view==='THEORY');
  const target=root.querySelector('#mlContent');
  const keypad=root.querySelector('#mlDock');
  if(view==='THEORY'){
@@ -85,7 +86,7 @@ function render(){
  renderResults();
 }
 function section(s,i){
- const list=fullData.questions.filter(q=>q.sectionId===s.id);
+ const list=activeQuestions().filter(q=>q.sectionId===s.id);
  const type=s.type; const groupMental=type==='mental';
  let content='';
  if(groupMental){
@@ -94,7 +95,7 @@ function section(s,i){
  }else{
   content='<div class="ml-cards '+(type==='word_problem'?'ml-word-grid':'')+'">'+list.map(q=>q.type==='vertical'?vertical(q):q.type==='missing_digit'?puzzle(q):q.type==='mental'?mental(q):word(q)).join('')+'</div>';
  }
- return '<section class="ml-section" id="ml-section-'+E(s.id)+'"><div class="ml-section-heading"><b class="ml-step">'+(i+1)+'</b><h3>'+E(s.name||'Bài tập '+(i+1))+'</h3><button data-ml-speak="'+E(s.id)+'" type="button">🔊 Nghe yêu cầu</button></div><div class="ml-section-box">'+content+'<div class="ml-section-actions"><span class="ml-section-feedback" id="ml-feedback-'+E(s.id)+'"></span><button data-ml-grade="'+E(s.id)+'">☑ Kiểm tra bài này</button><button class="ml-reset" data-ml-reset="'+E(s.id)+'">↺ Xóa bài này</button></div></div></section>';
+ return '<section class="ml-section" id="ml-section-'+E(s.id)+'"><div class="ml-section-heading"><b class="ml-step">'+(i+1)+'</b><h3>'+E(s.name||'Bài tập '+(i+1))+'</h3><button data-ml-speak="'+E(s.id)+'" type="button">🔊 Nghe yêu cầu</button></div><div class="ml-section-box">'+content+'<div class="ml-section-actions"><span class="ml-section-feedback" id="ml-feedback-'+E(s.id)+'"></span><button data-ml-grade="'+E(s.id)+'">✓ Kiểm tra bài này</button><button class="ml-reset" data-ml-reset="'+E(s.id)+'">↺ Xóa bài này</button></div></div></section>';
 }
 function input(q,key,max,extra=''){
  return '<input class="ml-input'+(key.endsWith(':carry')?' ml-carry':'')+'" type="text" inputmode="none" autocomplete="off" maxlength="'+max+'" data-ml-field="'+E(key)+'" data-ml-q="'+E(q.id)+'" '+extra+' aria-label="'+E(key.split(':').pop())+'">';
@@ -168,7 +169,7 @@ function gradeQuestion(q){
  return ok;
 }
 function gradeSection(id){
- const qs=fullData.questions.filter(q=>q.sectionId===id);
+ const qs=activeQuestions().filter(q=>q.sectionId===id);
  const result=qs.map(q=>({valid:q.valid,ok:gradeQuestion(q)}));
  const done=result.filter(x=>x.ok).length,invalid=result.filter(x=>!x.valid).length;
  const msg=shell().querySelector('#ml-feedback-'+id);
@@ -177,14 +178,14 @@ function gradeSection(id){
 }
 function afterGrade(){
  refreshProgress();
- const q=fullData.questions.filter(x=>x.level===view);
+ const q=activeQuestions().filter(x=>x.level===view);
  if(q.length&&q.every(x=>x.valid&&cauDaDungToan[x.id])){
   const lesson=typeof findRoadmapLesson==='function'?findRoadmapLesson('Toán 2','toan_b20'):null;
   if(lesson){lesson.levels[Number(view.slice(2))-1]='done';persistTopicProgress();}
  }
 }
 function gradeLevel(){
- const qs=fullData.questions.filter(q=>q.level===view);
+ const qs=activeQuestions().filter(q=>q.level===view);
  qs.forEach(gradeQuestion);afterGrade();
  const n=qs.filter(q=>cauDaDungToan[q.id]).length;
  const msg=shell().querySelector('#mlLevelFeedback');
@@ -201,12 +202,12 @@ function resetSection(id){
  });
  try{localStorage.setItem(LKEY,JSON.stringify(drafts))}catch(e){}
  const msg=scope.querySelector('.ml-section-feedback');if(msg)msg.textContent='';
- if(fullData)fullData.questions.filter(q=>q.sectionId===id).forEach(q=>delete gradingState[q.id]);
+ if(fullData)activeQuestions().filter(q=>q.sectionId===id).forEach(q=>delete gradingState[q.id]);
  renderResults();
 }
 function renderResults(){
  const panel=shell().querySelector('#mlResults');if(!panel||!fullData||view==='THEORY')return;
- const questions=fullData.questions.filter(q=>q.level===view);
+ const questions=activeQuestions().filter(q=>q.level===view);
  const record=submissions[view]||null;
  const answered=questions.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length;
  const items=questions.map((q,i)=>{const status=gradingState[q.id]||'unanswered';const mark=status==='correct'?'✓':status==='wrong'?'✕':status==='empty'?'–':'·';return '<span class="ml-answer-chip '+status+'" title="'+E(q.label||q.id)+'">'+(i+1)+':'+mark+'</span>';}).join('');
