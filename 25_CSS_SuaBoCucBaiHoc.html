@@ -1,0 +1,113 @@
+
+/* V2.5 — MỘT THANH CUỘN, LÝ THUYẾT TOÀN KHUNG, THẺ BÀI RỘNG.
+   File override riêng để không sửa CSS của các trang khác. */
+#mathFullScreen .ml-workspace{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,28%);
+  gap:14px;align-items:start;align-content:start;overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;padding:12px 14px 126px;min-height:0;
+}
+#mathFullScreen .ml-content{
+  min-width:0;min-height:auto;height:auto;overflow:visible;scrollbar-gutter:auto;
+  padding:0;background:#fff;border:1px solid #e1e7f0;border-radius:13px;
+}
+#mathFullScreen .ml-results{
+  min-width:0;max-height:none;height:auto;overflow:visible;
+  position:sticky;top:0;align-self:start;padding:0;
+}
+#mathFullScreen .ml-page{padding:20px 22px 28px;background:#fff;min-height:auto}
+#mathFullScreen .ml-section{margin-bottom:27px}
+#mathFullScreen .ml-section-box{padding:18px;background:#fffafb}
+#mathFullScreen .ml-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#mathFullScreen .ml-vertical-card{min-height:250px;padding:16px}
+#mathFullScreen .ml-vertical-matrix{margin:12px auto}
+#mathFullScreen .ml-mental-groups{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+#mathFullScreen .ml-mental-group{padding:18px 16px}
+#mathFullScreen .ml-mental-row{max-width:320px;grid-template-columns:minmax(80px,1fr) 24px 45px 22px 70px;gap:3px;font-size:20px}
+#mathFullScreen .ml-mental-row .ml-input{width:68px}
+#mathFullScreen .ml-word-grid{display:grid;grid-template-columns:1fr;gap:18px}
+#mathFullScreen .ml-word-card{padding:20px;max-width:none}
+#mathFullScreen .ml-word-head{align-items:flex-start}
+#mathFullScreen .ml-word-head p{font-size:15px;line-height:1.75;flex:1}
+#mathFullScreen .ml-svg{min-width:105px;width:105px;height:100px}
+#mathFullScreen .ml-svg svg{width:100px;height:95px}
+#mathFullScreen .ml-graph-paper{padding:18px}
+#mathFullScreen .ml-word-calc{flex-wrap:wrap;gap:11px}
+#mathFullScreen .ml-word-calc .ml-input{width:62px}
+#mathFullScreen .ml-section-heading>button{
+  background:#e0f2fe;color:#075985;border-color:#7dd3fc;
+  font-weight:700;box-shadow:none;
+}
+#mathFullScreen .ml-section-actions{margin-top:20px;gap:10px}
+#mathFullScreen .ml-section-actions button{
+  display:inline-flex;align-items:center;gap:6px;background:#26aa79;
+  color:#fff;border:0;border-radius:9px;padding:11px 15px;
+  box-shadow:0 2px 0 #047857;font-size:12px;font-weight:750;
+}
+#mathFullScreen .ml-section-actions button.ml-reset{
+  background:#fff3d1;color:#9a5800;border:1px solid #fcd34d;box-shadow:none
+}
+#mathFullScreen .ml-section-actions button svg,
+#mathFullScreen .ml-section-heading button svg{width:15px;height:15px;display:inline-block;vertical-align:middle}
+#mathFullScreen .ml-result-card{box-shadow:0 1px 3px #0f172a0c}
+#mathFullScreen .ml-dock{box-shadow:0 -2px 12px #0f172a11}
+#mathFullScreen .ml-sidebar{overflow-y:auto}
+#mathFullScreen .ml-topic-icon{background:transparent!important;width:20px;height:20px}
+#mathFullScreen .ml-topic-icon svg{width:17px;height:17px;stroke:#3278dc;stroke-width:2;fill:none}
+#mathFullScreen .ml-navigation button:nth-child(1) .ml-topic-icon svg{stroke:#ea8800}
+#mathFullScreen .ml-navigation button:nth-child(2) .ml-topic-icon svg{stroke:#3b82f6}
+#mathFullScreen .ml-navigation button:nth-child(3) .ml-topic-icon svg{stroke:#10b981}
+#mathFullScreen .ml-navigation button:nth-child(4) .ml-topic-icon svg{stroke:#a855f7}
+#mathFullScreen .ml-end-check{color:#16a34a}
+#mathFullScreen .ml-file svg{width:24px;height:24px;stroke:#fff;stroke-width:2}
+#mathFullScreen.ml-theory-mode .ml-workspace{display:block;padding:0 0 24px;background:#fff}
+#mathFullScreen.ml-theory-mode .ml-content{
+  width:100%;max-width:none;border:0;border-radius:0;
+  background:#fff;min-height:100%;padding:0;
+}
+#mathFullScreen.ml-theory-mode .ml-results{display:none!important}
+#mathFullScreen.ml-theory-mode .ml-theory-head{display:none}
+#mathFullScreen.ml-theory-mode .ml-theory-page{
+  width:100%;max-width:none;margin:0;background:#fff;padding:25px 30px 40px;
+}
+#mathFullScreen.ml-theory-mode .ml-theory-block{border:1px solid #f3d897;background:#fffdf5}
+#mathFullScreen.ml-theory-mode .ml-theory-title h2{font-size:19px;color:#a61e4d}
+#mathFullScreen.ml-theory-mode .ml-base-panel h3{
+  color:#075985;background:#e0f2fe;border:1px solid #a5d8ff;
+  padding:9px 12px;border-radius:8px;font-size:13px;font-weight:850;line-height:1.45;
+}
+#mathFullScreen.ml-theory-mode .ml-base-panel:nth-child(2) h3{
+  color:#9a3412;background:#ffedd5;border-color:#fdba74;
+}
+#mathFullScreen.ml-theory-mode .ml-base10{grid-template-columns:repeat(2,minmax(0,1fr))}
+#mathFullScreen.ml-theory-mode .ml-theory-demo{grid-template-columns:minmax(240px,1fr) minmax(240px,1.4fr)}
+#mathFullScreen.ml-theory-mode .ml-theory-title button,
+#mathFullScreen.ml-theory-mode #mlRegroup{
+  color:#075985;background:#e0f2fe;border:1px solid #7dd3fc;box-shadow:none;
+  font-weight:750
+}
+#mathFullScreen.ml-theory-mode .ml-theory-title button:hover{background:#c8eafd}
+#mathFullScreen .ml-theory-block ol{font-size:15px}
+@media(min-width:1500px){
+ #mathFullScreen .ml-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #mathFullScreen .ml-mental-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #mathFullScreen .ml-word-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:1100px){
+ #mathFullScreen .ml-workspace{grid-template-columns:minmax(0,1fr) 240px;padding:10px 10px 130px}
+ #mathFullScreen .ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #mathFullScreen .ml-word-grid{grid-template-columns:1fr}
+}
+@media(max-width:840px){
+ #mathFullScreen .ml-workspace{display:block;overflow-y:auto}
+ #mathFullScreen .ml-results{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));padding:12px 0}
+ #mathFullScreen .ml-content{width:100%;overflow:visible}
+ #mathFullScreen.ml-theory-mode .ml-theory-demo{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ #mathFullScreen .ml-page{padding:12px 10px}
+ #mathFullScreen .ml-word-head{flex-direction:column}
+ #mathFullScreen .ml-results{grid-template-columns:1fr}
+ #mathFullScreen .ml-mental-row{grid-template-columns:65px 17px 32px 17px 55px;font-size:16px}
+ #mathFullScreen.ml-theory-mode .ml-theory-page{padding:14px 12px}
+ #mathFullScreen.ml-theory-mode .ml-base10{grid-template-columns:1fr}
+}
