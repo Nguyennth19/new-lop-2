@@ -1,0 +1,33 @@
+/* Quy tắc chọn câu hiển thị – áp dụng riêng ở lớp trình bày, không xóa dữ liệu Google Sheet.
+ * Khả năng tái sử dụng cho các bài Toán sau qua cấu hình LESSON_RULES. */
+const CAU_HINH_SO_CAU_TOAN={
+  toan_b20:{
+    toan_b20_lv1_ex1:{max:4},
+    toan_b20_lv1_ex2:{perGroup:2},
+    toan_b20_lv1_ex3:{max:2},
+    toan_b20_lv2_problems:{max:4},
+    toan_b20_lv3_ex1:{max:6},
+    toan_b20_lv3_ex2:{max:6},
+    toan_b20_lv3_ex3:{max:6},
+    toan_b20_lv3_ex4:{max:4}
+  }
+};
+function chonCauHoiTheoNhom(data){
+ const rules=CAU_HINH_SO_CAU_TOAN[data.lesson.id]||{};
+ const sorted=[...data.questions].sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0));
+ const bySection=new Map();
+ for(const question of sorted){
+  if(!bySection.has(question.sectionId))bySection.set(question.sectionId,[]);
+  bySection.get(question.sectionId).push(question);
+ }
+ const result=[];
+ for(const [section,all] of bySection){
+  const rule=rules[section]||{};
+  if(rule.perGroup){
+   const groups=new Map();
+   for(const q of all){const key=q.group||'Chung';if(!groups.has(key))groups.set(key,[]);groups.get(key).push(q)}
+   for(const group of groups.values())result.push(...group.filter(q=>q.valid).slice(0,rule.perGroup));
+  }else result.push(...all.filter(q=>q.valid).slice(0,rule.max||all.length));
+ }
+ return result;
+}
