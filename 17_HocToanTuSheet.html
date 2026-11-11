@@ -30,6 +30,7 @@ function veBaiToan(){
   return '<section class="math-section"><h3>'+thoatHtmlToan(s.name)+'</h3><div class="math-question-grid">'+qs.map(veCauToan).join('')+'</div></section>';
  }).join('')+
  '<p class="math-source-note">Nguồn: Google Sheets · Bài 20. Câu thiếu dữ liệu sẽ được khóa, không tự tạo đề bài.</p>';
+ ganHinhToan();
 }
 function veCauToan(q){
  const done=!!cauDaDungToan[q.id],esc=thoatHtmlToan;
@@ -42,12 +43,43 @@ function veCauToan(q){
  }else{
   const formula=q.type==='vertical'?'<div class="math-vertical"><span>'+esc(q.n1)+'</span><span>+ '+esc(q.n2)+'</span><hr><span>?</span></div>':
     q.type==='mental'?'<div class="math-formula">'+esc(q.prompt)+'</div>':'<p class="math-story">'+esc(q.prompt)+'</p>';
-  body=formula+(q.summary?'<p class="math-summary">'+esc(q.summary)+'</p>':'')+
+  body=formula+(q.svg?'<div class="math-illustration" data-math-svg="'+esc(q.id)+'"></div>':'')+(q.summary?'<p class="math-summary">'+esc(q.summary)+'</p>':'')+
     '<label class="math-answer">Đáp án <input type="number" inputmode="numeric" data-math-answer placeholder="Nhập kết quả" '+(done?'value="'+esc(q.answer)+'"':'')+'></label>'+(q.unit?'<span class="math-unit">'+esc(q.unit)+'</span>':'');
  }
  return '<article class="math-question '+(done?'math-correct':'')+'" data-math-question="'+esc(q.id)+'">'+head+body+
  '<div class="math-q-bottom"><button type="button" data-math-check="'+esc(q.id)+'">Kiểm tra ✓</button><span class="math-feedback" aria-live="polite">'+(done?'✓ Đã trả lời đúng':'')+'</span></div></article>';
 }
+
+/** Chỉ dựng các hình SVG an toàn (không chấp nhận HTML, script, sự kiện hay href). */
+function ganHinhToan(){
+ if(!boDuLieuToan||typeof DOMParser==='undefined')return;
+ const ns='http://www.w3.org/2000/svg';
+ const allowedTags=new Set(['svg','circle','rect','polygon','path','text','ellipse','line','polyline']);
+ const allowedAttrs=new Set(['viewBox','cx','cy','r','rx','ry','x','y','x1','y1','x2','y2','width','height','points','d','fill','stroke','stroke-width','font-size','font-weight','text-anchor','transform','opacity','stroke-linecap','stroke-linejoin']);
+ function safeCopy(node){
+  if(!node||node.nodeType!==1||!allowedTags.has(node.localName))return null;
+  const out=document.createElementNS(ns,node.localName);
+  for(const attr of Array.from(node.attributes||[])){
+   if(allowedAttrs.has(attr.name)&&!/[<>]|url\\s*\\(|javascript:|data:/i.test(attr.value))out.setAttribute(attr.name,attr.value);
+  }
+  for(const ch of Array.from(node.childNodes)){
+   if(ch.nodeType===3&&node.localName==='text')out.appendChild(document.createTextNode(ch.textContent||''));
+   else if(ch.nodeType===1){const child=safeCopy(ch);if(child)out.appendChild(child);}
+  }
+  return out;
+ }
+ document.querySelectorAll('#mathLessonPanel [data-math-svg]').forEach(el=>{
+  const q=boDuLieuToan.questions.find(x=>x.id===el.dataset.mathSvg);
+  if(!q||!q.svg)return;
+  try{
+   const parsed=new DOMParser().parseFromString('<svg xmlns="'+ns+'" viewBox="0 0 110 80">'+q.svg+'</svg>','image/svg+xml');
+   if(parsed.querySelector('parsererror'))return;
+   const cleaned=safeCopy(parsed.documentElement);
+   if(cleaned){cleaned.setAttribute('role','img');cleaned.setAttribute('aria-label','Minh họa bài toán');el.replaceChildren(cleaned);}
+  }catch(e){}
+ });
+}
+
 function kiemTraCauToan(id,button){
  const q=boDuLieuToan&&boDuLieuToan.questions.find(x=>x.id===id);if(!q||!q.valid)return;
  const card=button.closest('.math-question');
