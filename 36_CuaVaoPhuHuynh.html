@@ -9,7 +9,7 @@
  const fmt=(v)=>Number(v||0).toLocaleString('vi-VN');
  function api(name,args,success){
   if(!window.google?.script?.run){status('Chỉ sử dụng được trong Web App Google Apps Script.',true);return}
-  const runner=google.script.run.withSuccessHandler(success).withFailureHandler(e=>{pending=false;status(e&&e.message?e.message:'Không kết nối được máy chủ.',true);if(/phiên .*hết hạn|phiên phụ huynh không hợp lệ/i.test(e&&e.message||''))logout(false)});
+  const runner=google.script.run.withSuccessHandler(success).withFailureHandler(e=>{pending=false;status(e&&e.message?e.message:'Không kết nối được máy chủ.',true);if(/phiên .*hết hạn|phiên phụ huynh không hợp lệ/i.test(e&&e.message||'')){logout(false);renderLogin();status('Phiên đã hết hạn. Vui lòng đăng nhập lại.',true)}});
   runner[name].apply(runner,args);
  }
  function status(message,error){
