@@ -1,0 +1,35 @@
+name: G6 - Toi uu WebP bo anh Lop 2
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/g6-webp.yml"
+      - "tools/toi_uu_anh_webp.py"
+      - "hinh-anh/*.png"
+      - "hinh-anh/pilot-g3/*.png"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Generate responsive WebP
+        run: python tools/toi_uu_anh_webp.py
+      - name: Commit generated WebP assets
+        shell: bash
+        run: |
+          git add hinh-anh/webp/
+          if git diff --cached --quiet; then
+            echo "Không có ảnh WebP cần cập nhật."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "assets(g6): sinh WebP tối ưu từ PNG nguồn"
+          git push
