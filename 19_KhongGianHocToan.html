@@ -57,13 +57,13 @@ function start(index){
 function exit(){
  const root=document.getElementById('mathFullScreen');if(root)root.hidden=true;
  document.body.classList.remove('math-learning');
- if(window.speechSynthesis)window.speechSynthesis.cancel();
+ GIONG_DOC_VI.stop();
  try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
  navigate('path');
 }
 function choose(id){
  view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};
- if(window.speechSynthesis)window.speechSynthesis.cancel();
+ GIONG_DOC_VI.stop();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
@@ -188,7 +188,7 @@ function resetLevel(){
 function renderResults(){
  const panel=shell().querySelector('#mlResults');if(!panel||!fullData||view==='THEORY')return;
  const questions=activeQuestions().filter(q=>q.level===view);
- const record=submissions[view]||null;
+ const record=submissions[view]&&submissions[view].total===questions.length?submissions[view]:null;
  const answered=questions.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length;
  const items=questions.map((q,i)=>{const status=gradingState[q.id]||'unanswered';const mark=status==='correct'?'✓':status==='wrong'?'✕':status==='empty'?'–':'·';return '<span class="ml-answer-chip '+status+'" title="'+E(q.label||q.id)+'">'+(i+1)+':'+mark+'</span>';}).join('');
  const submitDate=record?new Date(record.at).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}):'Chưa nộp bài';
