@@ -67,3 +67,48 @@
 #mathFullScreen #mlVoiceChoice{max-width:220px;min-height:36px;padding:6px 8px;border:1px solid #cbd5e1;border-radius:9px;background:white;color:#0f172a;font-size:12px}
 @media(max-width:980px){#mathFullScreen .ml-dock-keys{grid-template-columns:repeat(8,minmax(0,1fr))}}
 @media(max-width:520px){#mathFullScreen .ml-voice-actions{width:100%}#mathFullScreen #mlVoiceChoice{max-width:100%;flex:1}}
+
+/* V2.8 — Bàn phím toàn chiều ngang vùng bài làm + kết quả, 17 nút. */
+#mathFullScreen .ml-dock{
+ left:260px;right:0;width:auto;
+ padding:7px 14px 9px;min-height:0;
+ background:#fff;border-top:2px solid #8fd0ff;
+ box-shadow:0 -2px 10px rgba(15,23,42,.06);z-index:35;
+}
+#mathFullScreen .ml-dock-heading{display:none!important}
+#mathFullScreen .ml-dock-keys{
+ display:grid;grid-template-columns:repeat(17,minmax(0,1fr));
+ gap:7px;max-width:none;width:100%;margin:0;align-items:stretch;
+}
+#mathFullScreen .ml-dock .ml-key{
+ display:flex;align-items:center;justify-content:center;
+ box-sizing:border-box;width:100%;min-width:0;height:42px;min-height:42px;
+ padding:0;border:2px solid #86c8ff;border-radius:10px;
+ background:#f4faff;color:#1f4b86;font-size:16px;font-weight:800;
+ line-height:1;touch-action:manipulation;
+}
+#mathFullScreen .ml-dock .ml-key.math-symbol{
+ background:#f0fdf4;border-color:#86efac;color:#166534;
+}
+#mathFullScreen .ml-dock .ml-key.erase{
+ background:#fff1f2;border-color:#fda4af;color:#be123c;
+}
+#mathFullScreen .ml-dock .ml-keyboard-toggle{
+ background:#f1f5f9;border-color:#cbd5e1;color:#475569;
+ font-size:13px;
+}
+#mathFullScreen .ml-dock .ml-key:focus-visible{
+ outline:3px solid #3b82f6;outline-offset:2px;
+}
+@media(max-width:1100px){
+ #mathFullScreen .ml-dock{left:205px}
+}
+@media(max-width:800px){
+ #mathFullScreen .ml-dock{left:150px;padding:7px 10px 9px}
+ #mathFullScreen .ml-dock-keys{grid-template-columns:repeat(9,minmax(0,1fr));gap:6px}
+}
+@media(max-width:520px){
+ #mathFullScreen .ml-dock{left:0;padding:7px 8px 9px}
+ #mathFullScreen .ml-dock-keys{grid-template-columns:repeat(6,minmax(0,1fr));gap:5px}
+ #mathFullScreen .ml-dock .ml-key{height:40px;min-height:40px;font-size:15px;border-radius:8px}
+}
