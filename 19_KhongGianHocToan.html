@@ -31,7 +31,7 @@ function refreshProgress(){
  const total=fullData.questions.length,p=Math.round(completed()/total*100);
  shell().querySelector('#mlPct').textContent=p+'%';shell().querySelector('#mlBar').style.width=p+'%';
  const nav=shell().querySelector('#mlMenu');
- nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+(id==='THEORY'?'▤':'▣')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')</button>').join('');
+ nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+(id==='THEORY'?'▤':'▣')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
 }
 function start(index){
  level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};
