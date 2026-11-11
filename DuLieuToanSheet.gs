@@ -3,12 +3,12 @@
  * Không sao chép dữ liệu mẫu vào mã nguồn; giữ Sheet là nguồn duy nhất.
  * Cache máy chủ 5 phút; có hàm làm mới thủ công khi sửa dữ liệu.
  */
-const TOAN_SHEET_ID = '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8';
+// Sheet dùng chung được xác định tại CauHinh.gs.
 function layBaiToan20() {
   const cache=CacheService.getScriptCache();
   const hit=cache.get('toan_b20_g4_v1');
   if(hit) return JSON.parse(hit);
-  const wb=SpreadsheetApp.openById(TOAN_SHEET_ID);
+  const wb=lop2MoSheet_();
   const tab = name => {
     const sh=wb.getSheetByName(name);
     if(!sh) throw new Error('Thiếu tab '+name);
