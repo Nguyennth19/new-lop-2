@@ -19,6 +19,9 @@ function khungThanhTich(){
  '<div class="achv-stat"><div class="achv-stat-ico '+color+'">'+muiIcon(icon)+'</div><strong id="'+id+'">'+value+'</strong><b>'+name+'</b><small>'+sub+'</small></div>').join('')+'</div>'+
  '<div class="achv-streak"><div class="achv-streak-main"><div class="achv-heading"><span class="achv-heading-icon orange">'+muiIcon('flame')+'</span><h2>Chuyên cần</h2></div><div class="achv-streak-message"><span>'+muiIcon('flame')+'</span><div><strong id="achvStreak">Chưa ghi nhận ngày học</strong><p>Học đều và tiến bộ theo nhịp của em nhé!</p></div></div><div class="achv-week-detail"><strong>Môn học</strong><p>Toán: đang ghi nhận · Tiếng Việt, Tiếng Anh: sẽ kết nối khi có bài thật.</p></div></div>'+
  '<div class="achv-week"><b>Hoạt động trong 7 ngày gần nhất</b><p class="achv-week-hint">Số phút làm bài đã được ghi nhận khi nộp</p><div class="achv-week-bars" id="achvWeekBars"></div></div></div>'+
+ '<div class="achv-heading"><span class="achv-heading-icon">'+muiIcon('chart')+'</span><h2>Tiến bộ theo môn và kỹ năng</h2></div>'+
+ '<div class="achv-extra-analytics"><div class="achv-analysis-card"><h3>Thành thạo theo môn</h3><div id="achvSubjects"></div></div><div class="achv-analysis-card"><h3>Xu hướng 4 tuần</h3><div id="achvFourWeeks"></div></div></div>'+
+ '<div class="achv-analysis-card achv-skills-card"><h3>Các kỹ năng em đang luyện</h3><div id="achvSkillMatrix"></div></div>'+
  '<div class="achv-heading"><span class="achv-heading-icon purple">'+muiIcon('award')+'</span><h2>Huy hiệu của em</h2><span id="achvBadgeCount" class="achv-count">Đã đạt 0 / 12 huy hiệu</span></div>'+
  '<div class="achv-badges" id="achvBadgeGrid"></div>'+
  '<div class="achv-heading" id="recentHeading"><span class="achv-heading-icon">'+muiIcon('clock')+'</span><h2>Hoạt động gần đây</h2></div>'+
@@ -44,13 +47,30 @@ function thChart(d){
  const el=document.getElementById('achvWeekBars');if(!el)return;
  el.innerHTML=arr.map((x,i)=>'<div title="'+thE(x.day)+': '+Number(x.minutes)+' phút · '+Number(x.attempts)+' lượt"><i class="'+(i===6?'today':'')+'" style="height:'+Math.max(5,Math.round(100*Number(x.minutes)/max))+'%"></i><small>'+thE(x.label)+'</small><span class="achv-bar-value">'+Number(x.minutes)+'p</span></div>').join('');
 }
+function thThemBieuDo(d){
+ const subjects=document.getElementById('achvSubjects');
+ if(subjects)subjects.innerHTML=(d.subjects||[]).map((x,i)=>{
+  const available=x.percent!==null;
+  return '<div class="achv-subject-row"><div><b>'+thE(x.name)+'</b><span>'+(available?x.percent+'%':'Chưa có dữ liệu thật')+'</span></div><div class="achv-track"><i class="subject-'+i+'" style="width:'+(available?x.percent:0)+'%"></i></div></div>';
+ }).join('');
+ const weeks=document.getElementById('achvFourWeeks');
+ if(weeks)weeks.innerHTML=(d.week4||[]).map(w=>
+  '<div class="achv-fourweek-row"><b>'+thE(w.label)+'</b><span>'+Number(w.attempts)+' lượt</span><span>'+(w.accuracy===null?'—':w.accuracy+'% đúng')+'</span></div>').join('');
+ const skills=document.getElementById('achvSkillMatrix');
+ if(skills){
+  const data=d.skills||[];
+  skills.innerHTML=data.length?data.map(x=>
+   '<div class="achv-skill"><span>'+thE(x.name)+'</span><strong>'+thE(x.status)+'</strong><div class="achv-track"><i style="width:'+Math.max(0,Math.min(100,Number(x.percent)))+'%"></i></div><small>'+x.correct+'/'+x.total+' câu đúng</small></div>').join(''):
+   '<p class="achv-no-skill">Sau khi em nộp bài Toán, các kỹ năng cần luyện sẽ xuất hiện ở đây.</p>';
+ }
+}
 function thHienThi(d){
  thanhTichDuLieu=d;thSet('achvTopStars',d.earned);thSet('achvWallet',d.balance);
  thSet('achvTime',thThoiGian(d.activeSeconds));thSet('achvStars',d.earned);
  thSet('achvBadges',d.badgeCount+' / '+d.badges.length);
  thSet('achvExercises',d.completed);thSet('achvMastery',d.accuracy+'%');thSet('achvDays',d.days);
  thSet('achvStreak',d.streak?d.streak+' ngày liên tiếp':'Chưa có chuỗi ngày học');
- thHuyHieu(d);thChart(d);thHoatDong();
+ thHuyHieu(d);thChart(d);thThemBieuDo(d);thHoatDong();
  thSet('achvStatus','Dữ liệu thực từ Google Sheet · Sao có thể dùng: '+d.balance+' ★ · Không bao gồm kết quả demo và dữ liệu nháp cũ.');
 }
 function taiThanhTich(force=false){
