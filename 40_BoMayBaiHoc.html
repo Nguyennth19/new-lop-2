@@ -1,0 +1,21 @@
+/* G6 – Bộ máy dữ liệu bài học (client): tách tải & cache khỏi giao diện.
+ * Đăng ký adapter của môn bằng lesson ID. Không phát hành nội dung demo.
+ */
+const BO_MAY_BAI_HOC=(function(){
+ const adapters=new Map();
+ function register(lessonId,load){
+  if(!/^[a-z0-9_-]+$/.test(lessonId)||typeof load!=='function')throw Error('Adapter bài học không hợp lệ');
+  if(adapters.has(lessonId))throw Error('Đã đăng ký bài học '+lessonId);
+  adapters.set(lessonId,load);
+ }
+ function load(lessonId){
+  if(!adapters.has(lessonId))return Promise.reject(Error('Bài học chưa được xuất bản: '+lessonId));
+  return BO_NHO_BAI_HOC.fetch(lessonId,adapters.get(lessonId));
+ }
+ function list(){return [...adapters.keys()]}
+ register('toan_b20',()=>new Promise((resolve,reject)=>{
+  if(!window.google?.script?.run){reject(Error('Hãy mở Web App Google Apps Script'));return}
+  google.script.run.withSuccessHandler(resolve).withFailureHandler(reject).layBaiToan20();
+ }));
+ return Object.freeze({register,load,list});
+})();
