@@ -2,6 +2,9 @@
 /* Không gian bài học riêng – mô-đun v2.3, lấy duy nhất dữ liệu từ Google Sheets. */
 (function(){
 let fullData=null, level='LV1', view='LV1', drafts={};
+let gradingState={}, levelStart=Date.now();
+const GRADE_KEY='lop2_b20_submitted_v24';
+let submissions={};try{submissions=JSON.parse(localStorage.getItem(GRADE_KEY)||'{}')||{}}catch(e){submissions={}}
 const LKEY='lop2_b20_drafts_v23';
 try { drafts=JSON.parse(localStorage.getItem(LKEY)||'{}')||{}; } catch(e){drafts={};}
 const E=thoatHtmlToan;
@@ -11,7 +14,7 @@ function shell(){
  let root=document.getElementById('mathFullScreen');
  if(root)return root;
  root=document.createElement('div');root.id='mathFullScreen';root.className='math-screen';root.hidden=true;
- root.innerHTML='<header class="ml-top"><button class="ml-back" data-ml-exit aria-label="Trở về">‹</button><span class="ml-file">▤</span><div class="ml-heading"><div class="ml-heading-meta"><span class="ml-doc-label">Tài liệu</span><strong>Toán 2</strong><span class="ml-progress"><i id="mlBar"></i></span><strong id="mlPct">0%</strong></div><b id="mlTitle">Bài 20</b></div></header><div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">NỘI DUNG BÀI HỌC</b><nav class="ml-navigation" id="mlMenu"></nav></aside><main class="ml-content" id="mlContent" tabindex="-1"></main></div><div class="ml-dock" id="mlDock"><div class="ml-dock-heading"><b>🔢 Bàn phím Toán học</b><button type="button" data-ml-keyboard>Ẩn bàn phím ✕</button></div><div class="ml-dock-keys" id="mlKeys"></div></div><button id="mlShowKeyboard" class="ml-show-keyboard" data-ml-keyboard hidden>🔢 Mở bàn phím số</button>';
+ root.innerHTML='<header class="ml-top"><button class="ml-back" data-ml-exit aria-label="Trở về">‹</button><span class="ml-file">▤</span><div class="ml-heading"><div class="ml-heading-meta"><span class="ml-doc-label">Tài liệu</span><strong>Toán 2</strong><span class="ml-progress"><i id="mlBar"></i></span><strong id="mlPct">0%</strong></div><b id="mlTitle">Bài 20</b></div></header><div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">NỘI DUNG BÀI HỌC</b><nav class="ml-navigation" id="mlMenu"></nav></aside><div class="ml-workspace"><main class="ml-content" id="mlContent" tabindex="-1"></main><aside class="ml-results" id="mlResults" aria-live="polite"></aside></div></div><div class="ml-dock" id="mlDock"><div class="ml-dock-heading"><b>🔢 Bàn phím Toán học</b><button type="button" data-ml-keyboard>Ẩn bàn phím ✕</button></div><div class="ml-dock-keys" id="mlKeys"></div></div><button id="mlShowKeyboard" class="ml-show-keyboard" data-ml-keyboard hidden>🔢 Mở bàn phím số</button>';
  document.body.appendChild(root);
  const keyboard=root.querySelector('#mlKeys');
  ['1','2','3','4','5','6','7','8','9','0','+','−','⌫','Tiếp →'].forEach(k=>{
@@ -28,10 +31,10 @@ function refreshProgress(){
  const total=fullData.questions.length,p=Math.round(completed()/total*100);
  shell().querySelector('#mlPct').textContent=p+'%';shell().querySelector('#mlBar').style.width=p+'%';
  const nav=shell().querySelector('#mlMenu');
- nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-check '+(id!=='THEORY'&&levelDone(id)?'is-done':'')+'">'+(id!=='THEORY'&&levelDone(id)?'✓':'')+'</span><span>'+E(label)+'</span></button>').join('');
+ nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+(id==='THEORY'?'▤':'▣')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')</button>').join('');
 }
 function start(index){
- level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;
+ level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};
  const root=shell();root.hidden=false;document.body.classList.add('math-learning');
  root.querySelector('#mlTitle').textContent='Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số';
  root.querySelector('#mlContent').innerHTML='<div class="ml-loading">Đang nạp bài học từ Google Sheets…</div>';
@@ -56,7 +59,7 @@ function exit(){
  navigate('path');
 }
 function choose(id){
- view=id;level=id==='THEORY'?level:id;
+ view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};
  if(window.speechSynthesis)window.speechSynthesis.cancel();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
@@ -67,16 +70,19 @@ function render(){
  const target=root.querySelector('#mlContent');
  const keypad=root.querySelector('#mlDock');
  if(view==='THEORY'){
-  target.innerHTML='<section class="ml-theory-empty" aria-label="Lý thuyết – sẽ phát triển sau"></section>';
+  target.innerHTML=typeof renderLyThuyetToan==='function'?renderLyThuyetToan():'<section class="ml-theory-empty"></section>';
+  root.querySelector('#mlResults').hidden=true;
   keypad.hidden=true;root.querySelector('#mlShowKeyboard').hidden=true;return;
  }
  keypad.hidden=false;root.querySelector('#mlShowKeyboard').hidden=true;
+ root.querySelector('#mlResults').hidden=false;
  const sections=fullData.sections.filter(s=>s.levelId===(fullData.levels.find(l=>l.level===view)||{}).id);
  target.innerHTML='<div class="ml-page">'+sections.map((s,i)=>section(s,i)).join('')+
  '<div class="ml-bottom"><button type="button" data-ml-grade-level>✓ Kiểm tra toàn cấp độ</button><span id="mlLevelFeedback"></span></div></div>';
  restoreDrafts();
  installSvg();
  target.scrollTop=0;
+ renderResults();
 }
 function section(s,i){
  const list=fullData.questions.filter(q=>q.sectionId===s.id);
@@ -156,6 +162,7 @@ function gradeQuestion(q){
   try{localStorage.setItem(KHOA_KET_QUA_TOAN,JSON.stringify(cauDaDungToan));}catch(e){}
   if(typeof ghiNhanNgayHoc==='function')ghiNhanNgayHoc();
  }
+ gradingState[q.id]=ok?'correct':f.every(x=>!x.value.trim())?'empty':'wrong';
  const card=shell().querySelector('[data-ml-q-card="'+q.id+'"]');
  if(card){card.classList.toggle('ml-correct',ok);const star=card.querySelector('.ml-earned');if(star&&ok)star.textContent='✓ +2 ⭐';}
  return ok;
@@ -166,7 +173,7 @@ function gradeSection(id){
  const done=result.filter(x=>x.ok).length,invalid=result.filter(x=>!x.valid).length;
  const msg=shell().querySelector('#ml-feedback-'+id);
  if(msg)msg.textContent=done+'/'+qs.length+' câu đúng'+(invalid?' · '+invalid+' câu thiếu dữ liệu':'');
- afterGrade();
+ afterGrade();renderResults();
 }
 function afterGrade(){
  refreshProgress();
@@ -182,6 +189,9 @@ function gradeLevel(){
  const n=qs.filter(q=>cauDaDungToan[q.id]).length;
  const msg=shell().querySelector('#mlLevelFeedback');
  if(msg)msg.textContent=n===qs.length?'🎉 Hoàn thành cấp độ!':n+'/'+qs.length+' câu đúng. Hãy tiếp tục nhé!';
+ const record={at:new Date().toISOString(),seconds:Math.max(0,Math.round((Date.now()-levelStart)/1000)),total:qs.length,correct:qs.filter(q=>gradingState[q.id]==='correct').length,answered:qs.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length};
+ submissions[view]=record;try{localStorage.setItem(GRADE_KEY,JSON.stringify(submissions))}catch(e){}
+ renderResults();
 }
 function resetSection(id){
  const scope=shell().querySelector('#ml-section-'+id);if(!scope)return;
@@ -191,6 +201,19 @@ function resetSection(id){
  });
  try{localStorage.setItem(LKEY,JSON.stringify(drafts))}catch(e){}
  const msg=scope.querySelector('.ml-section-feedback');if(msg)msg.textContent='';
+ if(fullData)fullData.questions.filter(q=>q.sectionId===id).forEach(q=>delete gradingState[q.id]);
+ renderResults();
+}
+function renderResults(){
+ const panel=shell().querySelector('#mlResults');if(!panel||!fullData||view==='THEORY')return;
+ const questions=fullData.questions.filter(q=>q.level===view);
+ const record=submissions[view]||null;
+ const answered=questions.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length;
+ const items=questions.map((q,i)=>{const status=gradingState[q.id]||'unanswered';const mark=status==='correct'?'✓':status==='wrong'?'✕':status==='empty'?'–':'·';return '<span class="ml-answer-chip '+status+'" title="'+E(q.label||q.id)+'">'+(i+1)+':'+mark+'</span>';}).join('');
+ const submitDate=record?new Date(record.at).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}):'Chưa nộp bài';
+ const duration=record?Math.floor(record.seconds/60)+' phút '+record.seconds%60+' giây':'Chưa nộp';
+ panel.innerHTML='<div class="ml-result-card"><h2>Kết quả</h2><div class="ml-result-meta"><span>Thời gian nộp</span><strong>'+E(submitDate)+'</strong></div><div class="ml-result-meta"><span>Thời gian làm bài</span><strong>'+E(duration)+'</strong></div><div class="ml-result-meta"><span>Câu đã trả lời</span><strong>'+(record?record.answered:answered)+' / '+questions.length+'</strong></div><div class="ml-result-score"><strong>Điểm</strong><b>'+(record?Math.round(record.correct/Math.max(record.total,1)*100)/10:'—')+'</b></div></div>'+
+ '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-close-results>Đóng</button><button type="button" data-ml-retry>Chỉnh sửa bài</button></div></div>';
 }
 function restoreDrafts(){
  shell().querySelectorAll('[data-ml-field]').forEach(el=>{if(drafts[el.dataset.mlField]!==undefined)el.value=drafts[el.dataset.mlField]});
@@ -245,6 +268,8 @@ function speak(id){
 document.addEventListener('click',e=>{
  const root=e.target.closest('#mathFullScreen');if(!root)return;
  if(e.target.closest('[data-ml-exit]')){exit();return;}
+ if(e.target.closest('[data-ml-close-results]')){root.querySelector('#mlResults').classList.toggle('ml-results-collapsed');return;}
+ if(e.target.closest('[data-ml-retry]')){root.querySelector('#mlResults').classList.remove('ml-results-collapsed');root.querySelector('#mlContent').focus();return;}
  const nav=e.target.closest('[data-ml-view]');if(nav){choose(nav.dataset.mlView);return;}
  const g=e.target.closest('[data-ml-grade]');if(g){gradeSection(g.dataset.mlGrade);return;}
  const reset=e.target.closest('[data-ml-reset]');if(reset){resetSection(reset.dataset.mlReset);return;}
