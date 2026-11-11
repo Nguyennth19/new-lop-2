@@ -4,15 +4,14 @@
  * Ứng dụng gia đình: chỉ triển khai Web App với quyền truy cập được giới hạn.
  * Các hàm hậu tố _ chỉ chạy trong Apps Script Editor, không callable từ HTML.
  */
-const ACH_SHEET_ID='1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8';
-const ACH_PROFILE='gia_dinh_01';
+const ACH_PROFILE=CAU_HINH_LOP_2.HO_SO;
 const ACH_ATTEMPTS='90_Lan_lam_bai';
 const ACH_LEDGER='91_So_sao';
 const ACH_HEADERS_ATTEMPTS=['attempt_id','at_utc','profile_id','lesson_id','level','correct','total','answered','active_seconds','subject','title','correct_ids'];
 const ACH_HEADERS_LEDGER=['event_key','at_utc','profile_id','event_type','delta','lesson_id','level','attempt_id','note'];
 const ACH_POINTS={LV1:15,LV2:25,LV3:35};
 function achS_(name,headers){
- const wb=SpreadsheetApp.openById(ACH_SHEET_ID);
+ const wb=lop2MoSheet_();
  let sheet=wb.getSheetByName(name);
  if(!sheet){sheet=wb.insertSheet(name);sheet.getRange(1,1,1,headers.length).setValues([headers]);sheet.setFrozenRows(1);}
  return sheet;
@@ -26,7 +25,7 @@ function achRows_(sheet){
 function achDate_(value){
  const d=new Date(value);return isNaN(d.getTime())?new Date(0):d;
 }
-function achDay_(date){return Utilities.formatDate(date,'Asia/Ho_Chi_Minh','yyyy-MM-dd');}
+function achDay_(date){return Utilities.formatDate(date,CAU_HINH_LOP_2.MUI_GIO,'yyyy-MM-dd');}
 function achCut_(s,n){return String(s||'').slice(0,n);}
 function achSelect_(data,lv){
  // Sao chép quy tắc lựa chọn V2.5 để máy chủ KHÔNG tin danh sách câu từ trình duyệt.
