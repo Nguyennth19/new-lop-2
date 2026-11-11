@@ -2,7 +2,7 @@
  * Giữ đúng schema 4 tab Sheet (01,02,03,04); nguồn dữ liệu đã cấu hình một chỗ.
  * Bài khác chỉ thêm dữ liệu Sheet và loại câu hỏi có bộ chấm phù hợp.
  */
-const KHO_BAI_HOC_VERSION='g6_v1';
+const KHO_BAI_HOC_VERSION='g7_asset_id_v1';
 function khoDocTab_(wb,name){
  const sh=wb.getSheetByName(name);
  if(!sh)throw Error('Thiếu tab '+name);
@@ -20,7 +20,7 @@ function khoChuyenCauHoi_(x){
  const puzzleValid=Array.isArray(puzzle)&&puzzle.length>0&&puzzle.some(row=>Array.isArray(row)&&row.some(cell=>cell&&typeof cell==='object'&&cell.ans!==undefined));
  const valid=allowed.includes(x.type)&&(x.type==='missing_digit'?puzzleValid:Boolean(x.prompt&&x.answer));
  return {id:x.question_id,level:x.level,sectionId:x.section_id,order:Number(x.order)||0,
-  label:x.label,type:x.type,prompt:x.prompt,n1:x.n1,op:x.op,n2:x.n2,answer:String(x.answer||''),
+  label:x.label,type:x.type,prompt:x.prompt,asset_id:String(x.asset_id||'').trim(),n1:x.n1,op:x.op,n2:x.n2,answer:String(x.answer||''),
   unit:x.unit,group:x.group,theme:x.theme,summary:x.summary,solutionPrompt:x.solution_prompt,
   svg:x.svg||'',puzzle,valid,issue:valid?'':'Thiếu đề bài hoặc dữ liệu ô số trong Google Sheet'};
 }
