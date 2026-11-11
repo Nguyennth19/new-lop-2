@@ -5,6 +5,7 @@ const NGAY_TRONG_TUAN=['CN','T2','T3','T4','T5','T6','T7'];
 const LICH_MUI_GIO='Asia/Ho_Chi_Minh';
 let LICH_MAY_CHU=null;
 let NGAY_LICH_DANG_CHON=null;
+let LICH_DA_CHON_THU_CONG=false;
 function ghiNhanBatDauHoc(){ /* Chỉ mở bài không được tính đã học. */ }
 function ghiNhanNgayHoc(){ /* Chuyên cần chỉ ghi nhận từ kết quả nộp máy chủ. */ }
 function ngayVietNam_(date){
@@ -39,11 +40,15 @@ function capNhatLichHoc(summary){
  const received=Array.isArray(LICH_MAY_CHU?.week)&&LICH_MAY_CHU.week.length>0;
  const week=received?LICH_MAY_CHU.week:lichBayNgayMacDinh_();
  const today=ngayHienTaiVietNam_();
- if(!NGAY_LICH_DANG_CHON||!week.some(d=>d.day===NGAY_LICH_DANG_CHON)){
-  NGAY_LICH_DANG_CHON=week.some(d=>d.day===today)?today:week[week.length-1].day;
+ // Mặc định luôn chọn ngày hôm nay theo giờ Việt Nam, kể cả khi dữ liệu máy chủ nạp muộn.
+ // Chỉ giữ lựa chọn khác khi người dùng thực sự bấm chọn ngày đó.
+ const available=week.map(d=>String(d.day||'').slice(0,10));
+ if(!LICH_DA_CHON_THU_CONG || !available.includes(NGAY_LICH_DANG_CHON)){
+  NGAY_LICH_DANG_CHON=available.includes(today)?today:available[available.length-1];
+  LICH_DA_CHON_THU_CONG=false;
  }
  board.innerHTML=week.map(day=>{
-  const iso=String(day.day||'');
+  const iso=String(day.day||'').slice(0,10);
   const selected=iso===NGAY_LICH_DANG_CHON;
   const isToday=iso===today;
   const active=!!day.active;
@@ -64,6 +69,7 @@ document.addEventListener('click',e=>{
  const button=e.target.closest('#schoolweek button[data-day]');
  if(!button)return;
  NGAY_LICH_DANG_CHON=button.dataset.day;
+ LICH_DA_CHON_THU_CONG=true;
  capNhatLichHoc();
 });
 capNhatLichHoc();
