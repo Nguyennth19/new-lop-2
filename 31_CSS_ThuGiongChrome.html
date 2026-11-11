@@ -1,0 +1,42 @@
+
+/* Khu vực thử Web Speech (chỉ trang Lý thuyết), tránh ảnh hưởng các mô-đun LV. */
+#mathFullScreen .ml-chrome-test{
+ margin:20px 0 14px;padding:20px;
+ background:#f8fbff;border:1px solid #c4dfff;
+ border-radius:18px;box-shadow:0 2px 9px rgba(37,99,235,.05);
+ color:#183153;font-family:inherit;
+}
+#mathFullScreen .ml-chrome-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+#mathFullScreen .ml-chrome-head h2{
+ font-size:17px;font-weight:800;margin:0;color:#075985;
+ display:flex;align-items:center;gap:8px;
+}
+#mathFullScreen .ml-chrome-head h2 svg{width:19px;height:19px}
+#mathFullScreen .ml-chrome-head span{font-size:11px;color:#475569;background:#e0f2fe;padding:5px 9px;border-radius:999px}
+#mathFullScreen .ml-chrome-test p{font-size:13px;line-height:1.7;margin:10px 0}
+#mathFullScreen .ml-chrome-stats{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 15px}
+#mathFullScreen .ml-chrome-stats>span{background:#e6f3ff;padding:8px 13px;border-radius:9px;font-size:12px}
+#mathFullScreen .ml-chrome-test>label{font-size:12px;font-weight:750;display:block;margin-bottom:6px}
+#mathFullScreen .ml-chrome-test select{
+ box-sizing:border-box;width:100%;max-width:550px;min-height:42px;
+ border:1px solid #93c5fd;border-radius:9px;padding:8px;
+ background:#fff;color:#0f172a;font-size:13px;
+}
+#mathFullScreen .ml-chrome-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+#mathFullScreen .ml-chrome-actions button{
+ display:inline-flex;align-items:center;gap:6px;
+ min-height:40px;border-radius:9px;border:1px solid #bfdbfe;
+ background:white;color:#1e40af;padding:8px 12px;font-size:12px;font-weight:800;
+ cursor:pointer;
+}
+#mathFullScreen .ml-chrome-actions button svg{width:15px;height:15px}
+#mathFullScreen .ml-chrome-actions [data-chrome-test]{background:#2563eb;color:white;border-color:#1d4ed8}
+#mathFullScreen .ml-chrome-actions button:disabled{opacity:.5;cursor:not-allowed}
+#mathFullScreen .ml-chrome-status{
+ padding:10px 12px;border-radius:9px;background:#e0f2fe;color:#075985;font-weight:650;
+}
+#mathFullScreen .ml-chrome-status[data-state=warn]{background:#fef3c7;color:#92400e}
+#mathFullScreen .ml-chrome-status[data-state=error]{background:#fee2e2;color:#b91c1c}
+#mathFullScreen .ml-chrome-status[data-state=playing]{background:#dcfce7;color:#166534}
+#mathFullScreen .ml-chrome-test small{display:block;color:#64748b;font-size:11px;line-height:1.65}
+@media(max-width:560px){#mathFullScreen .ml-chrome-test{padding:13px}#mathFullScreen .ml-chrome-actions button{flex:1;justify-content:center}}
