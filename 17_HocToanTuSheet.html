@@ -1,11 +1,7 @@
 /* Lớp trạng thái Toán bài 20 – giao diện ở 19_KhongGianHocToan.html. */
 let boDuLieuToan=null;
 const KHOA_KET_QUA_TOAN='lop2_b20_ketqua_v1';
-let cauDaDungToan={};
-try {
- const value=JSON.parse(localStorage.getItem(KHOA_KET_QUA_TOAN)||'{}');
- if(value&&typeof value==='object'&&!Array.isArray(value))cauDaDungToan=value;
-} catch(error){cauDaDungToan={};}
+let cauDaDungToan={}; // Chỉ phản hồi câu đang làm; không khôi phục dấu tích từ máy cũ.
 const thoatHtmlToan=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({
  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
 }[c]));
