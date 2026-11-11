@@ -1,0 +1,46 @@
+/* V2.6: bảng kết quả gọn, 3 nút thao tác chính; không có thao tác trong thân bài. */
+#mathFullScreen .ml-results{
+  width:100%;max-width:360px;min-width:0;
+}
+#mathFullScreen .ml-result-card{padding:14px 15px;border-radius:12px}
+#mathFullScreen .ml-result-card h2{font-size:16px;margin-bottom:12px}
+#mathFullScreen .ml-result-meta{font-size:12px;margin:7px 0}
+#mathFullScreen .ml-result-meta strong{font-size:12px;overflow-wrap:anywhere}
+#mathFullScreen .ml-result-score{margin-top:10px;padding-top:10px}
+#mathFullScreen .ml-legend{font-size:10px;gap:6px 9px;margin-bottom:12px}
+#mathFullScreen .ml-answer-grid{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:7px;max-height:186px;overflow-y:auto;
+}
+#mathFullScreen .ml-answer-chip{min-width:0;padding:6px 1px;font-size:11px}
+#mathFullScreen .ml-result-actions{
+ display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px;
+}
+#mathFullScreen .ml-result-actions button{
+ display:flex;align-items:center;justify-content:center;gap:5px;
+ min-height:43px;padding:9px 6px;border-radius:9px;
+ font-size:11px;line-height:1.25;box-shadow:none;
+}
+#mathFullScreen .ml-result-actions button svg{width:15px;height:15px;flex:0 0 15px;stroke-width:2}
+#mathFullScreen .ml-result-actions [data-ml-submit]{
+ grid-column:1/-1;background:#159c70;color:#fff;border:0;font-weight:800;
+}
+#mathFullScreen .ml-result-actions [data-ml-reset-level]{
+ background:#fffbeb;color:#a16207;border:1px solid #facc15;
+}
+#mathFullScreen .ml-result-actions [data-ml-read-level]{
+ background:#e0f2fe;color:#075985;border:1px solid #7dd3fc;
+}
+#mathFullScreen .ml-result-actions button:focus-visible{outline:3px solid #60a5fa;outline-offset:2px}
+#mathFullScreen .ml-section-heading{margin-bottom:13px}
+#mathFullScreen .ml-section-box{padding-bottom:18px}
+#mathFullScreen .ml-section:last-child{margin-bottom:0}
+#mathFullScreen .ml-workspace{grid-template-columns:minmax(0,1fr) minmax(250px,27%)}
+@media(max-width:1120px){
+ #mathFullScreen .ml-workspace{grid-template-columns:minmax(0,1fr) 250px}
+ #mathFullScreen .ml-results{max-width:none}
+}
+@media(max-width:840px){
+ #mathFullScreen .ml-workspace{display:block}
+ #mathFullScreen .ml-results{max-width:none;width:100%}
+}
