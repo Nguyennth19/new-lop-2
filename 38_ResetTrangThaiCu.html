@@ -1,0 +1,22 @@
+/* G5 – Migration 1 lần trên từng thiết bị; KHÔNG xóa Google Sheets/PIN.
+ * Đưa demo/hồ sơ thử trước G5 về trạng thái mới; chỉ xóa khoá namespace Lớp 2.
+ */
+const G5_KHOI_TAO=(function(){
+ const key='lop2_g5_reset_v1_done';
+ let ran=false,removed=0;
+ try{
+  if(localStorage.getItem(key)!=='1'){
+   for(const storage of [localStorage,sessionStorage]){
+    const keys=[];
+    for(let i=0;i<storage.length;i++){
+     const name=storage.key(i);
+     if(name&&(/^(lop2_|lop-2_|lop_2_)/i).test(name)&&name!==key)keys.push(name);
+    }
+    for(const name of keys){storage.removeItem(name);removed++}
+   }
+   localStorage.setItem(key,'1');
+   ran=true;
+  }
+ }catch(e){console.warn('Không thể xóa toàn bộ dữ liệu cũ trên trình duyệt',e);}
+ return Object.freeze({ran,removed,version:'g5-reset-v1'});
+})();
