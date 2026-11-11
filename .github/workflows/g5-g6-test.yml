@@ -1,0 +1,24 @@
+name: G5-G6 - Kiem thu module Lop 2
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.gs"
+      - "**.html"
+      - "tests/g5_g6_smoke.js"
+      - ".github/workflows/g5-g6-test.yml"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: G5-G6 smoke tests
+        run: node tests/g5_g6_smoke.js
