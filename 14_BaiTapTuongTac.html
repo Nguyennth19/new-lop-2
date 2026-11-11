@@ -1,31 +1,11 @@
-const subjectQuizBanks={
- 'Tiếng Việt 2':[{q:'Từ nào chỉ hoạt động?',opts:['chạy','xanh','đẹp'],answer:'chạy',explain:'“Chạy” là từ chỉ hoạt động.'},{q:'Trong câu “Em đọc sách.”, từ chỉ hoạt động là gì?',opts:['Em','đọc','sách'],answer:'đọc',explain:'“Đọc” diễn tả hoạt động.'},{q:'Từ nào chỉ đồ vật?',opts:['bàn','vui','hát'],answer:'bàn',explain:'“Bàn” là từ chỉ đồ vật.'}],
- 'Tiếng Anh 2':[{q:'“Book” có nghĩa là gì?',opts:['Quyển sách','Cái bàn','Cây bút'],answer:'Quyển sách',explain:'Book nghĩa là quyển sách.'},{q:'Chọn từ tiếng Anh chỉ “bút chì”.',opts:['Pencil','Chair','Bag'],answer:'Pencil',explain:'Pencil nghĩa là bút chì.'},{q:'“Mother” nghĩa là gì?',opts:['Mẹ','Bố','Anh trai'],answer:'Mẹ',explain:'Mother nghĩa là mẹ.'}]
-};
-function activeQuestions(){return subjectQuizBanks[currentSubject]||[];}
-function openQuiz(){/* Demo Tiếng Việt/Anh không tạo ngày học thật. */questionIndex=0;document.querySelector('#modalTitle').textContent=activeLessonContext?(findRoadmapLesson(activeLessonContext.subject,activeLessonContext.id)?.title||currentSubject):'Thử sức với '+currentSubject;document.querySelector('#modalSubtitle').textContent=activeLessonContext?`${activeLessonContext.subject} · ${levelMeta[activeLessonContext.level].name} – ${levelMeta[activeLessonContext.level].title}`:'Luyện tập · LV1';document.querySelector('#modalBackdrop').classList.add('show');renderQuestion()}
-function renderQuestion(){answered=false;const q=activeQuestions()[questionIndex];document.querySelector('#question').textContent=q.q;document.querySelector('#choices').innerHTML=q.opts.map(a=>`<button data-answer="${a}">${a}</button>`).join('');document.querySelector('#feedback').textContent='Hãy chọn một đáp án nhé!';document.querySelector('#nextQuestion').style.display='none'}
-document.querySelector('#choices').addEventListener('click',e=>{const btn=e.target.closest('[data-answer]');if(!btn||answered)return;answered=true;const correct=btn.dataset.answer===activeQuestions()[questionIndex].answer;document.querySelectorAll('#choices button').forEach(b=>{b.disabled=true;if(b.dataset.answer===activeQuestions()[questionIndex].answer)b.classList.add('correct')});if(!correct)btn.classList.add('wrong');document.querySelector('#feedback').innerHTML=(correct?muiIcon('star')+' Chính xác! ':muiIcon('sparkles')+' Chưa đúng rồi. ')+activeQuestions()[questionIndex].explain;document.querySelector('#nextQuestion').style.display='block';document.querySelector('#nextQuestion').textContent=questionIndex===activeQuestions().length-1?'Hoàn thành ✓':'Câu tiếp theo →'});
-document.querySelector('#nextQuestion').addEventListener('click',()=>{
- if(questionIndex===activeQuestions().length-1){
-  // Quiz Tiếng Việt/Tiếng Anh đang là minh họa: không cộng sao, không ghi bài đã học.
-  activeLessonContext=null;closeModal();
-  if(typeof renderLessons==='function')renderLessons();
-  navigate('path');
-  return;
- }
- questionIndex++;renderQuestion();
-});
-function closeModal(){document.querySelector('#modalBackdrop').classList.remove('show')};document.querySelector('#closeModal').addEventListener('click',closeModal);document.querySelector('#modalBackdrop').addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-document.querySelector('#tipBtn').addEventListener('click',e=>{e.target.innerHTML='Giỏi lắm! '+muiIcon('star')});document.querySelector('#noticeBtn').addEventListener('click',()=>alert('Hôm nay em có một nhiệm vụ Toán đang chờ!'));document.querySelector('#searchBtn').addEventListener('click',()=>{navigate('path');alert('Em có thể chọn các bài học trong mục Lộ trình học nhé!')});chooseRoadmapSubject(currentSubject);
-
-// Chọn ngày: đổi trạng thái trực quan, không hiển thị bản tin trùng nhiệm vụ.
-document.querySelectorAll('.school-day').forEach(btn=>btn.addEventListener('click',()=>{
- document.querySelectorAll('.school-day').forEach(b=>{
-  const selected=b===btn;
-  b.classList.toggle('selected',selected);
-  b.setAttribute('aria-pressed',String(selected));
- });
-}));
-
-// Nhật ký tiến trình học tập (dữ liệu ví dụ để trải nghiệm giao diện)
+/* G5: Tiếng Việt / Tiếng Anh chưa có nội dung học chính thức.
+ * Không dùng ngân hàng câu hỏi mẫu, không chấm hoặc cấp thành tích giả.
+ */
+function openQuiz(){if(typeof navigate==='function')navigate('path');}
+function closeModal(){document.getElementById('modalBackdrop')?.classList.remove('show');}
+document.getElementById('closeModal')?.addEventListener('click',closeModal);
+document.getElementById('modalBackdrop')?.addEventListener('click',e=>{if(e.target.id==='modalBackdrop')closeModal();});
+document.getElementById('tipBtn')?.addEventListener('click',e=>{e.currentTarget.innerHTML='Cố gắng mỗi ngày nhé! '+muiIcon('star');});
+document.getElementById('noticeBtn')?.addEventListener('click',()=>{alert('Toán Bài 20 đang chờ em khám phá!');});
+document.getElementById('searchBtn')?.addEventListener('click',()=>{navigate('path');});
+chooseRoadmapSubject(currentSubject);
