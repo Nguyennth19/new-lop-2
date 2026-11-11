@@ -225,6 +225,8 @@ function installSvg(){
    if(doc.querySelector('parsererror'))return;const safe=copy(doc.documentElement);
    if(safe)el.appendChild(safe);
   }catch(e){}
+  // Chỉ thay minh họa; khi ảnh tải lỗi, SVG gốc vẫn còn nguyên.
+  if(typeof HINH_ANH_APP!=='undefined')HINH_ANH_APP.word(q,el);
  });
 }
 function inputList(){return [...shell().querySelectorAll('#mlContent [data-ml-field]')];}
