@@ -22,6 +22,6 @@ function layTienDoHocSinh(){
  });
  const summary=achSummary_(attemptSheet,pointsSheet);
  return {profile:ACH_PROFILE,lessons:done,correctIds:correct,week:summary.week,
-  completed:summary.completed,earned:summary.earned,balance:summary.balance,
+  completed:summary.completed,earned:summary.earned,balance:summary.balance,streak:summary.streak,
   asOf:new Date().toISOString(),source:'google_sheet',isDemo:false};
 }
