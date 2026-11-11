@@ -4,7 +4,7 @@
 
 ## Nguồn sự thật đã đọc
 - Drive gốc: https://drive.google.com/drive/folders/16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8
-- Kho 288: https://drive.google.com/drive/folders/1IEIvmL_DmV9M1YxuWuBtvNeahilBYl0x
+- Kho 288: https://drive.google.com/drive/folders/1IEIvmL_DmV9M1YxuWuBtvNeahilByl0x
 - Registry V4: https://docs.google.com/spreadsheets/d/1YJXRsOKywSkJuIaJunYWgYyD0ZoKiccvBtkePP74-50
 - Báo cáo Deep QA V3.5 ngày 29/10, thư mục 99_MANIFEST_QA.
 - Nhân vật V1.0.1: trong `PHASE_1B_Character_Master_REVIEW/03_MASTER_PNG_WEBP_PENDING_APPROVAL/v1.0.1_QA_PENDING`.
