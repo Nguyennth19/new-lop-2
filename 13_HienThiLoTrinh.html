@@ -1,6 +1,7 @@
 function renderLessons(){
  const all=subjectRoadmaps[currentSubject]||subjectRoadmaps['Toán 2'];
  const active=all.filter(t=>!topicIsDone(t));
+ const noContent=all.length===0;
  const finished=all.length-active.length;
  const tabs=document.getElementById('pathSubjectTabs');
  tabs.innerHTML=Object.keys(subjectRoadmaps).map((name,i)=>`<button type="button" role="tab" aria-selected="${currentSubject===name}" class="path-tab ${currentSubject===name?'active':''}" data-roadmap-subject="${escapeHtml(name)}">${muiIcon(['calculator','book-open','languages'][i])}<span>${escapeHtml(name)}</span></button>`).join('');
@@ -8,7 +9,7 @@ function renderLessons(){
  const done=all.reduce((n,t)=>n+t.lessons.filter(l=>l.levels.every(x=>x==='done')).length,0);
  const reached=all.reduce((n,t)=>n+t.lessons.filter(l=>l.levels.slice(0,2).every(x=>x==='done')).length,0);
  document.getElementById('pathSummary').innerHTML=`<div class="path-summary-icon">${muiIcon(currentSubject==='Toán 2'?'calculator':currentSubject==='Tiếng Việt 2'?'book-open':'languages')}</div><div class="path-summary-info"><strong>${escapeHtml(currentSubject)}</strong><span>${active.length} chủ đề đang học · ${finished} chủ đề hoàn thành · ${reached}/${total} bài đạt yêu cầu cơ bản</span></div><span class="path-summary-total">${done}/${total} bài hoàn thành đủ 3 LV</span>`;
- document.getElementById('lessonList').innerHTML=active.length?active.map(topic=>{
+ document.getElementById('lessonList').innerHTML=noContent?'<div class="award-empty"><strong>Nội dung đang được chuẩn bị</strong><span>Chưa có bài học chính thức cho môn này. Bé có thể học Toán Bài 20.</span></div>':active.length?active.map(topic=>{
   const complete=topic.lessons.filter(l=>l.levels.every(x=>x==='done')).length;
   const basic=topic.lessons.filter(l=>l.levels.slice(0,2).every(x=>x==='done')).length;
   const originalIndex=all.indexOf(topic)+1;
@@ -46,7 +47,7 @@ document.addEventListener('click',e=>{
  let tab=e.target.closest('[data-roadmap-subject]');if(tab){chooseRoadmapSubject(tab.dataset.roadmapSubject);return}
  let awardTab=e.target.closest('[data-award-subject]');if(awardTab){document.getElementById('subjectTopicAchievements').dataset.subject=awardTab.dataset.awardSubject;expandedAwardTopic='';renderTopicAwards();return}
  let awardTopic=e.target.closest('[data-award-topic]');if(awardTopic){const key=document.getElementById('subjectTopicAchievements').dataset.subject+'/'+awardTopic.dataset.awardTopic;expandedAwardTopic=expandedAwardTopic===key?'':key;renderTopicAwards();return}
- let start=e.target.closest('[data-start-lesson]');if(start){if(currentSubject==='Toán 2'){moBaiToanSheet(start.dataset.startLevel);return;}activeLessonContext={subject:currentSubject,id:start.dataset.startLesson,level:Number(start.dataset.startLevel)};openQuiz();return}
+ let start=e.target.closest('[data-start-lesson]');if(start){if(currentSubject==='Toán 2'){moBaiToanSheet(start.dataset.startLevel);return;}navigate('path');return}
  let nav=e.target.closest('[data-view], [data-open]');if(nav){navigate(nav.dataset.view||nav.dataset.open);return}
  let lvl=e.target.closest('[data-level]');if(lvl){navigate('path');return}
 });
