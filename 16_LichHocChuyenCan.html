@@ -38,7 +38,7 @@ function capNhatLichHoc(){
  let cursor=new Date(today),streak=0;
  if(!completed(cursor))cursor.setDate(cursor.getDate()-1);
  while(completed(cursor)&&streak<3660){streak++;cursor.setDate(cursor.getDate()-1)}
- const keys=Object.keys(records).filter(k=>/^\\d{4}-\\d{2}-\\d{2}$/.test(k)&&Number(records[k])>0).sort();
+ const keys=Object.keys(records).filter(k=>/^\d{4}-\d{2}-\d{2}$/.test(k)&&Number(records[k])>0).sort();
  let missed=0;
  if(keys.length){const last=new Date(keys[keys.length-1]+'T00:00:00');const end=new Date(today);end.setDate(end.getDate()-1);for(const d=new Date(last);d<end;){d.setDate(d.getDate()+1);if(!completed(d))missed++}}
  const val=document.querySelector('.streak-value');
