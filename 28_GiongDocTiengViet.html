@@ -1,50 +1,85 @@
-/* Giọng đọc tiếng Việt cho cả dự án, ưu tiên các tên giọng nữ được hệ điều hành khai báo.
- Không thể xác định giới tính giọng từ Web Speech API một cách tuyệt đối. Không tải thư viện ngoài.
- Giọng do trình duyệt/hệ điều hành cung cấp. */
+/* Giọng đọc Việt Nam V2.7 — tham khảo lop-2-new (đợi 60ms trước speak)
+ * và hoc-tieng-anh (lưu voiceURI, tốc độ theo thiết bị).
+ * Web Speech API không cung cấp giới tính voice: không thể bảo đảm giọng nữ trên mọi OS.
+ */
 const GIONG_DOC_VI=(function(){
- let preferred=null,voices=[],sequence=0;
- const preferredNames=['hoaimy','hoai my','hoài my','linh','mai','female','woman','google tiếng việt','microsoft hoaimy'];
- function rank(v){
-  const name=(v.name||'').toLocaleLowerCase('vi-VN').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  const lang=(v.lang||'').toLowerCase();
-  if(!lang.startsWith('vi'))return -1e5;
-  let score=100;
-  if(lang==='vi-vn')score+=20;
-  if(preferredNames.some(n=>name.includes(n.normalize('NFD').replace(/[\u0300-\u036f]/g,''))))score+=40;
-  if(/\bnam\b|\bmale\b|man voice/.test(name)&&!/female/.test(name))score-=25;
-  if(v.localService)score+=3;
-  return score;
+ const VOICE_KEY='lop2_voice_uri_vi_v27',RATE_KEY='lop2_voice_rate_vi_v27';
+ let voices=[],preferred=null,serial=0,delayTimer=null,active=null;
+ const femaleNames=['hoaimy','hoai my','hoài my','thanh','linh','mai','female','woman'];
+ function ascii(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d')}
+ function stored(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
+ function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+ function score(v){
+  if(!/^vi([_-]|$)/i.test(v.lang||''))return -1000;
+  const name=ascii(v.name);
+  let points=100+(/^vi-vn$/i.test(v.lang)?20:0);
+  if(femaleNames.some(x=>name.includes(ascii(x))))points+=55;
+  if(/\bmale\b|\bnam\b/.test(name)&&!name.includes('female'))points-=70;
+  if(v.localService)points+=3;
+  return points;
  }
- function update(){
-  if(!('speechSynthesis' in window))return;
+ function refresh(){
+  if(!('speechSynthesis' in window))return [];
   voices=window.speechSynthesis.getVoices()||[];
-  const candidates=voices.filter(v=>rank(v)>0).sort((a,b)=>rank(b)-rank(a));
-  preferred=candidates[0]||null;
+  const vi=voices.filter(v=>score(v)>0).sort((a,b)=>score(b)-score(a));
+  const wanted=stored(VOICE_KEY);
+  preferred=vi.find(v=>v.voiceURI===wanted)||vi[0]||null;
+  return vi;
+ }
+ function list(){return refresh().map(v=>({uri:v.voiceURI,name:v.name,lang:v.lang,selected:!!preferred&&v.voiceURI===preferred.voiceURI}))}
+ function setVoice(uri){
+  if(uri)save(VOICE_KEY,uri);else save(VOICE_KEY,'');
+  refresh();return preferred?preferred.name:null;
+ }
+ function setRate(value){
+  const rate=Math.min(1.2,Math.max(.65,Number(value)||.92));save(RATE_KEY,String(rate));return rate;
+ }
+ function stop(){
+  serial++;
+  if(delayTimer){clearTimeout(delayTimer);delayTimer=null}
+  active=null;
+  if('speechSynthesis' in window)window.speechSynthesis.cancel();
+ }
+ function clean(s){
+  return String(s||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()
+   .replace(/\bLV\s*([123])\b/gi,'cấp độ $1')
+   .replace(/(\d+)\s*\+/g,'$1 cộng ')
+   .replace(/(\d+)\s*=/g,'$1 bằng ');
+ }
+ function chunksOf(s){
+  const words=s.split(/\s+/),chunks=[];let now='';
+  for(const word of words){if(now.length+word.length>135&&now){chunks.push(now);now=''}now+=(now?' ':'')+word}
+  if(now)chunks.push(now);return chunks;
  }
  function speak(text,opts={}){
   if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined')return false;
-  update();window.speechSynthesis.cancel();
-  const message=String(text||'').replace(/<[^>]*>/g,' ').trim();if(!message)return false;
-  const chunks=[],words=message.split(/\s+/);let current='';
-  for(const word of words){
-   if((current+' '+word).length>170&&current){chunks.push(current);current='';}
-   current+=(current?' ':'')+word;
-  }
-  if(current)chunks.push(current);
-  const runId=++sequence;let index=0;
-  function next(){
-   if(runId!==sequence||index>=chunks.length)return;
-   const u=new SpeechSynthesisUtterance(chunks[index++]);u.lang='vi-VN';
-   u.rate=opts.rate||0.88;u.pitch=1.08;if(preferred)u.voice=preferred;
-   u.onend=next;u.onerror=()=>{};
+  stop();refresh();
+  const chunks=chunksOf(clean(text));if(!chunks.length)return false;
+  const turn=serial,rate=opts.rate||Number(stored(RATE_KEY))||.92;
+  let pos=0;
+  const next=()=>{
+   if(turn!==serial||pos>=chunks.length)return;
+   const u=new SpeechSynthesisUtterance(chunks[pos++]);u.lang='vi-VN';u.rate=rate;u.pitch=1.1;
+   if(preferred)u.voice=preferred;
+   u.onend=()=>{if(turn===serial)next()};
+   u.onerror=()=>{if(turn===serial&&pos<chunks.length)next()};
+   active=u;
    window.speechSynthesis.speak(u);
-  }
-  next();return true;
+  };
+  // Workaround đã kiểm nghiệm trong mẫu lop-2-new: chờ sau cancel trên iOS/Safari.
+  delayTimer=setTimeout(()=>{delayTimer=null;next()},60);
+  return true;
  }
- function stop(){sequence++;if('speechSynthesis' in window)window.speechSynthesis.cancel()}
- if('speechSynthesis' in window){
-  update();
-  window.speechSynthesis.addEventListener?.('voiceschanged',update);
+ function mount(id){
+  const node=document.getElementById(id);if(!node)return;
+  const build=()=>{
+   const items=list();node.innerHTML='';
+   if(!items.length){const o=document.createElement('option');o.textContent='Giọng Việt mặc định của thiết bị';o.value='';node.appendChild(o);return}
+   for(const v of items){const option=document.createElement('option');option.value=v.uri;option.textContent=v.name+(v.lang?' · '+v.lang:'');option.selected=v.selected;node.appendChild(option)}
+  };
+  build();node.addEventListener('change',()=>setVoice(node.value));
+  if('speechSynthesis' in window)window.speechSynthesis.addEventListener?.('voiceschanged',build,{once:true});
  }
- return {speak,stop,refresh:update,hasVietnameseVoice:()=>Boolean(preferred),voiceName:()=>preferred?preferred.name:null};
+ if('speechSynthesis' in window){refresh();window.speechSynthesis.addEventListener?.('voiceschanged',refresh)}
+ return Object.freeze({speak,stop,refresh,list,setVoice,setRate,mount,voiceName:()=>preferred?.name||null,hasVietnameseVoice:()=>!!preferred});
 })();
