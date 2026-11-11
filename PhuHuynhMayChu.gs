@@ -160,7 +160,6 @@ function phuHuynhDoiPin(token,oldPin,newPin){
  const l=phLock_();
  try{
   phRequire_(token);
-  phRequire_(token);
   const props=phProps_(),now=Date.now();
   let obj;try{obj=JSON.parse(props.getProperty(PH_KEYS.LOCK)||'{}')}catch(e){obj={}}
   if(Number(obj.until||0)>now)throw Error('PIN đang bị khóa 15 phút.');
