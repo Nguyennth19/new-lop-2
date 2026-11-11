@@ -164,6 +164,44 @@ function achStreak_(days){
  if(!present.has(achDay_(d)))d.setDate(d.getDate()-1);
  while(present.has(achDay_(d))&&count<366){count++;d.setDate(d.getDate()-1)}return count;
 }
+function achAnalyses_(attempts){
+ const now=new Date(),week4=[],subjects=[
+  {name:'Toán',percent:null,attempts:0},{name:'Tiếng Việt',percent:null,attempts:0},{name:'Tiếng Anh',percent:null,attempts:0}];
+ for(let i=3;i>=0;i--){
+  const base=new Date(achDay_(now)+'T12:00:00+07:00');
+  base.setUTCDate(base.getUTCDate()-i*7);
+  const end=base.getTime()+86400000;
+  const start=end-7*86400000,items=attempts.filter(a=>{const t=achDate_(a.at_utc).getTime();return t>=start&&t<end});
+  const total=items.reduce((n,a)=>n+Number(a.total||0),0);
+  week4.push({label:i===0?'Tuần này':'Trước '+i+' tuần',attempts:items.length,
+   accuracy:total?Math.round(100*items.reduce((n,a)=>n+Number(a.correct||0),0)/total):null});
+ }
+ subjects.forEach(obj=>{
+  const own=attempts.filter(a=>a.subject===obj.name);
+  const total=own.reduce((n,a)=>n+Number(a.total||0),0);
+  obj.attempts=own.length;
+  if(total)obj.percent=Math.round(100*own.reduce((n,a)=>n+Number(a.correct||0),0)/total);
+ });
+ const skills=[];
+ try{
+  const source=layBaiToan20(),latest={};
+  attempts.filter(a=>a.lesson_id==='toan_b20').forEach(a=>{
+   if(!latest[a.level]||achDate_(a.at_utc)>achDate_(latest[a.level].at_utc))latest[a.level]=a;
+  });
+  const groups={};
+  Object.entries(latest).forEach(([lv,a])=>{
+   let correct=[];try{correct=JSON.parse(String(a.correct_ids||'[]'))}catch(e){}
+   achSelect_(source,lv).forEach(q=>{
+    const kind=q.type==='mental'?'Tính nhẩm':q.type==='vertical'?'Đặt tính':q.type==='word_problem'?'Toán lời văn':'Tìm chữ số';
+    const key=lv+' / '+kind,group=groups[key]||(groups[key]={name:key,correct:0,total:0});
+    group.total++;if(correct.includes(q.id))group.correct++;
+   });
+  });
+  skills.push(...Object.values(groups).map(g=>({name:g.name,correct:g.correct,total:g.total,
+   percent:g.total?Math.round(100*g.correct/g.total):0,status:g.total&&g.correct/g.total>=.8?'Đã vững':g.total&&g.correct/g.total>=.5?'Tiến bộ':'Đang luyện'})));
+ }catch(e){/* Dashboard thành tích vẫn hoạt động nếu tạm thời lỗi dữ liệu bài học. */}
+ return {week4,subjects,skills};
+}
 function achSummary_(attemptSheet,pointsSheet){
  const attempts=achRows_(attemptSheet).filter(x=>x.profile_id===ACH_PROFILE);
  const events=achRows_(pointsSheet).filter(x=>x.profile_id===ACH_PROFILE);
@@ -181,12 +219,12 @@ function achSummary_(attemptSheet,pointsSheet){
   bars.push({day,label:['CN','T2','T3','T4','T5','T6','T7'][date.getDay()],minutes:Math.round(mins/60),attempts:attempts.filter(a=>achDay_(achDate_(a.at_utc))===day).length});
  }
  const accuracy=attempts.reduce((n,a)=>n+Number(a.correct||0),0),total=attempts.reduce((n,a)=>n+Number(a.total||0),0);
- const badges=achBadges_(attempts,events);
+ const badges=achBadges_(attempts,events),analysis=achAnalyses_(attempts);
  const recent=attempts.slice(-25).reverse().map(a=>({id:a.attempt_id,at:String(a.at_utc),title:a.title,subject:a.subject,level:a.level,correct:Number(a.correct),total:Number(a.total)}));
  return {earned,balance,bonus,spent:redeemed,attempts:attempts.length,completed:completed.size,
   lectures:0, tests:0, activeSeconds:attempts.reduce((n,a)=>n+Number(a.active_seconds||0),0),
   accuracy:total?Math.round(accuracy/total*100):0,days:days.length,streak:achStreak_(days),badges,
-  badgeCount:badges.filter(b=>b.achieved).length,week:bars,recent,asOf:new Date().toISOString(),isDemo:false};
+  badgeCount:badges.filter(b=>b.achieved).length,week:bars,week4:analysis.week4,subjects:analysis.subjects,skills:analysis.skills,recent,asOf:new Date().toISOString(),isDemo:false};
 }
 function layTongQuanThanhTich(){
  // Các tab được tạo trống khi truy cập lần đầu: toàn bộ dashboard mặc định bằng 0.
