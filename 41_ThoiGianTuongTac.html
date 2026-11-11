@@ -1,0 +1,28 @@
+/* G5 – Bộ đếm tương tác thực tế tại cửa sổ bài học.
+ * Chỉ cộng giây khi tab hiển thị, Chrome đang focus và có tương tác
+ * trong 45 giây gần nhất. Không đo sự tập trung của trẻ bằng camera.
+ */
+const THOI_GIAN_TUONG_TAC=(function(){
+ const IDLE_MS=45000;
+ let active=false,total=0,lastActivity=0,lastTick=Date.now();
+ function touch(){if(active)lastActivity=Date.now()}
+ function tick(){
+  const now=Date.now();
+  const delta=Math.max(0,Math.min(2,(now-lastTick)/1000));
+  lastTick=now;
+  if(active&&document.visibilityState==='visible'&&document.hasFocus()&&now-lastActivity<=IDLE_MS)total+=delta;
+ }
+ document.addEventListener('pointerdown',touch,{passive:true});
+ document.addEventListener('keydown',touch);
+ document.addEventListener('input',touch);
+ document.addEventListener('scroll',touch,{passive:true,capture:true});
+ document.addEventListener('visibilitychange',()=>{tick();lastTick=Date.now()});
+ window.addEventListener('blur',()=>{tick();lastTick=Date.now()});
+ window.addEventListener('focus',()=>{lastTick=Date.now()});
+ setInterval(tick,1000);
+ function start(){tick();total=0;active=true;lastActivity=Date.now();lastTick=Date.now()}
+ function stop(){tick();active=false;return Math.round(total)}
+ function seconds(){tick();return Math.max(0,Math.round(total))}
+ function isActive(){return active}
+ return Object.freeze({start,stop,seconds,isActive});
+})();
