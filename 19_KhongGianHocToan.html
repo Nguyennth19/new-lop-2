@@ -219,13 +219,17 @@ function installSvg(){
  };
  root.querySelectorAll('[data-ml-svg]').forEach(el=>{
   const q=fullData.questions.find(x=>x.id===el.dataset.mlSvg);
-  if(!q||!q.svg)return;
-  try{
-   const doc=new DOMParser().parseFromString('<svg xmlns="'+ns+'" viewBox="0 0 110 80">'+q.svg+'</svg>','image/svg+xml');
-   if(doc.querySelector('parsererror'))return;const safe=copy(doc.documentElement);
-   if(safe)el.appendChild(safe);
-  }catch(e){}
-  // Chỉ thay minh họa; khi ảnh tải lỗi, SVG gốc vẫn còn nguyên.
+  if(!q)return;
+  if(q.svg){
+   try{
+    const doc=new DOMParser().parseFromString('<svg xmlns="'+ns+'" viewBox="0 0 110 80">'+q.svg+'</svg>','image/svg+xml');
+    if(!doc.querySelector('parsererror')){
+     const safe=copy(doc.documentElement);if(safe)el.appendChild(safe);
+    }
+   }catch(e){}
+  }
+  // Ảnh kho dùng chung vẫn được gắn nếu SVG trống hoặc không đọc được.
+  // Nếu URL ảnh lỗi, DOM SVG dự phòng đã có sẽ giữ nguyên.
   if(typeof HINH_ANH_APP!=='undefined')HINH_ANH_APP.word(q,el);
  });
 }
