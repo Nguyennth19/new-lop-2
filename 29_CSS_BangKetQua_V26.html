@@ -112,3 +112,41 @@
  #mathFullScreen .ml-dock-keys{grid-template-columns:repeat(6,minmax(0,1fr));gap:5px}
  #mathFullScreen .ml-dock .ml-key{height:40px;min-height:40px;font-size:15px;border-radius:8px}
 }
+
+/* V2.9 – bàn phím cao hơn và nổi rõ, giữ full width. */
+#mathFullScreen .ml-dock{
+ padding:11px 14px 12px!important;
+ border-top:3px solid #65bdfa;
+ background:#ffffff;
+ box-shadow:0 -6px 24px rgba(30,92,150,.15);
+}
+#mathFullScreen .ml-dock .ml-key{
+ height:52px;min-height:52px;
+ font-size:19px;font-weight:850;
+ border-radius:12px;
+ box-shadow:0 2px 0 rgba(30,92,150,.08);
+}
+#mathFullScreen .ml-dock .ml-keyboard-toggle{font-size:15px}
+#mathFullScreen .ml-dock .ml-key:active{transform:translateY(1px);box-shadow:none}
+#mathFullScreen .ml-voice-actions [data-ml-theory-speak]{
+ display:inline-flex;align-items:center;justify-content:center;gap:7px;
+ min-height:42px;padding:10px 15px;border-radius:12px;
+ background:#e0f2fe;color:#075985;border:1px solid #7dd3fc;
+ font-size:13px;font-weight:800;
+}
+#mathFullScreen .ml-voice-actions [data-ml-theory-speak][data-audio-state="playing"]{
+ background:#fff3d6;color:#a4530c;border-color:#fbbf24;
+}
+#mathFullScreen .ml-voice-actions [data-ml-theory-speak] svg{
+ width:18px;height:18px;margin:0;flex-shrink:0;
+}
+#mathFullScreen .ml-voice-actions label,#mathFullScreen #mlVoiceChoice,
+#mathFullScreen [data-ml-theory-stop]{display:none!important}
+@media(max-width:800px){
+ #mathFullScreen .ml-dock{padding:9px 10px 10px!important}
+ #mathFullScreen .ml-dock .ml-key{height:48px;min-height:48px;font-size:17px}
+}
+@media(max-width:520px){
+ #mathFullScreen .ml-dock{padding:8px 8px 9px!important}
+ #mathFullScreen .ml-dock .ml-key{height:46px;min-height:46px;font-size:16px;border-radius:10px}
+}
