@@ -91,7 +91,7 @@ function section(s,i){
  return '<section class="ml-section" id="ml-section-'+E(s.id)+'"><div class="ml-section-heading"><b class="ml-step">'+(i+1)+'</b><h3>'+E(s.name||'Bài tập '+(i+1))+'</h3><button data-ml-speak="'+E(s.id)+'" type="button">🔊 Nghe yêu cầu</button></div><div class="ml-section-box">'+content+'<div class="ml-section-actions"><span class="ml-section-feedback" id="ml-feedback-'+E(s.id)+'"></span><button data-ml-grade="'+E(s.id)+'">☑ Kiểm tra bài này</button><button class="ml-reset" data-ml-reset="'+E(s.id)+'">↺ Xóa bài này</button></div></div></section>';
 }
 function input(q,key,max,extra=''){
- return '<input class="ml-input" type="text" inputmode="none" autocomplete="off" maxlength="'+max+'" data-ml-field="'+E(key)+'" data-ml-q="'+E(q.id)+'" '+extra+' aria-label="'+E(key.split(':').pop())+'">';
+ return '<input class="ml-input'+(key.endsWith(':carry')?' ml-carry':'')+'" type="text" inputmode="none" autocomplete="off" maxlength="'+max+'" data-ml-field="'+E(key)+'" data-ml-q="'+E(q.id)+'" '+extra+' aria-label="'+E(key.split(':').pop())+'">';
 }
 function baseCard(q,inside,kind){
  return '<article class="ml-card ml-theme-'+E(q.theme||'blue')+' '+kind+'" data-ml-q-card="'+E(q.id)+'"><div class="ml-card-top"><b>'+E(q.label||('Câu '+q.order))+'</b><small class="ml-earned">'+(cauDaDungToan[q.id]?'✓':'')+'</small></div>'+inside+'</article>';
