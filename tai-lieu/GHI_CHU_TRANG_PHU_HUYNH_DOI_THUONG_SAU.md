@@ -6,7 +6,7 @@ Bé hiện chỉ học, xem số sao và huy hiệu. Chưa hiển thị cửa h�
 
 ## Đã chuẩn bị sẵn cho tương lai
 - `ThanhTichMayChu.gs`: sổ sao bất biến theo sự kiện, mỗi dòng có `event_key, at_utc, profile_id, event_type, delta, lesson_id, level, attempt_id, note`.
-- Sao hành trình: **tổng số delta dương hợp lệ** (không giảm sau đổi quà).
+- Sao hành trình: **chỉ cộng sự kiện học tập** (`level_done`, `perfect`, `improved`, `retry_success`, `daily`); không tăng khi phụ huynh tặng thêm sao vào ví.
 - Ví sao: **tổng tất cả delta** (cộng thành tích/thưởng phụ huynh và trừ đổi thưởng). Số dư không được âm.
 - Hàm nội bộ `dieuChinhSaoPhuHuynh_(delta, lyDo)` đã có LockService, kiểm tra số sao và nhật ký bất biến. Chỉ gọi qua Apps Script Editor hoặc các hàm admin được kiểm soát sau này. KHÔNG xuất nút này vào Web App bé và KHÔNG gọi trực tiếp từ client.
 - +100 sao là sự kiện `parent_bonus`; -80 sao là `parent_redeem`, có lý do, thời điểm và khóa giao dịch riêng. Không sửa lại số cũ hoặc xóa dòng lịch sử.
@@ -24,11 +24,11 @@ Bé hiện chỉ học, xem số sao và huy hiệu. Chưa hiển thị cửa h�
 | Sự kiện | Thay đổi ví | Sao hành trình | Ví sao |
 |---|---:|---:|---:|
 | Bé hoàn thành LV1 | +15 | 15 | 15 |
-| Phụ huynh thưởng thêm | +20 | 35 | 35 |
-| Đổi phần thưởng | -25 | 35 | 10 |
-| Hoàn trả một yêu cầu đổi bị hủy | +25 (sự kiện hoàn trả, **không tính XP**) | 35 | 35 |
+| Phụ huynh thưởng thêm | +20 | 15 | 35 |
+| Đổi phần thưởng | -25 | 15 | 10 |
+| Hoàn trả một yêu cầu đổi bị hủy | +25 (sự kiện hoàn trả, **không tính XP**) | 15 | 35 |
 
-**Lưu ý kỹ thuật:** Ở phiên bản hiện tại `earned` là tổng dòng delta dương, nên nếu tương lai thêm hoàn trả giao dịch, phải gắn event type `parent_refund` và tính XP **không cộng lại** cho hoàn trả, mới giữ được ví dụ trên. Chưa cho phép hoàn trả qua giao diện hiện tại.
+**Lưu ý kỹ thuật:** Phiên bản hiện tại đã tách XP học tập với thưởng phụ huynh. Nếu tương lai thêm hoàn trả, dùng `parent_refund` để cộng ví mà không cộng XP. Chưa cho phép hoàn trả qua giao diện hiện tại.
 
 ## Phạm vi phiên bản đang làm
 Chỉ có dashboard số liệu thật, điểm thưởng học và sổ sao. Không tạo `DanhMucQua`, `YeuCauDoiQua`, không thêm nút/phần thưởng YouTube.
