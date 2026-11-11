@@ -1,0 +1,85 @@
+/* Module tương tác Toán: dữ liệu nạp từ Sheet, không sử dụng câu hỏi demo */
+let boDuLieuToan=null,capDoToan='LV1',cauDaDungToan={};
+const KHOA_KET_QUA_TOAN='lop2_b20_ketqua_v1';
+try{cauDaDungToan=JSON.parse(localStorage.getItem(KHOA_KET_QUA_TOAN)||'{}')||{}}catch(e){cauDaDungToan={}}
+const thoatHtmlToan=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function moBaiToanSheet(level){
+ capDoToan='LV'+(Number(level)+1);
+ navigate('path');
+ const host=document.getElementById('mathLessonPanel'),list=document.getElementById('lessonList');
+ list.hidden=true;document.getElementById('pathSummary').hidden=true;
+ host.hidden=false;host.innerHTML='<div class="math-loading">Đang đọc dữ liệu Toán từ Google Sheets…</div>';
+ if(!window.google||!google.script||!google.script.run){
+  host.innerHTML='<p class="math-error">Không có kết nối Google Apps Script. Hãy mở Web App đã triển khai.</p>';return;
+ }
+ google.script.run.withSuccessHandler(data=>{
+  boDuLieuToan=data;veBaiToan();
+ }).withFailureHandler(err=>{
+  host.innerHTML='<div class="math-error">Không tải được Google Sheet: '+thoatHtmlToan(err&&err.message||err)+'. Kiểm tra quyền truy cập bảng tính và triển khai lại Web App.</div>';
+ }).layBaiToan20();
+}
+function veBaiToan(){
+ const host=document.getElementById('mathLessonPanel');if(!boDuLieuToan)return;
+ const d=boDuLieuToan,levels=d.levels,sections=d.sections.filter(s=>s.levelId===levels.find(l=>l.level===capDoToan)?.id);
+ const questions=d.questions.filter(q=>q.level===capDoToan);
+ const done=questions.filter(q=>cauDaDungToan[q.id]).length;
+ host.innerHTML='<div class="math-lesson-head"><button type="button" data-math-back>← Quay lại lộ trình</button><div><h2>'+thoatHtmlToan(d.lesson.title)+'</h2><p>'+thoatHtmlToan(d.lesson.series)+' · '+done+'/'+questions.length+' câu đúng</p></div></div>'+
+ '<div class="math-level-tabs">'+levels.map(l=>'<button type="button" data-math-level="'+thoatHtmlToan(l.level)+'" class="'+(capDoToan===l.level?'active':'')+'">'+thoatHtmlToan(l.level+' · '+l.name)+'</button>').join('')+'</div>'+
+ sections.map(s=>{
+  const qs=d.questions.filter(q=>q.sectionId===s.id);
+  return '<section class="math-section"><h3>'+thoatHtmlToan(s.name)+'</h3><div class="math-question-grid">'+qs.map(veCauToan).join('')+'</div></section>';
+ }).join('')+
+ '<p class="math-source-note">Nguồn: Google Sheets · Bài 20. Câu thiếu dữ liệu sẽ được khóa, không tự tạo đề bài.</p>';
+}
+function veCauToan(q){
+ const done=!!cauDaDungToan[q.id],esc=thoatHtmlToan;
+ const head='<div class="math-q-top"><span>'+esc(q.label||'Câu '+q.order)+'</span><small>'+esc(q.type==='vertical'?'Đặt tính rồi tính':q.type==='mental'?'Tính nhẩm':q.type==='missing_digit'?'Tìm chữ số':'Bài toán có lời văn')+'</small></div>';
+ if(!q.valid)return '<article class="math-question math-invalid">'+head+'<p>⚠ '+esc(q.issue)+'</p><small>'+esc(q.id)+'</small></article>';
+ let body='';
+ if(q.type==='missing_digit'){
+  const cells=(q.puzzle||[]).map((row,ri)=>'<div class="math-digit-row">'+(ri===1?'<span class="math-op">+</span>':'<span class="math-op"></span>')+row.map((v,ci)=>v&&typeof v==='object'?'<input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" data-digit="'+ri+'-'+ci+'" aria-label="Chữ số hàng '+(ci===0?'chục':'đơn vị')+' hàng '+(ri+1)+'" autocomplete="off">':'<span class="math-digit">'+esc(v)+'</span>').join('')+'</div>').join('');
+  body='<div class="math-puzzle">'+cells+'</div>';
+ }else{
+  const formula=q.type==='vertical'?'<div class="math-vertical"><span>'+esc(q.n1)+'</span><span>+ '+esc(q.n2)+'</span><hr><span>?</span></div>':
+    q.type==='mental'?'<div class="math-formula">'+esc(q.prompt)+'</div>':'<p class="math-story">'+esc(q.prompt)+'</p>';
+  body=formula+(q.summary?'<p class="math-summary">'+esc(q.summary)+'</p>':'')+
+    '<label class="math-answer">Đáp án <input type="number" inputmode="numeric" data-math-answer placeholder="Nhập kết quả" '+(done?'value="'+esc(q.answer)+'"':'')+'></label>'+(q.unit?'<span class="math-unit">'+esc(q.unit)+'</span>':'');
+ }
+ return '<article class="math-question '+(done?'math-correct':'')+'" data-math-question="'+esc(q.id)+'">'+head+body+
+ '<div class="math-q-bottom"><button type="button" data-math-check="'+esc(q.id)+'">Kiểm tra ✓</button><span class="math-feedback" aria-live="polite">'+(done?'✓ Đã trả lời đúng':'')+'</span></div></article>';
+}
+function kiemTraCauToan(id,button){
+ const q=boDuLieuToan&&boDuLieuToan.questions.find(x=>x.id===id);if(!q||!q.valid)return;
+ const card=button.closest('.math-question');
+ let ok=false;
+ if(q.type==='missing_digit'){
+  ok=(q.puzzle||[]).every((row,ri)=>row.every((v,ci)=>{
+   if(!(v&&typeof v==='object'))return true;
+   const input=card.querySelector('[data-digit="'+ri+'-'+ci+'"]');
+   return !!input&&input.value.trim()===String(v.ans);
+  }));
+ }else{
+  const input=card.querySelector('[data-math-answer]');ok=!!input&&input.value.trim()!==''&&Number(input.value)===Number(q.answer);
+ }
+ const feedback=card.querySelector('.math-feedback');
+ if(ok){
+  const newly=!cauDaDungToan[id];
+  cauDaDungToan[id]=true;
+  try{localStorage.setItem(KHOA_KET_QUA_TOAN,JSON.stringify(cauDaDungToan))}catch(e){}
+  card.classList.add('math-correct');feedback.textContent='✓ Chính xác!';
+  if(newly&&typeof ghiNhanNgayHoc==='function')ghiNhanNgayHoc();
+  const all=boDuLieuToan.questions.filter(x=>x.level===q.level);
+  if(all.length&&all.every(x=>x.valid&&cauDaDungToan[x.id])){
+   const lesson=findRoadmapLesson('Toán 2','toan_b20');
+   if(lesson){lesson.levels[Number(q.level.substring(2))-1]='done';persistTopicProgress();}
+  }
+ }else{feedback.textContent='✕ Chưa đúng, em thử lại nhé!';card.classList.remove('math-correct');}
+ const stats=card.closest('#mathLessonPanel').querySelector('.math-lesson-head p');
+ if(stats){const qs=boDuLieuToan.questions.filter(x=>x.level===capDoToan);stats.textContent=boDuLieuToan.lesson.series+' · '+qs.filter(x=>cauDaDungToan[x.id]).length+'/'+qs.length+' câu đúng';}
+}
+document.addEventListener('click',e=>{
+ const back=e.target.closest('[data-math-back]');
+ if(back){document.getElementById('mathLessonPanel').hidden=true;document.getElementById('lessonList').hidden=false;document.getElementById('pathSummary').hidden=false;renderLessons();return;}
+ const level=e.target.closest('[data-math-level]');if(level){capDoToan=level.dataset.mathLevel;veBaiToan();return;}
+ const check=e.target.closest('[data-math-check]');if(check){kiemTraCauToan(check.dataset.mathCheck,check);return;}
+});
