@@ -7,6 +7,7 @@ const TIEN_DO_HOC_TAP=(function(){
  function isDone(id,lv){return truth(id,lv)}
  function apply(data){
   snapshot=data;ready=true;
+  if(typeof cauDaDungToan!=='undefined')cauDaDungToan={...(data?.correctIds?.toan_b20||{})};
   if(typeof subjectRoadmaps!=='undefined'){
    for(const topics of Object.values(subjectRoadmaps)){
     for(const topic of topics)for(const lesson of topic.lessons){
