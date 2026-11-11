@@ -1,12 +1,12 @@
 /**
  * Đọc bài Toán 20 trực tiếp từ Google Sheets.
  * Không sao chép dữ liệu mẫu vào mã nguồn; giữ Sheet là nguồn duy nhất.
- * Mỗi lượt đọc có thể cache tối đa 2 phút.
+ * Cache máy chủ 5 phút; có hàm làm mới thủ công khi sửa dữ liệu.
  */
 const TOAN_SHEET_ID = '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8';
 function layBaiToan20() {
   const cache=CacheService.getScriptCache();
-  const hit=cache.get('toan_b20_v26_20261111');
+  const hit=cache.get('toan_b20_g4_v1');
   if(hit) return JSON.parse(hit);
   const wb=SpreadsheetApp.openById(TOAN_SHEET_ID);
   const tab = name => {
@@ -44,7 +44,7 @@ function layBaiToan20() {
     sections:sections.map(s=>({id:s.section_id,levelId:s.level_id,name:s.name,type:s.question_type})),
     questions:questions,readAt:new Date().toISOString()};
   // CacheService giới hạn dung lượng giá trị ~100KB; bỏ cache khi lớn.
-  try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put('toan_b20_v26_20261111',raw,21600)}catch(e){}
+  try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put('toan_b20_g4_v1',raw,300)}catch(e){}
   return result;
 }
 
@@ -52,6 +52,6 @@ function layBaiToan20() {
  * Browser cache cần tải lại trang hoặc hết hạn 30 phút (đổi CACHE_VERSION khi phát hành).
  */
 function lamMoiBoNhoToan20_() {
-  CacheService.getScriptCache().remove('toan_b20_v26_20261111');
+  CacheService.getScriptCache().remove('toan_b20_g4_v1');
   return 'Đã xóa cache phía máy chủ cho bài toan_b20';
 }
