@@ -17,4 +17,4 @@ function navigate(view){
  if(view==='achievements'&&typeof taiThanhTich==='function')taiThanhTich();
  if(view==='path'){const math=document.getElementById('mathLessonPanel');if(math)math.hidden=true;const list=document.getElementById('lessonList');if(list)list.hidden=false;const summary=document.getElementById('pathSummary');if(summary)summary.hidden=false;renderLessons();}window.scrollTo({top:0,behavior:'smooth'});
 }
-// Nội dung mẫu để kiểm tra giao diện. Một bài có ba cấp độ chung một ID.
+// Lộ trình được cấp bằng dữ liệu thực, chưa mở nội dung mới khi chưa có Sheet.
