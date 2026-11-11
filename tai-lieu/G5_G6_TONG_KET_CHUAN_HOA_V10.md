@@ -78,7 +78,7 @@ Cấu hình Apps Script dùng `Asia/Ho_Chi_Minh`; lần kiểm tra Sheet sau yê
 
 ## VIII. Kiểm tra đã thực hiện
 
-- [x] 30 mô-đun JS/GS hiện có parse syntax hợp lệ (đợt kiểm tra G5).
+- [x] 31 mô-đun JS/GS đã kiểm tra bằng JS parser, không có lỗi cú pháp.
 - [x] 35 `napThanhPhan` tương ứng file thật, không trùng; 23 thẻ script mở/đóng cân bằng (trước bước tách renderer; kiểm tra cuối sẽ cập nhật).
 - [x] Google Sheet Bài 20: 51 câu, đủ 51 câu hợp lệ theo schema.
 - [x] Bộ nạp mới và quy tắc client/server: **LV1 12/12, LV2 4/4, LV3 22/22** cùng ID/thứ tự.
