@@ -17,8 +17,8 @@ function shell(){
  root.innerHTML='<header class="ml-top"><button class="ml-back" data-ml-exit aria-label="Trở về">‹</button><span class="ml-file">'+muiIcon('book-open')+'</span><div class="ml-heading"><div class="ml-heading-meta"><span class="ml-doc-label">Tài liệu</span><strong>Toán 2</strong><span class="ml-progress"><i id="mlBar"></i></span><strong id="mlPct">0%</strong></div><b id="mlTitle">Bài 20</b></div></header><div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">NỘI DUNG BÀI HỌC</b><nav class="ml-navigation" id="mlMenu"></nav></aside><div class="ml-workspace"><main class="ml-content" id="mlContent" tabindex="-1"></main><aside class="ml-results" id="mlResults" aria-live="polite"></aside></div></div><div class="ml-dock" id="mlDock"><div class="ml-dock-heading"><b>Bàn phím Toán học</b><button type="button" data-ml-keyboard>Ẩn bàn phím</button></div><div class="ml-dock-keys" id="mlKeys"></div></div><button id="mlShowKeyboard" class="ml-show-keyboard" data-ml-keyboard hidden>Mở bàn phím số</button>';
  document.body.appendChild(root);
  const keyboard=root.querySelector('#mlKeys');
- ['1','2','3','4','5','6','7','8','9','0','+','−','⌫','Tiếp →'].forEach(k=>{
-  const b=document.createElement('button');b.type='button';b.textContent=k;b.dataset.mlKey=k;b.className='ml-key'+(k==='Tiếp →'?' next':k==='⌫'?' erase':'');
+ ['1','2','3','4','5','6','7','8','9','0','+','−','×','÷','=','⌫'].forEach(k=>{
+  const b=document.createElement('button');b.type='button';b.textContent=k;b.dataset.mlKey=k;b.className='ml-key'+(k==='⌫'?' erase':(['×','÷','='].includes(k)?' math-symbol':''));
   keyboard.appendChild(b);
  });
  return root;
@@ -194,7 +194,7 @@ function renderResults(){
  const submitDate=record?new Date(record.at).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}):'Chưa nộp bài';
  const duration=record?Math.floor(record.seconds/60)+' phút '+record.seconds%60+' giây':'Chưa nộp';
  panel.innerHTML='<div class="ml-result-card"><h2>Kết quả</h2><div class="ml-result-meta"><span>Thời gian nộp</span><strong>'+E(submitDate)+'</strong></div><div class="ml-result-meta"><span>Thời gian làm bài</span><strong>'+E(duration)+'</strong></div><div class="ml-result-meta"><span>Câu đã trả lời</span><strong>'+(record?record.answered:answered)+' / '+questions.length+'</strong></div><div class="ml-result-score"><strong>Điểm</strong><b>'+(record?Math.round(record.correct/Math.max(record.total,1)*100)/10:'—')+'</b></div></div>'+
- '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button><button type="button" data-ml-read-level>'+muiIcon('book-open')+' Đọc đề</button></div></div>';
+ '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button></div></div>';
 }
 function restoreDrafts(){
  shell().querySelectorAll('[data-ml-field]').forEach(el=>{if(drafts[el.dataset.mlField]!==undefined)el.value=drafts[el.dataset.mlField]});
@@ -226,10 +226,9 @@ function pickInput(el){selected=el;}
 function press(k){
  const all=inputList();if(!all.length)return;
  if(!selected||!all.includes(selected))selected=all.find(x=>!x.value)||all[0];
- if(k==='Tiếp →'){selected=all[(all.indexOf(selected)+1)%all.length];selected.focus({preventScroll:true});return;}
  const target=selected;
  if(k==='⌫'){target.value=target.value.slice(0,-1);}
- else if(k==='+'||k==='−'){if(target.dataset.mlField.endsWith(':op'))target.value=k==='−'?'-':'+';else return;}
+ else if(['+','−','×','÷','='].includes(k)){if(target.dataset.mlField.endsWith(':op'))target.value=({'+':'+','−':'-','×':'*','÷':'/','=':'='})[k];else return;}
  else if(/^[0-9]$/.test(k)){
   if(target.dataset.mlField.endsWith(':op'))return;
   target.value=(target.value+k).slice(0,Number(target.maxLength)||3);
@@ -240,17 +239,11 @@ function press(k){
  target.dispatchEvent(new Event('input',{bubbles:true}));
  selected.focus({preventScroll:true});
 }
-function docDeCapDo(){
- const sections=fullData.sections.filter(s=>s.levelId===(fullData.levels.find(l=>l.level===view)||{}).id);
- const content=sections.map(s=>s.name+'. '+activeQuestions().filter(q=>q.sectionId===s.id).map(q=>q.prompt||q.label||'').join('. ')).join('. ');
- GIONG_DOC_VI.speak(content,{rate:.87});
-}
 document.addEventListener('click',e=>{
  const root=e.target.closest('#mathFullScreen');if(!root)return;
  if(e.target.closest('[data-ml-exit]')){exit();return;}
  if(e.target.closest('[data-ml-submit]')){gradeLevel();return;}
  if(e.target.closest('[data-ml-reset-level]')){resetLevel();return;}
- if(e.target.closest('[data-ml-read-level]')){docDeCapDo();return;}
  const nav=e.target.closest('[data-ml-view]');if(nav){choose(nav.dataset.mlView);return;}
 
  const toggle=e.target.closest('[data-ml-keyboard]');if(toggle){
@@ -265,13 +258,13 @@ document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [da
 document.addEventListener('input',e=>{
  const el=e.target;if(!el.matches('#mathFullScreen [data-ml-field]'))return;
  const op=el.dataset.mlField.endsWith(':op');
- el.value=op?el.value.replace(/[^+\-]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
+ el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
  drafts[el.dataset.mlField]=el.value;
  try{localStorage.setItem(LKEY,JSON.stringify(drafts))}catch(e){}
 });
 document.addEventListener('keydown',e=>{
  if(!e.target.matches('#mathFullScreen [data-ml-field]'))return;
- if(e.key==='Enter'){e.preventDefault();press('Tiếp →');}
+ if(e.key==='Enter'){e.preventDefault();const all=inputList(),i=all.indexOf(e.target);if(i>=0&&i<all.length-1)all[i+1].focus();}
 });
 window.moBaiToanSheet=start;
 window.dongKhongGianToan=exit;
