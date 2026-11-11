@@ -256,3 +256,14 @@ button:focus-visible,a:focus-visible {outline:2px solid var(--primary);outline-o
 .streak .day.doing i{background:#ffedd5;color:#c2410c;font-weight:800}
 .school-day.today.status-done small{background:#dcfce7;color:#15803d}
 .school-day.today.status-doing small{background:#ffedd5;color:#c2410c}
+
+
+/* G6.1 – Lịch tuần: màu chọn giống sidebar, ngày hôm nay không đồng nghĩa chuyên cần. */
+#schoolweek .school-day{font-family:inherit;cursor:pointer;width:100%;appearance:none;transition:background .15s,border-color .15s,box-shadow .15s;}
+#schoolweek .school-day.today:not(.selected){background:#f7fbff;color:#1e293b;border:2px solid #85b8fb;box-shadow:inset 0 0 0 1px #dbeafe;}
+#schoolweek .school-day.selected,#schoolweek .school-day.selected:hover{background:linear-gradient(135deg,#2e6bee,#4db3d6);border-color:transparent;color:#fff;box-shadow:0 7px 17px rgba(46,107,238,.23);}
+#schoolweek .school-day.selected small{color:#fff;background:rgba(255,255,255,.22);}
+#schoolweek .school-day .school-today-mark{display:inline-block;font-size:9px;font-weight:700;margin-left:3px;color:#2563eb;}
+#schoolweek .school-day.selected .school-today-mark{color:#fff;}
+#schoolweek .school-day:focus-visible{outline:3px solid #80b5ff;outline-offset:2px;}
+@media(max-width:680px){#schoolweek .school-day .school-today-mark{display:block;margin:2px 0 0;font-size:8px;}}
