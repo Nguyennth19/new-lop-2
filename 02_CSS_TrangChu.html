@@ -267,3 +267,26 @@ button:focus-visible,a:focus-visible {outline:2px solid var(--primary);outline-o
 #schoolweek .school-day.selected .school-today-mark{color:#fff;}
 #schoolweek .school-day:focus-visible{outline:3px solid #80b5ff;outline-offset:2px;}
 @media(max-width:680px){#schoolweek .school-day .school-today-mark{display:block;margin:2px 0 0;font-size:8px;}}
+
+
+/* V2.2.1 – Một khoảng cách cố định từ thanh header tới nội dung của mọi môn. */
+:root{--app-view-top-gap:16px}
+.content > .view.active{margin-top:0!important;padding-top:var(--app-view-top-gap)!important}
+.content > #home.view.active{padding-top:var(--app-view-top-gap)!important}
+.content > #path.view.active .path-toolbar{margin-top:0!important}
+@media(max-width:800px){:root{--app-view-top-gap:12px}}
+
+/* V2.2.1 – Ô được chọn dùng đúng dải màu của sidebar, không phụ thuộc trạng thái chuyên cần. */
+#schoolweek button.school-day.selected,
+#schoolweek button.school-day.selected.today,
+#schoolweek button.school-day.selected.status-done,
+#schoolweek button.school-day.selected:hover{
+ background:var(--primary-gradient)!important;
+ color:#fff!important;
+ border-color:transparent!important;
+ box-shadow:0 6px 15px rgba(46,107,238,.30)!important;
+}
+#schoolweek button.school-day.selected strong,
+#schoolweek button.school-day.selected span,
+#schoolweek button.school-day.selected .school-today-mark{color:#fff!important}
+#schoolweek button.school-day.selected small{background:rgba(255,255,255,.22)!important;color:#fff!important}
