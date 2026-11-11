@@ -17,7 +17,7 @@ function mental(q){
 }
 function puzzle(q){
  if(!q.valid)return invalid(q);
- const inside='<div class="ml-puzzle">'+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v)+'</b>').join('')+'</div>').join('')+'</div>';
+ const inside='<div class="ml-puzzle">'+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>v&&typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v==null?'':v)+'</b>').join('')+'</div>').join('')+'</div>';
  return baseCard(q,inside,'ml-puzzle-card');
 }
 function word(q){
