@@ -70,6 +70,9 @@ function thHienThi(d){
  thSet('achvBadges',d.badgeCount+' / '+d.badges.length);
  thSet('achvExercises',d.completed);thSet('achvMastery',d.accuracy+'%');thSet('achvDays',d.days);
  thSet('achvStreak',d.streak?d.streak+' ngày liên tiếp':'Chưa có chuỗi ngày học');
+ thSet('homeAchievementTitle',d.completed?'Em đã chinh phục '+d.completed+' cấp độ!':'Ngôi sao đầu tiên đang chờ em!');
+ thSet('homeAchievementDetail',d.completed?'Em đang tiến bộ mỗi ngày. Cố gắng tiếp nhé!':'Hoàn thành cấp độ đầu tiên để nhận sao thưởng nhé.');
+ thSet('homeAchievementStars','⭐ '+d.earned+' sao hành trình · Ví sao: '+d.balance);
  thHuyHieu(d);thChart(d);thThemBieuDo(d);thHoatDong();
  thSet('achvStatus','Dữ liệu thực từ Google Sheet · Sao có thể dùng: '+d.balance+' ★ · Không bao gồm kết quả demo và dữ liệu nháp cũ.');
 }
@@ -89,3 +92,5 @@ document.addEventListener('click',e=>{
  if(btn){thanhTichLoc=btn.dataset.activityFilter;thHoatDong();}
 });
 window.taiThanhTich=taiThanhTich;
+// Tải không chặn trang chủ; chỉ gọi máy chủ một lần trong phiên cho đến khi có bài nộp mới.
+setTimeout(()=>taiThanhTich(),0);
