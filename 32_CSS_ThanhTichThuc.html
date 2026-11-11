@@ -1,0 +1,25 @@
+
+/* Thành tích thực V1.0: dùng hệ màu và font chung; không có số liệu mock. */
+#achievements .achv-loading{padding:28px;background:#fff;border-radius:16px;color:#64748b;font-size:14px}
+#achievements .achv-week-hint{color:#8290a3;font-size:11px;margin:7px 0 0}
+#achievements .achv-week-bars{height:148px;gap:10px}
+#achievements .achv-week-bars>div{height:100%;min-width:0}
+#achievements .achv-week-bars i{min-height:4px;max-height:105px}
+#achievements .achv-bar-value{color:#475569;font-size:10px;line-height:1.1;font-weight:750}
+#achievements .achv-week-detail{border-radius:12px;padding:15px;background:#f0f9ff;margin-top:13px;color:#075985}
+#achievements .achv-week-detail strong{font-size:12px}
+#achievements .achv-week-detail p{font-size:12px;line-height:1.5;margin:8px 0 0}
+#achievements .achv-streak-message>span svg{height:32px;width:32px;stroke:#ea580c}
+#achievements .achv-badges{grid-template-columns:repeat(4,minmax(0,1fr))}
+#achievements .achv-badge{gap:9px;min-height:190px}
+#achievements .achv-badge.achieved{border-color:#86efac;background:linear-gradient(#fff,#f0fdf4)}
+#achievements .achv-medal svg{width:31px;height:31px}
+#achievements .achv-badge-bar{width:100%;height:6px;border-radius:100px;background:#e2e8f0;overflow:hidden;margin-top:auto}
+#achievements .achv-badge-bar i{display:block;height:100%;background:linear-gradient(90deg,#38bdf8,#3b82f6);border-radius:100px}
+#achievements .achv-badge.achieved .achv-badge-bar i{background:linear-gradient(90deg,#22c55e,#16a34a)}
+#achievements .achv-truth-note{font-size:11px;color:#64748b;line-height:1.6;margin-top:16px;padding:12px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px}
+#achievements .achv-stat strong{font-variant-numeric:tabular-nums}
+#achievements .achv-banner-stats>div{min-width:128px}
+@media(max-width:1100px){#achievements .achv-badges{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){#achievements .achv-badges{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:440px){#achievements .achv-week-bars{gap:5px}#achievements .achv-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#achievements .achv-stat strong{font-size:19px}}
