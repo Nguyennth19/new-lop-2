@@ -28,6 +28,6 @@ document.addEventListener('click',e=>{
  if(e.target.closest('#mathFullScreen [data-ml-regroup]'))toggleNhomChucToan();
  if(e.target.closest('#mathFullScreen [data-ml-theory-speak]')){
   const s='Đặt tính dọc: Chữ số cùng hàng thẳng cột với nhau. Cộng hàng đơn vị trước, 6 cộng 7 bằng 13, viết 3 nhớ 1. Sau đó cộng hàng chục: 3 cộng 1 thêm 1 chục nhớ bằng 5. Kết quả bằng 53.';
-  if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(s);u.lang='vi-VN';u.rate=.9;speechSynthesis.speak(u);}
+  GIONG_DOC_VI.speak(s,{rate:.88});
  }
 });
