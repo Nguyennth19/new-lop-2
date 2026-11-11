@@ -3,12 +3,12 @@
  * Không sao chép dữ liệu mẫu vào mã nguồn; giữ Sheet là nguồn duy nhất.
  * Cache máy chủ 5 phút; có hàm làm mới thủ công khi sửa dữ liệu.
  */
-const TOAN_SHEET_ID = '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8';
+// Nguồn dữ liệu khai báo tập trung tại CauHinh.gs; không giữ ID thứ hai.
 function layBaiToan20() {
   const cache=CacheService.getScriptCache();
-  const hit=cache.get('toan_b20_g4_v1');
+  const hit=cache.get('toan_b20_g5_v1');
   if(hit) return JSON.parse(hit);
-  const wb=SpreadsheetApp.openById(TOAN_SHEET_ID);
+  const wb=moBangDuAn_();
   const tab = name => {
     const sh=wb.getSheetByName(name);
     if(!sh) throw new Error('Thiếu tab '+name);
@@ -44,7 +44,7 @@ function layBaiToan20() {
     sections:sections.map(s=>({id:s.section_id,levelId:s.level_id,name:s.name,type:s.question_type})),
     questions:questions,readAt:new Date().toISOString()};
   // CacheService giới hạn dung lượng giá trị ~100KB; bỏ cache khi lớn.
-  try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put('toan_b20_g4_v1',raw,300)}catch(e){}
+  try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put('toan_b20_g5_v1',raw,300)}catch(e){}
   return result;
 }
 
@@ -52,6 +52,6 @@ function layBaiToan20() {
  * Browser cache cần tải lại trang hoặc hết hạn 30 phút (đổi CACHE_VERSION khi phát hành).
  */
 function lamMoiBoNhoToan20_() {
-  CacheService.getScriptCache().remove('toan_b20_g4_v1');
+  CacheService.getScriptCache().remove('toan_b20_g5_v1');
   return 'Đã xóa cache phía máy chủ cho bài toan_b20';
 }
