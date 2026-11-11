@@ -1,0 +1,84 @@
+/* Pilot G3 · Hình ảnh dùng chung (chỉ thay minh họa, KHÔNG đụng logic bài).
+ * Nguồn ảnh commit bất biến để Chrome/Android tải lại đúng cùng 1 bản.
+ * Sau QA hiệu năng: thay nguồn PNG vật thể bằng WebP có cùng asset_id.
+ */
+const HINH_ANH_APP=(function(){
+ const BASE='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/4177627bbc1a941c5568cf7c5703a8811e0e1999/hinh-anh/pilot-g3/';
+ const catalog=Object.freeze({
+  ROBOT_AVATAR:{file:'robot_avatar_head_96.webp',alt:'Chân dung Robot học tập',w:96,h:96},
+  ROBOT_HERO:{file:'robot_hero_wave.webp',alt:'Robot vẫy tay chào em',w:403,h:594},
+  ROBOT_PRAISE:{file:'robot_praise.webp',alt:'Robot động viên em học tốt',w:373,h:583},
+  HEN:{file:'math_hen.png',alt:'Hình minh họa một con gà mái',w:2134,h:2134},
+  WRAPPED_CANDY:{file:'math_wrapped_candy.png',alt:'Hình minh họa viên kẹo bọc giấy',w:2134,h:2134},
+  BOOK:{file:'math_book.png',alt:'Hình minh họa một quyển sách',w:2134,h:2134},
+  APPLE:{file:'math_apple.png',alt:'Hình minh họa một quả táo',w:2134,h:2134},
+  RIBBON:{file:'math_ribbon.png',alt:'Hình minh họa một dải ruy băng đỏ',w:2134,h:2134},
+  COOKIE:{file:'math_cookie.png',alt:'Hình minh họa một chiếc bánh quy',w:2134,h:2134}
+ });
+ function image(key,decorative){
+  const item=catalog[key];if(!item)return null;
+  const img=document.createElement('img');
+  img.src=BASE+encodeURIComponent(item.file);
+  img.alt=decorative?'':item.alt;
+  img.width=item.w;img.height=item.h;
+  img.loading=key==='ROBOT_AVATAR'||key==='ROBOT_HERO'?'eager':'lazy';
+  img.decoding='async';
+  img.referrerPolicy='no-referrer';
+  img.className='kl-approved-image';
+  return img;
+ }
+ function attach(target,key){
+  if(!target||target.dataset.klBound==='1')return false;
+  const img=image(key,true);if(!img)return false;
+  target.dataset.klBound='1';
+  img.onload=()=>{
+   if(!img.isConnected)return;
+   target.classList.add('kl-image-ready');
+  };
+  img.onerror=()=>{
+   target.classList.remove('kl-image-ready');
+   img.remove();
+   target.dataset.klFailed='1'; // SVG/emoji fallback giữ nguyên
+  };
+  target.appendChild(img);
+  return true;
+ }
+ function home(){
+  document.querySelectorAll('[data-kl-asset]').forEach(node=>attach(node,node.dataset.klAsset));
+ }
+ const BAI20_HINH=Object.freeze({
+  toan_b20_lv1_ex3_01:'HEN',
+  toan_b20_lv1_ex3_02:'WRAPPED_CANDY',
+  toan_b20_lv2_problems_01:'WRAPPED_CANDY',
+  toan_b20_lv2_problems_02:'HEN',
+  toan_b20_lv2_problems_03:'BOOK',
+  toan_b20_lv2_problems_04:'APPLE',
+  toan_b20_lv2_problems_05:'RIBBON',
+  toan_b20_lv2_problems_06:'COOKIE'
+ });
+ function wordAsset(q){
+  if(!q||q.type!=='word_problem')return null;
+  // Ưu tiên mã câu hỏi Sheet Bài 20: không nhận nhầm theo từ khóa trong đề.
+  if(Object.prototype.hasOwnProperty.call(BAI20_HINH,q.id))return BAI20_HINH[q.id];
+  // Câu hỏi mới chỉ dùng ảnh khi ngữ cảnh vật thể thật rõ ràng.
+  const content=String(q.prompt||'').toLocaleLowerCase('vi-VN');
+  if(/(?:gà mái|gà trống|đàn gà)/u.test(content))return 'HEN';
+  if(/kẹo/u.test(content))return 'WRAPPED_CANDY';
+  if(/quyển sách|cuốn sách/u.test(content))return 'BOOK';
+  if(/quả táo|kg táo/u.test(content))return 'APPLE';
+  if(/ruy băng/u.test(content))return 'RIBBON';
+  if(/bánh quy/u.test(content))return 'COOKIE';
+  return null;
+ }
+ function word(q,target){
+  if(!target)return false;
+  const key=wordAsset(q);
+  if(!key)return false;
+  const ok=attach(target,key);
+  if(ok)target.setAttribute('aria-label',catalog[key].alt+' (hình chỉ minh họa, không thể hiện số lượng)');
+  return ok;
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',home,{once:true});
+ else home();
+ return Object.freeze({home,word,keys:Object.freeze(Object.keys(catalog))});
+})();

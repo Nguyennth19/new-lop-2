@@ -1,0 +1,41 @@
+
+/* PILOT G3: avatar sửa + minh họa đủ 8 câu lời văn Bài 20 (chưa QA Web App).
+ * Chỉ thay SVG/emoji khi ảnh tải thành công. Không ảnh hưởng form và điểm số.
+ */
+/* Avatar: ảnh crop mặt riêng 96×96, không phóng lớn hình toàn thân nữa. */
+.avatar[data-kl-asset]{
+ position:relative;overflow:hidden;isolation:isolate;
+ border-radius:50%;background:#eef7ff;border:1px solid #a7cff6;
+ display:flex;align-items:center;justify-content:center;
+}
+.avatar[data-kl-asset]>.kl-approved-image{
+ position:absolute;inset:0;margin:auto;width:96%;height:96%;max-width:96%;
+ object-fit:contain;object-position:center center;transform:none;
+ opacity:0;pointer-events:none;transition:opacity .15s ease;
+}
+.avatar.kl-image-ready>.kl-approved-image{opacity:1}
+.avatar.kl-image-ready>svg{opacity:0}
+.hero-art[data-kl-asset]{overflow:visible;isolation:isolate}
+.hero-art[data-kl-asset]>.kl-approved-image{
+ position:absolute;right:7px;bottom:-15px;width:auto;height:190px;max-width:none;
+ object-fit:contain;opacity:0;pointer-events:none;
+ filter:drop-shadow(0 9px 5px rgba(36,91,154,.12));
+}
+.hero-art.kl-image-ready>.kl-approved-image{opacity:1}
+.hero-art.kl-image-ready>.kid,
+.hero-art.kl-image-ready>.book-illustration,
+.hero-art.kl-image-ready>.cloud{display:none}
+.side-bottom .mascot[data-kl-asset]{position:relative;display:flex;align-items:center;justify-content:center;height:110px}
+.side-bottom .mascot>.kl-approved-image{height:107px;width:auto;max-width:100%;object-fit:contain;opacity:0;position:absolute;pointer-events:none}
+.side-bottom .mascot.kl-image-ready>.kl-approved-image{opacity:1}
+.side-bottom .mascot.kl-image-ready>svg{opacity:0}
+.math-screen .ml-svg{position:relative;overflow:hidden}
+.math-screen .ml-svg>.kl-approved-image{
+ position:absolute;inset:4px;margin:auto;width:calc(100% - 8px);height:calc(100% - 8px);
+ object-fit:contain;opacity:0;pointer-events:none;
+}
+.math-screen .ml-svg.kl-image-ready>.kl-approved-image{opacity:1}
+.math-screen .ml-svg.kl-image-ready>svg{visibility:hidden}
+@media(max-width:1190px){.hero-art[data-kl-asset]>.kl-approved-image{height:175px;right:0}}
+@media(max-width:800px){.hero-art[data-kl-asset]>.kl-approved-image{height:134px;right:-16px;bottom:-13px}}
+@media(max-width:480px){.hero-art[data-kl-asset]>.kl-approved-image{height:112px;right:-18px;bottom:-6px}}
