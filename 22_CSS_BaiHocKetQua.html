@@ -1,0 +1,78 @@
+
+/* V2.4: 3 vùng chính, font thống nhất Inter 13–16px trên desktop. */
+.math-screen{font-family:Inter,Arial,sans-serif}
+.ml-sidebar{flex:0 0 260px;max-width:260px;padding:22px 10px}
+.ml-sidebar-title{font-size:12px;font-weight:800;line-height:1.5;margin:0 7px 20px;color:#14243e}
+.ml-navigation{border-left:1px dashed #cbd5e1;margin-left:8px;padding-left:8px;gap:4px}
+.ml-navigation button{position:relative;display:flex;flex-direction:row;align-items:center;gap:10px;padding:13px 9px;font-size:12px;line-height:1.5;font-weight:650;border-radius:10px;min-height:54px}
+.ml-navigation button.active{background:#e8eefc;color:#2859cf;font-weight:800}
+.ml-topic-icon{display:grid;place-items:center;flex:0 0 17px;font-size:16px;color:#3c8aca}
+.ml-topic-text{flex:1;min-width:0}
+.ml-end-check{display:grid;place-items:center;color:#159447;font-weight:900;font-size:16px;margin-left:auto}
+.ml-workspace{flex:1;min-width:0;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(270px,27%,380px);gap:12px;padding:12px;background:#f2f6fc;overflow:hidden}
+.ml-content{min-height:0;min-width:0;overflow-y:auto;overflow-x:hidden;padding:0 0 145px;background:#fff;border:1px solid #e0e8f1;border-radius:12px;scrollbar-gutter:stable}
+.ml-page{background:#fffdf9;padding:22px;max-width:none;border:0;min-height:100%}
+.ml-results{min-width:0;align-self:stretch;overflow-y:auto;overscroll-behavior:contain;padding:0 2px 145px;display:flex;flex-direction:column;gap:14px}
+.ml-result-card{background:#fff;border:1px solid #e0e5eb;border-radius:14px;padding:18px 17px;font-size:13px;line-height:1.5}
+.ml-result-card h2{font-size:18px;color:#20252f;font-weight:800;margin:0 0 17px}
+.ml-result-meta{display:flex;justify-content:space-between;align-items:baseline;gap:9px;margin:10px 0}
+.ml-result-meta>span{color:#475569}.ml-result-meta strong{text-align:right;font-size:13px;font-weight:700;color:#101827}
+.ml-result-score{border-top:1px solid #e2e8f0;margin-top:15px;padding-top:14px;display:flex;align-items:center;gap:13px}
+.ml-result-score strong{font-size:15px}.ml-result-score b{font-size:22px;color:#16a34a}
+.ml-legend{display:flex;flex-wrap:wrap;column-gap:12px;row-gap:6px;font-size:11px;font-weight:750;margin-bottom:19px}
+.ml-legend .correct{color:#16a34a}.ml-legend .wrong{color:#dc2626}.ml-legend .empty{color:#d97706}.ml-legend .unanswered{color:#64748b}
+.ml-answer-grid{display:flex;align-items:flex-start;flex-wrap:wrap;gap:10px;max-height:250px;overflow:auto}
+.ml-answer-chip{border:1.5px dashed #cbd5e1;border-radius:6px;padding:7px 8px;min-width:46px;text-align:center;font-weight:800;font-size:12px;background:#f8fafc;color:#64748b}
+.ml-answer-chip.correct{background:#f0fdf4;color:#16a34a;border-color:#22c55e}
+.ml-answer-chip.wrong{background:#fff1f2;color:#dc2626;border-color:#f87171}
+.ml-answer-chip.empty{background:#fffbeb;color:#d97706;border-color:#fbbf24}
+.ml-result-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.ml-result-actions button{background:#fff;border:1px solid #d8e0ed;border-radius:9px;padding:11px 7px;font-size:12px;font-weight:750;color:#334155;cursor:pointer}
+.ml-result-actions button:last-child{color:#fff;border:0;background:linear-gradient(100deg,#3d70ed,#4ab5d2)}
+.ml-results-collapsed .ml-result-card:nth-child(2){display:none}
+.ml-dock{left:260px}
+.ml-section-heading h3{font-size:15px;line-height:1.5}
+.ml-section-box{padding:15px}
+.ml-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ml-word-grid{grid-template-columns:1fr}
+.ml-mental-groups{grid-template-columns:1fr}
+.ml-mental-row{max-width:260px;margin:10px auto}
+.ml-theory-page{background:#fffdf9;padding:24px}
+.ml-theory-head{text-align:center;background:linear-gradient(#e0f2fe,#fff);padding:24px 12px;margin:-24px -24px 20px;border-bottom:2px dashed #bae6fd}
+.ml-theory-head>span{display:inline-block;background:linear-gradient(#facc15,#f59e0b);border:2px solid #b45309;border-radius:12px;padding:7px 16px;color:#fff;font-weight:900}
+.ml-theory-head h1{font-size:23px;line-height:1.35;color:#db2777;margin:13px 0 5px}
+.ml-theory-head p{font-size:13px;color:#9d174d;font-weight:750}
+.ml-theory-block{background:#fffbeb;border:2px dashed #f59e0b;border-radius:18px;padding:19px;margin-bottom:20px}
+.ml-theory-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ml-theory-title h2{font-size:17px;font-weight:850;color:#9d174d;margin:0}
+.ml-theory-title button{font-size:12px;border:1px solid #7dd3fc;border-radius:12px;background:#e0f2fe;padding:9px 12px;color:#075985;font-weight:800}
+.ml-theory-block ol{padding-left:22px;line-height:1.85;font-size:14px}
+.ml-theory-block li{margin:7px 0}
+.ml-theory-demo{display:grid;grid-template-columns:minmax(190px,1fr) minmax(190px,1.2fr);gap:14px;background:#fff;border:1px solid #fbcfe8;border-radius:15px;padding:16px}
+.ml-theory-calculation{text-align:center;font-size:13px;color:#a21caf}
+.ml-theory-vertical{font-family:monospace;max-width:100px;margin:10px auto;font-size:27px;font-weight:800;color:#111827}
+.ml-theory-twocol{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px;text-align:center;min-height:31px}
+.ml-theory-twocol.muted{font:750 10px Inter,Arial;color:#64748b}
+.ml-theory-twocol.border{border-bottom:2px solid #0f172a}
+.ml-theory-twocol em{position:absolute;left:-18px;font-style:normal;color:#f43f5e}
+.ml-theory-twocol.result{color:#e11d48}
+#mlTheoryCarry{font-size:15px;color:#d97706}
+.ml-theory-steps{font-size:13px;align-self:center;line-height:1.65;background:#eff6ff;padding:12px;border-radius:12px}
+.ml-base10{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.ml-base-panel{padding:14px;background:#fff;border:1px solid #bae6fd;border-radius:13px;text-align:center}
+.ml-base-panel h3{font-size:12px;color:#075985}
+.ml-base-panel p{font-size:11px;color:#334155}
+.ml-base-rods{display:flex;gap:7px;min-height:120px;align-items:center;justify-content:center}
+.ml-ten-rod{width:20px;display:flex;flex-direction:column;border:1px solid #075985;border-radius:3px;overflow:hidden}
+.ml-ten-rod i{display:block;height:9px;background:var(--rod-color);border-bottom:1px solid #bae6fd}
+#mlExtraRod small{font-size:10px;color:#be123c}
+.ml-base-cubes{min-height:120px;display:flex;flex-direction:column;justify-content:center;gap:14px;align-items:center}
+.ml-base-cubes>div{display:flex;flex-wrap:wrap;justify-content:center;max-width:260px;gap:4px}
+.ml-unit-cube{width:17px;height:17px;border:1px solid #d97706;border-radius:3px}
+.ml-regrouped{opacity:.35;transition:opacity .15s}
+.ml-theory-status{background:#fef3c7;border:1px solid #fcd34d;border-radius:10px;padding:12px;text-align:center;font-weight:700;font-size:12px}
+.ml-theory-footnote{color:#64748b;font-size:12px;text-align:center}
+@media(min-width:1350px){.ml-cards{grid-template-columns:repeat(4,minmax(0,1fr))}.ml-mental-groups{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1100px){.ml-sidebar{flex-basis:205px;max-width:205px}.ml-dock{left:205px}.ml-workspace{grid-template-columns:minmax(0,1fr) 255px;gap:8px;padding:8px}.ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.ml-result-card{padding:13px}}
+@media(max-width:800px){.ml-sidebar{flex-basis:150px;max-width:150px}.ml-dock{left:150px}.ml-workspace{grid-template-columns:minmax(0,1fr);overflow-y:auto;display:block}.ml-content{overflow:visible;padding-bottom:20px}.ml-results{overflow:visible;padding:10px 0 150px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.ml-result-card{min-width:0}.ml-theory-demo{grid-template-columns:1fr}}
+@media(max-width:520px){.ml-sidebar{flex-basis:105px;max-width:105px}.ml-navigation{padding-left:2px;margin-left:0}.ml-navigation button{font-size:10px;gap:3px;padding:9px 5px;min-height:48px}.ml-topic-icon{font-size:12px;flex-basis:12px}.ml-end-check{font-size:12px}.ml-workspace{padding:5px}.ml-results{grid-template-columns:1fr}.ml-page{padding:10px}.ml-theory-page{padding:12px}.ml-theory-head{margin:-12px -12px 20px}.ml-base10{grid-template-columns:1fr}.ml-theory-title h2{font-size:14px}.ml-dock{left:0}.ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
