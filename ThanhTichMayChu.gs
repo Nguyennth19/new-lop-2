@@ -8,7 +8,7 @@ const ACH_SHEET_ID='1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8';
 const ACH_PROFILE='gia_dinh_01';
 const ACH_ATTEMPTS='90_Lan_lam_bai';
 const ACH_LEDGER='91_So_sao';
-const ACH_HEADERS_ATTEMPTS=['attempt_id','at_utc','profile_id','lesson_id','level','correct','total','answered','active_seconds','subject','title'];
+const ACH_HEADERS_ATTEMPTS=['attempt_id','at_utc','profile_id','lesson_id','level','correct','total','answered','active_seconds','subject','title','correct_ids'];
 const ACH_HEADERS_LEDGER=['event_key','at_utc','profile_id','event_type','delta','lesson_id','level','attempt_id','note'];
 const ACH_POINTS={LV1:15,LV2:25,LV3:35};
 function achS_(name,headers){
@@ -88,7 +88,7 @@ function ghiNhanKetQuaToan20(payload){
   const data=layBaiToan20(),questions=achSelect_(data,lv);
   if(!questions.length)throw Error('Không tìm thấy câu hỏi hợp lệ');
   if(questions.some(q=>!Object.prototype.hasOwnProperty.call(raw,q.id)))throw Error('Thiếu dữ liệu câu hỏi');
-  let correct=0,answered=0;
+  let correct=0,answered=0;const correctIds=[];
   questions.forEach(q=>{
    const a=raw[q.id];
    if(!a||typeof a!=='object'||Array.isArray(a))throw Error('Đáp án không hợp lệ');
@@ -96,42 +96,65 @@ function ghiNhanKetQuaToan20(payload){
    if(Object.values(a).some(v=>String(v).length>10))throw Error('Độ dài đáp án không hợp lệ');
    const filled=Object.values(a).some(v=>String(v||'').trim()!=='');
    if(filled)answered++;
-   if(achCheck_(q,a))correct++;
+   if(achCheck_(q,a)){correct++;correctIds.push(q.id);}
   });
   const now=new Date(),entry={
    attempt_id:id,at_utc:now.toISOString(),profile_id:ACH_PROFILE,lesson_id:'toan_b20',level:lv,
    correct,total:questions.length,answered,active_seconds:Math.max(0,Math.min(1800,Math.floor(Number(payload.activeSeconds)||0))),
-   subject:'Toán',title:'Bài 20: Phép cộng (có nhớ)'
+   subject:'Toán',title:'Bài 20: Phép cộng (có nhớ)',correct_ids:JSON.stringify(correctIds)
   };
   attemptSheet.appendRow(ACH_HEADERS_ATTEMPTS.map(k=>entry[k]));
   const pct=correct/questions.length*100,oldPct=old.length?100*Number(old[0].correct)/Number(old[0].total):null;
   if(pct>=70)achAdd_(pointsSheet,events,'DONE:toan_b20:'+lv,'level_done',ACH_POINTS[lv],'toan_b20',lv,id,'Đạt ít nhất 70%');
   if(correct===questions.length)achAdd_(pointsSheet,events,'PERFECT:toan_b20:'+lv,'perfect',5,'toan_b20',lv,id,'Đạt 100%');
   if(oldPct!==null&&pct-oldPct>=20)achAdd_(pointsSheet,events,'IMPROVED:toan_b20:'+lv,'improved',5,'toan_b20',lv,id,'Tiến bộ >=20 điểm phần trăm so với lần đầu');
+  if(old.length){
+   let firstCorrect=[];try{firstCorrect=JSON.parse(String(old[0].correct_ids||'[]'))}catch(e){}
+   if(correctIds.some(qid=>!firstCorrect.includes(qid)))
+    achAdd_(pointsSheet,events,'RETRY:toan_b20:'+lv,'retry_success',5,'toan_b20',lv,id,'Sửa đúng câu từng làm sai');
+  }
   if(correct>0)achAdd_(pointsSheet,events,'DAILY:'+achDay_(now),'daily',5,'toan_b20',lv,id,'Hoạt động học có câu đúng trong ngày');
   return {ok:true,duplicate:false,score:correct,total:questions.length,summary:achSummary_(attemptSheet,pointsSheet)};
  }finally{lock.releaseLock();}
+}
+function achBadgeWindows_(days){
+ const nums=[...new Set(days)].sort().map(d=>new Date(d+'T12:00:00').getTime());
+ let max7=0;
+ nums.forEach(end=>{const n=nums.filter(x=>x>=end-6*86400000&&x<=end).length;max7=Math.max(max7,n);});
+ const weekCounts={};
+ days.forEach(day=>{
+  const d=new Date(day+'T12:00:00');
+  const monday=new Date(d);monday.setDate(d.getDate()-(d.getDay()+6)%7);
+  const key=monday.getFullYear()+'-'+String(monday.getMonth()+1).padStart(2,'0')+'-'+String(monday.getDate()).padStart(2,'0');
+  (weekCounts[key]||(weekCounts[key]=new Set())).add(day);
+ });
+ const months={};
+ Object.keys(weekCounts).forEach(start=>{
+  const month=start.slice(0,7);
+  if(weekCounts[start].size>=3)months[month]=(months[month]||0)+1;
+ });
+ return {max7,monthMax:Math.max(0,...Object.values(months))};
 }
 function achBadges_(attempts,events){
  const scored=attempts.filter(a=>Number(a.total)>0);
  const days=[...new Set(scored.map(a=>achDay_(achDate_(a.at_utc))))];
  const completed=new Set(events.filter(e=>e.event_type==='level_done').map(e=>e.lesson_id+':'+e.level));
  const lessonCount=new Set(events.filter(e=>e.event_type==='level_done').map(e=>e.lesson_id)).size;
- const keys=events.map(e=>e.event_type);
- const first=completed.size>=1,streak=achStreak_(days);
+ const doneMath=new Set(events.filter(e=>e.event_type==='level_done'&&e.lesson_id==='toan_b20').map(e=>e.lesson_id)).size;
+ const keys=events.map(e=>e.event_type), windows=achBadgeWindows_(days);
  const defs=[
-  ['FIRST_STEP','Ngôi sao đầu tiên','Hoàn thành cấp độ đầu tiên',first?1:0,1],
-  ['TRY_AGAIN','Em không bỏ cuộc','Tiến bộ ít nhất 20 điểm phần trăm',keys.includes('improved')?1:0,1],
-  ['WEEK_3','Chăm học','3 ngày học trong 7 ngày gần đây',days.filter(d=>new Date(d+'T00:00:00')>=new Date(Date.now()-6*86400000)).length,3],
-  ['WEEK_5','Bền bỉ','5 ngày học trong 7 ngày gần đây',days.filter(d=>new Date(d+'T00:00:00')>=new Date(Date.now()-6*86400000)).length,5],
+  ['FIRST_STEP','Ngôi sao đầu tiên','Hoàn thành cấp độ đầu tiên',completed.size,1],
+  ['TRY_AGAIN','Em không bỏ cuộc','Sửa đúng câu đã từng sai',keys.includes('retry_success')?1:0,1],
+  ['WEEK_3','Chăm học','3 ngày có bài nộp trong 7 ngày',windows.max7,3],
+  ['WEEK_5','Bền bỉ','5 ngày có bài nộp trong 7 ngày',windows.max7,5],
   ['TEN_LESSONS','Nhà khám phá','Hoàn thành 10 bài học',lessonCount,10],
-  ['MATH_10','Nhà toán học nhí','Hoàn thành 10 bài Toán',lessonCount,10],
+  ['MATH_10','Nhà toán học nhí','Hoàn thành 10 bài Toán',doneMath,10],
   ['VIET_10','Bạn yêu tiếng Việt','Hoàn thành 10 bài Tiếng Việt',0,10],
   ['EN_10','English Explorer','Hoàn thành 10 bài Tiếng Anh',0,10],
   ['FULL_MASTERY','Thám hiểm ba cấp độ','Hoàn thành cả LV1, LV2, LV3 của một bài', ['LV1','LV2','LV3'].every(l=>completed.has('toan_b20:'+l))?1:0,1],
-  ['IMPROVE_20','Tiến bộ vượt bậc','Tăng kết quả từ lần nộp đầu',keys.includes('improved')?1:0,1],
-  ['THIRTY','Siêu khám phá','Hoàn thành 30 bài',lessonCount,30],
-  ['MONTH_GOAL','Chiến binh tháng','Hoàn thành mục tiêu tuần 3 lần trong tháng',0,3]
+  ['IMPROVE_20','Tiến bộ vượt bậc','Tăng kết quả so với lần đầu',keys.includes('improved')?1:0,1],
+  ['THIRTY','Siêu khám phá','Hoàn thành 30 bài học',lessonCount,30],
+  ['MONTH_GOAL','Chiến binh tháng','3 tuần có ít nhất 3 ngày học trong cùng tháng',windows.monthMax,3]
  ];
  return defs.map(([id,name,description,n,target])=>({id,name,description,progress:Math.min(n,target),target,achieved:n>=target}));
 }
