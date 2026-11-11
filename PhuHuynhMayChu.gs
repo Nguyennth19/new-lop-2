@@ -3,7 +3,7 @@
  * Không lưu PIN trong GitHub, HTML hay Sheet. Cần giới hạn quyền Web App theo gia đình.
  * API public chịu kiểm tra token + quyền; helper hậu tố _ chỉ chạy nội bộ.
  */
-const PH_KEYS={SALT:'PH_PIN_SALT_V1',HASH:'PH_PIN_HASH_V1',LOCK:'PH_PIN_LOCK_V1',BOOT:'PH_PIN_BOOTSTRAP'};
+const PH_KEYS={SALT:'PH_PIN_SALT_V1',HASH:'PH_PIN_HASH_V1',LOCK:'PH_PIN_LOCK_V1',BOOT:'PH_PIN_BOOTSTRAP',VERSION:'PH_PIN_VERSION_V1'};
 const PH_NOTE_SHEET='92_Ghi_chu_phu_huynh';
 const PH_NOTE_HEADERS=['note_id','at_utc','profile_id','content'];
 const PH_CACHE_PREFIX='PH_SESSION_V1_';
@@ -54,7 +54,7 @@ function phuHuynhKhoiTaoPin_(){
  const pin=p.getProperty(PH_KEYS.BOOT);
  if(!/^\d{4}$/.test(String(pin||'')))throw Error('Cần đặt Script Property PH_PIN_BOOTSTRAP đúng 4 chữ số.');
  const salt=Utilities.getUuid()+'-'+Utilities.getUuid();
- p.setProperties({[PH_KEYS.SALT]:salt,[PH_KEYS.HASH]:phPinHash_(salt,pin)});
+ p.setProperties({[PH_KEYS.SALT]:salt,[PH_KEYS.HASH]:phPinHash_(salt,pin),[PH_KEYS.VERSION]:Utilities.getUuid()});
  p.deleteProperty(PH_KEYS.BOOT);
  p.deleteProperty(PH_KEYS.LOCK);
  return 'Đã cấu hình PIN. Đã xóa PH_PIN_BOOTSTRAP.';
@@ -70,14 +70,15 @@ function phRequire_(token){
  const cache=CacheService.getScriptCache();
  const k=phSessionKey_(token);
  const value=cache.get(k);
- if(!value)throw Error('Phiên đã hết hạn. Vui lòng đăng nhập lại.');
- cache.put(k,String(Date.now()),PH_SESSION_SECONDS);
+ const version=phProps_().getProperty(PH_KEYS.VERSION);
+ if(!value||!version||value!==version)throw Error('Phiên đã hết hạn. Vui lòng đăng nhập lại.');
+ cache.put(k,version,PH_SESSION_SECONDS);
 }
 function phuHuynhDangNhap(pin){
  const p=phProps_();if(!p.getProperty(PH_KEYS.HASH))return {ok:false,message:'Chưa thiết lập mã PIN trong Apps Script.'};
  const verdict=phValidatePin_(pin);if(!verdict.ok)return verdict;
  const token=Utilities.getUuid()+'-'+Utilities.getUuid();
- CacheService.getScriptCache().put(phSessionKey_(token),String(Date.now()),PH_SESSION_SECONDS);
+ CacheService.getScriptCache().put(phSessionKey_(token),p.getProperty(PH_KEYS.VERSION)||'',PH_SESSION_SECONDS);
  return {ok:true,token,expiresIn:PH_SESSION_SECONDS};
 }
 function phuHuynhDangXuat(token){
@@ -166,9 +167,26 @@ function phuHuynhDoiPin(token,oldPin,newPin){
    throw Error('PIN cũ không đúng.');
   }
   const salt=Utilities.getUuid()+'-'+Utilities.getUuid();
-  props.setProperties({[PH_KEYS.SALT]:salt,[PH_KEYS.HASH]:phPinHash_(salt,newPin)});
+  props.setProperties({[PH_KEYS.SALT]:salt,[PH_KEYS.HASH]:phPinHash_(salt,newPin),[PH_KEYS.VERSION]:Utilities.getUuid()});
   props.deleteProperty(PH_KEYS.LOCK);
   CacheService.getScriptCache().remove(phSessionKey_(token));
   return {ok:true,logout:true};
  }finally{l.releaseLock()}
+}
+
+/**
+ * Khôi phục PIN bị quên: chỉ chạy trong Apps Script Editor bởi chủ dự án.
+ * Tạo PH_PIN_BOOTSTRAP là PIN 4 số trong Project Settings, rồi chạy hàm này.
+ * Xóa property tạm, khóa các phiên cũ và ghi PIN mới; không bao giờ có API web reset PIN.
+ */
+function phuHuynhKhoiPhucPinQuanTri_(){
+ const p=phProps_(),value=p.getProperty(PH_KEYS.BOOT);
+ if(!/^\d{4}$/.test(String(value||'')))throw Error('PH_PIN_BOOTSTRAP phải đúng 4 chữ số.');
+ const lock=phLock_();
+ try{
+  const salt=Utilities.getUuid()+'-'+Utilities.getUuid();
+  p.setProperties({[PH_KEYS.SALT]:salt,[PH_KEYS.HASH]:phPinHash_(salt,value),[PH_KEYS.VERSION]:Utilities.getUuid()});
+  p.deleteProperty(PH_KEYS.BOOT);p.deleteProperty(PH_KEYS.LOCK);
+  return 'Đã khôi phục PIN và vô hiệu hóa mọi phiên đăng nhập cũ.';
+ }finally{lock.releaseLock()}
 }
