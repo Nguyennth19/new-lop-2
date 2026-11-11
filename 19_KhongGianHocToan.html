@@ -74,6 +74,7 @@ function render(){
  const keypad=root.querySelector('#mlDock');
  if(view==='THEORY'){
   target.innerHTML=typeof renderLyThuyetToan==='function'?renderLyThuyetToan():'<section class="ml-theory-empty"></section>';
+  GIONG_DOC_VI.mount('mlVoiceChoice');
   root.querySelector('#mlResults').hidden=true;
   keypad.hidden=true;root.querySelector('#mlShowKeyboard').hidden=true;return;
  }
