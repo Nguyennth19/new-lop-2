@@ -1,0 +1,43 @@
+/* Cầu nối Thành tích V1.0 — chỉ gửi đáp án gốc, server chấm và cấp sao.
+ * Không cộng sao ở localStorage; mọi phần thưởng dựa trên ledger server.
+ */
+const THANH_TICH_GUI=(function(){
+ const CACHE_KEY='lop2_attempt_key_v1', ids={};let pending=new Set();
+ try{Object.assign(ids,JSON.parse(sessionStorage.getItem(CACHE_KEY)||'{}'))}catch(e){}
+ function keyFor(lesson,lv,answers){return lesson+'|'+lv+'|'+JSON.stringify(answers)}
+ function idFor(key){
+  if(!ids[key]){
+   ids[key]='attempt_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,14);
+   const keep=Object.keys(ids);if(keep.length>70)keep.slice(0,-70).forEach(k=>delete ids[k]);
+   try{sessionStorage.setItem(CACHE_KEY,JSON.stringify(ids))}catch(e){}
+  }
+  return ids[key];
+ }
+ function setNote(text,error){
+  const n=document.getElementById('mlRewardSync');
+  if(n){n.textContent=text;n.dataset.status=error?'error':'ok';}
+ }
+ function send(lesson,lv,questions,getFields,activeSeconds){
+  if(!window.google?.script?.run){setNote('Chưa kết nối Apps Script; sao chưa được ghi nhận.',true);return;}
+  const answers={};
+  questions.forEach(q=>{
+   const fields={};
+   getFields(q).forEach(el=>{fields[el.dataset.mlField.slice(q.id.length+1)]=String(el.value||'')});
+   answers[q.id]=fields;
+  });
+  const key=keyFor(lesson,lv,answers);if(pending.has(key))return;
+  const attemptId=idFor(key);
+  pending.add(key);setNote('Đang xác minh bài làm và lưu sao thưởng...');
+  google.script.run.withSuccessHandler(result=>{
+   pending.delete(key);
+   if(!result?.ok){setNote('Máy chủ chưa xác nhận kết quả.',true);return;}
+   const balance=result.summary?.balance??0,stars=result.summary?.earned??0;
+   setNote('Đã đồng bộ ✓ · Ví sao: '+balance+' ★ · Sao hành trình: '+stars+' ★');
+   if(typeof taiThanhTich==='function'&&document.querySelector('#achievements.view.active'))taiThanhTich(true);
+  }).withFailureHandler(error=>{
+   pending.delete(key);
+   setNote('Không lưu được thành tích: '+(error?.message||'Lỗi kết nối')+'. Bấm Nộp & chấm bài để thử lại.',true);
+  }).ghiNhanKetQuaToan20({lessonId:lesson,level:lv,attemptId,answers,activeSeconds});
+ }
+ return Object.freeze({send});
+})();
