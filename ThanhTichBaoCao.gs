@@ -85,8 +85,8 @@ function achAnalyses_(attempts){
  return {week4,subjects,skills};
 }
 function achSummary_(attemptSheet,pointsSheet){
- const attempts=achRows_(attemptSheet).filter(x=>x.profile_id===ACH_PROFILE);
- const events=achRows_(pointsSheet).filter(x=>x.profile_id===ACH_PROFILE);
+ const attempts=achRows_(attemptSheet).filter(x=>x.profile_id===achProfile_());
+ const events=achRows_(pointsSheet).filter(x=>x.profile_id===achProfile_());
  const studyTypes=new Set(['level_done','perfect','improved','retry_success','daily']);
  const earned=events.filter(e=>studyTypes.has(String(e.event_type))).reduce((n,e)=>n+Number(e.delta||0),0);
  const bonus=events.filter(e=>e.event_type==='parent_bonus').reduce((n,e)=>n+Number(e.delta||0),0);

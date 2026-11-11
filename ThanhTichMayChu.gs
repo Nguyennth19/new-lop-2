@@ -5,7 +5,7 @@
  * Các hàm hậu tố _ chỉ chạy trong Apps Script Editor, không callable từ HTML.
  */
 // Sử dụng chung Sheet với bài học qua moBangDuAn_().
-const ACH_PROFILE=CAU_HINH_LOP_2.MA_HOC_SINH;
+function achProfile_(){ return CAU_HINH_LOP_2.MA_HOC_SINH; }
 const ACH_ATTEMPTS='90_Lan_lam_bai';
 const ACH_LEDGER='91_So_sao';
 const ACH_HEADERS_ATTEMPTS=['attempt_id','at_utc','profile_id','lesson_id','level','correct','total','answered','active_seconds','subject','title','correct_ids'];
@@ -64,7 +64,7 @@ function achCheck_(q,fields){
 function achFirst_(events,key){return events.some(e=>String(e.event_key)===key);}
 function achAdd_(sheet,events,key,type,delta,lesson,lv,attempt,note){
  if(achFirst_(events,key))return false;
- const record={event_key:key,at_utc:new Date().toISOString(),profile_id:ACH_PROFILE,event_type:type,delta,lesson_id:lesson,level:lv,attempt_id:attempt,note:note||''};
+ const record={event_key:key,at_utc:new Date().toISOString(),profile_id:achProfile_(),event_type:type,delta,lesson_id:lesson,level:lv,attempt_id:attempt,note:note||''};
  sheet.appendRow(ACH_HEADERS_LEDGER.map(k=>record[k]));
  events.push(record);return true;
 }
@@ -78,8 +78,8 @@ function ghiNhanKetQuaToan20(payload){
  try{
   const attemptSheet=achS_(ACH_ATTEMPTS,ACH_HEADERS_ATTEMPTS);
   const pointsSheet=achS_(ACH_LEDGER,ACH_HEADERS_LEDGER);
-  const old=achRows_(attemptSheet).filter(r=>r.profile_id===ACH_PROFILE&&r.lesson_id==='toan_b20'&&r.level===lv);
-  const events=achRows_(pointsSheet).filter(r=>r.profile_id===ACH_PROFILE);
+  const old=achRows_(attemptSheet).filter(r=>r.profile_id===achProfile_()&&r.lesson_id==='toan_b20'&&r.level===lv);
+  const events=achRows_(pointsSheet).filter(r=>r.profile_id===achProfile_());
   const id=String(payload.attemptId||'');
   if(!/^[a-zA-Z0-9_-]{12,90}$/.test(id))throw Error('Mã lượt làm không hợp lệ');
   // Retry có cùng attemptId được trả về nhưng không chấm/cộng lần nữa.
@@ -99,7 +99,7 @@ function ghiNhanKetQuaToan20(payload){
    if(achCheck_(q,a)){correct++;correctIds.push(q.id);}
   });
   const now=new Date(),entry={
-   attempt_id:id,at_utc:now.toISOString(),profile_id:ACH_PROFILE,lesson_id:'toan_b20',level:lv,
+   attempt_id:id,at_utc:now.toISOString(),profile_id:achProfile_(),lesson_id:'toan_b20',level:lv,
    correct,total:questions.length,answered,active_seconds:Math.max(0,Math.min(1800,Math.floor(Number(payload.activeSeconds)||0))),
    subject:'Toán',title:'Bài 20: Phép cộng (có nhớ)',correct_ids:JSON.stringify(correctIds)
   };

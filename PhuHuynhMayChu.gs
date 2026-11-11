@@ -90,13 +90,13 @@ function phSafe_(s,n){
  return /^[=+\-@]/.test(t)?"'"+t:t;
 }
 function phNotes_(){
- return achRows_(achS_(PH_NOTE_SHEET,PH_NOTE_HEADERS)).filter(r=>r.profile_id===ACH_PROFILE);
+ return achRows_(achS_(PH_NOTE_SHEET,PH_NOTE_HEADERS)).filter(r=>r.profile_id===achProfile_());
 }
 function phuHuynhTongQuan(token){
  phRequire_(token);
  const a=achS_(ACH_ATTEMPTS,ACH_HEADERS_ATTEMPTS),p=achS_(ACH_LEDGER,ACH_HEADERS_LEDGER);
  const summary=achSummary_(a,p);
- const entries=achRows_(p).filter(x=>x.profile_id===ACH_PROFILE).slice(-120).reverse().map(x=>({
+ const entries=achRows_(p).filter(x=>x.profile_id===achProfile_()).slice(-120).reverse().map(x=>({
   id:String(x.event_key),at:String(x.at_utc),type:String(x.event_type),
   delta:Number(x.delta)||0,level:String(x.level||''),note:String(x.note||'')
  }));
@@ -110,7 +110,7 @@ function phuHuynhGhiChu(token,text){
  const l=phLock_();
  try{
   phRequire_(token);
-  const id='NOTE:'+Utilities.getUuid(),record={note_id:id,at_utc:new Date().toISOString(),profile_id:ACH_PROFILE,content};
+  const id='NOTE:'+Utilities.getUuid(),record={note_id:id,at_utc:new Date().toISOString(),profile_id:achProfile_(),content};
   achS_(PH_NOTE_SHEET,PH_NOTE_HEADERS).appendRow(PH_NOTE_HEADERS.map(k=>record[k]));
   return {ok:true,id};
  }finally{l.releaseLock()}
@@ -139,7 +139,7 @@ function phuHuynhDieuChinhSao(token,payload){
   }
   props.deleteProperty(PH_KEYS.LOCK);
   const sheet=achS_(ACH_LEDGER,ACH_HEADERS_LEDGER);
-  const all=achRows_(sheet).filter(e=>e.profile_id===ACH_PROFILE);
+  const all=achRows_(sheet).filter(e=>e.profile_id===achProfile_());
   const eventKey='PARENT:'+requestId;
   const existing=all.find(e=>String(e.event_key)===eventKey);
   if(existing){
@@ -148,7 +148,7 @@ function phuHuynhDieuChinhSao(token,payload){
   }
   const balance=all.reduce((n,e)=>n+Number(e.delta||0),0);
   if(balance+delta<0)throw Error('Ví sao không đủ để trừ.');
-  const event={event_key:eventKey,at_utc:new Date().toISOString(),profile_id:ACH_PROFILE,
+  const event={event_key:eventKey,at_utc:new Date().toISOString(),profile_id:achProfile_(),
    event_type:delta>0?'parent_bonus':'parent_redeem',delta,lesson_id:'',level:'',
    attempt_id:'',note};
   sheet.appendRow(ACH_HEADERS_LEDGER.map(k=>event[k]));
