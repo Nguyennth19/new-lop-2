@@ -1,22 +1,69 @@
-/* G5: lịch và chuyên cần chỉ hiển thị bằng chứng từ máy chủ.
- * Không còn dựa trên localStorage, không đánh dấu vắng học khi chưa có lịch chính thức.
+/* Lịch chuyên cần lấy từ máy chủ. Ngày đang chọn là trạng thái giao diện,
+ * KHÔNG đồng nghĩa đã học. Múi giờ chuẩn: Việt Nam (UTC+7).
  */
-const NGAY_TRONG_TUAN=['T2','T3','T4','T5','T6','T7','CN'];
+const NGAY_TRONG_TUAN=['CN','T2','T3','T4','T5','T6','T7'];
+const LICH_MUI_GIO='Asia/Ho_Chi_Minh';
 let LICH_MAY_CHU=null;
-function ghiNhanBatDauHoc(){ /* Không tính là đã học khi chỉ mở bài. */ }
-function ghiNhanNgayHoc(){ /* Nộp/chấm và chuyên cần đã do server xử lý. */ }
+let NGAY_LICH_DANG_CHON=null;
+function ghiNhanBatDauHoc(){ /* Chỉ mở bài không được tính đã học. */ }
+function ghiNhanNgayHoc(){ /* Chuyên cần chỉ ghi nhận từ kết quả nộp máy chủ. */ }
+function ngayVietNam_(date){
+ const parts=new Intl.DateTimeFormat('en-GB',{
+  timeZone:LICH_MUI_GIO,year:'numeric',month:'2-digit',day:'2-digit'
+ }).formatToParts(date);
+ const read=k=>parts.find(p=>p.type===k)?.value||'';
+ return read('year')+'-'+read('month')+'-'+read('day');
+}
+function ngayHienTaiVietNam_(){return ngayVietNam_(new Date());}
+function ngayTrongTuan_(iso){
+ const d=new Date(iso+'T12:00:00+07:00');
+ return NGAY_TRONG_TUAN[d.getUTCDay()]||'';
+}
+function lichBayNgayMacDinh_(){
+ const today=ngayHienTaiVietNam_();
+ const base=new Date(today+'T12:00:00+07:00');
+ return Array.from({length:7},(_,i)=>{
+  const d=new Date(base.getTime()-(6-i)*86400000);
+  const day=ngayVietNam_(d);
+  return {day,label:ngayTrongTuan_(day),active:false,attempts:0,minutes:0};
+ });
+}
+function lichEscape_(text){
+ return String(text===null||text===undefined?'':text)
+  .replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 function capNhatLichHoc(summary){
- if(summary?.source==='server')LICH_MAY_CHU=summary;
- else if(summary?.week)LICH_MAY_CHU=summary;
+ if(summary&&Array.isArray(summary.week))LICH_MAY_CHU=summary;
  const board=document.getElementById('schoolweek');
  if(!board)return;
- const week=LICH_MAY_CHU?.week||[];
- if(!week.length){
-  board.innerHTML=NGAY_TRONG_TUAN.map((day,i)=>'<div class="school-day status-neutral" data-day="'+i+'"><strong>'+day+'</strong><small>Chưa xác minh</small></div>').join('');
-  return;
+ const received=Array.isArray(LICH_MAY_CHU?.week)&&LICH_MAY_CHU.week.length>0;
+ const week=received?LICH_MAY_CHU.week:lichBayNgayMacDinh_();
+ const today=ngayHienTaiVietNam_();
+ if(!NGAY_LICH_DANG_CHON||!week.some(d=>d.day===NGAY_LICH_DANG_CHON)){
+  NGAY_LICH_DANG_CHON=week.some(d=>d.day===today)?today:week[week.length-1].day;
  }
- board.innerHTML=week.map((day,i)=>'<div class="school-day '+(day.active?'status-done':'status-neutral')+'" data-day="'+i+'"><strong>'+String(day.label||NGAY_TRONG_TUAN[i])+'</strong><span>'+String(day.day||'')+'</span><small>'+(day.active?'✓ Có bài đúng':'Chưa có bài đúng')+'</small></div>').join('');
+ board.innerHTML=week.map(day=>{
+  const iso=String(day.day||'');
+  const selected=iso===NGAY_LICH_DANG_CHON;
+  const isToday=iso===today;
+  const active=!!day.active;
+  const label=String(day.label||ngayTrongTuan_(iso));
+  return '<button type="button" class="school-day '+(active?'status-done':'status-neutral')+
+   (selected?' selected':'')+(isToday?' today':'')+
+   '" data-day="'+lichEscape_(iso)+'" aria-pressed="'+selected+
+   '" aria-label="'+lichEscape_(label+' '+iso+(isToday?' hôm nay':'')+(active?' đã có bài đúng':' chưa có bài đúng'))+
+   '"><strong>'+lichEscape_(label)+(isToday?' <span class="school-today-mark">Hôm nay</span>':'')+
+   '</strong><span>'+lichEscape_(iso)+'</span><small>'+
+   (received?(active?'✓ Có bài đúng':'Chưa có bài đúng'):'Chưa xác minh')+
+   '</small></button>';
+ }).join('');
  const caption=document.querySelector('.week-caption');
- if(caption)caption.textContent='Hoạt động trong 7 ngày gần nhất · Dữ liệu máy chủ';
+ if(caption)caption.textContent=received?'Hoạt động trong 7 ngày gần nhất · Dữ liệu máy chủ':'Đang chờ dữ liệu chuyên cần từ máy chủ';
 }
+document.addEventListener('click',e=>{
+ const button=e.target.closest('#schoolweek button[data-day]');
+ if(!button)return;
+ NGAY_LICH_DANG_CHON=button.dataset.day;
+ capNhatLichHoc();
+});
 capNhatLichHoc();
