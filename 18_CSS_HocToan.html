@@ -1,0 +1,43 @@
+/* Giao diện học Toán từ dữ liệu Sheet, tách riêng CSS để bảo trì. */
+[hidden]{display:none!important}
+.math-lesson-panel{padding:12px 0 35px}
+.math-loading,.math-error{padding:26px;background:#fff;border:1px solid #e2e8f0;border-radius:16px}
+.math-error{color:#b91c1c}
+.math-lesson-head{display:flex;gap:18px;align-items:flex-start;padding:20px;background:#fff;border:1px solid #e2e8f0;border-radius:18px}
+.math-lesson-head button{background:#eaf1ff;border:0;border-radius:12px;padding:10px 13px;color:#2563eb;font-weight:700;white-space:nowrap}
+.math-lesson-head h2{font-size:19px;line-height:1.4;margin:0 0 6px;color:#172554}
+.math-lesson-head p{font-size:12px;margin:0;color:#64748b}
+.math-level-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:19px 0}
+.math-level-tabs button{background:#fff;color:#334155;border:1px solid #cbd5e1;border-radius:13px;padding:12px 16px;font-size:13px;font-weight:800}
+.math-level-tabs button.active{background:linear-gradient(135deg,#2e6bee,#06b6d4);color:#fff;border-color:transparent}
+.math-section{padding:21px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;margin:16px 0}
+.math-section h3{margin:0 0 18px;font-size:18px;color:#1e40af}
+.math-question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.math-question{padding:18px;border:1px solid #e2e8f0;border-radius:15px;background:#f8faff;min-width:0}
+.math-question.math-correct{border-color:#86efac;background:#f0fdf4}
+.math-question.math-invalid{background:#fff7ed;border-color:#fed7aa}
+.math-q-top{display:flex;justify-content:space-between;gap:8px;align-items:center;font-weight:800;margin-bottom:13px}
+.math-q-top small{font-size:10px;color:#64748b;font-weight:600}
+.math-formula{font-size:23px;letter-spacing:.02em;font-weight:800;color:#1d4ed8;text-align:center;padding:14px 0}
+.math-vertical{display:flex;flex-direction:column;text-align:right;width:100px;margin:8px auto 15px;font-size:28px;line-height:1.15;font-weight:800;font-variant-numeric:tabular-nums}
+.math-vertical hr{border:0;border-top:2px solid #334155;width:100%;margin:5px 0}
+.math-vertical span:last-child{color:#94a3b8}
+.math-story{line-height:1.65;font-weight:600;font-size:14px;margin:8px 0}
+.math-summary{font-size:12px;color:#475569;background:#fff;padding:9px;border-radius:9px}
+.math-answer{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px;font-weight:700}
+.math-answer input{width:120px;border:1px solid #cbd5e1;border-radius:10px;padding:10px;font-size:18px;text-align:center}
+.math-unit{margin-left:7px;font-size:12px}
+.math-puzzle{display:grid;gap:2px;justify-content:center;margin:12px auto 20px}
+.math-digit-row{display:flex;align-items:center;gap:4px}
+.math-digit-row:last-child{border-top:2px solid #334155;padding-top:6px}
+.math-op{width:20px;font-size:24px;font-weight:800;color:#334155}
+.math-digit,.math-digit-row input{width:39px;height:46px;display:grid;place-items:center;border-radius:7px;text-align:center;font-size:23px;font-weight:800}
+.math-digit{background:#e2e8f0}
+.math-digit-row input{background:#fff;border:2px solid #60a5fa;color:#1e40af}
+.math-q-bottom{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:15px}
+.math-q-bottom button{background:#2563eb;border:0;border-radius:10px;color:#fff;padding:10px 14px;font-size:12px;font-weight:800}
+.math-feedback{color:#2563eb;font-size:12px;font-weight:700}
+.math-correct .math-feedback{color:#15803d}
+.math-source-note{font-size:11px;color:#64748b}
+@media(max-width:900px){.math-question-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.math-lesson-head{flex-direction:column}.math-level-tabs button{flex:1}.math-section{padding:13px}.math-question{padding:13px}}
