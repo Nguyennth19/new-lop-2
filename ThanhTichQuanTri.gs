@@ -7,7 +7,7 @@ function dieuChinhSaoPhuHuynh_(delta,lyDo){
   const as=achS_(ACH_ATTEMPTS,ACH_HEADERS_ATTEMPTS),ps=achS_(ACH_LEDGER,ACH_HEADERS_LEDGER);
   const current=achSummary_(as,ps);if(current.balance+value<0)throw Error('Ví sao không đủ để trừ');
   const id=Utilities.getUuid(),entry={event_key:'ADMIN:'+id,at_utc:new Date().toISOString(),
-    profile_id:ACH_PROFILE,event_type:value<0?'parent_redeem':'parent_bonus',delta:value,
+    profile_id:achProfile_(),event_type:value<0?'parent_redeem':'parent_bonus',delta:value,
     lesson_id:'',level:'',attempt_id:'',note:achCut_(lyDo,220)};
   ps.appendRow(ACH_HEADERS_LEDGER.map(k=>entry[k]));return achSummary_(as,ps);
  }finally{lock.releaseLock()}
