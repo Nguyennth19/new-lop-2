@@ -167,8 +167,11 @@ function achStreak_(days){
 function achSummary_(attemptSheet,pointsSheet){
  const attempts=achRows_(attemptSheet).filter(x=>x.profile_id===ACH_PROFILE);
  const events=achRows_(pointsSheet).filter(x=>x.profile_id===ACH_PROFILE);
- const earned=events.filter(e=>Number(e.delta)>0).reduce((n,e)=>n+Number(e.delta),0);
- const balance=events.reduce((n,e)=>n+Number(e.delta),0);
+ const studyTypes=new Set(['level_done','perfect','improved','retry_success','daily']);
+ const earned=events.filter(e=>studyTypes.has(String(e.event_type))).reduce((n,e)=>n+Number(e.delta||0),0);
+ const bonus=events.filter(e=>e.event_type==='parent_bonus').reduce((n,e)=>n+Number(e.delta||0),0);
+ const redeemed=-events.filter(e=>Number(e.delta)<0).reduce((n,e)=>n+Number(e.delta||0),0);
+ const balance=events.reduce((n,e)=>n+Number(e.delta||0),0);
  const completed=new Set(events.filter(e=>e.event_type==='level_done').map(e=>e.lesson_id+':'+e.level));
  const days=[...new Set(attempts.filter(a=>Number(a.correct)>0).map(a=>achDay_(achDate_(a.at_utc))))];
  const now=new Date(),today=achDay_(now),bars=[];
@@ -180,7 +183,7 @@ function achSummary_(attemptSheet,pointsSheet){
  const accuracy=attempts.reduce((n,a)=>n+Number(a.correct||0),0),total=attempts.reduce((n,a)=>n+Number(a.total||0),0);
  const badges=achBadges_(attempts,events);
  const recent=attempts.slice(-25).reverse().map(a=>({id:a.attempt_id,at:String(a.at_utc),title:a.title,subject:a.subject,level:a.level,correct:Number(a.correct),total:Number(a.total)}));
- return {earned,balance,spent:earned-balance,attempts:attempts.length,completed:completed.size,
+ return {earned,balance,bonus,spent:redeemed,attempts:attempts.length,completed:completed.size,
   lectures:0, tests:0, activeSeconds:attempts.reduce((n,a)=>n+Number(a.active_seconds||0),0),
   accuracy:total?Math.round(accuracy/total*100):0,days:days.length,streak:achStreak_(days),badges,
   badgeCount:badges.filter(b=>b.achieved).length,week:bars,recent,asOf:new Date().toISOString(),isDemo:false};
