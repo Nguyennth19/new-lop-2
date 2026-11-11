@@ -109,6 +109,7 @@ function phuHuynhGhiChu(token,text){
  if(content.length<3)throw Error('Ghi chú phải có ít nhất 3 ký tự.');
  const l=phLock_();
  try{
+  phRequire_(token);
   const id='NOTE:'+Utilities.getUuid(),record={note_id:id,at_utc:new Date().toISOString(),profile_id:ACH_PROFILE,content};
   achS_(PH_NOTE_SHEET,PH_NOTE_HEADERS).appendRow(PH_NOTE_HEADERS.map(k=>record[k]));
   return {ok:true,id};
@@ -158,6 +159,8 @@ function phuHuynhDoiPin(token,oldPin,newPin){
  if(!/^\d{4}$/.test(String(newPin||'')))throw Error('PIN mới phải đúng 4 chữ số.');
  const l=phLock_();
  try{
+  phRequire_(token);
+  phRequire_(token);
   const props=phProps_(),now=Date.now();
   let obj;try{obj=JSON.parse(props.getProperty(PH_KEYS.LOCK)||'{}')}catch(e){obj={}}
   if(Number(obj.until||0)>now)throw Error('PIN đang bị khóa 15 phút.');
