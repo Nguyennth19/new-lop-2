@@ -32,7 +32,7 @@ const THANH_TICH_GUI=(function(){
    pending.delete(key);
    if(!result?.ok){setNote('Máy chủ chưa xác nhận kết quả.',true);return;}
    const balance=result.summary?.balance??0,stars=result.summary?.earned??0;
-   if(!result.duplicate&&Number(result.score)>0&&typeof ghiNhanNgayHoc==='function')ghiNhanNgayHoc();
+   if(typeof TIEN_DO_HOC_TAP!=='undefined')TIEN_DO_HOC_TAP.refresh(true).catch(e=>setNote('Đã nộp bài, nhưng chưa đồng bộ được dấu tích: '+(e.message||'Lỗi mạng'),true));
    setNote('Đã đồng bộ ✓ · Ví sao: '+balance+' ★ · Sao hành trình: '+stars+' ★');
    if(typeof taiThanhTich==='function')taiThanhTich(true);
   }).withFailureHandler(error=>{
