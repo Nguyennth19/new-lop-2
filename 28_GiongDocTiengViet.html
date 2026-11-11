@@ -1,0 +1,39 @@
+/* Giọng đọc tiếng Việt cho cả dự án, ưu tiên các tên giọng nữ được hệ điều hành khai báo.
+ Không thể xác định giới tính giọng từ Web Speech API một cách tuyệt đối. Không tải thư viện ngoài.
+ Giọng do trình duyệt/hệ điều hành cung cấp. */
+const GIONG_DOC_VI=(function(){
+ let preferred=null,voices=[],loaded=false;
+ const preferredNames=['hoaimy','hoai my','hoài my','linh','mai','female','woman','google tiếng việt','microsoft hoaimy'];
+ function rank(v){
+  const name=(v.name||'').toLocaleLowerCase('vi-VN').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const lang=(v.lang||'').toLowerCase();
+  if(!lang.startsWith('vi'))return -1e5;
+  let score=100;
+  if(lang==='vi-vn')score+=20;
+  if(preferredNames.some(n=>name.includes(n.normalize('NFD').replace(/[\u0300-\u036f]/g,''))))score+=40;
+  if(/nam|male|man voice/.test(name)&&!/female/.test(name))score-=25;
+  if(v.localService)score+=3;
+  return score;
+ }
+ function update(){
+  if(!('speechSynthesis' in window))return;
+  voices=window.speechSynthesis.getVoices()||[];
+  const candidates=voices.filter(v=>rank(v)>0).sort((a,b)=>rank(b)-rank(a));
+  preferred=candidates[0]||null;loaded=true;
+ }
+ function speak(text,opts={}){
+  if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined')return false;
+  update();window.speechSynthesis.cancel();
+  const message=String(text||'').replace(/<[^>]*>/g,' ').trim();if(!message)return false;
+  const u=new SpeechSynthesisUtterance(message);u.lang='vi-VN';u.rate=opts.rate||0.88;u.pitch=1.08;
+  if(preferred)u.voice=preferred;
+  window.speechSynthesis.speak(u);
+  return true;
+ }
+ function stop(){if('speechSynthesis' in window)window.speechSynthesis.cancel()}
+ if('speechSynthesis' in window){
+  update();
+  window.speechSynthesis.addEventListener?.('voiceschanged',update);
+ }
+ return {speak,stop,refresh:update,hasVietnameseVoice:()=>Boolean(preferred),voiceName:()=>preferred?preferred.name:null};
+})();
