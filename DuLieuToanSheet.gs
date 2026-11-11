@@ -6,7 +6,7 @@
 const TOAN_SHEET_ID = '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8';
 function layBaiToan20() {
   const cache=CacheService.getScriptCache();
-  const hit=cache.get('toan_b20_v23');
+  const hit=cache.get('toan_b20_v26_20261111');
   if(hit) return JSON.parse(hit);
   const wb=SpreadsheetApp.openById(TOAN_SHEET_ID);
   const tab = name => {
@@ -44,6 +44,6 @@ function layBaiToan20() {
     sections:sections.map(s=>({id:s.section_id,levelId:s.level_id,name:s.name,type:s.question_type})),
     questions:questions,readAt:new Date().toISOString()};
   // CacheService giới hạn dung lượng giá trị ~100KB; bỏ cache khi lớn.
-  try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put('toan_b20_v23',raw,120)}catch(e){}
+  try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put('toan_b20_v26_20261111',raw,21600)}catch(e){}
   return result;
 }
