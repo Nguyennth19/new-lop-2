@@ -77,6 +77,7 @@ function thHienThi(d){
  if(homeStreak)homeStreak.textContent=d.streak?d.streak+' ngày học liên tiếp!':'Chưa có ngày học hợp lệ';
  const homeWeek=document.querySelector('.streak .week');
  if(homeWeek)homeWeek.innerHTML=(d.week||[]).map(x=>'<div class="day '+(x.active?'done':'future')+'">'+thE(x.label)+'<i>'+(x.active?'✓':'•')+'</i></div>').join('');
+ if(typeof capNhatLichHoc==='function')capNhatLichHoc(d);
  thHuyHieu(d);thChart(d);thThemBieuDo(d);thHoatDong();
  thSet('achvStatus','Dữ liệu thực từ Google Sheet · Sao có thể dùng: '+d.balance+' ★ · Không bao gồm kết quả demo và dữ liệu nháp cũ.');
 }
