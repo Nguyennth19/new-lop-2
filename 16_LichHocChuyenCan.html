@@ -1,59 +1,22 @@
-// Lịch học và chuyên cần V2.2: chỉ ghi nhận hoạt động hoàn thành thực tế.
-const KHOA_NGAY_HOC='lop2_v22_ngay_hoc';
-const KHOA_BAT_DAU='lop2_v22_bat_dau';
-const LICH_TIET_MAU=[0,0,0,0,0,0,0]; // Chưa thiết lập lịch: không đánh dấu vắng học theo dữ liệu demo.
+/* G5: lịch và chuyên cần chỉ hiển thị bằng chứng từ máy chủ.
+ * Không còn dựa trên localStorage, không đánh dấu vắng học khi chưa có lịch chính thức.
+ */
 const NGAY_TRONG_TUAN=['T2','T3','T4','T5','T6','T7','CN'];
-function ngayDiaPhuong(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
-function docNgayHoc(){try{const x=JSON.parse(localStorage.getItem(KHOA_NGAY_HOC)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch(e){return {}}}
-function docNgayBatDau(){try{const x=JSON.parse(localStorage.getItem(KHOA_BAT_DAU)||'{}');return x&&typeof x==='object'?x:{}}catch(e){return {}}}
-function ghiNhanBatDauHoc(){
- const x=docNgayBatDau(),key=ngayDiaPhuong(new Date());x[key]=true;
- try{localStorage.setItem(KHOA_BAT_DAU,JSON.stringify(x))}catch(e){}
- capNhatLichHoc();
-}
-function ghiNhanNgayHoc(){
- const x=docNgayHoc(),key=ngayDiaPhuong(new Date());
- x[key]=(Number(x[key])||0)+1;
- try{localStorage.setItem(KHOA_NGAY_HOC,JSON.stringify(x))}catch(e){}
- capNhatLichHoc();
-}
-function capNhatLichHoc(){
- const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
- const weekday=(today.getDay()+6)%7;
- const monday=new Date(today);monday.setDate(today.getDate()-weekday);
- const records=docNgayHoc(),started=docNgayBatDau();
- const completed=d=>(Number(records[ngayDiaPhuong(d)])||0)>0;
- const days=Array.from({length:7},(_,i)=>{const d=new Date(monday);d.setDate(monday.getDate()+i);return d});
- const label=document.querySelector('.week-caption');
- if(label){const a=days[0],b=days[6];label.textContent='Từ ngày '+String(a.getDate()).padStart(2,'0')+'/'+String(a.getMonth()+1).padStart(2,'0')+' đến ngày '+String(b.getDate()).padStart(2,'0')+'/'+String(b.getMonth()+1).padStart(2,'0')+'/'+b.getFullYear();}
+let LICH_MAY_CHU=null;
+function ghiNhanBatDauHoc(){ /* Không tính là đã học khi chỉ mở bài. */ }
+function ghiNhanNgayHoc(){ /* Nộp/chấm và chuyên cần đã do server xử lý. */ }
+function capNhatLichHoc(summary){
+ if(summary?.source==='server')LICH_MAY_CHU=summary;
+ else if(summary?.week)LICH_MAY_CHU=summary;
  const board=document.getElementById('schoolweek');
- if(board){
-  board.innerHTML=days.map((d,i)=>{
-   const isToday=i===weekday,hasCompleted=completed(d),past=d<today;
-   const status=hasCompleted?'done':started[ngayDiaPhuong(d)]?'doing':past&&LICH_TIET_MAU[i]>0?'missed':'neutral';
-   const symbol=status==='done'?'✓':status==='missed'?'✕':status==='doing'?'◐':'';
-   const detail=LICH_TIET_MAU[i]?(LICH_TIET_MAU[i]+' tiết học'):'Chưa đặt lịch';
-   return '<button type="button" class="school-day '+(isToday?'selected today ':'')+'status-'+status+'" data-day="'+i+'" aria-pressed="'+isToday+'"><strong>'+NGAY_TRONG_TUAN[i]+'</strong><span>'+String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+(isToday?' · Hôm nay':'')+'</span><small>'+(symbol?symbol+' ':'')+detail+'</small></button>';
-  }).join('');
+ if(!board)return;
+ const week=LICH_MAY_CHU?.week||[];
+ if(!week.length){
+  board.innerHTML=NGAY_TRONG_TUAN.map((day,i)=>'<div class="school-day status-neutral" data-day="'+i+'"><strong>'+day+'</strong><small>Chưa xác minh</small></div>').join('');
+  return;
  }
- const week=document.querySelector('.streak .week');
- if(week){week.innerHTML=days.map((d,i)=>{
-  const state=completed(d)?'done':d.getTime()===today.getTime()?'current':started[ngayDiaPhuong(d)]?'doing':d<today?'missed':'future';
-  return '<div class="day '+state+'">'+NGAY_TRONG_TUAN[i]+'<i>'+(state==='done'?'✓':state==='missed'?'✕':state==='doing'?'◐':state==='current'?'⭐':'•')+'</i></div>';
- }).join('');}
- // Chuỗi được tính đến hôm nay hoặc hôm qua, không lấy dữ liệu mẫu.
- let cursor=new Date(today),streak=0;
- if(!completed(cursor))cursor.setDate(cursor.getDate()-1);
- while(completed(cursor)&&streak<3660){streak++;cursor.setDate(cursor.getDate()-1)}
- const keys=Object.keys(records).filter(k=>/^\d{4}-\d{2}-\d{2}$/.test(k)&&Number(records[k])>0).sort();
- let missed=0;
- if(keys.length){const last=new Date(keys[keys.length-1]+'T00:00:00');const end=new Date(today);end.setDate(end.getDate()-1);for(const d=new Date(last);d<end;){d.setDate(d.getDate()+1);if(!completed(d))missed++}}
- const val=document.querySelector('.streak-value');
- if(val)val.textContent=streak?streak+' ngày liên tiếp!':missed?missed+' ngày chưa làm bài':'Chưa có ngày học được ghi nhận';
+ board.innerHTML=week.map((day,i)=>'<div class="school-day '+(day.active?'status-done':'status-neutral')+'" data-day="'+i+'"><strong>'+String(day.label||NGAY_TRONG_TUAN[i])+'</strong><span>'+String(day.day||'')+'</span><small>'+(day.active?'✓ Có bài đúng':'Chưa có bài đúng')+'</small></div>').join('');
+ const caption=document.querySelector('.week-caption');
+ if(caption)caption.textContent='Hoạt động trong 7 ngày gần nhất · Dữ liệu máy chủ';
 }
-document.addEventListener('click',e=>{
- const btn=e.target.closest('#schoolweek .school-day');
- if(!btn)return; // Cho phép xem ngày khác mà không đổi vị trí đánh dấu hôm nay.
- document.querySelectorAll('#schoolweek .school-day').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
-});
 capNhatLichHoc();

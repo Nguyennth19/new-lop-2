@@ -15,11 +15,4 @@ function layThongTinDuLieuBaiHoc() {
   });
   return ketQua;
 }
-function moBangDuLieu_() {
-  const id = PropertiesService.getScriptProperties()
-    .getProperty(CAU_HINH_LOP_2.MA_SHEET_THUOC_TINH);
-  if (id) return SpreadsheetApp.openById(id);
-  const active = SpreadsheetApp.getActiveSpreadsheet();
-  if (active) return active;
-  throw new Error('Chưa liên kết Spreadsheet dữ liệu');
-}
+function moBangDuLieu_(){return moBangDuAn_();}

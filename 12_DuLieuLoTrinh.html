@@ -1,44 +1,19 @@
 const subjectRoadmaps={
  'Toán 2':[{id:'toan-chuong-phep-cong',title:'Phép cộng có nhớ',lessons:[{id:'toan_b20',title:'Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số',desc:'Dữ liệu từ Google Sheets · 3 cấp độ · 38 câu được chọn từ dữ liệu Sheet',levels:['new','new','new']}]}],
- 'Tiếng Việt 2':[
-  {id:'tv-c2',title:'Đi học vui sao',lessons:[
-   {id:'tv-truong',title:'Yêu lắm trường ơi!',desc:'Đọc hiểu và diễn đạt cảm xúc',levels:['new','new','new']},
-   {id:'tv-sach',title:'Cuốn sách của em',desc:'Đọc và hiểu nội dung văn bản',levels:['new','new','new']},
-   {id:'tv-trang',title:'Khi trang sách mở ra',desc:'Từ ngữ, câu và luyện viết',levels:['new','new','new']}]},
-  {id:'tv-doc',title:'Niềm vui đọc sách',lessons:[
-   {id:'tv-doc-hieu',title:'Đọc và tìm hiểu văn bản',desc:'Tìm thông tin và nêu ý chính',levels:['new','new','new']},
-   {id:'tv-cau',title:'Luyện từ và câu',desc:'Nhận biết và sử dụng từ, câu',levels:['new','new','new']}]}
- ],
- 'Tiếng Anh 2':[
-  {id:'en-school',title:'School things – Đồ dùng học tập',lessons:[
-   {id:'en-objects',title:'School objects',desc:'Nhận biết và gọi tên đồ dùng học tập',levels:['new','new','new']},
-   {id:'en-bag',title:'My school bag',desc:'Luyện nghe, nói về cặp sách',levels:['new','new','new']}]},
-  {id:'en-family',title:'My family – Gia đình em',lessons:[
-   {id:'en-family1',title:'Family members',desc:'Từ vựng về các thành viên gia đình',levels:['new','new','new']},
-   {id:'en-family2',title:'This is my family',desc:'Giới thiệu người thân bằng câu đơn giản',levels:['new','new','new']}]}
- ]
+ 'Tiếng Việt 2':[],
+ 'Tiếng Anh 2':[]
 };
 const levelMeta=[
  {name:'LV1',title:'Học kiến thức',source:'SGK',icon:'book-open'},
  {name:'LV2',title:'Luyện tập',source:'SBT',icon:'pencil'},
  {name:'LV3',title:'Vận dụng nâng cao',source:'Tham khảo',icon:'award'}
 ];
-let expandedTopicId='math-c2';
-let expandedLessonId='math-12';
+let expandedTopicId='toan-chuong-phep-cong';
+let expandedLessonId='toan_b20';
 let activeLessonContext=null;
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const TOPIC_STORAGE_KEY='lop2_v19_topic_progress';
-try {
- const saved=JSON.parse(localStorage.getItem(TOPIC_STORAGE_KEY)||'{}');
- for(const [sub,topics] of Object.entries(subjectRoadmaps))for(const t of topics)for(const l of t.lessons){
-  if(sub!=='Toán 2')continue; // Không nhập kết quả demo Tiếng Việt/Anh từ bản cũ.
-  const key=sub+'/'+t.id+'/'+l.id;
-  if(Array.isArray(saved[key])&&saved[key].length===3&&saved[key].every(x=>['done','doing','new'].includes(x)))l.levels=saved[key];
- }
-} catch(error){ /* Dữ liệu trình duyệt không hợp lệ: giữ dữ liệu mặc định */ }
-function persistTopicProgress(){
- try {const state={};for(const [sub,topics] of Object.entries(subjectRoadmaps))for(const t of topics)for(const l of t.lessons)state[sub+'/'+t.id+'/'+l.id]=l.levels;localStorage.setItem(TOPIC_STORAGE_KEY,JSON.stringify(state));}catch(error){}
-}
+// Tiến độ bài học do layTienDoHocTap() trên máy chủ cấp.
+function persistTopicProgress(){ /* Không ghi localStorage */ }
 const topicIsDone=t=>t.lessons.length>0&&t.lessons.every(l=>l.levels.every(x=>x==='done'));
 function firstActiveTopic(name){return (subjectRoadmaps[name]||[]).find(t=>!topicIsDone(t));}
 function chooseRoadmapSubject(name){

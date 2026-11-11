@@ -3,10 +3,9 @@
 (function(){
 let fullData=null, level='LV1', view='LV1', drafts={};
 let gradingState={}, levelStart=Date.now();
-const GRADE_KEY='lop2_b20_submitted_v24';
-let submissions={};try{submissions=JSON.parse(localStorage.getItem(GRADE_KEY)||'{}')||{}}catch(e){submissions={}}
-const LKEY='lop2_b20_drafts_v23';
-try { drafts=JSON.parse(localStorage.getItem(LKEY)||'{}')||{}; } catch(e){drafts={};}
+const GRADE_KEY='lop2_g5_transient_submissions';
+let submissions={}; // Lượt nộp chưa xác nhận chỉ giữ trong phiên đang mở.
+const LKEY='lop2_g5_transient_drafts'; // Không ghi tiến độ cũ vào trình duyệt.
 const E=thoatHtmlToan;
 const themes=['pink','blue','yellow','green','purple','orange'];
 const title={THEORY:'Lý thuyết',LV1:'LV1 – Học kiến thức',LV2:'LV2 – Luyện tập',LV3:'LV3 – Vận dụng nâng cao'};
@@ -33,7 +32,7 @@ function shell(){
 function activeQuestions(){return fullData?chonCauHoiTheoNhom(fullData):[];}
 function completed(){return activeQuestions().filter(q=>cauDaDungToan[q.id]).length;}
 function validCount(){return activeQuestions().length;}
-function levelDone(lv){if(!fullData)return false;const q=activeQuestions().filter(x=>x.level===lv);return q.length>0&&q.every(x=>x.valid&&cauDaDungToan[x.id]);}
+function levelDone(lv){return !!(typeof TIEN_DO_HOC!=='undefined'&&TIEN_DO_HOC.get()?.completedLevels?.[lv]);}
 function refreshProgress(){
  if(!fullData)return;
  const total=validCount(),p=total?Math.round(completed()/total*100):0;
@@ -42,13 +41,14 @@ function refreshProgress(){
  nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+muiIcon(id==='THEORY'?'book-open':id==='LV1'?'book':id==='LV2'?'pencil':'award')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
 }
 function start(index){
- level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};
+ level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  const root=shell();root.hidden=false;document.body.classList.add('math-learning');
  root.querySelector('#mlTitle').textContent='Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số';
  root.querySelector('#mlContent').innerHTML='<div class="ml-loading">Đang nạp bài học từ Google Sheets…</div>';
  document.getElementById('mlDock').hidden=true;
  if(typeof ghiNhanBatDauHoc==='function')ghiNhanBatDauHoc();
  try {history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+level);}catch(e){}
+ if(typeof TIEN_DO_HOC!=='undefined'&&!TIEN_DO_HOC.get())TIEN_DO_HOC.refresh().catch(()=>{});
  if(fullData){render();return;}
  const load=()=>new Promise((resolve,reject)=>{
   if(!window.google||!google.script||!google.script.run){reject(Error('Hãy mở Web App Google Apps Script'));return;}
@@ -68,7 +68,7 @@ function exit(){
  navigate('path');
 }
 function choose(id){
- view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};
+ view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
@@ -109,36 +109,7 @@ function input(q,key,max,extra=''){
 function baseCard(q,inside,kind){
  return '<article class="ml-card ml-theme-'+E(q.theme||'blue')+' '+kind+'" data-ml-q-card="'+E(q.id)+'"><div class="ml-card-top"><b>'+E(q.label||('Câu '+q.order))+'</b><small class="ml-earned">'+(cauDaDungToan[q.id]?'✓':'')+'</small></div>'+inside+'</article>';
 }
-function vertical(q){
- if(!q.valid)return invalid(q);
- const a=String(q.n1).padStart(2,'0'),b=String(q.n2).padStart(2,'0');
- const answer=String(q.answer).padStart(2,'0');
- const inside='<div class="ml-vert-note">ĐV → Nhớ → Chục</div><div class="ml-vertical-matrix">'+
- '<div class="ml-vert-row"><span></span><small>CHỤC</small><small>ĐV</small></div>'+
- '<div class="ml-vert-row"><span class="ml-remember-label">nhớ</span>'+input(q,q.id+':carry',1,'data-ml-carry="1"')+'<span></span></div>'+
- '<div class="ml-vert-row numbers"><span></span><b>'+E(a[0])+'</b><b>'+E(a[1])+'</b></div>'+
- '<div class="ml-vert-row numbers rule"><span class="operator">+</span><b>'+E(b[0])+'</b><b>'+E(b[1])+'</b></div>'+
- '<div class="ml-vert-row answers"><span></span>'+input(q,q.id+':tens',1)+input(q,q.id+':ones',1)+'</div></div>';
- return baseCard(q,inside,'ml-vertical-card');
-}
-function mental(q){
- return '<div class="ml-mental-row" data-ml-q-card="'+E(q.id)+'"><span class="ml-mental-first">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
-}
-function puzzle(q){
- if(!q.valid)return invalid(q);
- const inside='<div class="ml-puzzle">'+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v)+'</b>').join('')+'</div>').join('')+'</div>';
- return baseCard(q,inside,'ml-puzzle-card');
-}
-function word(q){
- if(!q.valid)return invalid(q);
- const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'"></div><p>'+E(q.prompt)+'</p></div>'+
- (q.summary?'<div class="ml-word-summary"><b>Tóm tắt:</b> '+E(q.summary)+'</div>':'')+
- '<div class="ml-graph-paper"><h4>BÀI GIẢI</h4><p>'+E(q.solutionPrompt||'Phép tính:')+'</p><div class="ml-word-calc">'+
- input(q,q.id+':n1',2)+input(q,q.id+':op',1)+input(q,q.id+':n2',2)+'<b>=</b>'+input(q,q.id+':sum',3)+'</div>'+
- '<div class="ml-word-result">Đáp số: '+input(q,q.id+':answer',3)+' <span>'+E(q.unit)+'</span></div></div>';
- return baseCard(q,inside,'ml-word-card');
-}
-function invalid(q){return '<article class="ml-card ml-invalid"><small>'+E(q.label||q.id)+'</small><p>⚠ Dữ liệu câu hỏi chưa hoàn chỉnh trong Google Sheet.</p></article>';}
+const {vertical,mental,puzzle,word,invalid}=taoHienThiCauToan({E,input,baseCard});
 function keyValue(q,k){
  const el=shell().querySelector('[data-ml-field="'+q.id+':'+k+'"]');
  return el?el.value.trim():'';
@@ -151,11 +122,7 @@ function gradeQuestion(q){
  f.forEach(el=>el.classList.toggle('ml-right',ok));
  f.forEach(el=>el.classList.toggle('ml-wrong',!ok&&el.value!==''));
  f.forEach(el=>el.classList.toggle('ml-empty',!ok&&el.value===''));
- if(ok&&!cauDaDungToan[q.id]){
-  cauDaDungToan[q.id]=true;
-  try{localStorage.setItem(KHOA_KET_QUA_TOAN,JSON.stringify(cauDaDungToan));}catch(e){}
-
- }
+ // Dấu tích đã học chỉ được máy chủ xác minh sau khi nộp.
  gradingState[q.id]=ok?'correct':f.every(x=>!x.value.trim())?'empty':'wrong';
  const card=shell().querySelector('[data-ml-q-card="'+q.id+'"]');
  if(card){card.classList.toggle('ml-correct',ok);const star=card.querySelector('.ml-earned');if(star&&ok)star.textContent='✓';}
@@ -163,19 +130,15 @@ function gradeQuestion(q){
 }
 function afterGrade(){
  refreshProgress();
- const q=activeQuestions().filter(x=>x.level===view);
- if(q.length&&q.every(x=>x.valid&&cauDaDungToan[x.id])){
-  const lesson=typeof findRoadmapLesson==='function'?findRoadmapLesson('Toán 2','toan_b20'):null;
-  if(lesson){lesson.levels[Number(view.slice(2))-1]='done';persistTopicProgress();}
- }
+ // Chỉ tiến độ từ layTienDoHocTap mới đánh dấu đã học trên sidebar và lộ trình.
 }
 function gradeLevel(){
  const qs=activeQuestions().filter(q=>q.level===view);
  qs.forEach(gradeQuestion);afterGrade();
  const n=qs.filter(q=>cauDaDungToan[q.id]).length;
 
- const record={at:new Date().toISOString(),seconds:Math.max(0,Math.round((Date.now()-levelStart)/1000)),total:qs.length,correct:qs.filter(q=>gradingState[q.id]==='correct').length,answered:qs.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length};
- submissions[view]=record;try{localStorage.setItem(GRADE_KEY,JSON.stringify(submissions))}catch(e){}
+ const record={at:new Date().toISOString(),seconds:typeof DEM_TUONG_TAC!=='undefined'?DEM_TUONG_TAC.seconds():0,total:qs.length,correct:qs.filter(q=>gradingState[q.id]==='correct').length,answered:qs.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length};
+ submissions[view]=record;
  renderResults();
  // Học sinh không thể tự cấp sao: gửi các ô đã nhập cho máy chủ kiểm tra lại.
  if(typeof THANH_TICH_GUI!=='undefined')THANH_TICH_GUI.send('toan_b20',view,qs,fields,record.seconds);
@@ -188,8 +151,8 @@ function resetLevel(){
   delete gradingState[q.id];
  }
  delete submissions[view];
- try{localStorage.setItem(LKEY,JSON.stringify(drafts));localStorage.setItem(GRADE_KEY,JSON.stringify(submissions))}catch(e){}
- levelStart=Date.now();
+ // Không lưu bản nháp hoặc dấu tích vào localStorage.
+ levelStart=Date.now();if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  render();
 }
 function renderResults(){
@@ -240,6 +203,7 @@ function press(k){
  const all=inputList();if(!all.length)return;
  if(!selected||!all.includes(selected))selected=all.find(x=>!x.value)||all[0];
  const target=selected;
+ if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  if(k==='⌫'){target.value=target.value.slice(0,-1);}
  else if(['+','−','×','÷','='].includes(k)){if(target.dataset.mlField.endsWith(':op'))target.value=({'+':'+','−':'-','×':'*','÷':'/','=':'='})[k];else return;}
  else if(/^[0-9]$/.test(k)){
@@ -270,15 +234,18 @@ document.addEventListener('mousedown',e=>{const key=e.target.closest('#mathFullS
 document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-ml-field]'))pickInput(e.target);});
 document.addEventListener('input',e=>{
  const el=e.target;if(!el.matches('#mathFullScreen [data-ml-field]'))return;
+ if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  const op=el.dataset.mlField.endsWith(':op');
  el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
  drafts[el.dataset.mlField]=el.value;
- try{localStorage.setItem(LKEY,JSON.stringify(drafts))}catch(e){}
+ // Bản nháp chỉ được giữ trong bộ nhớ của trang đang mở.
 });
 document.addEventListener('keydown',e=>{
  if(!e.target.matches('#mathFullScreen [data-ml-field]'))return;
+ if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  if(e.key==='Enter'){e.preventDefault();const all=inputList(),i=all.indexOf(e.target);if(i>=0&&i<all.length-1)all[i+1].focus();}
 });
+document.addEventListener('lop2:progress',()=>{if(fullData&&document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden)refreshProgress();});
 window.moBaiToanSheet=start;
 window.dongKhongGianToan=exit;
 })();

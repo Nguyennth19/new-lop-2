@@ -1,0 +1,14 @@
+/* G5: Xóa dấu vết demo/trạng thái cũ trên từng trình duyệt đúng MỘT lần.
+ * KHÔNG xóa Google Sheet nội dung, điểm thật phía máy chủ, hoặc PIN phụ huynh.
+ */
+(function(){
+ const flag='lop2_g5_reset_20261111_completed';
+ try{
+  if(localStorage.getItem(flag)==='1')return;
+  for(const store of [localStorage,sessionStorage]){
+   const keys=[];for(let i=0;i<store.length;i++){const key=store.key(i);if(key&&/^(lop2_|lop2\b|math_|toan_b20_)/i.test(key)&&key!==flag)keys.push(key);}
+   keys.forEach(k=>store.removeItem(k));
+  }
+  localStorage.setItem(flag,'1');
+ }catch(e){ /* Chế độ riêng tư có thể chặn storage; dữ liệu tiến độ vẫn lấy từ máy chủ. */ }
+})();

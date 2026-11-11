@@ -1,0 +1,43 @@
+/* G5: Đồng bộ tiến độ duy nhất từ máy chủ. Không ghi localStorage.
+ * Nếu máy chủ lỗi: giữ trạng thái 'chưa xác minh', không tự đánh dấu đã học.
+ */
+const TIEN_DO_HOC=(function(){
+ let snapshot=null,pending=null;
+ function apply(data){
+  if(!data||data.source!=='server'||data.lessonId!=='toan_b20')throw Error('Tiến độ máy chủ không hợp lệ.');
+  snapshot=data;
+  if(typeof cauDaDungToan!=='undefined'){
+   for(const k of Object.keys(cauDaDungToan))delete cauDaDungToan[k];
+   Object.assign(cauDaDungToan,data.correctQuestions||{});
+  }
+  if(typeof subjectRoadmaps!=='undefined'){
+   const lesson=subjectRoadmaps['Toán 2']?.flatMap(t=>t.lessons).find(l=>l.id==='toan_b20');
+   if(lesson)lesson.levels=['LV1','LV2','LV3'].map(l=>data.completedLevels?.[l]?'done':'new');
+  }
+  if(typeof subjects!=='undefined'&&typeof subjectCard==='function'){
+   const math=subjects.find(x=>x.name==='Toán 2');
+   if(math){
+    math.progress=Math.round(['LV1','LV2','LV3'].filter(l=>data.completedLevels?.[l]).length/3*100);
+    for(const id of ['subjectGrid','subjectGridFull']){
+     const target=document.getElementById(id);if(target)target.innerHTML=subjects.map(subjectCard).join('');
+    }
+   }
+  }
+  if(typeof renderLessons==='function')renderLessons();
+  document.dispatchEvent(new CustomEvent('lop2:progress',{detail:data}));
+  return data;
+ }
+ function refresh(){
+  if(pending)return pending;
+  pending=new Promise((resolve,reject)=>{
+   if(!window.google?.script?.run)return reject(Error('Không có kết nối máy chủ Apps Script'));
+   google.script.run.withSuccessHandler(resolve).withFailureHandler(reject).layTienDoHocTap();
+  }).then(apply).catch(e=>{
+   console.warn('Chưa thể xác nhận tiến độ học từ máy chủ:',e&&e.message);
+   throw e;
+  }).finally(()=>{pending=null});
+  return pending;
+ }
+ return Object.freeze({refresh,get:()=>snapshot});
+})();
+setTimeout(()=>TIEN_DO_HOC.refresh().catch(()=>{}),0);

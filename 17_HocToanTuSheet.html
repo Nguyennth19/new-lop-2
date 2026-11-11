@@ -1,11 +1,5 @@
-/* Lớp trạng thái Toán bài 20 – giao diện ở 19_KhongGianHocToan.html. */
+/* G5: trạng thái câu đúng chỉ lấy từ layTienDoHocTap() máy chủ. */
 let boDuLieuToan=null;
-const KHOA_KET_QUA_TOAN='lop2_b20_ketqua_v1';
+const KHOA_KET_QUA_TOAN='lop2_g5_server_only';
 let cauDaDungToan={};
-try {
- const value=JSON.parse(localStorage.getItem(KHOA_KET_QUA_TOAN)||'{}');
- if(value&&typeof value==='object'&&!Array.isArray(value))cauDaDungToan=value;
-} catch(error){cauDaDungToan={};}
-const thoatHtmlToan=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({
- '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-}[c]));
+const thoatHtmlToan=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
