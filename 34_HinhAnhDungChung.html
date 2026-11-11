@@ -4,21 +4,22 @@
  */
 const HINH_ANH_APP=(function(){
  const BASE='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/4177627bbc1a941c5568cf7c5703a8811e0e1999/hinh-anh/pilot-g3/';
+ const FAST='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/main/hinh-anh/webp/';
  const catalog=Object.freeze({
   ROBOT_AVATAR:{file:'robot_avatar_head_96.webp',alt:'Chân dung Robot học tập',w:96,h:96},
   ROBOT_HERO:{file:'robot_hero_wave.webp',alt:'Robot vẫy tay chào em',w:403,h:594},
   ROBOT_PRAISE:{file:'robot_praise.webp',alt:'Robot động viên em học tốt',w:373,h:583},
-  HEN:{file:'math_hen.png',alt:'Hình minh họa một con gà mái',w:2134,h:2134},
-  WRAPPED_CANDY:{file:'math_wrapped_candy.png',alt:'Hình minh họa viên kẹo bọc giấy',w:2134,h:2134},
-  BOOK:{file:'math_book.png',alt:'Hình minh họa một quyển sách',w:2134,h:2134},
-  APPLE:{file:'math_apple.png',alt:'Hình minh họa một quả táo',w:2134,h:2134},
-  RIBBON:{file:'math_ribbon.png',alt:'Hình minh họa một dải ruy băng đỏ',w:2134,h:2134},
-  COOKIE:{file:'math_cookie.png',alt:'Hình minh họa một chiếc bánh quy',w:2134,h:2134}
+  HEN:{file:'math_hen.webp',fallback:'math_hen.png',optimized:true,alt:'Hình minh họa một con gà mái',w:240,h:240},
+  WRAPPED_CANDY:{file:'math_wrapped_candy.webp',fallback:'math_wrapped_candy.png',optimized:true,alt:'Hình minh họa viên kẹo bọc giấy',w:240,h:240},
+  BOOK:{file:'math_book.webp',fallback:'math_book.png',optimized:true,alt:'Hình minh họa một quyển sách',w:240,h:240},
+  APPLE:{file:'math_apple.webp',fallback:'math_apple.png',optimized:true,alt:'Hình minh họa một quả táo',w:240,h:240},
+  RIBBON:{file:'math_ribbon.webp',fallback:'math_ribbon.png',optimized:true,alt:'Hình minh họa một dải ruy băng đỏ',w:240,h:240},
+  COOKIE:{file:'math_cookie.webp',fallback:'math_cookie.png',optimized:true,alt:'Hình minh họa một chiếc bánh quy',w:240,h:240}
  });
  function image(key,decorative){
   const item=catalog[key];if(!item)return null;
   const img=document.createElement('img');
-  img.src=BASE+encodeURIComponent(item.file);
+  img.src=(item.optimized?FAST:BASE)+encodeURIComponent(item.file);
   img.alt=decorative?'':item.alt;
   img.width=item.w;img.height=item.h;
   img.loading=key==='ROBOT_AVATAR'||key==='ROBOT_HERO'?'eager':'lazy';
@@ -36,6 +37,13 @@ const HINH_ANH_APP=(function(){
    target.classList.add('kl-image-ready');
   };
   img.onerror=()=>{
+   const item=catalog[key];
+   if(item?.fallback&&!img.dataset.klOriginalTried){
+    // WebP chưa được sinh hoặc cache lỗi: dùng PNG master đã nghiệm thu.
+    img.dataset.klOriginalTried='1';
+    img.src=BASE+encodeURIComponent(item.fallback);
+    return;
+   }
    target.classList.remove('kl-image-ready');
    img.remove();
    target.dataset.klFailed='1'; // SVG/emoji fallback giữ nguyên
