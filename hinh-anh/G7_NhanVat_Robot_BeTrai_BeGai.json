@@ -1,0 +1,149 @@
+{
+  "schema_version": "G7.0.1",
+  "date": "2026-11-12",
+  "release_state": "STAGING",
+  "note": "V1.0.1 images exist on Drive but folder says QA_PENDING; pre-existing app robot images are pilot and have independent release history.",
+  "assets": [
+    {
+      "asset_id": "ROBOT_AVATAR",
+      "role": "ROBOT",
+      "usage": "header_avatar",
+      "source": "hinh-anh/pilot-g3/robot_avatar_head_96.webp",
+      "current_app_status": "EXISTING_PILOT"
+    },
+    {
+      "asset_id": "ROBOT_HERO",
+      "role": "ROBOT",
+      "usage": "home_hero",
+      "source": "hinh-anh/pilot-g3/robot_hero_wave.webp",
+      "current_app_status": "EXISTING_PILOT"
+    },
+    {
+      "asset_id": "ROBOT_PRAISE",
+      "role": "ROBOT",
+      "usage": "motivation",
+      "source": "hinh-anh/pilot-g3/robot_praise.webp",
+      "current_app_status": "EXISTING_PILOT"
+    },
+    {
+      "asset_id": "KL_GIRL_SCHOOL_05_point_book_v1.0.1",
+      "role": "CHARACTER",
+      "character": "GIRL",
+      "action": "point_book",
+      "subject_scope": [
+        "MATH",
+        "VIETNAMESE",
+        "ENGLISH"
+      ],
+      "source_release": "v1.0.1_QA_PENDING",
+      "png_id": "1aVcNfch4gMcBMUCpcn5jb9MqOXijZEFc",
+      "webp_id": "1DNlh4O1Ba2QlGRrfDkNeSvrRTxFgVyUA",
+      "png_size_bytes": 302669,
+      "webp_size_bytes": 75866,
+      "webp_exists_on_drive": true,
+      "tech_qa_status": "NOT_REVALIDATED_G7",
+      "content_approval": "PENDING",
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+    },
+    {
+      "asset_id": "KL_GIRL_SCHOOL_04_write_desk_v1.0.1",
+      "role": "CHARACTER",
+      "character": "GIRL",
+      "action": "write_desk",
+      "subject_scope": [
+        "MATH",
+        "VIETNAMESE",
+        "ENGLISH"
+      ],
+      "source_release": "v1.0.1_QA_PENDING",
+      "png_id": "1sOTpbEwhrOVsvvGJi4lbeY3k_Qeh2VWD",
+      "webp_id": "1D3TKrGaSXSCxs7dsS69jot48Nfglx8j-",
+      "png_size_bytes": 311429,
+      "webp_size_bytes": 71068,
+      "webp_exists_on_drive": true,
+      "tech_qa_status": "NOT_REVALIDATED_G7",
+      "content_approval": "PENDING",
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+    },
+    {
+      "asset_id": "KL_GIRL_HOME_03_write_table_v1.0.1",
+      "role": "CHARACTER",
+      "character": "GIRL",
+      "action": "write_table",
+      "subject_scope": [
+        "MATH",
+        "VIETNAMESE",
+        "ENGLISH"
+      ],
+      "source_release": "v1.0.1_QA_PENDING",
+      "png_id": "1i_hJ42oxy36UCJdokGZsXN64QlGoqWTC",
+      "webp_id": "1-giQuhRhCQ1wBFQfKgtuHMPgPNb1ACDH",
+      "png_size_bytes": 282744,
+      "webp_size_bytes": 61784,
+      "webp_exists_on_drive": true,
+      "tech_qa_status": "NOT_REVALIDATED_G7",
+      "content_approval": "PENDING",
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+    },
+    {
+      "asset_id": "KL_BOY_SCHOOL_05_point_book_v1.0.1",
+      "role": "CHARACTER",
+      "character": "BOY",
+      "action": "point_book",
+      "subject_scope": [
+        "MATH",
+        "VIETNAMESE",
+        "ENGLISH"
+      ],
+      "source_release": "v1.0.1_QA_PENDING",
+      "png_id": "1ckWa-s93jFfm_CEwdOZkSXCkI-dbaKDC",
+      "webp_id": "1HcmGuOCKMPl2-O9h7wHdNggq2J_chA96",
+      "png_size_bytes": 276489,
+      "webp_size_bytes": 69176,
+      "webp_exists_on_drive": true,
+      "tech_qa_status": "NOT_REVALIDATED_G7",
+      "content_approval": "PENDING",
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+    },
+    {
+      "asset_id": "KL_BOY_SCHOOL_04_write_desk_v1.0.1",
+      "role": "CHARACTER",
+      "character": "BOY",
+      "action": "write_desk",
+      "subject_scope": [
+        "MATH",
+        "VIETNAMESE",
+        "ENGLISH"
+      ],
+      "source_release": "v1.0.1_QA_PENDING",
+      "png_id": "1S0OqpBBunuLEP5jc8SS00JKgFS4y4eAv",
+      "webp_id": "1kACndrAyK0-3xLd4pea86gIQGNY__-9X",
+      "png_size_bytes": 337966,
+      "webp_size_bytes": 81252,
+      "webp_exists_on_drive": true,
+      "tech_qa_status": "NOT_REVALIDATED_G7",
+      "content_approval": "PENDING",
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+    },
+    {
+      "asset_id": "KL_BOY_HOME_03_write_table_v1.0.1",
+      "role": "CHARACTER",
+      "character": "BOY",
+      "action": "write_table",
+      "subject_scope": [
+        "MATH",
+        "VIETNAMESE",
+        "ENGLISH"
+      ],
+      "source_release": "v1.0.1_QA_PENDING",
+      "png_id": "1pNhxTWBlnC4qZbczmv03v2jzcUhse8xF",
+      "webp_id": "1uL601UHLJrVjv4qkkJGu_DezPCTYuy94",
+      "png_size_bytes": 279036,
+      "webp_size_bytes": 66436,
+      "webp_exists_on_drive": true,
+      "tech_qa_status": "NOT_REVALIDATED_G7",
+      "content_approval": "PENDING",
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+    }
+  ]
+}
