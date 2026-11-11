@@ -1,11 +1,16 @@
 
-/* PILOT G3: các ảnh đã được owner chấp thuận về nội dung (chưa QA Web App).
+/* PILOT G3: avatar sửa + minh họa đủ 8 câu lời văn Bài 20 (chưa QA Web App).
  * Chỉ thay SVG/emoji khi ảnh tải thành công. Không ảnh hưởng form và điểm số.
  */
-.avatar[data-kl-asset]{position:relative;overflow:hidden;isolation:isolate}
+/* Avatar: ảnh crop mặt riêng 96×96, không phóng lớn hình toàn thân nữa. */
+.avatar[data-kl-asset]{
+ position:relative;overflow:hidden;isolation:isolate;
+ border-radius:50%;background:#eef7ff;border:1px solid #a7cff6;
+ display:flex;align-items:center;justify-content:center;
+}
 .avatar[data-kl-asset]>.kl-approved-image{
- position:absolute;top:-8px;left:-5px;width:48px;height:auto;max-width:none;
- object-fit:contain;transform:scale(1.55);transform-origin:50% 25%;
+ position:absolute;inset:0;margin:auto;width:96%;height:96%;max-width:96%;
+ object-fit:contain;object-position:center center;transform:none;
  opacity:0;pointer-events:none;transition:opacity .15s ease;
 }
 .avatar.kl-image-ready>.kl-approved-image{opacity:1}
