@@ -4,8 +4,8 @@
 function layTienDoHocSinh(){
  const attemptSheet=achS_(ACH_ATTEMPTS,ACH_HEADERS_ATTEMPTS);
  const pointsSheet=achS_(ACH_LEDGER,ACH_HEADERS_LEDGER);
- const attempts=achRows_(attemptSheet).filter(a=>a.profile_id===ACH_PROFILE);
- const ledger=achRows_(pointsSheet).filter(a=>a.profile_id===ACH_PROFILE);
+ const attempts=achRows_(attemptSheet).filter(a=>a.profile_id===achProfile_());
+ const ledger=achRows_(pointsSheet).filter(a=>a.profile_id===achProfile_());
  const done={};
  ledger.filter(e=>e.event_type==='level_done').forEach(e=>{
   if(/^LV[123]$/.test(String(e.level||''))&&e.lesson_id) {
@@ -21,7 +21,7 @@ function layTienDoHocSinh(){
   }catch(e){}
  });
  const summary=achSummary_(attemptSheet,pointsSheet);
- return {profile:ACH_PROFILE,lessons:done,correctIds:correct,week:summary.week,
+ return {profile:achProfile_(),lessons:done,correctIds:correct,week:summary.week,
   completed:summary.completed,earned:summary.earned,balance:summary.balance,streak:summary.streak,
   asOf:new Date().toISOString(),source:'google_sheet',isDemo:false};
 }
