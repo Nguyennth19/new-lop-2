@@ -1,0 +1,87 @@
+/* Công cụ chẩn đoán giọng Chrome/Web Speech cho Web App GAS.
+ * Chỉ dùng ở trang Lý thuyết; không ghi dữ liệu học sinh, không gọi API TTS.
+ * Không tự tuyên bố có giọng nữ chỉ từ tên giọng.
+ */
+const THU_GIONG_CHROME=(function(){
+ const SAMPLE='Chào em! Hôm nay chúng ta học Toán lớp hai. Ba mươi sáu cộng mười bảy bằng năm mươi ba. Sáu cộng bảy bằng mười ba, viết ba nhớ một.';
+ let current=null, refreshTimer=null, refreshAgain=null, testToken=0;
+ function root(){return document.getElementById('mlChromeVoiceTest')}
+ function setStatus(message,type='info'){
+  const el=root()?.querySelector('[data-chrome-status]');
+  if(!el)return;el.textContent=message;el.dataset.state=type;
+ }
+ function available(){
+  if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window))return false;
+  return true;
+ }
+ function voices(){
+  if(!available())return[];
+  try{return window.speechSynthesis.getVoices()||[]}catch(e){return[]}
+ }
+ function show(){
+  const panel=root();if(!panel)return;
+  if(!available()){
+   setStatus('Trình duyệt này không hỗ trợ Web Speech API.', 'error');
+   panel.querySelector('[data-chrome-test]').disabled=true;return;
+  }
+  const vs=voices(),vi=vs.filter(v=>/^vi(?:-|_|$)/i.test(v.lang||''));
+  panel.querySelector('[data-chrome-total]').textContent=String(vs.length);
+  panel.querySelector('[data-chrome-vi]').textContent=String(vi.length);
+  const select=panel.querySelector('[data-chrome-voice]');
+  const previous=select.value;
+  select.replaceChildren();
+  const make=(value,text)=>{
+   const opt=document.createElement('option');opt.value=value;opt.textContent=text;select.appendChild(opt);
+  };
+  make('default','Chrome mặc định (yêu cầu vi-VN)');
+  vs.forEach((v,i)=>make(String(i),v.name+' · '+v.lang+(v.default?' · mặc định':'')));
+  if([...select.options].some(x=>x.value===previous))select.value=previous;
+  else if(vi.length)select.value=String(vs.indexOf(vi[0]));
+  if(!vi.length){
+   setStatus(vs.length
+    ?'Chrome trả về '+vs.length+' giọng, nhưng không có giọng gắn nhãn tiếng Việt. Có thể thử giọng mặc định, nhưng chất lượng không được bảo đảm.'
+    :'Chrome trả về danh sách giọng rỗng ([]). Bấm «Tải lại danh sách» rồi «Phát thử Chrome» để kiểm tra fallback.', 'warn');
+  }else setStatus('Chrome có '+vi.length+' giọng gắn nhãn tiếng Việt. Hãy nghe thử vì tên giọng không bảo đảm giới tính hay phát âm.', 'info');
+ }
+ function stop(){
+  testToken++;
+  if(current){current.onend=null;current.onerror=null;current.onstart=null;current=null}
+  if(available())window.speechSynthesis.cancel();
+  const p=root();if(p)p.querySelector('[data-chrome-test]').disabled=false;
+ }
+ function play(){
+  if(!available()){show();return}
+  stop();
+  // Tránh hai luồng đọc đè lên nhau.
+  if(typeof GIONG_DOC_VI!=='undefined')GIONG_DOC_VI.stop();
+  const panel=root();if(!panel)return;
+  const vs=voices(),chosen=panel.querySelector('[data-chrome-voice]').value;
+  let v=chosen==='default'?null:vs[Number(chosen)]||null;
+  const token=testToken;
+  const u=new SpeechSynthesisUtterance(SAMPLE);
+  u.lang=v?.lang||'vi-VN';u.rate=.9;u.pitch=1;
+  if(v)u.voice=v;
+  current=u;
+  const b=panel.querySelector('[data-chrome-test]');
+  b.disabled=true;
+  setStatus('Đang yêu cầu Chrome phát giọng: '+(v?v.name+' ('+v.lang+')':'mặc định vi-VN')+'…', 'info');
+  u.onstart=()=>{if(token===testToken)setStatus('Đang phát: '+(v?v.name+' ('+v.lang+')':'giọng Chrome mặc định')+'. Hãy nghe để đánh giá giọng có phải tiếng Việt bản xứ không.', 'playing')};
+  u.onend=()=>{if(token===testToken){current=null;b.disabled=false;setStatus('Đã phát xong. Danh sách giọng có thể khác với giọng nghe được nếu Chrome fallback.', 'info')}};
+  u.onerror=e=>{if(token===testToken){current=null;b.disabled=false;setStatus('Chrome không phát được: '+(e.error||'lỗi không xác định')+'.', 'error')}};
+  // Có trình duyệt chưa sẵn sàng ngay sau cancel().
+  setTimeout(()=>{if(token===testToken)try{window.speechSynthesis.speak(u)}catch(e){b.disabled=false;setStatus('Không phát được: '+e.message,'error')}},60);
+ }
+ function setup(){
+  const panel=root();if(!panel)return;
+  panel.querySelector('[data-chrome-test]').onclick=play;
+  panel.querySelector('[data-chrome-stop]').onclick=()=>{stop();setStatus('Đã dừng thử giọng.','info')};
+  panel.querySelector('[data-chrome-reload]').onclick=show;
+  if(refreshTimer)clearTimeout(refreshTimer);
+  if(refreshAgain)clearTimeout(refreshAgain);
+  show();
+  refreshTimer=setTimeout(show,350);
+  refreshAgain=setTimeout(show,1300);
+ }
+ if('speechSynthesis' in window)window.speechSynthesis.addEventListener?.('voiceschanged',show);
+ return Object.freeze({setup,stop,show});
+})();
