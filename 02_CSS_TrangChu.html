@@ -235,3 +235,20 @@ button:focus-visible,a:focus-visible {outline:2px solid var(--primary);outline-o
 @media(max-width:800px){:root{--app-sidebar-width:0px;--app-header-height:69px}.topbar{padding:0 16px!important}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.subject-grid{grid-template-columns:1fr}.subject-modern .subject-art{aspect-ratio:344/250}.subject-modern .subject-body{min-height:155px}.subject-modern .subject-meta{margin-top:13px}.subject-modern .subject-body h3{font-size:15px}.english-title{font-size:30px}.english-kids{font-size:58px}}
 
+
+/* V2.2 – đồng bộ màu cam, trạng thái thực tế và thẻ môn học */
+:root {--yellow:#f59e0b;--orange-strong:#ea8800;--orange-light:#fff1d7}
+.tag.orange{color:#bb6500;background:#ffedd0}
+.streak-head{color:#b96500}
+.streak .day.done i{background:#f59e0b;color:#fff}
+.streak .day.missed i{background:#fee2e2;color:#dc2626;font-weight:900}
+.streak .day.current i{outline:2px solid #16a34a;outline-offset:2px;background:#dcfce7;color:#15803d}
+.streak .day.future i{background:#f1f5f9;color:#94a3b8}
+.streak-value{color:#ea8800}
+.school-day.status-done:not(.selected) small{background:#dcfce7;color:#15803d}
+.school-day.status-missed:not(.selected) small{background:#fee2e2;color:#b91c1c}
+.school-day.status-doing:not(.selected) small{background:#ffedd5;color:#c2410c}
+.school-day.selected,.school-day.today,.school-day.today:hover{background:var(--primary-gradient);color:#fff;border-color:transparent}
+.school-day.today small{background:#ffffff2b;color:#fff}
+.subject-loading{grid-column:1/-1;padding:22px;text-align:center;color:#64748b}
+.subject-grid:empty{min-height:120px}
