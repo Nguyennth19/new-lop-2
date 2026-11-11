@@ -159,8 +159,8 @@ function achBadges_(attempts,events){
  return defs.map(([id,name,description,n,target])=>({id,name,description,progress:Math.min(n,target),target,achieved:n>=target}));
 }
 function achStreak_(days){
- const present=new Set(days);const today=new Date();
- let d=new Date(today.getFullYear(),today.getMonth(),today.getDate()),count=0;
+ const present=new Set(days);
+ const day=achDay_(new Date()),d=new Date(day+'T12:00:00+07:00');let count=0;
  if(!present.has(achDay_(d)))d.setDate(d.getDate()-1);
  while(present.has(achDay_(d))&&count<366){count++;d.setDate(d.getDate()-1)}return count;
 }
@@ -172,7 +172,8 @@ function achSummary_(attemptSheet,pointsSheet){
  const completed=new Set(events.filter(e=>e.event_type==='level_done').map(e=>e.lesson_id+':'+e.level));
  const days=[...new Set(attempts.filter(a=>Number(a.total)>0).map(a=>achDay_(achDate_(a.at_utc))))];
  const now=new Date(),today=achDay_(now),bars=[];
- for(let i=6;i>=0;i--){const date=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i),day=achDay_(date);
+ for(let i=6;i>=0;i--){const date=new Date(today+'T12:00:00+07:00');date.setUTCDate(date.getUTCDate()-i);
+  const day=achDay_(date);
   const mins=attempts.filter(a=>achDay_(achDate_(a.at_utc))===day).reduce((n,a)=>n+Number(a.active_seconds||0),0);
   bars.push({day,label:['CN','T2','T3','T4','T5','T6','T7'][date.getDay()],minutes:Math.round(mins/60),attempts:attempts.filter(a=>achDay_(achDate_(a.at_utc))===day).length});
  }
