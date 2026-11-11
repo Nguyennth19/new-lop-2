@@ -35,7 +35,7 @@ function layBaiToan20() {
       id:x.question_id,level:x.level,sectionId:x.section_id,order:Number(x.order)||0,
       label:x.label,type:x.type,prompt:x.prompt,n1:x.n1,op:x.op,n2:x.n2,
       answer:String(x.answer||''),unit:x.unit,group:x.group,theme:x.theme,
-      summary:x.summary,solutionPrompt:x.solution_prompt,puzzle:puzzle,
+      summary:x.summary,solutionPrompt:x.solution_prompt,svg:x.svg||'',puzzle:puzzle,
       valid:valid,issue:valid?'':'Thiếu đề bài hoặc dữ liệu ô số trong Google Sheet'
     };
   });
