@@ -62,16 +62,13 @@ function start(index){
  });
 }
 function exit(){
- if(typeof THU_GIONG_CHROME!=='undefined')THU_GIONG_CHROME.stop();
  const root=document.getElementById('mathFullScreen');if(root)root.hidden=true;
  document.body.classList.remove('math-learning');
- GIONG_DOC_VI.stop();
  try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
  navigate('path');
 }
 function choose(id){
  view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};
- GIONG_DOC_VI.stop();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
@@ -82,8 +79,6 @@ function render(){
  const keypad=root.querySelector('#mlDock');
  if(view==='THEORY'){
   target.innerHTML=typeof renderLyThuyetToan==='function'?renderLyThuyetToan():'<section class="ml-theory-empty"></section>';
-  capNhatNutDocLyThuyet(GIONG_DOC_VI.getState());
-  if(typeof THU_GIONG_CHROME!=='undefined')THU_GIONG_CHROME.setup();
   root.querySelector('#mlResults').hidden=true;
   keypad.hidden=true;root.querySelector('#mlShowKeyboard').hidden=true;return;
  }
