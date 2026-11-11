@@ -47,3 +47,11 @@ function layBaiToan20() {
   try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put('toan_b20_v26_20261111',raw,21600)}catch(e){}
   return result;
 }
+
+/** Chỉ chạy thủ công trong Apps Script Editor khi thay dữ liệu Bài 20.
+ * Browser cache cần tải lại trang hoặc hết hạn 30 phút (đổi CACHE_VERSION khi phát hành).
+ */
+function lamMoiBoNhoToan20_() {
+  CacheService.getScriptCache().remove('toan_b20_v26_20261111');
+  return 'Đã xóa cache phía máy chủ cho bài toan_b20';
+}
