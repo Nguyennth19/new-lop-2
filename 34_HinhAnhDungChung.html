@@ -1,0 +1,64 @@
+/* Pilot G3 · Hình ảnh dùng chung (chỉ thay minh họa, KHÔNG đụng logic bài).
+ * Nguồn ảnh commit bất biến để Chrome/Android tải lại đúng cùng 1 bản.
+ * Sau QA hiệu năng: thay nguồn PNG vật thể bằng WebP có cùng asset_id.
+ */
+const HINH_ANH_APP=(function(){
+ const BASE='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/8819b99cf353583726c1164857a4b411ed13ec2b/hinh-anh/pilot-g3/';
+ const catalog=Object.freeze({
+  ROBOT_AVATAR:{file:'robot_avatar_full.webp',alt:'Robot học tập thân thiện',w:367,h:601},
+  ROBOT_HERO:{file:'robot_hero_wave.webp',alt:'Robot vẫy tay chào em',w:403,h:594},
+  ROBOT_PRAISE:{file:'robot_praise.webp',alt:'Robot động viên em học tốt',w:373,h:583},
+  HEN:{file:'math_hen.png',alt:'Hình minh họa một con gà mái',w:2134,h:2134},
+  WRAPPED_CANDY:{file:'math_wrapped_candy.png',alt:'Hình minh họa viên kẹo bọc giấy',w:2134,h:2134}
+ });
+ function image(key,decorative){
+  const item=catalog[key];if(!item)return null;
+  const img=document.createElement('img');
+  img.src=BASE+encodeURIComponent(item.file);
+  img.alt=decorative?'':item.alt;
+  img.width=item.w;img.height=item.h;
+  img.loading=key==='ROBOT_AVATAR'||key==='ROBOT_HERO'?'eager':'lazy';
+  img.decoding='async';
+  img.referrerPolicy='no-referrer';
+  img.className='kl-approved-image';
+  return img;
+ }
+ function attach(target,key){
+  if(!target||target.dataset.klBound==='1')return false;
+  const img=image(key,true);if(!img)return false;
+  target.dataset.klBound='1';
+  img.onload=()=>{
+   if(!img.isConnected)return;
+   target.classList.add('kl-image-ready');
+  };
+  img.onerror=()=>{
+   target.classList.remove('kl-image-ready');
+   img.remove();
+   target.dataset.klFailed='1'; // SVG/emoji fallback giữ nguyên
+  };
+  target.appendChild(img);
+  return true;
+ }
+ function home(){
+  document.querySelectorAll('[data-kl-asset]').forEach(node=>attach(node,node.dataset.klAsset));
+ }
+ function wordAsset(q){
+  if(!q||q.type!=='word_problem')return null;
+  const content=String(q.prompt||'').toLocaleLowerCase('vi-VN');
+  // Không gắn ảnh theo ID câu: dữ liệu nội dung có thể được chỉnh trên Sheet.
+  // Đúng ngữ cảnh mới sử dụng, không dùng hình đơn lẻ để thay số lượng.
+  if(/\b(?:gà|đàn gà|con gà)\b/u.test(content))return 'HEN';
+  if(/kẹo/u.test(content))return 'WRAPPED_CANDY';
+  return null;
+ }
+ function word(q,target){
+  if(!target)return false;
+  const key=wordAsset(q);
+  if(!key)return false;
+  const ok=attach(target,key);
+  if(ok)target.setAttribute('aria-label',catalog[key].alt+' (hình chỉ minh họa, không thể hiện số lượng)');
+  return ok;
+ }
+ document.addEventListener('DOMContentLoaded',home,{once:true});
+ return Object.freeze({home,word,keys:Object.freeze(Object.keys(catalog))});
+})();
