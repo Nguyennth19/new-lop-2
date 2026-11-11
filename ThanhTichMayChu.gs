@@ -118,14 +118,14 @@ function ghiNhanKetQuaToan20(payload){
  }finally{lock.releaseLock();}
 }
 function achBadgeWindows_(days){
- const nums=[...new Set(days)].sort().map(d=>new Date(d+'T12:00:00').getTime());
+ const nums=[...new Set(days)].sort().map(d=>new Date(d+'T12:00:00+07:00').getTime());
  let max7=0;
  nums.forEach(end=>{const n=nums.filter(x=>x>=end-6*86400000&&x<=end).length;max7=Math.max(max7,n);});
  const weekCounts={};
  days.forEach(day=>{
-  const d=new Date(day+'T12:00:00');
-  const monday=new Date(d);monday.setDate(d.getDate()-(d.getDay()+6)%7);
-  const key=monday.getFullYear()+'-'+String(monday.getMonth()+1).padStart(2,'0')+'-'+String(monday.getDate()).padStart(2,'0');
+  const d=new Date(day+'T12:00:00+07:00');
+  const monday=new Date(d);monday.setUTCDate(d.getUTCDate()-(d.getUTCDay()+6)%7);
+  const key=monday.getUTCFullYear()+'-'+String(monday.getUTCMonth()+1).padStart(2,'0')+'-'+String(monday.getUTCDate()).padStart(2,'0');
   (weekCounts[key]||(weekCounts[key]=new Set())).add(day);
  });
  const months={};
@@ -161,7 +161,7 @@ function achBadges_(attempts,events){
 function achStreak_(days){
  const present=new Set(days);
  const day=achDay_(new Date()),d=new Date(day+'T12:00:00+07:00');let count=0;
- if(!present.has(achDay_(d)))d.setDate(d.getDate()-1);
+ if(!present.has(achDay_(d)))d.setUTCDate(d.getUTCDate()-1);
  while(present.has(achDay_(d))&&count<366){count++;d.setDate(d.getDate()-1)}return count;
 }
 function achAnalyses_(attempts){
@@ -216,7 +216,7 @@ function achSummary_(attemptSheet,pointsSheet){
  for(let i=6;i>=0;i--){const date=new Date(today+'T12:00:00+07:00');date.setUTCDate(date.getUTCDate()-i);
   const day=achDay_(date);
   const mins=attempts.filter(a=>Number(a.answered)>0&&achDay_(achDate_(a.at_utc))===day).reduce((n,a)=>n+Number(a.active_seconds||0),0);
-  bars.push({day,label:['CN','T2','T3','T4','T5','T6','T7'][date.getDay()],minutes:Math.round(mins/60),
+  bars.push({day,label:['CN','T2','T3','T4','T5','T6','T7'][date.getUTCDay()],minutes:Math.round(mins/60),
    attempts:attempts.filter(a=>achDay_(achDate_(a.at_utc))===day).length,
    active:attempts.some(a=>Number(a.correct)>0&&achDay_(achDate_(a.at_utc))===day)});
  }
