@@ -127,6 +127,7 @@ function phuHuynhDieuChinhSao(token,payload){
  // Dùng lock duy nhất bao trùm kiểm tra PIN, replay, số dư và ghi ledger.
  const lock=phLock_();
  try{
+  phRequire_(token);
   // Re-auth nhạy cảm; PIN sai bị tính lần thử theo cùng khóa giao dịch.
   const props=phProps_(),now=Date.now();
   let attempts;try{attempts=JSON.parse(props.getProperty(PH_KEYS.LOCK)||'{}')}catch(e){attempts={}}
