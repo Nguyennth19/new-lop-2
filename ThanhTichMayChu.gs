@@ -4,7 +4,8 @@
  * Ứng dụng gia đình: chỉ triển khai Web App với quyền truy cập được giới hạn.
  * Các hàm hậu tố _ chỉ chạy trong Apps Script Editor, không callable từ HTML.
  */
-const ACH_PROFILE=CAU_HINH_LOP_2.HO_SO;
+// Hồ sơ duy nhất được lấy khi gọi API, tránh phụ thuộc thứ tự tải file .gs.
+function achProfile_(){return lop2HoSo_();}
 const ACH_ATTEMPTS='90_Lan_lam_bai';
 const ACH_LEDGER='91_So_sao';
 const ACH_HEADERS_ATTEMPTS=['attempt_id','at_utc','profile_id','lesson_id','level','correct','total','answered','active_seconds','subject','title','correct_ids'];
@@ -31,7 +32,7 @@ function achCut_(s,n){return String(s||'').slice(0,n);}
 function achFirst_(events,key){return events.some(e=>String(e.event_key)===key);}
 function achAdd_(sheet,events,key,type,delta,lesson,lv,attempt,note){
  if(achFirst_(events,key))return false;
- const record={event_key:key,at_utc:new Date().toISOString(),profile_id:ACH_PROFILE,event_type:type,delta,lesson_id:lesson,level:lv,attempt_id:attempt,note:note||''};
+ const record={event_key:key,at_utc:new Date().toISOString(),profile_id:achProfile_(),event_type:type,delta,lesson_id:lesson,level:lv,attempt_id:attempt,note:note||''};
  sheet.appendRow(ACH_HEADERS_LEDGER.map(k=>record[k]));
  events.push(record);return true;
 }
@@ -45,8 +46,8 @@ function ghiNhanKetQuaToan20(payload){
  try{
   const attemptSheet=achS_(ACH_ATTEMPTS,ACH_HEADERS_ATTEMPTS);
   const pointsSheet=achS_(ACH_LEDGER,ACH_HEADERS_LEDGER);
-  const old=achRows_(attemptSheet).filter(r=>r.profile_id===ACH_PROFILE&&r.lesson_id==='toan_b20'&&r.level===lv);
-  const events=achRows_(pointsSheet).filter(r=>r.profile_id===ACH_PROFILE);
+  const old=achRows_(attemptSheet).filter(r=>r.profile_id===achProfile_()&&r.lesson_id==='toan_b20'&&r.level===lv);
+  const events=achRows_(pointsSheet).filter(r=>r.profile_id===achProfile_());
   const id=String(payload.attemptId||'');
   if(!/^[a-zA-Z0-9_-]{12,90}$/.test(id))throw Error('Mã lượt làm không hợp lệ');
   // Retry có cùng attemptId được trả về nhưng không chấm/cộng lần nữa.
@@ -66,7 +67,7 @@ function ghiNhanKetQuaToan20(payload){
    if(achCheck_(q,a)){correct++;correctIds.push(q.id);}
   });
   const now=new Date(),entry={
-   attempt_id:id,at_utc:now.toISOString(),profile_id:ACH_PROFILE,lesson_id:'toan_b20',level:lv,
+   attempt_id:id,at_utc:now.toISOString(),profile_id:achProfile_(),lesson_id:'toan_b20',level:lv,
    correct,total:questions.length,answered,active_seconds:Math.max(0,Math.min(1800,Math.floor(Number(payload.activeSeconds)||0))),
    subject:'Toán',title:'Bài 20: Phép cộng (có nhớ)',correct_ids:JSON.stringify(correctIds)
   };
@@ -170,8 +171,8 @@ function achAnalyses_(attempts){
  return {week4,subjects,skills};
 }
 function achSummary_(attemptSheet,pointsSheet){
- const attempts=achRows_(attemptSheet).filter(x=>x.profile_id===ACH_PROFILE);
- const events=achRows_(pointsSheet).filter(x=>x.profile_id===ACH_PROFILE);
+ const attempts=achRows_(attemptSheet).filter(x=>x.profile_id===achProfile_());
+ const events=achRows_(pointsSheet).filter(x=>x.profile_id===achProfile_());
  const studyTypes=new Set(['level_done','perfect','improved','retry_success','daily']);
  const earned=events.filter(e=>studyTypes.has(String(e.event_type))).reduce((n,e)=>n+Number(e.delta||0),0);
  const bonus=events.filter(e=>e.event_type==='parent_bonus').reduce((n,e)=>n+Number(e.delta||0),0);
@@ -212,7 +213,7 @@ function dieuChinhSaoPhuHuynh_(delta,lyDo){
   const as=achS_(ACH_ATTEMPTS,ACH_HEADERS_ATTEMPTS),ps=achS_(ACH_LEDGER,ACH_HEADERS_LEDGER);
   const current=achSummary_(as,ps);if(current.balance+value<0)throw Error('Ví sao không đủ để trừ');
   const id=Utilities.getUuid(),entry={event_key:'ADMIN:'+id,at_utc:new Date().toISOString(),
-    profile_id:ACH_PROFILE,event_type:value<0?'parent_redeem':'parent_bonus',delta:value,
+    profile_id:achProfile_(),event_type:value<0?'parent_redeem':'parent_bonus',delta:value,
     lesson_id:'',level:'',attempt_id:'',note:achCut_(lyDo,220)};
   ps.appendRow(ACH_HEADERS_LEDGER.map(k=>entry[k]));return achSummary_(as,ps);
  }finally{lock.releaseLock()}
