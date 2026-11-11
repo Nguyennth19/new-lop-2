@@ -47,7 +47,7 @@ const HINH_ANH_APP=(function(){
   const content=String(q.prompt||'').toLocaleLowerCase('vi-VN');
   // Không gắn ảnh theo ID câu: dữ liệu nội dung có thể được chỉnh trên Sheet.
   // Đúng ngữ cảnh mới sử dụng, không dùng hình đơn lẻ để thay số lượng.
-  if(/\b(?:gà|đàn gà|con gà)\b/u.test(content))return 'HEN';
+  if(/(?:gà|đàn gà|con gà)/u.test(content))return 'HEN';
   if(/kẹo/u.test(content))return 'WRAPPED_CANDY';
   return null;
  }
