@@ -23,7 +23,7 @@ function renderLessons(){
      <span class="lesson-order">${index+1}</span><span class="lesson-ident">${muiIcon('book-open')}<span><strong>${escapeHtml(lesson.title)}</strong><small>${escapeHtml(lesson.desc)}</small></span></span><span class="lesson-completion ${basicDone?'basic-done':''}">${basicDone?'Đạt yêu cầu':doneCount+'/3 LV'}</span>
     </div>${levelRows(lesson)}</div>`;
    }).join('')}</div></section>`;
- }).join(''):`<div class="all-topics-done">${muiIcon('award')}<strong>Em đã hoàn thành tất cả chủ đề của ${escapeHtml(currentSubject)}!</strong><span>Xem lại các chủ đề trong trang Thành tích.</span><button type="button" data-view="achievements">${muiIcon('arrow')} Xem thành tích</button></div>`;
+ }).join(''):all.length===0?`<div class="all-topics-done">${muiIcon('book-open')}<strong>Chưa có bài học được xuất bản</strong><span>Học liệu ${escapeHtml(currentSubject)} đang chuẩn bị. Hiện không có bài mẫu hoặc kết quả giả lập.</span></div>`:`<div class="all-topics-done">${muiIcon('award')}<strong>Em đã hoàn thành tất cả chủ đề của ${escapeHtml(currentSubject)}!</strong><span>Xem lại các chủ đề trong trang Thành tích.</span><button type="button" data-view="achievements">${muiIcon('arrow')} Xem thành tích</button></div>`;
  renderTopicAwards();
 }
 let expandedAwardTopic='';
