@@ -62,11 +62,7 @@
  border-radius:18px;
 }
 #mathFullScreen .ml-section-box{overflow:hidden}
-#mathFullScreen .ml-voice-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-#mathFullScreen .ml-voice-actions label{font-size:12px;font-weight:700;color:#475569}
-#mathFullScreen #mlVoiceChoice{max-width:220px;min-height:36px;padding:6px 8px;border:1px solid #cbd5e1;border-radius:9px;background:white;color:#0f172a;font-size:12px}
 @media(max-width:980px){#mathFullScreen .ml-dock-keys{grid-template-columns:repeat(8,minmax(0,1fr))}}
-@media(max-width:520px){#mathFullScreen .ml-voice-actions{width:100%}#mathFullScreen #mlVoiceChoice{max-width:100%;flex:1}}
 
 /* V2.8 — Bàn phím toàn chiều ngang vùng bài làm + kết quả, 17 nút. */
 #mathFullScreen .ml-dock{
@@ -128,20 +124,6 @@
 }
 #mathFullScreen .ml-dock .ml-keyboard-toggle{font-size:15px}
 #mathFullScreen .ml-dock .ml-key:active{transform:translateY(1px);box-shadow:none}
-#mathFullScreen .ml-voice-actions [data-ml-theory-speak]{
- display:inline-flex;align-items:center;justify-content:center;gap:7px;
- min-height:42px;padding:10px 15px;border-radius:12px;
- background:#e0f2fe;color:#075985;border:1px solid #7dd3fc;
- font-size:13px;font-weight:800;
-}
-#mathFullScreen .ml-voice-actions [data-ml-theory-speak][data-audio-state="playing"]{
- background:#fff3d6;color:#a4530c;border-color:#fbbf24;
-}
-#mathFullScreen .ml-voice-actions [data-ml-theory-speak] svg{
- width:18px;height:18px;margin:0;flex-shrink:0;
-}
-#mathFullScreen .ml-voice-actions label,#mathFullScreen #mlVoiceChoice,
-#mathFullScreen [data-ml-theory-stop]{display:none!important}
 @media(max-width:800px){
  #mathFullScreen .ml-dock{padding:9px 10px 10px!important}
  #mathFullScreen .ml-dock .ml-key{height:48px;min-height:48px;font-size:17px}
