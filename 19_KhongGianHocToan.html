@@ -86,7 +86,7 @@ function section(s,i){
   const names=[...new Set(list.map(q=>q.group||'Tính nhẩm'))];
   content='<div class="ml-mental-groups">'+names.map((n,k)=>'<div class="ml-mental-group ml-theme-'+themes[k%themes.length]+'"><h4>'+E(n)+'</h4>'+list.filter(q=>(q.group||'Tính nhẩm')===n).map(mental).join('')+'</div>').join('')+'</div>';
  }else{
-  content='<div class="ml-cards '+(type==='word_problem'?'ml-word-grid':'')+'">'+list.map(q=>type==='vertical'?vertical(q):type==='missing_digit'?puzzle(q):word(q)).join('')+'</div>';
+  content='<div class="ml-cards '+(type==='word_problem'?'ml-word-grid':'')+'">'+list.map(q=>q.type==='vertical'?vertical(q):q.type==='missing_digit'?puzzle(q):q.type==='mental'?mental(q):word(q)).join('')+'</div>';
  }
  return '<section class="ml-section" id="ml-section-'+E(s.id)+'"><div class="ml-section-heading"><b class="ml-step">'+(i+1)+'</b><h3>'+E(s.name||'Bài tập '+(i+1))+'</h3><button data-ml-speak="'+E(s.id)+'" type="button">🔊 Nghe yêu cầu</button></div><div class="ml-section-box">'+content+'<div class="ml-section-actions"><span class="ml-section-feedback" id="ml-feedback-'+E(s.id)+'"></span><button data-ml-grade="'+E(s.id)+'">☑ Kiểm tra bài này</button><button class="ml-reset" data-ml-reset="'+E(s.id)+'">↺ Xóa bài này</button></div></div></section>';
 }
@@ -102,7 +102,7 @@ function vertical(q){
  const answer=String(q.answer).padStart(2,'0');
  const inside='<div class="ml-vert-note">ĐV → Nhớ → Chục</div><div class="ml-vertical-matrix">'+
  '<div class="ml-vert-row"><span></span><small>CHỤC</small><small>ĐV</small></div>'+
- '<div class="ml-vert-row"><span class="ml-remember-label">nhớ</span>'+input(q,q.id+':carry',1,'class="ml-input ml-carry"')+'<span></span></div>'+
+ '<div class="ml-vert-row"><span class="ml-remember-label">nhớ</span>'+input(q,q.id+':carry',1,'data-ml-carry="1"')+'<span></span></div>'+
  '<div class="ml-vert-row numbers"><span></span><b>'+E(a[0])+'</b><b>'+E(a[1])+'</b></div>'+
  '<div class="ml-vert-row numbers rule"><span class="operator">+</span><b>'+E(b[0])+'</b><b>'+E(b[1])+'</b></div>'+
  '<div class="ml-vert-row answers"><span></span>'+input(q,q.id+':tens',1)+input(q,q.id+':ones',1)+'</div></div>';
@@ -223,16 +223,17 @@ function press(k){
  const all=inputList();if(!all.length)return;
  if(!selected||!all.includes(selected))selected=all.find(x=>!x.value)||all[0];
  if(k==='Tiếp →'){selected=all[(all.indexOf(selected)+1)%all.length];selected.focus({preventScroll:true});return;}
- if(k==='⌫'){selected.value=selected.value.slice(0,-1);}
- else if(k==='+'||k==='−'){if(selected.dataset.mlField.endsWith(':op'))selected.value=k==='−'?'-':'+';else return;}
+ const target=selected;
+ if(k==='⌫'){target.value=target.value.slice(0,-1);}
+ else if(k==='+'||k==='−'){if(target.dataset.mlField.endsWith(':op'))target.value=k==='−'?'-':'+';else return;}
  else if(/^[0-9]$/.test(k)){
-  if(selected.dataset.mlField.endsWith(':op'))return;
-  selected.value=(selected.value+k).slice(0,Number(selected.maxLength)||3);
-  if(selected.value.length>=selected.maxLength){
-   const next=all[all.indexOf(selected)+1];if(next)selected=next;
+  if(target.dataset.mlField.endsWith(':op'))return;
+  target.value=(target.value+k).slice(0,Number(target.maxLength)||3);
+  if(target.value.length>=target.maxLength){
+   const next=all[all.indexOf(target)+1];if(next)selected=next;
   }
  }
- selected.dispatchEvent(new Event('input',{bubbles:true}));
+ target.dispatchEvent(new Event('input',{bubbles:true}));
  selected.focus({preventScroll:true});
 }
 function speak(id){
@@ -256,7 +257,7 @@ document.addEventListener('click',e=>{
  const key=e.target.closest('[data-ml-key]');if(key){press(key.dataset.mlKey);return;}
  const focused=e.target.closest('[data-ml-field]');if(focused)pickInput(focused);
 });
-document.addEventListener('pointerdown',e=>{const key=e.target.closest('#mathFullScreen [data-ml-key]');if(key)e.preventDefault();});
+document.addEventListener('mousedown',e=>{const key=e.target.closest('#mathFullScreen [data-ml-key]');if(key)e.preventDefault();});
 document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-ml-field]'))pickInput(e.target);});
 document.addEventListener('input',e=>{
  const el=e.target;if(!el.matches('#mathFullScreen [data-ml-field]'))return;
