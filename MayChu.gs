@@ -1,10 +1,15 @@
-/** Máy chủ Apps Script: phục vụ giao diện lớp 2 V2.1. */
+/** Máy chủ Apps Script: phục vụ giao diện Lớp 2 V2.2. */
 function doGet() {
   return HtmlService.createTemplateFromFile('GiaoDien').evaluate()
-    .setTitle('Lớp 2 Vui Học – V2.1')
+    .setTitle('Lớp 2 – V2.2')
     .addMetaTag('viewport', 'width=device-width, initial-scale=1.0');
 }
-/** Ghép partial HTML, CSS, JavaScript trong một trang HtmlService. */
+/**
+ * Đọc nguyên văn nội dung CSS/JS partial để lồng vào GiaoDien.
+ * KHÔNG dùng createHtmlOutputFromFile().getContent() vì các partial JavaScript
+ * chứa toán tử < và template literals (HTML động) không phải tài liệu HTML hoàn chỉnh.
+ * Chỉ gọi với tên tệp nội bộ cố định, không nhận tên từ dữ liệu người dùng.
+ */
 function napThanhPhan(tenTep) {
-  return HtmlService.createHtmlOutputFromFile(tenTep).getContent();
+  return HtmlService.createTemplateFromFile(tenTep).getRawContent();
 }
