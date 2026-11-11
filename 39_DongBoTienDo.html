@@ -1,0 +1,39 @@
+/* G5 – Đồng bộ tiến độ một học sinh từ máy chủ; không dùng localStorage.
+ * Lộ trình hiển thị mặc định CHƯA HỌC cho tới khi nhận bằng chứng sổ sao.
+ */
+const TIEN_DO_HOC_TAP=(function(){
+ let snapshot=null,loading=null,ready=false;
+ const truth=(id,lv)=>!!snapshot?.lessons?.[id]?.[lv];
+ function isDone(id,lv){return truth(id,lv)}
+ function apply(data){
+  snapshot=data;ready=true;
+  if(typeof subjectRoadmaps!=='undefined'){
+   for(const topics of Object.values(subjectRoadmaps)){
+    for(const topic of topics)for(const lesson of topic.lessons){
+     lesson.levels=['LV1','LV2','LV3'].map(lv=>truth(lesson.id,lv)?'done':'new');
+    }
+   }
+  }
+  if(typeof renderLessons==='function'&&document.getElementById('lessonList'))renderLessons();
+  if(typeof capNhatLichHoc==='function')capNhatLichHoc();
+  if(typeof window.capNhatTienDoBaiToan==='function')window.capNhatTienDoBaiToan();
+ }
+ function refresh(force=false){
+  if(loading)return loading;
+  if(!force&&ready)return Promise.resolve(snapshot);
+  if(!window.google?.script?.run)return Promise.reject(Error('Cần mở Web App để lấy tiến độ'));
+  loading=new Promise((resolve,reject)=>{
+   google.script.run.withSuccessHandler(data=>{
+    loading=null;apply(data);resolve(data);
+   }).withFailureHandler(e=>{loading=null;reject(e)}).layTienDoHocSinh();
+  });
+  return loading;
+ }
+ function get(){return snapshot}
+ function clear(){snapshot=null;ready=false}
+ const api=Object.freeze({refresh,isDone,get,clear,ready:()=>ready});
+ if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',()=>refresh().catch(e=>console.warn('Chưa đồng bộ tiến độ',e)),{once:true});
+ }else refresh().catch(e=>console.warn('Chưa đồng bộ tiến độ',e));
+ return api;
+})();
