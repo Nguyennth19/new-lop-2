@@ -42,7 +42,7 @@ function renderTopicAwards(){
  }).join(''):`<div class="award-empty">${muiIcon('book-open')}<span>Chưa có chủ đề hoàn thành ở môn ${escapeHtml(current)}. Chủ đề sẽ tự chuyển về đây khi tất cả bài đạt đủ LV1, LV2 và LV3.</span></div>`}</div>`;
 }
 document.addEventListener('click',e=>{
- let subj=e.target.closest('[data-subject]');if(subj){chooseRoadmapSubject(subj.dataset.subject);if(subj.dataset.subject==='Toán 2'){moBaiToanSheet(0);}else{navigate('path');}return}
+ let subj=e.target.closest('button[data-subject]');if(subj){chooseRoadmapSubject(subj.dataset.subject);if(subj.dataset.subject==='Toán 2'){moBaiToanSheet(0);}else{navigate('path');}return}
  let tab=e.target.closest('[data-roadmap-subject]');if(tab){chooseRoadmapSubject(tab.dataset.roadmapSubject);return}
  let awardTab=e.target.closest('[data-award-subject]');if(awardTab){document.getElementById('subjectTopicAchievements').dataset.subject=awardTab.dataset.awardSubject;expandedAwardTopic='';renderTopicAwards();return}
  let awardTopic=e.target.closest('[data-award-topic]');if(awardTopic){const key=document.getElementById('subjectTopicAchievements').dataset.subject+'/'+awardTopic.dataset.awardTopic;expandedAwardTopic=expandedAwardTopic===key?'':key;renderTopicAwards();return}
