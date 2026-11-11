@@ -14,6 +14,14 @@ const TIEN_DO_HOC_TAP=(function(){
     }
    }
   }
+  if(typeof subjects!=='undefined'&&typeof subjectCard==='function'){
+   const math=subjects.find(x=>x.name==='Toán 2');
+   if(math)math.progress=Math.round(['LV1','LV2','LV3'].filter(lv=>truth('toan_b20',lv)).length/3*100);
+   for(const grid of ['subjectGrid','subjectGridFull']){
+    const node=document.getElementById(grid);
+    if(node)node.innerHTML=subjects.map(subjectCard).join('');
+   }
+  }
   if(typeof renderLessons==='function'&&document.getElementById('lessonList'))renderLessons();
   if(typeof capNhatLichHoc==='function')capNhatLichHoc();
   if(typeof window.capNhatTienDoBaiToan==='function')window.capNhatTienDoBaiToan();
