@@ -43,6 +43,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .g7-a2-upload/URL_QA_RESULT.json
+          git add .g7-a2-upload/URL_QA_CANONICAL_653.json
           git commit -m "G7.4-A.2 verify canonical loader SHA 653 for six raw URLs"
           git push origin HEAD:g7-4-a2-webp-binary-20261112
