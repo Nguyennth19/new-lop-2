@@ -70,3 +70,27 @@ Trạng thái: **STATIC + SERVER-MOCK PASS / BROWSER WEB APP NOT TESTED**
 - QA tĩnh: JS/GAS 4/4 cú pháp PASS; adapter 30/30 câu, 6/6 lượt, 10 nhóm render không thiếu dữ liệu; mock máy chủ 30/30 đáp án đúng PASS và 30/30 đáp án sai bị từ chối.
 - Rủi ro chưa khóa: giao diện đặt tính/lời văn trên thiết bị thật, ảnh G7, độ khó LV3 và ngôn ngữ hai bài lời văn. **Cổng QA trình duyệt = CHƯA TEST**.
 - Chưa thay nhánh `test-theo-main`, chưa merge, chưa deploy Apps Script. Sau pull cần **New Version** cho deployment staging và chạy test trực quan trên desktop/mobile.
+
+## R1.3.1 – Bản vá theo ảnh test 12/11/2026
+
+**Lưu ý:** Những mục R1.2–R1.3 ở trên là lịch sử trước lần sửa này, không còn là đánh giá mới nhất.
+
+- B20-UI-01: tách các panel luyện tập tối đa 2 câu; không nhét toàn bộ `prompt` vào cột 78px của `.ml-mental-row`.
+- B20-UI-02: bài lời văn được cấp tóm tắt, câu lời giải, đơn vị ở **phép tính** và đáp số.
+- B20-UI-03: `carry`, `three`, `reverse` dùng ô toán 5 cột chuẩn, giữ đúng thứ tự từ manifest. LV3-A và LV3-B: 2 panel, mỗi panel 2 câu.
+- B20-API-01: `chamLuotToan20BienThe` đã có trong mã; cảnh báo “chưa có API” trên ảnh là bằng chứng deployment đang mở không có endpoint này, không phải bằng chứng dữ liệu sai.
+- `kiemTraKetNoiB20()` nay ghi ra Execution log `apiVersion: b20-r1-3-1-20261112`, `gradingEndpoint: chamLuotToan20BienThe`, `endpointReady:true`.
+- `kiemTraChamLuotB20()` kiểm tra chấm 30 câu trên máy chủ thật theo dữ liệu tải được, không ghi sao hoặc lượt học. Chạy được qua thanh **Run**.
+- Kiểm tra tĩnh đã thực hiện: 30/30 renderer; 30/30 đáp án đúng; 30/30 đáp án sai; CSS màn học Toán và khung `GiaoDien.html` (ngoại trừ include adapter) giống `test-theo-main`.
+- **Chưa QA bằng trình duyệt sau bản vá**. Không được đánh dấu `WEBAPP_PASS` cho đến khi người dùng kiểm tra deployment mới.
+
+### Cách test sau pull
+1. Pull **đúng** nhánh `test-b20-bien-the-20261112` (không dùng `test-theo-main`).
+2. Trong Apps Script Editor chạy `kiemTraKetNoiB20()`; xác minh Execution log có `endpointReady:true`.
+3. Chạy `kiemTraChamLuotB20()`; phải log `total:30`, `recorded:false`, `starsAwarded:0`. Nếu báo lỗi dừng ở đây, chưa deploy.
+4. **Deploy > Manage deployments > Edit > Version: New version > Deploy**. Nếu mở link `/exec` cũ mà chưa cập nhật version, sẽ tiếp tục nhận lỗi không có hàm.
+5. Tải lại cứng trang Web App, kiểm tra LV1-A/B, LV2-A/B, LV3-A/B. Nộp lần đúng, lần sai, sửa đáp án rồi nộp lại, xem số câu đúng và trạng thái màu. Không được ghi `90_Lan_lam_bai` hoặc `91_So_sao`.
+6. So sánh giao diện `test-theo-main` cùng kích thước desktop/mobile, đặc biệt các panel 2 bài, ô điền số và đơn vị lời văn.
+7. Nhật ký lỗi gốc, bằng chứng, cách phòng tránh: `NHAT_KY_LOI_VA_PHONG_NGUA.md`. Bộ test lặp lại: `node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js`.
+
+**Nguyên tắc:** Giữ trạng thái thử nghiệm, không merge hoặc phát hành cho học sinh khi chưa có nghiệm thu trực quan và sư phạm.
