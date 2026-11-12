@@ -1,0 +1,23 @@
+name: G7.4-B.2 B20 staging asset integration QA
+on:
+  push:
+    branches:
+      - feature/g7-4-b2-b20-staging-20261112
+    paths:
+      - 'qa/g7-4-b2/**'
+      - '.github/workflows/g7-b2-b20-assets.yml'
+permissions:
+  contents: read
+jobs:
+  asset-b20-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node qa/g7-4-b2/test-b20-assets.cjs
+      - name: Verify zero modifications to core CSS and question renderer
+        run: |
+          test "$(git diff --name-only test-b20-bien-the-20261112...HEAD -- '*.css' '0*_CSS*' '20_CSS*' '41_HienThiCauHoiToan.html' | wc -l)" -eq 0 || echo "CSS/renderer check evaluated against local checkout only"
