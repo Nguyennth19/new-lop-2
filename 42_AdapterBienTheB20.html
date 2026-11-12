@@ -19,7 +19,7 @@ function chuyenB20BienTheSangRenderer(pack){
        throw Error('Tham số câu B20 không hợp lệ: '+q.question_id);
      const type=q.type==='vertical'?'vertical':q.type==='word'?'word_problem':'mental';
      // Mỗi đoạn liên tiếp giữ đúng thứ tự Runtime; không đổi vị trí khi phân nhóm.
-     if(q.type!==previousType){previousType=q.type;sectionIndex++;withinSection=0;}
+     if(type!==previousType){previousType=type;sectionIndex++;withinSection=0;}
      const sectionId='b20_'+s.session_id+'_s'+sectionIndex;
      if(!sections.some(x=>x.id===sectionId)){
        const names={vertical:'Đặt tính rồi tính',mental:'Tính nhẩm',carry:'Hiểu số nhớ',
