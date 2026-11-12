@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify HTTPS 200 Content Type WebP and SHA256 for sentinel assets
         env:
-          RELEASE_SHA: "fe92cf31f7f4f23f5f29ac7e41e9d086cab91354"
+          RELEASE_SHA: "653bfbc73002a188dcea0b714247b84cc28a4fed"
         run: |
           python3 - <<'PY'
           import json,hashlib,os,urllib.request
@@ -35,7 +35,7 @@ jobs:
            digest=hashlib.sha256(raw).hexdigest()
            if status!=200 or mime!="image/webp" or digest!=a["webp_sha256"] or len(raw)!=a["webp_bytes"]:raise RuntimeError(f'URL QA fail: {a["asset_id"]} {status} {mime} {digest}')
            output.append({"asset_id":a["asset_id"],"url":url,"status":status,"content_type":mime,"sha256":digest,"bytes":len(raw),"cors":cors,"pass":True})
-          dest=Path(".g7-a2-upload/URL_QA_RESULT.json");dest.parent.mkdir(exist_ok=True)
+          dest=Path(".g7-a2-upload/URL_QA_CANONICAL_653.json");dest.parent.mkdir(exist_ok=True)
           dest.write_text(json.dumps({"release_commit":os.environ["RELEASE_SHA"],"tested":len(output),"pass":len(output),"results":output},indent=2)+"\n")
           print(f'G7.4-A.2 VERIFIED {len(output)} REAL HTTPS URLS')
           PY
@@ -44,5 +44,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .g7-a2-upload/URL_QA_RESULT.json
-          git commit -m "G7.4-A.2 verify six immutable public WebP URLs"
+          git commit -m "G7.4-A.2 verify canonical loader SHA 653 for six raw URLs"
           git push origin HEAD:g7-4-a2-webp-binary-20261112
