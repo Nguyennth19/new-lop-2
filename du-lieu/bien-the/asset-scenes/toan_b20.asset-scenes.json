@@ -1,0 +1,54 @@
+{
+  "schema_version": "kidlearn-variant-asset-scene-v1",
+  "catalog_release_commit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "lesson_id": "toan_b20",
+  "source_runtime": "thu-nghiem/bai-20-bien-the/runtime.json",
+  "mode": "STAGING_ONLY",
+  "question_scenes": {
+    "VAR_B20_20261112_016": {
+      "usage": "decorative",
+      "semantic": "kẹo bọc giấy",
+      "label_approval_status": "LABEL_APPROVED",
+      "scene": {
+        "groups": [
+          {
+            "label": "Hình minh họa, không thể hiện số lượng",
+            "items": [
+              {
+                "assetId": "KL_SH02_010",
+                "count": 1
+              }
+            ]
+          }
+        ]
+      },
+      "fallback_emoji": "🍬"
+    },
+    "VAR_B20_20261112_021": {
+      "usage": "decorative",
+      "semantic": "quyển sách (không khẳng định là truyện)",
+      "label_approval_status": "OWNER_SIGNOFF_PENDING",
+      "pilot_only": true,
+      "scene": {
+        "groups": [
+          {
+            "label": "Hình minh họa, không thể hiện số lượng",
+            "items": [
+              {
+                "assetId": "KL_SH03_006",
+                "count": 1
+              }
+            ]
+          }
+        ]
+      },
+      "fallback_emoji": "📚"
+    }
+  },
+  "policy": {
+    "allow_pending_labels_in_pilot_only": true,
+    "do_not_infer_quantities_from_icons": true,
+    "exclude_from_production_without_label_approval": true,
+    "no_changes_to_questions_or_answers": true
+  }
+}
