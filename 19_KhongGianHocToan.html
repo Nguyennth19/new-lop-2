@@ -329,7 +329,13 @@ document.addEventListener('click',e=>{
   root.querySelector('#mlShowKeyboard').hidden=!dock.hidden;return;
  }
  const key=e.target.closest('[data-ml-key]');if(key){press(key.dataset.mlKey);return;}
- const focused=e.target.closest('[data-ml-field]');if(focused)pickInput(focused);
+ const focused=e.target.closest('[data-ml-field]');if(focused){pickInput(focused);return;}
+ // Tapping any free area in a vertical card starts at the units digit.
+ const card=e.target.closest('.ml-vertical-card[data-ml-q-card]');
+ if(card){
+  const ones=card.querySelector('[data-ml-field$=":ones"]');
+  if(ones){pickInput(ones);ones.focus({preventScroll:true});}
+ }
 });
 document.addEventListener('mousedown',e=>{const key=e.target.closest('#mathFullScreen [data-ml-key]');if(key)e.preventDefault();});
 document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-ml-field]'))pickInput(e.target);});
