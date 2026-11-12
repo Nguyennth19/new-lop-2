@@ -1,0 +1,40 @@
+{
+  "schema": "kidlearn_g7_4_a_host_policy_v1",
+  "status": "DECISION_ACCEPTED_IMPLEMENTATION_PENDING_BINARY_PUBLISH",
+  "current_app_hosting_precedent": "raw.githubusercontent.com with immutable commit SHA (existing G3/G5 app image loader)",
+  "chosen_host": {
+    "provider": "GitHub repository static raw content",
+    "access_mode": "HTTPS publicly readable for application",
+    "domain": "raw.githubusercontent.com",
+    "repository": "Nguyennth19/new-lop-2",
+    "release_directory": "hinh-anh/webp-g7/v1",
+    "asset_subdirectory": "WEBP",
+    "asset_url_contract": "https://raw.githubusercontent.com/Nguyennth19/new-lop-2/{IMMUTABLE_BINARY_RELEASE_COMMIT}/hinh-anh/webp-g7/v1/WEBP/{SHEET}/{FILENAME}.webp",
+    "immutable_binary_release_commit": null,
+    "public_verified": false
+  },
+  "manifest": {
+    "source_path": "asset-review/V5/G7_3/ASSET_288_RELEASE_CANDIDATE_MANIFEST.json",
+    "pinned_commit": "a3965bb99c8de43c44cccae1921dd8fd98fab365",
+    "asset_count": 288,
+    "state": "CANDIDATE_NOT_APP_DEPLOYED",
+    "runtime_opt_in_only": true
+  },
+  "drive": {
+    "url": "https://drive.google.com/drive/folders/1wLT1TcvAsLZTzk4Z8-Am2AD5gSwTaykR",
+    "role": "MASTER_BACKUP_AND_RELEASE_AUDIT",
+    "forbidden_browser_modes": [
+      "drive.google.com/file/d/{id}/view",
+      "drive.google.com/uc?id={id}"
+    ]
+  },
+  "gates": [
+    "Upload original 288 WebP binary files to dedicated immutable GitHub release directory; do not re-encode.",
+    "Re-read 288 GitHub byte objects and verify all SHA-256 against G7_3 manifest.",
+    "Verify public HTTPS GET response with Content-Type image/webp for 3+ sentinel files, including on Android Chrome.",
+    "Pin the exact binary release commit into the GAS loader only after all 288 files exist.",
+    "Test manifest GET CORS on GAS domain and 404/timeout/fallback; keep existing G5 images until pass.",
+    "Keep G7.4-A flag/host unconfigured until release QA; no main or test-theo-main merge."
+  ],
+  "rollback": "Restore previous immutable binary release commit; disable G7 loader usage, preserving 34_HinhAnhDungChung G5."
+}
