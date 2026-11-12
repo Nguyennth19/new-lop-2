@@ -46,7 +46,7 @@ function b20DocPackThu_(){
   if(JSON.stringify(result).length<95000)cache.put(B20_PILOT_CACHE_KEY,JSON.stringify(result),300);
   return result;
 }
-function b20ChamThu_(request){
+function b20ChamThu(request){
   if(!request||typeof request!=='object')throw Error('Yêu cầu không hợp lệ');
   const pack=b20DocPackThu_();
   const sid=String(request.sessionId||''),id=String(request.questionId||'');
