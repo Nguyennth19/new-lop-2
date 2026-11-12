@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "verified": 288,
+  "shared": 144,
+  "math": 144,
+  "checks": "zip+crc32+sha256+WebP"
+}
