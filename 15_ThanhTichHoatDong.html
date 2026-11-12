@@ -73,11 +73,9 @@ function thHienThi(d){
  thSet('homeAchievementTitle',d.completed?'Em đã chinh phục '+d.completed+' cấp độ!':'Ngôi sao đầu tiên đang chờ em!');
  thSet('homeAchievementDetail',d.completed?'Em đang tiến bộ mỗi ngày. Cố gắng tiếp nhé!':'Hoàn thành cấp độ đầu tiên để nhận sao thưởng nhé.');
  thSet('homeAchievementStars','⭐ '+d.earned+' sao hành trình · Ví sao: '+d.balance);
- const homeStreak=document.querySelector('.streak-value');
- if(homeStreak)homeStreak.textContent=d.streak?d.streak+' ngày học liên tiếp!':'Chưa có ngày học hợp lệ';
- const homeWeek=document.querySelector('.streak .week');
- if(homeWeek)homeWeek.innerHTML=(d.week||[]).map(x=>'<div class="day '+(x.active?'done':'future')+'">'+thE(x.label)+'<i>'+(x.active?'✓':'•')+'</i></div>').join('');
+ // M2.2-A: lịch tuần và chuỗi ngày được render chung từ attendance xác minh máy chủ.
  if(typeof capNhatLichHoc==='function')capNhatLichHoc(d);
+ if(typeof capNhatChuoiNgayHoc==='function')capNhatChuoiNgayHoc(d);
  thHuyHieu(d);thChart(d);thThemBieuDo(d);thHoatDong();
  thSet('achvStatus','Dữ liệu thực từ Google Sheet · Sao có thể dùng: '+d.balance+' ★ · Không bao gồm kết quả demo và dữ liệu nháp cũ.');
 }

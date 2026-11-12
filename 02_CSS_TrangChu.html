@@ -290,3 +290,17 @@ button:focus-visible,a:focus-visible {outline:2px solid var(--primary);outline-o
 #schoolweek button.school-day.selected span,
 #schoolweek button.school-day.selected .school-today-mark{color:#fff!important}
 #schoolweek button.school-day.selected small{background:rgba(255,255,255,.22)!important;color:#fff!important}
+
+
+/* M2.2-A – Chỉ bổ sung trạng thái chuyên cần (M2.2-B sẽ tinh chỉnh bố cục). */
+.streak .day.done i{background:#dcfce7!important;color:#15803d!important;outline:0!important}
+.streak .day.doing i{background:#dbeafe!important;color:#2563eb!important;outline:0!important}
+.streak .day.missed i{background:#fee2e2!important;color:#dc2626!important;outline:0!important}
+.streak .day.current i{background:#ffedd5!important;color:#d97706!important;outline:2px solid #f59e0b!important;outline-offset:2px}
+.streak .day.future i{background:#f1f5f9;color:#94a3b8;outline:0}
+.streak .day.unknown i{background:#f1f5f9;color:#64748b;outline:0}
+#schoolweek .school-day.status-completed:not(.selected) small{background:#dcfce7;color:#15803d}
+#schoolweek .school-day.status-progressing:not(.selected) small{background:#dbeafe;color:#2563eb}
+#schoolweek .school-day.status-missed:not(.selected) small{background:#fee2e2;color:#dc2626}
+#schoolweek .school-day.status-unknown:not(.selected) small{background:#f1f5f9;color:#64748b}
+#schoolweek .school-day.status-future:not(.selected) small{background:#f1f5f9;color:#64748b}

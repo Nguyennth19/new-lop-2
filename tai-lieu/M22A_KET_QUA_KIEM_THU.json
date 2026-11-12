@@ -1,0 +1,28 @@
+{
+  "phase": "M2.2-A",
+  "date": "2026-11-12",
+  "working_branch": "test-theo-main",
+  "base_commit": "97aa441038708a89a5bacdfbdac6ad21b330f392",
+  "summary": {
+    "logic_cases": 12,
+    "logic_pass": 12,
+    "render_cases": 7,
+    "render_pass": 7,
+    "static_js_syntax": "PASS",
+    "apps_script_webapp": "PENDING",
+    "visual_parity": "PENDING"
+  },
+  "calendar": {
+    "week": "Monday to Sunday",
+    "streak": "-4 to +2",
+    "timezone": "Asia/Ho_Chi_Minh"
+  },
+  "completion": {
+    "source": "90_Lan_lam_bai",
+    "threshold": 0.7,
+    "requiresAnswered": true,
+    "doesNotAlterAwardLogic": true
+  },
+  "recordsOnly": true,
+  "notes": "No screenshot comparison until deployed TEST; no main merge."
+}

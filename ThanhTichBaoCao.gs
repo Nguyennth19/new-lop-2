@@ -84,6 +84,32 @@ function achAnalyses_(attempts){
  }catch(e){/* Dashboard thành tích vẫn hoạt động nếu tạm thời lỗi dữ liệu bài học. */}
  return {week4,subjects,skills};
 }
+
+/** M2.2-A: trạng thái chuyên cần KHÔNG sửa hệ thống thưởng sao.
+ * completed: có lượt nộp đạt ngưỡng hiện hành >=70% và ít nhất một câu được trả lời.
+ * progressing: đã có lượt nộp có trả lời nhưng chưa đạt ngưỡng.
+ * missed: không có lượt học được ghi nhận (chỉ áp dụng ngày đã qua).
+ * empty: hôm nay chưa có bài nộp; future: ngày chưa tới.
+ */
+function achAttendance_(attempts,now){
+ const today=achDay_(now),base=new Date(today+'T12:00:00+07:00'),byDay={};
+ attempts.forEach(a=>{
+  const day=achDay_(achDate_(a.at_utc)),answered=Number(a.answered)||0;
+  if(!answered||day>today)return;
+  const record=byDay[day]||(byDay[day]={attempts:0,completed:0,progressing:0});
+  record.attempts++;
+  const total=Number(a.total)||0,correct=Number(a.correct)||0;
+  if(total>0&&correct/total>=0.7)record.completed++;
+  else record.progressing++;
+ });
+ return Array.from({length:14},(_,i)=>{
+  const d=new Date(base.getTime()-(13-i)*86400000);
+  const day=achDay_(d),v=byDay[day]||{attempts:0,completed:0,progressing:0};
+  return {day,attempts:v.attempts,completed:v.completed,progressing:v.progressing,
+    status:v.completed>0?'completed':v.progressing>0?'progressing':day===today?'empty':'missed'};
+ });
+}
+
 function achSummary_(attemptSheet,pointsSheet){
  const attempts=achRows_(attemptSheet).filter(x=>x.profile_id===achProfile_());
  const events=achRows_(pointsSheet).filter(x=>x.profile_id===achProfile_());
@@ -94,7 +120,7 @@ function achSummary_(attemptSheet,pointsSheet){
  const balance=events.reduce((n,e)=>n+Number(e.delta||0),0);
  const completed=new Set(events.filter(e=>e.event_type==='level_done').map(e=>e.lesson_id+':'+e.level));
  const days=[...new Set(attempts.filter(a=>Number(a.correct)>0).map(a=>achDay_(achDate_(a.at_utc))))];
- const now=new Date(),today=achDay_(now),bars=[];
+ const now=new Date(),today=achDay_(now),bars=[],attendance=achAttendance_(attempts,now);
  for(let i=6;i>=0;i--){const date=new Date(today+'T12:00:00+07:00');date.setUTCDate(date.getUTCDate()-i);
   const day=achDay_(date);
   const mins=attempts.filter(a=>Number(a.answered)>0&&achDay_(achDate_(a.at_utc))===day).reduce((n,a)=>n+Number(a.active_seconds||0),0);
@@ -108,7 +134,7 @@ function achSummary_(attemptSheet,pointsSheet){
  return {earned,balance,bonus,spent:redeemed,attempts:attempts.length,completed:completed.size,
   lectures:0, tests:0, activeSeconds:attempts.reduce((n,a)=>n+Number(a.active_seconds||0),0),
   accuracy:total?Math.round(accuracy/total*100):0,days:days.length,streak:achStreak_(days),badges,
-  badgeCount:badges.filter(b=>b.achieved).length,week:bars,week4:analysis.week4,subjects:analysis.subjects,skills:analysis.skills,recent,asOf:new Date().toISOString(),isDemo:false};
+  badgeCount:badges.filter(b=>b.achieved).length,week:bars,attendance,week4:analysis.week4,subjects:analysis.subjects,skills:analysis.skills,recent,asOf:new Date().toISOString(),isDemo:false};
 }
 function layTongQuanThanhTich(){
  // Các tab được tạo trống khi truy cập lần đầu: toàn bộ dashboard mặc định bằng 0.
