@@ -31,7 +31,7 @@ Trạng thái: **STATIC + SERVER-MOCK PASS / BROWSER WEB APP NOT TESTED**
 1. Sao lưu bản Apps Script đang dùng trước khi đổi nhánh.
 2. Đồng bộ nhánh `test-b20-bien-the-20261112` qua công cụ GitHub/Apps Script.
 3. Kiểm tra tệp `B20_BienTheMayChu.gs` đã xuất hiện ở gốc dự án, không có tiền tố `apps-script/`.
-4. Trong Apps Script Editor chạy `kiemTraB20BienThe_()` (lần đầu cấp quyền UrlFetchApp).
+4. Trong Apps Script Editor chạy `kiemTraB20BienThe()` (lần đầu cấp quyền UrlFetchApp).
 5. Nếu báo PASS, tạo triển khai Web App **riêng cho thử nghiệm**.
 6. Mở ứng dụng > Lộ trình học > Toán 2 > Bài 20 > LV1; chọn LV1-A, làm 6 câu; thử LV1-B / LV2-A / LV2-B / LV3-A / LV3-B.
 7. Kiểm tra trường hợp nhập trống, nhập sai, nhập đúng, đổi lượt, làm lại và quay về Lộ trình.
@@ -42,3 +42,14 @@ Trạng thái: **STATIC + SERVER-MOCK PASS / BROWSER WEB APP NOT TESTED**
 - Đồng bộ lại `test-theo-main`; sử dụng bộ đọc `khoLayBaiHoc_('toan_b20')`.
 - Không cần di chuyển hoặc xóa 33 ứng viên SGK/SBT hay 51 câu gốc.
 - Không xoá sổ sao hoặc nhật ký học sinh để hoàn tác.
+
+## R1.1 — 2026-11-12: Hàm công khai và lỗi chấm bài
+
+- `kiemTraB20BienThe()`: tên hàm công khai, dùng trong Apps Script Editor > Run, thay cho `kiemTraB20BienThe_()`.
+- `kiemTraKetNoiB20()`: kiểm tra phiên bản endpoint, dự kiến trả về `apiVersion: b20-r1-1-20261112`.
+- `chamBaiToan20BienThe(request)`: endpoint giao diện gọi.
+- `b20ChamThuNoiBo_(request)`: hàm nội bộ; `b20ChamThu(request)` giữ lại như alias staging tương thích.
+- Khi endpoint không khả dụng, UI thông báo phải cập nhật bản Web App và mở lại nút Kiểm tra để thử lại.
+- Kiểm tra mock server: 30/30 đáp án đúng, 30/30 đáp án sai, từ chối câu không thuộc lượt; cú pháp các tệp sửa đạt.
+- Chưa triển khai hoặc kiểm tra Web App chạy thực tế. Cần **tạo version mới trong Manage deployments**, vì Apps Script Editor có mã mới không đảm bảo deployment /exec đã cập nhật.
+- Bước này **không sửa CSS, renderer hay dữ liệu bài học**. R1.2/R1.3 thực hiện riêng.
