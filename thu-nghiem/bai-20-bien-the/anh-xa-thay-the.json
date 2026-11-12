@@ -1,0 +1,33 @@
+{
+  "schema_version": "b20-override-v1",
+  "mode": "STAGING_OVERRIDE_ONLY",
+  "legacy_source": {
+    "catalog": "LOP2_C1_ALL_IN_ONE_JSON_BUILD_B001_B075_20261109",
+    "lesson_id": "B020",
+    "source_candidate_count": 33,
+    "source_status": "C1_SCAFFOLD"
+  },
+  "new_source": {
+    "catalog": "Lớp 2 - Data bài 20 Phép cộng có nhớ - LV1 LV2 LV3",
+    "lesson_id": "toan_b20",
+    "origin": "gemini-code",
+    "original_question_count": 51
+  },
+  "runtime_override": {
+    "lesson_id": "toan_b20",
+    "path": "thu-nghiem/bai-20-bien-the/runtime.json",
+    "count": 30,
+    "levels": {
+      "LV1": 12,
+      "LV2": 10,
+      "LV3": 8
+    }
+  },
+  "policy": {
+    "preserve_legacy_source": true,
+    "do_not_overwrite_canonical": true,
+    "do_not_auto_deploy": true,
+    "release_status": "STAGING_DEMO_ONLY"
+  },
+  "notes": "B020 is the canonical extracted-SGK/SBT candidate registry; toan_b20 is the gemini-code app lesson ID. This crosswalk applies only to the pilot override and does not claim source text equivalence."
+}
