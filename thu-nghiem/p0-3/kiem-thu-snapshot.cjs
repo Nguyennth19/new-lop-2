@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 // Offline test: mocks GAS services, never opens Google Sheets or student records.
-const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'../..');
 const script=fs.readFileSync(path.join(__dirname,'QA_Snapshot_NoWrite.gs'),'utf8');
 const server=fs.readFileSync(path.join(root,'B20_BienTheMayChu.gs'),'utf8');
@@ -23,7 +23,7 @@ function make(options={}){
    CacheService:{getScriptCache:()=>({get:()=>null,put:()=>{}})},
    UrlFetchApp:{fetch:()=>({getResponseCode:()=>200,getContentText:()=>JSON.stringify(pack)})},
    Utilities:{DigestAlgorithm:{SHA_256:'SHA_256'},Charset:{UTF_8:'UTF_8'},
-    computeDigest:(_,text)=>Array.from(Buffer.from(require('node:crypto').createHash('sha256').update(text).digest()))},
+    computeDigest:(_,text)=>Array.from(Buffer.from(crypto.createHash('sha256').update(text).digest()))},
    moBangDuAn_:()=>({getSheetByName:name=>options.missingTab===name?null:sheet(name)})
  };
  vm.createContext(ctx);vm.runInContext(server+'\n'+script,ctx);
