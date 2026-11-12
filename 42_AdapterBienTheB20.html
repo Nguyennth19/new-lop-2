@@ -1,0 +1,39 @@
+/* R1.3: Adapter dữ liệu thuần, không dựng DOM/CSS. */
+function chuyenB20BienTheSangRenderer(pack){
+ if(!pack||pack.variantPilot!==true||pack.lesson?.id!=='toan_b20')return pack;
+ if(!Array.isArray(pack.sessions)||!Array.isArray(pack.questions))throw Error('Runtime B20 sai cấu trúc');
+ const levels=[],sections=[],questions=[],used=new Set();
+ for(const s of pack.sessions){
+   if(!/^LV[123]-[AB]$/.test(s.session_id)||levels.some(x=>x.id===s.session_id))throw Error('Mã lượt B20 không hợp lệ');
+   levels.push({id:s.session_id,level:s.session_id,name:s.session_id});
+   const raw=s.question_ids.map(id=>pack.questions.find(q=>q.question_id===id));
+   if(raw.some(x=>!x))throw Error('Lượt B20 tham chiếu câu không tồn tại');
+   raw.forEach((q,i)=>{
+     if(used.has(q.question_id)||q.session_id!==s.session_id)throw Error('Câu B20 trùng hoặc sai lượt');
+     used.add(q.question_id);
+     const type=q.type==='vertical'?'vertical':q.type==='word'?'word_problem':'mental';
+     const sectionId='b20_'+s.session_id+'_'+type;
+     let section=sections.find(x=>x.id===sectionId);
+     if(!section){
+       section={id:sectionId,levelId:s.session_id,type,name: type==='vertical'?'Đặt tính rồi tính':type==='word_problem'?'Bài toán có lời văn':'Tính toán và suy luận'};
+       sections.push(section);
+     }
+     const params=q.parameters||{};
+     const prompt=String(q.prompt||'');
+     const converted={
+       id:q.question_id,level:s.session_id,sectionId,order:i+1,label:'Câu '+(i+1),
+       type,n1:params.a,n2:params.b,op:'+',answer:String(q.answer),
+       unit:q.unit||'',prompt,summary:'',solutionPrompt:'Phép tính:',
+       answerExplanation:q.solution_prompt||'',svg:'',puzzle:null,
+       valid:true,group:'Luyện tập',theme:'blue',variantType:q.type,
+       skillId:q.skill_id,sourceRole:q.source_role||'PROJECT_ORIGINAL_VARIANT',
+       pilotPrompt:type==='mental'?prompt:null
+     };
+     if(!Number.isInteger(Number(q.answer))||!Number.isInteger(params.a)||!Number.isInteger(params.b))throw Error('Tham số B20 không hợp lệ');
+     questions.push(converted);
+   });
+ }
+ if(questions.length!==pack.questions.length)throw Error('Ngân hàng B20 không khớp lượt');
+ return {variantPilot:true,lesson:pack.lesson,packVersion:pack.packVersion,levels,sections,questions,
+   sessions:pack.sessions,readAt:new Date().toISOString()};
+}
