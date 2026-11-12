@@ -304,3 +304,64 @@ button:focus-visible,a:focus-visible {outline:2px solid var(--primary);outline-o
 #schoolweek .school-day.status-missed:not(.selected) small{background:#fee2e2;color:#dc2626}
 #schoolweek .school-day.status-unknown:not(.selected) small{background:#f1f5f9;color:#64748b}
 #schoolweek .school-day.status-future:not(.selected) small{background:#f1f5f9;color:#64748b}
+
+/* M2.2-B – Bố cục RIÊNG thẻ Chuỗi ngày học; tái sử dụng token và màu M2.2-A.
+   Không can thiệp .today-grid, .daily, #schoolweek hay layout bên ngoài. */
+.streak{
+  min-width:0;
+  padding:clamp(16px,1.6vw,20px);
+  gap:7px;
+  container-type:inline-size;
+}
+.streak > .streak-head{
+  font-size:12px;
+  font-weight:700;
+  line-height:1.35;
+}
+.streak > .streak-value{
+  min-width:0;
+  font-size:clamp(19px,1.75vw,25px);
+  font-weight:800;
+  line-height:1.25;
+  overflow-wrap:break-word;
+}
+.streak > p{
+  max-width:none;
+  min-width:0;
+  font-size:11px;
+  line-height:1.45;
+  overflow-wrap:break-word;
+}
+.streak > .week{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:4px;
+  width:100%;
+  min-width:0;
+  margin-top:7px;
+}
+.streak > .week > .day{
+  min-width:0;
+  font-size:10px;
+  line-height:1.35;
+}
+.streak > .week > .day i{
+  width:min(27px,100%);
+  height:auto;
+  aspect-ratio:1;
+  margin:6px auto 0;
+  font-size:12px;
+}
+/* Không dựa vào viewport: chỉ giữ một dòng khi chính thẻ đủ chỗ. */
+@container (min-width:390px){
+  .streak > p{white-space:nowrap;overflow-wrap:normal}
+}
+@media (max-width:800px){
+  .streak > .streak-value{font-size:clamp(19px,3.2vw,24px)}
+}
+@media (max-width:480px){
+  .streak{padding:16px;gap:6px}
+  .streak > .streak-value{font-size:20px}
+  .streak > .week{gap:3px}
+  .streak > .week > .day{font-size:10px}
+}
