@@ -10,7 +10,7 @@ function vertical(q){
  '<div class="ml-vert-row numbers"><span></span><b>'+E(a[0])+'</b><b>'+E(a[1])+'</b></div>'+
  '<div class="ml-vert-row numbers rule"><span class="operator">+</span><b>'+E(b[0])+'</b><b>'+E(b[1])+'</b></div>'+
  '<div class="ml-vert-row answers"><span></span>'+input(q,q.id+':tens',1)+input(q,q.id+':ones',1)+'</div></div>';
- return baseCard(q,inside,'ml-vertical-card');
+ return baseCard(q,inside,'ml-vertical-card ml-vertical-paper');
 }
 function mental(q){
  const row='ml-mental-row',first='ml-mental-first';
@@ -31,16 +31,23 @@ function mental(q){
 function puzzle(q){
  if(!q.valid)return invalid(q);
  const inside='<div class="ml-puzzle">'+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>v&&typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v==null?'':v)+'</b>').join('')+'</div>').join('')+'</div>';
- return baseCard(q,inside,'ml-puzzle-card');
+ return baseCard(q,inside,'ml-puzzle-card ml-puzzle-paper');
 }
 function word(q){
  if(!q.valid)return invalid(q);
- const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'"></div><p>'+E(q.prompt)+'</p></div>'+
- (q.summary?'<div class="ml-word-summary"><b>Tóm tắt:</b> '+E(q.summary)+'</div>':'')+
- '<div class="ml-graph-paper"><h4>BÀI GIẢI</h4><p>'+E(q.solutionPrompt||'Phép tính:')+'</p><div class="ml-word-calc">'+
- input(q,q.id+':n1',2)+input(q,q.id+':op',1)+input(q,q.id+':n2',2)+'<b>=</b>'+input(q,q.id+':sum',3)+(q.variantType==='word'&&q.unit?' <span>('+E(q.unit)+')</span>':'')+'</div>'+
- '<div class="ml-word-result">Đáp số: '+input(q,q.id+':answer',3)+' <span>'+E(q.unit)+'</span></div></div>';
- return baseCard(q,inside,'ml-word-card');
+ // Preserve existing G7 SVG/WebP loader; missing asset stays a visual fallback.
+ const summary=String(q.summary||'').trim();
+ const explanation=String(q.solutionPrompt||'').trim();
+ const unit=String(q.unit||'').trim();
+ const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'" role="img" aria-label="Hình minh họa cho bài toán"></div><p>'+E(q.prompt)+'</p></div>'+
+ (summary?'<div class="ml-word-summary"><b>TÓM TẮT:</b> '+E(summary)+'</div>':'')+
+ '<div class="ml-graph-paper"><h4>BÀI GIẢI</h4>'+
+ '<p>'+E(explanation||'Em viết phép tính thích hợp:')+'</p>'+
+ '<div class="ml-word-calc-line"><strong>Phép tính:</strong><div class="ml-word-calc">'+
+ input(q,q.id+':n1',2)+input(q,q.id+':op',1)+input(q,q.id+':n2',2)+'<b>=</b>'+input(q,q.id+':sum',3)+
+ (unit?' <span>('+E(unit)+')</span>':'')+'</div></div>'+
+ '<div class="ml-word-result">Đáp số: '+input(q,q.id+':answer',3)+(unit?' <span>'+E(unit)+'</span>':'')+'</div></div>';
+ return baseCard(q,inside,'ml-word-card ml-word-structured');
 }
 function invalid(q){return '<article class="ml-card ml-invalid"><small>'+E(q.label||q.id)+'</small><p>⚠ Dữ liệu câu hỏi chưa hoàn chỉnh trong Google Sheet.</p></article>';}
 
