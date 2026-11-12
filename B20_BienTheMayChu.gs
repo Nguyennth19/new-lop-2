@@ -114,7 +114,7 @@ function chamLuotToan20BienThe(request){
          (Number(y)===q.parameters.a&&Number(x)===q.parameters.b))&&
         op==='+'&&Number(sum)===q.answer&&Number(answer)===q.answer;
     }else{
-      const x=val('answer');filled=x!=='';ok=x!==''&&/^\\d{1,3}$/.test(x)&&Number(x)===q.answer;
+      const x=val('answer');filled=x!=='';ok=x!==''&&/^\d{1,3}$/.test(x)&&Number(x)===q.answer;
     }
     if(filled)answered++;
     if(ok)correct++;
