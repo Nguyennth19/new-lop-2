@@ -291,6 +291,11 @@ function nextMathInput(field){
    const candidate=shell().querySelector('[data-ml-field="'+id+':'+following+'"]');
    if(candidate)return candidate;
   }
+  // Last vertical digit must jump OUT of this calculation, not loop to its ones input.
+  if(suffix==='tens'){
+   const end=all.reduce((n,node,i)=>node.dataset.mlQ===id?i:n,-1);
+   return all[end+1]||null;
+  }
  }
  return all[all.indexOf(field)+1]||null;
 }
