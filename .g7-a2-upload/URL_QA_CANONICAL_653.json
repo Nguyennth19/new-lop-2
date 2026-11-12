@@ -1,0 +1,67 @@
+{
+  "release_commit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "tested": 6,
+  "pass": 6,
+  "results": [
+    {
+      "asset_id": "KL_SH01_001",
+      "url": "https://raw.githubusercontent.com/Nguyennth19/new-lop-2/653bfbc73002a188dcea0b714247b84cc28a4fed/hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-01.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "sha256": "d9c2a2f446cb12026c966b14cdbe50d76a89fe651c7a95d52264e456d4120333",
+      "bytes": 25280,
+      "cors": "*",
+      "pass": true
+    },
+    {
+      "asset_id": "KL_SH05_004",
+      "url": "https://raw.githubusercontent.com/Nguyennth19/new-lop-2/653bfbc73002a188dcea0b714247b84cc28a4fed/hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-04.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "sha256": "1aab282da156e4248aab8a1ebb5dba0369853ab526df4050344ed0de7bcf6548",
+      "bytes": 38700,
+      "cors": "*",
+      "pass": true
+    },
+    {
+      "asset_id": "KL_SH12_006",
+      "url": "https://raw.githubusercontent.com/Nguyennth19/new-lop-2/653bfbc73002a188dcea0b714247b84cc28a4fed/hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-06.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "sha256": "4c5f39a1b8905b3282db46bd6a353016d546b39ef79e7cc0d8aae9c6de9e6b0e",
+      "bytes": 39572,
+      "cors": "*",
+      "pass": true
+    },
+    {
+      "asset_id": "KL_M01_008",
+      "url": "https://raw.githubusercontent.com/Nguyennth19/new-lop-2/653bfbc73002a188dcea0b714247b84cc28a4fed/hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-08.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "sha256": "1af9097ba4d22e641c406906888b82bce69212b34a212dad85a55e3d1dcec72e",
+      "bytes": 26710,
+      "cors": "*",
+      "pass": true
+    },
+    {
+      "asset_id": "KL_M05_009",
+      "url": "https://raw.githubusercontent.com/Nguyennth19/new-lop-2/653bfbc73002a188dcea0b714247b84cc28a4fed/hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-09.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "sha256": "ca3765d5d53947016e0e9002429eaec24d5ff54d64b42f68b3f7672ec5ce31ea",
+      "bytes": 37730,
+      "cors": "*",
+      "pass": true
+    },
+    {
+      "asset_id": "KL_M12_012",
+      "url": "https://raw.githubusercontent.com/Nguyennth19/new-lop-2/653bfbc73002a188dcea0b714247b84cc28a4fed/hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-12.webp",
+      "status": 200,
+      "content_type": "image/webp",
+      "sha256": "0b61039dcb7d890075e655f4595f8aeecb8db69f3f8b0ea1e950269dd6334556",
+      "bytes": 14820,
+      "cors": "*",
+      "pass": true
+    }
+  ]
+}
