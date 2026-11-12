@@ -1,0 +1,73 @@
+/* Branch TEST ONLY. Isolated score; no THANH_TICH_GUI or TIEN_DO_HOC writes. */
+(function(){
+let data=null,sessionId='LV1-A',values={},results={};
+const E=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function root(){
+ let r=document.getElementById('g25Math');if(r)return r;
+ r=document.createElement('div');r.id='g25Math';r.className='math-screen';r.hidden=true;
+ r.style.cssText='position:fixed;inset:0;z-index:1200;background:#f7f9fc;overflow:auto';
+ r.innerHTML='<header class="ml-top"><button data-g25-close class="ml-back">‹</button><div class="ml-heading"><b>🧪 Bài 20 – G2.5 TEST · không cộng sao</b></div></header>'+
+ '<div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">SÁU LƯỢT HỌC</b><nav id="g25Nav" class="ml-navigation"></nav></aside>'+
+ '<div class="ml-workspace"><main class="ml-content" id="g25Main"></main><aside id="g25Side" class="ml-results"></aside></div></div>';
+ document.body.appendChild(r);return r;
+}
+function input(q,key,max){
+ return '<input class="ml-input" type="text" inputmode="numeric" maxlength="'+max+'" autocomplete="off" data-g25-field="'+E(key)+'" value="'+E(values[key]||'')+'">';
+}
+function card(q,inner,kind){
+ return '<article class="ml-card ml-theme-'+E(q.theme||'blue')+' '+kind+'"><div class="ml-card-top"><b>'+E(q.label)+'</b><small>'+E(q.skillId)+'</small></div>'+inner+'</article>';
+}
+function current(){return data&&data.sessions.find(s=>s.id===sessionId)}
+function render(){
+ const r=root(),s=current();if(!s)return;
+ r.querySelector('#g25Nav').innerHTML=data.sessions.map(x=>'<button data-g25-session="'+x.id+'" class="'+(x.id===sessionId?'active':'')+'"><span class="ml-topic-text">'+E(x.id+' – '+x.title)+'</span></button>').join('');
+ const renderer=taoHienThiCauToan({E,input,baseCard:card});
+ r.querySelector('#g25Main').innerHTML='<div class="ml-page"><section class="ml-section"><div class="ml-section-heading"><h3>'+E(s.id+' – '+s.title)+'</h3></div>'+
+ '<p style="padding:12px">Mục tiêu: '+E(s.minutes)+' · '+s.questions.length+' câu. Nội dung và hình ảnh chưa nghiệm thu.</p>'+
+ '<div class="ml-section-box"><div class="ml-cards">'+s.questions.map(q=>{
+  let body=q.type==='concept'?card(q,'<p style="line-height:1.7">'+E(q.prompt)+'</p><p>Điền số: '+input(q,q.id+':answer',3)+' '+E(q.unit)+'</p>','ml-mental-card'):
+  q.type==='vertical'?renderer.vertical(q):
+  q.type==='mental'?card(q,'<p>'+E(q.prompt)+'</p><p>Điền kết quả: '+input(q,q.id+':answer',3)+'</p>','ml-mental-card'):
+  q.type==='word_problem'?renderer.word(q):
+  q.type==='missing_digit'?renderer.puzzle(q):renderer.invalid(q);
+  return '<div class="g25-q">'+body+'<p class="g25-feedback" style="padding:8px">'+E(results[q.id]||'')+'</p></div>';
+ }).join('')+'</div></div></section></div>';
+ r.querySelector('#g25Side').innerHTML='<div class="ml-result-card"><h2>Kết quả TEST</h2><p>Không lưu điểm, sao, tiến độ.</p>'+
+ '<div id="g25Score"></div><div class="ml-result-actions"><button data-g25-grade>Kiểm tra</button><button data-g25-reset>Làm lại</button></div></div>';
+ r.querySelectorAll('[data-g25-field]').forEach(el=>el.addEventListener('input',()=>{values[el.dataset.g25Field]=el.value; }));
+ r.querySelector('#g25Score').textContent=Object.keys(results).length?'Đã kiểm tra '+Object.keys(results).length+' câu.':'Chưa kiểm tra';
+ if(typeof HINH_ANH_APP!=='undefined'&&typeof HINH_ANH_APP.word==='function')
+   s.questions.filter(q=>q.type==='word_problem').forEach(q=>{const el=r.querySelector('[data-ml-svg="'+q.id+'"]');if(el)try{HINH_ANH_APP.word(q,el)}catch(e){}});
+}
+function grade(){
+ const s=current();if(!s)return;
+ s.questions.forEach(q=>{
+  const read=k=>String(values[q.id+':'+k]||'').trim();
+  const ok=q.type==='concept'?read('answer')===String(q.answer):danhGiaCauToan(q,read);
+  results[q.id]=ok?'✓ Robot: Đúng rồi, con giỏi lắm!':
+    q.type==='vertical'?'✕ Robot: Hãy nhớ cộng hàng đơn vị trước và thêm số nhớ.':
+    q.type==='missing_digit'?'✕ Robot: Con kiểm tra hàng đơn vị rồi mới đến hàng chục nhé.':
+    q.type==='word_problem'?'✕ Robot: Đọc lại dữ kiện và chọn phép cộng nhé.':
+    '✕ Robot: Tách số và thử lại nhé!';
+ });
+ render();
+}
+function choose(id){if(!data?.sessions.some(s=>s.id===id))return;sessionId=id;values={};results={};render()}
+function open(){
+ const r=root();r.hidden=false;
+ r.querySelector('#g25Main').textContent='Đang nạp 6 lượt từ Sheet G2.4...';
+ if(!window.google?.script?.run){r.querySelector('#g25Main').textContent='Hãy mở qua Apps Script Web App TEST.';return}
+ google.script.run.withSuccessHandler(x=>{data=x;choose('LV1-A')})
+ .withFailureHandler(e=>{r.querySelector('#g25Main').textContent='Lỗi nạp dữ liệu: '+(e.message||e)})
+ .layBaiToan20Test();
+}
+document.addEventListener('click',e=>{
+ if(e.target.closest('[data-g25-open]')){open();return}
+ if(!e.target.closest('#g25Math'))return;
+ if(e.target.closest('[data-g25-close]')){root().hidden=true;return}
+ const s=e.target.closest('[data-g25-session]');if(s){choose(s.dataset.g25Session);return}
+ if(e.target.closest('[data-g25-grade]')){grade();return}
+ if(e.target.closest('[data-g25-reset]')){values={};results={};render()}
+});
+window.moTestBai20G25=open;
+})();
