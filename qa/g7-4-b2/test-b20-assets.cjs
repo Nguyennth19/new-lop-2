@@ -39,6 +39,15 @@ t('Staging includes do not modify CSS or renderer 41',()=>{
  for(const n of ['44_TaiAnhTheoAssetID','43_CauNoiAssetBienThe','45_AnhMinhHoaB20Pilot','42_AdapterBienTheB20'])assert.equal(ui.includes("napThanhPhan('"+n+"')"),true);
  assert.equal(ui.indexOf("napThanhPhan('45_AnhMinhHoaB20Pilot')")<ui.indexOf("napThanhPhan('42_AdapterBienTheB20')"),true);
 });
+t('Emoji fallback is seeded without modifying existing image or SVG',()=>{
+ const target={children:[],querySelector(){return null;},appendChild(x){this.children.push(x);}};
+ const root={querySelector(){return target;}};
+ const doc={createElement(){return {attrs:{},setAttribute(k,v){this.attrs[k]=v;}}}};
+ const q=out.questions.find(x=>x.id==='VAR_B20_20261112_021');
+ assert.equal(pilot.ensureFallback(root,[q],doc),1);
+ assert.equal(target.children[0].textContent,'📚');
+ assert.equal(pilot.ensureFallback({querySelector(){return {querySelector(){return true;}};}},[q],doc),0);
+});
 t('Missing image keeps original scene and does not alter score',()=>{
  const scene=out.questions.find(q=>q.visualScene).visualScene;
  assert.equal(bridge.validateScene(scene).ok,true);
