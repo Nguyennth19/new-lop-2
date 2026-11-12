@@ -1,0 +1,33 @@
+name: G7.4-B.3 JSON Asset Scenes QA
+on:
+  push:
+    branches:
+      - feature/g7-4-b3-json-asset-scenes-20261112
+    paths:
+      - 'du-lieu/bien-the/asset-scenes/**'
+      - 'B20_AssetSceneMayChu.gs'
+      - 'B20_BienTheMayChu.gs'
+      - '42_AdapterBienTheB20.html'
+      - '45_AnhMinhHoaB20Pilot.html'
+      - 'qa/g7-4-b3/**'
+      - '.github/workflows/g7-b3-asset-json.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  schema-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 30 questions and JSON scene policy
+        run: node qa/g7-4-b3/test-json-asset-scenes.cjs
+      - name: Validate Apps Script / JavaScript syntax
+        run: |
+          cp B20_AssetSceneMayChu.gs /tmp/g7-b3-server.cjs
+          node --check /tmp/g7-b3-server.cjs
+          cp B20_BienTheMayChu.gs /tmp/g7-b3-b20.cjs
+          node --check /tmp/g7-b3-b20.cjs
