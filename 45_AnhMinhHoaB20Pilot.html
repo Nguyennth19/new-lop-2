@@ -51,7 +51,7 @@ function mountVisible(root,questions,bridge,loader,opts){
   const target=root.querySelector(selector(q.id));
   if(!target){skipped++;continue;}
   if(target.querySelector&&target.querySelector('[data-kl-scene]')){skipped++;continue;}
-  const previous=target.querySelectorAll?Array.from(target.querySelectorAll("img")):[];
+  const previous=target.querySelectorAll?Array.from(target.querySelectorAll("img,[data-kl-pilot-fallback]")):[];
   const result=bridge.mountScene(target,q.visualScene,loader,{
     document:opts.document,width:opts.width||96,height:opts.height||96,decorative:true,
     onReady:()=>{previous.forEach(img=>{img.hidden=true;});},
