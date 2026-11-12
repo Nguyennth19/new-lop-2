@@ -81,3 +81,45 @@ function kiemTraKetNoiB20(){
   const qa=kiemTraB20BienThe();
   return {ok:qa.ok,apiVersion:'b20-r1-1-20261112',lessonId:qa.lessonId,stagingOnly:true};
 }
+
+/** R1.3: Chấm cả lượt bằng đáp án gốc trên máy chủ; KHÔNG ghi Sheet hoặc sao. */
+function chamLuotToan20BienThe(request){
+  if(!request||typeof request!=='object'||Array.isArray(request))throw Error('Yêu cầu không hợp lệ');
+  const pack=b20DocPackThu_();
+  const session=pack.sessions.find(s=>s.session_id===request.sessionId);
+  if(!session)throw Error('Lượt B20 không tồn tại');
+  const answers=request.answers;
+  if(!answers||typeof answers!=='object'||Array.isArray(answers)||Object.keys(answers).length!==session.question_ids.length)
+    throw Error('Thiếu hoặc dư câu trả lời của lượt');
+  if(Object.keys(answers).some(id=>!session.question_ids.includes(id)))throw Error('ID câu hỏi không thuộc lượt');
+  let correct=0,answered=0;
+  const results={};
+  for(const id of session.question_ids){
+    const q=pack.questions.find(q=>q.question_id===id);
+    const a=answers[id];
+    if(!a||typeof a!=='object'||Array.isArray(a)||Object.keys(a).length>7||
+       Object.values(a).some(v=>String(v).length>8))throw Error('Trường đáp án không hợp lệ');
+    const val=k=>String(a[k]===undefined?'':a[k]).trim();
+    let ok=false,filled=false;
+    if(q.type==='vertical'){
+      const ans=String(q.answer).padStart(2,'0');
+      const carry=(q.parameters.a%10+q.parameters.b%10)>=10?'1':'0';
+      ok=val('ones')===ans[1]&&val('tens')===ans[0]&&val('carry')===carry;
+      filled=['ones','tens','carry'].some(k=>val(k)!=='');
+    }else if(q.type==='word'){
+      const x=val('n1'),y=val('n2'),op=val('op'),sum=val('sum'),answer=val('answer');
+      filled=[x,y,op,sum,answer].some(Boolean);
+      ok=x!==''&&y!==''&&sum!==''&&answer!==''&&
+        ((Number(x)===q.parameters.a&&Number(y)===q.parameters.b)||
+         (Number(y)===q.parameters.a&&Number(x)===q.parameters.b))&&
+        op==='+'&&Number(sum)===q.answer&&Number(answer)===q.answer;
+    }else{
+      const x=val('answer');filled=x!=='';ok=x!==''&&/^\\d{1,3}$/.test(x)&&Number(x)===q.answer;
+    }
+    if(filled)answered++;
+    if(ok)correct++;
+    results[id]={correct:ok,filled,explanation:q.solution_prompt||'',expected:q.answer};
+  }
+  return {ok:true,sessionId:session.session_id,total:session.question_ids.length,correct,answered,
+    results,stagingOnly:true,starsAwarded:0,recorded:false};
+}
