@@ -1,0 +1,20 @@
+name: G7.4-B Asset Variant Bridge isolated QA
+on:
+  push:
+    branches:
+      - feature/g7-4-b-asset-variant-bridge-20261112
+    paths:
+      - '43_CauNoiAssetBienThe.html'
+      - 'qa/g7-4-b/**'
+      - '.github/workflows/g7-b-bridge-qa.yml'
+permissions:
+  contents: read
+jobs:
+  bridge-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node qa/g7-4-b/test-asset-bridge.cjs
