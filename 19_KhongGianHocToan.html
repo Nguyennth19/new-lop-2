@@ -3,114 +3,12 @@
 (function(){
 let fullData=null, level='LV1', view='LV1', drafts={};
 let gradingState={}, levelStart=Date.now();
+let bienTheDangCham=false;
 const GRADE_KEY='lop2_g5_transient_submissions';
 let submissions={}; // Lượt nộp chưa xác nhận chỉ giữ trong phiên đang mở.
 const LKEY='lop2_g5_transient_drafts'; // Không ghi tiến độ cũ vào trình duyệt.
 const E=thoatHtmlToan;
 const themes=['pink','blue','yellow','green','purple','orange'];
-
-// PILOT B20: sử dụng cùng khung giao diện Lớp 2; chấm trên máy chủ nhưng KHÔNG ghi sao.
-let pilotSession='LV1-A',pilotIndex=0,pilotResults={},pilotChecking=false;
-function pilotQuestions(){
- if(!fullData||!fullData.variantPilot)return [];
- const chosen=fullData.sessions.find(x=>x.session_id===pilotSession);
- return chosen?chosen.question_ids.map(id=>fullData.questions.find(q=>q.question_id===id)).filter(Boolean):[];
-}
-function pilotRender(){
- const root=shell(),questions=pilotQuestions(),q=questions[pilotIndex];
- root.classList.remove('ml-theory-mode');
- root.querySelector('#mlTitle').textContent='Bài 20 – Thử nghiệm biến thể (không cộng sao)';
- root.querySelector('#mlDock').hidden=true;root.querySelector('#mlShowKeyboard').hidden=true;
- root.querySelector('#mlResults').hidden=false;
- const nav=root.querySelector('#mlMenu');
- nav.innerHTML=fullData.sessions.map(s=>'<button type="button" data-b20-session="'+E(s.session_id)+'" class="'+(pilotSession===s.session_id?'active':'')+'"><span class="ml-topic-text">'+E(s.session_id)+' · '+s.question_ids.length+' câu</span></button>').join('');
- const total=questions.length,done=questions.filter(x=>pilotResults[x.question_id]).length,
- correct=questions.filter(x=>pilotResults[x.question_id]?.correct).length;
- const pct=total?Math.round(done/total*100):0;
- root.querySelector('#mlPct').textContent=pct+'%';root.querySelector('#mlBar').style.width=pct+'%';
- const target=root.querySelector('#mlContent');
- if(!q){
-  target.innerHTML='<div class="ml-page"><section class="ml-section"><h2>🎉 Hoàn thành '+E(pilotSession)+'</h2><p>Đúng '+correct+'/'+total+' câu.</p><p>Đây là lượt kiểm thử; kết quả chưa lưu và chưa cộng sao.</p><button type="button" data-b20-reset>Làm lại lượt này</button></section></div>';
- }else{
-  const old=pilotResults[q.question_id];
-  target.innerHTML='<div class="ml-page"><section class="ml-section"><div class="ml-section-heading"><b class="ml-step">'+(pilotIndex+1)+'</b><h3>'+E(pilotSession)+' · Câu '+(pilotIndex+1)+'/'+total+'</h3></div>'+
-  '<div class="ml-section-box"><article class="ml-card ml-theme-blue"><div class="ml-card-top"><b>'+E(q.skill_id)+' · '+E(q.type)+'</b></div><p style="font-size:1.35rem;line-height:1.6;font-weight:700">'+E(q.prompt)+'</p>'+
-  '<label for="b20PilotAnswer">Đáp án của em</label> <input id="b20PilotAnswer" type="number" min="0" max="999" inputmode="numeric" autocomplete="off" style="width:110px;max-width:100%;padding:10px;font-size:20px" '+(old?'disabled':'')+' value="'+(old?E(old.submitted):'')+'">'+(q.unit?' <span>'+E(q.unit)+'</span>':'')+
-  '<div style="margin-top:18px"><button type="button" data-b20-check '+(old||pilotChecking?'disabled':'')+'>Kiểm tra</button> <button type="button" data-b20-next '+(!old?'disabled':'')+'>Câu tiếp theo →</button></div>'+
-  '<p id="b20PilotFeedback" role="status" aria-live="polite">'+(old?(old.correct?'✅ Chính xác!':'❌ Đáp án đúng: '+E(old.expected)):'')+'</p>'+
-  (old?'<p>'+E(old.explanation)+'</p>':'')+'</article></div></section></div>';
- }
- root.querySelector('#mlResults').innerHTML='<div class="ml-result-card"><h2>Thử nghiệm Bài 20</h2>'+
-  '<p>Lượt: '+E(pilotSession)+'</p><p>Đã kiểm tra: '+done+'/'+total+'</p><p>Đúng: '+correct+'/'+total+'</p>'+
-  '<p class="ml-reward-sync">Chấm đáp án tại máy chủ. Không ghi Google Sheets, không cộng sao, không đánh dấu hoàn thành.</p>'+
-  '<button type="button" data-b20-reset>Làm lại lượt</button></div>';
-}
-function pilotChoose(sid){
- if(!fullData.sessions.some(s=>s.session_id===sid))return;
- pilotSession=sid;pilotIndex=0;pilotChecking=false;
- pilotRender();
-}
-function pilotCheck(){
- const q=pilotQuestions()[pilotIndex],field=shell().querySelector('#b20PilotAnswer');
- if(!q||!field||pilotResults[q.question_id]||pilotChecking)return;
- const text=field.value.trim();
- const feedback=()=>shell().querySelector('#b20PilotFeedback');
- const showError=message=>{
-   pilotChecking=false;
-   const node=feedback();
-   if(node)node.textContent=message;
-   const button=shell().querySelector('[data-b20-check]');
-   if(button)button.disabled=false;
- };
- if(!/^\d{1,3}$/.test(text)){
-   showError('Em hãy nhập một số từ 0 đến 999.');
-   return;
- }
- if(!window.google?.script?.run){
-   showError('Chưa có kết nối Google Apps Script. Hãy mở bản Web App đang triển khai.');
-   return;
- }
- pilotChecking=true;
- const button=shell().querySelector('[data-b20-check]');
- if(button)button.disabled=true;
- if(feedback())feedback().textContent='Đang kiểm tra đáp án…';
- const requestedSession=pilotSession,requestedQuestion=q.question_id;
- try{
-   const runner=google.script.run
-     .withSuccessHandler(response=>{
-       if(pilotSession!==requestedSession||pilotQuestions()[pilotIndex]?.question_id!==requestedQuestion){
-         pilotChecking=false;return;
-       }
-       if(!response||!response.ok||response.questionId!==requestedQuestion){
-         showError('Máy chủ trả kết quả không hợp lệ. Em có thể bấm Kiểm tra để thử lại.');
-         return;
-       }
-       pilotChecking=false;
-       pilotResults[requestedQuestion]={correct:!!response.correct,submitted:text,
-         expected:response.expected,explanation:response.explanation||'',stagingOnly:true};
-       if(fullData?.variantPilot)pilotRender();
-     })
-     .withFailureHandler(error=>{
-       if(pilotSession!==requestedSession)return;
-       showError('Không chấm được bài: '+(error?.message||'Lỗi kết nối')+
-         '. Hãy kiểm tra phiên bản triển khai Apps Script rồi thử lại.');
-     });
-   if(typeof runner.chamBaiToan20BienThe!=='function'){
-     showError('Bản Web App chưa có hàm chấm Bài 20 mới. Hãy cập nhật deployment từ nhánh thử nghiệm.');
-     return;
-   }
-   runner.chamBaiToan20BienThe({
-     sessionId:requestedSession,questionId:requestedQuestion,answer:text
-   });
- }catch(error){
-   showError('Không gọi được hàm chấm Bài 20: '+(error?.message||'Lỗi kết nối')+
-     '. Hãy cập nhật bản Web App và thử lại.');
- }
-}
-function pilotNext(){const questions=pilotQuestions();if(pilotIndex<questions.length)pilotIndex++;pilotRender();}
-function pilotReset(){
- pilotQuestions().forEach(q=>delete pilotResults[q.question_id]);pilotIndex=0;pilotChecking=false;pilotRender();
-}
 const title={THEORY:'Lý thuyết',LV1:'LV1 – Học kiến thức',LV2:'LV2 – Luyện tập',LV3:'LV3 – Vận dụng nâng cao'};
 function shell(){
  let root=document.getElementById('mathFullScreen');
@@ -133,33 +31,38 @@ function shell(){
  return root;
 }
 function activeQuestions(){return fullData?chonCauHoiTheoNhom(fullData):[];}
-function completed(){return activeQuestions().filter(q=>cauDaDungToan[q.id]).length;}
+function completed(){return fullData?.variantPilot?activeQuestions().filter(q=>gradingState[q.id]==='correct').length:activeQuestions().filter(q=>cauDaDungToan[q.id]).length;}
 function validCount(){return activeQuestions().length;}
-function levelDone(lv){return !!(typeof TIEN_DO_HOC!=='undefined'&&TIEN_DO_HOC.get()?.completedLevels?.[lv]);}
+function levelDone(lv){return fullData?.variantPilot?!!submissions[lv]:!!(typeof TIEN_DO_HOC!=='undefined'&&TIEN_DO_HOC.get()?.completedLevels?.[lv]);}
 function refreshProgress(){
  if(!fullData)return;
- const total=validCount(),p=total?Math.round(completed()/total*100):0;
+ const visible=fullData.variantPilot?activeQuestions().filter(q=>q.level===view):activeQuestions();
+ const total=fullData.variantPilot?visible.length:validCount();
+ const p=total?Math.round((fullData.variantPilot?visible.filter(q=>gradingState[q.id]==='correct').length:completed())/total*100):0;
  shell().querySelector('#mlPct').textContent=p+'%';shell().querySelector('#mlBar').style.width=p+'%';
  const nav=shell().querySelector('#mlMenu');
- nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+muiIcon(id==='THEORY'?'book-open':id==='LV1'?'book':id==='LV2'?'pencil':'award')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
+ const entries=fullData.variantPilot?[['THEORY','Lý thuyết'],...fullData.sessions.map(s=>[s.session_id,s.session_id+' · '+s.question_ids.length+' câu'])]:[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]];
+ nav.innerHTML=entries.map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+muiIcon(id==='THEORY'?'book-open':id==='LV1'?'book':id==='LV2'?'pencil':'award')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
 }
 function start(index){
- level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
+ level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=fullData?.variantPilot?level+'-A':level;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  const root=shell();root.hidden=false;document.body.classList.add('math-learning');
  root.querySelector('#mlTitle').textContent='Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số';
- root.querySelector('#mlContent').innerHTML='<div class="ml-loading">Đang nạp bài học…</div>';
+ root.querySelector('#mlContent').innerHTML='<div class="ml-loading">Đang nạp bài học từ Google Sheets…</div>';
  document.getElementById('mlDock').hidden=true;
  if(typeof ghiNhanBatDauHoc==='function')ghiNhanBatDauHoc();
  try {history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+level);}catch(e){}
  if(typeof TIEN_DO_HOC!=='undefined'&&!TIEN_DO_HOC.get())TIEN_DO_HOC.refresh().catch(()=>{});
- if(fullData){if(fullData.variantPilot){pilotChoose(level+'-A');}else render();return;}
+ if(fullData){render();return;}
  const load=()=>new Promise((resolve,reject)=>{
   if(!window.google||!google.script||!google.script.run){reject(Error('Hãy mở Web App Google Apps Script'));return;}
   google.script.run.withSuccessHandler(resolve).withFailureHandler(reject).layBaiToan20();
  });
  BO_NHO_BAI_HOC.fetch('toan_b20',load).then(data=>{
-  fullData=data;boDuLieuToan=data;
-  if(document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden){if(data.variantPilot)pilotChoose(level+'-A');else render();}
+  fullData=typeof chuyenB20BienTheSangRenderer==='function'?chuyenB20BienTheSangRenderer(data):data;
+  boDuLieuToan=fullData;
+  if(fullData.variantPilot)view=level+'-A';
+  if(document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden)render();
  }).catch(err=>{
   root.querySelector('#mlContent').innerHTML='<div class="ml-warning">Không đọc được dữ liệu: '+E(err&&err.message||err)+'</div>';
  });
@@ -171,14 +74,13 @@ function exit(){
  navigate('path');
 }
 function choose(id){
- if(fullData?.variantPilot){if(/^LV[123]$/.test(id))pilotChoose(id+'-A');return;}
+ if(bienTheDangCham)return;
  view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
 function render(){
  if(!fullData)return;
- if(fullData.variantPilot){pilotRender();return;}
  const root=shell();refreshProgress();root.classList.toggle('ml-theory-mode',view==='THEORY');
  const target=root.querySelector('#mlContent');
  const keypad=root.querySelector('#mlDock');
@@ -238,6 +140,7 @@ function afterGrade(){
  // Chỉ tiến độ từ layTienDoHocTap mới đánh dấu đã học trên sidebar và lộ trình.
 }
 function gradeLevel(){
+ if(fullData?.variantPilot){chamLuotBienThe();return;}
  const qs=activeQuestions().filter(q=>q.level===view);
  qs.forEach(gradeQuestion);afterGrade();
  const n=qs.filter(q=>cauDaDungToan[q.id]).length;
@@ -248,8 +151,70 @@ function gradeLevel(){
  // Học sinh không thể tự cấp sao: gửi các ô đã nhập cho máy chủ kiểm tra lại.
  if(typeof THANH_TICH_GUI!=='undefined')THANH_TICH_GUI.send('toan_b20',view,qs,fields,record.seconds);
 }
+/** R1.3: Dùng form, kết quả và bảng điều khiển hiện có; chỉ chấm thử server, không ghi sao. */
+function chamLuotBienThe(){
+ if(bienTheDangCham||view==='THEORY')return;
+ const selectedView=view,qs=activeQuestions().filter(q=>q.level===selectedView);
+ if(!qs.length)return;
+ if(!window.google?.script?.run){
+  const status=shell().querySelector('#mlRewardSync');
+  if(status)status.textContent='Không kết nối được Google Apps Script.';return;
+ }
+ const answers={};
+ qs.forEach(q=>{
+  const row={};fields(q).forEach(el=>{row[el.dataset.mlField.slice(q.id.length+1)]=String(el.value||'')});
+  answers[q.id]=row;
+ });
+ bienTheDangCham=true;
+ const button=shell().querySelector('[data-ml-submit]');
+ if(button)button.disabled=true;
+ const note=shell().querySelector('#mlRewardSync');
+ if(note)note.textContent='Đang xác minh đáp án trên máy chủ (không ghi sao)…';
+ const failure=message=>{
+  bienTheDangCham=false;
+  if(view!==selectedView)return;
+  const b=shell().querySelector('[data-ml-submit]');if(b)b.disabled=false;
+  const n=shell().querySelector('#mlRewardSync');if(n)n.textContent=message;
+ };
+ try{
+  const runner=google.script.run.withSuccessHandler(result=>{
+   bienTheDangCham=false;
+   if(view!==selectedView)return;
+   if(!result?.ok||result.sessionId!==selectedView||!result.results){
+    failure('Kết quả máy chủ không hợp lệ. Hãy thử lại.');return;
+   }
+   for(const q of qs){
+    const detail=result.results[q.id];if(!detail){failure('Thiếu kết quả câu '+q.id);return;}
+    const correct=!!detail.correct;
+    gradingState[q.id]=correct?'correct':detail.filled?'wrong':'empty';
+    fields(q).forEach(el=>{
+      el.classList.toggle('ml-right',correct);
+      el.classList.toggle('ml-wrong',!correct&&el.value.trim()!=='');
+      el.classList.toggle('ml-empty',!correct&&el.value.trim()==='');
+    });
+    const card=shell().querySelector('[data-ml-q-card="'+q.id+'"]');
+    if(card){
+      card.classList.toggle('ml-correct',correct);
+      const mark=card.querySelector('.ml-earned');if(mark)mark.textContent=correct?'✓':'';
+    }
+   }
+   submissions[selectedView]={at:new Date().toISOString(),
+    seconds:typeof DEM_TUONG_TAC!=='undefined'?DEM_TUONG_TAC.seconds():0,
+    total:result.total,correct:result.correct,answered:result.answered};
+   refreshProgress();renderResults();
+  }).withFailureHandler(error=>{
+    failure('Chấm thử không thành công: '+(error?.message||'Lỗi máy chủ')+'. Hãy thử lại.');
+  });
+  if(typeof runner.chamLuotToan20BienThe!=='function'){
+    failure('Bản Web App chưa có API chấm lượt. Hãy cập nhật deployment thử nghiệm.');return;
+  }
+  runner.chamLuotToan20BienThe({sessionId:selectedView,answers});
+ }catch(error){
+  failure('Không thể gọi máy chủ: '+(error?.message||'Lỗi không xác định'));
+ }
+}
 function resetLevel(){
- if(!fullData||view==='THEORY')return;
+ if(!fullData||view==='THEORY'||bienTheDangCham)return;
  const qs=activeQuestions().filter(q=>q.level===view);
  for(const q of qs){
   for(const el of fields(q)){el.value='';delete drafts[el.dataset.mlField];el.classList.remove('ml-right','ml-wrong','ml-empty');}
@@ -269,7 +234,7 @@ function renderResults(){
  const submitDate=record?new Date(record.at).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}):'Chưa nộp bài';
  const duration=record?Math.floor(record.seconds/60)+' phút '+record.seconds%60+' giây':'Chưa nộp';
  panel.innerHTML='<div class="ml-result-card"><h2>Kết quả</h2><div class="ml-result-meta"><span>Thời gian nộp</span><strong>'+E(submitDate)+'</strong></div><div class="ml-result-meta"><span>Thời gian làm bài</span><strong>'+E(duration)+'</strong></div><div class="ml-result-meta"><span>Câu đã trả lời</span><strong>'+(record?record.answered:answered)+' / '+questions.length+'</strong></div><div class="ml-result-score"><strong>Điểm</strong><b>'+(record?Math.round(record.correct/Math.max(record.total,1)*100)/10:'—')+'</b></div></div>'+
- '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button></div><div class="ml-reward-sync" id="mlRewardSync" aria-live="polite">Sao thưởng được tính khi máy chủ xác minh bài nộp.</div></div>';
+ '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button></div><div class="ml-reward-sync" id="mlRewardSync" aria-live="polite">'+(fullData.variantPilot?'Thử nghiệm: không ghi Google Sheets, không cộng sao, không đánh dấu hoàn thành.':'Sao thưởng được tính khi máy chủ xác minh bài nộp.')+'</div></div>';
 }
 function restoreDrafts(){
  shell().querySelectorAll('[data-ml-field]').forEach(el=>{if(drafts[el.dataset.mlField]!==undefined)el.value=drafts[el.dataset.mlField]});
@@ -324,12 +289,6 @@ function press(k){
 document.addEventListener('click',e=>{
  const root=e.target.closest('#mathFullScreen');if(!root)return;
  if(e.target.closest('[data-ml-exit]')){exit();return;}
- if(fullData?.variantPilot){
-  const session=e.target.closest('[data-b20-session]');if(session){pilotChoose(session.dataset.b20Session);return;}
-  if(e.target.closest('[data-b20-check]')){pilotCheck();return;}
-  if(e.target.closest('[data-b20-next]')){pilotNext();return;}
-  if(e.target.closest('[data-b20-reset]')){pilotReset();return;}
- }
  if(e.target.closest('[data-ml-submit]')){gradeLevel();return;}
  if(e.target.closest('[data-ml-reset-level]')){resetLevel();return;}
  const nav=e.target.closest('[data-ml-view]');if(nav){choose(nav.dataset.mlView);return;}
