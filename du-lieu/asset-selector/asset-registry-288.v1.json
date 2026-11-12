@@ -1,0 +1,2887 @@
+{
+  "schema_version": "kidlearn-g7-semantic-registry-v1",
+  "release_commit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "total": 288,
+  "assets": [
+    {
+      "asset_id": "KL_SH01_001",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "táo",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-01.webp"
+    },
+    {
+      "asset_id": "KL_SH01_002",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "cam",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-02.webp"
+    },
+    {
+      "asset_id": "KL_SH01_003",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "chuối",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-03.webp"
+    },
+    {
+      "asset_id": "KL_SH01_004",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "xoài",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-04.webp"
+    },
+    {
+      "asset_id": "KL_SH01_005",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "chùm nho",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-05.webp"
+    },
+    {
+      "asset_id": "KL_SH01_006",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "dưa hấu",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-06.webp"
+    },
+    {
+      "asset_id": "KL_SH01_007",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "dâu tây",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-07.webp"
+    },
+    {
+      "asset_id": "KL_SH01_008",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "lê",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-08.webp"
+    },
+    {
+      "asset_id": "KL_SH01_009",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "dứa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-09.webp"
+    },
+    {
+      "asset_id": "KL_SH01_010",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "thanh long",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-10.webp"
+    },
+    {
+      "asset_id": "KL_SH01_011",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "ổi",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-11.webp"
+    },
+    {
+      "asset_id": "KL_SH01_012",
+      "scope": "SHARED",
+      "category": "TRAI_CAY",
+      "label_vi": "đu đủ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH01/KL-SH01-12.webp"
+    },
+    {
+      "asset_id": "KL_SH02_001",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "cà rốt",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-01.webp"
+    },
+    {
+      "asset_id": "KL_SH02_002",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "cà chua",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-02.webp"
+    },
+    {
+      "asset_id": "KL_SH02_003",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "khoai tây",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-03.webp"
+    },
+    {
+      "asset_id": "KL_SH02_004",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "bắp cải",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-04.webp"
+    },
+    {
+      "asset_id": "KL_SH02_005",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "bí đỏ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-05.webp"
+    },
+    {
+      "asset_id": "KL_SH02_006",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "bắp ngô",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-06.webp"
+    },
+    {
+      "asset_id": "KL_SH02_007",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "quả trứng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-07.webp"
+    },
+    {
+      "asset_id": "KL_SH02_008",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "ổ bánh mì",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-08.webp"
+    },
+    {
+      "asset_id": "KL_SH02_009",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "bánh quy",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-09.webp"
+    },
+    {
+      "asset_id": "KL_SH02_010",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "kẹo bọc giấy",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "USE_GENERIC_CANDY",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-10.webp"
+    },
+    {
+      "asset_id": "KL_SH02_011",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "bánh kem",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-11.webp"
+    },
+    {
+      "asset_id": "KL_SH02_012",
+      "scope": "SHARED",
+      "category": "THUC_PHAM",
+      "label_vi": "hộp sữa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH02/KL-SH02-12.webp"
+    },
+    {
+      "asset_id": "KL_SH03_001",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "bút chì",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-01.webp"
+    },
+    {
+      "asset_id": "KL_SH03_002",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "bút mực",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-02.webp"
+    },
+    {
+      "asset_id": "KL_SH03_003",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "cục tẩy",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-03.webp"
+    },
+    {
+      "asset_id": "KL_SH03_004",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "thước kẻ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-04.webp"
+    },
+    {
+      "asset_id": "KL_SH03_005",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "quyển vở",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-05.webp"
+    },
+    {
+      "asset_id": "KL_SH03_006",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "sách giáo khoa đóng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-06.webp"
+    },
+    {
+      "asset_id": "KL_SH03_007",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "cặp sách",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-07.webp"
+    },
+    {
+      "asset_id": "KL_SH03_008",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "hộp bút",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-08.webp"
+    },
+    {
+      "asset_id": "KL_SH03_009",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "kéo học sinh",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-09.webp"
+    },
+    {
+      "asset_id": "KL_SH03_010",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "hồ dán",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-10.webp"
+    },
+    {
+      "asset_id": "KL_SH03_011",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "bảng con",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-11.webp"
+    },
+    {
+      "asset_id": "KL_SH03_012",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HOC_TAP",
+      "label_vi": "viên phấn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH03/KL-SH03-12.webp"
+    },
+    {
+      "asset_id": "KL_SH04_001",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "bóng cao su",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-01.webp"
+    },
+    {
+      "asset_id": "KL_SH04_002",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "gấu bông",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-02.webp"
+    },
+    {
+      "asset_id": "KL_SH04_003",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "búp bê",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-03.webp"
+    },
+    {
+      "asset_id": "KL_SH04_004",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "ô tô đồ chơi",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-04.webp"
+    },
+    {
+      "asset_id": "KL_SH04_005",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "tàu hỏa đồ chơi",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-05.webp"
+    },
+    {
+      "asset_id": "KL_SH04_006",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "máy bay đồ chơi",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-06.webp"
+    },
+    {
+      "asset_id": "KL_SH04_007",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "robot đồ chơi",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-07.webp"
+    },
+    {
+      "asset_id": "KL_SH04_008",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "bóng bay",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-08.webp"
+    },
+    {
+      "asset_id": "KL_SH04_009",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "xúc xắc",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-09.webp"
+    },
+    {
+      "asset_id": "KL_SH04_010",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "khối xếp hình",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-10.webp"
+    },
+    {
+      "asset_id": "KL_SH04_011",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "diều giấy",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-11.webp"
+    },
+    {
+      "asset_id": "KL_SH04_012",
+      "scope": "SHARED",
+      "category": "DO_CHOI",
+      "label_vi": "chong chóng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH04/KL-SH04-12.webp"
+    },
+    {
+      "asset_id": "KL_SH05_001",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "mèo",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-01.webp"
+    },
+    {
+      "asset_id": "KL_SH05_002",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "chó",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-02.webp"
+    },
+    {
+      "asset_id": "KL_SH05_003",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "thỏ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-03.webp"
+    },
+    {
+      "asset_id": "KL_SH05_004",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "gà mái",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-04.webp"
+    },
+    {
+      "asset_id": "KL_SH05_005",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "vịt",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-05.webp"
+    },
+    {
+      "asset_id": "KL_SH05_006",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "chim sẻ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-06.webp"
+    },
+    {
+      "asset_id": "KL_SH05_007",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "cá vàng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-07.webp"
+    },
+    {
+      "asset_id": "KL_SH05_008",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "bướm",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-08.webp"
+    },
+    {
+      "asset_id": "KL_SH05_009",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "ong mật",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-09.webp"
+    },
+    {
+      "asset_id": "KL_SH05_010",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "ếch",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-10.webp"
+    },
+    {
+      "asset_id": "KL_SH05_011",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "voi",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-11.webp"
+    },
+    {
+      "asset_id": "KL_SH05_012",
+      "scope": "SHARED",
+      "category": "DONG_VAT",
+      "label_vi": "khỉ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH05/KL-SH05-12.webp"
+    },
+    {
+      "asset_id": "KL_SH06_001",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "bàn ăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-01.webp"
+    },
+    {
+      "asset_id": "KL_SH06_002",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "ghế tựa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-02.webp"
+    },
+    {
+      "asset_id": "KL_SH06_003",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "giường ngủ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-03.webp"
+    },
+    {
+      "asset_id": "KL_SH06_004",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "tủ áo",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-04.webp"
+    },
+    {
+      "asset_id": "KL_SH06_005",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "đèn bàn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-05.webp"
+    },
+    {
+      "asset_id": "KL_SH06_006",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "đồng hồ treo tường trang trí",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-06.webp"
+    },
+    {
+      "asset_id": "KL_SH06_007",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "cốc uống nước",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-07.webp"
+    },
+    {
+      "asset_id": "KL_SH06_008",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "đĩa ăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-08.webp"
+    },
+    {
+      "asset_id": "KL_SH06_009",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "bát ăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-09.webp"
+    },
+    {
+      "asset_id": "KL_SH06_010",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "thìa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-10.webp"
+    },
+    {
+      "asset_id": "KL_SH06_011",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "chậu nhựa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-11.webp"
+    },
+    {
+      "asset_id": "KL_SH06_012",
+      "scope": "SHARED",
+      "category": "DO_DUNG_GIA_DINH",
+      "label_vi": "giỏ đựng đồ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH06/KL-SH06-12.webp"
+    },
+    {
+      "asset_id": "KL_SH07_001",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "xe đạp",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-01.webp"
+    },
+    {
+      "asset_id": "KL_SH07_002",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "xe máy",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-02.webp"
+    },
+    {
+      "asset_id": "KL_SH07_003",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "ô tô con",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-03.webp"
+    },
+    {
+      "asset_id": "KL_SH07_004",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "xe buýt",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-04.webp"
+    },
+    {
+      "asset_id": "KL_SH07_005",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "tàu hỏa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-05.webp"
+    },
+    {
+      "asset_id": "KL_SH07_006",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "thuyền buồm",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-06.webp"
+    },
+    {
+      "asset_id": "KL_SH07_007",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "máy bay",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-07.webp"
+    },
+    {
+      "asset_id": "KL_SH07_008",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "cây thân gỗ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-08.webp"
+    },
+    {
+      "asset_id": "KL_SH07_009",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "bông hoa màu hồng năm cánh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "USE_GENERIC_FLOWER",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-09.webp"
+    },
+    {
+      "asset_id": "KL_SH07_010",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "lá cây màu xanh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "USE_GENERIC_LEAF",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-10.webp"
+    },
+    {
+      "asset_id": "KL_SH07_011",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "mặt trời vui",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-11.webp"
+    },
+    {
+      "asset_id": "KL_SH07_012",
+      "scope": "SHARED",
+      "category": "PHUONG_TIEN_THIEN_NHIEN",
+      "label_vi": "đám mây trắng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH07/KL-SH07-12.webp"
+    },
+    {
+      "asset_id": "KL_SH08_001",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "giỏ mua sắm",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-01.webp"
+    },
+    {
+      "asset_id": "KL_SH08_002",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "túi giấy",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-02.webp"
+    },
+    {
+      "asset_id": "KL_SH08_003",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "hộp quà",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-03.webp"
+    },
+    {
+      "asset_id": "KL_SH08_004",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "kệ hàng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-04.webp"
+    },
+    {
+      "asset_id": "KL_SH08_005",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "quầy bán hàng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-05.webp"
+    },
+    {
+      "asset_id": "KL_SH08_006",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "vé xe trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-06.webp"
+    },
+    {
+      "asset_id": "KL_SH08_007",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "chậu cây",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-07.webp"
+    },
+    {
+      "asset_id": "KL_SH08_008",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "bình hoa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-08.webp"
+    },
+    {
+      "asset_id": "KL_SH08_009",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "ô che mưa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-09.webp"
+    },
+    {
+      "asset_id": "KL_SH08_010",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "áo đồng phục",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-10.webp"
+    },
+    {
+      "asset_id": "KL_SH08_011",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "mũ rộng vành có nơ",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-11.webp"
+    },
+    {
+      "asset_id": "KL_SH08_012",
+      "scope": "SHARED",
+      "category": "DO_DUNG_HANG_NGAY",
+      "label_vi": "đôi giày thể thao",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH08/KL-SH08-12.webp"
+    },
+    {
+      "asset_id": "KL_SH09_001",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "áo thun tay ngắn",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "USE_GENERIC_CLOTHING",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-01.webp"
+    },
+    {
+      "asset_id": "KL_SH09_002",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "quần short jean",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "USE_GENERIC_CLOTHING",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-02.webp"
+    },
+    {
+      "asset_id": "KL_SH09_003",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "váy xòe hồng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "USE_GENERIC_CLOTHING",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-03.webp"
+    },
+    {
+      "asset_id": "KL_SH09_004",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "mũ lưỡi trai",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-04.webp"
+    },
+    {
+      "asset_id": "KL_SH09_005",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "đôi dép quai",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-05.webp"
+    },
+    {
+      "asset_id": "KL_SH09_006",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "đôi giày thể thao",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-06.webp"
+    },
+    {
+      "asset_id": "KL_SH09_007",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "ba lô học sinh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-07.webp"
+    },
+    {
+      "asset_id": "KL_SH09_008",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "khăn quàng cổ",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-08.webp"
+    },
+    {
+      "asset_id": "KL_SH09_009",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "đôi tất",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "USE_GENERIC_CLOTHING",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-09.webp"
+    },
+    {
+      "asset_id": "KL_SH09_010",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "đồng hồ đeo tay",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_BAG",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-10.webp"
+    },
+    {
+      "asset_id": "KL_SH09_011",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "kính râm",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_WATCH",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-11.webp"
+    },
+    {
+      "asset_id": "KL_SH09_012",
+      "scope": "SHARED",
+      "category": "TRANG_PHUC",
+      "label_vi": "đôi găng tay",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_BELT_IF_REQUIRED",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH09/KL-SH09-12.webp"
+    },
+    {
+      "asset_id": "KL_SH10_001",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "cây xanh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-01.webp"
+    },
+    {
+      "asset_id": "KL_SH10_002",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "bông hoa hồng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_RAINDROPS",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-02.webp"
+    },
+    {
+      "asset_id": "KL_SH10_003",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "chiếc lá xanh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_SNOWFLAKE_PRIMITIVE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-03.webp"
+    },
+    {
+      "asset_id": "KL_SH10_004",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "nấm đỏ",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-04.webp"
+    },
+    {
+      "asset_id": "KL_SH10_005",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "ngọn núi",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_MUSHROOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-05.webp"
+    },
+    {
+      "asset_id": "KL_SH10_006",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "dòng sông",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_NATURE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-06.webp"
+    },
+    {
+      "asset_id": "KL_SH10_007",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "mặt trời",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_SEASIDE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-07.webp"
+    },
+    {
+      "asset_id": "KL_SH10_008",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "đám mây trắng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_STARFISH_IF_REQUIRED",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-08.webp"
+    },
+    {
+      "asset_id": "KL_SH10_009",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "cầu vồng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_BRANCH_IF_REQUIRED",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-09.webp"
+    },
+    {
+      "asset_id": "KL_SH10_010",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "giọt nước",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_SEEDLIKE_OBJECT_IF_DECORATIVE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-10.webp"
+    },
+    {
+      "asset_id": "KL_SH10_011",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "ngôi sao",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_NATURE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-11.webp"
+    },
+    {
+      "asset_id": "KL_SH10_012",
+      "scope": "SHARED",
+      "category": "THIEN_NHIEN_THOI_TIET",
+      "label_vi": "mặt trăng lưỡi liềm",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GRASS_PATCH",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH10/KL-SH10-12.webp"
+    },
+    {
+      "asset_id": "KL_SH11_001",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "cầu trượt",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-01.webp"
+    },
+    {
+      "asset_id": "KL_SH11_002",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "xích đu",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-02.webp"
+    },
+    {
+      "asset_id": "KL_SH11_003",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "bập bênh",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-03.webp"
+    },
+    {
+      "asset_id": "KL_SH11_004",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "đồ chơi đu quay",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_PLAYGROUND_GENERIC",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-04.webp"
+    },
+    {
+      "asset_id": "KL_SH11_005",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "quả bóng đá",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_BADMINTON_SET",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-05.webp"
+    },
+    {
+      "asset_id": "KL_SH11_006",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "quả bóng rổ",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_BADMINTON_SET",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-06.webp"
+    },
+    {
+      "asset_id": "KL_SH11_007",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "bộ vợt và quả cầu lông",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_BASKETBALL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-07.webp"
+    },
+    {
+      "asset_id": "KL_SH11_008",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "dây nhảy",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_FOOTBALL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-08.webp"
+    },
+    {
+      "asset_id": "KL_SH11_009",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "diều giấy",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_PLAY",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-09.webp"
+    },
+    {
+      "asset_id": "KL_SH11_010",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "xô cát và xẻng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-10.webp"
+    },
+    {
+      "asset_id": "KL_SH11_011",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "ván trượt",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_REWARD",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-11.webp"
+    },
+    {
+      "asset_id": "KL_SH11_012",
+      "scope": "SHARED",
+      "category": "THE_THAO_VUI_CHOI",
+      "label_vi": "xe đạp trẻ em",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_SPORT",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH11/KL-SH11-12.webp"
+    },
+    {
+      "asset_id": "KL_SH12_001",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "xe đẩy hàng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-01.webp"
+    },
+    {
+      "asset_id": "KL_SH12_002",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "giỏ mua hàng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_SHOPPING_BASKET",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-02.webp"
+    },
+    {
+      "asset_id": "KL_SH12_003",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "máy tính tiền",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_EGG_TRAY_IF_DATA",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-03.webp"
+    },
+    {
+      "asset_id": "KL_SH12_004",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "thẻ giá treo",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_SHOPPING_BAG",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-04.webp"
+    },
+    {
+      "asset_id": "KL_SH12_005",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "túi giấy",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_CARTON",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-05.webp"
+    },
+    {
+      "asset_id": "KL_SH12_006",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "hộp quà",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_PRICE_SCALE_IF_REQUIRED",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-06.webp"
+    },
+    {
+      "asset_id": "KL_SH12_007",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "ô che mưa",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-07.webp"
+    },
+    {
+      "asset_id": "KL_SH12_008",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "chai nước",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_MARKET_SHELF_IF_REQUIRED",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-08.webp"
+    },
+    {
+      "asset_id": "KL_SH12_009",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "hộp cơm",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_RECEIPT_UI",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-09.webp"
+    },
+    {
+      "asset_id": "KL_SH12_010",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "đồng hồ báo thức",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_PRICE_BOARD_UI",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-10.webp"
+    },
+    {
+      "asset_id": "KL_SH12_011",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "đôi giày thể thao",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_BASKET",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-11.webp"
+    },
+    {
+      "asset_id": "KL_SH12_012",
+      "scope": "SHARED",
+      "category": "MUA_SAM",
+      "label_vi": "mũ rộng vành",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_TRAY",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/SH12/KL-SH12-12.webp"
+    },
+    {
+      "asset_id": "KL_M01_001",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "que tính đơn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-01.webp"
+    },
+    {
+      "asset_id": "KL_M01_002",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "bó 10 que tính",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-02.webp"
+    },
+    {
+      "asset_id": "KL_M01_003",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "bó 100 que tính",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-03.webp"
+    },
+    {
+      "asset_id": "KL_M01_004",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "hạt đếm tròn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-04.webp"
+    },
+    {
+      "asset_id": "KL_M01_005",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "bàn tính nhiều màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_COUNTING",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-05.webp"
+    },
+    {
+      "asset_id": "KL_M01_006",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "khung 10 ô trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-06.webp"
+    },
+    {
+      "asset_id": "KL_M01_007",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "khay hạt đếm nhiều màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GRID",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-07.webp"
+    },
+    {
+      "asset_id": "KL_M01_008",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "khối lập phương xanh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GRID",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-08.webp"
+    },
+    {
+      "asset_id": "KL_M01_009",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "thanh đếm 10 ô màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_UNIT_BLOCK",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-09.webp"
+    },
+    {
+      "asset_id": "KL_M01_010",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "bát đựng bi màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_TEN_STRIP",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-10.webp"
+    },
+    {
+      "asset_id": "KL_M01_011",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "năm ngôi sao",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_GRID_100",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-11.webp"
+    },
+    {
+      "asset_id": "KL_M01_012",
+      "scope": "MATH",
+      "category": "DEM_SO",
+      "label_vi": "hai hàng quả táo",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_SAME_FUNCTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M01/KL-M01-12.webp"
+    },
+    {
+      "asset_id": "KL_M02_001",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "khối lập phương màu vàng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-01.webp"
+    },
+    {
+      "asset_id": "KL_M02_002",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "thanh chục xanh lá",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COLOR_AWARE_UNIT",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-02.webp"
+    },
+    {
+      "asset_id": "KL_M02_003",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "tấm trăm xanh lam",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "TEN_STRIP",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-03.webp"
+    },
+    {
+      "asset_id": "KL_M02_004",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "bảng ba cột trống",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COLOR_AWARE_TEN_STRIP",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-04.webp"
+    },
+    {
+      "asset_id": "KL_M02_005",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "bộ thẻ trắng viền màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "HUNDRED_GRID",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-05.webp"
+    },
+    {
+      "asset_id": "KL_M02_006",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "khay các khối đơn vị vàng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COLOR_AWARE_HUNDRED_GRID",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-06.webp"
+    },
+    {
+      "asset_id": "KL_M02_007",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "khay thanh chục xanh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_PLACE_VALUE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-07.webp"
+    },
+    {
+      "asset_id": "KL_M02_008",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "bộ tấm trăm xanh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_PLACE_VALUE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-08.webp"
+    },
+    {
+      "asset_id": "KL_M02_009",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "khay nhiều thanh chục",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_PLACE_VALUE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-09.webp"
+    },
+    {
+      "asset_id": "KL_M02_010",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "bàn tính giá trị hàng",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_TABLE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-10.webp"
+    },
+    {
+      "asset_id": "KL_M02_011",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "lọ hạt màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_NUMBER_CARD",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-11.webp"
+    },
+    {
+      "asset_id": "KL_M02_012",
+      "scope": "MATH",
+      "category": "HANG_DON_VI_CHUC_TRAM",
+      "label_vi": "bảng ba vùng màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_NUMBER_TABLE",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M02/KL-M02-12.webp"
+    },
+    {
+      "asset_id": "KL_M03_001",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "khay 2 ngăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-01.webp"
+    },
+    {
+      "asset_id": "KL_M03_002",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "khay 5 ngăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-02.webp"
+    },
+    {
+      "asset_id": "KL_M03_003",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "giỏ tre đựng đồ",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GRID",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-03.webp"
+    },
+    {
+      "asset_id": "KL_M03_004",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "đĩa tròn",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GROUPS",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-04.webp"
+    },
+    {
+      "asset_id": "KL_M03_005",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "hai chiếc bánh quy",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GRID",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-05.webp"
+    },
+    {
+      "asset_id": "KL_M03_006",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "sáu quả táo",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GRID",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-06.webp"
+    },
+    {
+      "asset_id": "KL_M03_007",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "tám ngôi sao",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GROUPS",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-07.webp"
+    },
+    {
+      "asset_id": "KL_M03_008",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "khay bốn ngăn",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_SHELF",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-08.webp"
+    },
+    {
+      "asset_id": "KL_M03_009",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "dây hạt màu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_SHELF",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-09.webp"
+    },
+    {
+      "asset_id": "KL_M03_010",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "hai bó que tính",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_ROWS",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-10.webp"
+    },
+    {
+      "asset_id": "KL_M03_011",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "khay bánh nhiều ô",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_COLUMNS",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-11.webp"
+    },
+    {
+      "asset_id": "KL_M03_012",
+      "scope": "MATH",
+      "category": "CHIA_NHOM",
+      "label_vi": "chồng hộp quà",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_GROUPS",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M03/KL-M03-12.webp"
+    },
+    {
+      "asset_id": "KL_M04_001",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "cân hai đĩa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-01.webp"
+    },
+    {
+      "asset_id": "KL_M04_002",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "cân lò xo",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-02.webp"
+    },
+    {
+      "asset_id": "KL_M04_003",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "cân có kim chỉ thị",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_MEASUREMENT_UI",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-03.webp"
+    },
+    {
+      "asset_id": "KL_M04_004",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "quả cân kim loại",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_MEASUREMENT_OBJECT",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-04.webp"
+    },
+    {
+      "asset_id": "KL_M04_005",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "quả cân kim loại",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OVERLAY_UNIT_LABEL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-05.webp"
+    },
+    {
+      "asset_id": "KL_M04_006",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "bao gạo",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OVERLAY_UNIT_LABEL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-06.webp"
+    },
+    {
+      "asset_id": "KL_M04_007",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "quả dưa hấu",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OVERLAY_UNIT_LABEL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-07.webp"
+    },
+    {
+      "asset_id": "KL_M04_008",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "quả bí đỏ",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_OBJECT",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-08.webp"
+    },
+    {
+      "asset_id": "KL_M04_009",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "bao gạo rời",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_SCALE_PAN",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-09.webp"
+    },
+    {
+      "asset_id": "KL_M04_010",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "giỏ trái cây",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "COMPOSE_SCALE_BASKET",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-10.webp"
+    },
+    {
+      "asset_id": "KL_M04_011",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "con cá",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_BAG_OBJECT",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-11.webp"
+    },
+    {
+      "asset_id": "KL_M04_012",
+      "scope": "MATH",
+      "category": "KHOI_LUONG",
+      "label_vi": "hộp carton",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_GENERIC_CONTAINER",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M04/KL-M04-12.webp"
+    },
+    {
+      "asset_id": "KL_M05_001",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "chai nước trong",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-01.webp"
+    },
+    {
+      "asset_id": "KL_M05_002",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "chai thủy tinh đựng sữa",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_CONTAINER",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-02.webp"
+    },
+    {
+      "asset_id": "KL_M05_003",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "cốc nước thủy tinh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_CUP",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-03.webp"
+    },
+    {
+      "asset_id": "KL_M05_004",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "ấm trà",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_CUP",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-04.webp"
+    },
+    {
+      "asset_id": "KL_M05_005",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "ấm đun nước",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-05.webp"
+    },
+    {
+      "asset_id": "KL_M05_006",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "xô nước",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_BUCKET",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-06.webp"
+    },
+    {
+      "asset_id": "KL_M05_007",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "bình tưới cây",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_SCALE_MARKS",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-07.webp"
+    },
+    {
+      "asset_id": "KL_M05_008",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "bình nước thủy tinh",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OVERLAY_VOLUME_LABEL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-08.webp"
+    },
+    {
+      "asset_id": "KL_M05_009",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "ca đong có vạch",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OVERLAY_VOLUME_LABEL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-09.webp"
+    },
+    {
+      "asset_id": "KL_M05_010",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "chum sành",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "RENDER_FUNNEL",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-10.webp"
+    },
+    {
+      "asset_id": "KL_M05_011",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "bát thức ăn",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-11.webp"
+    },
+    {
+      "asset_id": "KL_M05_012",
+      "scope": "MATH",
+      "category": "DUNG_TICH",
+      "label_vi": "bể cá",
+      "label_status": "LABEL_APPROVED",
+      "render_policy": "REUSE_BUCKET",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M05/KL-M05-12.webp"
+    },
+    {
+      "asset_id": "KL_M06_001",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "quả bóng cầu",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-01.webp"
+    },
+    {
+      "asset_id": "KL_M06_002",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "lon hình trụ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-02.webp"
+    },
+    {
+      "asset_id": "KL_M06_003",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "hộp quà lập phương",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-03.webp"
+    },
+    {
+      "asset_id": "KL_M06_004",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "hộp giấy chữ nhật",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-04.webp"
+    },
+    {
+      "asset_id": "KL_M06_005",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "biển báo tam giác trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-05.webp"
+    },
+    {
+      "asset_id": "KL_M06_006",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "khung ảnh vuông",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-06.webp"
+    },
+    {
+      "asset_id": "KL_M06_007",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "viên gạch chữ nhật",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-07.webp"
+    },
+    {
+      "asset_id": "KL_M06_008",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "cửa sổ vòm",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-08.webp"
+    },
+    {
+      "asset_id": "KL_M06_009",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "mặt bàn tròn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-09.webp"
+    },
+    {
+      "asset_id": "KL_M06_010",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "ống giấy trụ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-10.webp"
+    },
+    {
+      "asset_id": "KL_M06_011",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "quả địa cầu trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-11.webp"
+    },
+    {
+      "asset_id": "KL_M06_012",
+      "scope": "MATH",
+      "category": "HINH_HOC",
+      "label_vi": "hộp nắp tròn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M06/KL-M06-12.webp"
+    },
+    {
+      "asset_id": "KL_M07_001",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "đồng hồ tròn không kim",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-01.webp"
+    },
+    {
+      "asset_id": "KL_M07_002",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "bộ kim đồng hồ rời",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-02.webp"
+    },
+    {
+      "asset_id": "KL_M07_003",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "đồng hồ số màn hình trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-03.webp"
+    },
+    {
+      "asset_id": "KL_M07_004",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "lịch tháng trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-04.webp"
+    },
+    {
+      "asset_id": "KL_M07_005",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "lịch bàn trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-05.webp"
+    },
+    {
+      "asset_id": "KL_M07_006",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "đồng hồ báo thức không số",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-06.webp"
+    },
+    {
+      "asset_id": "KL_M07_007",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "đồng hồ cát",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-07.webp"
+    },
+    {
+      "asset_id": "KL_M07_008",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "chuông báo giờ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-08.webp"
+    },
+    {
+      "asset_id": "KL_M07_009",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "thẻ buổi sáng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-09.webp"
+    },
+    {
+      "asset_id": "KL_M07_010",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "thẻ buổi trưa",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-10.webp"
+    },
+    {
+      "asset_id": "KL_M07_011",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "thẻ buổi chiều",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-11.webp"
+    },
+    {
+      "asset_id": "KL_M07_012",
+      "scope": "MATH",
+      "category": "THOI_GIAN_LICH",
+      "label_vi": "thẻ buổi tối",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M07/KL-M07-12.webp"
+    },
+    {
+      "asset_id": "KL_M08_001",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "thước 20 cm không số",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-01.webp"
+    },
+    {
+      "asset_id": "KL_M08_002",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "thước mét không số",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-02.webp"
+    },
+    {
+      "asset_id": "KL_M08_003",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "thước cuộn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-03.webp"
+    },
+    {
+      "asset_id": "KL_M08_004",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "dây đo mềm",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-04.webp"
+    },
+    {
+      "asset_id": "KL_M08_005",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "thước gấp",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-05.webp"
+    },
+    {
+      "asset_id": "KL_M08_006",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "đoạn dây thừng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-06.webp"
+    },
+    {
+      "asset_id": "KL_M08_007",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "băng ruy băng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-07.webp"
+    },
+    {
+      "asset_id": "KL_M08_008",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "thanh gỗ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-08.webp"
+    },
+    {
+      "asset_id": "KL_M08_009",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "cây bút để đo",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-09.webp"
+    },
+    {
+      "asset_id": "KL_M08_010",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "vạch mốc đo trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-10.webp"
+    },
+    {
+      "asset_id": "KL_M08_011",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "bàn đo chiều dài",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-11.webp"
+    },
+    {
+      "asset_id": "KL_M08_012",
+      "scope": "MATH",
+      "category": "DO_DAI",
+      "label_vi": "cọc đo chiều cao",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M08/KL-M08-12.webp"
+    },
+    {
+      "asset_id": "KL_M09_001",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "ví tiền",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-01.webp"
+    },
+    {
+      "asset_id": "KL_M09_002",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "hộp đựng tiền",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-02.webp"
+    },
+    {
+      "asset_id": "KL_M09_003",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "khay tiền trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-03.webp"
+    },
+    {
+      "asset_id": "KL_M09_004",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "quầy thu ngân",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-04.webp"
+    },
+    {
+      "asset_id": "KL_M09_005",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "giỏ đi chợ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-05.webp"
+    },
+    {
+      "asset_id": "KL_M09_006",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "túi tiền xu giả lập",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-06.webp"
+    },
+    {
+      "asset_id": "KL_M09_007",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "hộp tiết kiệm hình heo",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-07.webp"
+    },
+    {
+      "asset_id": "KL_M09_008",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "kệ sản phẩm",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-08.webp"
+    },
+    {
+      "asset_id": "KL_M09_009",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "giỏ đồ nhỏ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-09.webp"
+    },
+    {
+      "asset_id": "KL_M09_010",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "máy quét mã hàng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-10.webp"
+    },
+    {
+      "asset_id": "KL_M09_011",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "khay trả tiền",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-11.webp"
+    },
+    {
+      "asset_id": "KL_M09_012",
+      "scope": "MATH",
+      "category": "TIEN_MUA_SAM",
+      "label_vi": "bảng tổng tiền trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M09/KL-M09-12.webp"
+    },
+    {
+      "asset_id": "KL_M10_001",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "túi vải kín",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-01.webp"
+    },
+    {
+      "asset_id": "KL_M10_002",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "hộp bí mật kín",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-02.webp"
+    },
+    {
+      "asset_id": "KL_M10_003",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "hộp trong suốt trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-03.webp"
+    },
+    {
+      "asset_id": "KL_M10_004",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "giỏ phân loại 2 ngăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-04.webp"
+    },
+    {
+      "asset_id": "KL_M10_005",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "giỏ phân loại 3 ngăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-05.webp"
+    },
+    {
+      "asset_id": "KL_M10_006",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "khay nhiều màu không số",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-06.webp"
+    },
+    {
+      "asset_id": "KL_M10_007",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "bình đựng bóng trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-07.webp"
+    },
+    {
+      "asset_id": "KL_M10_008",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "bảng cài tranh trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-08.webp"
+    },
+    {
+      "asset_id": "KL_M10_009",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "hộp bốc thăm",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-09.webp"
+    },
+    {
+      "asset_id": "KL_M10_010",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "thẻ phân loại trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-10.webp"
+    },
+    {
+      "asset_id": "KL_M10_011",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "lọ bi trong suốt trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-11.webp"
+    },
+    {
+      "asset_id": "KL_M10_012",
+      "scope": "MATH",
+      "category": "DU_LIEU_XAC_SUAT",
+      "label_vi": "vòng quay trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M10/KL-M10-12.webp"
+    },
+    {
+      "asset_id": "KL_M11_001",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "cân thăng bằng đồ chơi trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-01.webp"
+    },
+    {
+      "asset_id": "KL_M11_002",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "hai hộp khác kích cỡ",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-02.webp"
+    },
+    {
+      "asset_id": "KL_M11_003",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "ba cốc khác chiều cao",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-03.webp"
+    },
+    {
+      "asset_id": "KL_M11_004",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "ba thanh gỗ độ dài khác nhau",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-04.webp"
+    },
+    {
+      "asset_id": "KL_M11_005",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "tháp xếp chồng",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-05.webp"
+    },
+    {
+      "asset_id": "KL_M11_006",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "dãy hạt màu xen kẽ không số",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-06.webp"
+    },
+    {
+      "asset_id": "KL_M11_007",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "khay sắp mẫu",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-07.webp"
+    },
+    {
+      "asset_id": "KL_M11_008",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "bộ khối màu",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-08.webp"
+    },
+    {
+      "asset_id": "KL_M11_009",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "đường đua trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-09.webp"
+    },
+    {
+      "asset_id": "KL_M11_010",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "bậc thang đồ chơi",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-10.webp"
+    },
+    {
+      "asset_id": "KL_M11_011",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "sọt chứa nhiều ít",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-11.webp"
+    },
+    {
+      "asset_id": "KL_M11_012",
+      "scope": "MATH",
+      "category": "SO_SANH_QUY_LUAT",
+      "label_vi": "hai bình khác dung tích",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M11/KL-M11-12.webp"
+    },
+    {
+      "asset_id": "KL_M12_001",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "mê cung ô trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-01.webp"
+    },
+    {
+      "asset_id": "KL_M12_002",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "đường đi lát gạch",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-02.webp"
+    },
+    {
+      "asset_id": "KL_M12_003",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "bàn cờ ô vuông trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-03.webp"
+    },
+    {
+      "asset_id": "KL_M12_004",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "khay suy luận 3 ô",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-04.webp"
+    },
+    {
+      "asset_id": "KL_M12_005",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "khay suy luận 4 ô",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-05.webp"
+    },
+    {
+      "asset_id": "KL_M12_006",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "hộp logic 2 ngăn",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-06.webp"
+    },
+    {
+      "asset_id": "KL_M12_007",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "tháp vòng xếp",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-07.webp"
+    },
+    {
+      "asset_id": "KL_M12_008",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "bộ thẻ hình trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-08.webp"
+    },
+    {
+      "asset_id": "KL_M12_009",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "mô hình hàng ghế",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-09.webp"
+    },
+    {
+      "asset_id": "KL_M12_010",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "giàn ô chữ số trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-10.webp"
+    },
+    {
+      "asset_id": "KL_M12_011",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "sơ đồ cây trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-11.webp"
+    },
+    {
+      "asset_id": "KL_M12_012",
+      "scope": "MATH",
+      "category": "BAI_TOAN_NANG_CAO",
+      "label_vi": "bảng quy luật trống",
+      "label_status": "OWNER_SIGNOFF_PENDING",
+      "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
+      "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "relative_path": "WEBP/M12/KL-M12-12.webp"
+    }
+  ]
+}
