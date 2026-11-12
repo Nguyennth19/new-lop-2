@@ -1,0 +1,44 @@
+name: G7.4-B.5.1 Shared Selector and B20 Parity QA
+on:
+  push:
+    branches:
+      - test/g7-4-b5-1-shared-semantic-selector-20261113
+    paths:
+      - 'BoChonAssetNguNghiaChung.gs'
+      - 'B20_BoChonHinhThongMinh.gs'
+      - 'du-lieu/asset-selector/**'
+      - 'qa/g7-4-b5-1/**'
+      - 'qa/g7-4-b4/**'
+      - 'qa/g7-4-b4-1/**'
+      - '.github/workflows/g7-b51-shared-selector.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generic-and-legacy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: New shared interface and cross-lesson semantic safety checks
+        run: node qa/g7-4-b5-1/test-shared-selector.cjs
+      - name: Original nine-rule B4.1 selector regression
+        run: node qa/g7-4-b4-1/test-expanded-rules.cjs
+      - name: Original B4 semantic selector regression
+        run: node qa/g7-4-b4/test-semantic-selector.cjs
+      - name: Accepted B20 UI, all 30 question renderer and scoring checks
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Approved baseline CSS, keyboard and legacy image fallback
+        run: |
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
+      - name: Syntax check for Apps Script modules
+        run: |
+          cp BoChonAssetNguNghiaChung.gs /tmp/selector-shared.cjs
+          cp B20_BoChonHinhThongMinh.gs /tmp/selector-b20.cjs
+          node --check /tmp/selector-shared.cjs
+          node --check /tmp/selector-b20.cjs
