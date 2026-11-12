@@ -43,7 +43,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "táo",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_002",
@@ -77,7 +79,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cam",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_003",
@@ -111,7 +115,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chuối",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_004",
@@ -145,7 +151,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xoài",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_005",
@@ -179,7 +187,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chùm nho",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_006",
@@ -213,7 +223,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "dưa hấu",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_007",
@@ -247,7 +259,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "dâu tây",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_008",
@@ -281,7 +295,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "lê",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_009",
@@ -315,7 +331,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "dứa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH01_010",
@@ -349,7 +367,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "thanh long",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH01_011",
@@ -383,7 +403,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ổi",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH01_012",
@@ -417,7 +439,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH01/KL-SH01-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đu đủ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_001",
@@ -451,7 +475,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cà rốt",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_002",
@@ -485,7 +511,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cà chua",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_003",
@@ -519,7 +547,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "khoai tây",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_004",
@@ -553,7 +583,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bắp cải",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_005",
@@ -587,7 +619,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bí đỏ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_006",
@@ -621,7 +655,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bắp ngô",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_007",
@@ -655,7 +691,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "quả trứng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_008",
@@ -689,7 +727,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ổ bánh mì",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_009",
@@ -723,7 +763,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bánh quy",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_010",
@@ -757,7 +799,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "kẹo bọc giấy",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH02_011",
@@ -791,7 +835,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bánh kem",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH02_012",
@@ -825,7 +871,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH02/KL-SH02-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "hộp sữa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_001",
@@ -859,7 +907,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bút chì",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_002",
@@ -893,7 +943,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bút mực",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_003",
@@ -927,7 +979,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cục tẩy",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_004",
@@ -961,7 +1015,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "thước kẻ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_005",
@@ -995,7 +1051,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "quyển vở",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_006",
@@ -1029,7 +1087,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "sách giáo khoa đóng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_007",
@@ -1063,7 +1123,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cặp sách",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_008",
@@ -1097,7 +1159,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "hộp bút",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_009",
@@ -1131,7 +1195,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "kéo học sinh",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_010",
@@ -1165,7 +1231,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "hồ dán",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_011",
@@ -1199,7 +1267,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bảng con",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH03_012",
@@ -1233,7 +1303,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH03/KL-SH03-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "viên phấn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_001",
@@ -1267,7 +1339,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bóng cao su",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_002",
@@ -1301,7 +1375,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "gấu bông",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_003",
@@ -1335,7 +1411,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "búp bê",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_004",
@@ -1369,7 +1447,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ô tô đồ chơi",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_005",
@@ -1403,7 +1483,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "tàu hỏa đồ chơi",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_006",
@@ -1437,7 +1519,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "máy bay đồ chơi",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_007",
@@ -1471,7 +1555,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "robot đồ chơi",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_008",
@@ -1505,7 +1591,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bóng bay",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_009",
@@ -1539,7 +1627,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xúc xắc",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_010",
@@ -1573,7 +1663,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "khối xếp hình",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_011",
@@ -1607,7 +1699,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "diều giấy",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH04_012",
@@ -1641,7 +1735,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH04/KL-SH04-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chong chóng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_001",
@@ -1675,7 +1771,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "mèo",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_002",
@@ -1709,7 +1807,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chó",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_003",
@@ -1743,7 +1843,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "thỏ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_004",
@@ -1777,7 +1879,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "gà mái",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_005",
@@ -1811,7 +1915,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "vịt",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_006",
@@ -1845,7 +1951,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chim sẻ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_007",
@@ -1879,7 +1987,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cá vàng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_008",
@@ -1913,7 +2023,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bướm",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_009",
@@ -1947,7 +2059,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ong mật",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_010",
@@ -1981,7 +2095,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ếch",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_011",
@@ -2015,7 +2131,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "voi",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH05_012",
@@ -2049,7 +2167,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH05/KL-SH05-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "khỉ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_001",
@@ -2083,7 +2203,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bàn ăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_002",
@@ -2117,7 +2239,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ghế tựa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_003",
@@ -2151,7 +2275,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "giường ngủ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_004",
@@ -2185,7 +2311,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "tủ áo",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_005",
@@ -2219,7 +2347,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đèn bàn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_006",
@@ -2253,7 +2383,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đồng hồ treo tường trang trí",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_007",
@@ -2287,7 +2419,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cốc uống nước",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_008",
@@ -2321,7 +2455,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đĩa ăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_009",
@@ -2355,7 +2491,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bát ăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_010",
@@ -2389,7 +2527,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "thìa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_011",
@@ -2423,7 +2563,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chậu nhựa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH06_012",
@@ -2457,7 +2599,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH06/KL-SH06-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "giỏ đựng đồ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_001",
@@ -2491,7 +2635,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xe đạp",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_002",
@@ -2525,7 +2671,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xe máy",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_003",
@@ -2559,7 +2707,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ô tô con",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_004",
@@ -2593,7 +2743,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xe buýt",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_005",
@@ -2627,7 +2779,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "tàu hỏa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_006",
@@ -2661,7 +2815,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "thuyền buồm",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_007",
@@ -2695,7 +2851,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "máy bay",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_008",
@@ -2729,7 +2887,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cây thân gỗ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_009",
@@ -2763,7 +2923,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bông hoa màu hồng năm cánh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH07_010",
@@ -2797,7 +2959,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "lá cây màu xanh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH07_011",
@@ -2831,7 +2995,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "mặt trời vui",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH07_012",
@@ -2865,7 +3031,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH07/KL-SH07-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đám mây trắng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_001",
@@ -2899,7 +3067,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "giỏ mua sắm",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_002",
@@ -2933,7 +3103,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "túi giấy",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_003",
@@ -2967,7 +3139,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "hộp quà",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_004",
@@ -3001,7 +3175,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "kệ hàng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_005",
@@ -3035,7 +3211,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "quầy bán hàng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_006",
@@ -3069,7 +3247,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "vé xe trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_007",
@@ -3103,7 +3283,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chậu cây",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_008",
@@ -3137,7 +3319,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bình hoa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_009",
@@ -3171,7 +3355,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ô che mưa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_010",
@@ -3205,7 +3391,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "áo đồng phục",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH08_011",
@@ -3239,7 +3427,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "mũ rộng vành có nơ",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH08_012",
@@ -3273,7 +3463,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH08/KL-SH08-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đôi giày thể thao",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH09_001",
@@ -3307,7 +3499,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "áo thun tay ngắn",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_002",
@@ -3341,7 +3535,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "quần short jean",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_003",
@@ -3375,7 +3571,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "váy xòe hồng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_004",
@@ -3409,7 +3607,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "mũ lưỡi trai",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_005",
@@ -3443,7 +3643,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đôi dép quai",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_006",
@@ -3477,7 +3679,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đôi giày thể thao",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_007",
@@ -3511,7 +3715,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ba lô học sinh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_008",
@@ -3545,7 +3751,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "khăn quàng cổ",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_009",
@@ -3579,7 +3787,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đôi tất",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_010",
@@ -3613,7 +3823,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đồng hồ đeo tay",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_011",
@@ -3647,7 +3859,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "kính râm",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH09_012",
@@ -3681,7 +3895,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH09/KL-SH09-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đôi găng tay",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_001",
@@ -3715,7 +3931,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cây xanh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_002",
@@ -3749,7 +3967,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bông hoa hồng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_003",
@@ -3783,7 +4003,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chiếc lá xanh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_004",
@@ -3817,7 +4039,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "nấm đỏ",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_005",
@@ -3851,7 +4075,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ngọn núi",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_006",
@@ -3885,7 +4111,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "dòng sông",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_007",
@@ -3919,7 +4147,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "mặt trời",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_008",
@@ -3953,7 +4183,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đám mây trắng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_009",
@@ -3987,7 +4219,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cầu vồng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_010",
@@ -4021,7 +4255,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "giọt nước",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_011",
@@ -4055,7 +4291,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ngôi sao",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH10_012",
@@ -4089,7 +4327,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH10/KL-SH10-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "mặt trăng lưỡi liềm",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_001",
@@ -4123,7 +4363,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "cầu trượt",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH11_002",
@@ -4157,7 +4399,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xích đu",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH11_003",
@@ -4191,7 +4435,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bập bênh",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH11_004",
@@ -4225,7 +4471,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đồ chơi đu quay",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_005",
@@ -4259,7 +4507,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "quả bóng đá",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_006",
@@ -4293,7 +4543,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "quả bóng rổ",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_007",
@@ -4327,7 +4579,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "bộ vợt và quả cầu lông",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_008",
@@ -4361,7 +4615,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "dây nhảy",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_009",
@@ -4395,7 +4651,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "diều giấy",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_010",
@@ -4429,7 +4687,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xô cát và xẻng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_011",
@@ -4463,7 +4723,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ván trượt",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH11_012",
@@ -4497,7 +4759,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH11/KL-SH11-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xe đạp trẻ em",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_001",
@@ -4531,7 +4795,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-01.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "xe đẩy hàng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_SH12_002",
@@ -4565,7 +4831,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-02.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "giỏ mua hàng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_003",
@@ -4599,7 +4867,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-03.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "máy tính tiền",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_004",
@@ -4633,7 +4903,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-04.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "thẻ giá treo",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_005",
@@ -4667,7 +4939,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-05.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "túi giấy",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_006",
@@ -4701,7 +4975,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-06.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "hộp quà",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_007",
@@ -4735,7 +5011,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-07.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "ô che mưa",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_008",
@@ -4769,7 +5047,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-08.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "chai nước",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_009",
@@ -4803,7 +5083,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-09.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "hộp cơm",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_010",
@@ -4837,7 +5119,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-10.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đồng hồ báo thức",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_011",
@@ -4871,7 +5155,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-11.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "đôi giày thể thao",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_SH12_012",
@@ -4905,7 +5191,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/SH12/KL-SH12-12.webp",
       "webp_archive_drive_id": "1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz",
-      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1nvCxNEUOeUgsvyq0youdSLyxwK65hlKz/view",
+      "semantic_label_vi": "mũ rộng vành",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M01_001",
@@ -4937,7 +5225,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "que tính đơn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M01_002",
@@ -4969,7 +5259,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bó 10 que tính",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M01_003",
@@ -5001,7 +5293,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bó 100 que tính",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M01_004",
@@ -5033,7 +5327,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hạt đếm tròn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M01_005",
@@ -5065,7 +5361,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bàn tính nhiều màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M01_006",
@@ -5097,7 +5395,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khung 10 ô trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M01_007",
@@ -5129,7 +5429,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay hạt đếm nhiều màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M01_008",
@@ -5161,7 +5463,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khối lập phương xanh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M01_009",
@@ -5193,7 +5497,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thanh đếm 10 ô màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M01_010",
@@ -5225,7 +5531,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bát đựng bi màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M01_011",
@@ -5257,7 +5565,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "năm ngôi sao",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M01_012",
@@ -5289,7 +5599,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M01/KL-M01-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hai hàng quả táo",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_001",
@@ -5321,7 +5633,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khối lập phương màu vàng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_002",
@@ -5353,7 +5667,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thanh chục xanh lá",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_003",
@@ -5385,7 +5701,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "tấm trăm xanh lam",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_004",
@@ -5417,7 +5735,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bảng ba cột trống",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_005",
@@ -5449,7 +5769,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bộ thẻ trắng viền màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_006",
@@ -5481,7 +5803,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay các khối đơn vị vàng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_007",
@@ -5513,7 +5837,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay thanh chục xanh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_008",
@@ -5545,7 +5871,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bộ tấm trăm xanh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_009",
@@ -5577,7 +5905,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay nhiều thanh chục",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_010",
@@ -5609,7 +5939,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bàn tính giá trị hàng",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_011",
@@ -5641,7 +5973,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "lọ hạt màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M02_012",
@@ -5673,7 +6007,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M02/KL-M02-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bảng ba vùng màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_001",
@@ -5705,7 +6041,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay 2 ngăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M03_002",
@@ -5737,7 +6075,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay 5 ngăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M03_003",
@@ -5769,7 +6109,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "giỏ tre đựng đồ",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_004",
@@ -5801,7 +6143,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đĩa tròn",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_005",
@@ -5833,7 +6177,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hai chiếc bánh quy",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_006",
@@ -5865,7 +6211,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "sáu quả táo",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_007",
@@ -5897,7 +6245,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "tám ngôi sao",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_008",
@@ -5929,7 +6279,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay bốn ngăn",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_009",
@@ -5961,7 +6313,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "dây hạt màu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_010",
@@ -5993,7 +6347,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hai bó que tính",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_011",
@@ -6025,7 +6381,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay bánh nhiều ô",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M03_012",
@@ -6057,7 +6415,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M03/KL-M03-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "chồng hộp quà",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_001",
@@ -6089,7 +6449,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cân hai đĩa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M04_002",
@@ -6121,7 +6483,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cân lò xo",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M04_003",
@@ -6153,7 +6517,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cân có kim chỉ thị",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_004",
@@ -6185,7 +6551,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "quả cân kim loại",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_005",
@@ -6217,7 +6585,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "quả cân kim loại",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_006",
@@ -6249,7 +6619,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bao gạo",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_007",
@@ -6281,7 +6653,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "quả dưa hấu",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_008",
@@ -6313,7 +6687,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "quả bí đỏ",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_009",
@@ -6345,7 +6721,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bao gạo rời",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_010",
@@ -6377,7 +6755,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "giỏ trái cây",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_011",
@@ -6409,7 +6789,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "con cá",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M04_012",
@@ -6441,7 +6823,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M04/KL-M04-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp carton",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_001",
@@ -6473,7 +6857,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "chai nước trong",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M05_002",
@@ -6505,7 +6891,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "chai thủy tinh đựng sữa",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_003",
@@ -6537,7 +6925,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cốc nước thủy tinh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_004",
@@ -6569,7 +6959,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "ấm trà",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_005",
@@ -6601,7 +6993,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "ấm đun nước",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_006",
@@ -6633,7 +7027,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "xô nước",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_007",
@@ -6665,7 +7061,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bình tưới cây",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_008",
@@ -6697,7 +7095,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bình nước thủy tinh",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_009",
@@ -6729,7 +7129,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "ca đong có vạch",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_010",
@@ -6761,7 +7163,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "chum sành",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_011",
@@ -6793,7 +7197,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bát thức ăn",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M05_012",
@@ -6825,7 +7231,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M05/KL-M05-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bể cá",
+      "semantic_resolution": "REMAP_CANDIDATE_PENDING_SIGNOFF"
     },
     {
       "asset_id": "KL_M06_001",
@@ -6857,7 +7265,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "quả bóng cầu",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_002",
@@ -6889,7 +7299,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "lon hình trụ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_003",
@@ -6921,7 +7333,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp quà lập phương",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_004",
@@ -6953,7 +7367,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp giấy chữ nhật",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_005",
@@ -6985,7 +7401,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "biển báo tam giác trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_006",
@@ -7017,7 +7435,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khung ảnh vuông",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_007",
@@ -7049,7 +7469,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "viên gạch chữ nhật",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_008",
@@ -7081,7 +7503,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cửa sổ vòm",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_009",
@@ -7113,7 +7537,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "mặt bàn tròn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_010",
@@ -7145,7 +7571,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "ống giấy trụ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_011",
@@ -7177,7 +7605,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "quả địa cầu trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M06_012",
@@ -7209,7 +7639,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M06/KL-M06-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp nắp tròn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_001",
@@ -7241,7 +7673,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đồng hồ tròn không kim",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_002",
@@ -7273,7 +7707,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bộ kim đồng hồ rời",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_003",
@@ -7305,7 +7741,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đồng hồ số màn hình trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_004",
@@ -7337,7 +7775,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "lịch tháng trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_005",
@@ -7369,7 +7809,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "lịch bàn trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_006",
@@ -7401,7 +7843,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đồng hồ báo thức không số",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_007",
@@ -7433,7 +7877,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đồng hồ cát",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_008",
@@ -7465,7 +7911,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "chuông báo giờ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_009",
@@ -7497,7 +7945,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thẻ buổi sáng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_010",
@@ -7529,7 +7979,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thẻ buổi trưa",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_011",
@@ -7561,7 +8013,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thẻ buổi chiều",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M07_012",
@@ -7593,7 +8047,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M07/KL-M07-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thẻ buổi tối",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_001",
@@ -7625,7 +8081,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thước 20 cm không số",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_002",
@@ -7657,7 +8115,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thước mét không số",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_003",
@@ -7689,7 +8149,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thước cuộn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_004",
@@ -7721,7 +8183,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "dây đo mềm",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_005",
@@ -7753,7 +8217,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thước gấp",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_006",
@@ -7785,7 +8251,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đoạn dây thừng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_007",
@@ -7817,7 +8285,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "băng ruy băng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_008",
@@ -7849,7 +8319,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thanh gỗ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_009",
@@ -7881,7 +8353,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cây bút để đo",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_010",
@@ -7913,7 +8387,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "vạch mốc đo trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_011",
@@ -7945,7 +8421,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bàn đo chiều dài",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M08_012",
@@ -7977,7 +8455,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M08/KL-M08-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cọc đo chiều cao",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_001",
@@ -8009,7 +8489,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "ví tiền",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_002",
@@ -8041,7 +8523,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp đựng tiền",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_003",
@@ -8073,7 +8557,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay tiền trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_004",
@@ -8105,7 +8591,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "quầy thu ngân",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_005",
@@ -8137,7 +8625,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "giỏ đi chợ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_006",
@@ -8169,7 +8659,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "túi tiền xu giả lập",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_007",
@@ -8201,7 +8693,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp tiết kiệm hình heo",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_008",
@@ -8233,7 +8727,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "kệ sản phẩm",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_009",
@@ -8265,7 +8761,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "giỏ đồ nhỏ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_010",
@@ -8297,7 +8795,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "máy quét mã hàng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_011",
@@ -8329,7 +8829,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay trả tiền",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M09_012",
@@ -8361,7 +8863,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M09/KL-M09-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bảng tổng tiền trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_001",
@@ -8393,7 +8897,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "túi vải kín",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_002",
@@ -8425,7 +8931,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp bí mật kín",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_003",
@@ -8457,7 +8965,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp trong suốt trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_004",
@@ -8489,7 +8999,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "giỏ phân loại 2 ngăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_005",
@@ -8521,7 +9033,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "giỏ phân loại 3 ngăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_006",
@@ -8553,7 +9067,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay nhiều màu không số",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_007",
@@ -8585,7 +9101,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bình đựng bóng trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_008",
@@ -8617,7 +9135,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bảng cài tranh trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_009",
@@ -8649,7 +9169,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp bốc thăm",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_010",
@@ -8681,7 +9203,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "thẻ phân loại trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_011",
@@ -8713,7 +9237,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "lọ bi trong suốt trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M10_012",
@@ -8745,7 +9271,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M10/KL-M10-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "vòng quay trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_001",
@@ -8777,7 +9305,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "cân thăng bằng đồ chơi trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_002",
@@ -8809,7 +9339,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hai hộp khác kích cỡ",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_003",
@@ -8841,7 +9373,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "ba cốc khác chiều cao",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_004",
@@ -8873,7 +9407,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "ba thanh gỗ độ dài khác nhau",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_005",
@@ -8905,7 +9441,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "tháp xếp chồng",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_006",
@@ -8937,7 +9475,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "dãy hạt màu xen kẽ không số",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_007",
@@ -8969,7 +9509,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay sắp mẫu",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_008",
@@ -9001,7 +9543,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bộ khối màu",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_009",
@@ -9033,7 +9577,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đường đua trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_010",
@@ -9065,7 +9611,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bậc thang đồ chơi",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_011",
@@ -9097,7 +9645,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "sọt chứa nhiều ít",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M11_012",
@@ -9129,7 +9679,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M11/KL-M11-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hai bình khác dung tích",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_001",
@@ -9161,7 +9713,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-01.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "mê cung ô trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_002",
@@ -9193,7 +9747,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-02.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "đường đi lát gạch",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_003",
@@ -9225,7 +9781,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-03.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bàn cờ ô vuông trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_004",
@@ -9257,7 +9815,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-04.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay suy luận 3 ô",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_005",
@@ -9289,7 +9849,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-05.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "khay suy luận 4 ô",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_006",
@@ -9321,7 +9883,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-06.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "hộp logic 2 ngăn",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_007",
@@ -9353,7 +9917,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-07.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "tháp vòng xếp",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_008",
@@ -9385,7 +9951,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-08.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bộ thẻ hình trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_009",
@@ -9417,7 +9985,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-09.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "mô hình hàng ghế",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_010",
@@ -9449,7 +10019,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-10.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "giàn ô chữ số trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_011",
@@ -9481,7 +10053,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-11.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "sơ đồ cây trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     },
     {
       "asset_id": "KL_M12_012",
@@ -9513,7 +10087,9 @@
       "webp_dimensions": "512x512",
       "webp_archive_relative_path": "WEBP/M12/KL-M12-12.webp",
       "webp_archive_drive_id": "1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS",
-      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view"
+      "webp_archive_url": "https://drive.google.com/file/d/1-KM_l0lmIz61T9mCQwEbOzDEIdYYomcS/view",
+      "semantic_label_vi": "bảng quy luật trống",
+      "semantic_resolution": "MATCHED_VISUALLY_V35_PENDING_FINAL_RELEASE"
     }
   ],
   "provenance": {
