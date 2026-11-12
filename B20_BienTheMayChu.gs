@@ -45,7 +45,7 @@ function b20DocPackThu_(){
     packVersion:pack.schema_version,sessions:pack.sessions,questions:pack.questions};
   // External visual scene metadata is optional; offline/404 must not break learning.
   // Each scene is attached by question ID only; original questions and answers are untouched.
-  try{
+  if(typeof b20DocAssetScenes_==='function')try{
     const assets=b20DocAssetScenes_();
     const validIds=new Set(pack.questions.map(q=>q.question_id));
     if(Object.keys(assets.question_scenes).some(id=>!validIds.has(id)||
@@ -53,7 +53,7 @@ function b20DocPackThu_(){
        throw Error('Asset Scene tham chiếu câu không hợp lệ');
     result.assetScenes=assets;
   }catch(sceneError){
-    console.warn('G7.4-B.3 fallback: không nạp Asset Scene JSON; giữ nguyên hình cũ: '+String(sceneError.message||sceneError));
+    if(typeof console!=='undefined'&&typeof console.warn==='function')console.warn('G7.4-B.3 fallback: không nạp Asset Scene JSON; giữ nguyên hình cũ: '+String(sceneError.message||sceneError));
   }
   if(JSON.stringify(result).length<95000)cache.put(B20_PILOT_CACHE_KEY,JSON.stringify(result),300);
   return result;
