@@ -1,0 +1,60 @@
+{
+  "schema_version": "kidlearn-asset-semantic-rules-v1",
+  "release_commit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "registry_commit": "ae38ad4edcb5962fa3dc4761f7e67363b4c08050",
+  "mode": "STAGING_ONLY",
+  "selection_policy": {
+    "require_label_approved": true,
+    "require_curated_rule": true,
+    "usage": "decorative",
+    "allow_quantity_inference": false,
+    "manual_override_first": true,
+    "ambiguous_match": "NO_AUTO_ASSET",
+    "no_match": "KEEP_EXISTING_FALLBACK"
+  },
+  "rules": [
+    {
+      "concept": "wrapped_candy",
+      "asset_id": "KL_SH02_010",
+      "label_vi": "kẹo bọc giấy",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "chiếc kẹo",
+        "viên kẹo",
+        "kẹo bọc giấy",
+        "kẹo"
+      ],
+      "fallback_emoji": "🍬",
+      "count": 1
+    },
+    {
+      "concept": "dragon_fruit",
+      "asset_id": "KL_SH01_010",
+      "label_vi": "thanh long",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "quả thanh long",
+        "trái thanh long",
+        "thanh long"
+      ],
+      "fallback_emoji": "🍉",
+      "count": 1
+    },
+    {
+      "concept": "guava",
+      "asset_id": "KL_SH01_011",
+      "label_vi": "ổi",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "quả ổi",
+        "trái ổi",
+        "ổi"
+      ],
+      "fallback_emoji": "🍈",
+      "count": 1
+    }
+  ]
+}
