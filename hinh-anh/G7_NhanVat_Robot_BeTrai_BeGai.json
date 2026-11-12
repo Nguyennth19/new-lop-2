@@ -43,7 +43,12 @@
       "webp_exists_on_drive": true,
       "tech_qa_status": "NOT_REVALIDATED_G7",
       "content_approval": "PENDING",
-      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL",
+      "webp_sha256": "a7e8dec3208b15a42539bff3a542462fa089647e3008e8f354a502297cfe78c1",
+      "png_sha256": "e24a466df3958b0d7326a1d25eeebffc35cc2bd3a7d06b68c2bd22a823eda810",
+      "actual_webp_dimensions": "480x624",
+      "actual_png_dimensions": "480x624",
+      "webP_tech_status": "DECODE_RGBA_ALPHA_PASS"
     },
     {
       "asset_id": "KL_GIRL_SCHOOL_04_write_desk_v1.0.1",
@@ -63,7 +68,12 @@
       "webp_exists_on_drive": true,
       "tech_qa_status": "NOT_REVALIDATED_G7",
       "content_approval": "PENDING",
-      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL",
+      "webp_sha256": "3647d88e89a021cf1733bdad24da32ac9329ff81e959734705d705de27b81bcc",
+      "png_sha256": "e737d4125dec8d9e33786462e147d7857a153cdb99c3f236c012fdaeb5ec6b18",
+      "actual_webp_dimensions": "465x630",
+      "actual_png_dimensions": "465x630",
+      "webP_tech_status": "DECODE_RGBA_ALPHA_PASS"
     },
     {
       "asset_id": "KL_GIRL_HOME_03_write_table_v1.0.1",
@@ -83,7 +93,12 @@
       "webp_exists_on_drive": true,
       "tech_qa_status": "NOT_REVALIDATED_G7",
       "content_approval": "PENDING",
-      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL",
+      "webp_sha256": "76522936368db5b4a519b1766217dad66f45b7369e48c4e216f38b999b5f52a9",
+      "png_sha256": "3934b362ee995648ce7c4921a5893cf6b13492fc3288f80193759d91827c87f8",
+      "actual_webp_dimensions": "472x522",
+      "actual_png_dimensions": "472x522",
+      "webP_tech_status": "DECODE_RGBA_ALPHA_PASS"
     },
     {
       "asset_id": "KL_BOY_SCHOOL_05_point_book_v1.0.1",
@@ -103,7 +118,12 @@
       "webp_exists_on_drive": true,
       "tech_qa_status": "NOT_REVALIDATED_G7",
       "content_approval": "PENDING",
-      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL",
+      "webp_sha256": "75ed4df7618c393bd8b617feeb0c5b8dd9fee913fe98ce5d0dced174253c653c",
+      "png_sha256": "e6eb75ed3fc0a5b1839b97b8e5b11663f62f9ac27bd97d1abe5f9ff97b12744f",
+      "actual_webp_dimensions": "413x669",
+      "actual_png_dimensions": "413x669",
+      "webP_tech_status": "DECODE_RGBA_ALPHA_PASS"
     },
     {
       "asset_id": "KL_BOY_SCHOOL_04_write_desk_v1.0.1",
@@ -123,7 +143,12 @@
       "webp_exists_on_drive": true,
       "tech_qa_status": "NOT_REVALIDATED_G7",
       "content_approval": "PENDING",
-      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL",
+      "webp_sha256": "7ca4621deb3852588527e2cfa13a6302897348111ef894171a63a542dab5d0a4",
+      "png_sha256": "4f89c0e106e7eb4a135a682a46594f4b1f1e9c351a4a1867cd9aff1c975d5e48",
+      "actual_webp_dimensions": "512x669",
+      "actual_png_dimensions": "512x669",
+      "webP_tech_status": "DECODE_RGBA_ALPHA_PASS"
     },
     {
       "asset_id": "KL_BOY_HOME_03_write_table_v1.0.1",
@@ -143,7 +168,12 @@
       "webp_exists_on_drive": true,
       "tech_qa_status": "NOT_REVALIDATED_G7",
       "content_approval": "PENDING",
-      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL"
+      "publish_status": "BLOCKED_PENDING_RELEASE_APPROVAL",
+      "webp_sha256": "3ca3641cd2b1c386386c1181f820bae554bd0f9e1aa6bfd077c2da5eb37a3677",
+      "png_sha256": "b19ab4b7ee3bde797800211e62081044548af43338df4a8c59e5124cd92a48e1",
+      "actual_webp_dimensions": "479x586",
+      "actual_png_dimensions": "479x586",
+      "webP_tech_status": "DECODE_RGBA_ALPHA_PASS"
     }
   ]
 }
