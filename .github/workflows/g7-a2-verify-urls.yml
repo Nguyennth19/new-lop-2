@@ -1,0 +1,48 @@
+name: G7 A2 Verify Real Raw WebP URLs
+on:
+  push:
+    branches:
+      - g7-4-a2-webp-binary-20261112
+    paths:
+      - '.github/workflows/g7-a2-verify-urls.yml'
+permissions:
+  contents: write
+jobs:
+  raw-url-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify HTTPS 200 Content Type WebP and SHA256 for sentinel assets
+        env:
+          RELEASE_SHA: "fe92cf31f7f4f23f5f29ac7e41e9d086cab91354"
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,os,urllib.request
+          from pathlib import Path
+          manifest=json.loads(Path("ASSET_288_RELEASE_CANDIDATE_MANIFEST.json").read_text())
+          ids={"KL_SH01_001","KL_SH05_004","KL_SH12_006","KL_M01_008","KL_M05_009","KL_M12_012"}
+          selected=[a for a in manifest["assets"] if a["asset_id"] in ids]
+          if len(selected)!=len(ids):raise RuntimeError("Missing sentinels")
+          output=[]
+          for a in selected:
+           url=f'https://raw.githubusercontent.com/Nguyennth19/new-lop-2/{os.environ["RELEASE_SHA"]}/hinh-anh/webp-g7/v1/{a["relative_path"]}'
+           req=urllib.request.Request(url,headers={"User-Agent":"KidLearn-G7-Asset-URL-QA/1.0"})
+           with urllib.request.urlopen(req,timeout=25) as response:
+            raw=response.read();mime=response.headers.get("Content-Type","").split(";")[0].lower()
+            cors=response.headers.get("Access-Control-Allow-Origin","")
+            status=response.status
+           digest=hashlib.sha256(raw).hexdigest()
+           if status!=200 or mime!="image/webp" or digest!=a["webp_sha256"] or len(raw)!=a["webp_bytes"]:raise RuntimeError(f'URL QA fail: {a["asset_id"]} {status} {mime} {digest}')
+           output.append({"asset_id":a["asset_id"],"url":url,"status":status,"content_type":mime,"sha256":digest,"bytes":len(raw),"cors":cors,"pass":True})
+          dest=Path(".g7-a2-upload/URL_QA_RESULT.json");dest.parent.mkdir(exist_ok=True)
+          dest.write_text(json.dumps({"release_commit":os.environ["RELEASE_SHA"],"tested":len(output),"pass":len(output),"results":output},indent=2)+"\n")
+          print(f'G7.4-A.2 VERIFIED {len(output)} REAL HTTPS URLS')
+          PY
+      - name: Commit URL verification result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .g7-a2-upload/URL_QA_RESULT.json
+          git commit -m "G7.4-A.2 verify six immutable public WebP URLs"
+          git push origin HEAD:g7-4-a2-webp-binary-20261112
