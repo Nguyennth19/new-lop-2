@@ -1,0 +1,86 @@
+/* G7.4-B — Pure Asset ID bridge for variant questions.
+ * Optional, inert module. No HTML/CSS changes; no effect on existing renderer.
+ * Questions can describe one/many asset IDs without hardcoding remote URLs.
+ * Never assumes that one file contains the exact number of objects in a question.
+ */
+(function(root,factory){
+  const lib=factory();
+  if(typeof module==="object"&&module.exports)module.exports=lib;
+  if(root)root.KLVariantAssetBridgeV1=lib;
+})(typeof globalThis!=="undefined"?globalThis:null,function(){
+"use strict";
+const ID=/^KL_(?:SH|M)(?:0[1-9]|1[0-2])_\d{3}$/;
+const err=(code,extra)=>Object.freeze({ok:false,code,...(extra||{})});
+const isObj=v=>v!==null&&typeof v==="object"&&!Array.isArray(v);
+function validateScene(scene){
+  if(!isObj(scene)||!Array.isArray(scene.groups)||!scene.groups.length||scene.groups.length>8)return err("INVALID_SCENE");
+  let count=0;
+  const groups=[];
+  for(const group of scene.groups){
+    if(!isObj(group)||!Array.isArray(group.items)||!group.items.length||group.items.length>24)
+      return err("INVALID_GROUP");
+    const items=[];
+    for(const item of group.items){
+      if(!isObj(item)||!ID.test(item.assetId||"")||!Number.isInteger(item.count)||item.count<1||item.count>24)
+        return err("INVALID_ASSET_ITEM");
+      count+=item.count;
+      if(count>48)return err("SCENE_TOO_LARGE");
+      items.push(Object.freeze({assetId:item.assetId,count:item.count}));
+    }
+    groups.push(Object.freeze({label:String(group.label||"").slice(0,100),items:Object.freeze(items)}));
+  }
+  return Object.freeze({ok:true,scene:Object.freeze({groups:Object.freeze(groups)}),totalObjects:count});
+}
+function decorate(question,scene){
+  if(!isObj(question)||typeof question.id!=="string"||!question.id)return err("INVALID_QUESTION");
+  const result=validateScene(scene);if(!result.ok)return result;
+  // Original problem and answer remain unchanged; renderer consumes visualScene only if opted-in.
+  return Object.freeze({ok:true,question:Object.freeze({...question,visualScene:result.scene})});
+}
+function resolveScene(scene,loader){
+  const checked=validateScene(scene);if(!checked.ok)return checked;
+  if(!loader||typeof loader.lookup!=="function"||typeof loader.resolve!=="function")
+    return err("LOADER_REQUIRED");
+  const resolved=[];
+  for(const group of checked.scene.groups){
+    const items=[];
+    for(const item of group.items){
+      const r=loader.resolve(item.assetId);
+      if(!r.ok)return err("ASSET_UNAVAILABLE",{assetId:item.assetId,reason:r.code});
+      items.push(Object.freeze({assetId:item.assetId,count:item.count,url:r.url}));
+    }
+    resolved.push(Object.freeze({label:group.label,items:Object.freeze(items)}));
+  }
+  return Object.freeze({ok:true,groups:Object.freeze(resolved),totalObjects:checked.totalObjects});
+}
+function mountScene(container,scene,loader,opts){
+  opts=opts||{};
+  const plan=resolveScene(scene,loader);if(!plan.ok)return plan;
+  if(!container||typeof container.appendChild!=="function")return err("INVALID_TARGET");
+  const doc=opts.document||(typeof document!=="undefined"?document:null);
+  if(!doc||typeof doc.createElement!=="function")return err("DOCUMENT_UNAVAILABLE");
+  // Explicit opt-in only. Build into a detached staging fragment; existing UI remains.
+  // On failed image, Loader removes that IMG; existing renderer's SVG/emoji is untouched.
+  const wrapper=doc.createElement("div");
+  wrapper.setAttribute("data-kl-scene","1");
+  let images=0;
+  for(const group of plan.groups){
+    const box=doc.createElement("div");
+    box.setAttribute("data-kl-scene-group",group.label);
+    for(const item of group.items){
+      for(let i=0;i<item.count;i++){
+        const r=loader.mount(box,item.assetId,{
+          document:doc,width:opts.width||96,height:opts.height||96,decorative:!!opts.decorative,
+          onFallback:(reason)=>{if(typeof opts.onFallback==="function")opts.onFallback(reason,item.assetId);}
+        });
+        if(!r.ok)return err("MOUNT_FAILED",{assetId:item.assetId,reason:r.code});
+        images++;
+      }
+    }
+    wrapper.appendChild(box);
+  }
+  container.appendChild(wrapper);
+  return Object.freeze({ok:true,images,wrapper});
+}
+return Object.freeze({validateScene,decorate,resolveScene,mountScene});
+});
