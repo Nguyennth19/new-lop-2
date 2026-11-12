@@ -1,10 +1,10 @@
 /* Bộ nhớ bài học dùng chung (memory + sessionStorage), không cache điểm hoặc thông tin học sinh.
  * Mỗi lần chuyển tab/LV dùng lại cùng object; chỉ gọi GAS khi cache hết hạn. */
 const BO_NHO_BAI_HOC=(function(){
- const VERSION='g6_v1_b20_20261111',TTL=30*60*1000;
+ const VERSION='b20_variant_pilot_20261112',TTL=30*60*1000;
  const data=new Map(), pending=new Map();
  function key(id){return 'lop2_lesson_cache_'+VERSION+'_'+id}
- function valid(x,id){return x&&x.lesson&&x.lesson.id===id&&Array.isArray(x.questions)&&Array.isArray(x.sections)&&Array.isArray(x.levels)}
+ function valid(x,id){return x&&x.lesson&&x.lesson.id===id&&Array.isArray(x.questions)&&((x.variantPilot&&Array.isArray(x.sessions))||(Array.isArray(x.sections)&&Array.isArray(x.levels)))}
  function read(id){
   const inMemory=data.get(id);
   if(inMemory&&inMemory.expires>Date.now())return inMemory.value;
