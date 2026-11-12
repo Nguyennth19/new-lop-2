@@ -42,7 +42,7 @@ for(const s of pack.sessions){
   assert.equal((html.match(/<input /g)||[]).length,adapted.type==='vertical'?3:adapted.type==='word_problem'?5:1,'Số ô nhập của '+id);
   assert(!html.includes('undefined')&&!html.includes('NaN'),'Dữ liệu hiển thị lỗi '+id);
   if(q.type==='word'){
-   assert(html.includes('Tóm tắt:'),'Bài lời văn thiếu tóm tắt');
+   assert(html.includes('TÓM TẮT:'),'Bài lời văn thiếu tóm tắt');
    assert(html.includes('BÀI GIẢI'),'Thiếu khung lời giải');
    assert(html.includes('('+q.unit+')'),'Thiếu đơn vị ở phép tính');
   }
@@ -60,4 +60,24 @@ assert(ui.includes('chamLuotToan20BienThe'),'Mất API chấm cả lượt');
 assert(read('GiaoDien.html').includes("napThanhPhan('42_AdapterBienTheB20')"),'Thiếu adapter');
 assert(css.includes('.ml-mental-row')&&css.includes('.ml-word-grid'),'CSS chuẩn phải còn các class gốc');
 assert.equal(server.ping().endpointReady,true,'API chấm lượt không được khai báo');
-console.log('PASS: 30/30 renderer, 6/6 lượt, 30/30 chấm đúng, 30/30 chấm sai, nhóm 2 câu, lời văn, API, bảo toàn CSS.');
+// UI20-02A: verify migrated presentation contract without importing legacy layout/font.
+const ui20=read('43_CSS_ThanhPhanBaiToan.html');
+assert(read('GiaoDien.html').includes("napThanhPhan('43_CSS_ThanhPhanBaiToan')"),'CSS module chưa được nạp');
+assert(ui20.includes('#mathFullScreen .ml-word-structured .ml-graph-paper'),'Thiếu lưới ô ly 2 cấp độ');
+assert(ui20.includes('background-size:28px 28px,28px 28px,7px 7px,7px 7px'),'Thiếu nền ô ly hai cấp');
+assert(!/font-family\s*:\s*(?:['"]?Baloo|['"]?Quicksand)/i.test(ui20),'Không thay font bằng font từ repo cũ');
+assert(!/(?:^|\n)\s*(?:body\b|:root\b|html\b|\.font-baloo\b)/m.test(ui20),'Không dùng CSS global');
+assert(!view.word(normalized.questions.find(q=>q.variantType==='word')).includes('data-ans='),'Không nhúng đáp án chấm trong HTML');
+const wordHtml=view.word(normalized.questions.find(q=>q.variantType==='word'));
+for(const key of ['ml-word-structured','ml-graph-paper','ml-word-summary','ml-word-calc-line','Phép tính:','Đáp số:','data-ml-svg'])
+ assert(wordHtml.includes(key),'Thiếu thành phần lời văn: '+key);
+const verticalHtml=view.vertical(normalized.questions.find(q=>q.type==='vertical'));
+assert(verticalHtml.includes('ml-vertical-paper'),'Thiếu nền cột ô ly');
+const puzzleHtml=view.puzzle({id:'TEST_PUZZLE',valid:true,theme:'blue',
+ label:'Câu test',puzzle:[[6,{ans:7}],[2,5],[9,2]]});
+assert(puzzleHtml.includes('ml-puzzle-paper'),'Thiếu ô ly cho chữ số ẩn');
+assert(ui.includes("following={ones:'carry',carry:'tens'}"),'Thiếu thứ tự ĐV -> Nhớ -> Chục');
+assert(ui.includes("if(suffix==='tens')"),'Thiếu thoát thẻ sau hàng chục');
+assert(ui.includes('HINH_ANH_APP.word(q,el)'),'Mất fallback ảnh G7');
+
+console.log('PASS UI20-02A: 30/30 renderer + 30/30 chấm đúng/sai, ô ly 2 cấp, lời văn, đặt tính, puzzle, G7, bàn phím, font và baseline CSS.');
