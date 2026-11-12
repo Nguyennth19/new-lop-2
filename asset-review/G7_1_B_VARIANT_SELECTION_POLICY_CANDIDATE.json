@@ -1,0 +1,151 @@
+{
+  "version": "G7.1-B-candidate-2026-11-12",
+  "approval": "USER_RULE_ACCEPTED_METADATA_ONLY_NOT_DEPLOYED",
+  "selection": {
+    "default": "FILTER_BY_EXACT_SEMANTICS_THEN_CHOOSE_VARIANT",
+    "constraints": [
+      "object_class",
+      "object_count",
+      "count_grouping",
+      "object_color",
+      "shape",
+      "unit_label",
+      "size",
+      "orientation",
+      "required_distinguishing_features",
+      "text_book_exact_figure"
+    ],
+    "rules": [
+      "If a question specifies quantity, singular/plural, color, shape, units or arrangement, exclude any asset not matching all explicit constraints.",
+      "Random selection is allowed only among assets whose constraints all match; a shared semantic_group alone never permits interchange.",
+      "Source-locked figures or questions that require the exact pictured instance use the pinned asset_id and do not randomize.",
+      "Use a stable per-question selection seed (e.g. profileId + questionId + attemptId) so the image does not jump on re-render; change between attempts when pedagogically safe.",
+      "If eligible pool empty, return ASSET_REQUIRED_REVIEW; never silently substitute a semantically different picture."
+    ]
+  },
+  "variants": [
+    {
+      "group_id": "BALL_MULTICOLOR_SINGLE",
+      "asset_ids": [
+        "KL_M06_001",
+        "KL_SH04_001"
+      ],
+      "object_count": 1,
+      "random_if_unconstrained": true
+    },
+    {
+      "group_id": "PAPER_BAG_SINGLE",
+      "asset_ids": [
+        "KL_SH08_002",
+        "KL_SH12_005"
+      ],
+      "object_count": 1,
+      "random_if_unconstrained": true,
+      "attribute_constraints": [
+        "bag_style",
+        "handle_style"
+      ]
+    },
+    {
+      "group_id": "GIFT_BOX",
+      "asset_ids": [
+        "KL_M06_003",
+        "KL_SH12_006"
+      ],
+      "random_if_unconstrained": false,
+      "variants": [
+        {
+          "asset_id": "KL_M06_003",
+          "quantity": "single"
+        },
+        {
+          "asset_id": "KL_SH12_006",
+          "quantity": "stack_multiple"
+        }
+      ]
+    },
+    {
+      "group_id": "HAT_WIDE_BRIM_PINK_BOW",
+      "asset_ids": [
+        "KL_SH08_011",
+        "KL_SH12_012"
+      ],
+      "object_count": 1,
+      "random_if_unconstrained": true
+    },
+    {
+      "group_id": "GIFT_BOX_SINGLE_YELLOW_RED_BOW",
+      "asset_ids": [
+        "KL_M06_003",
+        "KL_SH08_003"
+      ],
+      "object_count": 1,
+      "random_if_unconstrained": true
+    },
+    {
+      "group_id": "SNEAKERS_PAIR",
+      "asset_ids": [
+        "KL_SH08_012",
+        "KL_SH12_011"
+      ],
+      "object_count": 2,
+      "random_if_unconstrained": true,
+      "variants": [
+        {
+          "asset_id": "KL_SH08_012",
+          "color": "red",
+          "closure": "laces"
+        },
+        {
+          "asset_id": "KL_SH12_011",
+          "color": "blue",
+          "closure": "straps"
+        }
+      ]
+    }
+  ],
+  "regression_tests": [
+    {
+      "prompt": "một hộp quà",
+      "exclude": [
+        "KL_SH12_006"
+      ]
+    },
+    {
+      "prompt": "chồng hộp quà",
+      "exclude": [
+        "KL_M06_003",
+        "KL_SH08_003"
+      ]
+    },
+    {
+      "prompt": "đôi giày đỏ có dây",
+      "eligible": [
+        "KL_SH08_012"
+      ],
+      "exclude": [
+        "KL_SH12_011"
+      ]
+    },
+    {
+      "prompt": "đôi giày xanh quai dán",
+      "eligible": [
+        "KL_SH12_011"
+      ],
+      "exclude": [
+        "KL_SH08_012"
+      ]
+    },
+    {
+      "prompt": "một quả bóng nhiều màu",
+      "eligible": [
+        "KL_M06_001",
+        "KL_SH04_001"
+      ]
+    },
+    {
+      "prompt": "hình đúng như SGK",
+      "mode": "PINNED_ASSET_ONLY"
+    }
+  ]
+}
