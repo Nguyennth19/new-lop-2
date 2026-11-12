@@ -65,7 +65,7 @@ const HINH_ANH_APP=(function(){
   const content=String(q.prompt||'').toLocaleLowerCase('vi-VN');
   if(/(?:gà mái|gà trống|đàn gà)/u.test(content))return 'HEN';
   if(/kẹo/u.test(content))return 'WRAPPED_CANDY';
-  if(/quyển sách|cuốn sách/u.test(content))return 'BOOK';
+  if(/quyển sách|cuốn sách|quyển truyện|cuốn truyện|tủ sách/u.test(content))return 'BOOK';
   if(/quả táo|kg táo/u.test(content))return 'APPLE';
   if(/ruy băng/u.test(content))return 'RIBBON';
   if(/bánh quy/u.test(content))return 'COOKIE';
