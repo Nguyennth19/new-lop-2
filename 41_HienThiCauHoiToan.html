@@ -13,8 +13,20 @@ function vertical(q){
  return baseCard(q,inside,'ml-vertical-card');
 }
 function mental(q){
- if(q.pilotPrompt)return '<div class="ml-mental-row" data-ml-q-card="'+E(q.id)+'"><span class="ml-mental-first">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+'</div>';
- return '<div class="ml-mental-row" data-ml-q-card="'+E(q.id)+'"><span class="ml-mental-first">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+ const row='ml-mental-row',first='ml-mental-first';
+ // Sử dụng grid năm cột có sẵn của test-theo-main; không đưa câu dài vào ô số.
+ if(q.variantType==='carry'){
+   const a=Number(q.n1)%10,b=Number(q.n2)%10;
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(a+'+'+b+'='+(a+b))+'</span><b>→</b><span>nhớ</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+ }
+ if(q.variantType==='reverse'){
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'">'+input(q,q.id+':answer',3)+'<b>+</b><span>'+E(q.n2)+'</span><b>=</b><span>'+E(Number(q.n1)+Number(q.n2))+'</span></div>';
+ }
+ if(q.variantType==='three'){
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+' + '+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+ }
+ if(q.pilotPrompt)return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+'</div>';
+ return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
 }
 function puzzle(q){
  if(!q.valid)return invalid(q);
@@ -26,7 +38,7 @@ function word(q){
  const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'"></div><p>'+E(q.prompt)+'</p></div>'+
  (q.summary?'<div class="ml-word-summary"><b>Tóm tắt:</b> '+E(q.summary)+'</div>':'')+
  '<div class="ml-graph-paper"><h4>BÀI GIẢI</h4><p>'+E(q.solutionPrompt||'Phép tính:')+'</p><div class="ml-word-calc">'+
- input(q,q.id+':n1',2)+input(q,q.id+':op',1)+input(q,q.id+':n2',2)+'<b>=</b>'+input(q,q.id+':sum',3)+'</div>'+
+ input(q,q.id+':n1',2)+input(q,q.id+':op',1)+input(q,q.id+':n2',2)+'<b>=</b>'+input(q,q.id+':sum',3)+(q.variantType==='word'&&q.unit?' <span>('+E(q.unit)+')</span>':'')+'</div>'+
  '<div class="ml-word-result">Đáp số: '+input(q,q.id+':answer',3)+' <span>'+E(q.unit)+'</span></div></div>';
  return baseCard(q,inside,'ml-word-card');
 }
