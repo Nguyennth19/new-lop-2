@@ -3,7 +3,7 @@
  * URL khóa theo commit, thay phiên bản phải cập nhật commit và QA lại.
  */
 const B20_PILOT_URL="https://raw.githubusercontent.com/Nguyennth19/new-lop-2/513e1dcefa0f229305a5d4523dac3cbdd201a908/thu-nghiem/bai-20-bien-the/runtime.json";
-const B20_PILOT_CACHE_KEY='b20_pilot_20261112_pack_v1';
+const B20_PILOT_CACHE_KEY='b20_pilot_20261112_pack_g7_b3_v1';
 function b20DocPackThu_(){
   const cache=CacheService.getScriptCache();
   const cached=cache.get(B20_PILOT_CACHE_KEY);
@@ -43,6 +43,18 @@ function b20DocPackThu_(){
   // Trả về dữ liệu bài học, không chứa bất kỳ thông tin học sinh nào.
   const result={variantPilot:true,lesson:{id:'toan_b20',title:'Bài 20 – Phép cộng có nhớ',subject:'Toán'},
     packVersion:pack.schema_version,sessions:pack.sessions,questions:pack.questions};
+  // External visual scene metadata is optional; offline/404 must not break learning.
+  // Each scene is attached by question ID only; original questions and answers are untouched.
+  try{
+    const assets=b20DocAssetScenes_();
+    const validIds=new Set(pack.questions.map(q=>q.question_id));
+    if(Object.keys(assets.question_scenes).some(id=>!validIds.has(id)||
+       pack.questions.find(q=>q.question_id===id).type!=='word'))
+       throw Error('Asset Scene tham chiếu câu không hợp lệ');
+    result.assetScenes=assets;
+  }catch(sceneError){
+    console.warn('G7.4-B.3 fallback: không nạp Asset Scene JSON; giữ nguyên hình cũ: '+String(sceneError.message||sceneError));
+  }
   if(JSON.stringify(result).length<95000)cache.put(B20_PILOT_CACHE_KEY,JSON.stringify(result),300);
   return result;
 }
