@@ -3,7 +3,7 @@
  * URL khóa theo commit, thay phiên bản phải cập nhật commit và QA lại.
  */
 const B20_PILOT_URL="https://raw.githubusercontent.com/Nguyennth19/new-lop-2/513e1dcefa0f229305a5d4523dac3cbdd201a908/thu-nghiem/bai-20-bien-the/runtime.json";
-const B20_PILOT_CACHE_KEY='b20_pilot_20261112_pack_g7_b3_v1';
+const B20_PILOT_CACHE_KEY='b20_pilot_20261112_pack_g7_b31_v1';
 function b20DocPackThu_(){
   const cache=CacheService.getScriptCache();
   const cached=cache.get(B20_PILOT_CACHE_KEY);
@@ -86,6 +86,27 @@ function kiemTraB20BienThe(){
   return {ok:true,lessonId:p.lesson.id,questionCount:p.questions.length,sessionCount:p.sessions.length,
     counts:p.sessions.map(s=>({id:s.session_id,count:s.question_ids.length})),
     stagingOnly:true,noWrites:true,noStars:true};
+}
+
+/** Run trong Apps Script Editor: chứng minh API đang trả đúng gói mà UI20 yêu cầu.
+ * Không dump prompt/answer và không ghi Google Sheets.
+ */
+function kiemTraGoiDuLieuUI20(){
+  const p=layBaiToan20();
+  const info={
+    ok:!!p&&p.variantPilot===true&&p.lesson&&p.lesson.id==='toan_b20'&&
+       Array.isArray(p.questions)&&Array.isArray(p.sessions)&&p.questions.length===30,
+    apiVersion:'ui20-02a-data-check-20261112',
+    lessonId:p&&p.lesson&&p.lesson.id||null,
+    variantPilot:p&&p.variantPilot===true,
+    questionCount:Array.isArray(p&&p.questions)?p.questions.length:null,
+    sessionCount:Array.isArray(p&&p.sessions)?p.sessions.length:null,
+    lessonKeys:p&&typeof p==='object'?Object.keys(p).sort():[],
+    noWrites:true
+  };
+  console.log(JSON.stringify(info));
+  if(!info.ok)throw Error('Web App đang trả dữ liệu khác hợp đồng B20 staging; kiểm tra deployment và layBaiToan20');
+  return info;
 }
 
 /** Kiểm tra kết nối mà không ghi dữ liệu – dùng để đối chiếu deployment. */
