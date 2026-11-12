@@ -1,0 +1,30 @@
+name: G7 A2 Publish Verified WebP
+on:
+  push:
+    branches:
+      - g7-4-a2-webp-binary-20261112
+    paths:
+      - '.g7-a2-upload/READY'
+permissions:
+  contents: write
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Expand verified source ZIPs into 288 immutable WebP files
+        run: python3 .g7-a2-upload/publish.py
+      - name: Commit verified binaries on release branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A hinh-anh/webp-g7/v1 .g7-a2-upload
+          if git diff --cached --quiet; then
+            echo "Nothing to publish"
+          else
+            git commit -m "G7.4-A.2 publish 288 SHA-verified WebP binaries"
+            git push origin HEAD:g7-4-a2-webp-binary-20261112
+          fi
