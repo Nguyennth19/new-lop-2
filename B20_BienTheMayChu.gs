@@ -79,7 +79,34 @@ function kiemTraB20BienThe(){
 /** Kiểm tra kết nối mà không ghi dữ liệu – dùng để đối chiếu deployment. */
 function kiemTraKetNoiB20(){
   const qa=kiemTraB20BienThe();
-  return {ok:qa.ok,apiVersion:'b20-r1-1-20261112',lessonId:qa.lessonId,stagingOnly:true};
+  const report={ok:qa.ok,apiVersion:'b20-r1-3-1-20261112',lessonId:qa.lessonId,
+    gradingEndpoint:'chamLuotToan20BienThe',endpointReady:typeof chamLuotToan20BienThe==='function',
+    stagingOnly:true,noWrites:true};
+  console.log(JSON.stringify(report));
+  return report;
+}
+/** Chạy trong Apps Script Editor để test CHẤM 30 câu cả 6 lượt, không cần tham số, không ghi Google Sheets. */
+function kiemTraChamLuotB20(){
+  const p=b20DocPackThu_();
+  const details=[];
+  p.sessions.forEach(session=>{
+    const answers={};
+    session.question_ids.forEach(id=>{
+      const q=p.questions.find(x=>x.question_id===id);
+      const a=q.parameters.a,b=q.parameters.b,answer=String(q.answer).padStart(2,'0');
+      answers[id]=q.type==='vertical'?{carry:'1',tens:answer[0],ones:answer[1]}:
+        q.type==='word'?{n1:String(a),op:'+',n2:String(b),sum:String(q.answer),answer:String(q.answer)}:
+        {answer:String(q.answer)};
+    });
+    const result=chamLuotToan20BienThe({sessionId:session.session_id,answers});
+    if(result.correct!==session.question_ids.length||result.recorded!==false||result.starsAwarded!==0)
+      throw Error('Chấm thử B20 không đạt: '+session.session_id);
+    details.push({sessionId:session.session_id,passed:result.correct,total:result.total});
+  });
+  const result={ok:true,apiVersion:'b20-r1-3-1-20261112',total:details.reduce((n,x)=>n+x.passed,0),
+    sessions:details,recorded:false,starsAwarded:0};
+  console.log(JSON.stringify(result));
+  return result;
 }
 
 /** R1.3: Chấm cả lượt bằng đáp án gốc trên máy chủ; KHÔNG ghi Sheet hoặc sao. */
