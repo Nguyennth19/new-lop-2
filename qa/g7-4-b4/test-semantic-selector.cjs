@@ -18,7 +18,7 @@ function context({noRules=false,badRules=null,noSidecar=false}={}){
   if(url.includes('runtime.json'))return out(pack);
   throw Error('Unexpected network endpoint: '+url);
  }}};
- vm.runInNewContext(read('B20_BoChonHinhThongMinh.gs')+'\n'+read('B20_AssetSceneMayChu.gs')+'\n'+
+ vm.runInNewContext(read('BoChonAssetNguNghiaChung.gs')+'\n'+read('B20_BoChonHinhThongMinh.gs')+'\n'+read('B20_AssetSceneMayChu.gs')+'\n'+
    read('B20_BienTheMayChu.gs'),ctx);
  return ctx;
 }
