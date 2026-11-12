@@ -24,6 +24,22 @@ function decorate(question,bridge){
  const result=bridge.decorate(question,scene);
  return result.ok?{ok:true,question:result.question,attached:true}:result;
 }
+function ensureFallback(root,questions,doc){
+ if(!root||typeof root.querySelector!=="function"||!doc)return 0;
+ let created=0;
+ for(const q of questions||[]){
+  if(!q.visualScene||!PILOT[q.id])continue;
+  const target=root.querySelector('[data-ml-svg="'+q.id+'"]');
+  if(!target||target.querySelector('img,svg,[data-kl-pilot-fallback]'))continue;
+  const span=doc.createElement("span");
+  span.setAttribute("data-kl-pilot-fallback","1");
+  span.setAttribute("role","img");
+  span.setAttribute("aria-label",PILOT[q.id].meaning);
+  span.textContent=q.id==="VAR_B20_20261112_016"?"🍬":"📚";
+  target.appendChild(span);created++;
+ }
+ return created;
+}
 function mountVisible(root,questions,bridge,loader,opts){
  opts=opts||{};
  if(!root||typeof root.querySelector!=="function")return {ok:false,code:"INVALID_ROOT"};
@@ -45,5 +61,5 @@ function mountVisible(root,questions,bridge,loader,opts){
  }
  return {ok:true,mounted,skipped};
 }
-return Object.freeze({PILOT,sceneFor,decorate,mountVisible});
+return Object.freeze({PILOT,sceneFor,decorate,ensureFallback,mountVisible});
 });
