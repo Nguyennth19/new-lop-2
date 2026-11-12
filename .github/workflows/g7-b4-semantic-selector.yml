@@ -1,0 +1,37 @@
+name: G7.4-B.4 Curated Semantic Asset Selector QA
+on:
+  push:
+    branches:
+      - test/g7-4-b4-semantic-asset-selector-20261112
+    paths:
+      - 'du-lieu/asset-selector/**'
+      - 'B20_BoChonHinhThongMinh.gs'
+      - 'B20_BienTheMayChu.gs'
+      - 'qa/g7-4-b4/**'
+      - '.github/workflows/g7-b4-semantic-selector.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  semantic-and-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Curated selector, 288 registry, unknown/ambiguous and fail-safe scenarios
+        run: node qa/g7-4-b4/test-semantic-selector.cjs
+      - name: Approved B20 30-question UI and all six sessions grading QA
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: G7.4-B.3.1 controlled merge structural and visual-state QA
+        run: |
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+      - name: Candy and storybook fallback hotfix QA
+        run: node qa/hotfix-b20-book/test-book-illustration.cjs
+      - name: Node syntax check on GAS selector module
+        run: |
+          cp B20_BoChonHinhThongMinh.gs /tmp/g7-b4-selector.cjs
+          node --check /tmp/g7-b4-selector.cjs
