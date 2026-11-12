@@ -23,5 +23,7 @@ jobs:
         run: node qa/hotfix-b20-book/test-book-illustration.cjs
       - name: JSON Scene integration 16-case policy and 30-question regression
         run: node qa/g7-4-b3/test-json-asset-scenes.cjs
+      - name: Simulate JSON candy/book image ready, error and fallback states
+        run: node qa/g7-4-b3-1/test-visual-fallback.cjs
       - name: Run structural baseline contract checks
         run: node qa/g7-4-b3-1/test-controlled-merge.cjs
