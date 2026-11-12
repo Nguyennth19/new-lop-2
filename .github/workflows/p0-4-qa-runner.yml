@@ -50,9 +50,16 @@ jobs:
         shell: bash
         env:
           QA_MODE: ${{ github.event.inputs.mode || 'FULL_SAFE' }}
+          QA_ALL_MODES: ${{ github.event_name == 'push' && '1' || '0' }}
         run: |
-          set -o pipefail
-          node thu-nghiem/p0-4/qa-runner.cjs "$QA_MODE" | tee "$RUNNER_TEMP/p0-4-report.jsonl"
+          set -euo pipefail
+          if [[ "$QA_ALL_MODES" == "1" ]]; then
+            for mode in FAST UI_REGRESSION FULL_SAFE; do
+              node thu-nghiem/p0-4/qa-runner.cjs "$mode" | tee -a "$RUNNER_TEMP/p0-4-report.jsonl"
+            done
+          else
+            node thu-nghiem/p0-4/qa-runner.cjs "$QA_MODE" | tee "$RUNNER_TEMP/p0-4-report.jsonl"
+          fi
       - name: Ensure repository unchanged
         shell: bash
         run: |
