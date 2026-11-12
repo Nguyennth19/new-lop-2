@@ -83,7 +83,11 @@ function runSuite(name,options={}){
     });
     let summary=null,error=null;
     if(child.error)error=codeError(child.error.code==='ETIMEDOUT'?'QA_TIMEOUT':'QA_SPAWN_ERROR',key+':'+child.error.message);
-    else if(child.status!==0)error=codeError('QA_CHILD_FAILED',key+':exit='+child.status);
+    else if(child.status!==0){
+      const diagnostic=(child.stdout||'').split(/\r?\n/).filter(line=>/^FAIL\s/.test(line)).slice(0,2)
+        .map(line=>line.replace(/[\x00-\x1f]/g,'').slice(0,90)).join(' | ');
+      error=codeError('QA_CHILD_FAILED',key+':exit='+child.status+(diagnostic?':'+diagnostic:''));
+    }
     else try{summary=parseResult(spec.kind,child.stdout||'',spec.minimum);}
       catch(e){error=codeError('QA_BAD_SUMMARY',key+':'+e.message);}
     if(hash(target)!==digest)error=codeError('QA_TEST_MUTATED',key);
