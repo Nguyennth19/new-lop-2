@@ -71,6 +71,7 @@ function mountScene(container,scene,loader,opts){
       for(let i=0;i<item.count;i++){
         const r=loader.mount(box,item.assetId,{
           document:doc,width:opts.width||96,height:opts.height||96,decorative:!!opts.decorative,
+          onReady:(img)=>{if(typeof opts.onReady==="function")opts.onReady(img,item.assetId);},
           onFallback:(reason)=>{if(typeof opts.onFallback==="function")opts.onFallback(reason,item.assetId);}
         });
         if(!r.ok)return err("MOUNT_FAILED",{assetId:item.assetId,reason:r.code});
