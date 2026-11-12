@@ -1,6 +1,6 @@
-/* G7.4-B.2 B20 staging-only illustrative binding.
- * Decorative icons only, NOT quantities. No lesson text, answer, or score changes.
- * Assets selected by concrete semantic match, never search labels at runtime.
+/* G7.4-B.3: generic read-only B20 Asset Scene adapter.
+ * All question-to-asset bindings come from server-validated JSON sidecar.
+ * No URL or Asset ID hardcoded here. Existing SVG/emoji/G5 remains on failed load.
  */
 (function(root,factory){
  const lib=factory();
@@ -8,34 +8,44 @@
  if(root)root.KLB20AssetPilotV1=lib;
 })(typeof globalThis!=="undefined"?globalThis:null,function(){
 "use strict";
-const PILOT=Object.freeze({
- VAR_B20_20261112_016:Object.freeze({assetId:"KL_SH02_010",meaning:"kẹo bọc giấy",status:"LABEL_APPROVED"}),
- VAR_B20_20261112_021:Object.freeze({assetId:"KL_SH03_006",meaning:"sách (biểu trưng, không khẳng định là truyện)",status:"OWNER_SIGNOFF_PENDING"})
-});
-function sceneFor(question){
- if(!question||question.type!=="word"&&question.variantType!=="word")return null;
- const item=PILOT[question.question_id||question.id];if(!item)return null;
- return {groups:[{label:"Hình minh họa (không biểu diễn số lượng)",items:[{assetId:item.assetId,count:1}]}]};
+const SCHEMA="kidlearn-variant-asset-scene-v1";
+const ID=/^VAR_B20_20261112_\d{3}$/;
+function sceneFor(question,sidecar){
+ if(!question||!sidecar||sidecar.schema_version!==SCHEMA||
+    sidecar.mode!=="STAGING_ONLY"||!sidecar.question_scenes)return null;
+ const id=question.question_id||question.id;
+ if(!ID.test(String(id||""))||question.type!=="word"&&question.variantType!=="word")return null;
+ const entry=Object.prototype.hasOwnProperty.call(sidecar.question_scenes,id)?
+   sidecar.question_scenes[id]:null;
+ if(!entry||entry.usage!=="decorative"||
+    !["LABEL_APPROVED","OWNER_SIGNOFF_PENDING"].includes(entry.label_approval_status))return null;
+ if(entry.label_approval_status!=="LABEL_APPROVED"&&entry.pilot_only!==true)return null;
+ return {scene:entry.scene,meta:{
+   semantic:entry.semantic||"Hình minh họa",
+   labelStatus:entry.label_approval_status,
+   pilotOnly:entry.pilot_only===true,
+   fallbackEmoji:entry.fallback_emoji||"🖼️"
+ }};
 }
-function decorate(question,bridge){
- const scene=sceneFor(question);
- if(!scene)return {ok:true,question,attached:false};
+function decorate(question,bridge,sidecar){
+ const mapping=sceneFor(question,sidecar);
+ if(!mapping)return {ok:true,question,attached:false};
  if(!bridge||typeof bridge.decorate!=="function")return {ok:false,code:"BRIDGE_UNAVAILABLE"};
- const result=bridge.decorate(question,scene);
- return result.ok?{ok:true,question:result.question,attached:true}:result;
+ const result=bridge.decorate(question,mapping.scene);
+ return result.ok?{ok:true,question:Object.freeze({...result.question,assetSceneMeta:mapping.meta}),attached:true}:result;
 }
 function ensureFallback(root,questions,doc){
  if(!root||typeof root.querySelector!=="function"||!doc)return 0;
  let created=0;
  for(const q of questions||[]){
-  if(!q.visualScene||!PILOT[q.id])continue;
+  if(!q.visualScene||!q.assetSceneMeta)continue;
   const target=root.querySelector('[data-ml-svg="'+q.id+'"]');
   if(!target||target.querySelector('img,svg,[data-kl-pilot-fallback]'))continue;
   const span=doc.createElement("span");
   span.setAttribute("data-kl-pilot-fallback","1");
   span.setAttribute("role","img");
-  span.setAttribute("aria-label",PILOT[q.id].meaning);
-  span.textContent=q.id==="VAR_B20_20261112_016"?"🍬":"📚";
+  span.setAttribute("aria-label",q.assetSceneMeta.semantic);
+  span.textContent=q.assetSceneMeta.fallbackEmoji;
   target.appendChild(span);created++;
  }
  return created;
@@ -45,21 +55,20 @@ function mountVisible(root,questions,bridge,loader,opts){
  if(!root||typeof root.querySelector!=="function")return {ok:false,code:"INVALID_ROOT"};
  if(!bridge||!loader)return {ok:false,code:"DEPENDENCY_MISSING"};
  let mounted=0,skipped=0;
- const selector=(id)=>'[data-ml-svg="'+id+'"]';
  for(const q of questions||[]){
-  if(!q.visualScene||!PILOT[q.id])continue;
-  const target=root.querySelector(selector(q.id));
+  if(!q.visualScene||!q.assetSceneMeta)continue;
+  const target=root.querySelector('[data-ml-svg="'+q.id+'"]');
   if(!target){skipped++;continue;}
   if(target.querySelector&&target.querySelector('[data-kl-scene]')){skipped++;continue;}
   const previous=target.querySelectorAll?Array.from(target.querySelectorAll("img,[data-kl-pilot-fallback]")):[];
   const result=bridge.mountScene(target,q.visualScene,loader,{
     document:opts.document,width:opts.width||96,height:opts.height||96,decorative:true,
-    onReady:()=>{previous.forEach(img=>{img.hidden=true;});},
-    onFallback:()=>{previous.forEach(img=>{img.hidden=false;});if(typeof opts.onFallback==="function")opts.onFallback(q.id);}
+    onReady:()=>{previous.forEach(el=>{el.hidden=true;});},
+    onFallback:()=>{previous.forEach(el=>{el.hidden=false;});if(typeof opts.onFallback==="function")opts.onFallback(q.id);}
   });
   if(result.ok)mounted++;else skipped++;
  }
  return {ok:true,mounted,skipped};
 }
-return Object.freeze({PILOT,sceneFor,decorate,ensureFallback,mountVisible});
+return Object.freeze({sceneFor,decorate,ensureFallback,mountVisible});
 });
