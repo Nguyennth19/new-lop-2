@@ -50,3 +50,21 @@ GitHub Actions: `P0.4 QA Runner (TEST only)`, choose mode and dispatch on the TE
 - [x] Structural/source readback QA
 - [ ] CI run with PASS outcome and retained log evidence
 - [ ] Browser/mobile smoke, if needed for P0.5 release
+
+## P0.4 FINAL CI evidence — 2026-11-13 (ICT)
+**Supersedes the preceding CI_EXECUTION_PENDING assessment.** GitHub Actions TEST-only run `43268041072` completed with **SUCCESS** on commit `99d4d968b54e6932d8e15e844bf7324fc5fa3453`.
+Evidence: https://github.com/Nguyennth19/new-lop-2/actions/runs/43268041072
+
+- Runner contract self-test: **12/12 PASS**.
+- `FAST`: **PASS**, 2/2 inherited suites — validator 23 cases, no-write 4 cases.
+- `UI_REGRESSION`: **PASS**, 2/2 inherited suites — UI layout 11 cases, visual state/fallback 8 cases.
+- `FULL_SAFE`: **PASS**, 4/4 inherited suites — 46 individual assertions (23+4+11+8).
+- Final job steps `Execute inherited test suites (read-only)` and `Ensure repository unchanged`: **SUCCESS**.
+- Each runner report: `noWrites:true`, `scope:OFFLINE_ONLY`, `webapp:NOT_TESTED`, `browser:NOT_TESTED`, `errors:[]`.
+- Final workflow runs all three modes on a TEST-branch push; manual dispatch allows selecting one mode.
+
+### Investigated failures and repair
+Earlier CI runs `43267454959` and `43267734008` reported `ui_image` FAIL while validator, no_write and ui_layout were PASS. The old `qa/g7-4-b3-1/test-visual-fallback.cjs` fixture used `type:'word_problem'` without `variantType:'word'`; production adapter supplies that variantType and `KLB20AssetPilotV1.sceneFor` requires it. Added only the missing fixture field; no adapter, runtime JSON, UI component or grading edits. Rerun `43267895867` passed FULL_SAFE; final run `43268041072` passed all three modes.
+
+### Acceptance status
+`P0.4_OFFLINE_CI_PASS` confirmed by authenticated GitHub Actions logs. **Not** a Web App deployment acceptance, browser/mobile acceptance, complete student-data no-write proof beyond prior P0.3, or pedagogy signoff. Keep PROD/MAIN untouched; proceed to P0.5 release-gate validation separately.
