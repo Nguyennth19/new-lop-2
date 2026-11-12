@@ -1,0 +1,275 @@
+{
+  "version": "G7.1-C-2026-11-12",
+  "status": "SPECIFICATION_AND_STATIC_QA_ONLY_NOT_DEPLOYED",
+  "core_rules": {
+    "decoration": "An illustrative icon may represent a category or group without encoding exact quantity. A single hen may symbolize a flock only when learners do not infer counts from the illustration.",
+    "data": "If the question asks to count, compare, group, measure or infer answer from picture, every displayed quantity, grouping, color, numeral and unit must match the generated exercise data.",
+    "composition": "Use one verified source asset repeatedly, with layout positions controlled by the question renderer. Avoid making separate PNG files for every count, 2+3, 3+3, grid or table variant.",
+    "variation": "Randomize only among semantically eligible assets, after strict constraints; hold chosen seed stable for a question attempt.",
+    "source": "SGK/VBT is curriculum and exercise model reference; generated variants may use different but mathematically equivalent objects. Record variant source and semantics."
+  },
+  "assets_verified_in_registry": {
+    "hen": "KL_SH05_004",
+    "single_book": "KL_SH03_006",
+    "gift_one": [
+      "KL_M06_003",
+      "KL_SH08_003"
+    ],
+    "gift_stack": "KL_SH12_006",
+    "unit_cube": [
+      "KL_M01_008",
+      "KL_M02_001"
+    ],
+    "ten_strip": "KL_M01_009",
+    "hundred_grid": "KL_M02_003",
+    "cup": "KL_M05_003",
+    "bucket": "KL_M05_006",
+    "weight": [
+      "KL_M04_004",
+      "KL_M04_005"
+    ]
+  },
+  "cases": [
+    {
+      "id": "T01",
+      "requirement": "illustration of a flock of chickens, no question about number",
+      "input": {
+        "role": "DECORATIVE",
+        "object": "chicken",
+        "count": "unspecified"
+      },
+      "expected": {
+        "eligible": [
+          "KL_SH05_004"
+        ],
+        "allow_single_icon_represent_group": true,
+        "status": "PASS_IF_METADATA_ROLE_DECORATIVE"
+      }
+    },
+    {
+      "id": "T02",
+      "requirement": "3 chickens in pen A and 3 chickens in pen B; calculate total",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "chicken",
+        "groups": [
+          {
+            "pen": "A",
+            "count": 3
+          },
+          {
+            "pen": "B",
+            "count": 3
+          }
+        ]
+      },
+      "expected": {
+        "asset": "KL_SH05_004",
+        "instances": 6,
+        "groups": [
+          3,
+          3
+        ],
+        "total": 6,
+        "allow_single_icon_represent_group": false
+      }
+    },
+    {
+      "id": "T03",
+      "requirement": "1 book only",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "book",
+        "count": 1
+      },
+      "expected": {
+        "asset": "KL_SH03_006",
+        "instances": 1,
+        "forbid_stacked_multi": true
+      }
+    },
+    {
+      "id": "T04",
+      "requirement": "stack of 5 books, if asked to count",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "book",
+        "count": 5
+      },
+      "expected": {
+        "asset": "KL_SH03_006",
+        "instances": 5,
+        "layout": "stack",
+        "allow_static_decorative_stack_only_if_not_counted": true
+      }
+    },
+    {
+      "id": "T05",
+      "requirement": "one gift",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "gift_box",
+        "count": 1
+      },
+      "expected": {
+        "eligible": [
+          "KL_M06_003",
+          "KL_SH08_003"
+        ],
+        "forbid": [
+          "KL_SH12_006"
+        ]
+      }
+    },
+    {
+      "id": "T06",
+      "requirement": "multiple gifts without exact count",
+      "input": {
+        "role": "ILLUSTRATIVE",
+        "object": "gift_box",
+        "count": "plural_unspecified"
+      },
+      "expected": {
+        "eligible": [
+          "KL_SH12_006"
+        ],
+        "also_allow_composition_from_single_box": true
+      }
+    },
+    {
+      "id": "T07",
+      "requirement": "10 single unit blocks",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "unit_cube",
+        "count": 10
+      },
+      "expected": {
+        "eligible": [
+          "KL_M01_008",
+          "KL_M02_001"
+        ],
+        "instances": 10,
+        "strict_count": true
+      }
+    },
+    {
+      "id": "T08",
+      "requirement": "1 ten-rod in base ten",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "ten_strip",
+        "represented_units": 10
+      },
+      "expected": {
+        "asset": "KL_M01_009",
+        "represented_units": 10,
+        "allow_ten_cell_ui": true
+      }
+    },
+    {
+      "id": "T09",
+      "requirement": "100-grid",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "hundred_grid",
+        "cells": 100
+      },
+      "expected": {
+        "asset": "KL_M02_003",
+        "allow_ui_grid": "10x10",
+        "never_substitute_five_stars": true
+      }
+    },
+    {
+      "id": "T10",
+      "requirement": "2 kilograms displayed on a weight",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "mass",
+        "value": 2,
+        "unit": "kg"
+      },
+      "expected": {
+        "eligible_weights": [
+          "KL_M04_004",
+          "KL_M04_005"
+        ],
+        "overlay_exact_text": "2 kg",
+        "forbid_assuming_weight_from_unlabeled_rice_or_fruit": true
+      }
+    },
+    {
+      "id": "T11",
+      "requirement": "read 3 liters from a container",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "capacity",
+        "value": 3,
+        "unit": "l"
+      },
+      "expected": {
+        "base_asset": "KL_M05_009",
+        "overlay_exact_text": "3 l",
+        "correct_scale_required": true
+      }
+    },
+    {
+      "id": "T12",
+      "requirement": "a decorative rain picture",
+      "input": {
+        "role": "DECORATIVE",
+        "object": "rain"
+      },
+      "expected": {
+        "allow_repeat_drop_icon": true,
+        "forbid_infer_exact_drop_count": true
+      }
+    },
+    {
+      "id": "T13",
+      "requirement": "choose random drawing of a ball with no details constrained",
+      "input": {
+        "role": "DECORATIVE",
+        "object": "ball"
+      },
+      "expected": {
+        "eligible": [
+          "KL_M06_001",
+          "KL_SH04_001"
+        ],
+        "stable_within_attempt": true
+      }
+    },
+    {
+      "id": "T14",
+      "requirement": "a red pair of lace-up sneakers",
+      "input": {
+        "role": "DATA_BEARING",
+        "object": "shoes",
+        "color": "red",
+        "closure": "laces"
+      },
+      "expected": {
+        "eligible": [
+          "KL_SH08_012"
+        ],
+        "forbid": [
+          "KL_SH12_011"
+        ]
+      }
+    },
+    {
+      "id": "T15",
+      "requirement": "SGK exact picture required for identifying a specific figure",
+      "input": {
+        "role": "SOURCE_LOCKED",
+        "asset_id": "SOURCE_FIGURE_ID"
+      },
+      "expected": {
+        "randomization": false,
+        "pinned_asset_required": true
+      }
+    }
+  ]
+}
