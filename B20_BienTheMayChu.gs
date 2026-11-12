@@ -46,7 +46,8 @@ function b20DocPackThu_(){
   if(JSON.stringify(result).length<95000)cache.put(B20_PILOT_CACHE_KEY,JSON.stringify(result),300);
   return result;
 }
-function b20ChamThu(request){
+/** Chấm điểm thử nghiệm: hàm nội bộ, tuyệt đối không ghi tiến độ hay sao. */
+function b20ChamThuNoiBo_(request){
   if(!request||typeof request!=='object')throw Error('Yêu cầu không hợp lệ');
   const pack=b20DocPackThu_();
   const sid=String(request.sessionId||''),id=String(request.questionId||'');
@@ -59,9 +60,24 @@ function b20ChamThu(request){
   return {ok:true,correct,questionId:id,expected:q.answer,unit:q.unit||'',
     explanation:q.solution_prompt||'',skillId:q.skill_id,stagingOnly:true,starsAwarded:0};
 }
-function kiemTraB20BienThe_(){
+/** API công khai cho giao diện Apps Script. */
+function chamBaiToan20BienThe(request){
+  return b20ChamThuNoiBo_(request);
+}
+/** Tên gọi cũ được giữ tạm để tương thích bản staging trước. */
+function b20ChamThu(request){
+  return b20ChamThuNoiBo_(request);
+}
+/** Hàm có thể chọn trên thanh Run của Apps Script. */
+function kiemTraB20BienThe(){
   const p=b20DocPackThu_();
   return {ok:true,lessonId:p.lesson.id,questionCount:p.questions.length,sessionCount:p.sessions.length,
     counts:p.sessions.map(s=>({id:s.session_id,count:s.question_ids.length})),
     stagingOnly:true,noWrites:true,noStars:true};
+}
+
+/** Kiểm tra kết nối mà không ghi dữ liệu – dùng để đối chiếu deployment. */
+function kiemTraKetNoiB20(){
+  const qa=kiemTraB20BienThe();
+  return {ok:qa.ok,apiVersion:'b20-r1-1-20261112',lessonId:qa.lessonId,stagingOnly:true};
 }
