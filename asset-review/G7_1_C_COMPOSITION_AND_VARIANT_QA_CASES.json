@@ -15,7 +15,7 @@
       "KL_M06_003",
       "KL_SH08_003"
     ],
-    "gift_stack": "KL_SH12_006",
+    "gift_stack": "KL_M03_012",
     "unit_cube": [
       "KL_M01_008",
       "KL_M02_001"
@@ -114,10 +114,11 @@
       "expected": {
         "eligible": [
           "KL_M06_003",
-          "KL_SH08_003"
+          "KL_SH08_003",
+          "KL_SH12_006"
         ],
         "forbid": [
-          "KL_SH12_006"
+          "KL_M03_012"
         ]
       }
     },
@@ -131,9 +132,14 @@
       },
       "expected": {
         "eligible": [
-          "KL_SH12_006"
+          "KL_M03_012"
         ],
-        "also_allow_composition_from_single_box": true
+        "also_allow_composition_from_single_box": true,
+        "forbid": [
+          "KL_M06_003",
+          "KL_SH08_003",
+          "KL_SH12_006"
+        ]
       }
     },
     {
