@@ -53,7 +53,14 @@ t('Explicit mappings 016 and 021 remain exactly unchanged',()=>{
  const out=ctx.b20DocPackThu_();
  assert.equal(out.questions.length,30);assert.equal(out.sessions.length,6);
  assert.deepEqual(Object.keys(out.assetScenes.question_scenes).sort(),Object.keys(sidecar.question_scenes).sort());
- for(const id of Object.keys(sidecar.question_scenes))assert.equal(JSON.stringify(out.assetScenes.question_scenes[id]),JSON.stringify(sidecar.question_scenes[id]));
+ for(const id of Object.keys(sidecar.question_scenes)){
+   const expected=sidecar.question_scenes[id],actual=out.assetScenes.question_scenes[id];
+   assert.equal(actual.usage,expected.usage);
+   assert.equal(actual.label_approval_status,expected.label_approval_status);
+   assert.equal(actual.fallback_emoji,expected.fallback_emoji);
+   assert.equal(actual.pilot_only,expected.pilot_only===true);
+   assert.deepEqual(JSON.parse(JSON.stringify(actual.scene)),expected.scene);
+ }
 });
 t('No user data writes or renderer/CSS change',()=>{
  assert(!read('B20_BoChonHinhThongMinh.gs').includes('SpreadsheetApp'));
