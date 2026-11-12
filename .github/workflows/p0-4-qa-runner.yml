@@ -18,6 +18,7 @@ on:
     paths:
       - 'thu-nghiem/p0-4/**'
       - 'thu-nghiem/p0-3/kiem-thu-snapshot.cjs'
+      - 'qa/g7-4-b3-1/**'
       - '.github/workflows/p0-4-qa-runner.yml'
 
 permissions:
