@@ -13,7 +13,7 @@ function make(options={}){
    getMaxRows:()=>2,getMaxColumns:()=>2,getLastRow:()=>2,getLastColumn:()=>2,
    getRange:()=>({getDisplayValues:()=>{
      snapshotReads++;
-     if(options.mutate&&snapshotReads===5)grid['90_Lan_lam_bai'][1][0]='external-edit';
+     if(options.mutate&&snapshotReads===3)grid['90_Lan_lam_bai'][1][0]='external-edit';
      return grid[name].map(row=>row.slice());
    },getFormulas:()=>[['',''],['','']]}),
    setValue:()=>{writes++;throw Error('WRITE_FORBIDDEN')},appendRow:()=>{writes++;throw Error('WRITE_FORBIDDEN')}
