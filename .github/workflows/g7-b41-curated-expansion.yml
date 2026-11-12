@@ -1,0 +1,34 @@
+name: G7.4-B.4.1 Curated Rules Expansion QA
+on:
+  push:
+    branches:
+      - test/g7-4-b4-1-curated-rules-expansion-20261113
+    paths:
+      - 'du-lieu/asset-selector/**'
+      - 'B20_BoChonHinhThongMinh.gs'
+      - 'qa/g7-4-b4/**'
+      - 'qa/g7-4-b4-1/**'
+      - '.github/workflows/g7-b41-curated-expansion.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  expansion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate six expanded semantic rules and invariants
+        run: node qa/g7-4-b4-1/test-expanded-rules.cjs
+      - name: Run original B4 semantic selector QA
+        run: node qa/g7-4-b4/test-semantic-selector.cjs
+      - name: Retain B20 renderer and grading 30-question baseline
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Retain B3.1 structural and fallback behavior
+        run: |
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
