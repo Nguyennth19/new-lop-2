@@ -2,8 +2,8 @@
  * Rules are versioned JSON, NOT hand-coded per Question ID. Returns no image on ambiguity.
  * The existing per-question sidecar remains the highest-priority override.
  */
-const B20_SMART_RULES_URL_='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/6cbc477ad43e44b457eb168b5204f3b52425a677/du-lieu/asset-selector/semantic-rules.v1.json';
-const B20_SMART_RULES_CACHE_='b20_smart_rules_v1_6cbc47';
+const B20_SMART_RULES_URL_='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/6faead9028c1e27d815c4b5de6652923fd1506a0/du-lieu/asset-selector/semantic-rules.v1.json';
+const B20_SMART_RULES_CACHE_='b20_smart_rules_v1_b41_6faead';
 const B20_SMART_RELEASE_='653bfbc73002a188dcea0b714247b84cc28a4fed';
 function b20ChuanHoaTu_(value){
   return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D')
