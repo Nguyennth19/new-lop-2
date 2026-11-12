@@ -26,7 +26,7 @@ function eligibleAssets(q,catalog,profiles){
   if(input.shape&&p.features.shape!==input.shape&&p.features.kind!==input.shape)return false;
   if(input.style&&p.features.style!==input.style)return false;
   if(input.form&&input.form!==p.form)return false;
-  if(typeof input.count==="number" && input.role==="DATA_BEARING" && input.count===1 && p.form==="stack")return false;
+  if(input.role==="DATA_BEARING" && p.form==="stack")return false;
   if(typeof input.count==="number" && input.role==="DATA_BEARING" && p.form==="pair" && input.count!==2 && !input.countPairs)return false;
   if(input.object==="gift_box"&&input.count==="plural_unspecified")return p.form==="stack";
   return true;
@@ -42,9 +42,9 @@ function buildPlan(query,catalog,profiles,seed="demo:question:attempt-1"){
   return {status:"OK",mode:"PINNED",asset_ids:[existing.id],placements:[{asset_id:existing.id,group:"source",position:0}],randomized:false,qa:"SOURCE_IMAGE_PINNED"};
  }
  const pool=eligibleAssets(query,catalog,profiles);
- if(query.object==="hundred_grid")return {status:"OK",mode:"UI_GRID",asset_ids:[],cells:100,rows:10,columns:10,placements:[],randomized:false,qa:"STRUCTURE_FROM_VARIANT_DATA"};
- if(query.object==="ten_strip")return {status:"OK",mode:"UI_TEN_STRIP",asset_ids:[],cells:10,rows:1,columns:10,placements:[],randomized:false,qa:"STRUCTURE_FROM_VARIANT_DATA"};
- if(query.object==="rain"&&query.role==="DECORATIVE")return {status:"OK",mode:"DECORATIVE_PATTERN",asset_ids:pool.map(p=>p.asset_id),placements:pool.length?[{asset_id:pool[0].asset_id,group:"decoration",position:0}]:[],randomized:false,qa:"NOT_COUNT_DATA"};
+ if(query.object==="hundred_grid"){if(query.cells!==100)return {status:"INVALID_REQUEST",reason:"HUNDRED_GRID_REQUIRES_100_CELLS",placements:[]};return {status:"OK",mode:"UI_GRID",asset_ids:[],cells:100,rows:10,columns:10,placements:[],randomized:false,qa:"STRUCTURE_FROM_VARIANT_DATA"}};
+ if(query.object==="ten_strip"){if(query.represented_units!==10)return {status:"INVALID_REQUEST",reason:"TEN_STRIP_REQUIRES_10_UNITS",placements:[]};return {status:"OK",mode:"UI_TEN_STRIP",asset_ids:[],cells:10,rows:1,columns:10,placements:[],randomized:false,qa:"STRUCTURE_FROM_VARIANT_DATA"}};
+ if(query.object==="rain"&&query.role==="DECORATIVE"){if(!pool.length)return {status:"ASSET_REQUIRED_REVIEW",reason:"NO_RAIN_ASSET",placements:[]};return {status:"OK",mode:"DECORATIVE_PATTERN",asset_ids:pool.map(p=>p.asset_id),placements:[{asset_id:pool[0].asset_id,group:"decoration",position:0}],randomized:false,qa:"NOT_COUNT_DATA"}};
  if(!pool.length)return {status:"ASSET_REQUIRED_REVIEW",reason:"NO_SEMANTICALLY_ELIGIBLE_ASSET",placements:[]};
  const chosen=pool[stableIndex(pool,seed)];
  const meta={status:"OK",mode:"REPEAT_ASSET",asset_ids:pool.map(x=>x.asset_id),selected_asset_id:chosen.asset_id,randomized:pool.length>1,seed:String(seed),placements:[],qa:chosen.evidence};
