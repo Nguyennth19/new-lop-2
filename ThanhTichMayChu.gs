@@ -70,6 +70,8 @@ function achAdd_(sheet,events,key,type,delta,lesson,lv,attempt,note){
 }
 /** Nhận đáp án chứ KHÔNG nhận điểm do client tự tính; chỉ chấp nhận id bài/cấp độ đã biết. */
 function ghiNhanKetQuaToan20(payload){
+  // Bản pilot không được ghi sổ sao hoặc chấm theo các ID gốc.
+  if(typeof b20DocPackThu_==='function')throw Error('Bài 20 đang ở chế độ thử nghiệm JSON; không ghi sao.');
  if(!payload||!/^LV[123]$/.test(String(payload.level)))throw Error('Cấp độ không hợp lệ');
  const lv=String(payload.level);
  const raw=payload.answers||{};
