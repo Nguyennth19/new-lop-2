@@ -106,6 +106,17 @@ function render(){
   });
  }
  installSvg();
+ // G7.4-B.2: staging opt-in only; two word problems, keep old illustration on failure.
+ if(fullData.variantPilot&&typeof KL_ASSET_V5!=='undefined'&&
+    typeof KLVariantAssetBridgeV1!=='undefined'&&typeof KLB20AssetPilotV1!=='undefined'){
+   const currentView=view,currentRoot=target;
+   KL_ASSET_V5.init().then(result=>{
+     if(!result.ok||!fullData?.variantPilot||view!==currentView||
+        shell().querySelector('#mlContent')!==currentRoot)return;
+     KLB20AssetPilotV1.mountVisible(currentRoot,activeQuestions().filter(q=>q.level===view),
+       KLVariantAssetBridgeV1,KL_ASSET_V5,{document});
+   }).catch(()=>{}); // Existing SVG/emoji/G5 illustration stays in place.
+ }
  target.scrollTop=0;
  renderResults();
 }
