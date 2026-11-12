@@ -49,6 +49,14 @@ function chuyenB20BienTheSangRenderer(pack){
    }
  }
  if(questions.length!==pack.questions.length)throw Error('Ngân hàng B20 không khớp lượt');
+ // G7.4-B.2: add optional decorative Asset IDs to two pilot questions only.
+ // If bridge is unavailable, existing answer/prompt and renderer remain intact.
+ if(typeof KLVariantAssetBridgeV1!=='undefined'&&typeof KLB20AssetPilotV1!=='undefined'){
+   for(let i=0;i<questions.length;i++){
+     const mapped=KLB20AssetPilotV1.decorate(questions[i],KLVariantAssetBridgeV1);
+     if(mapped.ok&&mapped.attached)questions[i]=mapped.question;
+   }
+ }
  return {variantPilot:true,lesson:pack.lesson,packVersion:pack.packVersion,levels,sections,questions,
    sessions:pack.sessions,readAt:new Date().toISOString()};
 }
