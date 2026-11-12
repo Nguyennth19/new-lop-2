@@ -6,8 +6,8 @@ const cases=[];
 const doc={readyState:'loading',addEventListener(){},
  createElement(tag){return {tag,dataset:{},className:'',setAttribute(n,v){this[n]=v;},remove(){this.removed=true;}}}
 };
-const ctx={document:doc};vm.runInNewContext(source,ctx);
-const gallery=ctx.HINH_ANH_APP;
+const ctx={document:doc};vm.runInNewContext(source+'\n;globalThis.__gallery=HINH_ANH_APP;',ctx);
+const gallery=ctx.__gallery;
 function target(){
  const children=[];return {children,dataset:{},classList:{add(){},remove(){}},setAttribute(n,v){this[n]=v;},
  appendChild(img){children.push(img);img.isConnected=true;img.parent=this;}};
