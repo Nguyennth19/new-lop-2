@@ -13,6 +13,7 @@ function vertical(q){
  return baseCard(q,inside,'ml-vertical-card');
 }
 function mental(q){
+ if(q.pilotPrompt)return '<div class="ml-mental-row" data-ml-q-card="'+E(q.id)+'"><span class="ml-mental-first">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+'</div>';
  return '<div class="ml-mental-row" data-ml-q-card="'+E(q.id)+'"><span class="ml-mental-first">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
 }
 function puzzle(q){
