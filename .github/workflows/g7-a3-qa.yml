@@ -1,0 +1,31 @@
+name: G7.4-A.3 isolated loader and 288 WebP QA
+on:
+  push:
+    branches:
+      - test/g7-4-a3-loader-fallback-20261112
+    paths:
+      - 'qa/g7-4-a3/**'
+      - '.github/workflows/g7-a3-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Loader API and preserved SVG/emoji fallback
+        run: node qa/g7-4-a3/test-loader.cjs
+      - name: Verify immutable raw URL for all 288 assets and SHA256
+        run: python3 qa/g7-4-a3/verify-288-urls.py
+      - name: Save QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G7-4-A3-288-URL-QA
+          path: qa/g7-4-a3/url-qa-result.json
+          if-no-files-found: warn
