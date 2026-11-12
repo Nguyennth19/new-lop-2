@@ -10,7 +10,10 @@
     "allow_quantity_inference": false,
     "manual_override_first": true,
     "ambiguous_match": "NO_AUTO_ASSET",
-    "no_match": "KEEP_EXISTING_FALLBACK"
+    "no_match": "KEEP_EXISTING_FALLBACK",
+    "expansion_batch": "B4.1_20261113",
+    "disallow_pending_content_attributes_for_counting": true,
+    "max_auto_rules": 12
   },
   "rules": [
     {
@@ -54,6 +57,88 @@
         "ổi"
       ],
       "fallback_emoji": "🍈",
+      "count": 1
+    },
+    {
+      "concept": "school_backpack",
+      "asset_id": "KL_SH09_007",
+      "label_vi": "ba lô học sinh",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "ba lô học sinh",
+        "chiếc ba lô",
+        "cái ba lô",
+        "ba lô"
+      ],
+      "fallback_emoji": "🎒",
+      "count": 1
+    },
+    {
+      "concept": "kids_bicycle",
+      "asset_id": "KL_SH11_012",
+      "label_vi": "xe đạp trẻ em",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "chiếc xe đạp",
+        "xe đạp trẻ em",
+        "xe đạp"
+      ],
+      "fallback_emoji": "🚲",
+      "count": 1
+    },
+    {
+      "concept": "watermelon",
+      "asset_id": "KL_M04_007",
+      "label_vi": "quả dưa hấu",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "quả dưa hấu",
+        "trái dưa hấu",
+        "dưa hấu"
+      ],
+      "fallback_emoji": "🍉",
+      "count": 1
+    },
+    {
+      "concept": "rice_bag",
+      "asset_id": "KL_M04_006",
+      "label_vi": "bao gạo",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "bao gạo",
+        "túi gạo"
+      ],
+      "fallback_emoji": "🌾",
+      "count": 1
+    },
+    {
+      "concept": "water_bucket",
+      "asset_id": "KL_M05_006",
+      "label_vi": "xô nước",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "xô nước",
+        "xô đựng nước"
+      ],
+      "fallback_emoji": "🪣",
+      "count": 1
+    },
+    {
+      "concept": "baseball_cap",
+      "asset_id": "KL_SH09_004",
+      "label_vi": "mũ lưỡi trai",
+      "label_status": "LABEL_APPROVED",
+      "review_tier": "STAGING_CURATED",
+      "match_phrases": [
+        "mũ lưỡi trai",
+        "nón lưỡi trai"
+      ],
+      "fallback_emoji": "🧢",
       "count": 1
     }
   ]
