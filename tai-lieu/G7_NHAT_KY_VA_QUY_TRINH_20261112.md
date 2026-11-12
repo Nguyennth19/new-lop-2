@@ -69,3 +69,12 @@ Cần duyệt tính đúng đắn về ngữ nghĩa trước khi gán; ví dụ 
 - Không xóa, đổi tên, hoặc thay thế 288 master PNG trên Drive.
 - Không merge vào main hoặc deploy GAS khi chưa hoàn thành QA.
 - Bản stage này không thể thay cho chứng chỉ chuyển đổi WebP: chưa có 288 WebP mới, byte checksum, đồng bộ Drive/GitHub hoặc kiểm thử trình duyệt.
+
+
+## Bổ sung kiểm tra và mirror GitHub (2026-11-12)
+- **18 Git binary parts**: 9 SHARED + 9 MATH đã được commit lên `hinh-anh/G7_STAGING_BIN` ở nhánh G7. Mỗi part 750,000 bytes (trừ phần cuối); SHA Git blob được kiểm tra trùng bản tính từ file thực tế, **18/18 khớp**. Đã đọc ngược Git tree xác nhận 18 file và dung lượng.
+- Ghép các part theo thứ tự tên để tái tạo 2 ZIP, xác minh SHA256 ZIP đã liệt kê; xem `hinh-anh/G7_STAGING_BIN/README.md`. Đây chỉ là **bản sao lưu staging**, chưa phải 288 URL WebP riêng để ứng dụng sử dụng.
+- **6 cặp nhân vật bé trai/bé gái v1.0.1** đã tải về từ Drive, mở giải mã WebP, có RGBA/alpha và ghi SHA256/cỡ thật vào `hinh-anh/G7_NHAN_VAT_QA_6.csv`. Trạng thái duyệt nội dung nhân vật vẫn `QA_PENDING`; 3 robot pilot nằm trong repo, chưa nhập chung release.
+- Hồ sơ QA nhân vật trên Drive: https://drive.google.com/file/d/18cHtTPiymoDO25l5BNHRBYWENIJMJOgT/view
+- Bộ ZIP staging tổng hợp 288 WebP học liệu + 6 WebP nhân vật + báo cáo QA + 4 contact sheets + script có thể tải trực tiếp tại hội thoại, không chứa PNG master.
+- **Còn lại trước khi merge/deploy:** ký duyệt 100 nhãn, chốt nhãn học liệu có số đo/giá trị, đóng gói 288 URL WebP bất biến tại GitHub sau QA, kiểm thử trực quan GAS.
