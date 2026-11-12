@@ -1,11 +1,12 @@
 /* Branch TEST ONLY. Isolated score; no THANH_TICH_GUI or TIEN_DO_HOC writes. */
+/* Fix G2.5.1: this view is now the default Bài 20 route, no separate yellow button needed. */
 (function(){
 let data=null,sessionId='LV1-A',values={},results={};
 const E=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function root(){
  let r=document.getElementById('g25Math');if(r)return r;
  r=document.createElement('div');r.id='g25Math';r.className='math-screen';r.hidden=true;
- r.style.cssText='position:fixed;inset:0;z-index:1200;background:#f7f9fc;overflow:auto';
+ r.style.cssText='position:fixed;inset:0;z-index:20001;background:#f7f9fc;overflow:auto;display:none;flex-direction:column';
  r.innerHTML='<header class="ml-top"><button data-g25-close class="ml-back">‹</button><div class="ml-heading"><b>🧪 Bài 20 – G2.5 TEST · không cộng sao</b></div></header>'+
  '<div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">SÁU LƯỢT HỌC</b><nav id="g25Nav" class="ml-navigation"></nav></aside>'+
  '<div class="ml-workspace"><main class="ml-content" id="g25Main"></main><aside id="g25Side" class="ml-results"></aside></div></div>';
@@ -54,7 +55,8 @@ function grade(){
 }
 function choose(id){if(!data?.sessions.some(s=>s.id===id))return;sessionId=id;values={};results={};render()}
 function open(){
- const r=root();r.hidden=false;
+ const r=root();r.hidden=false;r.style.display='flex';
+ document.body.classList.add('math-learning');
  r.querySelector('#g25Main').textContent='Đang nạp 6 lượt từ Sheet G2.4...';
  if(!window.google?.script?.run){r.querySelector('#g25Main').textContent='Hãy mở qua Apps Script Web App TEST.';return}
  google.script.run.withSuccessHandler(x=>{data=x;choose('LV1-A')})
@@ -64,7 +66,7 @@ function open(){
 document.addEventListener('click',e=>{
  if(e.target.closest('[data-g25-open]')){open();return}
  if(!e.target.closest('#g25Math'))return;
- if(e.target.closest('[data-g25-close]')){root().hidden=true;return}
+ if(e.target.closest('[data-g25-close]')){root().hidden=true;root().style.display='none';document.body.classList.remove('math-learning');return}
  const s=e.target.closest('[data-g25-session]');if(s){choose(s.dataset.g25Session);return}
  if(e.target.closest('[data-g25-grade]')){grade();return}
  if(e.target.closest('[data-g25-reset]')){values={};results={};render()}

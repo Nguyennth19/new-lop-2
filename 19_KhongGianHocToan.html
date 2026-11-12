@@ -45,6 +45,14 @@ function refreshProgress(){
  nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+muiIcon(id==='THEORY'?'book-open':id==='LV1'?'book':id==='LV2'?'pencil':'award')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
 }
 function start(index){
+ // G2.5 staging branch: open six-session view by default instead of legacy 12-question LV.
+ // Legacy renderer remains in repository for reference, but it is not invoked in TEST.
+ if(typeof window.moTestBai20G25==='function'){
+   const old=document.getElementById('mathFullScreen');
+   if(old){old.hidden=true;old.style.display='none';}
+   window.moTestBai20G25(index);
+   return;
+ }
  level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  const root=shell();root.hidden=false;document.body.classList.add('math-learning');
  root.querySelector('#mlTitle').textContent='Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số';
