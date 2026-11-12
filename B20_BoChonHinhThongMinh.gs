@@ -30,7 +30,10 @@ function b20ChonHinhNguNghia_(question,registry){
 }
 function b20GhepHinhThongMinh_(pack,explicitSidecar,ruleRegistry){
  if(!pack||!Array.isArray(pack.questions))throw Error('SMART_MERGE_INVALID_INPUT');
- return KL_BoChonAssetChungV1.mergeQuestions(pack.questions,explicitSidecar,ruleRegistry);
+ // Legacy B4 test callers can omit mode; preserve strict shared contract.
+ const normalized=explicitSidecar&&explicitSidecar.mode===undefined?
+   Object.assign({mode:'STAGING_ONLY'},explicitSidecar):explicitSidecar;
+ return KL_BoChonAssetChungV1.mergeQuestions(pack.questions,normalized,ruleRegistry);
 }
 function kiemTraBoChonHinhThongMinh(){
  const rules=b20DocLuatAnhThongMinh_();
