@@ -22,7 +22,7 @@ const server=vm.runInNewContext(read('B20_BienTheMayChu.gs')+'\n({score:chamLuot
 let n=0;
 for(const s of pack.sessions){
  const qs=normalized.questions.filter(q=>q.level===s.session_id);
- assert.deepEqual(qs.map(q=>q.id),s.question_ids,'Phải giữ đúng thứ tự câu');
+ assert.deepEqual(Array.from(qs,q=>q.id),s.question_ids,'Phải giữ đúng thứ tự câu');
  const groups=normalized.sections.filter(x=>x.levelId===s.session_id&&x.type==='mental');
  for(const sec of groups){
    const items=qs.filter(q=>q.sectionId===sec.id);
