@@ -6,7 +6,7 @@ const rules=JSON.parse(read('du-lieu/asset-selector/semantic-rules.v1.json'));
 const reg=JSON.parse(read('du-lieu/asset-selector/asset-registry-288.v1.json'));
 const sidecar=JSON.parse(read('du-lieu/bien-the/asset-scenes/toan_b20.asset-scenes.json'));
 const runtime=JSON.parse(read('thu-nghiem/bai-20-bien-the/runtime.json'));
-function server(){const ctx={console:{warn(){}},CacheService:{getScriptCache:()=>({get:()=>null,put(){}})},UrlFetchApp:{fetch(url){let data=url.includes('semantic-rules.v1.json')?rules:url.includes('asset-scenes.json')?sidecar:runtime;return {getResponseCode:()=>200,getContentText:()=>JSON.stringify(data)};}}};vm.runInNewContext(read('B20_BoChonHinhThongMinh.gs')+'\n'+read('B20_AssetSceneMayChu.gs')+'\n'+read('B20_BienTheMayChu.gs'),ctx);return ctx;}
+function server(){const ctx={console:{warn(){}},CacheService:{getScriptCache:()=>({get:()=>null,put(){}})},UrlFetchApp:{fetch(url){let data=url.includes('semantic-rules.v1.json')?rules:url.includes('asset-scenes.json')?sidecar:runtime;return {getResponseCode:()=>200,getContentText:()=>JSON.stringify(data)};}}};vm.runInNewContext(read('BoChonAssetNguNghiaChung.gs')+'\n'+read('B20_BoChonHinhThongMinh.gs')+'\n'+read('B20_AssetSceneMayChu.gs')+'\n'+read('B20_BienTheMayChu.gs'),ctx);return ctx;}
 const ctx=server(),loaded=ctx.b20DocLuatAnhThongMinh_();let pass=0,fail=0;
 function t(name,fn){try{fn();pass++;console.log('PASS',name)}catch(e){fail++;console.error('FAIL',name, String(e))}}
 const examples=[
