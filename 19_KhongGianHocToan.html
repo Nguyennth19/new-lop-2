@@ -292,6 +292,29 @@ function installSvg(){
 function inputList(){return [...shell().querySelectorAll('#mlContent [data-ml-field]')];}
 let selected=null;
 function pickInput(el){selected=el;}
+/** Shared input order. Vertical sums: ones → carry → tens, other fields follow DOM. */
+function nextMathInput(field){
+ const all=inputList(),id=field.dataset.mlQ,key=field.dataset.mlField||'';
+ const q=fullData?.questions?.find(q=>q.id===id);
+ if(q?.type==='vertical'){
+  const suffix=key.slice(id.length+1);
+  const following={ones:'carry',carry:'tens'}[suffix];
+  if(following){
+   const candidate=shell().querySelector('[data-ml-field="'+id+':'+following+'"]');
+   if(candidate)return candidate;
+  }
+  // Last vertical digit must jump OUT of this calculation, not loop to its ones input.
+  if(suffix==='tens'){
+   const end=all.reduce((n,node,i)=>node.dataset.mlQ===id?i:n,-1);
+   return all[end+1]||null;
+  }
+ }
+ return all[all.indexOf(field)+1]||null;
+}
+function advanceMathInput(field){
+ const next=nextMathInput(field);
+ if(next){selected=next;next.focus({preventScroll:true});}
+}
 function press(k){
  const all=inputList();if(!all.length)return;
  if(!selected||!all.includes(selected))selected=all.find(x=>!x.value)||all[0];
@@ -302,12 +325,9 @@ function press(k){
  else if(/^[0-9]$/.test(k)){
   if(target.dataset.mlField.endsWith(':op'))return;
   target.value=(target.value+k).slice(0,Number(target.maxLength)||3);
-  if(target.value.length>=target.maxLength){
-   const next=all[all.indexOf(target)+1];if(next)selected=next;
-  }
  }
  target.dispatchEvent(new Event('input',{bubbles:true}));
- selected.focus({preventScroll:true});
+ (selected||target).focus({preventScroll:true});
 }
 document.addEventListener('click',e=>{
  const root=e.target.closest('#mathFullScreen');if(!root)return;
@@ -321,7 +341,13 @@ document.addEventListener('click',e=>{
   root.querySelector('#mlShowKeyboard').hidden=!dock.hidden;return;
  }
  const key=e.target.closest('[data-ml-key]');if(key){press(key.dataset.mlKey);return;}
- const focused=e.target.closest('[data-ml-field]');if(focused)pickInput(focused);
+ const focused=e.target.closest('[data-ml-field]');if(focused){pickInput(focused);return;}
+ // Tapping any free area in a vertical card starts at the units digit.
+ const card=e.target.closest('.ml-vertical-card[data-ml-q-card]');
+ if(card){
+  const ones=card.querySelector('[data-ml-field$=":ones"]');
+  if(ones){pickInput(ones);ones.focus({preventScroll:true});}
+ }
 });
 document.addEventListener('mousedown',e=>{const key=e.target.closest('#mathFullScreen [data-ml-key]');if(key)e.preventDefault();});
 document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-ml-field]'))pickInput(e.target);});
@@ -331,6 +357,10 @@ document.addEventListener('input',e=>{
  const op=el.dataset.mlField.endsWith(':op');
  el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
  drafts[el.dataset.mlField]=el.value;
+ if(el.value&&el.value.length>=el.maxLength&&
+    !(e.inputType&&e.inputType.startsWith('delete'))&&!e.isComposing){
+   advanceMathInput(el);
+ }
  if(fullData?.variantPilot&&submissions[view]){
    // Khi sửa đáp án sau khi chấm, hủy kết quả tạm cũ để tránh sai thống kê.
    delete submissions[view];
