@@ -1,0 +1,58 @@
+name: P0.4 QA Runner (TEST only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "FAST, FULL_SAFE or UI_REGRESSION"
+        required: true
+        default: "FULL_SAFE"
+        type: choice
+        options:
+          - FAST
+          - FULL_SAFE
+          - UI_REGRESSION
+  push:
+    branches:
+      - 'test/p0-4-qa-runner-*'
+    paths:
+      - 'thu-nghiem/p0-4/**'
+      - 'thu-nghiem/p0-3/kiem-thu-snapshot.cjs'
+      - '.github/workflows/p0-4-qa-runner.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p0-4-${{ github.ref }}-${{ github.event.inputs.mode || 'FULL_SAFE' }}
+  cancel-in-progress: false
+
+jobs:
+  offline-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      LOP2_QA_OFFLINE: '1'
+      CI: 'true'
+    steps:
+      - name: Checkout exact tested commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Contract tests for runner itself
+        run: node thu-nghiem/p0-4/kiem-thu-runner.cjs
+      - name: Execute inherited test suites (read-only)
+        shell: bash
+        env:
+          QA_MODE: ${{ github.event.inputs.mode || 'FULL_SAFE' }}
+        run: |
+          set -o pipefail
+          node thu-nghiem/p0-4/qa-runner.cjs "$QA_MODE" | tee "$RUNNER_TEMP/p0-4-report.jsonl"
+      - name: Ensure repository unchanged
+        shell: bash
+        run: |
+          test -z "$(git status --porcelain --untracked-files=no)"
