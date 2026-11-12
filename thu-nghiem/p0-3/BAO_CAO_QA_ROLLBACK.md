@@ -28,3 +28,13 @@ No student values, names, submissions or individual row contents were printed or
 ## Rollback
 No production code, CSS, HTML or question JSON modified. Do not merge or deploy the isolated TEST branch. Restore exact parent `test/p0-2-validator-v1-20261112` if necessary, or revert only `thu-nghiem/p0-3/` commits after independent review. Never reset MAIN or `test-theo-main`.
 Next gate: run `kiemTraP03KhongGhiDuLieu` in a verified separate Apps Script TEST environment and capture redacted JSON PASS output and current ScriptProperties-to-workbook mapping; compare ledger counts/hashes again via authorized connector.
+
+## TEST Apps Script execution evidence — user-provided log, received 2026-11-13
+Runtime function: `kiemTraP03KhongGhiDuLieu`; version `P0.3-no-write-v1`; lesson `toan_b20`.
+Log result: `status:PASS`, `failure:null`, six sessions PASS:
+`LV1-A 6/6`, `LV1-B 6/6`, `LV2-A 5/5`, `LV2-B 5/5`, `LV3-A 4/4`, `LV3-B 4/4`.
+All six: `wrongCorrect:0`, `noWrites:true`, `noStars:true`.
+Exact real GAS snapshot digest equality reported:
+- `90_Lan_lam_bai`: rows=1, columns=12, before=after `e1675c654cdc9c650ebbacbc18508cef952b09bc3a619efc23662044066a6378`.
+- `91_So_sao`: rows=1, columns=9, before=after `a9479b68fa47ee9a99735798a219b34eed2b794490c4f123dc344c5956cc453d`.
+**Gate update:** `GAS_RUNTIME_SNAPSHOT_PASS (USER_LOG)`; no discrepancy or write detected for monitored tables during the test. This supersedes the earlier `GAS_TEST_DEPLOYMENT_PENDING` *for execution evidence*. Independent verification of Apps Script TEST project identity, effective ScriptProperties spreadsheet ID, and production deployment status remains pending; do not infer from the log. User should set `P03_QA_TEST_APPROVED=NO` after the run. Not a guarantee against other write paths or concurrent modifications outside snapshot scope.
