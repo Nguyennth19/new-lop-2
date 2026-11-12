@@ -23,7 +23,7 @@ function mental(q){
    return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'">'+input(q,q.id+':answer',3)+'<b>+</b><span>'+E(q.n2)+'</span><b>=</b><span>'+E(Number(q.n1)+Number(q.n2))+'</span></div>';
  }
  if(q.variantType==='three'){
-   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+' + '+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+'+'+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
  }
  if(q.pilotPrompt)return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+'</div>';
  return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
