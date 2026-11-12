@@ -58,9 +58,14 @@ t('Explicit mappings 016 and 021 remain exactly unchanged',()=>{
 t('No user data writes or renderer/CSS change',()=>{
  assert(!read('B20_BoChonHinhThongMinh.gs').includes('SpreadsheetApp'));
  assert(!read('B20_BoChonHinhThongMinh.gs').includes('setValue('));
- const source='test/g7-4-b4-semantic-asset-selector-20261112';
- for(const file of ['GiaoDien.html','41_HienThiCauHoiToan.html','20_CSS_KhongGianHocToan.html','43_CSS_ThanhPhanBaiToan.html','thu-nghiem/bai-20-bien-the/runtime.json'])
-  assert.equal(cp.execFileSync('git',['hash-object',file],{encoding:'utf8'}).trim(),cp.execFileSync('git',['rev-parse',source+':'+file],{encoding:'utf8'}).trim());
+ const expected={
+  'GiaoDien.html':'7126b84512c992da6a2d45483b9edd7ab7931358',
+  '41_HienThiCauHoiToan.html':'50501ccc3cb5e7801fd563807e21b76d2a51c8f9',
+  '20_CSS_KhongGianHocToan.html':'3933b7f1812e08831bb7de90c1bf0f39ab87b073',
+  '43_CSS_ThanhPhanBaiToan.html':'ce7f279fc9185901d8f638bc87628b9c20bfda65',
+  'thu-nghiem/bai-20-bien-the/runtime.json':'1225884c82ec1cc6812f747e6b75b2c1aece2483'};
+ for(const [file,hash] of Object.entries(expected))
+  assert.equal(cp.execFileSync('git',['hash-object',file],{encoding:'utf8'}).trim(),hash);
 });
 t('Pinned rules file must match the current immutable commit URL',()=>{
  assert(read('B20_BoChonHinhThongMinh.gs').includes('6faead9028c1e27d815c4b5de6652923fd1506a0'));
