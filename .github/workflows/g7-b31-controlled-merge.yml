@@ -1,0 +1,27 @@
+name: G7.4-B.3.1 controlled merge regression
+on:
+  push:
+    branches:
+      - test/g7-4-b3-1-controlled-merge-20261112
+    paths:
+      - '**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  baseline-and-json:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Approved B20 UI and all 30 questions grading regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Candy/book hotfix behavior and error fallback regression
+        run: node qa/hotfix-b20-book/test-book-illustration.cjs
+      - name: JSON Scene integration 16-case policy and 30-question regression
+        run: node qa/g7-4-b3/test-json-asset-scenes.cjs
+      - name: Run structural baseline contract checks
+        run: node qa/g7-4-b3-1/test-controlled-merge.cjs
