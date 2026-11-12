@@ -40,7 +40,7 @@ test('Every auto rule links to approved source asset and immutable release',()=>
   assert.equal(rule.count,1);
  }
 });
-test('Selector rule document strictly validates',()=>assert.equal(loadedRules.rules.length,3));
+test('Selector rule document strictly validates',()=>assert.equal(loadedRules.rules.length,9));
 test('Candy hypothetical new variant selected without hardcoded question ID',()=>{
  const r=ctx.b20ChonHinhNguNghia_({question_id:'VAR_B20_NEW_701',type:'word',prompt:'Bé có thêm 5 chiếc kẹo.',unit:'chiếc kẹo'},loadedRules);
  assert.equal(r.ok,true);assert.equal(r.entry.scene.groups[0].items[0].assetId,'KL_SH02_010');
