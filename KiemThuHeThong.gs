@@ -6,7 +6,7 @@ function kiemTraHeThongLop2_(){
  if(sheets.some(x=>!x.exists))throw Error('Thiếu Google Sheet: '+sheets.filter(x=>!x.exists).map(x=>x.name).join(', '));
  const lesson=layBaiToan20();if(!lesson||lesson.lesson.id!=='toan_b20')throw Error('Không đọc được Bài 20');
  if(lesson.variantPilot){
-  const qa=kiemTraB20BienThe_();
+  const qa=kiemTraB20BienThe();
   return {ok:qa.ok,mode:'B20_VARIANT_PILOT',questions:qa.questionCount,sessions:qa.counts,
     qaNote:'Chỉ kiểm tra runtime staging; không ghi sao và không xác nhận dữ liệu học sinh.',
     sheets, timeZoneSheet:wb.getSpreadsheetTimeZone(),timeZoneApp:CAU_HINH_LOP_2.MUI_GIO};
