@@ -1,0 +1,67 @@
+{
+  "scope": "SHARED",
+  "from": 0,
+  "count": 12,
+  "uploaded": [
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-01.webp",
+      "sha": "e9e2679555d3799e589c6d0d1f882f490ee7e251",
+      "bytes": 25280
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-02.webp",
+      "sha": "7970b114eff8394e56680f4991bb90fb383b9387",
+      "bytes": 30242
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-03.webp",
+      "sha": "14d378245969711028d9074b2d5e668cf351f18a",
+      "bytes": 27390
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-04.webp",
+      "sha": "6c05180c6d6a1393c14f418823bdeccf744d6487",
+      "bytes": 27250
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-05.webp",
+      "sha": "3a127ec397608cb61f41c86d0942596e19900ea9",
+      "bytes": 42746
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-06.webp",
+      "sha": "371d5db2677009ff196ae4c6268bd3d6428f7d90",
+      "bytes": 32254
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-07.webp",
+      "sha": "d40911749ec29337710c4c206f30002d41905b99",
+      "bytes": 33868
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-08.webp",
+      "sha": "ba3e10e93a5bb818c62d9716512fb964fd932db1",
+      "bytes": 29162
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-09.webp",
+      "sha": "9c000a700d79f370b1ddc32112dac6173275173a",
+      "bytes": 42626
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-10.webp",
+      "sha": "6ce0ba64631ab39e2e24ab5fb78b112e859c9cd3",
+      "bytes": 38386
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-11.webp",
+      "sha": "6d1841c1897047f7b37d919e5190fd7580620a95",
+      "bytes": 31824
+    },
+    {
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-12.webp",
+      "sha": "75f007101b86058a6ae4b0b3cf2c72d0b8bbd427",
+      "bytes": 31644
+    }
+  ]
+}
