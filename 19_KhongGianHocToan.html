@@ -110,6 +110,7 @@ function render(){
  if(fullData.variantPilot&&typeof KL_ASSET_V5!=='undefined'&&
     typeof KLVariantAssetBridgeV1!=='undefined'&&typeof KLB20AssetPilotV1!=='undefined'){
    const currentView=view,currentRoot=target;
+   KLB20AssetPilotV1.ensureFallback(currentRoot,activeQuestions().filter(q=>q.level===view),document);
    KL_ASSET_V5.init().then(result=>{
      if(!result.ok||!fullData?.variantPilot||view!==currentView||
         shell().querySelector('#mlContent')!==currentRoot)return;
