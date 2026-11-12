@@ -31,7 +31,7 @@ t('Decorative scene does not imply numerical count',()=>{
 });
 t('No source question mutated',()=>assert.equal(runtime.questions.some(q=>q.visualScene!==undefined),false));
 t('Real loader resolves two files when manifest available',()=>{
- const entries=['KL_SH02_010','KL_SH03_006']; const fake={resolve(id){return entries.includes(id)?{ok:true,url:'https://example.com/'+id+'.webp'}:{ok:false,code:'ASSET_NOT_FOUND'};}};
+ const entries=['KL_SH02_010','KL_SH03_006']; const fake={lookup(id){return entries.includes(id)?{ok:true}:{ok:false,code:'ASSET_NOT_FOUND'};},resolve(id){return entries.includes(id)?{ok:true,url:'https://example.com/'+id+'.webp'}:{ok:false,code:'ASSET_NOT_FOUND'};}};
  for(const q of out.questions.filter(q=>q.visualScene))assert.equal(bridge.resolveScene(q.visualScene,fake).ok,true);
 });
 t('Staging includes do not modify CSS or renderer 41',()=>{
