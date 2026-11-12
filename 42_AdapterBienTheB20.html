@@ -31,7 +31,7 @@ function chuyenB20BienTheSangRenderer(pack){
      withinSection++;
      const unit=String(q.unit||''),prompt=String(q.prompt||'');
      const summary=q.type==='word'
-       ?'Có: '+p.a+' '+unit+'; thêm: '+p.b+' '+unit+'; tất cả: ? '+unit+'.':'';
+       ?'Có: '+p.a+' '+unit+' | Thêm: '+p.b+' '+unit+' | Tất cả: ... '+unit+'?':'';
      const solutionPrompt=q.type==='word'
        ?(unit==='chiếc kẹo'?'Hộp có tất cả số chiếc kẹo là:':
           unit==='quyển truyện'?'Có tất cả số quyển truyện là:':'Có tất cả số '+unit+' là:'):'';
