@@ -1,4 +1,6 @@
-/* R1.3: Adapter dữ liệu thuần, không dựng DOM/CSS. */
+/* R1.3.1 – Chuyển JSON Bài 20 sang schema renderer CHUNG, không dựng HTML/CSS.
+ * Giữ nguyên thứ tự câu của từng lượt. Không gộp tất cả subtype vào một ô văn bản.
+ */
 function chuyenB20BienTheSangRenderer(pack){
  if(!pack||pack.variantPilot!==true||pack.lesson?.id!=='toan_b20')return pack;
  if(!Array.isArray(pack.sessions)||!Array.isArray(pack.questions))throw Error('Runtime B20 sai cấu trúc');
@@ -8,30 +10,43 @@ function chuyenB20BienTheSangRenderer(pack){
    levels.push({id:s.session_id,level:s.session_id,name:s.session_id});
    const raw=s.question_ids.map(id=>pack.questions.find(q=>q.question_id===id));
    if(raw.some(x=>!x))throw Error('Lượt B20 tham chiếu câu không tồn tại');
-   raw.forEach((q,i)=>{
+   let groupIndex=0,sectionIndex=0,previousType=null,withinSection=0;
+   for(let i=0;i<raw.length;i++){
+     const q=raw[i],p=q.parameters||{};
      if(used.has(q.question_id)||q.session_id!==s.session_id)throw Error('Câu B20 trùng hoặc sai lượt');
      used.add(q.question_id);
+     if(!Number.isInteger(p.a)||!Number.isInteger(p.b)||!Number.isInteger(q.answer))
+       throw Error('Tham số câu B20 không hợp lệ: '+q.question_id);
      const type=q.type==='vertical'?'vertical':q.type==='word'?'word_problem':'mental';
-     const sectionId='b20_'+s.session_id+'_'+type;
-     let section=sections.find(x=>x.id===sectionId);
-     if(!section){
-       section={id:sectionId,levelId:s.session_id,type,name: type==='vertical'?'Đặt tính rồi tính':type==='word_problem'?'Bài toán có lời văn':'Tính toán và suy luận'};
-       sections.push(section);
+     // Mỗi đoạn liên tiếp giữ đúng thứ tự Runtime; không đổi vị trí khi phân nhóm.
+     if(q.type!==previousType){previousType=q.type;sectionIndex++;withinSection=0;}
+     const sectionId='b20_'+s.session_id+'_s'+sectionIndex;
+     if(!sections.some(x=>x.id===sectionId)){
+       const names={vertical:'Đặt tính rồi tính',mental:'Tính nhẩm',carry:'Hiểu số nhớ',
+         three:'Cộng ba số',reverse:'Tìm số còn thiếu',word:'Bài toán có lời văn'};
+       sections.push({id:sectionId,levelId:s.session_id,type,name:names[q.type]||'Luyện tập'});
      }
-     const params=q.parameters||{};
-     const prompt=String(q.prompt||'');
-     const converted={
+     // CSS chuẩn: .ml-mental-groups chứa nhiều .ml-mental-group, mỗi panel 2 bài.
+     const pair=Math.floor(withinSection/2)+1;
+     withinSection++;
+     const unit=String(q.unit||''),prompt=String(q.prompt||'');
+     const summary=q.type==='word'
+       ?'Có: '+p.a+' '+unit+'; thêm: '+p.b+' '+unit+'; tất cả: ? '+unit+'.':'';
+     const solutionPrompt=q.type==='word'
+       ?(unit==='chiếc kẹo'?'Hộp có tất cả số chiếc kẹo là:':
+          unit==='quyển truyện'?'Có tất cả số quyển truyện là:':'Có tất cả số '+unit+' là:'):'';
+     questions.push({
        id:q.question_id,level:s.session_id,sectionId,order:i+1,label:'Câu '+(i+1),
-       type,n1:params.a,n2:params.b,op:'+',answer:String(q.answer),
-       unit:q.unit||'',prompt,summary:'',solutionPrompt:'Phép tính:',
-       answerExplanation:q.solution_prompt||'',svg:'',puzzle:null,
-       valid:true,group:'Luyện tập',theme:'blue',variantType:q.type,
-       skillId:q.skill_id,sourceRole:q.source_role||'PROJECT_ORIGINAL_VARIANT',
-       pilotPrompt:type==='mental'?prompt:null
-     };
-     if(!Number.isInteger(Number(q.answer))||!Number.isInteger(params.a)||!Number.isInteger(params.b))throw Error('Tham số B20 không hợp lệ');
-     questions.push(converted);
-   });
+       type,n1:p.a,n2:p.b,n3:p.c,op:'+',answer:String(q.answer),
+       unit,prompt,summary,solutionPrompt,answerExplanation:q.solution_prompt||'',
+       svg:'',puzzle:null,valid:true,
+       group:type==='mental'?'Bài '+pair:'',theme:['pink','blue','yellow','green','purple','orange'][i%6],
+       variantType:q.type,skillId:q.skill_id,sourceRole:q.source_role||'PROJECT_ORIGINAL_VARIANT',
+       variantParameters:{a:p.a,b:p.b,c:p.c},
+       // Trình hiển thị dùng các trường số, không dùng prompt dài trong lưới 78px.
+       pilotPrompt:null
+     });
+   }
  }
  if(questions.length!==pack.questions.length)throw Error('Ngân hàng B20 không khớp lượt');
  return {variantPilot:true,lesson:pack.lesson,packVersion:pack.packVersion,levels,sections,questions,
