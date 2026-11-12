@@ -1,10 +1,22 @@
 /* Bộ nhớ bài học dùng chung (memory + sessionStorage), không cache điểm hoặc thông tin học sinh.
  * Mỗi lần chuyển tab/LV dùng lại cùng object; chỉ gọi GAS khi cache hết hạn. */
 const BO_NHO_BAI_HOC=(function(){
- const VERSION='b20_renderer_shared_r1_3_20261112',TTL=30*60*1000;
+ const VERSION='b20_ui20_02a_verified_20261112',TTL=30*60*1000;
  const data=new Map(), pending=new Map();
  function key(id){return 'lop2_lesson_cache_'+VERSION+'_'+id}
- function valid(x,id){return x&&x.lesson&&x.lesson.id===id&&Array.isArray(x.questions)&&((x.variantPilot&&Array.isArray(x.sessions))||(Array.isArray(x.sections)&&Array.isArray(x.levels)))}
+ function valid(x,id){return x&&x.lesson&&x.lesson.id===id&&Array.isArray(x.questions)&&((x.variantPilot===true&&Array.isArray(x.sessions))||(Array.isArray(x.sections)&&Array.isArray(x.levels)))}
+/* Report only schema metadata; never log questions, answers or student data. */
+function schemaError(x,id){
+ const keys=x&&typeof x==='object'?Object.keys(x).sort().join(','):'(không phải object)';
+ const lessonId=x&&x.lesson&&x.lesson.id||'(thiếu)';
+ const questionCount=Array.isArray(x?.questions)?x.questions.length:'(thiếu)';
+ const hasLevels=Array.isArray(x?.levels),hasSections=Array.isArray(x?.sections),hasSessions=Array.isArray(x?.sessions);
+ const message='Gói bài học sai cấu trúc (yêu cầu '+id+', nhận '+lessonId+'; questions='+questionCount+
+   '; levels='+hasLevels+'; sections='+hasSections+'; sessions='+hasSessions+
+   '; variantPilot='+String(x?.variantPilot)+'; keys='+keys+'). '+
+   'Hãy kiểm tra hàm layBaiToan20 và đồng bộ phiên bản Apps Script trên deployment TEST.';
+ return Error(message);
+}
  function read(id){
   const inMemory=data.get(id);
   if(inMemory&&inMemory.expires>Date.now())return inMemory.value;
@@ -17,7 +29,7 @@ const BO_NHO_BAI_HOC=(function(){
   return null;
  }
  function save(id,value){
-  if(!valid(value,id))throw Error('Dữ liệu bài học không hợp lệ');
+  if(!valid(value,id))throw schemaError(value,id);
   const entry={expires:Date.now()+TTL,value};data.set(id,entry);
   try{sessionStorage.setItem(key(id),JSON.stringify(entry))}catch(e){}
   return value;
