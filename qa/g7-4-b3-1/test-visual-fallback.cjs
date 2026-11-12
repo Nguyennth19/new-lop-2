@@ -24,7 +24,7 @@ function loaderMock(){let callbacks=[];
  mount(container,id,opts){let img=createNode('img');container.appendChild(img);callbacks.push(opts);return {ok:true,img};}};
 }
 for(const id of ['VAR_B20_20261112_016','VAR_B20_20261112_021']){
- const raw={id,type:'word_problem',prompt:'test'},mapped=pilot.decorate(raw,bridge,{schema_version:doc.schema_version,mode:doc.mode,question_scenes:doc.question_scenes});
+ const raw={id,type:'word_problem',variantType:'word',prompt:'test'},mapped=pilot.decorate(raw,bridge,{schema_version:doc.schema_version,mode:doc.mode,question_scenes:doc.question_scenes});
  test(id+' scene is JSON-driven and valid',()=>{assert(mapped.attached);assert(bridge.validateScene(mapped.question.visualScene).ok);});
  test(id+' keeps legacy illustration until new WebP has loaded',()=>{
   const d=make(id),loader=loaderMock();const r=pilot.mountVisible(d.root,[mapped.question],bridge,loader,{document:d.mockDocument});
