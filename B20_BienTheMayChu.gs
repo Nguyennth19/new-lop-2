@@ -3,7 +3,7 @@
  * URL khóa theo commit, thay phiên bản phải cập nhật commit và QA lại.
  */
 const B20_PILOT_URL="https://raw.githubusercontent.com/Nguyennth19/new-lop-2/513e1dcefa0f229305a5d4523dac3cbdd201a908/thu-nghiem/bai-20-bien-the/runtime.json";
-const B20_PILOT_CACHE_KEY='b20_pilot_20261112_pack_g7_b31_v1';
+const B20_PILOT_CACHE_KEY='b20_pilot_20261112_pack_g7_b4_v1';
 function b20DocPackThu_(){
   const cache=CacheService.getScriptCache();
   const cached=cache.get(B20_PILOT_CACHE_KEY);
@@ -51,7 +51,18 @@ function b20DocPackThu_(){
     if(Object.keys(assets.question_scenes).some(id=>!validIds.has(id)||
        pack.questions.find(q=>q.question_id===id).type!=='word'))
        throw Error('Asset Scene tham chiếu câu không hợp lệ');
+    // B.4 is staging only: merge only CURATED+APPROVED semantic matches.
+    // A manual Question ID mapping always has priority; no mass image replacement.
     result.assetScenes=assets;
+    if(typeof b20DocLuatAnhThongMinh_==='function'&&typeof b20GhepHinhThongMinh_==='function'){
+      try{
+        const rules=b20DocLuatAnhThongMinh_();
+        result.assetScenes=b20GhepHinhThongMinh_(pack,assets,rules);
+      }catch(selectorError){
+        if(typeof console!=='undefined'&&typeof console.warn==='function')
+          console.warn('G7.4-B.4 giữ JSON ánh xạ B.3.1 do lỗi bộ chọn: '+String(selectorError.message||selectorError));
+      }
+    }
   }catch(sceneError){
     if(typeof console!=='undefined'&&typeof console.warn==='function')console.warn('G7.4-B.3 fallback: không nạp Asset Scene JSON; giữ nguyên hình cũ: '+String(sceneError.message||sceneError));
   }
