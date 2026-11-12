@@ -33,3 +33,22 @@ Phần tự động chọn bài theo bảy ngày hiện chỉ là bộ kiểm th
 - Mỗi lượt giữ bản nháp trong bộ nhớ trang, không ghi sao, điểm, tiến độ hoặc lịch sử.
 - 8 bài kiểm thử bộ chấm (đúng/sai cho 4 dạng) và 4 bài render thành công bằng kiểm thử hàm; vẫn cần QA trên Web App, thiết bị desktop.
 - Chưa đồng bộ dữ liệu nguồn 04_Cau_hoi hoặc merge main.
+
+## Chẩn đoán đồng bộ lệch (G2.5.3)
+Bản này có 3 dấu hiệu khác nhau:
+1. Tab/tiêu đề Web App TEST: G252-BUILD-20261112-R2.
+2. Góc trên bên phải trình duyệt: TEST G252-BUILD-20261112-R2 (được tạo trong GiaoDien.html).
+3. Thanh tiêu đề của màn Bài 20: G252-BUILD-20261112-R2 (được tạo trong 42_ThuNghiemBai20.html).
+Nếu chỉ LV2-A giảm số câu nhưng thiếu dấu hiệu số 2/3 thì mã máy chủ và giao diện đang ở hai phiên bản khác nhau. Không thể sửa việc đó bằng CSS.
+
+Chạy lệnh trên local:
+- git branch --show-current
+- git rev-parse --short HEAD
+- clasp status
+- clasp push (xác nhận bao gồm 42_ThuNghiemBai20.html, 43_CSS_ThuNghiemBai20.html, GiaoDien.html, MayChu.gs)
+- clasp open (đối chiếu từng tệp trong editor Apps Script)
+- Apps Script -> Deploy -> Manage deployments -> Edit -> New version -> Deploy
+- Tải lại URL /exec đã triển khai, hoặc /dev khi đang đăng nhập đúng tài khoản.
+- Trong editor, chạy kiemTraBuildBai20_() để đối chiếu sáu lượt và version.
+
+Bản G2.5.2 được thêm đầy đủ lên GitHub trước đó; ảnh màn hình G2.5 cũ thể hiện frontend chưa cập nhật. Build marker không chứng minh render đúng nhưng giúp phân biệt nguồn lỗi.

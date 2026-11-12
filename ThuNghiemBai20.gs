@@ -1,3 +1,4 @@
+/** SERVER BUILD G252-BUILD-20261112-R2 */
 /** G2.5 BAI 20 STAGING: read-only, never awards stars or changes progress. */
 function layBaiToan20Test(){
  const wb=moBangDuAn_(),base=khoLayBaiHoc_('toan_b20');
@@ -37,5 +38,14 @@ function layBaiToan20Test(){
     const expected=k==='LV2-A'?3:k.slice(0,3)==='LV1'?6:k.slice(0,3)==='LV2'?5:4;
     if(session[k].questions.length!==expected)throw Error('Số câu sai: '+k);
  });
- return {version:'G2.5.2-layout-test-v1',sessions:ids.map(k=>session[k]),notice:'BẢN TEST: LV2-A 3 bài, không ghi sao hoặc tiến độ'};
+ return {version:'G252-BUILD-20261112-R2',sessions:ids.map(k=>session[k]),notice:'BẢN TEST: LV2-A 3 bài, không ghi sao hoặc tiến độ'};
+}
+/** Test-only: run in Apps Script editor to verify server source + attached Sheet. */
+function kiemTraBuildBai20_(){
+ const data=layBaiToan20Test();
+ const counts=data.sessions.map(s=>s.id+':'+s.questions.length).join(', ');
+ const report={build:'G252-BUILD-20261112-R2',serverVersion:data.version,sessionCounts:counts,
+   hasExpectedSessions:data.sessions.length===6,
+   expectedCount:counts==='LV1-A:6, LV1-B:6, LV2-A:3, LV2-B:5, LV3-A:4, LV3-B:4'};
+ Logger.log(JSON.stringify(report));return report;
 }
