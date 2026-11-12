@@ -36,10 +36,12 @@
   function validateBaseUrl(text,localAllowed){
     if(typeof text!=="string"||!text)return false;
     if(localAllowed && (text.startsWith("./")||text.startsWith("../"))) return !text.includes("..%")&&!text.includes("?")&&!text.includes("#");
-    try {
+    // Do not require the URL constructor (Apps Script partials and offline QA environments vary).
+    // Reject credentials, fragments, queries, non-HTTPS and control characters.
+    return /^https:\/\/[a-z0-9.-]+(?::443)?(?:\/[a-z0-9%._~!    try {
       const u=new URL(text);
       return u.protocol==="https:" && !u.username && !u.password && !u.search && !u.hash;
-    } catch(e){return false;}
+    } catch(e){return false;}'()*+,;=:@/-]*)?$/i.test(text);
   }
   function create(options) {
     options=options||{};
