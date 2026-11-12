@@ -27,7 +27,7 @@ Bản gốc là scan image-only hoặc không có text trả về khi fetch; đ�
 ## Kết quả bảng 85
 - **85/85 có đề xuất phương thức dựng**, theo từng `asset_id`, gồm 47 MATH và 38 SHARED.
 - **47 MATH** đã định tuyến đến các phương thức `COMPOSE`, `RENDER_GRID/TABLE`, `OVERLAY_LABEL`, `REUSE_OBJECT` và các ràng buộc số lượng/màu/đơn vị. Có chỉ dẫn asset đã tồn tại; xác minh 100% Asset ID ứng viên được liệt kê tồn tại trong manifest 288.
-- **38 SHARED**: cho phép minh họa linh hoạt khi nội dung không phụ thuộc đúng loại đồ vật; nếu bài đang kiểm tra nhận diện loài/đồ vật, không được tráo loại vì thiếu hình. Cần liên kết với từng nội dung bài được chọn trước khi khẳng định một ảnh mới là bắt buộc.
+- **38 SHARED**: đã ghi **đề xuất riêng cho từng Asset ID** về nhóm ảnh có thể dùng, ghép UI hoặc yêu cầu nhận diện chính xác. Không tráo loài/đồ vật khi câu hỏi kiểm tra nhận diện. Có thể sử dụng minh họa linh hoạt khi mục đích chỉ là trang trí/chủ đề. Cần liên kết với nội dung bài trước khi khẳng định ảnh mới bắt buộc.
 - **0/85 trường hợp đủ bằng chứng để ra lệnh tạo file hình mới** ở thời điểm kiểm tra. Đây là **0 trường hợp đã chứng minh cần vẽ** chứ không có nghĩa đã chứng minh `0 cần vẽ`.
 - Các mã `source_evidence_resolution` đều là `VISUAL_THEME_PAGES_REVIEWED_NOT_EXACT_EXERCISE` hoặc `ILLUSTRATIVE_CONTEXT_EXAMPLES_ONLY`; không tự gọi `EXACT_SOURCE_QA_PASS` cho tất cả 85.
 
@@ -41,7 +41,7 @@ Bản gốc là scan image-only hoặc không có text trả về khi fetch; đ�
 ## QA kiểm định tĩnh
 - Bảng 85: `85/85` Asset ID duy nhất.
 - 47 mục Toán được ánh xạ phương pháp cụ thể, 38 mục dùng chung có quy tắc fallback minh họa.
-- Các Asset ID tham chiếu trong bảng 85: **không có ID không tồn tại** đối chiếu CSV QA 288.
+- Tất cả **85/85 dòng** có ít nhất một ứng viên Asset ID hoặc hướng bố cục; tất cả ID ứng viên được so với manifest 288 và **0 ID không tồn tại**.
 - 15 tình huống test định nghĩa trong JSON với 18 Asset ID tham chiếu thực tế: **18/18 tồn tại**.
 - Chưa thực thi engine runtime, chưa QA bằng browser triển khai, chưa duyệt từng trang bài toán và chưa kiểm định số đo từ tất cả trang nguồn.
 
