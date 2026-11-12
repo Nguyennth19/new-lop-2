@@ -108,3 +108,68 @@ body.math-learning>.app,body.math-learning>#mobileNav{display:none!important}
 @media(max-width:1150px){.ml-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.ml-mental-groups{grid-template-columns:1fr}.ml-word-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.ml-sidebar{flex-basis:170px;max-width:170px;padding:13px 7px}.ml-sidebar-title{font-size:10px}.ml-navigation button{font-size:11px;padding:11px 5px;gap:5px}.ml-dock{left:170px}.ml-content{padding:12px 8px 120px}.ml-page{padding:12px}.ml-section-box{padding:12px}.ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.ml-heading-meta{gap:6px}.ml-progress{width:64px}.ml-key{height:42px}.ml-dock-keys{grid-template-columns:repeat(7,minmax(0,1fr))}}
 @media(max-width:520px){.ml-top{height:64px;min-height:64px;padding:6px;gap:6px}.ml-back{width:32px;height:35px}.ml-file{width:34px;height:35px}.ml-heading-meta{font-size:10px}.ml-heading-meta strong{font-size:10px}#mlTitle{font-size:12px}.ml-sidebar{flex-basis:118px;max-width:118px}.ml-navigation button{font-size:10px;flex-direction:column;align-items:flex-start;gap:4px}.ml-content{padding:7px 5px 145px}.ml-page{padding:8px}.ml-section-heading h3{font-size:13px;padding:7px 10px}.ml-section-heading>button{font-size:10px}.ml-step{width:28px;height:28px;flex-basis:28px}.ml-cards{gap:8px}.ml-card{padding:7px}.ml-vert-row{grid-template-columns:16px 31px 31px}.ml-vertical-matrix,.ml-puzzle{width:78px}.ml-vert-row .ml-input{width:28px}.ml-vert-note{font-size:7px}.ml-mental-group{padding:10px 4px}.ml-mental-row{grid-template-columns:66px 17px 32px 17px 50px;font-size:17px}.ml-mental-row .ml-input{width:50px}.ml-word-head{flex-direction:column}.ml-word-calc{gap:3px}.ml-word-calc .ml-input{width:37px}.ml-dock{left:0;padding:8px}.ml-dock-keys{grid-template-columns:repeat(7,minmax(0,1fr))}.ml-dock-heading{font-size:10px}}
+
+
+/* Bộ quy tắc module câu Toán dùng chung, kế thừa nền tảng Không gian Toán. */
+#mathFullScreen .ml-skill-intro{padding:14px 20px;margin-bottom:20px;border:1px solid #f8ced7;border-radius:16px;background:#fff7fa}
+#mathFullScreen .ml-skill-intro h2{font-size:19px;margin:0 0 7px;color:#98163d;line-height:1.4}
+#mathFullScreen .ml-skill-intro p{margin:0;color:#475569;font-size:13px;line-height:1.5}
+#mathFullScreen .ml-skill-module{margin-bottom:25px}
+#mathFullScreen .ml-skill-module-note{font-size:12px;color:#64748b;margin:0 0 10px 10px}
+#mathFullScreen .ml-skill-module .ml-section-box{padding:19px}
+#mathFullScreen .ml-skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+#mathFullScreen .ml-skill-grid.ml-skill-word-list{grid-template-columns:minmax(0,1fr);gap:20px}
+#mathFullScreen .ml-skill-item{min-width:0;display:flex;flex-direction:column;gap:5px}
+#mathFullScreen .ml-skill-item>.ml-card{width:100%;height:100%;min-width:0;padding:17px}
+#mathFullScreen .ml-skill-item .ml-card-top{font-size:12px;margin-bottom:10px}
+#mathFullScreen .ml-skill-item .ml-word-card{padding:18px 22px}
+#mathFullScreen .ml-skill-item .ml-word-head{display:flex;gap:20px;align-items:center}
+#mathFullScreen .ml-skill-item .ml-word-head p{font-size:15px;line-height:1.7;overflow-wrap:normal;word-break:normal}
+#mathFullScreen .ml-skill-item .ml-svg{width:110px;min-width:110px;height:104px}
+#mathFullScreen .ml-skill-item .ml-svg img{max-height:92px;max-width:96px;object-fit:contain}
+#mathFullScreen .ml-skill-item .ml-word-summary{font-size:13px;line-height:1.65;padding:12px 15px}
+#mathFullScreen .ml-skill-item .ml-graph-paper{padding:18px 22px}
+#mathFullScreen .ml-skill-item .ml-graph-paper p{font-size:14px;line-height:1.6}
+#mathFullScreen .ml-skill-concept{font-size:15px;line-height:1.75;min-height:90px;margin:10px 0 16px}
+#mathFullScreen .ml-skill-mental{display:flex;flex-direction:column;align-items:center;gap:14px;min-height:90px;padding:15px}
+#mathFullScreen .ml-skill-mental b{font-size:19px;line-height:1.5;text-align:center}
+#mathFullScreen .ml-skill-mental input{width:90px;max-width:100%;height:44px}
+#mathFullScreen .ml-skill-mark{min-height:23px;font-weight:800;font-size:12px}
+#mathFullScreen .ml-skill-ok{color:#15803d}
+#mathFullScreen .ml-skill-need-help{border:0;background:transparent;color:#b91c1c;font-weight:750;text-align:left;cursor:pointer;padding:3px 0}
+#mathFullScreen .ml-skill-staging{font-size:12px;line-height:1.5;color:#64748b;margin:15px 5px}
+#mathFullScreen .ml-skill-stat{padding:10px 0 0;color:#475569;font-size:12px}
+#mathFullScreen .ml-answer-chip{cursor:pointer}
+#mathFullScreen .ml-skill-robot{border:1.5px solid #bfdbfe;background:#eff6ff}
+#mathFullScreen .ml-skill-robot p{line-height:1.65;font-size:14px;margin:6px 0 0}
+#mathFullScreen .ml-skill-robot button{margin-top:12px;background:#fff;color:#1d4ed8;border:1px solid #93c5fd;padding:9px 12px;border-radius:10px;font-weight:750}
+#mathFullScreen .ml-skill-bubble-head{display:flex;align-items:flex-start;gap:13px}
+#mathFullScreen .ml-skill-robot-image{width:65px;height:65px;min-width:65px;border-radius:14px;background:#fff;display:grid;place-items:center;overflow:hidden;position:relative}
+#mathFullScreen .ml-skill-robot-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+#mathFullScreen .ml-skill-dock{z-index:5}
+#mathFullScreen .ml-vert-row .ml-input{min-width:28px}
+#mathFullScreen .ml-word-calc{flex-wrap:wrap}
+#mathFullScreen .ml-word-calc .ml-input{min-width:43px}
+#mathFullScreen .ml-navigation button{overflow-wrap:anywhere}
+#mathFullScreen .ml-content{scrollbar-gutter:stable}
+@media(max-width:1200px){
+ #mathFullScreen .ml-skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #mathFullScreen .ml-skill-grid.ml-skill-word-list{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:760px){
+ #mathFullScreen .ml-skill-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ #mathFullScreen .ml-skill-grid.ml-skill-word-list{grid-template-columns:minmax(0,1fr)}
+ #mathFullScreen .ml-skill-module .ml-section-box{padding:12px}
+ #mathFullScreen .ml-skill-item>.ml-card{padding:12px}
+ #mathFullScreen .ml-skill-item .ml-word-head{flex-direction:column;align-items:flex-start;gap:10px}
+ #mathFullScreen .ml-skill-item .ml-graph-paper{padding:12px}
+}
+@media(max-width:520px){
+ #mathFullScreen .ml-skill-grid{grid-template-columns:minmax(0,1fr)}
+ #mathFullScreen .ml-skill-grid.ml-skill-word-list{grid-template-columns:minmax(0,1fr)}
+ #mathFullScreen .ml-skill-item>.ml-card{padding:15px}
+ #mathFullScreen .ml-skill-item .ml-word-card{padding:15px}
+ #mathFullScreen .ml-skill-item .ml-word-head p{font-size:14px}
+ #mathFullScreen .ml-skill-mental b{font-size:17px}
+ #mathFullScreen .ml-skill-intro{padding:11px}
+}

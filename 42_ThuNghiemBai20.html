@@ -1,4 +1,3 @@
-/* CLIENT BUILD: G252-BUILD-20261112-R2 */
 /* G2.5.2 · Bài 20 · test-bai-20 only
    Renderer shared with production; scoring is in-memory ONLY.
    Does NOT call THANH_TICH_GUI, progress endpoints, or write Google Sheets.
@@ -18,24 +17,25 @@ const titles={
 function state(){return sessionsState[active]||(sessionsState[active]={values:{},results:{},time:Date.now(),submissions:0})}
 function section(){return payload&&payload.sessions.find(s=>s.id===active)}
 function root(){
- let r=document.getElementById('g25Math');if(r)return r;
- r=document.createElement('div');r.id='g25Math';r.className='math-screen g252-root';r.hidden=true;
- r.style.cssText='position:fixed;inset:0;z-index:20001;display:none;flex-direction:column';
+ let r=document.getElementById('mathFullScreen');if(r)return r;
+ r=document.createElement('div');r.id='mathFullScreen';r.className='math-screen ml-skill-root';r.hidden=true;
+ r.style.cssText='display:none';
  r.innerHTML='<header class="ml-top"><button class="ml-back" data-g25-close aria-label="Trở về">‹</button>'+
-  '<span class="ml-file">✎</span><div class="ml-heading"><div class="ml-heading-meta"><span class="ml-doc-label">BẢN TEST G2.5.2</span>'+
-  '<strong>Toán lớp 2</strong><strong>G252-BUILD-20261112-R2</strong></div><b>Bài 20 · Luyện tập theo kỹ năng</b></div></header>'+
-  '<div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">SÁU LƯỢT HỌC</b>'+
-  '<nav class="ml-navigation" id="g25Nav"></nav><p class="g252-staging">Chỉ để kiểm thử: không lưu điểm, sao hoặc tiến độ.</p></aside>'+
+  '<span class="ml-file">'+muiIcon('book-open')+'</span><div class="ml-heading"><div class="ml-heading-meta">'+
+  '<span class="ml-doc-label">Tài liệu</span><strong>Toán 2</strong><span class="ml-progress"><i id="mlBar"></i></span>'+
+  '<strong id="mlPct">0%</strong></div><b id="mlTitle">Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số</b></div></header>'+
+  '<div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">NỘI DUNG BÀI HỌC</b>'+
+  '<nav class="ml-navigation" id="g25Nav"></nav></aside>'+
   '<div class="ml-workspace"><main class="ml-content" id="g25Main" tabindex="-1"></main>'+
   '<aside class="ml-results" id="g25Side" aria-live="polite"></aside></div></div>'+
-  '<div class="ml-dock g252-dock" id="g25Dock"><div class="ml-dock-keys" id="g25Keys"></div></div>'+
+  '<div class="ml-dock" id="g25Dock"><div class="ml-dock-keys" id="g25Keys"></div></div>'+
   '<button class="ml-show-keyboard" id="g25ShowKeys" data-g25-toggle hidden>Mở bàn phím số</button>';
  document.body.appendChild(r);
  const dock=r.querySelector('#g25Keys');
  ['1','2','3','4','5','6','7','8','9','0','+','−','×','÷','=','⌫'].forEach(k=>{
-  const b=document.createElement('button');b.type='button';b.className='ml-key'+(k==='⌫'?' erase':'');b.dataset.g25Key=k;b.textContent=k;dock.appendChild(b);
+  const b=document.createElement('button');b.type='button';b.className='ml-key'+(k==='⌫'?' erase':(['+','−','×','÷','='].includes(k)?' math-symbol':''));b.dataset.g25Key=k;b.textContent=k;dock.appendChild(b);
  });
- const hide=document.createElement('button');hide.type='button';hide.dataset.g25Toggle='1';hide.className='ml-key';hide.textContent='Ẩn';dock.appendChild(hide);
+ const hide=document.createElement('button');hide.type='button';hide.dataset.g25Toggle='1';hide.className='ml-key ml-keyboard-toggle';hide.textContent='Ẩn';dock.appendChild(hide);
  return r;
 }
 function field(q,key,max,extra){
@@ -49,18 +49,18 @@ function card(q,body,kind){
 }
 function renderQuestion(q,renderer){
  let body;
- if(q.type==='concept')body=card(q,'<p class="g252-concept">'+E(q.prompt)+'</p><p>Điền số: '+
+ if(q.type==='concept')body=card(q,'<p class="ml-skill-concept">'+E(q.prompt)+'</p><p>Điền số: '+
   field(q,'answer',3)+' '+E(q.unit||'')+'</p>','ml-mental-card');
  else if(q.type==='vertical')body=renderer.vertical(q);
  else if(q.type==='missing_digit')body=renderer.puzzle(q);
  else if(q.type==='word_problem')body=renderer.word(q);
- else if(q.type==='mental')body=card(q,'<div class="g252-mental"><b>'+E(q.prompt)+'</b>'+
+ else if(q.type==='mental')body=card(q,'<div class="ml-skill-mental"><b>'+E(q.prompt)+'</b>'+
    field(q,'answer',3)+'</div>','ml-mental-card');
  else body=renderer.invalid(q);
  const result=state().results[q.id];
- return '<div class="g252-item" id="g252-'+E(q.id)+'" data-g25-question="'+E(q.id)+'">'+body+
-  '<div class="g252-mark">'+(result===true?'<span class="g252-ok">✓ Đã đúng</span>':
-   result===false?'<button type="button" class="g252-need-help" data-g25-help="'+E(q.id)+'">✕ Xem gợi ý của robot</button>':'')+'</div></div>';
+ return '<div class="ml-skill-item" id="ml-skill-'+E(q.id)+'" data-g25-question="'+E(q.id)+'">'+body+
+  '<div class="ml-skill-mark">'+(result===true?'<span class="ml-skill-ok">✓ Đã đúng</span>':
+   result===false?'<button type="button" class="ml-skill-need-help" data-g25-help="'+E(q.id)+'">✕ Xem gợi ý của robot</button>':'')+'</div></div>';
 }
 function groupFor(q){return q.type==='word_problem'?'word':q.skillId||q.type}
 function renderModules(s,renderer){
@@ -75,9 +75,9 @@ function renderModules(s,renderer){
   n++;
   const word=key==='word';
   const title=word?'Bài toán có lời văn':titles[key]||'Thực hành';
-  html+='<section class="ml-section g252-module"><div class="ml-section-heading"><b class="ml-step">'+n+'</b><h3>'+E(title)+'</h3></div>'+
-    '<p class="g252-module-note">'+(word?'Mỗi bài toán có lời văn chiếm một dòng riêng.':'Làm lần lượt từng câu; có thể sử dụng bàn phím số.')+'</p>'+
-    '<div class="ml-section-box"><div class="g252-grid'+(word?' g252-word-list':'')+'">'+
+  html+='<section class="ml-section ml-skill-module"><div class="ml-section-heading"><b class="ml-step">'+n+'</b><h3>'+E(title)+'</h3></div>'+
+  
+    '<div class="ml-section-box"><div class="ml-skill-grid'+(word?' ml-skill-word-list':'')+'">'+
     questions.map(q=>renderQuestion(q,renderer)).join('')+'</div></div></section>';
  }
  return html;
@@ -87,10 +87,10 @@ function display(){
  const st=state();
  r.querySelector('#g25Nav').innerHTML=payload.sessions.map(item=>
   '<button type="button" class="'+(item.id===active?'active':'')+'" data-g25-session="'+E(item.id)+'">'+
-  '<span class="ml-topic-icon">✎</span><span class="ml-topic-text">'+E(item.id+' – '+item.title)+'</span></button>').join('');
+  '<span class="ml-topic-icon">'+muiIcon(item.level==='LV1'?'book':item.level==='LV2'?'pencil':'award')+'</span><span class="ml-topic-text">'+E(item.id+' – '+item.title)+'</span></button>').join('');
  const renderer=taoHienThiCauToan({E,input:field,baseCard:card});
- r.querySelector('#g25Main').innerHTML='<div class="ml-page"><div class="g252-intro"><h2>'+E(active+' – '+s.title)+'</h2>'+
-  '<p>'+E(s.minutes)+' · '+s.questions.length+' câu · Các dạng bài sử dụng giao diện Toán của dự án.</p>'+
+ r.querySelector('#g25Main').innerHTML='<div class="ml-page"><div class="ml-skill-intro"><h2>'+E(active+' – '+s.title)+'</h2>'+
+  '<p>'+E(s.minutes)+' · '+s.questions.length+' câu</p>'+
   '</div>'+renderModules(s,renderer)+'</div>';
  r.querySelectorAll('[data-g25-field]').forEach(el=>{
   el.addEventListener('input',()=>{
@@ -109,6 +109,9 @@ function display(){
   }
  }
  renderPanel();
+ const pct=Math.round(s.questions.filter(q=>st.results[q.id]===true).length/Math.max(1,s.questions.length)*100);
+ r.querySelector('#mlPct').textContent=pct+'%';
+ r.querySelector('#mlBar').style.width=pct+'%';
 }
 function feedbackFor(q){
  if(q.type==='vertical')return 'Hãy cộng hàng đơn vị trước, ghi chữ số đơn vị và nhớ 1 chục. Sau đó cộng hàng chục cùng số nhớ nhé!';
@@ -133,8 +136,8 @@ function renderPanel(){
   '<div class="ml-result-meta"><span>Thời gian nộp</span><strong>'+(st.submissions?'Đã kiểm tra':'Chưa nộp')+'</strong></div>'+
   '<div class="ml-result-meta"><span>Thời gian làm bài</span><strong>'+E(t)+'</strong></div>'+
   '<div class="ml-result-meta"><span>Câu đã trả lời</span><strong>'+answered+' / '+count+'</strong></div>'+
-  '<div class="ml-result-score"><strong>Điểm TEST</strong><b>'+(st.submissions?Math.round(correct/count*100)+'%':'—')+'</b></div>'+
-  '<div class="g252-stat">Đúng '+correct+' · Cần ôn '+wrong+' · Chưa kiểm tra '+(count-tested)+'</div></div>'+
+  '<div class="ml-result-score"><strong>Điểm</strong><b>'+(st.submissions?Math.round(correct/count*100)+'%':'—')+'</b></div>'+
+  '</div>'+
   '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span>'+
   '<span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div>'+
   '<div class="ml-answer-grid">'+s.questions.map((q,i)=>{
@@ -142,10 +145,10 @@ function renderPanel(){
    const stat=value===true?'correct':value===false?'wrong':has?'empty':'unanswered';
    return '<button type="button" class="ml-answer-chip '+stat+'" data-g25-jump="'+E(q.id)+'">'+(i+1)+':'+(stat==='correct'?'✓':stat==='wrong'?'✕':stat==='empty'?'…':'·')+'</button>';
   }).join('')+'</div><div class="ml-result-actions">'+
-  '<button type="button" data-g25-grade>Kiểm tra</button><button type="button" data-g25-reset>Làm lại</button></div>'+
-  '<p class="g252-staging">Sao thưởng và tiến độ chỉ được cập nhật trong ứng dụng chính thức; ở đây không ghi dữ liệu.</p></div>'+
-  (selected?'<div class="ml-result-card g252-robot"><div class="g252-bubble-head">'+
-  '<span class="g252-robot-image" data-kl-asset="ROBOT_AVATAR">🤖</span><div><b>Robot giúp con – '+E(selected.label)+'</b>'+
+  '<button type="button" data-ml-reset-level data-g25-reset>Làm lại</button><button type="button" data-ml-submit data-g25-grade>Nộp &amp; chấm bài</button></div>'+
+  '</div>'+
+  (selected?'<div class="ml-result-card ml-skill-robot"><div class="ml-skill-bubble-head">'+
+  '<span class="ml-skill-robot-image" data-kl-asset="ROBOT_AVATAR">🤖</span><div><b>Robot giúp con – '+E(selected.label)+'</b>'+
   '<p>'+E(feedbackFor(selected))+'</p></div></div><button type="button" data-g25-jump="'+E(selected.id)+'">Quay lại câu này</button></div>':'');
  if(selected&&typeof HINH_ANH_APP!=='undefined'&&typeof HINH_ANH_APP.home==='function')HINH_ANH_APP.home();
 }
@@ -184,7 +187,7 @@ function keypad(key){
 }
 function open(requested){
  const r=root();r.hidden=false;r.style.display='flex';document.body.classList.add('math-learning');
- r.querySelector('#g25Main').textContent='Đang tải dữ liệu Bài 20 – sáu lượt...';
+ r.querySelector('#g25Main').textContent='Đang nạp bài học từ Google Sheets…';
  const index=Number(requested);const desired=['LV1-A','LV2-A','LV3-A'][Number.isFinite(index)?Math.max(0,Math.min(2,index)):0];
  if(payload){choose(desired);return}
  if(!window.google?.script?.run){r.querySelector('#g25Main').textContent='Cần mở qua Web App Apps Script TEST.';return}
@@ -195,17 +198,17 @@ function open(requested){
  .layBaiToan20Test();
 }
 function close(){const r=root();r.hidden=true;r.style.display='none';document.body.classList.remove('math-learning')}
-document.addEventListener('mousedown',e=>{if(e.target.closest('#g25Math [data-g25-key]'))e.preventDefault()});
-document.addEventListener('focusin',e=>{if(e.target.matches('#g25Math [data-g25-field]'))currentInput=e.target});
+document.addEventListener('mousedown',e=>{if(e.target.closest('#mathFullScreen [data-g25-key]'))e.preventDefault()});
+document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-g25-field]'))currentInput=e.target});
 document.addEventListener('click',e=>{
  if(e.target.closest('[data-g25-open]')){open(0);return}
- const r=e.target.closest('#g25Math');if(!r)return;
+ const r=e.target.closest('#mathFullScreen');if(!r)return;
  if(e.target.closest('[data-g25-close]')){close();return}
  const session=e.target.closest('[data-g25-session]');if(session){choose(session.dataset.g25Session);return}
  const check=e.target.closest('[data-g25-grade]');if(check){grade();return}
  if(e.target.closest('[data-g25-reset]')){sessionsState[active]={values:{},results:{},time:Date.now(),submissions:0};chosenWrong=null;display();return}
  const help=e.target.closest('[data-g25-help]');if(help){chosenWrong=help.dataset.g25Help;renderPanel();return}
- const jump=e.target.closest('[data-g25-jump]');if(jump){chosenWrong=jump.dataset.g25Jump;renderPanel();r.querySelector('#g252-'+CSS.escape(jump.dataset.g25Jump))?.scrollIntoView({behavior:'smooth',block:'center'});return}
+ const jump=e.target.closest('[data-g25-jump]');if(jump){chosenWrong=jump.dataset.g25Jump;renderPanel();r.querySelector('#ml-skill-'+CSS.escape(jump.dataset.g25Jump))?.scrollIntoView({behavior:'smooth',block:'center'});return}
  const key=e.target.closest('[data-g25-key]');if(key){keypad(key.dataset.g25Key);return}
  if(e.target.closest('[data-g25-toggle]')){const dock=r.querySelector('#g25Dock');dock.hidden=!dock.hidden;r.querySelector('#g25ShowKeys').hidden=!dock.hidden;return}
 });

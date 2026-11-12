@@ -15,10 +15,6 @@ function shell(){
  root=document.createElement('div');root.id='mathFullScreen';root.className='math-screen';root.hidden=true;
  root.innerHTML='<header class="ml-top"><button class="ml-back" data-ml-exit aria-label="Trở về">‹</button><span class="ml-file">'+muiIcon('book-open')+'</span><div class="ml-heading"><div class="ml-heading-meta"><span class="ml-doc-label">Tài liệu</span><strong>Toán 2</strong><span class="ml-progress"><i id="mlBar"></i></span><strong id="mlPct">0%</strong></div><b id="mlTitle">Bài 20</b></div></header><div class="ml-layout"><aside class="ml-sidebar"><b class="ml-sidebar-title">NỘI DUNG BÀI HỌC</b><nav class="ml-navigation" id="mlMenu"></nav></aside><div class="ml-workspace"><main class="ml-content" id="mlContent" tabindex="-1"></main><aside class="ml-results" id="mlResults" aria-live="polite"></aside></div></div><div class="ml-dock" id="mlDock"><div class="ml-dock-keys" id="mlKeys"></div></div><button id="mlShowKeyboard" class="ml-show-keyboard" data-ml-keyboard hidden>Mở bàn phím số</button>';
  document.body.appendChild(root);
- const testBtn=document.createElement('button');testBtn.type='button';testBtn.dataset.g25Open='1';
- testBtn.textContent='🧪 Thử Bài 20 – 6 lượt G2.5';
- testBtn.style.cssText='margin:12px;padding:10px;border:1px solid #dab35b;border-radius:12px;background:#fff1c8;color:#633d00;font-weight:bold;cursor:pointer';
- root.querySelector('#mlMenu').before(testBtn);
  const keyboard=root.querySelector('#mlKeys');
  ['1','2','3','4','5','6','7','8','9','0','+','−','×','÷','=','⌫'].forEach(k=>{
   const b=document.createElement('button');b.type='button';b.textContent=k;b.dataset.mlKey=k;b.className='ml-key'+(k==='⌫'?' erase':(['+','−','×','÷','='].includes(k)?' math-symbol':''));

@@ -52,3 +52,12 @@ Chạy lệnh trên local:
 - Trong editor, chạy kiemTraBuildBai20_() để đối chiếu sáu lượt và version.
 
 Bản G2.5.2 được thêm đầy đủ lên GitHub trước đó; ảnh màn hình G2.5 cũ thể hiện frontend chưa cập nhật. Build marker không chứng minh render đúng nhưng giúp phân biệt nguồn lỗi.
+
+## G2.5.4 – Dùng lại giao diện chuẩn, không hiển thị nhãn thử nghiệm
+- Dùng root #mathFullScreen: sidebar, header, bảng kết quả và bàn phím dùng quy tắc CSS chung 20/22/25/29.
+- Các quy tắc module và 1 bài lời văn/dòng đã chuyển từ 43_CSS_ThuNghiemBai20 sang cuối 20_CSS_KhongGianHocToan, với class module chỉ dùng khi bài có dạng đó. CSS 43 không còn được nạp.
+- Không còn banner màu vàng, build version hoặc chú thích TEST trên màn bài làm.
+- Các ID data-g25- là hook lập trình của nhánh thử, không hiển thị lên màn hình; không ghi kết quả/sao lên máy chủ.
+- Sáu lượt vẫn dùng bản dữ liệu 28 câu (LV2-A 3 câu).
+- Tuyệt đối chưa merge khi chưa kiểm thử trên Web App và so sánh giao diện ở desktop/tablet.
+- Với việc sửa #mathFullScreen, không được mở đồng thời cả renderer cũ và mới trên cùng trang: lối vào Bài 20 trong nhánh đã chặn renderer cũ.
