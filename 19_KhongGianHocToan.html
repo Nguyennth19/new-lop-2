@@ -33,7 +33,7 @@ function shell(){
 function activeQuestions(){return fullData?chonCauHoiTheoNhom(fullData):[];}
 function completed(){return fullData?.variantPilot?activeQuestions().filter(q=>gradingState[q.id]==='correct').length:activeQuestions().filter(q=>cauDaDungToan[q.id]).length;}
 function validCount(){return activeQuestions().length;}
-function levelDone(lv){return fullData?.variantPilot?!!submissions[lv]:!!(typeof TIEN_DO_HOC!=='undefined'&&TIEN_DO_HOC.get()?.completedLevels?.[lv]);}
+function levelDone(lv){return fullData?.variantPilot?false:!!(typeof TIEN_DO_HOC!=='undefined'&&TIEN_DO_HOC.get()?.completedLevels?.[lv]);}
 function refreshProgress(){
  if(!fullData)return;
  const visible=fullData.variantPilot?activeQuestions().filter(q=>q.level===view):activeQuestions();
@@ -75,7 +75,7 @@ function exit(){
 }
 function choose(id){
  if(bienTheDangCham)return;
- view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
+ view=id;level=id==='THEORY'?level:id;levelStart=Date.now();if(!fullData?.variantPilot)gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
@@ -94,6 +94,17 @@ function render(){
  const sections=fullData.sections.filter(s=>s.levelId===(fullData.levels.find(l=>l.level===view)||{}).id);
  target.innerHTML='<div class="ml-page">'+sections.map((s,i)=>section(s,i)).join('')+'</div>';
  restoreDrafts();
+ if(fullData.variantPilot){
+  const selected=activeQuestions().filter(q=>q.level===view);
+  selected.forEach(q=>{
+   const correct=gradingState[q.id]==='correct',wrong=gradingState[q.id]==='wrong';
+   fields(q).forEach(el=>{
+    el.classList.toggle('ml-right',correct);
+    el.classList.toggle('ml-wrong',wrong&&el.value.trim()!=='');
+    el.classList.toggle('ml-empty',gradingState[q.id]==='empty'&&el.value.trim()==='');
+   });
+  });
+ }
  installSvg();
  target.scrollTop=0;
  renderResults();
@@ -308,6 +319,14 @@ document.addEventListener('input',e=>{
  const op=el.dataset.mlField.endsWith(':op');
  el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
  drafts[el.dataset.mlField]=el.value;
+ if(fullData?.variantPilot&&submissions[view]){
+   // Khi sửa đáp án sau khi chấm, hủy kết quả tạm cũ để tránh sai thống kê.
+   delete submissions[view];
+   activeQuestions().filter(q=>q.level===view).forEach(q=>{delete gradingState[q.id]});
+   shell().querySelectorAll('#mlContent .ml-right, #mlContent .ml-wrong, #mlContent .ml-empty')
+     .forEach(field=>field.classList.remove('ml-right','ml-wrong','ml-empty'));
+   refreshProgress();renderResults();
+ }
  // Bản nháp chỉ được giữ trong bộ nhớ của trang đang mở.
 });
 document.addEventListener('keydown',e=>{
