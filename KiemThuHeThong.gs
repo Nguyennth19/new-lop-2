@@ -5,6 +5,12 @@ function kiemTraHeThongLop2_(){
  const sheets=must.map(n=>({name:n,exists:!!wb.getSheetByName(n)}));
  if(sheets.some(x=>!x.exists))throw Error('Thiếu Google Sheet: '+sheets.filter(x=>!x.exists).map(x=>x.name).join(', '));
  const lesson=layBaiToan20();if(!lesson||lesson.lesson.id!=='toan_b20')throw Error('Không đọc được Bài 20');
+ if(lesson.variantPilot){
+  const qa=kiemTraB20BienThe_();
+  return {ok:qa.ok,mode:'B20_VARIANT_PILOT',questions:qa.questionCount,sessions:qa.counts,
+    qaNote:'Chỉ kiểm tra runtime staging; không ghi sao và không xác nhận dữ liệu học sinh.',
+    sheets, timeZoneSheet:wb.getSpreadsheetTimeZone(),timeZoneApp:CAU_HINH_LOP_2.MUI_GIO};
+ }
  const ids=lesson.questions.map(x=>x.id),unique=new Set(ids);
  if(unique.size!==ids.length)throw Error('Có mã câu hỏi Bài 20 bị trùng');
  const progress=layTienDoHocTap();
