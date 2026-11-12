@@ -1,0 +1,59 @@
+/* G7 Asset-ID resolver (STAGING).
+ * Chỉ nhận đường dẫn đã duyệt trong ASSET_G7_RELEASE. Không tải trực tiếp Drive
+ * hay chọn theo từ khóa câu hỏi. Ưu tiên dữ liệu asset_id, tránh sửa HTML.
+ */
+const ASSET_G7=(function(){
+ const published=Object.freeze(
+  typeof ASSET_G7_RELEASE!=='undefined' && ASSET_G7_RELEASE
+   ? ASSET_G7_RELEASE : {}
+ );
+ const valid=/^[A-Za-z0-9_-]{3,100}$/;
+ function get(id,subject){
+  if(typeof id!=='string'||!valid.test(id))return null;
+  const item=published[id];
+  if(!item||item.status!=='APPROVED'||!item.webp_url)return null;
+  if(subject&&Array.isArray(item.subjects)&&!item.subjects.includes(subject))return null;
+  return item;
+ }
+ function create(id,opts){
+  const options=opts||{};
+  const asset=get(id,options.subject);
+  if(!asset)return null;
+  const img=document.createElement('img');
+  img.src=asset.webp_url;
+  img.alt=options.decorative?'':(asset.alt_vi||'Hình minh họa bài học');
+  img.loading=options.eager?'eager':'lazy';
+  img.decoding='async';
+  img.referrerPolicy='no-referrer';
+  if(asset.width)img.width=asset.width;
+  if(asset.height)img.height=asset.height;
+  img.dataset.assetId=id;
+  img.onerror=function(){
+   img.dataset.assetError='1';
+   if(typeof options.onError==='function')options.onError();
+  };
+  return img;
+ }
+ function mount(container,id,options){
+  if(!container)return false;
+  const image=create(id,options);
+  if(!image)return false;
+  const old=container.querySelector('img[data-asset-id]');
+  if(old)old.remove();
+  container.appendChild(image);
+  return true;
+ }
+ function fromQuestion(question){
+  if(!question)return null;
+  const id=question.asset_id||question.assetId;
+  return get(id,question.subject||question.mon_hoc)?id:null;
+ }
+ function hydrate(root){
+  (root||document).querySelectorAll('[data-asset-id]').forEach(node=>{
+   const id=node.getAttribute('data-asset-id');
+   if(node.tagName==='IMG')return;
+   mount(node,id,{subject:node.getAttribute('data-subject')||undefined});
+  });
+ }
+ return Object.freeze({get,create,mount,fromQuestion,hydrate});
+})();

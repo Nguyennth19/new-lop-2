@@ -59,6 +59,8 @@ const HINH_ANH_APP=(function(){
  });
  function wordAsset(q){
   if(!q||q.type!=='word_problem')return null;
+  // G7: asset_id đã được gắn vào dữ liệu là khóa chính; không đoán ảnh khi mã chưa được duyệt.
+  if(q.asset_id||q.assetId)return typeof ASSET_G7!=='undefined'?ASSET_G7.fromQuestion(q):null;
   // Ưu tiên mã câu hỏi Sheet Bài 20: không nhận nhầm theo từ khóa trong đề.
   if(Object.prototype.hasOwnProperty.call(BAI20_HINH,q.id))return BAI20_HINH[q.id];
   // Câu hỏi mới chỉ dùng ảnh khi ngữ cảnh vật thể thật rõ ràng.
@@ -75,8 +77,13 @@ const HINH_ANH_APP=(function(){
   if(!target)return false;
   const key=wordAsset(q);
   if(!key)return false;
-  const ok=attach(target,key);
-  if(ok)target.setAttribute('aria-label',catalog[key].alt+' (hình chỉ minh họa, không thể hiện số lượng)');
+  const ok=typeof ASSET_G7!=='undefined' && (q.asset_id||q.assetId)
+   ? ASSET_G7.mount(target,key,{subject:q.subject||q.mon_hoc})
+   : attach(target,key);
+  if(ok){
+   const alt=(catalog[key]&&catalog[key].alt)||(typeof ASSET_G7!=='undefined'&&ASSET_G7.get(key)?.alt_vi)||'Hình minh họa';
+   target.setAttribute('aria-label',alt+' (hình chỉ minh họa, không thể hiện số lượng)');
+  }
   return ok;
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',home,{once:true});
