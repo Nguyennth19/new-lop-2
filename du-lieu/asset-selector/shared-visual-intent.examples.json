@@ -1,0 +1,74 @@
+{
+  "schema_version": "kidlearn-shared-visual-intent-v1",
+  "policy": "STAGING_ONLY",
+  "examples": [
+    {
+      "description": "Bài có lời văn mới, minh họa một ảnh kẹo đại diện, không đếm",
+      "request": {
+        "lesson_id": "toan_b99",
+        "subjectArea": "toan",
+        "type": "word",
+        "prompt": "Một hộp có 47 chiếc kẹo, thêm 34 chiếc kẹo.",
+        "unit": "chiếc kẹo",
+        "visualIntent": "decorative",
+        "quantityMode": "symbolic"
+      },
+      "expected": {
+        "ok": true,
+        "concept": "wrapped_candy",
+        "assetId": "KL_SH02_010",
+        "count": 1
+      }
+    },
+    {
+      "description": "Bài Tiếng Việt được gắn ngữ nghĩa mà không phụ thuộc Question ID",
+      "request": {
+        "lesson_id": "tv_b03",
+        "subjectArea": "tieng_viet",
+        "type": "vocabulary",
+        "semanticTags": [
+          "xe đạp"
+        ],
+        "visualIntent": "decorative",
+        "quantityMode": "symbolic"
+      },
+      "expected": {
+        "ok": true,
+        "concept": "kids_bicycle",
+        "assetId": "KL_SH11_012",
+        "count": 1
+      }
+    },
+    {
+      "description": "Yêu cầu ảnh 3 quả chính xác phải chờ QA đặc tính hình",
+      "request": {
+        "lesson_id": "toan_b99",
+        "subjectArea": "toan",
+        "type": "count",
+        "subject": "quả dưa hấu",
+        "visualIntent": "quantity",
+        "quantityMode": "exact",
+        "requestedCount": 3
+      },
+      "expected": {
+        "ok": false,
+        "code": "REQUIRES_QUANTITY_VERIFICATION"
+      }
+    },
+    {
+      "description": "Nếu câu nhắc hai đối tượng, không tự đoán",
+      "request": {
+        "lesson_id": "toan_b99",
+        "subjectArea": "toan",
+        "type": "word",
+        "prompt": "Có kẹo và xe đạp.",
+        "visualIntent": "decorative",
+        "quantityMode": "symbolic"
+      },
+      "expected": {
+        "ok": false,
+        "code": "AMBIGUOUS_SEMANTICS"
+      }
+    }
+  ]
+}
