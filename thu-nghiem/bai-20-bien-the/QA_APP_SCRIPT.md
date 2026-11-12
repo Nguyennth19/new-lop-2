@@ -53,3 +53,20 @@ Trạng thái: **STATIC + SERVER-MOCK PASS / BROWSER WEB APP NOT TESTED**
 - Kiểm tra mock server: 30/30 đáp án đúng, 30/30 đáp án sai, từ chối câu không thuộc lượt; cú pháp các tệp sửa đạt.
 - Chưa triển khai hoặc kiểm tra Web App chạy thực tế. Cần **tạo version mới trong Manage deployments**, vì Apps Script Editor có mã mới không đảm bảo deployment /exec đã cập nhật.
 - Bước này **không sửa CSS, renderer hay dữ liệu bài học**. R1.2/R1.3 thực hiện riêng.
+
+## R1.2 + R1.3 – Renderer chung và chuẩn giao diện test-theo-main
+
+- **Nguồn giao diện chuẩn:** `test-theo-main`, không lấy giao diện pilot trước làm chuẩn.
+- Phục hồi cấu trúc `19_KhongGianHocToan.html` từ `test-theo-main`, loại bỏ hoàn toàn `pilotRender()` và HTML/CSS nội tuyến bổ sung ở pilot.
+- Tạo `42_AdapterBienTheB20.html`: dữ liệu JSON (30 câu, 6 lượt) -> schema `lesson / levels / sections / questions` mà renderer hiện tại đã nhận.
+- Chỉ thêm lệnh include adapter vào `GiaoDien.html`; không thay markup shell.
+- Bổ sung nhánh nhận `pilotPrompt` có điều kiện vào renderer chung `41_HienThiCauHoiToan.html` (giữ lối hiển thị câu hỏi cũ đối với bài chuẩn).
+- Dùng menu `ml-navigation`, các thẻ `ml-section`, `ml-card`, bộ bàn phím và bảng kết quả hiện có. Chọn lượt `LV1-A/B, LV2-A/B, LV3-A/B` trong sidebar.
+- `chamLuotToan20BienThe()` chấm nguyên lượt trên máy chủ, hỗ trợ đặt tính (ones/tens/carry), lời văn (n1/n2/op/sum/answer), câu số (answer). Không ghi sao hoặc tiến độ.
+- Khi chấm thất bại, hiển thị lỗi trên vùng kết quả hiện có và cho phép thử lại.
+- Tăng version cache trình duyệt để tránh dữ liệu từ pilot cũ.
+- `20_CSS_KhongGianHocToan.html` có blob SHA **3933b7f1812e08831bb7de90c1bf0f39ab87b073**, trùng **tuyệt đối** với `test-theo-main`.
+- Không bổ sung CSS mới hay thuộc tính `style=` trong `19_KhongGianHocToan.html`.
+- QA tĩnh: JS/GAS 4/4 cú pháp PASS; adapter 30/30 câu, 6/6 lượt, 10 nhóm render không thiếu dữ liệu; mock máy chủ 30/30 đáp án đúng PASS và 30/30 đáp án sai bị từ chối.
+- Rủi ro chưa khóa: giao diện đặt tính/lời văn trên thiết bị thật, ảnh G7, độ khó LV3 và ngôn ngữ hai bài lời văn. **Cổng QA trình duyệt = CHƯA TEST**.
+- Chưa thay nhánh `test-theo-main`, chưa merge, chưa deploy Apps Script. Sau pull cần **New Version** cho deployment staging và chạy test trực quan trên desktop/mobile.
