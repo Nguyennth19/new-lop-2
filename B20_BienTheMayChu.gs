@@ -76,6 +76,27 @@ function kiemTraB20BienThe(){
     stagingOnly:true,noWrites:true,noStars:true};
 }
 
+/** Run trong Apps Script Editor: chứng minh API đang trả đúng gói mà UI20 yêu cầu.
+ * Không dump prompt/answer và không ghi Google Sheets.
+ */
+function kiemTraGoiDuLieuUI20(){
+  const p=layBaiToan20();
+  const info={
+    ok:!!p&&p.variantPilot===true&&p.lesson&&p.lesson.id==='toan_b20'&&
+       Array.isArray(p.questions)&&Array.isArray(p.sessions)&&p.questions.length===30,
+    apiVersion:'ui20-02a-data-check-20261112',
+    lessonId:p&&p.lesson&&p.lesson.id||null,
+    variantPilot:p&&p.variantPilot===true,
+    questionCount:Array.isArray(p&&p.questions)?p.questions.length:null,
+    sessionCount:Array.isArray(p&&p.sessions)?p.sessions.length:null,
+    lessonKeys:p&&typeof p==='object'?Object.keys(p).sort():[],
+    noWrites:true
+  };
+  console.log(JSON.stringify(info));
+  if(!info.ok)throw Error('Web App đang trả dữ liệu khác hợp đồng B20 staging; kiểm tra deployment và layBaiToan20');
+  return info;
+}
+
 /** Kiểm tra kết nối mà không ghi dữ liệu – dùng để đối chiếu deployment. */
 function kiemTraKetNoiB20(){
   const qa=kiemTraB20BienThe();
