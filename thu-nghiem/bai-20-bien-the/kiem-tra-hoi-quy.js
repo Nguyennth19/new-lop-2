@@ -42,7 +42,7 @@ for(const s of pack.sessions){
   assert.equal((html.match(/<input /g)||[]).length,adapted.type==='vertical'?3:adapted.type==='word_problem'?5:1,'Số ô nhập của '+id);
   assert(!html.includes('undefined')&&!html.includes('NaN'),'Dữ liệu hiển thị lỗi '+id);
   if(q.type==='word'){
-   assert(html.includes('Tóm tắt:'),'Bài lời văn thiếu tóm tắt');
+   assert(html.includes('TÓM TẮT:'),'Bài lời văn thiếu tóm tắt');
    assert(html.includes('BÀI GIẢI'),'Thiếu khung lời giải');
    assert(html.includes('('+q.unit+')'),'Thiếu đơn vị ở phép tính');
   }
