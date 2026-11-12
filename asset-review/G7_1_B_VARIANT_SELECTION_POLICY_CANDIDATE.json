@@ -47,12 +47,12 @@
       ]
     },
     {
-      "group_id": "GIFT_BOX",
+      "group_id": "GIFT_BOX_SINGLE",
       "asset_ids": [
         "KL_M06_003",
         "KL_SH12_006"
       ],
-      "random_if_unconstrained": false,
+      "random_if_unconstrained": true,
       "variants": [
         {
           "asset_id": "KL_M06_003",
@@ -60,9 +60,11 @@
         },
         {
           "asset_id": "KL_SH12_006",
-          "quantity": "stack_multiple"
+          "quantity": "single"
         }
-      ]
+      ],
+      "object_count": 1,
+      "note": "M03-012 is multiple gift boxes; M06-003 and SH12-006 are both single boxes. Verified against master PNG."
     },
     {
       "group_id": "HAT_WIDE_BRIM_PINK_BOW",
@@ -108,6 +110,11 @@
     {
       "prompt": "một hộp quà",
       "exclude": [
+        "KL_M03_012"
+      ],
+      "eligible": [
+        "KL_M06_003",
+        "KL_SH08_003",
         "KL_SH12_006"
       ]
     },
@@ -115,7 +122,11 @@
       "prompt": "chồng hộp quà",
       "exclude": [
         "KL_M06_003",
-        "KL_SH08_003"
+        "KL_SH08_003",
+        "KL_SH12_006"
+      ],
+      "eligible": [
+        "KL_M03_012"
       ]
     },
     {
