@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KidLearn Variant Asset Scenes v1",
+  "type": "object",
+  "required": ["schema_version", "catalog_release_commit", "lesson_id", "mode", "question_scenes", "policy"],
+  "properties": {
+    "schema_version": {"const": "kidlearn-variant-asset-scene-v1"},
+    "catalog_release_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "lesson_id": {"type": "string", "minLength": 3},
+    "mode": {"const": "STAGING_ONLY"},
+    "source_runtime": {"type": "string"},
+    "question_scenes": {
+      "type": "object", "maxProperties": 30,
+      "additionalProperties": {"$ref": "#/$defs/sceneEntry"}
+    },
+    "policy": {"type": "object", "required": ["exclude_from_production_without_label_approval"],
+      "properties": {"exclude_from_production_without_label_approval": {"const": true}}
+    }
+  },
+  "$defs": {
+    "sceneEntry": {
+      "type": "object",
+      "required": ["usage", "semantic", "label_approval_status", "scene", "fallback_emoji"],
+      "properties": {
+        "usage": {"const": "decorative"},
+        "semantic": {"type": "string", "minLength": 1},
+        "label_approval_status": {"enum": ["LABEL_APPROVED", "OWNER_SIGNOFF_PENDING"]},
+        "pilot_only": {"type": "boolean"},
+        "fallback_emoji": {"type": "string", "minLength": 1},
+        "scene": {"type": "object", "required": ["groups"], "properties": {
+          "groups": {"type": "array", "minItems": 1, "maxItems": 8, "items": {
+            "type": "object", "required": ["label", "items"],
+            "properties": {
+              "label": {"type": "string"},
+              "items": {"type": "array", "minItems": 1, "maxItems": 24, "items": {
+                "type": "object", "required": ["assetId", "count"], "additionalProperties": false,
+                "properties": {
+                  "assetId": {"type": "string", "pattern": "^KL_(SH|M)(0[1-9]|1[0-2])_[0-9]{3}$"},
+                  "count": {"type": "integer", "minimum": 1, "maximum": 24}
+                }
+              }}
+            }
+          }}
+        }}
+      },
+      "allOf": [{"if": {"properties": {"label_approval_status": {"const": "OWNER_SIGNOFF_PENDING"}}},
+        "then": {"required": ["pilot_only"], "properties": {"pilot_only": {"const": true}}}
+      }]
+    }
+  }
+}
