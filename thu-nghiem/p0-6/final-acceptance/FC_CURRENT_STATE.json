@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fc.audit-state.v1",
   "phase": "F-C",
-  "status": "AUDIT_RECORDED_OWNER_CLOSURE_PENDING",
+  "status": "OWNER_CORRECTIONS_REQUESTED_FC01_RECONCILED_FC02_PENDING",
   "auditBranch": "test/p0-6-fc-audit-20261114",
   "sourceBranch": "test/p0-6-fb-from-fa-20261113",
   "sourceCheckpoint": "f60eb781df402df3373c4c0f5987087ab01a5764",
@@ -12,7 +12,7 @@
     "conclusion": "success",
     "sha": "f60eb781df402df3373c4c0f5987087ab01a5764"
   },
-  "closureDecision": "PENDING_OWNER_SIGNOFF",
+  "closureDecision": "REQUEST_CORRECTION_BEFORE_P0_CLOSURE",
   "releaseReady": false,
   "scope": "ISOLATED_TEST_ONLY",
   "protectedSurfaces": [
@@ -23,5 +23,27 @@
     "scores",
     "stars"
   ],
-  "nextAction": "Verify F-C audit branch head/commit and any applicable CI; reconcile documentary open items FC-01/02 and obtain explicit owner P0 closure decision; no release/deployment."
+  "nextAction": "Close documentary gaps FC-02 only on verified evidence, present to owner for explicit P0 closure decision. Maintain RELEASE_READY=false. Verify new checkpoint HEAD/CI before next write.",
+  "closureAuthorized": false,
+  "ownerDirection": "Complete FC-01/FC-02 before considering P0 closure; do not sign or release",
+  "fc01": {
+    "status": "DOCUMENTARY_RECONCILED_FOR_TEST",
+    "evidence": "thu-nghiem/p0-6/final-acceptance/FC_OWNER_DECISION_AND_FC01_FC02_20261114.md",
+    "scope": "TEST_ONLY"
+  },
+  "fc02": {
+    "status": "PENDING_FORMAL_ATTESTATION",
+    "policyGitBlob": "69c07906f621b1ad91eba184a595544fe3b6d87c",
+    "policyRetrievedUtf8Sha256": "33636d43f895bc417e4916dcec8befcb27a489ff08f774ec1897aa4804cc486e",
+    "digestMethod": "SHA256 of UTF-8 re-encoded text returned by GitHub connector; raw Git bytes not independently checked",
+    "pending": [
+      "canonical policyVersion",
+      "raw Git byte-level independent digest verification",
+      "owner acknowledgement of exact digest",
+      "independently attested reviewedAt/signature"
+    ],
+    "evidence": "thu-nghiem/p0-6/final-acceptance/FC_POLICY_INTEGRITY_EVIDENCE_20261114.md"
+  },
+  "decisionRecord": "thu-nghiem/p0-6/final-acceptance/FC_OWNER_DECISION_AND_FC01_FC02_20261114.md",
+  "latestDocumentedAuditCommit": "0bdd44ac77fa45db639211e1d16a9aefbf51043c"
 }
