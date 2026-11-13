@@ -1,0 +1,37 @@
+name: G7.4 Column Calc Reference V1 QA
+on:
+  push:
+    branches: ['test/g7-4-column-calc-reference-v1-20261113']
+    paths:
+      - 'qa/g7-4-column-calc-reference-v1/**'
+      - '.github/workflows/g7-4-column-calc-reference-v1.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Immutable G6 snapshot and 100/1000 arithmetic contract
+        run: |
+          node --check qa/g7-4-column-calc-reference-v1/column-calc-contract.cjs
+          node --check qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs
+          node qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs
+      - name: Confirm advanced reference is not silently certified
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const base='qa/g7-4-column-calc-reference-v1/';
+          const lock=JSON.parse(fs.readFileSync(base+'source-lock.v1.json','utf8'));
+          const contract=JSON.parse(fs.readFileSync(base+'contract.v1.json','utf8'));
+          assert.equal(lock.visualReference.originalAdvancedHTMLLocated,false);
+          assert.equal(lock.release.advancedRendererPromotedToCanonical,false);
+          assert.equal(lock.release.mainUnchanged,true);
+          assert.equal(contract.fallback.neverAutomaticReplacement,true);
+          assert.equal(contract.requiresAdvancedReferenceSource,true);
+          assert.equal(contract.arithmetic.profiles.find(x=>x.id==='PV1000_BOUNDARY').advancedFourColumnVerified,false);
+          console.log('PASS: screenshot ≠ executable source; source lock and strict fallback preserved');
+          JS
