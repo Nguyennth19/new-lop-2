@@ -83,6 +83,13 @@ function visualAudit(variant,question){
     return gate('BLOCKED','COUNT_NOT_BOUND_TO_QUESTION');
   if(!nonempty(v.renderQaEvidenceRef))
     return gate('BLOCKED','COUNT_RENDER_EVIDENCE_MISSING');
+  if(v.countOperation==='ADD'){
+   if(!safe(question.parameters.a)||!safe(question.parameters.b)||
+      JSON.stringify(v.expectedGroups)!==JSON.stringify([question.parameters.a,question.parameters.b])||
+      v.expectedGroups.reduce((a,b)=>a+b,0)!==question.answerSpec?.value)
+    return gate('FAIL','COUNT_MATH_DATA_MISMATCH');
+  }else return gate('BLOCKED','COUNT_OPERATION_UNSUPPORTED');
+  if(v.actualGroups.reduce((a,b)=>a+b,0)>48)return gate('BLOCKED','COUNT_SCENE_TOO_LARGE');
   if(v.assetCountSafe!==true||v.labelsVerified!==true)return gate('BLOCKED','COUNT_ASSET_NOT_VERIFIED');
   if(!nonempty(v.assetEvidenceRef))return gate('BLOCKED','COUNT_ASSET_EVIDENCE_MISSING');
   return gate('PASS','COUNT_SAFE_VERIFIED');
