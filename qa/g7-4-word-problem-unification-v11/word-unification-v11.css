@@ -1,0 +1,36 @@
+/* G7.4 Word-problem scaffold TEST: scoped to G6's structured card only. */
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-scaffold{
+ margin:0 0 14px;border:2px solid #c4d8f8;border-radius:14px;
+ background:#f4f8ff;padding:12px;color:#22344e
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-scaffold-title{
+ font:800 14px/1.45 Inter,Arial,sans-serif;margin:0 0 10px
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-choices{display:grid;gap:7px}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-option{
+ display:flex;align-items:stretch;gap:6px
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-option-select{
+ flex:1;text-align:left;white-space:normal;overflow-wrap:anywhere;
+ border-radius:12px;border:2px solid #c6d5ec;background:white;
+ padding:10px;min-height:45px;color:#263d5c;font:700 14px/1.5 Inter,Arial,sans-serif;cursor:pointer
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-option-select.selected{
+ background:#e7f9ee;border-color:#3ba96d;color:#186042
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-speak{
+ border:2px solid #a5d0ef;border-radius:10px;background:#e5f5ff;
+ min-width:44px;cursor:pointer
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-option-select:focus-visible,
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-speak:focus-visible{
+ outline:3px solid #275deb;outline-offset:2px
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-status{
+ font-size:12px;font-weight:600;color:#536980;margin:10px 0 0
+}
+#mathFullScreen .ml-word-card.ml-word-structured .g74-word-guided-note{margin:0;color:#42526c}
+@media(max-width:480px){
+ #mathFullScreen .ml-word-card.ml-word-structured .g74-word-scaffold{padding:9px}
+ #mathFullScreen .ml-word-card.ml-word-structured .g74-word-option-select{font-size:13px}
+}
