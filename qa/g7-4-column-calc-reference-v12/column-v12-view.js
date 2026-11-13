@@ -46,20 +46,21 @@
      for(const place of order){const item=plan[key].find(x=>x.place===place);grid.append(el('span','kl-col-v12-digit',item.digit));}
    }
    grid.append(el('div','kl-col-v12-rule'),el('span',''));
+   const activate=field=>{s.active=field.dataset.answer;grid.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.classList.toggle('active',x===field))};
    for(const place of order){
      const id='result_'+place,inp=el('input','kl-col-v12-answer');
      inp.type='text';inp.inputMode='numeric';inp.autocomplete='off';inp.maxLength=1;
      inp.dataset.answer=id;inp.dataset.place=place;inp.placeholder=place==='hundreds'?'Trăm':place==='tens'?'Chục':'ĐV';
      inp.setAttribute('aria-label','Chữ số hàng '+PLACES[place].toLowerCase());
      inp.value=s.digits[id]??'';
-     inp.onfocus=()=>{s.active=id;grid.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.classList.toggle('active',x===inp))};
+     inp.onfocus=()=>activate(inp);
      inp.oninput=()=>{
        const raw=inp.value.replace(/[^0-9]/g,'').slice(-1);inp.value=raw;s.digits[id]=raw;
-       if(raw){const idx=plan.inputOrder.indexOf(place),next=plan.inputOrder[idx+1];if(next)grid.querySelector('[data-answer="result_'+next+'"]')?.focus();}
+       if(raw){const idx=plan.inputOrder.indexOf(place),next=plan.inputOrder[idx+1];if(next){const target=grid.querySelector('[data-answer="result_'+next+'"]');if(target){target.focus();activate(target)}}}
        if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index));
      };
      inp.onkeydown=e=>{if(e.key==='ArrowLeft'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const next=plan.inputOrder[idx+1];if(next)grid.querySelector('[data-answer="result_'+next+'"]')?.focus();}
-       if(e.key==='ArrowRight'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const prev=plan.inputOrder[idx-1];if(prev)grid.querySelector('[data-answer="result_'+prev+'"]')?.focus();}};
+       if(e.key==='ArrowRight'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const prev=plan.inputOrder[idx-1];if(prev){const target=grid.querySelector('[data-answer="result_'+prev+'"]');if(target){target.focus();activate(target)}}}};
      grid.append(inp);
    }
    outer.append(grid);
