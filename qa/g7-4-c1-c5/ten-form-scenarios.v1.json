@@ -53,7 +53,6 @@
       "desc": "Hình tam giác tham số, chính xác ngữ nghĩa",
       "request": {
         "mathScene": {
-          "verified": true,
           "geometryType": "TRIANGLE",
           "points": [
             [
@@ -68,7 +67,8 @@
               3,
               3
             ]
-          ]
+          ],
+          "sceneId": "DEMO_TRIANGLE_01"
         }
       },
       "expected": "PARAMETRIC_SVG"
@@ -98,10 +98,10 @@
       "desc": "Đọc đồng hồ 07:30 bằng SVG tham số",
       "request": {
         "mathScene": {
-          "verified": true,
           "geometryType": "CLOCK",
           "hour": 7,
-          "minute": 30
+          "minute": 30,
+          "sceneId": "DEMO_CLOCK_0730"
         }
       },
       "expected": "PARAMETRIC_SVG"
@@ -142,5 +142,19 @@
     "measurementWithoutScale",
     "badZigzagTransformation",
     "missingCuratedMatch"
+  ],
+  "approvedParametricSceneRegistry": [
+    {
+      "id": "DEMO_TRIANGLE_01",
+      "geometryType": "TRIANGLE",
+      "exerciseType": "GEOMETRY_TANGRAM",
+      "qaStatus": "APPROVED_TEST"
+    },
+    {
+      "id": "DEMO_CLOCK_0730",
+      "geometryType": "CLOCK",
+      "exerciseType": "RULER_CLOCK",
+      "qaStatus": "APPROVED_TEST"
+    }
   ]
 }
