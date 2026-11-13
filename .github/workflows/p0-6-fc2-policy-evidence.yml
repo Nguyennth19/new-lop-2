@@ -1,0 +1,43 @@
+name: P0.6 F-C.2 E0 Policy Source Integrity (no deploy)
+on:
+  push:
+    branches:
+      - test/p0-6-fc-audit-20261114
+    paths:
+      - '.github/workflows/p0-6-fc2-policy-evidence.yml'
+      - 'thu-nghiem/p0-6/final-acceptance/FC2_*'
+      - 'thu-nghiem/p0-6/PE0_DAC_TA_NGHIEM_THU_BIEN_THE_TOAN_V1_20261113.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fc2-policy-integrity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout commit under test
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate E0 Git blob and raw byte SHA256
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_file='thu-nghiem/p0-6/PE0_DAC_TA_NGHIEM_THU_BIEN_THE_TOAN_V1_20261113.md'
+          expected_blob='69c07906f621b1ad91eba184a595544fe3b6d87c'
+          expected_sha256='33636d43f895bc417e4916dcec8befcb27a489ff08f774ec1897aa4804cc486e'
+          actual_blob="$(git hash-object "$source_file")"
+          actual_sha256="$(sha256sum "$source_file" | awk '{print $1}')"
+          test "$actual_blob" = "$expected_blob"
+          test "$actual_sha256" = "$expected_sha256"
+          echo "GIT_BLOB=$actual_blob"
+          echo "RAW_FILE_SHA256=$actual_sha256"
+          echo "SOURCE_PATH=$source_file"
+          echo "AUDIT_COMMIT=$GITHUB_SHA"
+          echo "FC2_INTEGRITY=PASS"
+      - name: Confirm no tracked file changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          echo "READ_ONLY_QA=PASS"
