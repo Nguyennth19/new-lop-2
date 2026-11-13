@@ -61,12 +61,13 @@ test('Countable scene rejects 4 displayed against 3 expected',()=>{
  assert.equal(audit(v).gates.G3.code,'COUNT_GROUPS_MISMATCH');
 });
 test('Countable scene rejects unverified asset despite matching counts',()=>{
- const v=candidate();v.visual={role:'COUNTABLE',expectedGroups:[4,2],actualGroups:[4,2],assetCountSafe:false,labelsVerified:true,assetEvidenceRef:'qa-fixture'};
+ const v=candidate();v.visual={role:'COUNTABLE',countOperation:'ADD',expectedGroups:[4,2],actualGroups:[4,2],assetCountSafe:false,labelsVerified:true,assetEvidenceRef:'qa-fixture'};
  assert.equal(audit(v).gates.G3.status,'BLOCKED');
 });
 test('Verified count scene can pass image gate',()=>{
- const v=candidate();v.visual={role:'COUNTABLE',expectedGroups:[4,2],actualGroups:[4,2],assetCountSafe:true,labelsVerified:true,assetEvidenceRef:'qa-fixture'};
- assert.equal(audit(v).gates.G3.status,'PASS');
+ const v=candidate();v.visual={role:'COUNTABLE',countOperation:'ADD',expectedGroups:[4,2],actualGroups:[4,2],assetCountSafe:true,labelsVerified:true,assetEvidenceRef:'qa-fixture',renderQaEvidenceRef:'qa-count-verified'};
+ const l=clone(lesson);l.questions[0].parameters={a:4,b:2,visualGroups:[4,2]};l.questions[0].answerSpec.value=6;l.questions[0].answerSpec.proof.operands=[4,2];
+ assert.equal(audit(v,l).gates.G3.status,'PASS');
 });
 test('Complex geometry may not self-approve',()=>{
  const v=candidate();v.mathKind='GEOMETRY';v.visual={role:'GEOMETRY',topologyVerified:true};
@@ -87,7 +88,9 @@ test('Equivalent full matching coverage is permitted by interaction gate',()=>{
 test('Number-input to choice must be labeled simplified',()=>{
  const v=candidate();v.variantLevel='V2_INTERACTION';v.interaction.to='CHOICE';
  assert.equal(audit(v).gates.G4.status,'FAIL');
- v.interaction.difficultyDelta='SIMPLIFIED';assert.equal(audit(v).gates.G4.status,'PASS');
+ v.interaction.difficultyDelta='SIMPLIFIED';assert.equal(audit(v).gates.G4.status,'BLOCKED');
+ v.interaction.optionValues=[69,70,71];v.interaction.correctOptionValue=70;
+ assert.equal(audit(v).gates.G4.status,'PASS');
 });
 test('Changing interaction to remove knowledge fails',()=>{
  const v=candidate();v.interaction.skillsAfter=['OTHER_SKILL'];
@@ -125,6 +128,26 @@ test('If explicit policy approval and evidence exist, gate calculation can PASS_
  const p=clone(policy);p.status='APPROVED_FOR_TEST_POLICY';p.ownerApprovalRef='TEST_FIXTURE_ONLY';
  const r=audit(v,lesson,p,{offlineOnly:true,noWrites:true,noStars:true,ciEvidenceRef:'TEST_FIXTURE',rollbackRef:'TEST_FIXTURE'});
  assert.equal(r.status,'PASS_FOR_TEST');assert.equal(r.gates.G8.status,'PASS');
+});
+test('Countable visual cannot pass without binding to source facts',()=>{
+ const v=candidate();v.visual={role:'COUNTABLE',countOperation:'ADD',expectedGroups:[67,3],actualGroups:[67,3],assetCountSafe:true,labelsVerified:true,assetEvidenceRef:'qa',renderQaEvidenceRef:'qa'};
+ assert.equal(audit(v).gates.G3.code,'COUNT_NOT_BOUND_TO_QUESTION');
+});
+test('Countable visual exceeding scene capacity blocks unsafe render',()=>{
+ const v=candidate();v.visual={role:'COUNTABLE',countOperation:'ADD',expectedGroups:[67,3],actualGroups:[67,3],assetCountSafe:true,labelsVerified:true,assetEvidenceRef:'qa',renderQaEvidenceRef:'qa'};
+ const l=clone(lesson);l.questions[0].parameters.visualGroups=[67,3];
+ assert.equal(audit(v,l).gates.G3.code,'COUNT_SCENE_TOO_LARGE');
+});
+test('Count and answer disagree even when assets appear verified',()=>{
+ const v=candidate();v.visual={role:'COUNTABLE',countOperation:'ADD',expectedGroups:[4,2],actualGroups:[4,2],assetCountSafe:true,labelsVerified:true,assetEvidenceRef:'qa',renderQaEvidenceRef:'qa'};
+ const l=clone(lesson);l.questions[0].parameters.visualGroups=[4,2];
+ assert.equal(audit(v,l).gates.G3.code,'COUNT_MATH_DATA_MISMATCH');
+});
+test('Duplicate and missing distractors cannot pass choice gate',()=>{
+ const v=candidate();v.variantLevel='V2_INTERACTION';v.interaction.to='CHOICE';v.interaction.difficultyDelta='SIMPLIFIED';
+ v.interaction.optionValues=[70,70,71];v.interaction.correctOptionValue=70;
+ assert.equal(audit(v).gates.G4.status,'BLOCKED');
+ v.interaction.optionValues=[69,71,72];assert.equal(audit(v).gates.G4.status,'BLOCKED');
 });
 test('No absent owner approval can be bypassed by rollout context',()=>{
  const v=candidate();const p=clone(policy);p.status='APPROVED_FOR_TEST_POLICY';
