@@ -38,6 +38,9 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           s=Path('/tmp/g74c3v2.html').read_text()
+          import re
+          print('QA fields',re.findall(r'data-qa-[a-z-]+="[^"]*"',s)[-25:])
+          print('Auto result', re.search(r'<pre id="qaAutoResult">([\s\S]*?)</pre>',s).group(1)[:1500] if '<pre id="qaAutoResult">' in s else 'not rendered')
           for text in ['data-qa-task-count="10"','data-qa-passed="10"','data-qa-errors="0"','data-qa-finished="10"','data-qa-horizontal-overflow="false"']:
               assert text in s, f'Browser did not verify {text}'
           print('PASS Chrome: 10 interactive tasks answered, no horizontal overflow')
