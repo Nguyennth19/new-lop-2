@@ -8,15 +8,15 @@ const context={};vm.runInNewContext(read('ThuVienAsset288Test.gs')+'\nthis.LIB=K
 const lib=context.LIB;let pass=0,fail=0;function t(label,f){try{f();pass++;console.log('PASS '+label)}catch(e){fail++;console.error('FAIL '+label,e.stack)}}
 const index=lib.verify(reg);
 t('Existing registry exactly 288 entries and 24 groups',()=>{assert.equal(index.ok,true);assert.equal(index.total,288);assert.equal(index.groups.length,24);});
-t('Approved and pending states preserved 100+188',()=>{assert.equal(index.approved,100);assert.equal(index.pending,188)});
+t('Owner approved all 288 labels; none pending',()=>{assert.equal(index.approved,288);assert.equal(index.pending,0)});
 t('Unique ids and relative file paths, no injection',()=>{assert.equal(new Set(reg.assets.map(a=>a.asset_id)).size,288);assert.equal(new Set(reg.assets.map(a=>a.relative_path)).size,288)});
 t('Every group contains exactly 12 asset IDs',()=>{for(const g of index.groups)assert.equal(reg.assets.filter(a=>a.asset_id.split('_')[1]===g).length,12)});
 t('All 288 URLs resolve to pinned immutable binary release',()=>{
  for(const a of reg.assets){const out=lib.resolve(index,a.asset_id);assert.equal(out.ok,true);assert.equal(out.url,lib.ROOT+a.relative_path);assert.equal(out.assetId,a.asset_id);}
 });
-t('Correct book mapping stays pending and visual can still preview',()=>{
+t('Book label now owner approved while counting policy stays restrictive',()=>{
  const result=lib.resolve(index,'KL_SH03_006');
- assert.equal(result.status,'OWNER_SIGNOFF_PENDING');assert.equal(result.label,'sách giáo khoa đóng');
+ assert.equal(result.status,'LABEL_APPROVED');assert.equal(result.label,'sách giáo khoa đóng');assert.equal(result.renderPolicy,'OBJECT_ONLY_NO_COUNT_ASSUMPTION');
 });
 t('Approved candy mapping remains unchanged',()=>assert.equal(lib.resolve(index,'KL_SH02_010').status,'LABEL_APPROVED'));
 t('No ID and invalid ID return typed safe result',()=>{
