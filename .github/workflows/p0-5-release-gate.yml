@@ -1,0 +1,40 @@
+name: P0.5 Release Gate (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-5-release-gate-*'
+    paths:
+      - 'thu-nghiem/p0-5/**'
+      - '.github/workflows/p0-5-release-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inherited FULL_SAFE offline QA
+        run: node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: Reuse original B20 all-six-session regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: P0.5 Release Gate contract negative tests
+        run: node thu-nghiem/p0-5/kiem-thu-release-gate.cjs
+      - name: Assert incomplete evidence MUST block release
+        run: |
+          set -euo pipefail
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json > "$RUNNER_TEMP/p0-5-gate.json"; then
+            echo "FAIL: missing independent evidence was incorrectly released"
+            exit 1
+          fi
+          node -e "const fs=require('fs');const e=JSON.parse(fs.readFileSync(process.argv[1]));if(e.releaseReady!==false||e.status!=='RELEASE_BLOCKED'||e.gates.STATIC.status!=='PASS') process.exit(1);console.log(JSON.stringify({status:e.status,releaseReady:e.releaseReady,gates:e.gates}))" "$RUNNER_TEMP/p0-5-gate.json"
+      - name: Confirm tracked files unchanged
+        run: test -z "$(git status --porcelain --untracked-files=no)"
