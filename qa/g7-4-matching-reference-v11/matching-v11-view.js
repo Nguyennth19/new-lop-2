@@ -29,7 +29,8 @@
    if(side==='right')b.append(anchor);
    const body=doc.createElement('span');body.className='g74-match-content';body.append(text);
    if(item.content.assetId){
-    const asset=typeof opts.resolveAsset==='function'?opts.resolveAsset(item.content.assetId):null;
+    let asset=null;
+    try{asset=typeof opts.resolveAsset==='function'?opts.resolveAsset(item.content.assetId):null}catch(_){asset=null}
     if(asset && typeof asset.url==='string'&&/^https:\/\//.test(asset.url)){
      const img=doc.createElement('img');img.src=asset.url;img.alt=item.content.alt||item.content.text||'Hình minh họa';
      img.loading='lazy';img.className='g74-match-asset';body.append(img);
@@ -115,7 +116,7 @@
     }
     // Cancel pending click only for pointer-derived click. Reset in a microtask
     // after browser click dispatch; next user action should not be suppressed.
-    Promise.resolve().then(()=>{suppressClick=false});
+    setTimeout(()=>{suppressClick=false},0);
    }
    update();
   };
