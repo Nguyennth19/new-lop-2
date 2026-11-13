@@ -1,0 +1,57 @@
+{
+  "schema_version": "kidlearn-variant-visual-intent-v1",
+  "lesson_id": "tv_b03_visual_demo",
+  "subjectArea": "tieng_viet",
+  "mode": "STAGING_DEMO_ONLY",
+  "questions": [
+    {
+      "question_id": "TV_DEMO_001",
+      "lesson_id": "tv_b03_visual_demo",
+      "type": "vocabulary",
+      "prompt": "Bé đi xe đạp đến trường.",
+      "visualIntent": "decorative",
+      "quantityMode": "symbolic",
+      "subject": "xe đạp",
+      "semanticTags": [
+        "xe đạp"
+      ]
+    },
+    {
+      "question_id": "TV_DEMO_002",
+      "lesson_id": "tv_b03_visual_demo",
+      "type": "vocabulary",
+      "prompt": "Bé chuẩn bị chiếc ba lô.",
+      "visualIntent": "decorative",
+      "quantityMode": "symbolic",
+      "subject": "ba lô",
+      "semanticTags": [
+        "ba lô"
+      ]
+    },
+    {
+      "question_id": "TV_DEMO_003",
+      "lesson_id": "tv_b03_visual_demo",
+      "type": "counting",
+      "prompt": "Vẽ chính xác ba quả dưa hấu.",
+      "visualIntent": "counting",
+      "quantityMode": "exact",
+      "requestedCount": 3,
+      "subject": "dưa hấu",
+      "semanticTags": [
+        "dưa hấu"
+      ]
+    },
+    {
+      "question_id": "TV_DEMO_004",
+      "lesson_id": "tv_b03_visual_demo",
+      "type": "vocabulary",
+      "prompt": "Trong tranh có xe đạp và ba lô.",
+      "visualIntent": "decorative",
+      "quantityMode": "symbolic",
+      "semanticTags": [
+        "xe đạp",
+        "ba lô"
+      ]
+    }
+  ]
+}
