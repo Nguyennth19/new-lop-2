@@ -180,8 +180,8 @@
       "countReviewDate": "2026-11-13",
       "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
       "aliasesVi": [
-        "trái chuối",
-        "nải chuối"
+        "quả chuối",
+        "nải chuối (KHÁC ĐƠN VỊ)"
       ]
     },
     {
@@ -259,8 +259,8 @@
       "countReviewDate": "2026-11-13",
       "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
       "aliasesVi": [
-        "bó nho",
-        "quả nho"
+        "chùm nho",
+        "quả nho (KHÁC ĐƠN VỊ)"
       ]
     },
     {
@@ -287,7 +287,7 @@
       "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
       "aliasesVi": [
         "trái dưa hấu",
-        "miếng dưa hấu"
+        "miếng dưa hấu (KHÁC ĐƠN VỊ)"
       ]
     },
     {
@@ -652,8 +652,8 @@
       "countReviewDate": "2026-11-13",
       "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
       "aliasesVi": [
-        "đóa hoa hướng dương",
-        "cây hoa hướng dương"
+        "bông hoa hướng dương",
+        "đóa hoa hướng dương"
       ]
     },
     {
@@ -1083,7 +1083,7 @@
       "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
       "aliasesVi": [
         "cái bánh quy",
-        "miếng bánh quy"
+        "chiếc bánh quy"
       ]
     },
     {
@@ -1137,7 +1137,7 @@
       "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
       "aliasesVi": [
         "chiếc bánh mì",
-        "lát bánh mì"
+        "lát bánh mì (KHÁC ĐƠN VỊ)"
       ]
     },
     {
@@ -1243,7 +1243,8 @@
       "countReviewDate": "2026-11-13",
       "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
       "aliasesVi": [
-        "trái trứng"
+        "quả trứng",
+        "trứng"
       ]
     }
   ],
