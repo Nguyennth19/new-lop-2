@@ -12,9 +12,17 @@ function resolve(request,env){
  const base={ok:true,status:'RESOLVED',mode,exerciseType:type.id,questionId:request.questionId||null,quantitySemantics:'NONE',answerDisclosure:'NONE',runtimeEnabled:false};
  if(mode==='DECORATIVE')return {...base,sourceKind:'NONE',assetId:null,renderRequired:false};
  if(MEASURE.has(type.id)){
-  if(!request.mathScene||request.mathScene.verified!==true||!request.mathScene.geometryType)return blocked('MATH_SVG_DATA_REQUIRED');
+  const scene=request.mathScene,approved=env.mathScenes?.find(x=>x.id===scene?.sceneId);
+  if(!scene||!approved||approved.qaStatus!=='APPROVED_TEST'||approved.geometryType!==scene.geometryType||
+    approved.exerciseType!==type.id)return blocked('APPROVED_MATH_SCENE_REQUIRED');
+  if(scene.geometryType==='CLOCK'&&(!Number.isInteger(scene.hour)||scene.hour<1||scene.hour>12||
+      !Number.isInteger(scene.minute)||scene.minute<0||scene.minute>59))
+    return blocked('INVALID_CLOCK_PARAMETERS');
+  if(scene.geometryType==='TRIANGLE'&&(!Array.isArray(scene.points)||scene.points.length!==3||
+      scene.points.some(p=>!Array.isArray(p)||p.length!==2||p.some(v=>typeof v!=='number'||!Number.isFinite(v)||Math.abs(v)>1000))))
+    return blocked('INVALID_GEOMETRY_PARAMETERS');
   return {...base,sourceKind:'PARAMETRIC_SVG',renderMode:'PARAMETRIC_SVG',assetId:null,
-   mathScene:request.mathScene,quantitySemantics:'GEOMETRIC_EXACT',renderRequired:true};
+   mathScene:scene,quantitySemantics:'GEOMETRIC_EXACT',renderRequired:true};
  }
  if(mode==='EXACT_COUNT'){
   if(request.directCountIntent!==true)return blocked('DIRECT_COUNT_INTENT_REQUIRED');
