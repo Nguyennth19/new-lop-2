@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "g7-4-column-calc-reference-v1.1-qa-evidence",
+  "asOf": "2026-11-13",
+  "status": "SOURCE_QA_PASS_WITH_PEDAGOGIC_DEFECT",
+  "branch": "test/g7-4-column-calc-reference-v11-source-qa-20261113",
+  "source": {
+    "path": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "driveId": "1YFJqgjEuW4C8VxaHkB02PG2pfW5PYqcb",
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "sizeBytes": 131767,
+    "immutable": true
+  },
+  "ci": {
+    "runId": 43463259605,
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43463259605",
+    "status": "SUCCESS",
+    "viewports": [
+      320,
+      360,
+      390,
+      768,
+      1024
+    ],
+    "testMethod": "Inject QA-only browser script into temporary copy, archive unchanged",
+    "sourceShaPassed": true,
+    "columnsPassed": true,
+    "rightToLeftFocusPassed": true,
+    "carryTogglePreservesDigits": true,
+    "fixedHundredsDigitIncorrectRejected": true,
+    "correctDigitsAccepted": true,
+    "horizontalOverflow": false,
+    "defectReproducedAllViewports": true
+  },
+  "verifiedExamples": [
+    {
+      "operandA": 47,
+      "operandB": 25,
+      "expected": 72,
+      "profile": "PV100",
+      "status": "PASS_FIXED_DEMO"
+    },
+    {
+      "operandA": 356,
+      "operandB": 128,
+      "expected": 484,
+      "profile": "PV1000",
+      "status": "PASS_FIXED_DEMO"
+    }
+  ],
+  "finding": {
+    "id": "QA-CC-001",
+    "severity": "PEDAGOGIC_POLICY_BLOCKER",
+    "observed": "Correct result digits pass even when an explicitly displayed required carry button is not active.",
+    "codeCause": "checkCurrentExercise validates t2 digit slots only; carry buttons tracked in t2Carries do not contribute to scoring.",
+    "resolutionNeeded": "Owner decides whether carry is optional guidance or mandatory assessed step; implement policy only in new version, preserve source."
+  },
+  "limitations": {
+    "genericThreeDigitVariantCoverage": false,
+    "threeDigitSubtractionUI": false,
+    "fourDigit1000ResultUI": false,
+    "ownerPedagogicApproval": false,
+    "productionReleaseApproved": false
+  },
+  "release": {
+    "mainChanged": false,
+    "webappChanged": false,
+    "advancedOriginalFound": true,
+    "v2PlaceValueFallbackOnly": true,
+    "ownerSignoffPending": true
+  }
+}
