@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fb.handover-state.v1",
   "phase": "F-B",
-  "status": "IN_PROGRESS",
+  "status": "FB3_TECHNICAL_PASS_TEST_ONLY",
   "createdAt": "2026-11-13T22:36:01.202+07:00",
   "branch": "test/p0-6-fb-from-fa-20261113",
   "sourceBranch": "test/p0-6-fa-policy-pedagogy-20261113",
@@ -26,18 +26,19 @@
     "toan_b21": "INHERITED_ACCEPTED_ISOLATED_TEST",
     "toan_b24": "PENDING_INDEPENDENT_QA",
     "tieng_viet_doc_hieu": "PENDING_INDEPENDENT_QA",
-    "FB3": "IN_PROGRESS"
+    "FB3": "TECHNICAL_PASS_FOR_ISOLATED_TEST",
+    "toan_b20": "INDEPENDENT_ACCEPTED_TEST_ONLY"
   },
-  "recoveryPoint": "Verified FB2 HEAD 6287d8ac524ddc434a5bbdd6c522db8786c5be89; B20 source blob b14d556c5deeb561106e0c81f275387bef538842; approval H2 separate. No new trust adapter yet.",
+  "recoveryPoint": "Last verified browser QA run 43461674746 SUCCESS at 42f7d47dfb9168e34f10b4da4371e8ca224dd1bc, artifact 14055893099; governance run 43461583845 SUCCESS; final report 4eb36fd582fb1c49a6c8168051780276ed740eca, execution log affd466dddd89e7c5025b042d1af5ea74912aa1f. Verify final HEAD and CI after this checkpoint.",
   "restrictions": [
     "No MAIN/test-theo-main/Web App TEST V6 edits",
     "No Apps Script deployment or student data/grades/stars",
     "No production release",
     "Web App V6 integration not certified"
   ],
-  "nextAction": "F-B.3: independently validate next eligible lesson policy/skills/renderer/QA before creating its trust anchor; no Web App V6 deploy",
-  "updatedAt": "2026-11-13T23:04:00+07:00",
-  "currentOperation": "F-B.3: B20 independent H1 immutable source H2 owner pedagogy and renderer/grade QA; gate remains locked until separate browser QA",
+  "nextAction": "Proceed to F-C TEST release governance and end-to-end P0 gates only after reviewing F-B.3 evidence; no Apps Script Version 6 deployment without separate owner authorization.",
+  "updatedAt": "2026-11-13T23:22:21.460+07:00",
+  "currentOperation": "F-B.3 verified B20 independent second-lesson onboarding: 30/30 Chromium desktop/mobile and separate trust adapter; no live Apps Script V6 deployment",
   "evidence": {
     "fbRunId": 43455957462,
     "fbSourceCommit": "900edeebb5c88518312596aa3e7d784415d9c4b4",
@@ -51,6 +52,20 @@
     "fb2RunId": 43459000348,
     "fb2RunSha": "70c4eedd27b8e41bcccb71cf355cbe686480d26e",
     "fb2RunConclusion": "success",
-    "fb2TestGroups": 12
+    "fb2TestGroups": 12,
+    "fb3": {
+      "independentBrowserRunId": 43461674746,
+      "independentBrowserRunSha": "42f7d47dfb9168e34f10b4da4371e8ca224dd1bc",
+      "independentBrowserConclusion": "success",
+      "browserArtifactId": 14055893099,
+      "registryRunId": 43461583845,
+      "registryConclusion": "success",
+      "h1SourceGitBlob": "b14d556c5deeb561106e0c81f275387bef538842",
+      "h2ApprovalGitBlob": "7faaf36b5b74f0ae233e8e3060b47b3b3123e74c",
+      "desktopQuestionsPassed": 30,
+      "mobileQuestionsPassed": 30,
+      "approvedLessonCountForIsolatedTest": 2,
+      "lockedPlaceholderLessons": 2
+    }
   }
 }
