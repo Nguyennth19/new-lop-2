@@ -56,14 +56,22 @@
       "mobile_friendly_visual_style"
     ],
     "claimOfByteIdenticalAdvancedRenderer": false,
-    "originalAdvancedHTMLLocated": false
+    "originalAdvancedHTMLLocated": true,
+    "advancedSourcePath": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "advancedSourceSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "sourceByteLength": 131767,
+    "sourceOrigin": "Exact HTML from Appendix A of KL_G7_10_DANG_BAI_V2_1_KEM_PHU_LUC_DIEU_PHOI_HINH_ANH_20261113.md, Drive file 1YFJqgjEuW4C8VxaHkB02PG2pfW5PYqcb",
+    "advancedSourceQARunId": 43462984291,
+    "threeColumnDirectBrowserQa": "PASS_ON_HARDCODED_356_PLUS_128",
+    "carryGrading": "KNOWN_GAP_RESULT_DIGITS_GRADED_BUT_CARRY_TOGGLE_IGNORED"
   },
   "release": {
     "mainUnchanged": true,
     "appsScriptProjectUnchanged": true,
     "runtimeFlagOff": true,
     "advancedRendererPromotedToCanonical": false,
-    "legacyG6SnapshotPreserved": true
+    "legacyG6SnapshotPreserved": true,
+    "advancedReferenceStatus": "SOURCE_VERIFIED_INTERACTION_QA_PASS_OWNER_SIGNOFF_AND_CARRY_GRADING_FIX_PENDING"
   },
-  "freezeRule": "Never overwrite snapshot. Upgrade status only after original advanced HTML/CSS/JS/config source found, SHA validated and QA passes."
+  "freezeRule": "Original advanced HTML immutable by SHA256. Do not claim a generalized 1000 renderer or strict carry-grading approval based on one fixed 356+128 demo."
 }
