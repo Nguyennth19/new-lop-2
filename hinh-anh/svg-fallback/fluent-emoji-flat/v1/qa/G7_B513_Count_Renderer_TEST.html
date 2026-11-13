@@ -27,18 +27,18 @@ code{font-size:12px;overflow-wrap:anywhere}footer{font-size:12px;color:#62788a;m
 <div>46 SVG nhúng trực tiếp · 45 đơn vị đếm được xác nhận · 1 hình chỉ minh họa · Không nối Web App</div></header>
 <main><section class="panel">Kiểm thử bố cục <b>1–50 hình</b>, tương thích màn hình nhỏ, khoảng cách, nhóm và so sánh. Chọn đơn vị đúng thì mới dựng hình theo số lượng; <b>đơn vị khác sẽ bị chặn</b>. Ví dụ một SVG chùm nho = một <b>chùm</b>, không phải một quả nho.</section>
 <section class="panel controls">
-<label>Dạng bài <select id="type"><option value="count">Đếm chính xác</option><option value="groups">Chia nhóm</option><option value="compare">So sánh hai nhóm</option><option value="illustration">Minh họa (không số)</option></select></label>
+<label>Dạng bài <select id="type"><option value="count">Đếm chính xác</option><option value="groups">Chia nhóm</option><option value="compare">So sánh hai nhóm</option><option value="add">Phép cộng</option><option value="subtract">Phép trừ</option><option value="illustration">Minh họa (không số)</option></select></label>
 <label>Hình <select id="asset"></select></label>
 <label>Đơn vị (bắt buộc khi đếm) <input id="unit" value="quả"></label>
 <label>Số lượng (1–50) <input id="quantity" type="number" min="1" max="50" step="1" value="5"></label>
-<label>Chia nhóm mỗi <input id="groupSize" type="number" min="1" max="50" value="3"></label>
+<label>Nhóm 2 / số trừ <input id="groupSize" type="number" min="1" max="50" value="3"></label>
 <label>Màn hình mô phỏng <select id="width"><option value="320">320 px</option><option value="360" selected>360 px</option><option value="390">390 px</option><option value="768">768 px</option><option value="1024">1024 px</option></select></label>
 <button id="preview">Dựng hình TEST</button><button id="report">Xuất biên bản</button>
 </section><section class="panel"><h2>Trình xem thực tế</h2><div id="status" class="small">Chưa dựng</div><div id="stage" class="stage"></div></section>
 <section class="panel"><h2>Các tình huống kiểm định</h2><div class="grid">
 <div><b>Toán – Đếm vật đơn</b><div class="small">5 quả táo / 12 con thỏ / 50 bút chì</div></div>
 <div><b>Toán – Chia nhóm</b><div class="small">12 chiếc bút chì chia thành nhóm 3</div></div>
-<div><b>Toán – So sánh</b><div class="small">Nhóm 8 quả táo và nhóm 5 quả táo</div></div>
+<div><b>Toán – Cộng trừ, so sánh</b><div class="small">7 + 5 con thỏ; 9 - 4 quả táo; so sánh 8 và 5</div></div>
 <div><b>Rủi ro ngữ nghĩa</b><div class="small">Nho = chùm; anh đào = chùm; dưa = miếng; sách chỉ minh họa</div></div></div></section>
 <section class="panel"><h2>Cổng QA</h2><div id="checks" class="checklist"></div></section>
 <footer>TEST_ONLY; nguồn Microsoft Fluent Emoji Flat, MIT; SVG gốc sha-pinned. Không thay MAIN/GAS, không tạo câu hỏi hoặc cập nhật điểm.</footer></main>
@@ -90,9 +90,21 @@ const CountRendererG74 = (() => {
     const scene=plan({...options,groupSize:options?.groupSize});
     return scene.ok?{...scene,questionType:'GROUPING'}:scene;
   }
-  return {plan,planComparison,planGrouping};
+  function planArithmetic({registry,assetId,requestedUnit,viewportWidth=360,operator,left,right}={}){
+    if(!['+','-'].includes(operator)||!isInt(left)||!isInt(right)||left<1||right<1)
+      return blocked('INVALID_ARITHMETIC');
+    const total=operator==='+'?left+right:left-right;
+    if(total<0||total>50||left>50||right>50)return blocked('ARITHMETIC_OUT_OF_RANGE');
+    const initial=plan({registry,assetId,requestedCount:left,requestedUnit,viewportWidth});
+    const second=plan({registry,assetId,requestedCount:right,requestedUnit,viewportWidth});
+    if(!initial.ok||!second.ok)return blocked('ARITHMETIC_ASSET_OR_UNIT_BLOCKED');
+    return {ok:true,status:'READY_TO_RENDER',operator,left,right,total,
+      countUnit:requestedUnit,initial,second,removedCount:operator==='-'?right:0,
+      semantics:operator==='+'?'MERGE_GROUPS':'REMOVE_FROM_FIRST_GROUP',
+      mode:'TEST_ONLY',runtimeEnabled:false};
+  }
+  return {plan,planComparison,planGrouping,planArithmetic};
 })();
-
 const $=id=>document.getElementById(id);
 const assetSelect=$('asset');
 for(const a of registry.assets){const o=document.createElement('option');o.value=a.assetId;o.textContent=a.canonicalPhrase+' ['+a.assetId+']'+(a.status==='ILLUSTRATION_ONLY'?' · minh họa':'');assetSelect.append(o)}
@@ -115,13 +127,14 @@ const stage=$('stage');stage.replaceChildren();stage.style.setProperty('--stage-
 let result;
 if(mode==='illustration')result=CountRendererG74.plan({registry,assetId,mode:'illustration'});
 else if(mode==='compare')result=CountRendererG74.planComparison([{registry,assetId,requestedCount:quantity,requestedUnit,viewportWidth},{registry,assetId,requestedCount:Math.max(1,quantity-3),requestedUnit,viewportWidth}]);
+else if(mode==='add'||mode==='subtract')result=CountRendererG74.planArithmetic({registry,assetId,requestedUnit,viewportWidth,operator:mode==='add'?'+':'-',left:quantity,right:Number($('groupSize').value)});
 else if(mode==='groups')result=CountRendererG74.planGrouping({registry,assetId,requestedCount:quantity,requestedUnit,viewportWidth,groupSize:Number($('groupSize').value)});
 else result=CountRendererG74.plan({registry,assetId,requestedCount:quantity,requestedUnit,viewportWidth});
 if(!result.ok){$('status').textContent='BLOCKED · '+(result.code||'COMPARISON_ITEM_BLOCKED');$('status').className='error';resultHistory.push({assetId,mode,status:'BLOCKED',reason:result.code||'COMPARISON_ITEM_BLOCKED'});return}
-$('status').textContent='PASS · '+mode+' · '+(result.totalObjects??result.totals?.join(' và ')??'Minh họa')+' · '+viewportWidth+' px';$('status').className='good';
-for(const s of (result.scenes||[result]))stage.append(renderOne(s));
+$('status').textContent='PASS · '+mode+' · '+(result.totalObjects??result.total??result.totals?.join(' và ')??'Minh họa')+' · '+viewportWidth+' px';$('status').className='good';
+if(result.initial&&result.second){stage.append(renderOne(result.initial));stage.append(dom('div',result.operator==='+'?'Gộp thêm nhóm thứ hai:':'Bỏ đi nhóm thứ hai:','scene-head'));stage.append(renderOne(result.second));stage.append(dom('div',result.left+' '+result.operator+' '+result.right+' = '+result.total+' '+result.countUnit,'scene-footer'))}else for(const one of (result.scenes||[result]))stage.append(renderOne(one));
 resultHistory.push({assetId,mode,status:'PASS',count:result.totalObjects??null,width:viewportWidth});}
-const samples=[['5 quả táo',CountRendererG74.plan({registry,assetId:'red_apple',requestedCount:5,requestedUnit:'quả',viewportWidth:320})],['50 cây bút',CountRendererG74.plan({registry,assetId:'pencil',requestedCount:50,requestedUnit:'chiếc',viewportWidth:360})],['12 chia 3',CountRendererG74.planGrouping({registry,assetId:'pencil',requestedCount:12,requestedUnit:'chiếc',viewportWidth:390,groupSize:3})],['8 và 5 quả táo',CountRendererG74.planComparison([{registry,assetId:'red_apple',requestedCount:8,requestedUnit:'quả',viewportWidth:768},{registry,assetId:'red_apple',requestedCount:5,requestedUnit:'quả',viewportWidth:768}])],['Không đếm sách',CountRendererG74.plan({registry,assetId:'books',requestedCount:3,requestedUnit:'bộ'})],['Không đổi chùm thành quả',CountRendererG74.plan({registry,assetId:'grapes',requestedCount:3,requestedUnit:'quả'})]].map(([name,result])=>({name,result}));
+const samples=[['5 quả táo',CountRendererG74.plan({registry,assetId:'red_apple',requestedCount:5,requestedUnit:'quả',viewportWidth:320})],['50 chiếc bút',CountRendererG74.plan({registry,assetId:'pencil',requestedCount:50,requestedUnit:'chiếc',viewportWidth:360})],['12 chia 3',CountRendererG74.planGrouping({registry,assetId:'pencil',requestedCount:12,requestedUnit:'chiếc',viewportWidth:390,groupSize:3})],['8 và 5 quả táo',CountRendererG74.planComparison([{registry,assetId:'red_apple',requestedCount:8,requestedUnit:'quả',viewportWidth:768},{registry,assetId:'red_apple',requestedCount:5,requestedUnit:'quả',viewportWidth:768}])],['Cộng 7+5 con thỏ',CountRendererG74.planArithmetic({registry,assetId:'rabbit',requestedUnit:'con',operator:'+',left:7,right:5,viewportWidth:320})],['Trừ 9-4 quả táo',CountRendererG74.planArithmetic({registry,assetId:'red_apple',requestedUnit:'quả',operator:'-',left:9,right:4,viewportWidth:360})],['Không đếm sách',CountRendererG74.plan({registry,assetId:'books',requestedCount:3,requestedUnit:'bộ'})],['Không đổi chùm thành quả',CountRendererG74.plan({registry,assetId:'grapes',requestedCount:3,requestedUnit:'quả'})]].map(([name,result])=>({name,result}));
 for(const x of samples){const good=x.name.startsWith('Không')?!x.result.ok:x.result.ok;const d=dom('div',(good?'✓ ':'✗ ')+x.name+' · '+(good?'PASS':'FAIL'));d.style.color=good?'#227447':'#b4322e';$('checks').append(d)}
 $('report').onclick=()=>{const data={test:'G7.4-B.5.13',policy:'TEST_ONLY',decisions:registry.approvedCount,illustrationOnly:registry.illustrationOnlyCount,checks:samples.map(x=>({name:x.name,ok:x.name.startsWith('Không')?!x.result.ok:x.result.ok})),manualRuns:resultHistory,generatedAt:new Date().toISOString()};const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download='G7_B513_RENDERER_VISUAL_QA.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)};
 draw();
