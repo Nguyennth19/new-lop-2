@@ -1,0 +1,81 @@
+/* UI20-02A | Component-only enhancement from lop-2-new.
+ * Scope #mathFullScreen ONLY. No imported Tailwind, Baloo, Quicksand, or global selectors.
+ * Do not change header/sidebar/dock/results or baseline styles. 
+ */
+#mathFullScreen .ml-word-card.ml-word-structured{
+ border-color:#f6cd55;background:#fff;box-shadow:0 1px 2px #0f172a08;
+}
+#mathFullScreen .ml-word-structured .ml-word-head{
+ display:flex;align-items:flex-start;gap:15px;
+}
+#mathFullScreen .ml-word-structured .ml-word-head p{
+ margin:0;line-height:1.75;font-size:15px;color:#182438;font-weight:650;
+}
+#mathFullScreen .ml-word-structured .ml-word-summary{
+ background:#fffbeb;border:1.5px dashed #f2bb29;border-radius:14px;
+ padding:10px 13px;color:#263144;font-size:13px;line-height:1.7;
+}
+#mathFullScreen .ml-word-structured .ml-word-summary b{
+ color:#9a5300;text-decoration:underline;text-underline-offset:2px;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper,
+#mathFullScreen .ml-vertical-paper .ml-vert-row.answers,
+#mathFullScreen .ml-puzzle-paper .ml-vert-row:last-child{
+ background-color:#fff;
+ background-image:
+  linear-gradient(to right,rgba(56,189,248,.16) 1px,transparent 1px),
+  linear-gradient(to bottom,rgba(56,189,248,.16) 1px,transparent 1px),
+  linear-gradient(to right,rgba(186,230,253,.12) .5px,transparent .5px),
+  linear-gradient(to bottom,rgba(186,230,253,.12) .5px,transparent .5px);
+ background-size:28px 28px,28px 28px,7px 7px,7px 7px;
+ background-position:-1px -1px;
+ border-color:#b8e4fc;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper{
+ border-radius:14px;padding:16px 18px;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper h4{
+ margin:0 0 13px;font-size:15px;font-weight:850;
+ color:#162338;text-underline-offset:3px;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper p{
+ margin:0 0 9px;font-size:14px;font-weight:700;line-height:1.65;
+}
+#mathFullScreen .ml-word-calc-line{
+ display:flex;align-items:center;gap:9px;flex-wrap:wrap;min-width:0;
+ font-size:13px;font-weight:750;color:#172033;
+}
+#mathFullScreen .ml-word-calc-line>strong{white-space:nowrap}
+#mathFullScreen .ml-word-structured .ml-word-calc{
+ flex-wrap:wrap;gap:6px;align-items:center;min-width:0;
+}
+#mathFullScreen .ml-word-structured .ml-word-calc .ml-input,
+#mathFullScreen .ml-word-structured .ml-word-result .ml-input{
+ border:0;border-bottom:2px dashed #63b9e8;border-radius:5px 5px 0 0;
+ height:39px;background:transparent;box-shadow:none;
+ color:#1d4ed8;font-family:Inter,Arial,sans-serif!important;
+}
+#mathFullScreen .ml-word-structured .ml-word-calc .ml-input:focus,
+#mathFullScreen .ml-word-structured .ml-word-result .ml-input:focus{
+ border-bottom:2px solid #0284c7;background:#fef9c3;
+ outline:2px solid #bae6fd;outline-offset:0;
+}
+#mathFullScreen .ml-word-structured .ml-word-result{
+ border-top:1px solid #c7e8ff;padding-top:12px;margin-top:12px;flex-wrap:wrap;
+}
+#mathFullScreen .ml-vertical-paper .ml-vert-row.answers{
+ border-radius:12px;min-height:54px;
+}
+#mathFullScreen .ml-vertical-paper .ml-vertical-matrix{margin:10px auto}
+#mathFullScreen .ml-vertical-paper .ml-vert-note{letter-spacing:.01em}
+#mathFullScreen .ml-puzzle-paper .ml-puzzle{padding:12px 0}
+#mathFullScreen .ml-puzzle-paper .ml-vert-row:last-child{
+ border-radius:10px;margin-top:8px;min-height:54px;
+}
+@media(max-width:760px){
+ #mathFullScreen .ml-word-structured .ml-word-head{flex-direction:column}
+ #mathFullScreen .ml-word-structured .ml-word-calc-line{align-items:flex-start}
+ #mathFullScreen .ml-word-structured .ml-graph-paper{padding:12px 10px}
+ #mathFullScreen .ml-word-structured .ml-word-calc .ml-input{width:43px}
+ #mathFullScreen .ml-word-structured .ml-word-result .ml-input{width:67px}
+}
