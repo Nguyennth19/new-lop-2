@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs');
-const {plan,planComparison,planGrouping}=require('./count-renderer-core.cjs');
+const {plan,planComparison,planGrouping,planArithmetic}=require('./count-renderer-core.cjs');
 const registry=JSON.parse(fs.readFileSync('qa/g7-4-b5-13-count-renderer-contract.v1.json','utf8'));
 const m=JSON.parse(fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json','utf8'));
 let checks=0;function eq(a,b,msg){assert.deepEqual(a,b,msg);checks++}
@@ -47,4 +47,12 @@ eq(plan({registry:tamper,assetId:'red_apple',requestedCount:3,requestedUnit:'qu�
 const tamper2=structuredClone(registry);tamper2.assets.find(x=>x.assetId==='red_apple').objectsPerAsset=2;
 eq(plan({registry:tamper2,assetId:'red_apple',requestedCount:3,requestedUnit:'quả'}).ok,false);
 eq(registry.runtimeEnabled,false);eq(registry.productionActivation,false);eq(registry.countInference,false);
+const plus=planArithmetic({registry,assetId:'rabbit',requestedUnit:'con',operator:'+',left:7,right:5,viewportWidth:320});
+eq(plus.ok,true);eq(plus.total,12);eq(plus.initial.totalObjects,7);eq(plus.second.totalObjects,5);
+const minus=planArithmetic({registry,assetId:'red_apple',requestedUnit:'quả',operator:'-',left:9,right:4,viewportWidth:360});
+eq(minus.ok,true);eq(minus.total,5);eq(minus.removedCount,4);
+eq(planArithmetic({registry,assetId:'rabbit',requestedUnit:'con',operator:'-',left:3,right:5}).ok,false);
+eq(planArithmetic({registry,assetId:'books',requestedUnit:'bộ',operator:'+',left:3,right:5}).ok,false);
+eq(planArithmetic({registry,assetId:'rabbit',requestedUnit:'con',operator:'+',left:45,right:9}).ok,false);
+eq(planArithmetic({registry,assetId:'rabbit',requestedUnit:'quả',operator:'+',left:4,right:2}).ok,false);
 console.log('PASS '+checks+'/'+checks+' assertions; count grid 45 assets × 6 viewports × 5 counts; special units and fail-closed');
