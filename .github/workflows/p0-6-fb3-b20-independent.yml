@@ -31,6 +31,8 @@ jobs:
         run: node thu-nghiem/p0-6/fb/build-fb3-b20-preview.cjs
       - name: Test real Chromium desktop/mobile 30/30
         run: node thu-nghiem/p0-6/fb/kiem-thu-fb3-b20-browser.cjs
+      - name: Export B20-specific version and rollback receipt
+        run: node thu-nghiem/p0-6/fb/xuat-bien-nhan-fb3-b20.cjs
       - name: Store B20 browser evidence (30 days)
         if: always()
         uses: actions/upload-artifact@v4
