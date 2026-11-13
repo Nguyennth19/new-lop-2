@@ -1,0 +1,30 @@
+name: P0.6 F-B Versioned TEST Governance (no deploy)
+on:
+  push:
+    branches:
+      - 'test/p0-6-fb-from-fa-20261113'
+    paths:
+      - 'thu-nghiem/p0-6/fb/**'
+      - 'thu-nghiem/p0-6/final-acceptance/FB_CURRENT_STATE.json'
+      - '.github/workflows/p0-6-fb-governance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fb-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inherited E03 validator
+        run: node thu-nghiem/p0-6/kiem-thu-math-variant-policy-v1.cjs
+      - name: Inherited deterministic policy generator
+        run: node thu-nghiem/p0-6/kiem-thu-policy-generator-v1.cjs
+      - name: Inherited multi-family composer
+        run: node thu-nghiem/p0-6/kiem-thu-multi-family-composer-v1.cjs
+      - name: Inherited F-A G5 renderer/grader bridge
+        run: node thu-nghiem/p0-6/final-acceptance/kiem-thu-b21-g5-compatibility.cjs
+      - name: F-B lessonVersion release gate and rollback
+        run: node thu-nghiem/p0-6/fb/kiem-thu-fb-release-governance.cjs
+      - name: Verify feature off and production blocked
+        run: echo 'F-B TEST ONLY / FEATURE_FLAG_DEFAULT_OFF / RELEASE_READY=false / NO DEPLOY'
