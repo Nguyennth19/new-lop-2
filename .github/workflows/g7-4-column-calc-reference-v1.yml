@@ -20,6 +20,23 @@ jobs:
           node --check qa/g7-4-column-calc-reference-v1/column-calc-contract.cjs
           node --check qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs
           node qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs
+      - name: G6 original renderer in Chromium mobile and desktop
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          FILE="file://$PWD/qa/g7-4-column-calc-reference-v1/G6_Original_Column_Renderer_Replay.html?auto=1"
+          for width in 320 360 390 768 1024; do
+            timeout 70s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=2500 --window-size="$width,900" --dump-dom "$FILE" > "/tmp/g7col_$width.html" 2> "/tmp/g7col_$width.log"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          for width in [320,360,390,768,1024]:
+              html=Path(f'/tmp/g7col_{width}.html').read_text()
+              assert 'data-qa-inputs="3"' in html,(width,'input count')
+              assert 'data-qa-grade="true"' in html,(width,'G6 grading mismatch')
+              assert 'data-qa-overflow="false"' in html,(width,'overflow')
+          print('PASS G6 original renderer in Chrome 5 widths, grading and no horizontal page overflow')
+          PY
       - name: Confirm advanced reference is not silently certified
         run: |
           node - <<'JS'
