@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "g7-4-c3-10-form-examples-v1",
+  "mode": "TEST_ONLY",
+  "evidence": "Rules reference archived 10-form set; fixtures are representative demo cases, not 10 different approved production lessons.",
+  "scenarios": [
+    {
+      "id": "T01",
+      "type": "NUMBER_BOND",
+      "mode": "EXACT_COUNT",
+      "desc": "Tách/gộp 7 con thỏ",
+      "request": {
+        "visualMode": "EXACT_COUNT",
+        "assetId": "rabbit",
+        "unit": "con",
+        "quantity": 7,
+        "directCountIntent": true
+      },
+      "expected": "REPEAT_SINGLE_FLAT",
+      "num": 7
+    },
+    {
+      "id": "T02",
+      "type": "COLUMN_CALC",
+      "mode": "DECORATIVE",
+      "desc": "Đặt tính 67+16; không ép thêm hình",
+      "request": {},
+      "expected": "NONE"
+    },
+    {
+      "id": "T03",
+      "type": "MATCHING_LINES",
+      "mode": "REPRESENTATIVE",
+      "desc": "Nối hình chiếc ba lô với từ",
+      "request": {
+        "conceptKey": "school_backpack"
+      },
+      "expected": "SINGLE_WEBP"
+    },
+    {
+      "id": "T04",
+      "type": "VISUAL_MCQ",
+      "mode": "REPRESENTATIVE",
+      "desc": "Chọn hình xe đạp",
+      "request": {
+        "conceptKey": "kids_bicycle"
+      },
+      "expected": "SINGLE_WEBP"
+    },
+    {
+      "id": "T05",
+      "type": "GEOMETRY_TANGRAM",
+      "mode": "EXACT_COUNT",
+      "desc": "Hình tam giác tham số, chính xác ngữ nghĩa",
+      "request": {
+        "mathScene": {
+          "verified": true,
+          "geometryType": "TRIANGLE",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      },
+      "expected": "PARAMETRIC_SVG"
+    },
+    {
+      "id": "T06",
+      "type": "DRAG_SORT",
+      "mode": "REPRESENTATIVE",
+      "desc": "Phân nhóm vật dụng học tập dùng hình ba lô",
+      "request": {
+        "conceptKey": "school_backpack"
+      },
+      "expected": "SINGLE_WEBP"
+    },
+    {
+      "id": "T07",
+      "type": "COMPARISON_SIGN",
+      "mode": "DECORATIVE",
+      "desc": "So sánh 38 và 43, không cần hình",
+      "request": {},
+      "expected": "NONE"
+    },
+    {
+      "id": "T08",
+      "type": "RULER_CLOCK",
+      "mode": "EXACT_COUNT",
+      "desc": "Đọc đồng hồ 07:30 bằng SVG tham số",
+      "request": {
+        "mathScene": {
+          "verified": true,
+          "geometryType": "CLOCK",
+          "hour": 7,
+          "minute": 30
+        }
+      },
+      "expected": "PARAMETRIC_SVG"
+    },
+    {
+      "id": "T09",
+      "type": "PICTOGRAPH",
+      "mode": "EXACT_COUNT",
+      "desc": "Biểu đồ 4 quả táo, 1 hình = 1 quả",
+      "request": {
+        "visualMode": "EXACT_COUNT",
+        "assetId": "red_apple",
+        "unit": "quả",
+        "quantity": 4,
+        "directCountIntent": true
+      },
+      "expected": "REPEAT_SINGLE_FLAT",
+      "num": 4
+    },
+    {
+      "id": "T10",
+      "type": "WORD_PROBLEM_3STEP",
+      "mode": "REPRESENTATIVE",
+      "desc": "B20 47 chiếc kẹo thêm 34 chiếc kẹo; chỉ hình đại diện",
+      "questionId": "VAR_B20_20261112_016",
+      "request": {
+        "conceptKey": "wrapped_candy"
+      },
+      "expected": "SINGLE_WEBP"
+    }
+  ],
+  "negativeCases": [
+    "countWithoutIntent",
+    "countWrongUnit",
+    "countTooLarge",
+    "bookComposite",
+    "representativeWithNumericCount",
+    "measurementWithoutScale",
+    "badZigzagTransformation",
+    "missingCuratedMatch"
+  ]
+}
