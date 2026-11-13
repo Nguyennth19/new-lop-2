@@ -2,9 +2,9 @@
 :root{font-family:Quicksand,"Segoe UI",system-ui,sans-serif;background:linear-gradient(120deg,#eff8f8,#fbf3c9);color:#2d3950}
 *{box-sizing:border-box}body{margin:0;min-width:0}button,input{font:inherit}#qaReport{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px}
 button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #f4aa12;outline-offset:2px}
-.shell{max-width:1120px;margin:0 auto;padding:16px 12px}.hero{padding:16px;background:#e1f2ff;border:2px solid #a4dbff;border-radius:18px;margin-bottom:12px}
+.shell{max-width:1120px;margin:0 auto;padding:16px 12px;min-width:0}.hero{padding:16px;background:#e1f2ff;border:2px solid #a4dbff;border-radius:18px;margin-bottom:12px}
 .hero h1{font-size:clamp(20px,3vw,27px);margin:2px 0 8px}.hero p{margin:0;line-height:1.65;font-size:14px}
-.pill{display:inline-flex;gap:5px;background:#fff8d3;border:1px solid #ffdf80;padding:5px 10px;border-radius:18px;color:#8a6200;font-size:11px;font-weight:750}
+.pill{max-width:100%;white-space:normal;overflow-wrap:anywhere;display:inline-flex;gap:5px;background:#fff8d3;border:1px solid #ffdf80;padding:5px 10px;border-radius:18px;color:#8a6200;font-size:11px;font-weight:750}
 .kl-col-v12-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,410px),1fr));gap:16px;align-items:stretch}
 .kl-col-v12-card{min-width:0;border:2px solid #9ed4ff;border-radius:22px;background:#f0f9ff;padding:clamp(12px,2vw,22px);display:flex;flex-direction:column;align-items:center;box-shadow:0 3px 10px #4a769a12}
 .kl-col-v12-card.indigo{border-color:#ada7ff;background:#f3f2ff}
@@ -29,7 +29,7 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid
 .kl-col-v12-controls .kl-col-v12-send{background:#3d9ddb;color:white;border-color:#3d9ddb}
 .kl-col-v12-status{font-size:12px;color:#46768d;min-height:22px;margin-top:8px;text-align:center}
 .notice{margin:12px 0;padding:12px;background:#fff;border:1px solid #d4e0eb;border-radius:13px;font-size:13px;line-height:1.6}
-.notice strong{color:#2f649a}.footer{font-size:12px;color:#57748d}
+.notice strong{color:#2f649a}.footer{font-size:12px;color:#57748d;overflow-wrap:anywhere;word-break:break-word}
 @media(max-width:430px){.shell{padding:8px}.kl-col-v12-card{padding:10px}.kl-col-v12-number-grid{grid-template-columns:27px repeat(calc(var(--math-cols) - 1),43px);gap:4px}.kl-col-v12-answer{width:41px}.kl-col-v12-digit{font-size:29px}}
 </style></head><body>
 <div class="shell"><section class="hero"><span class="pill">G7.4 · COLUMN_CALC_REFERENCE_V1.2 · TEST</span><h1>Đặt tính rồi tính — bộ dữ liệu biến thể</h1><p>Giao diện kế thừa mẫu Type 2 đã nghiệm thu nguồn, hỗ trợ phạm vi 100 và 1000; cộng/trừ, có nhớ và mượn qua số 0. Đây là trang kiểm định độc lập, không ghi điểm hoặc thay Web App.</p></section>
