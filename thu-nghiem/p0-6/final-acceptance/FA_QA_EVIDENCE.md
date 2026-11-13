@@ -18,3 +18,7 @@ JSON parsing, 4/2/2 and total 8, exactly 3 family IDs/4 sessions, no duplicate s
 | F-A 43447904122 | 2b3a3893226725b0e149811e0bea15e1fa3298cf | SUCCESS | Verified all steps: static safety audit, variant validator, policy generator, multi-family composer. Does not certify pedagogy |
 
 No changes to main, test-theo-main, Web App TEST Version 6, H.1 Bài 20 or student records. `RELEASE_READY=false`.
+
+## F-A.1 independently verified run
+- Run ID `43449443133` at SHA `7e8fa5906f8f9988e45ab2ec7b6ff2f22eecb487`: `success`; https://github.com/Nguyennth19/new-lop-2/actions/runs/43449443133. All job steps passed: F-A safety, E0.1 validator, E0.2 generator, E0.3 composer, B21 LV3 bridge-to-ten overlay proof, no-deployment marker.
+- **Scope limitation:** LV3 proof only in separate offline reasoning overlay, not in composer-generated student renderer. G5 BLOCKED, G7/G8 PENDING; no owner approval inferred. Policy decision packet created in commit `da082aa39f1d2975128e751c309f52fa466be69a`.
