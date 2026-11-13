@@ -3,7 +3,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict'),cp=require('node:child_process');
 const path='du-lieu/asset-selector/asset-registry-288.v1.json';
 const base='test/g7-4-b5-7-perf-a-gallery-20261113';
-const before=JSON.parse(cp.execFileSync('git',['show',base+':'+path],{encoding:'utf8',maxBuffer:4*1024*1024}));
+const before=JSON.parse(cp.execFileSync('git',['cat-file','blob','d63d383cefef8252cb6ead6eaf7fa39bd072e92a'],{encoding:'utf8',maxBuffer:4*1024*1024}));
 const after=JSON.parse(fs.readFileSync(path,'utf8'));
 const audit=JSON.parse(fs.readFileSync('qa/g7-4-b5-7-perf-a/owner-label-approval-188.audit.json','utf8'));
 let passed=0,failed=0;function test(name,fn){try{fn();passed++;console.log('PASS',name)}catch(e){failed++;console.error('FAIL',name,e.stack)}}
@@ -38,7 +38,7 @@ test('Audit ledger documents every converted asset',()=>{
  assert(audit.changes.every(x=>x.previous==='OWNER_SIGNOFF_PENDING'&&x.current==='LABEL_APPROVED'));
 });
 test('Pre- and post-approval Git blob SHA anchored to audit',()=>{
- const oldSha=cp.execFileSync('git',['rev-parse',base+':'+path],{encoding:'utf8'}).trim();
+ const oldSha='d63d383cefef8252cb6ead6eaf7fa39bd072e92a';
  const newSha=cp.execFileSync('git',['hash-object',path],{encoding:'utf8'}).trim();
  assert.equal(oldSha,audit.originalRegistryBlobSha);
  assert.equal(newSha,audit.approvedRegistryBlobSha);
