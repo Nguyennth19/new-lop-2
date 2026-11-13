@@ -1,0 +1,38 @@
+{
+  "schema_version": "kidlearn-b58-count-composition-policy-v1",
+  "mode": "STAGING_ONLY",
+  "enabled": false,
+  "releaseCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "maxTotal": 12,
+  "notice": "Asset labels approved 288/288; objectsPerAsset=1 candidate entries are for visual testing only, NOT independently verified as production count-safe.",
+  "candidates": [
+    {
+      "assetId": "KL_SH03_006",
+      "mode": "REPEAT_SINGLE_ASSET",
+      "objectsPerAsset": 1,
+      "qaStatus": "TEST_CANDIDATE",
+      "aliases": [
+        "sách",
+        "quyển sách",
+        "cuốn sách",
+        "book",
+        "books"
+      ]
+    },
+    {
+      "assetId": "KL_SH05_004",
+      "mode": "REPEAT_SINGLE_ASSET",
+      "objectsPerAsset": 1,
+      "qaStatus": "TEST_CANDIDATE",
+      "aliases": [
+        "gà",
+        "con gà",
+        "gà mái",
+        "chicken",
+        "chickens"
+      ]
+    }
+  ],
+  "rollback": "DISABLE_POLICY_OR_REVERT_B57_PERF_A",
+  "productionActivation": false
+}
