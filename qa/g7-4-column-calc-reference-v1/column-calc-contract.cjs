@@ -57,7 +57,8 @@ function publicPlan(spec){
      focusHighlight:true,keyboardAccessible:true},
    operandDigits:{a:placeOrder.map((id,i)=>({place:id,value:a[i]})),
      b:placeOrder.map((id,i)=>({place:id,value:b[i]}))},
-   resultInputs:placeOrder.map(place=>({id:'result_'+place,place,role:'INPUT',value:null})),
+   resultInputs:placeOrder.map((place,i)=>({id:'result_'+place,place,
+     role:i>=Math.max(1,String(v.result).length)?'UNUSED_PLACE':'INPUT',value:null})),
    transitionInputs:placeOrder.slice(1).map(place=>({id:(spec.operation==='ADD'?'carry_':'borrow_')+place,
      place,role:'INPUT_OR_HINT_BY_LESSON_POLICY',value:null})),
    accessibleInstruction:'Tính từ hàng đơn vị sang hàng chục, hàng trăm. Điền kết quả vào ô từng hàng.'};
@@ -65,8 +66,10 @@ function publicPlan(spec){
 function checkAnswers(spec,values,{gradeTransitions=false}={}){
  const expected=computeServerOnly(spec);if(!expected.ok)return expected;
  if(!values||typeof values!=='object')return blocked('NO_ANSWERS');
- const digitOk=expected.digits.every((n,i)=>typeof values['result_'+places[i]]==='string'&&
-   /^[0-9]$/.test(values['result_'+places[i]])&&Number(values['result_'+places[i]])===n);
+ const used=Math.max(1,String(expected.result).length);
+ const digitOk=expected.digits.every((n,i)=>i>=used?
+   (values['result_'+places[i]]===undefined||values['result_'+places[i]]===''):
+   (typeof values['result_'+places[i]]==='string'&&/^[0-9]$/.test(values['result_'+places[i]])&&Number(values['result_'+places[i]])===n));
  let transOk=true;
  if(gradeTransitions){
   const kind=spec.operation==='ADD'?'carry':'borrow',valuesByPlace=kind==='carry'?expected.carry:expected.borrow;
