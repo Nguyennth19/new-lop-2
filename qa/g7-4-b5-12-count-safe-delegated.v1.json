@@ -1,0 +1,1282 @@
+{
+  "schemaVersion": "g7-4-b5-12-count-safe-delegated-v1",
+  "mode": "TEST_ONLY",
+  "reviewDate": "2026-11-13",
+  "approvalType": "OWNER_DELEGATED_TO_ASSISTANT_SEMANTIC_DECISION",
+  "note": "Owner previously accepted 46/46 visuals; this is linguistic and whole-object counting authorization, not independent per-icon computer-vision signoff or deployment approval.",
+  "total": 46,
+  "approved": 40,
+  "held": 6,
+  "records": [
+    {
+      "assetId": "chicken",
+      "labelVi": "gà (hình chung)",
+      "canonicalPhrase": "con gà",
+      "aliasesVi": [
+        "gà",
+        "một con gà"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "697797fdd9ba34d7a69e448de2bbcbafdb6b3f6a15e1b63b91538dddc881bc64",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-chicken",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "rooster",
+      "labelVi": "con gà trống",
+      "canonicalPhrase": "con gà trống",
+      "aliasesVi": [
+        "gà trống",
+        "chú gà trống"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "52b2a8d0f55e1fcf2aef0518f40142a06f5438bddde74ef969c1c9b5c9a7e67c",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-rooster",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "books",
+      "labelVi": "bộ sách",
+      "canonicalPhrase": "bộ sách",
+      "aliasesVi": [
+        "chồng sách",
+        "nhiều cuốn sách"
+      ],
+      "unit": "bộ",
+      "objectsPerAsset": null,
+      "sourceSha256": "41e2686cdc526bfa41ea599e2a74378f3a02788ff7e8cd1b9ad0a39ea157000c",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "NOT_APPROVED",
+      "countMode": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-books",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": false,
+      "requiresFollowUp": true,
+      "reason": "Hình có nhiều thành phần hoặc đơn vị quả/ổ/lát chưa được xác minh độc lập."
+    },
+    {
+      "assetId": "red_apple",
+      "labelVi": "quả táo đỏ",
+      "canonicalPhrase": "quả táo đỏ",
+      "aliasesVi": [
+        "trái táo đỏ",
+        "quả táo"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "bc69f7c89a3621fb564482f9e13818019c6eac3a9d16fe996852514f3b19a073",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-red_apple",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "green_apple",
+      "labelVi": "quả táo xanh",
+      "canonicalPhrase": "quả táo xanh",
+      "aliasesVi": [
+        "trái táo xanh",
+        "quả táo"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "8d16350d03ee8c98f1d58985453b4c7fbe4d69da3fde37cbf8b5c70ecb80bbd4",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-green_apple",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "banana",
+      "labelVi": "quả chuối",
+      "canonicalPhrase": "quả chuối",
+      "aliasesVi": [
+        "trái chuối",
+        "nải chuối"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": null,
+      "sourceSha256": "40047ed9d10462ba41457b0c55beb05b6fde4ce590e6c1f88577539e46c2f20d",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "NOT_APPROVED",
+      "countMode": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-banana",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": false,
+      "requiresFollowUp": true,
+      "reason": "Hình có nhiều thành phần hoặc đơn vị quả/ổ/lát chưa được xác minh độc lập."
+    },
+    {
+      "assetId": "mango",
+      "labelVi": "quả xoài",
+      "canonicalPhrase": "quả xoài",
+      "aliasesVi": [
+        "trái xoài"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "5747bef4b8d4857d84e6bf784e65ef8b3925d162ae6ca099ab37e33e5b4d33bd",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-mango",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "tangerine",
+      "labelVi": "quả quýt",
+      "canonicalPhrase": "quả quýt",
+      "aliasesVi": [
+        "trái quýt"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "c820b266373b52bb1854213b08801c8d582d60dae06d380fdb4beaf89d569ea3",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-tangerine",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "grapes",
+      "labelVi": "chùm nho",
+      "canonicalPhrase": "chùm nho",
+      "aliasesVi": [
+        "bó nho",
+        "quả nho"
+      ],
+      "unit": "chùm",
+      "objectsPerAsset": null,
+      "sourceSha256": "e959e27685f84cead6cc230c719c75feaf3a3cfde878cf00819473036005edd0",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "NOT_APPROVED",
+      "countMode": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-grapes",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": false,
+      "requiresFollowUp": true,
+      "reason": "Hình có nhiều thành phần hoặc đơn vị quả/ổ/lát chưa được xác minh độc lập."
+    },
+    {
+      "assetId": "watermelon",
+      "labelVi": "quả dưa hấu",
+      "canonicalPhrase": "quả dưa hấu",
+      "aliasesVi": [
+        "trái dưa hấu",
+        "miếng dưa hấu"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": null,
+      "sourceSha256": "33ce86d2784776504191684fd34495c68ac54be7b98e100ef18c3a19297c735e",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "NOT_APPROVED",
+      "countMode": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-watermelon",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": false,
+      "requiresFollowUp": true,
+      "reason": "Hình có nhiều thành phần hoặc đơn vị quả/ổ/lát chưa được xác minh độc lập."
+    },
+    {
+      "assetId": "strawberry",
+      "labelVi": "quả dâu tây",
+      "canonicalPhrase": "quả dâu tây",
+      "aliasesVi": [
+        "trái dâu tây"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "d8522f848f305fc81040dd9c5467f97df483fde5e2568429046e7f1ae1a23d91",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-strawberry",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "pear",
+      "labelVi": "quả lê",
+      "canonicalPhrase": "quả lê",
+      "aliasesVi": [
+        "trái lê"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "ddab6102c0ab2fef2dee700b7bb3d427187df8bfa010b23c4e2516e15c226551",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-pear",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "peach",
+      "labelVi": "quả đào",
+      "canonicalPhrase": "quả đào",
+      "aliasesVi": [
+        "trái đào"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "a144b995f3b094fb28d3eb016efebd6372c5ae82273cf3c0379741eb0c9d4657",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-peach",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "carrot",
+      "labelVi": "củ cà rốt",
+      "canonicalPhrase": "củ cà rốt",
+      "aliasesVi": [
+        "củ cà-rốt",
+        "cà rốt"
+      ],
+      "unit": "củ",
+      "objectsPerAsset": 1,
+      "sourceSha256": "99521ccf4753d9b5312707541eafc41f00b35f616bb6e96cada9acfc7bf1d396",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-carrot",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "rabbit",
+      "labelVi": "con thỏ",
+      "canonicalPhrase": "con thỏ",
+      "aliasesVi": [
+        "chú thỏ"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "e78f7552298062c599bd7290ff52bad25de352477a9475e34332c52eafe2c5d7",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-rabbit",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "cat",
+      "labelVi": "con mèo",
+      "canonicalPhrase": "con mèo",
+      "aliasesVi": [
+        "chú mèo"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "59f5401062509f4d0fb310817ce9a9656724c6c924a4d42f2a33ac6bb0964602",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-cat",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "dog",
+      "labelVi": "con chó",
+      "canonicalPhrase": "con chó",
+      "aliasesVi": [
+        "chú chó"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "e3ee366f39d9f47bbb5a6dc22a521dbea32f05f2216d0665a551b134ca2474da",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-dog",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "cow",
+      "labelVi": "con bò",
+      "canonicalPhrase": "con bò",
+      "aliasesVi": [
+        "bò"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "2aa1806bbf6299d6a8fc865587d9384dff832fabc2fe04ff6d11aa01b53b5109",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-cow",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "pig",
+      "labelVi": "con lợn",
+      "canonicalPhrase": "con lợn",
+      "aliasesVi": [
+        "con heo"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "790bb801b792327d607bf51f7410be069fb26f2a2908b2a691c851a947bdba08",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-pig",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "duck",
+      "labelVi": "con vịt",
+      "canonicalPhrase": "con vịt",
+      "aliasesVi": [
+        "vịt"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "4d793eb8e867817586ae2a03784cbad9814f0e89f195a3503c77f8cb8441e35d",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-duck",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "fish",
+      "labelVi": "con cá",
+      "canonicalPhrase": "con cá",
+      "aliasesVi": [
+        "cá"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "1fc7329fd735a8b8bd7482a39bc100e3c347e7f0e9ce36473fde81d19e96a1ee",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-fish",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "bird",
+      "labelVi": "con chim",
+      "canonicalPhrase": "con chim",
+      "aliasesVi": [
+        "chim"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "c99882e3162e56084e1099575a4b5032bcf07c56c17a6d97e3ca344db42ee596",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-bird",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "butterfly",
+      "labelVi": "con bướm",
+      "canonicalPhrase": "con bướm",
+      "aliasesVi": [
+        "bướm"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "118a7aee6fb3360fef0dcf86aeaac8e022c35c3f52529145750155a8893f50fc",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-butterfly",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "sunflower",
+      "labelVi": "bông hoa hướng dương",
+      "canonicalPhrase": "bông hoa hướng dương",
+      "aliasesVi": [
+        "đóa hoa hướng dương",
+        "cây hoa hướng dương"
+      ],
+      "unit": "bông",
+      "objectsPerAsset": 1,
+      "sourceSha256": "af0f5db9816f1545121d2d4c80a145e8809d50830f8516fd99a631bca7702ea6",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Đếm bông hoa, không tự suy ra số cánh hoặc số cây.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-sunflower",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "school",
+      "labelVi": "ngôi trường",
+      "canonicalPhrase": "ngôi trường",
+      "aliasesVi": [
+        "trường học",
+        "ngôi trường học"
+      ],
+      "unit": "ngôi",
+      "objectsPerAsset": 1,
+      "sourceSha256": "03febeb59b9c13ee792874a87cd04aea413e7c6ef23b1e7752837dc5d6cbe34d",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm mỗi biểu tượng là một ngôi trường; không đếm cửa sổ, lớp học.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-school",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Chỉ được đếm toàn bộ đối tượng; không được suy đoán các chi tiết bên trong."
+    },
+    {
+      "assetId": "backpack",
+      "labelVi": "chiếc ba lô",
+      "canonicalPhrase": "chiếc ba lô",
+      "aliasesVi": [
+        "cái ba lô",
+        "ba lô"
+      ],
+      "unit": "chiếc",
+      "objectsPerAsset": 1,
+      "sourceSha256": "9a3ea2d79e670de01c0f6e742b80d5b679c172edc4532c08a7c3083d703b4f23",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-backpack",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "pencil",
+      "labelVi": "chiếc bút chì",
+      "canonicalPhrase": "chiếc bút chì",
+      "aliasesVi": [
+        "cây bút chì",
+        "bút chì"
+      ],
+      "unit": "chiếc",
+      "objectsPerAsset": 1,
+      "sourceSha256": "f82b7820c41b57d2cca96ef75e32fdedcb07d2d8b786a781274c25fe306c76d7",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-pencil",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "pen",
+      "labelVi": "chiếc bút mực",
+      "canonicalPhrase": "chiếc bút mực",
+      "aliasesVi": [
+        "cây bút mực",
+        "bút mực"
+      ],
+      "unit": "chiếc",
+      "objectsPerAsset": 1,
+      "sourceSha256": "302d3ce8f609b09dbff8af43ea9e0b5fbd9a4e9404e8381f0190fd98b4c991d8",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-pen",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "scissors",
+      "labelVi": "cái kéo",
+      "canonicalPhrase": "cái kéo",
+      "aliasesVi": [
+        "chiếc kéo"
+      ],
+      "unit": "cái",
+      "objectsPerAsset": 1,
+      "sourceSha256": "67d643e25a39792627bfef5aaea3866cdd083fe047a7e449d0070945e32f163f",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Một cái kéo là một dụng cụ, không đếm từng lưỡi kéo.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-scissors",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Chỉ được đếm toàn bộ đối tượng; không được suy đoán các chi tiết bên trong."
+    },
+    {
+      "assetId": "crayon",
+      "labelVi": "cây bút sáp màu",
+      "canonicalPhrase": "cây bút sáp màu",
+      "aliasesVi": [
+        "chiếc bút sáp màu",
+        "bút sáp màu"
+      ],
+      "unit": "cây",
+      "objectsPerAsset": 1,
+      "sourceSha256": "27f73eca2adb077f87c7843b18372b8afae4141c02e8b8917437d508177e5da6",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-crayon",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "paintbrush",
+      "labelVi": "cây cọ vẽ",
+      "canonicalPhrase": "cây cọ vẽ",
+      "aliasesVi": [
+        "chiếc cọ vẽ",
+        "cọ vẽ"
+      ],
+      "unit": "cây",
+      "objectsPerAsset": 1,
+      "sourceSha256": "78757c4c943e8e05cf3485d017b172ebc622d1e5f70e5ab6371a28f97102770d",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-paintbrush",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "notebook",
+      "labelVi": "quyển vở",
+      "canonicalPhrase": "quyển vở",
+      "aliasesVi": [
+        "cuốn vở",
+        "vở"
+      ],
+      "unit": "quyển",
+      "objectsPerAsset": 1,
+      "sourceSha256": "88d97d0a553b501eab3ed70feb191481dfcf12a308ecc7ece2afdbfb74f102c1",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-notebook",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "alarm_clock",
+      "labelVi": "chiếc đồng hồ báo thức",
+      "canonicalPhrase": "chiếc đồng hồ báo thức",
+      "aliasesVi": [
+        "cái đồng hồ báo thức"
+      ],
+      "unit": "chiếc",
+      "objectsPerAsset": 1,
+      "sourceSha256": "e5356b8830074a3ca21fff8bb74807003ce996645341d46c25e26e06f0385d3b",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Một chiếc đồng hồ; không đọc giờ hoặc đếm kim từ emoji.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-alarm_clock",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Chỉ được đếm toàn bộ đối tượng; không được suy đoán các chi tiết bên trong."
+    },
+    {
+      "assetId": "balance_scale",
+      "labelVi": "cái cân hai đĩa",
+      "canonicalPhrase": "cái cân hai đĩa",
+      "aliasesVi": [
+        "chiếc cân hai đĩa",
+        "cái cân"
+      ],
+      "unit": "cái",
+      "objectsPerAsset": 1,
+      "sourceSha256": "086e82d739451ebd0cf8dc7b23376bd3e2e019373dda6da487f8971bc0437e00",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Một cái cân; không suy ra khối lượng hay số đĩa.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-balance_scale",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Chỉ được đếm toàn bộ đối tượng; không được suy đoán các chi tiết bên trong."
+    },
+    {
+      "assetId": "basket",
+      "labelVi": "cái giỏ",
+      "canonicalPhrase": "cái giỏ",
+      "aliasesVi": [
+        "chiếc giỏ",
+        "giỏ"
+      ],
+      "unit": "cái",
+      "objectsPerAsset": 1,
+      "sourceSha256": "ba3325690df45f79d0254dd290b72432c6799977be42d6818caf7f0bd4fedb75",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-basket",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "bucket",
+      "labelVi": "cái xô",
+      "canonicalPhrase": "cái xô",
+      "aliasesVi": [
+        "chiếc xô",
+        "xô"
+      ],
+      "unit": "cái",
+      "objectsPerAsset": 1,
+      "sourceSha256": "ef9ec134a928ab8e5450a4ebaa983e339c6138f4d37511fcf7058e99c2726526",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-bucket",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "bicycle",
+      "labelVi": "chiếc xe đạp",
+      "canonicalPhrase": "chiếc xe đạp",
+      "aliasesVi": [
+        "cái xe đạp",
+        "xe đạp"
+      ],
+      "unit": "chiếc",
+      "objectsPerAsset": 1,
+      "sourceSha256": "0241c712d2ea30a7ab0253422f94f1687838f6312a7a628f6d9c8da509faadf9",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Một chiếc xe; không đếm bánh xe, bàn đạp.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-bicycle",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Chỉ được đếm toàn bộ đối tượng; không được suy đoán các chi tiết bên trong."
+    },
+    {
+      "assetId": "soccer_ball",
+      "labelVi": "quả bóng đá",
+      "canonicalPhrase": "quả bóng đá",
+      "aliasesVi": [
+        "trái bóng đá",
+        "quả bóng"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "ca792d91995ac20dc37be0c1bd1f9f46d2f7ea4aea3bd4d0c69df1083bd641c9",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-soccer_ball",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "teddy_bear",
+      "labelVi": "con gấu bông",
+      "canonicalPhrase": "con gấu bông",
+      "aliasesVi": [
+        "chú gấu bông",
+        "gấu bông"
+      ],
+      "unit": "con",
+      "objectsPerAsset": 1,
+      "sourceSha256": "83e2f3bd7cdeadade4be675ed238b8d1ba9e90e967ff1c10e8de8423043e568d",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-teddy_bear",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "cookie",
+      "labelVi": "chiếc bánh quy",
+      "canonicalPhrase": "chiếc bánh quy",
+      "aliasesVi": [
+        "cái bánh quy",
+        "miếng bánh quy"
+      ],
+      "unit": "chiếc",
+      "objectsPerAsset": 1,
+      "sourceSha256": "d02b9e85fa0394a4c59fd74654244c069eddb9aaf72abbcba8d0d3060262d6af",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Đếm chiếc bánh quy, không đếm hạt/đốm trên bánh.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-cookie",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "candy",
+      "labelVi": "viên kẹo",
+      "canonicalPhrase": "viên kẹo",
+      "aliasesVi": [
+        "cái kẹo",
+        "chiếc kẹo"
+      ],
+      "unit": "viên",
+      "objectsPerAsset": 1,
+      "sourceSha256": "4e9e88bea7076d443d09a06afbc0070c08d4cb09a7248d3fc991297e904bd937",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Đếm một viên kẹo bọc giấy, không suy số viên nằm trong hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-candy",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "bread",
+      "labelVi": "ổ bánh mì",
+      "canonicalPhrase": "ổ bánh mì",
+      "aliasesVi": [
+        "chiếc bánh mì",
+        "lát bánh mì"
+      ],
+      "unit": "ổ",
+      "objectsPerAsset": null,
+      "sourceSha256": "ef08e033f63a4f215744a3067a9c0693411ebcfe57b36bf9d197495ecbccf156",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "NOT_APPROVED",
+      "countMode": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-bread",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": false,
+      "requiresFollowUp": true,
+      "reason": "Hình có nhiều thành phần hoặc đơn vị quả/ổ/lát chưa được xác minh độc lập."
+    },
+    {
+      "assetId": "lemon",
+      "labelVi": "quả chanh",
+      "canonicalPhrase": "quả chanh",
+      "aliasesVi": [
+        "trái chanh"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "f3a924a7031fc0dd7c57a90e5f9794cf72859d860151dec321c4adc38605e4cc",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-lemon",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "pineapple",
+      "labelVi": "quả dứa",
+      "canonicalPhrase": "quả dứa",
+      "aliasesVi": [
+        "trái thơm",
+        "quả khóm"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "9d064d8f8796b53a9eeb18b642e6e16628848ad2fa944576b597e7c7f36a95be",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-pineapple",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    },
+    {
+      "assetId": "cherries",
+      "labelVi": "chùm anh đào",
+      "canonicalPhrase": "chùm anh đào",
+      "aliasesVi": [
+        "cặp quả anh đào",
+        "quả anh đào"
+      ],
+      "unit": "chùm",
+      "objectsPerAsset": null,
+      "sourceSha256": "67c243eed8f6430539076d065d71b90d8f7bb25ccd41c87c02a6f6f419dacf9f",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "NOT_APPROVED",
+      "countMode": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-cherries",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": false,
+      "requiresFollowUp": true,
+      "reason": "Hình có nhiều thành phần hoặc đơn vị quả/ổ/lát chưa được xác minh độc lập."
+    },
+    {
+      "assetId": "egg",
+      "labelVi": "quả trứng",
+      "canonicalPhrase": "quả trứng",
+      "aliasesVi": [
+        "trái trứng"
+      ],
+      "unit": "quả",
+      "objectsPerAsset": 1,
+      "sourceSha256": "1c7146a519276e93c0f939756e80beb5b0edb4e9a350dbe58ab63c7d0bcc5204",
+      "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+      "decision": "COUNT_SAFE_APPROVED",
+      "countMode": "REPEAT_SINGLE_ICON",
+      "restrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "evidence": {
+        "ownerVisualApproval": "2026-11-13 B.5.9 46/46",
+        "reviewPage": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html#asset-egg",
+        "reviewSizePx": 44,
+        "delegation": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
+        "independentPerIconVisualVerification": false
+      },
+      "reviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "reviewDate": "2026-11-13",
+      "approvedByDelegation": true,
+      "requiresFollowUp": false,
+      "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
+    }
+  ]
+}
