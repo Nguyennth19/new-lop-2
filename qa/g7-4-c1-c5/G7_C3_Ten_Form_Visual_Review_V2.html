@@ -184,7 +184,7 @@ document.body.dataset.qaTaskCount=String(TASKS.length);
 }
 function go(i){current=Math.max(0,Math.min(TASKS.length-1,i));selected=null;picked=null;const old=document.querySelector('.activity-bar');if(old)old.remove();draw();window.scrollTo({top:0,behavior:'instant'});}
 $('prev').onclick=()=>go(current-1);$('next').onclick=()=>go(current+1);
-$('jump').onchange=e=>go(Number(e.target.value));
+
 const qs=new URLSearchParams(location.search),start=Number(qs.get('task'));if(Number.isInteger(start)&&start>=1&&start<=10)current=start-1;
 draw();
 if(qs.get('qaAuto')==='1'){
