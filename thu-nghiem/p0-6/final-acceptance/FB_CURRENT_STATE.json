@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fb.handover-state.v1",
   "phase": "F-B",
-  "status": "READY_FOR_TEST_WORK",
+  "status": "IN_PROGRESS",
   "createdAt": "2026-11-13T22:36:01.202+07:00",
   "branch": "test/p0-6-fb-from-fa-20261113",
   "sourceBranch": "test/p0-6-fa-policy-pedagogy-20261113",
@@ -20,12 +20,14 @@
     "F_B": "READY_FOR_TEST_WORK",
     "RELEASE_READY": false
   },
-  "recoveryPoint": "F-B branch created from F-A last verified CI-passed commit. Read FA_FB_HANDOVER.md and FA_G5_BROWSER_QA_20261113.md first; no F-B code yet.",
+  "recoveryPoint": "Verified FB HEAD 42181b6056e8ad4119a784f8d3514e20c23289d0. Next build isolated governance with feature-flag OFF default; source code unchanged.",
   "restrictions": [
     "No MAIN/test-theo-main/Web App TEST V6 edits",
     "No Apps Script deployment or student data/grades/stars",
     "No production release",
     "Web App V6 integration not certified"
   ],
-  "nextAction": "Open F-B planning/implementation within P0 scope with separate QA and explicit authorization for any TEST deployment"
+  "nextAction": "Open F-B planning/implementation within P0 scope with separate QA and explicit authorization for any TEST deployment",
+  "updatedAt": "2026-11-13T22:43:31.847+07:00",
+  "currentOperation": "F-B governance gate: immutable per-lesson release candidate, rollback resolver and inherited E03/F-A QA, no deploy"
 }
