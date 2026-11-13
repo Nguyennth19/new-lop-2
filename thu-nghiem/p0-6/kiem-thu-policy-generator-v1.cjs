@@ -109,6 +109,29 @@ test('QA receipt IDs and hashes deterministic without student data',()=>{
  assert.equal(a.noWrites,true);assert.equal(a.noStars,true);
  assert.equal(a.studentDataIncluded,false);
 });
+test('Seeded AUTO generation uses permitted B21 scope without manual pair entry',()=>{
+ const {candidates:ignored,...autoReq}=req;
+ const out=generator.generate({...autoReq,seed:'AUTO_TEST'});
+ assert.equal(out.ok,true);assert.equal(out.generationMode,'SEEDED_AUTO');assert.equal(out.count,2);
+ for(const x of out.results){
+  const a=x.question.parameters.a,b=x.question.parameters.b;
+  assert(a>=10&&a<=99&&b>=1&&b<=99&&a+b<=100&&(a%10+b%10)>=10);
+  assert.equal(x.receipt.gates.G1.status,'PASS');
+ }
+ const again=generator.generate({...autoReq,seed:'AUTO_TEST'});
+ assert.deepEqual(out.results.map(x=>x.question.id),again.results.map(x=>x.question.id));
+});
+test('Different seed changes deterministic candidate selection',()=>{
+ const {candidates:ignored,...autoReq}=req;
+ const a=generator.generate({...autoReq,seed:'AUTO_ALPHA'});
+ const b=generator.generate({...autoReq,seed:'AUTO_BETA'});
+ assert.equal(a.ok,true);assert.equal(b.ok,true);
+ assert.notDeepEqual(a.results.map(x=>x.question.id),b.results.map(x=>x.question.id));
+});
+test('Countable template cannot bypass missing image/Count-Safe QA',()=>{
+ const g=createVariantGenerator(policyRegistry,{COUNT:{...templates.B21_CARRY_ADD_V1,requiredAssetRole:'COUNTABLE'}});
+ assert.equal(g.generate({...req,templateId:'COUNT',count:1}).code,'VISUAL_ASSET_PLAN_REQUIRES_QA');
+});
 test('No hidden direct Sheets/AppScript/user persistence functions in new modules',()=>{
  for(const name of ['variant-policy-registry-v1.cjs','math-variant-generator-v1.cjs']){
   const s=fs.readFileSync(path.join(__dirname,name),'utf8');
