@@ -151,6 +151,7 @@ case 9:return value('word-a')==='47'&&value('word-b')==='34'&&value('word-total'
 function paintNav(){const nav=$('nav');nav.replaceChildren();TASKS.forEach((t,i)=>{const b=node('button',(current===i?'active ':'')+(finished[i]?'completed':''));b.type='button';b.setAttribute('aria-current',current===i?'step':'false');b.append(node('span','number',String(i+1)),node('span','nav-label',t.title));b.onclick=()=>go(i);nav.append(b)});const done=Object.keys(finished).filter(k=>finished[k]).length;$('progress').style.width=(done*10)+'%';$('progress-text').textContent=done+'/10 dạng đã làm đúng'}
 function bottom(){return node('div','activity-bar')}
 function draw(){
+const oldToolbar=document.querySelector('.activity-bar');if(oldToolbar)oldToolbar.remove();
 paintNav();const t=TASKS[current];$('step').textContent='DẠNG '+String(current+1).padStart(2,'0')+' / 10';
 $('title').textContent=t.title;$('question').textContent=t.question;$('mode').textContent=t.mode;
 $('mode').className='tag '+(t.mode==='EXACT_COUNT'?'teal':t.mode==='REPRESENTATIVE'?'amber':'blue');
@@ -186,4 +187,30 @@ $('prev').onclick=()=>go(current-1);$('next').onclick=()=>go(current+1);
 $('jump').onchange=e=>go(Number(e.target.value));
 const qs=new URLSearchParams(location.search),start=Number(qs.get('task'));if(Number.isInteger(start)&&start>=1&&start<=10)current=start-1;
 draw();
+if(qs.get('qaAuto')==='1'){
+ let passed=0;const errors=[];const samples=[];
+ function set(id,v){const el=$(id);if(!el)throw Error('Missing '+id);el.value=v;}
+ function check(task){document.querySelector('.activity-bar .primary').click();const ok=finished[task]===true;samples.push({task:task+1,ok,images:[...$('exercise').querySelectorAll('img')].length});if(!ok)throw Error('Task '+(task+1)+' not accepted');}
+ for(let i=0;i<10;i++){
+  try{
+   go(i);
+   if(i===0)set('bond-total','7');
+   if(i===1){set('carry','1');set('tens','8');set('ones','3')}
+   if(i===2){for(const [key,value] of [['backpack','ba lô'],['bicycle','xe đạp'],['rabbit','con thỏ']]){const b=[...$('exercise').querySelectorAll('.pair')].find(x=>x.querySelector('img')?.src===ASSETS[key]);b.click();const t=[...$('exercise').querySelectorAll('.pair')].find(x=>x.textContent===value);t.click();}}
+   if(i===3){const btn=[...$('exercise').querySelectorAll('[data-choice]')].find(x=>x.dataset.choice==='bicycle');btn.click();}
+   if(i===4){const btn=$('exercise').querySelectorAll('.piece')[0];btn.click();}
+   if(i===5){for(const [key,group] of [['backpack','school'],['pencil','school'],['soccer_ball','play'],['teddy_bear','play']]){const b=[...$('exercise').querySelectorAll('.token')].find(x=>x.querySelector('img')?.src===ASSETS[key]);b.click();const index=group==='school'?0:1;$('exercise').querySelectorAll('.category')[index].click();}}
+   if(i===6){const btn=[...$('exercise').querySelectorAll('[data-choice]')].find(x=>x.dataset.choice==='<');btn.click();}
+   if(i===7){const btn=[...$('exercise').querySelectorAll('[data-choice]')].find(x=>x.dataset.choice==='07:30');btn.click();}
+   if(i===8)set('chart','1');
+   if(i===9){set('word-a','47');set('word-b','34');set('word-total','81');set('word-unit','chiếc kẹo')}
+   check(i);passed++;
+  }catch(e){errors.push({task:i+1,message:e.message})}
+ }
+ document.body.dataset.qaPassed=String(passed);document.body.dataset.qaErrors=String(errors.length);
+ document.body.dataset.qaFinished=String(Object.keys(finished).length);
+ document.body.dataset.qaImagesLoaded=String([...document.images].filter(x=>x.complete&&x.naturalWidth>0).length);
+ document.body.dataset.qaHorizontalOverflow=String(document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
+ const result=document.createElement('pre');result.id='qaAutoResult';result.textContent=JSON.stringify({passed,errors,samples},null,2);document.body.append(result);
+}
 </script></body></html>
