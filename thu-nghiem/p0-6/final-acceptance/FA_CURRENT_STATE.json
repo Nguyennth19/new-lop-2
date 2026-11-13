@@ -4,17 +4,18 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T21:59:26+07:00",
-  "status": "PENDING_APPROVAL",
-  "currentOperation": "Await owner approval of E0 P01-P06 and B21 subskills/LV3; no write, merge or deployment authorized",
-  "recoveryPoint": "F-A audit and workflow present. QA run 43447904122 SUCCESS at commit 2b3a3893226725b0e149811e0bea15e1fa3298cf. Documentation-only evidence updates may post-date that tested SHA; verify current head on resume.",
+  "updatedAt": "2026-11-13T22:05:00+07:00",
+  "status": "IN_PROGRESS",
+  "currentOperation": "F-A.1 policy review / B21 LV3 differentiated cognitive strategy and regression QA",
+  "recoveryPoint": "Prior verified branch HEAD fec8f9abcba786149a3c6e58ece13e8fd939bfea. No B21 changes yet; next create controlled LV3 revision.",
   "steps": {
     "FA0": "DONE",
     "FA1": "DONE",
     "FA2": "PENDING_APPROVAL",
     "FA3": "DONE",
     "FA4": "PENDING_APPROVAL",
-    "FA5": "BLOCKED"
+    "FA5": "BLOCKED",
+    "FA1_1": "IN_PROGRESS"
   },
   "gates": {
     "policyE0": "PENDING_APPROVAL",
