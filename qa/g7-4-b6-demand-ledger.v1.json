@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "g7-4-b6-demand-ledger-v1",
+  "asOf": "2026-11-13",
+  "mode": "TEST_ONLY",
+  "policy": "REUSE_BEFORE_IMPORT",
+  "checkedSources": [
+    "du-lieu/asset-selector/shared-visual-intent.examples.json",
+    "du-lieu/bien-the/chuan/tieng-viet-demo.visual-intent.v1.json",
+    "du-lieu/bien-the/chuan/tieng-anh-demo.visual-intent.v1.json"
+  ],
+  "summary": {
+    "realDemoCases": 5,
+    "reuseWebP": 3,
+    "requiresCountEvidence": 2,
+    "needsNewSvgImport": 0
+  },
+  "requests": [
+    {
+      "requestId": "MATH-CANDY-01",
+      "subject": "TOAN",
+      "lessonId": "toan_b99",
+      "usage": "DECORATIVE",
+      "conceptKey": "wrapped_candy",
+      "currentAssetId": "KL_SH02_010",
+      "decision": "REUSE_WEBP",
+      "additionalSvgRequired": false,
+      "sourceEvidence": "existing semantic rules or prior real lesson demo",
+      "status": "CLOSED_NO_ASSET_IMPORT"
+    },
+    {
+      "requestId": "VI-BICYCLE-01",
+      "subject": "TIENG_VIET",
+      "lessonId": "tv_b03_visual_demo",
+      "usage": "VOCABULARY",
+      "conceptKey": "kids_bicycle",
+      "currentAssetId": "KL_SH11_012",
+      "decision": "REUSE_WEBP",
+      "additionalSvgRequired": false,
+      "sourceEvidence": "existing semantic rules or prior real lesson demo",
+      "status": "CLOSED_NO_ASSET_IMPORT"
+    },
+    {
+      "requestId": "EN-BAG-01",
+      "subject": "TIENG_ANH",
+      "lessonId": "en_vocabulary_demo_visual",
+      "usage": "VOCABULARY",
+      "conceptKey": "school_backpack",
+      "currentAssetId": "KL_SH09_007",
+      "decision": "REUSE_WEBP",
+      "additionalSvgRequired": false,
+      "sourceEvidence": "existing semantic rules or prior real lesson demo",
+      "status": "CLOSED_NO_ASSET_IMPORT"
+    },
+    {
+      "requestId": "EN-BIKE-COUNT-03",
+      "subject": "TIENG_ANH",
+      "lessonId": "en_vocabulary_demo_visual",
+      "usage": "COUNT_OBJECT",
+      "conceptKey": "kids_bicycle",
+      "currentAssetId": "KL_SH11_012",
+      "decision": "BLOCK_PENDING_COUNT_QA",
+      "additionalSvgRequired": false,
+      "sourceEvidence": "existing semantic rules or prior real lesson demo",
+      "status": "CLOSED_NO_ASSET_IMPORT"
+    },
+    {
+      "requestId": "MATH-WATERMELON-03",
+      "subject": "TOAN",
+      "lessonId": "toan_b99",
+      "usage": "COUNT_OBJECT",
+      "conceptKey": "watermelon",
+      "currentAssetId": "KL_M04_007",
+      "decision": "BLOCK_PENDING_COUNT_QA",
+      "additionalSvgRequired": false,
+      "sourceEvidence": "existing semantic rules or prior real lesson demo",
+      "status": "CLOSED_NO_ASSET_IMPORT"
+    }
+  ],
+  "newSvgRequests": [],
+  "futureRule": "Only add a new SVG batch request after a documented visual-intent mismatch and failed search across approved WebP, approved Fluent SVG, and parametric math SVG; reuse a verified existing asset across subjects."
+}
