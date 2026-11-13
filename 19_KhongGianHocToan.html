@@ -124,6 +124,16 @@ function render(){
    try{KL_G74_C4.audit(target,activeQuestions().filter(q=>q.level===view),
      {lessonId:'toan_b20',variantPilot:true});}catch(e){/* original lesson remains */}
  }
+ // G7.4 COLUMN_CALC V1.3: dual-renderer pilot on B20, default OFF.
+ // The existing B20 inputs and server grading remain authoritative.
+ if(typeof KL_G74_V13!=='undefined'&&fullData?.variantPilot&&
+    fullData?.lesson?.id==='toan_b20'){
+   try{
+     KL_G74_V13.mount({root:target,document,location:window.location,
+       lessonId:fullData.lesson.id,variantPilot:true,view,
+       questions:activeQuestions().filter(q=>q.level===view)});
+   }catch(e){/* retain current B20 renderer on test feature error */}
+ }
  // G7.4-B.5.14: readonly, opt-in isolated TEST panel; questions, grading, drafts unchanged.
  if(typeof KL_G74_B514!=='undefined'&&fullData.variantPilot&&
      fullData.lesson&&fullData.lesson.id==='toan_b20'){
