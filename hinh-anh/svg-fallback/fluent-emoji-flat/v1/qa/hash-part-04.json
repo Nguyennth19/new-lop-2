@@ -1,0 +1,122 @@
+[
+  {
+    "id": "bicycle",
+    "name": "Bicycle",
+    "relativePath": "FLAT/bicycle.svg",
+    "upstreamPath": "assets/Bicycle/Flat/bicycle_flat.svg",
+    "upstreamBlob": "45eaec96f523f723d9ccba9ce9462592c3c32abe",
+    "sha256": "0241c712d2ea30a7ab0253422f94f1687838f6312a7a628f6d9c8da509faadf9",
+    "bytes": 3376,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "soccer_ball",
+    "name": "Soccer ball",
+    "relativePath": "FLAT/soccer_ball.svg",
+    "upstreamPath": "assets/Soccer ball/Flat/soccer_ball_flat.svg",
+    "upstreamBlob": "081bd09d898034015197a22ea856594fe82e82e6",
+    "sha256": "ca792d91995ac20dc37be0c1bd1f9f46d2f7ea4aea3bd4d0c69df1083bd641c9",
+    "bytes": 7732,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "teddy_bear",
+    "name": "Teddy bear",
+    "relativePath": "FLAT/teddy_bear.svg",
+    "upstreamPath": "assets/Teddy bear/Flat/teddy_bear_flat.svg",
+    "upstreamBlob": "a7f4c38ae5925345937800bdb6583a8a193f066a",
+    "sha256": "83e2f3bd7cdeadade4be675ed238b8d1ba9e90e967ff1c10e8de8423043e568d",
+    "bytes": 4281,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "cookie",
+    "name": "Cookie",
+    "relativePath": "FLAT/cookie.svg",
+    "upstreamPath": "assets/Cookie/Flat/cookie_flat.svg",
+    "upstreamBlob": "091b1c9fd09d67f91631aa861ce8e4ed90124633",
+    "sha256": "d02b9e85fa0394a4c59fd74654244c069eddb9aaf72abbcba8d0d3060262d6af",
+    "bytes": 2020,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "candy",
+    "name": "Candy",
+    "relativePath": "FLAT/candy.svg",
+    "upstreamPath": "assets/Candy/Flat/candy_flat.svg",
+    "upstreamBlob": "a8b062c2e65e5374366c0d8ff24be397deceec3e",
+    "sha256": "4e9e88bea7076d443d09a06afbc0070c08d4cb09a7248d3fc991297e904bd937",
+    "bytes": 3023,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "bread",
+    "name": "Bread",
+    "relativePath": "FLAT/bread.svg",
+    "upstreamPath": "assets/Bread/Flat/bread_flat.svg",
+    "upstreamBlob": "fa2a74ac7930968f631d125ecd2cc8427885eaac",
+    "sha256": "ef08e033f63a4f215744a3067a9c0693411ebcfe57b36bf9d197495ecbccf156",
+    "bytes": 3105,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "lemon",
+    "name": "Lemon",
+    "relativePath": "FLAT/lemon.svg",
+    "upstreamPath": "assets/Lemon/Flat/lemon_flat.svg",
+    "upstreamBlob": "9525b3553c5a1950b17a88b00069d70dc72a55a8",
+    "sha256": "f3a924a7031fc0dd7c57a90e5f9794cf72859d860151dec321c4adc38605e4cc",
+    "bytes": 713,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "pineapple",
+    "name": "Pineapple",
+    "relativePath": "FLAT/pineapple.svg",
+    "upstreamPath": "assets/Pineapple/Flat/pineapple_flat.svg",
+    "upstreamBlob": "cdcc20ff1cdb673c0f13b133ad0171d50741813e",
+    "sha256": "9d064d8f8796b53a9eeb18b642e6e16628848ad2fa944576b597e7c7f36a95be",
+    "bytes": 4821,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "cherries",
+    "name": "Cherries",
+    "relativePath": "FLAT/cherries.svg",
+    "upstreamPath": "assets/Cherries/Flat/cherries_flat.svg",
+    "upstreamBlob": "6c48425671476a0cf2626538712b241955772e0f",
+    "sha256": "67c243eed8f6430539076d065d71b90d8f7bb25ccd41c87c02a6f6f419dacf9f",
+    "bytes": 1091,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  },
+  {
+    "id": "egg",
+    "name": "Egg",
+    "relativePath": "FLAT/egg.svg",
+    "upstreamPath": "assets/Egg/Flat/egg_flat.svg",
+    "upstreamBlob": "fd4656391ef5ae4f08d7e1080e5b2b736ac1e040",
+    "sha256": "1c7146a519276e93c0f939756e80beb5b0edb4e9a350dbe58ab63c7d0bcc5204",
+    "bytes": 412,
+    "semanticStatus": "OWNER_VISUAL_PENDING",
+    "countQaStatus": "NOT_APPROVED",
+    "role": "DECORATIVE_ONLY"
+  }
+]
