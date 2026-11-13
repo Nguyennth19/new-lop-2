@@ -37,7 +37,8 @@ for(const q of pack.questions){
  const pairs=type==='three'?[[p.a,p.b],[p.a,p.c],[p.b,p.c]].filter(x=>(x[0]+x[1])%10===0):[];
  if(type==='three'&&q.prompt.includes('thuận tiện')&&pairs.length===0)
   flag(notes,id,'REPHRASE_CONVENIENCE','Yêu cầu tính thuận tiện nhưng không có cặp số tròn chục rõ ràng: xem xét câu dẫn/thiết kế');
- if(q.level==='LV1'&&type==='mental'&&p.a>=10&&p.b>=10&&((p.a%10)+(p.b%10)>=10))
+ if(q.level==='LV1'&&type==='mental'&&p.a>=10&&p.b>=10&&((p.a%10)+(p.b%10)>=10)
+    && !(q.prompt.startsWith('Tính:')&&q.solution_prompt.includes('Đơn vị:')&&q.solution_prompt.includes('Chục:')))
   flag(notes,id,'LV1_MENTAL_SCAFFOLD','Tính nhẩm hai số có hai chữ số có nhớ tại LV1; nên có gợi ý tách chục/đơn vị');
  if(q.type==='carry'&&(q.answer!==1||q.level!=='LV1'))
   flag(notes,id,'CARRY_EXPLANATION','Đối chiếu diễn giải số nhớ');
