@@ -1,0 +1,61 @@
+name: G7.4 B5.14 Web App Count Renderer TEST
+on:
+  push:
+    branches: ['test/g7-4-b5-14-webapp-count-renderer-20261113']
+    paths:
+      - '46_G74_CountRendererWebTEST.html'
+      - '47_CSS_G74_CountRendererWebTEST.html'
+      - '48_CongTac_G74_B514_Test.gs'
+      - '19_KhongGianHocToan.html'
+      - 'GiaoDien.html'
+      - 'qa/g7-4-b5-14/**'
+      - '.github/workflows/g7-4-b514-webapp-count-test.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Static safety and lesson integration gates
+        run: node qa/g7-4-b5-14/webapp-count-integration.test.cjs
+      - name: Browser integration harness
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          FILE="file://$PWD/qa/g7-4-b5-14/G7_B514_WebApp_Lesson_Harness.html"
+          run_case() {
+            name="$1"; params="$2"; expected="$3"; mounted="$4"
+            timeout 60s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=3000 --window-size=390,900 --dump-dom "$FILE?$params" > "/tmp/g74b514_$name.html" 2> "/tmp/g74b514_$name.log"
+            python3 - "$name" "$expected" "$mounted" <<'PY'
+          import pathlib,sys,re
+          name,expected,mounted=sys.argv[1:]
+          s=pathlib.Path('/tmp/g74b514_'+name+'.html').read_text()
+          assert f'data-qa-actual="{expected}"' in s,(name,'count mismatch')
+          assert f'data-qa-mounted="{mounted}"' in s,(name,'mount mismatch')
+          assert 'data-qa-original-question="true"' in s,(name,'original answer card mutated')
+          if mounted=='true': assert 'data-qa-overflow="false"' in s,(name,'horizontal overflow')
+          print('PASS B5.14 browser',name,'images',expected,'mounted',mounted)
+          PY
+          }
+          run_case default_off '' 0 false
+          run_case wrong_lesson 'g74CountTest=1&lesson=toan_b21' 0 false
+          run_case wrong_view 'g74CountTest=1&view=THEORY' 0 false
+          run_case b20_count 'g74CountTest=1&sample=B20_DEMO_COUNT&width=320' 12 true
+          run_case b20_group 'g74CountTest=1&sample=B20_DEMO_GROUP&width=390' 12 true
+          run_case b20_compare 'g74CountTest=1&sample=B20_DEMO_COMPARE&width=360' 13 true
+          run_case b20_add 'g74CountTest=1&sample=B20_DEMO_ADD&width=390' 12 true
+          run_case b20_sub 'g74CountTest=1&sample=B20_DEMO_SUB&width=320' 13 true
+          run_case b20_decor 'g74CountTest=1&sample=B20_DEMO_DECOR&width=360' 1 true
+      - name: Runtime OFF by design
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const m=JSON.parse(fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json','utf8'));
+          assert.equal(m.enabled,false);assert.equal(m.productionActivation,false);
+          assert.equal(m.renderPolicy.allowCountInference,false);
+          console.log('PASS source manifest remains staging-only, main runtime OFF');
+          JS
