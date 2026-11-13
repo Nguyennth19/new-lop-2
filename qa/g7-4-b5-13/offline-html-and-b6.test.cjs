@@ -1,0 +1,18 @@
+'use strict';
+const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm');
+const html=fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_B513_Count_Renderer_TEST.html','utf8');
+const match=html.match(/<script>([\s\S]*?)<\/script>/);
+assert.ok(match,'embedded script missing');
+new vm.Script(match[1],{filename:'G7_B513_Count_Renderer_TEST.inline.js'});
+const contract=JSON.parse(fs.readFileSync('qa/g7-4-b5-13-count-renderer-contract.v1.json','utf8'));
+const ledger=JSON.parse(fs.readFileSync('qa/g7-4-b6-demand-ledger.v1.json','utf8'));
+assert.equal((html.match(/data:image\/svg\+xml/g)||[]).length,46);
+assert.equal(contract.approvedCount,45);
+assert.equal(contract.illustrationOnlyCount,1);
+assert.equal(ledger.summary.needsNewSvgImport,0);
+assert.equal(ledger.requests.length,5);
+assert.ok(html.includes('value="add"')&&html.includes('value="subtract"'));
+assert.ok(html.includes('value="groups"')&&html.includes('value="compare"'));
+assert.ok(html.includes('id="decorative"'));
+assert.ok(html.includes('G7_B513_RENDERER_VISUAL_QA.json'));
+console.log('PASS standalone HTML embedded JS syntax, 46 SVGs, 6 scene modes, B6 no-import demand ledger');
