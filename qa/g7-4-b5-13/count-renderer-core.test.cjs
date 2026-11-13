@@ -47,6 +47,13 @@ eq(plan({registry:tamper,assetId:'red_apple',requestedCount:3,requestedUnit:'qu�
 const tamper2=structuredClone(registry);tamper2.assets.find(x=>x.assetId==='red_apple').objectsPerAsset=2;
 eq(plan({registry:tamper2,assetId:'red_apple',requestedCount:3,requestedUnit:'quả'}).ok,false);
 eq(registry.runtimeEnabled,false);eq(registry.productionActivation,false);eq(registry.countInference,false);
+eq(plan({registry,assetId:'red_apple',requestedCount:3,requestedUnit:'trái'}).ok,true);
+eq(plan({registry,assetId:'watermelon',requestedCount:3,requestedUnit:'lát'}).ok,true);
+eq(plan({registry,assetId:'watermelon',requestedCount:3,requestedUnit:'quả'}).code,'UNIT_MISMATCH');
+eq(plan({registry,assetId:'bread',requestedCount:3,requestedUnit:'miếng'}).code,'UNIT_MISMATCH');
+eq(plan({registry,assetId:'grapes',requestedCount:3,requestedUnit:'quả'}).code,'UNIT_MISMATCH');
+eq(plan({registry,assetId:'cherries',requestedCount:3,requestedUnit:'quả'}).code,'UNIT_MISMATCH');
+eq(plan({registry,assetId:'banana',requestedCount:3,requestedUnit:'nải'}).code,'UNIT_MISMATCH');
 const plus=planArithmetic({registry,assetId:'rabbit',requestedUnit:'con',operator:'+',left:7,right:5,viewportWidth:320});
 eq(plus.ok,true);eq(plus.total,12);eq(plus.initial.totalObjects,7);eq(plus.second.totalObjects,5);
 const minus=planArithmetic({registry,assetId:'red_apple',requestedUnit:'quả',operator:'-',left:9,right:4,viewportWidth:360});
