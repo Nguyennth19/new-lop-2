@@ -25,3 +25,8 @@ Ngày: 2026-11-14; phạm vi TEST only, không phải chữ ký của chủ dự
 
 ## Kết luận kiểm toán
 FC-02 **có thêm chứng cứ digest tái lập** nhưng chưa đạt chuẩn đóng dấu quyết định bất biến toàn phần. Trạng thái `PENDING_FORMAL_ATTESTATION`; không tự chuyển sang PASS. `RELEASE_READY=false`.
+
+## Bổ sung F-C.1 – Đối chiếu ba đường GitHub, không thay chứng thực byte gốc
+- Đã lấy trực tiếp Git blob SHA `69c07906f621b1ad91eba184a595544fe3b6d87c`, file tại commit `2c39eb555de9e2c8fe44ef156ae0fbf12d5c8a6f` và raw content tại cùng commit. Ba chuỗi nội dung trả về giống hệt nhau; Git SHA của file cũng trùng object SHA ở trên.
+- Phép SHA-256 UTF-8 `33636d43f895bc417e4916dcec8befcb27a489ff08f774ec1897aa4804cc486e` giữ nguyên; không tuyên bố chứng thực raw byte độc lập hoặc chủ dự án đã ký digest này.
+- Chuẩn hóa fields và các mục còn thiếu: xem `FC1_E0_POLICY_ATTESTATION_RECONCILIATION_20261114.md`. `FC-02=PARTIAL_SOURCE_CROSS_VERIFIED_SIGNOFF_PENDING`; `RELEASE_READY=false`.
