@@ -159,6 +159,33 @@ test('Fail, block, pending precedence',()=>{
  assert.equal(decision({x:{status:'BLOCKED'},y:{status:'PENDING'}}),'BLOCKED');
  assert.equal(decision({x:{status:'PENDING'}}),'PENDING_REVIEW');
 });
+test('B24 chain variant arithmetic 25+65-30=60 independently checked',()=>{
+ const l=clone(lesson);l.lessonId='toan_b24';l.curriculum.lessonRef='MATH_B024';
+ const q=l.questions[0];q.kind='math.chain';q.renderer.component='math.chain';
+ q.parameters={a:25,b:65,c:30};q.answerSpec.value=60;
+ q.answerSpec.proof={operation:'add_sub_chain',operands:[25,65,30]};
+ const p=clone(policy);p.lessonId='toan_b24';p.allowedSkills=['REVIEW_ADD_SUB_CARRY'];
+ p.allowedMathKinds=['ADD_SUB_CHAIN'];p.mathConstraints={minOperand:0,maxOperand:99,minResult:0,maxResult:100};
+ const v=candidate();v.skillId='REVIEW_ADD_SUB_CARRY';v.mathKind='ADD_SUB_CHAIN';
+ v.interaction.skillsBefore=['REVIEW_ADD_SUB_CARRY'];v.interaction.skillsAfter=['REVIEW_ADD_SUB_CARRY'];
+ v.renderer={kind:'math.chain',status:'READONLY_PREVIEW_PASS'};
+ const receipt=audit(v,l,p);assert.equal(receipt.gates.G1.status,'PASS');
+ assert.notEqual(receipt.status,'PASS_FOR_TEST');
+ q.answerSpec.value=61;assert.equal(audit(v,l,p).gates.G1.code,'MATH_ANSWER_MISMATCH');
+});
+test('B26 geometry topology never self-approved without dedicated QA',()=>{
+ const l=clone(lesson);l.lessonId='toan_b26';l.curriculum.lessonRef='MATH_B026';
+ const q=l.questions[0];q.kind='math.geometry';q.renderer.component='math.geometry';q.prompt='Chọn hình tứ giác';
+ q.parameters={vertices:4,closed:true};q.answerSpec.value=4;
+ const p=clone(policy);p.lessonId='toan_b26';p.allowedSkills=['GEOMETRY_IDENTIFY'];p.allowedMathKinds=['GEOMETRY'];
+ const v=candidate();v.skillId='GEOMETRY_IDENTIFY';v.mathKind='GEOMETRY';v.variantLevel='V3_STRUCTURAL';
+ v.visual={role:'GEOMETRY',topologyVerified:true};
+ v.interaction.skillsBefore=['GEOMETRY_IDENTIFY'];v.interaction.skillsAfter=['GEOMETRY_IDENTIFY'];
+ v.renderer={kind:'math.geometry',status:'READONLY_PREVIEW_PASS'};
+ const receipt=audit(v,l,p);
+ assert.equal(receipt.gates.G1.status,'PENDING');assert.equal(receipt.gates.G3.status,'PENDING');
+ assert.equal(receipt.gates.G7.status,'PENDING');assert.notEqual(receipt.status,'PASS_FOR_TEST');
+});
 test('Receipts deterministic, source tampering changes hash',()=>{
  const first=audit(),second=audit();assert.equal(first.receiptSha256,second.receiptSha256);
  const l=clone(lesson);l.questions[0].prompt+='!';
