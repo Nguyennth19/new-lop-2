@@ -5,6 +5,7 @@ on:
     paths:
       - 'qa/g7-4-b5-13/**'
       - 'qa/g7-4-b5-13-count-renderer-contract.v1.json'
+      - 'qa/g7-4-b6-demand-ledger.v1.json'
       - 'hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_B513_Count_Renderer_TEST.html'
       - '.github/workflows/g7-4-b513-count-renderer-test.yml'
   workflow_dispatch:
@@ -22,6 +23,7 @@ jobs:
           node --check qa/g7-4-b5-13/count-renderer-core.cjs
           node --check qa/g7-4-b5-13/count-renderer-core.test.cjs
           node qa/g7-4-b5-13/count-renderer-core.test.cjs
+          node qa/g7-4-b5-13/offline-html-and-b6.test.cjs
       - name: Check offline gallery and source invariants
         run: |
           node - <<'JS'
