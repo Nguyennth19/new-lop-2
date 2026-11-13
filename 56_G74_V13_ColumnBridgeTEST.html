@@ -1,0 +1,107 @@
+/* G7.4 V1.3, Apps Script TEST only. No direct grading or rewards.
+ * Opt-in via isolated project Script Properties + URL ?g74ColumnTest=1.
+ * The preexisting B20 scorer remains authoritative.
+ */
+var KL_G74_V13=(function(){
+'use strict';
+function allowed(context){
+ try{
+  const q=new URLSearchParams(context.location?.search||'');
+  return context.variantPilot===true&&context.lessonId==='toan_b20'&&
+    /^LV[123]-[AB]$/.test(context.view||'')&&q.get('g74ColumnTest')==='1'&&
+    typeof KLColumnV12!=='undefined'&&typeof KLColumnViewV12!=='undefined';
+ }catch(e){return false;}
+}
+function mapQuestion(q){
+ if(!q||q.type!=='vertical'||q.valid!==true||
+    !Number.isSafeInteger(q.n1)||!Number.isSafeInteger(q.n2)||
+    q.n1<0||q.n2<0||q.n1>99||q.n2>99||q.n1+q.n2>99||q.op!=='+')return null;
+ const spec={variantId:'COL_'+q.id,operation:'ADD',profile:'PV100',
+   level:String(q.level).slice(0,3),a:q.n1,b:q.n2,
+   carryPolicy:'OPTIONAL_HINT',assetId:null};
+ const result=KLColumnV12.publicPlan(spec);
+ return result.ok?result:null;
+}
+function bindLegacy(card,q,values,doc){
+ const names={result_ones:'ones',result_tens:'tens',carry_tens:'carry'};
+ for(const [field,legacy] of Object.entries(names)){
+  const input=card.querySelector('[data-ml-field="'+q.id+':'+legacy+'"]');
+  if(!input)return {ok:false,reason:'LEGACY_FIELD_MISSING_'+legacy};
+ }
+ const active=doc.activeElement;
+ for(const [field,legacy] of Object.entries(names)){
+  const input=card.querySelector('[data-ml-field="'+q.id+':'+legacy+'"]');
+  const next=field==='carry_tens'?(values.carry_tens?'1':'0'):String(values[field]||'');
+  if(input.value!==next){
+   input.value=next;
+   // Existing B20 listener updates in-memory draft and invalidates an older TEST grading result.
+   const ev=typeof InputEvent==='function'?
+     new InputEvent('input',{bubbles:true,inputType:'insertReplacementText'}):
+     new Event('input',{bubbles:true});
+   input.dispatchEvent(ev);
+  }
+ }
+ if(active&&typeof active.focus==='function'&&active.isConnected)active.focus({preventScroll:true});
+ return {ok:true};
+}
+function mount(context){
+ if(!allowed(context))return {ok:false,status:'SKIPPED_GATE'};
+ const root=context.root,doc=context.document||document;
+ if(!root||!Array.isArray(context.questions))return {ok:false,status:'INVALID_CONTEXT'};
+ const selected=context.questions.filter(q=>q.level===context.view&&q.type==='vertical');
+ const events=[];
+ let mounted=0;
+ for(const q of selected){
+  const card=[...root.querySelectorAll('[data-ml-q-card]')].find(el=>el.dataset.mlQCard===q.id);
+  if(!card){events.push({id:q.id,status:'CARD_MISSING'});continue}
+  if(card.querySelector('[data-g74-v13]'))continue;
+  const plan=mapQuestion(q);
+  if(!plan){events.push({id:q.id,status:'UNSUPPORTED_SPEC'});continue}
+  const required=['ones','tens','carry'].map(x=>card.querySelector('[data-ml-field="'+q.id+':'+x+'"]'));
+  if(required.some(x=>!x)){events.push({id:q.id,status:'LEGACY_FIELDS_MISSING'});continue}
+  const box=doc.createElement('section');box.dataset.g74V13='1';box.dataset.qaLesson=q.id;
+  box.setAttribute('aria-label','Bản đặt tính V1.3 thử nghiệm');
+  const title=doc.createElement('div');title.className='g74v13-heading';
+  title.textContent='ĐẶT TÍNH V1.3 · TEST (đồng bộ với bài hiện có)';
+  const hint=doc.createElement('p');hint.className='g74v13-guidance';
+  hint.textContent='Thử giao diện mới. Kết quả được đưa vào ô bài cũ; dùng nút Nộp bài của B20 để máy chủ xác minh. B20 hiện vẫn chấm cả ô nhớ.';
+  const host=doc.createElement('div');host.className='g74v13-host';
+  const message=doc.createElement('div');message.className='g74v13-message';message.setAttribute('role','status');
+  box.append(title,hint,host,message);
+  card.append(box);
+  try{
+   const controller=KLColumnViewV12.mount(host,[plan],{
+    onChange:(_index,v)=>{
+      const result=bindLegacy(card,q,v,doc);
+      message.textContent=result.ok?'Đã đồng bộ vào bài hiện có.':'Không thể đồng bộ: '+result.reason;
+    },
+    onSubmit:(_index,v)=>{
+      const result=bindLegacy(card,q,v,doc);
+      message.textContent=result.ok?'Đã đồng bộ. Chọn Nộp bài ở cuối lượt để chấm trên máy chủ.':'Không thể đồng bộ: '+result.reason;
+    }
+   });
+   if(!controller.ok)throw Error(controller.reason||'V12_VIEW_UNAVAILABLE');
+   // Mirror current B20 draft values after the original lesson has restored its own drafts.
+   const fromLegacy={
+     result_ones:required[0].value,result_tens:required[1].value,
+     carry_tens:required[2].value==='1'
+   };
+   // V12 view is a visual adjunct. Existing B20 input fields remain fully accessible.
+   for(const [place,value] of [['ones',fromLegacy.result_ones],['tens',fromLegacy.result_tens]]){
+    if(value){const i=host.querySelector('[data-answer="result_'+place+'"]');if(i){
+      i.value=value;i.dispatchEvent(new Event('input',{bubbles:true}));
+    }}
+   }
+   if(fromLegacy.carry_tens)host.querySelector('[data-transition="carry_tens"]')?.click();
+   mounted++;
+   events.push({id:q.id,status:'MOUNTED_DUAL_INPUT_TEST'});
+  }catch(e){
+   box.remove();
+   events.push({id:q.id,status:'FAIL_OPEN_LEGACY_PRESERVED'});
+  }
+ }
+ root.dataset.g74V13Mounted=String(mounted);
+ return {ok:true,status:'TEST_DUAL_RENDER',count:mounted,events,grading:'LEGACY_SERVER_ONLY'};
+}
+return Object.freeze({allowed,mapQuestion,bindLegacy,mount});
+})();
