@@ -8,7 +8,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "táo",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-01.webp"
@@ -18,7 +18,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "cam",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-02.webp"
@@ -28,7 +28,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "chuối",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-03.webp"
@@ -38,7 +38,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "xoài",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-04.webp"
@@ -48,7 +48,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "chùm nho",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-05.webp"
@@ -58,7 +58,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "dưa hấu",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-06.webp"
@@ -68,7 +68,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "dâu tây",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-07.webp"
@@ -78,7 +78,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "lê",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-08.webp"
@@ -88,7 +88,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "dứa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-09.webp"
@@ -118,7 +118,7 @@
       "scope": "SHARED",
       "category": "TRAI_CAY",
       "label_vi": "đu đủ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH01/KL-SH01-12.webp"
@@ -128,7 +128,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "cà rốt",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-01.webp"
@@ -138,7 +138,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "cà chua",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-02.webp"
@@ -148,7 +148,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "khoai tây",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-03.webp"
@@ -158,7 +158,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "bắp cải",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-04.webp"
@@ -168,7 +168,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "bí đỏ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-05.webp"
@@ -178,7 +178,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "bắp ngô",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-06.webp"
@@ -188,7 +188,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "quả trứng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-07.webp"
@@ -198,7 +198,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "ổ bánh mì",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-08.webp"
@@ -208,7 +208,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "bánh quy",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-09.webp"
@@ -228,7 +228,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "bánh kem",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-11.webp"
@@ -238,7 +238,7 @@
       "scope": "SHARED",
       "category": "THUC_PHAM",
       "label_vi": "hộp sữa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH02/KL-SH02-12.webp"
@@ -248,7 +248,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "bút chì",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-01.webp"
@@ -258,7 +258,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "bút mực",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-02.webp"
@@ -268,7 +268,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "cục tẩy",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-03.webp"
@@ -278,7 +278,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "thước kẻ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-04.webp"
@@ -288,7 +288,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "quyển vở",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-05.webp"
@@ -298,7 +298,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "sách giáo khoa đóng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-06.webp"
@@ -308,7 +308,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "cặp sách",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-07.webp"
@@ -318,7 +318,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "hộp bút",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-08.webp"
@@ -328,7 +328,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "kéo học sinh",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-09.webp"
@@ -338,7 +338,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "hồ dán",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-10.webp"
@@ -348,7 +348,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "bảng con",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-11.webp"
@@ -358,7 +358,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HOC_TAP",
       "label_vi": "viên phấn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH03/KL-SH03-12.webp"
@@ -368,7 +368,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "bóng cao su",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-01.webp"
@@ -378,7 +378,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "gấu bông",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-02.webp"
@@ -388,7 +388,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "búp bê",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-03.webp"
@@ -398,7 +398,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "ô tô đồ chơi",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-04.webp"
@@ -408,7 +408,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "tàu hỏa đồ chơi",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-05.webp"
@@ -418,7 +418,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "máy bay đồ chơi",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-06.webp"
@@ -428,7 +428,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "robot đồ chơi",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-07.webp"
@@ -438,7 +438,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "bóng bay",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-08.webp"
@@ -448,7 +448,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "xúc xắc",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-09.webp"
@@ -458,7 +458,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "khối xếp hình",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-10.webp"
@@ -468,7 +468,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "diều giấy",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-11.webp"
@@ -478,7 +478,7 @@
       "scope": "SHARED",
       "category": "DO_CHOI",
       "label_vi": "chong chóng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH04/KL-SH04-12.webp"
@@ -488,7 +488,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "mèo",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-01.webp"
@@ -498,7 +498,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "chó",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-02.webp"
@@ -508,7 +508,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "thỏ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-03.webp"
@@ -518,7 +518,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "gà mái",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-04.webp"
@@ -528,7 +528,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "vịt",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-05.webp"
@@ -538,7 +538,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "chim sẻ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-06.webp"
@@ -548,7 +548,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "cá vàng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-07.webp"
@@ -558,7 +558,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "bướm",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-08.webp"
@@ -568,7 +568,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "ong mật",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-09.webp"
@@ -578,7 +578,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "ếch",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-10.webp"
@@ -588,7 +588,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "voi",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-11.webp"
@@ -598,7 +598,7 @@
       "scope": "SHARED",
       "category": "DONG_VAT",
       "label_vi": "khỉ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH05/KL-SH05-12.webp"
@@ -608,7 +608,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "bàn ăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-01.webp"
@@ -618,7 +618,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "ghế tựa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-02.webp"
@@ -628,7 +628,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "giường ngủ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-03.webp"
@@ -638,7 +638,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "tủ áo",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-04.webp"
@@ -648,7 +648,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "đèn bàn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-05.webp"
@@ -658,7 +658,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "đồng hồ treo tường trang trí",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-06.webp"
@@ -668,7 +668,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "cốc uống nước",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-07.webp"
@@ -678,7 +678,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "đĩa ăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-08.webp"
@@ -688,7 +688,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "bát ăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-09.webp"
@@ -698,7 +698,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "thìa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-10.webp"
@@ -708,7 +708,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "chậu nhựa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-11.webp"
@@ -718,7 +718,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_GIA_DINH",
       "label_vi": "giỏ đựng đồ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH06/KL-SH06-12.webp"
@@ -728,7 +728,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "xe đạp",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-01.webp"
@@ -738,7 +738,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "xe máy",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-02.webp"
@@ -748,7 +748,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "ô tô con",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-03.webp"
@@ -758,7 +758,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "xe buýt",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-04.webp"
@@ -768,7 +768,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "tàu hỏa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-05.webp"
@@ -778,7 +778,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "thuyền buồm",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-06.webp"
@@ -788,7 +788,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "máy bay",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-07.webp"
@@ -798,7 +798,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "cây thân gỗ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-08.webp"
@@ -828,7 +828,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "mặt trời vui",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-11.webp"
@@ -838,7 +838,7 @@
       "scope": "SHARED",
       "category": "PHUONG_TIEN_THIEN_NHIEN",
       "label_vi": "đám mây trắng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH07/KL-SH07-12.webp"
@@ -848,7 +848,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "giỏ mua sắm",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-01.webp"
@@ -858,7 +858,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "túi giấy",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-02.webp"
@@ -868,7 +868,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "hộp quà",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-03.webp"
@@ -878,7 +878,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "kệ hàng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-04.webp"
@@ -888,7 +888,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "quầy bán hàng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-05.webp"
@@ -898,7 +898,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "vé xe trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-06.webp"
@@ -908,7 +908,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "chậu cây",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-07.webp"
@@ -918,7 +918,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "bình hoa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-08.webp"
@@ -928,7 +928,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "ô che mưa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-09.webp"
@@ -938,7 +938,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "áo đồng phục",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-10.webp"
@@ -958,7 +958,7 @@
       "scope": "SHARED",
       "category": "DO_DUNG_HANG_NGAY",
       "label_vi": "đôi giày thể thao",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH08/KL-SH08-12.webp"
@@ -1208,7 +1208,7 @@
       "scope": "SHARED",
       "category": "THE_THAO_VUI_CHOI",
       "label_vi": "cầu trượt",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH11/KL-SH11-01.webp"
@@ -1218,7 +1218,7 @@
       "scope": "SHARED",
       "category": "THE_THAO_VUI_CHOI",
       "label_vi": "xích đu",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH11/KL-SH11-02.webp"
@@ -1228,7 +1228,7 @@
       "scope": "SHARED",
       "category": "THE_THAO_VUI_CHOI",
       "label_vi": "bập bênh",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH11/KL-SH11-03.webp"
@@ -1328,7 +1328,7 @@
       "scope": "SHARED",
       "category": "MUA_SAM",
       "label_vi": "xe đẩy hàng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/SH12/KL-SH12-01.webp"
@@ -1448,7 +1448,7 @@
       "scope": "MATH",
       "category": "DEM_SO",
       "label_vi": "que tính đơn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M01/KL-M01-01.webp"
@@ -1458,7 +1458,7 @@
       "scope": "MATH",
       "category": "DEM_SO",
       "label_vi": "bó 10 que tính",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M01/KL-M01-02.webp"
@@ -1468,7 +1468,7 @@
       "scope": "MATH",
       "category": "DEM_SO",
       "label_vi": "bó 100 que tính",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M01/KL-M01-03.webp"
@@ -1478,7 +1478,7 @@
       "scope": "MATH",
       "category": "DEM_SO",
       "label_vi": "hạt đếm tròn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M01/KL-M01-04.webp"
@@ -1498,7 +1498,7 @@
       "scope": "MATH",
       "category": "DEM_SO",
       "label_vi": "khung 10 ô trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M01/KL-M01-06.webp"
@@ -1688,7 +1688,7 @@
       "scope": "MATH",
       "category": "CHIA_NHOM",
       "label_vi": "khay 2 ngăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M03/KL-M03-01.webp"
@@ -1698,7 +1698,7 @@
       "scope": "MATH",
       "category": "CHIA_NHOM",
       "label_vi": "khay 5 ngăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M03/KL-M03-02.webp"
@@ -1808,7 +1808,7 @@
       "scope": "MATH",
       "category": "KHOI_LUONG",
       "label_vi": "cân hai đĩa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M04/KL-M04-01.webp"
@@ -1818,7 +1818,7 @@
       "scope": "MATH",
       "category": "KHOI_LUONG",
       "label_vi": "cân lò xo",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M04/KL-M04-02.webp"
@@ -1928,7 +1928,7 @@
       "scope": "MATH",
       "category": "DUNG_TICH",
       "label_vi": "chai nước trong",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M05/KL-M05-01.webp"
@@ -2048,7 +2048,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "quả bóng cầu",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-01.webp"
@@ -2058,7 +2058,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "lon hình trụ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-02.webp"
@@ -2068,7 +2068,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "hộp quà lập phương",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "SEMANTIC_FILTER_BEFORE_RANDOM",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-03.webp"
@@ -2078,7 +2078,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "hộp giấy chữ nhật",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-04.webp"
@@ -2088,7 +2088,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "biển báo tam giác trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-05.webp"
@@ -2098,7 +2098,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "khung ảnh vuông",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-06.webp"
@@ -2108,7 +2108,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "viên gạch chữ nhật",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-07.webp"
@@ -2118,7 +2118,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "cửa sổ vòm",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-08.webp"
@@ -2128,7 +2128,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "mặt bàn tròn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-09.webp"
@@ -2138,7 +2138,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "ống giấy trụ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-10.webp"
@@ -2148,7 +2148,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "quả địa cầu trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-11.webp"
@@ -2158,7 +2158,7 @@
       "scope": "MATH",
       "category": "HINH_HOC",
       "label_vi": "hộp nắp tròn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M06/KL-M06-12.webp"
@@ -2168,7 +2168,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "đồng hồ tròn không kim",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-01.webp"
@@ -2178,7 +2178,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "bộ kim đồng hồ rời",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-02.webp"
@@ -2188,7 +2188,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "đồng hồ số màn hình trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-03.webp"
@@ -2198,7 +2198,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "lịch tháng trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-04.webp"
@@ -2208,7 +2208,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "lịch bàn trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-05.webp"
@@ -2218,7 +2218,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "đồng hồ báo thức không số",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-06.webp"
@@ -2228,7 +2228,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "đồng hồ cát",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-07.webp"
@@ -2238,7 +2238,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "chuông báo giờ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-08.webp"
@@ -2248,7 +2248,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "thẻ buổi sáng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-09.webp"
@@ -2258,7 +2258,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "thẻ buổi trưa",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-10.webp"
@@ -2268,7 +2268,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "thẻ buổi chiều",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-11.webp"
@@ -2278,7 +2278,7 @@
       "scope": "MATH",
       "category": "THOI_GIAN_LICH",
       "label_vi": "thẻ buổi tối",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M07/KL-M07-12.webp"
@@ -2288,7 +2288,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "thước 20 cm không số",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-01.webp"
@@ -2298,7 +2298,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "thước mét không số",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-02.webp"
@@ -2308,7 +2308,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "thước cuộn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-03.webp"
@@ -2318,7 +2318,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "dây đo mềm",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-04.webp"
@@ -2328,7 +2328,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "thước gấp",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-05.webp"
@@ -2338,7 +2338,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "đoạn dây thừng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-06.webp"
@@ -2348,7 +2348,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "băng ruy băng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-07.webp"
@@ -2358,7 +2358,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "thanh gỗ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-08.webp"
@@ -2368,7 +2368,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "cây bút để đo",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-09.webp"
@@ -2378,7 +2378,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "vạch mốc đo trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-10.webp"
@@ -2388,7 +2388,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "bàn đo chiều dài",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-11.webp"
@@ -2398,7 +2398,7 @@
       "scope": "MATH",
       "category": "DO_DAI",
       "label_vi": "cọc đo chiều cao",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M08/KL-M08-12.webp"
@@ -2408,7 +2408,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "ví tiền",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-01.webp"
@@ -2418,7 +2418,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "hộp đựng tiền",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-02.webp"
@@ -2428,7 +2428,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "khay tiền trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-03.webp"
@@ -2438,7 +2438,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "quầy thu ngân",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-04.webp"
@@ -2448,7 +2448,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "giỏ đi chợ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-05.webp"
@@ -2458,7 +2458,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "túi tiền xu giả lập",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-06.webp"
@@ -2468,7 +2468,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "hộp tiết kiệm hình heo",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-07.webp"
@@ -2478,7 +2478,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "kệ sản phẩm",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-08.webp"
@@ -2488,7 +2488,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "giỏ đồ nhỏ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-09.webp"
@@ -2498,7 +2498,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "máy quét mã hàng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-10.webp"
@@ -2508,7 +2508,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "khay trả tiền",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-11.webp"
@@ -2518,7 +2518,7 @@
       "scope": "MATH",
       "category": "TIEN_MUA_SAM",
       "label_vi": "bảng tổng tiền trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M09/KL-M09-12.webp"
@@ -2528,7 +2528,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "túi vải kín",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-01.webp"
@@ -2538,7 +2538,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "hộp bí mật kín",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-02.webp"
@@ -2548,7 +2548,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "hộp trong suốt trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-03.webp"
@@ -2558,7 +2558,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "giỏ phân loại 2 ngăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-04.webp"
@@ -2568,7 +2568,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "giỏ phân loại 3 ngăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-05.webp"
@@ -2578,7 +2578,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "khay nhiều màu không số",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-06.webp"
@@ -2588,7 +2588,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "bình đựng bóng trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-07.webp"
@@ -2598,7 +2598,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "bảng cài tranh trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-08.webp"
@@ -2608,7 +2608,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "hộp bốc thăm",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-09.webp"
@@ -2618,7 +2618,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "thẻ phân loại trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-10.webp"
@@ -2628,7 +2628,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "lọ bi trong suốt trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-11.webp"
@@ -2638,7 +2638,7 @@
       "scope": "MATH",
       "category": "DU_LIEU_XAC_SUAT",
       "label_vi": "vòng quay trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M10/KL-M10-12.webp"
@@ -2648,7 +2648,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "cân thăng bằng đồ chơi trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-01.webp"
@@ -2658,7 +2658,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "hai hộp khác kích cỡ",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-02.webp"
@@ -2668,7 +2668,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "ba cốc khác chiều cao",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-03.webp"
@@ -2678,7 +2678,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "ba thanh gỗ độ dài khác nhau",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-04.webp"
@@ -2688,7 +2688,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "tháp xếp chồng",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-05.webp"
@@ -2698,7 +2698,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "dãy hạt màu xen kẽ không số",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-06.webp"
@@ -2708,7 +2708,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "khay sắp mẫu",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-07.webp"
@@ -2718,7 +2718,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "bộ khối màu",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-08.webp"
@@ -2728,7 +2728,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "đường đua trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-09.webp"
@@ -2738,7 +2738,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "bậc thang đồ chơi",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-10.webp"
@@ -2748,7 +2748,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "sọt chứa nhiều ít",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-11.webp"
@@ -2758,7 +2758,7 @@
       "scope": "MATH",
       "category": "SO_SANH_QUY_LUAT",
       "label_vi": "hai bình khác dung tích",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M11/KL-M11-12.webp"
@@ -2768,7 +2768,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "mê cung ô trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-01.webp"
@@ -2778,7 +2778,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "đường đi lát gạch",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-02.webp"
@@ -2788,7 +2788,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "bàn cờ ô vuông trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-03.webp"
@@ -2798,7 +2798,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "khay suy luận 3 ô",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-04.webp"
@@ -2808,7 +2808,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "khay suy luận 4 ô",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-05.webp"
@@ -2818,7 +2818,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "hộp logic 2 ngăn",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-06.webp"
@@ -2828,7 +2828,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "tháp vòng xếp",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-07.webp"
@@ -2838,7 +2838,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "bộ thẻ hình trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-08.webp"
@@ -2848,7 +2848,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "mô hình hàng ghế",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-09.webp"
@@ -2858,7 +2858,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "giàn ô chữ số trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-10.webp"
@@ -2868,7 +2868,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "sơ đồ cây trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-11.webp"
@@ -2878,7 +2878,7 @@
       "scope": "MATH",
       "category": "BAI_TOAN_NANG_CAO",
       "label_vi": "bảng quy luật trống",
-      "label_status": "OWNER_SIGNOFF_PENDING",
+      "label_status": "LABEL_APPROVED",
       "render_policy": "OBJECT_ONLY_NO_COUNT_ASSUMPTION",
       "content_qa": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
       "relative_path": "WEBP/M12/KL-M12-12.webp"
