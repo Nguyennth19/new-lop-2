@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "g7-4-b6-real-lesson-reuse-scenarios-v1",
+  "mode": "TEST_ONLY",
+  "groundedIn": [
+    "du-lieu/asset-selector/shared-visual-intent.examples.json",
+    "du-lieu/bien-the/chuan/tieng-viet-demo.visual-intent.v1.json",
+    "du-lieu/bien-the/chuan/tieng-anh-demo.visual-intent.v1.json"
+  ],
+  "cases": [
+    {
+      "id": "MATH-CANDY-01",
+      "subject": "TOAN",
+      "lessonId": "toan_b99",
+      "prompt": "Một hộp có 47 chiếc kẹo, thêm 34 chiếc kẹo.",
+      "conceptKey": "wrapped_candy",
+      "usage": "DECORATIVE",
+      "expectedDecision": "REUSE_EXISTING_WEBP",
+      "existingAssetId": "KL_SH02_010",
+      "quantityInference": false
+    },
+    {
+      "id": "VI-BICYCLE-01",
+      "subject": "TIENG_VIET",
+      "lessonId": "tv_b03_visual_demo",
+      "questionId": "TV_DEMO_001",
+      "prompt": "Bé đi xe đạp đến trường.",
+      "conceptKey": "kids_bicycle",
+      "usage": "VOCABULARY",
+      "expectedDecision": "REUSE_EXISTING_WEBP",
+      "existingAssetId": "KL_SH11_012",
+      "quantityInference": false
+    },
+    {
+      "id": "EN-BAG-01",
+      "subject": "TIENG_ANH",
+      "lessonId": "en_vocabulary_demo_visual",
+      "questionId": "EN_DEMO_002",
+      "prompt": "Find the school bag.",
+      "conceptKey": "school_backpack",
+      "usage": "VOCABULARY",
+      "expectedDecision": "REUSE_EXISTING_WEBP",
+      "existingAssetId": "KL_SH09_007",
+      "quantityInference": false
+    },
+    {
+      "id": "EN-BIKE-COUNT-03",
+      "subject": "TIENG_ANH",
+      "lessonId": "en_vocabulary_demo_visual",
+      "questionId": "EN_DEMO_004",
+      "prompt": "Count exactly 3 bicycles.",
+      "conceptKey": "kids_bicycle",
+      "usage": "COUNT_OBJECT",
+      "requestedCount": 3,
+      "expectedDecision": "COUNT_GATE_BLOCKED",
+      "existingAssetId": "KL_SH11_012",
+      "quantityInference": false
+    },
+    {
+      "id": "MATH-WATERMELON-03",
+      "subject": "TOAN",
+      "lessonId": "toan_b99",
+      "prompt": "Yêu cầu ảnh 3 quả chính xác phải chờ QA đặc tính hình.",
+      "conceptKey": "watermelon",
+      "usage": "COUNT_OBJECT",
+      "requestedCount": 3,
+      "expectedDecision": "COUNT_GATE_BLOCKED",
+      "existingAssetId": "KL_M04_007",
+      "quantityInference": false
+    }
+  ]
+}
