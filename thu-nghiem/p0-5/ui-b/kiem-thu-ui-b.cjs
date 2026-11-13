@@ -7,7 +7,7 @@ let pass=0,fail=0;
 function test(label,fn){try{fn();pass++;console.log('PASS '+label)}catch(e){fail++;console.error('FAIL '+label+': '+e.message)}}
 function getSlice(start,end){const a=source.indexOf(start),b=source.indexOf(end,a+start.length);assert(a>=0&&b>a,start);return source.slice(a,b)}
 function resultMarkup(options={}){
- const panel={innerHTML:''},questions=[{id:'id1',label:'Câu 1'},{id:'id2',label:'Câu 2'}];
+ const panel={innerHTML:''},questions=[{id:'id1',label:'Câu 1',level:'LV1-A'},{id:'id2',label:'Câu 2',level:'LV1-A'}];
  const ctx={shell:()=>({querySelector:x=>x==='#mlResults'?panel:null}),
  fullData:{variantPilot:true},view:'LV1-A',submissions:options.submissions||{},
  activeQuestions:()=>questions,fields:q=>[{value:q.id==='id1'?'12':''}],
