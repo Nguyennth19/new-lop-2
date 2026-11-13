@@ -1,0 +1,44 @@
+name: G7.4 B5.13 Count Renderer Integration TEST
+on:
+  push:
+    branches: ['test/g7-4-b5-13-count-renderer-b6-20261113']
+    paths:
+      - 'qa/g7-4-b5-13/**'
+      - 'qa/g7-4-b5-13-count-renderer-contract.v1.json'
+      - 'hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_B513_Count_Renderer_TEST.html'
+      - '.github/workflows/g7-4-b513-count-renderer-test.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Syntax and contract
+        run: |
+          node --check qa/g7-4-b5-13/count-renderer-core.cjs
+          node --check qa/g7-4-b5-13/count-renderer-core.test.cjs
+          node qa/g7-4-b5-13/count-renderer-core.test.cjs
+      - name: Check offline gallery and source invariants
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const r=JSON.parse(fs.readFileSync('qa/g7-4-b5-13-count-renderer-contract.v1.json','utf8'));
+          const m=JSON.parse(fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json','utf8'));
+          const html=fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_B513_Count_Renderer_TEST.html','utf8');
+          assert.equal((html.match(/data:image\/svg\+xml/g)||[]).length,46);
+          assert.equal(r.approvedCount,45);
+          assert.equal(r.illustrationOnlyCount,1);
+          assert.equal(r.assets.length,46);
+          assert.equal(m.icons.length,46);
+          assert.equal(m.enabled,false);
+          assert.equal(m.productionActivation,false);
+          assert.equal(m.renderPolicy.allowCountInference,false);
+          assert.equal(r.runtimeEnabled,false);
+          assert.equal(r.productionActivation,false);
+          for(const x of r.assets)assert.equal(m.icons.find(i=>i.id===x.assetId)?.sha256,x.sourceSha256);
+          console.log('PASS 46 SVG embedded, 45 exact unit count permissions TEST, production OFF');
+          JS
