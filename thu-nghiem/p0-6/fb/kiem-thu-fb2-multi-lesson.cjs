@@ -84,7 +84,7 @@ t('duplicate lesson and unsafe catalog are rejected',()=>{
  }
 });
 t('pending lessons cannot carry a full approved bundle with pending status',()=>{
- const altered=c(catalog),e=altered.lessons[1];
+ const altered=c(catalog),e=altered.lessons.find(x=>x.lessonId==='toan_b24');
  Object.assign(e,{sourceRef:'X_SOURCE',rendererRef:'X_RENDER',policyReviewRef:'X_POLICY',
  qaEvidenceRef:'X_QA',trustedAdapterId:'X_ADAPTER'});
  assert.throws(()=>createMultiLessonRegistry(altered,trusted),/FB2_PENDING_CANNOT_SELF_APPROVE/);
