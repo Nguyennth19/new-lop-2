@@ -1,0 +1,21 @@
+name: G7.4 Choice Reference V1.1 TEST
+on:
+  push:
+    branches:
+      - test/g7-4-choice-reference-v11-20261114
+    paths:
+      - 'qa/g7-4-choice-reference-v11/**'
+      - '.github/workflows/g7-4-choice-v11-test.yml'
+  workflow_dispatch:
+jobs:
+  choice-unit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Contract, draft, speech and frozen HTML regression
+        run: node qa/g7-4-choice-reference-v11/choice-v11.test.cjs
