@@ -2,7 +2,6 @@
 <title>G7.4-B.5.14 – Web App Lesson TEST Harness (not a deployment)</title>
 <style>body{background:#eef3fa;color:#243447;font-family:system-ui,-apple-system,sans-serif;margin:0;padding:15px}.shell{max-width:1000px;margin:auto}.ml-content{padding:12px;background:white;border:1px solid #cddff0;border-radius:12px}h1{font-size:20px}.ml-card{padding:12px;background:#fff;border:1px solid #ddd;border-radius:8px}.qa-label{font-size:12px;color:#697b8b;margin:8px 0}</style>
 <style>/* G7.4-B.5.14 – scoped to TEST panel; does not modify existing .ml-* components. */
-#g74-unused-never-match{display:none}
 [data-g74-b514]{margin:18px 0;padding:14px;border:1px dashed #8baed2;border-radius:14px;background:#f5f9ff;color:#20384e;max-width:100%;overflow-x:hidden}
 [data-g74-b514] .g74-b514-title{font-size:16px;font-weight:800;margin:0 0 5px}
 [data-g74-b514] .g74-b514-note{font-size:12px;line-height:1.5;color:#49647b;margin:0 0 12px}
@@ -16,6 +15,10 @@
 [data-g74-b514] .g74-b514-calculation{font-size:14px;font-weight:700;text-align:center;margin:8px 0;color:#27598a}
 [data-g74-b514] .g74-b514-blocked{color:#ad4b2a}
 @media(max-width:390px){[data-g74-b514]{padding:9px}[data-g74-b514] .g74-b514-controls{flex-direction:column;align-items:stretch}}
+
+[data-g74-b514] .g74-b514-subgroup{margin:7px 0;padding:6px 7px;border:1px dashed #91b3d4;border-radius:8px;background:#f4f9ff}
+[data-g74-b514] .g74-b514-subgroup small{font-size:12px;font-weight:700;color:#345a7c;display:block;margin:0 0 4px}
+[data-g74-b514] .g74-b514-removed{opacity:.36;filter:grayscale(.9);outline:2px dashed #c86a62;outline-offset:-1px;border-radius:5px}
 </style></head><body><div class="shell"><h1>G7.4-B.5.14 · Mô phỏng gắn Renderer trong bài học</h1>
 <p class="qa-label">Đây là trang kiểm thử tĩnh của module Web App; không phải URL triển khai GAS. Câu hỏi mẫu bên dưới không tham gia chấm điểm.</p>
 <main id="mlContent" class="ml-content"><article class="ml-card" data-ml-q-card="VAR_B20_20261112_016"><b>Câu B20 thật giữ nguyên (mô phỏng)</b><p>Một hộp có 47 chiếc kẹo. Bé Lan bỏ thêm 34 chiếc kẹo. Hỏi có tất cả bao nhiêu chiếc kẹo?</p><input data-ml-field="VAR_B20_20261112_016:answer" value="" placeholder="Đáp số"/></article></main>
@@ -106,38 +109,61 @@ function sceneFor(sample,width){
   default:return {ok:false,code:'INVALID_DEMO_TYPE'};
  }
 }
-function images(doc,scene,assetId){
+function images(doc,scene,assetId,removedCount=0){
  const item=REGISTRY.assets.find(x=>x.assetId===assetId);
  const wrap=el(doc,'div','g74-b514-scene');if(!item||!DATA[assetId])return wrap;
- if(scene.status==='ILLUSTRATION'){const im=el(doc,'img','g74-b514-item');im.src=DATA[assetId];im.alt=item.canonicalPhrase;im.width=64;im.height=64;wrap.append(im);return wrap}
- const grid=el(doc,'div','g74-b514-grid');
- grid.style.setProperty('--g74-cols',String(scene.columns));
- grid.style.setProperty('--g74-icon',scene.iconPx+'px');grid.style.setProperty('--g74-gap',scene.gapPx+'px');
- grid.style.setProperty('--g74-max',scene.containerMaxHeightPx+'px');
- for(let i=0;i<scene.renderCount;i++){
-  const im=el(doc,'img','g74-b514-item');im.src=DATA[assetId];im.alt='';im.setAttribute('aria-hidden','true');grid.append(im);
+ if(scene.status==='ILLUSTRATION'){
+  const im=el(doc,'img','g74-b514-item');im.src=DATA[assetId];im.alt=item.canonicalPhrase;im.width=64;im.height=64;wrap.append(im);return wrap;
  }
- wrap.append(grid);return wrap;
+ const drawGrid=(count,offset=0)=>{
+  const grid=el(doc,'div','g74-b514-grid');
+  grid.style.setProperty('--g74-cols',String(scene.columns));
+  grid.style.setProperty('--g74-icon',scene.iconPx+'px');grid.style.setProperty('--g74-gap',scene.gapPx+'px');
+  grid.style.setProperty('--g74-max',scene.containerMaxHeightPx+'px');
+  for(let i=0;i<count;i++){
+   const removed=offset+i>=scene.renderCount-removedCount;
+   const im=el(doc,'img','g74-b514-item'+(removed?' g74-b514-removed':''));
+   im.src=DATA[assetId];im.alt='';im.setAttribute('aria-hidden','true');grid.append(im);
+  }
+  return grid;
+ };
+ if(scene.groups&&scene.groups.length){
+  for(let i=0;i<scene.groups.length;i++){
+   const g=scene.groups[i],group=el(doc,'div','g74-b514-subgroup');
+   group.append(el(doc,'small','', 'Nhóm '+(i+1)+': '+g.quantity+' '+scene.canonicalUnit));
+   group.append(drawGrid(g.quantity,g.start));wrap.append(group);
+  }
+ }else wrap.append(drawGrid(scene.renderCount));
+ return wrap;
 }
 function draw(doc,target,sample,width){
  const result=sceneFor(sample,width);target.replaceChildren();
- if(!result.ok){target.append(el(doc,'p','g74-b514-blocked','Không dựng: '+(result.code||'Không đủ điều kiện')));return {ok:false,code:result.code||'BLOCKED'}}
- const scenes=result.scenes|| (result.initial&&result.second?[result.initial,result.second]:[result]);
+ if(!result.ok){
+  target.append(el(doc,'p','g74-b514-blocked','Không dựng: '+(result.code||'Không đủ điều kiện')));
+  target.dataset.g74Status='BLOCKED';return {ok:false,code:result.code||'BLOCKED'};
+ }
+ const subtract=result.initial&&result.second&&result.operator==='-';
+ const scenes=subtract?[result.initial]:(result.scenes||(result.initial&&result.second?[result.initial,result.second]:[result]));
  let actual=0;
  for(let i=0;i<scenes.length;i++){
   const scene=scenes[i];const item=el(doc,'div','g74-b514-group');
   if(scenes.length>1)item.append(el(doc,'small','',i===0?'Nhóm 1':'Nhóm 2'));
-  item.append(images(doc,scene,sample.assetId));target.append(item);actual+=scene.renderCount;
+  item.append(images(doc,scene,sample.assetId,subtract?result.removedCount:0));
+  target.append(item);actual+=scene.renderCount;
  }
  if(result.initial&&result.second){
+  if(subtract)target.append(el(doc,'p','g74-b514-calculation',
+     'Gạch bớt '+result.right+' '+sample.unit+' trong '+result.left+' '+sample.unit+'. Còn '+result.total+' '+sample.unit+'.'));
   target.append(el(doc,'p','g74-b514-calculation',result.left+' '+result.operator+' '+result.right+' = '+result.total+' '+sample.unit));
- }else if(result.groups?.length){target.append(el(doc,'p','g74-b514-calculation',
-  result.groups.length+' nhóm · tổng '+result.totalObjects+' '+sample.unit));}
- else if(result.scenes){target.append(el(doc,'p','g74-b514-calculation',
-  result.totals[0]+' và '+result.totals[1]+' '+sample.unit));}
- else if(result.status!=='ILLUSTRATION'){target.append(el(doc,'p','g74-b514-calculation',
-  'Có '+result.totalObjects+' '+sample.unit));}
+ }else if(result.groups?.length)target.append(el(doc,'p','g74-b514-calculation',
+    result.groups.length+' nhóm · tổng '+result.totalObjects+' '+sample.unit));
+ else if(result.scenes)target.append(el(doc,'p','g74-b514-calculation',
+    result.totals[0]+' và '+result.totals[1]+' '+sample.unit));
+ else if(result.status!=='ILLUSTRATION')target.append(el(doc,'p','g74-b514-calculation',
+    'Có '+result.totalObjects+' '+sample.unit));
  target.dataset.g74Actual=String(actual);target.dataset.g74Status='PASS';
+ target.dataset.g74Groups=String(target.querySelectorAll('.g74-b514-subgroup').length);
+ target.dataset.g74Removed=String(target.querySelectorAll('.g74-b514-removed').length);
  return {ok:true,actual,scene:sample.id,expected:result.totalObjects??result.total??null};
 }
 function mount(opts){
@@ -179,6 +205,8 @@ const overflow=!!(stage&&([stage,...stage.querySelectorAll('.g74-b514-grid')].so
 target.dataset.qaActual=String(actual);target.dataset.qaOverflow=String(overflow);
 target.dataset.qaMounted=String(!!panel);target.dataset.qaCode=result.code||'OK';
 target.dataset.qaOriginalQuestion=String(target.querySelectorAll('[data-ml-q-card]').length===previous);
+target.dataset.qaGroups=String(stage?.querySelectorAll('.g74-b514-subgroup').length||0);
+target.dataset.qaRemoved=String(stage?.querySelectorAll('.g74-b514-removed').length||0);
 document.getElementById('qa-result').textContent=JSON.stringify({mounted:!!panel,actual,overflow,
  originalQuestionPreserved:target.querySelectorAll('[data-ml-q-card]').length===previous,result},null,2);
 </script></body></html>
