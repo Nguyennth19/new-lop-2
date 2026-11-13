@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "g7-4-column-calc-v12-qa-result",
+  "date": "2026-11-14",
+  "branch": "test/g7-4-column-calc-reference-v12-variant-renderer-20261114",
+  "status": "TEST_TECHNICAL_QA_PASS_OWNER_VISUAL_PENDING",
+  "workflow": {
+    "name": "G7.4 Column Calc V1.2 Variant Renderer QA",
+    "runId": 43472280752,
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43472280752",
+    "conclusion": "SUCCESS"
+  },
+  "source": {
+    "originalPath": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "immutable": true
+  },
+  "verification": {
+    "assertionsPassed": 11819,
+    "validMathVariations": 2312,
+    "browserFixtureCount": 8,
+    "browserWidths": [
+      320,
+      360,
+      390,
+      768,
+      1024
+    ],
+    "browserInteractionTotal": 40,
+    "focusRtl": true,
+    "toggleAndReset": true,
+    "noHorizontalOverflow": true,
+    "publicPlansExcludeAnswers": true,
+    "mandatoryCarryBorrowGrading": true,
+    "optionalHintNotMandatory": true,
+    "overflow1000Blocked": true,
+    "mainChanged": false,
+    "gasChanged": false
+  },
+  "policy": {
+    "defaultCarryPolicy": "OPTIONAL_HINT",
+    "mandatoryPolicyRequires": "LESSON_POLICY_APPROVED",
+    "borrowSupported": true,
+    "sourceTemplateAdaptation": "original Type2 visual structure, independently structured CSS/DOM for variable operands",
+    "placeValueV2FallbackOnly": true
+  },
+  "limitations": {
+    "ownerVisualSignoff": false,
+    "actualAppsScriptTestDeployment": false,
+    "publishedLessonIntegration": false,
+    "liveGradingRegression": false,
+    "fullDeviceKeyboardTesting": false,
+    "advancedSourcePixelExactCopy": false
+  },
+  "rollback": "do not include V1.2; revert to test/g7-4-column-calc-reference-v11-source-qa-20261113"
+}
