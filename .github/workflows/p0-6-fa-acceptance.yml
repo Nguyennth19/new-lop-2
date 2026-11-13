@@ -1,0 +1,28 @@
+name: P0.6 F-A Policy & Pedagogy Readonly Audit (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-6-fa-policy-pedagogy-20261113'
+    paths:
+      - 'thu-nghiem/p0-6/final-acceptance/**'
+      - 'thu-nghiem/p0-6/pilot/toan_b21.*'
+      - '.github/workflows/p0-6-fa-acceptance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fa-static-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: F-A read-only safety and pedagogical risk audit
+        run: node thu-nghiem/p0-6/final-acceptance/fa-readonly-audit.cjs
+      - name: Existing math variant validator
+        run: node thu-nghiem/p0-6/kiem-thu-math-variant-policy-v1.cjs
+      - name: Existing policy generator
+        run: node thu-nghiem/p0-6/kiem-thu-policy-generator-v1.cjs
+      - name: Existing multi-family composer
+        run: node thu-nghiem/p0-6/kiem-thu-multi-family-composer-v1.cjs
+      - name: No release or deployment
+        run: echo 'TEST ONLY; RELEASE_READY=false; no deployment, student write, scores or stars'
