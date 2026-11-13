@@ -45,6 +45,6 @@ test('compound expression formatting presentation-only',()=>{
 test('score scroll only for smaller screens',()=>{assert(source.includes('if(window.innerWidth<=840)'));assert(source.includes("querySelector('#mlScoreCard')"))});
 test('shared CSS centers equations without changing inputs or calculation',()=>{for(const s of ['.ml-mental-row','justify-content:center','column-gap:clamp','white-space:pre','.ml-score-card','.ml-submit-card'])assert(css.includes(s),s);assert(!css.includes('SpreadsheetApp'))});
 test('CSS selectors scoped to math screen',()=>{const noComments=css.replace(/\/\*[\s\S]*?\*\//g,'');assert(!/(^|})\s*(?:body|html|:root|\.app)\b/.test(noComments));assert(css.includes('#mathFullScreen'))});
-test('release evidence remains blocked pending signoff',()=>assert(read('thu-nghiem/p0-5/evidence-current.json').includes('"signedOff": false')));
+test('release evidence remains blocked without TEST deployment and browser receipts',()=>{const e=JSON.parse(read('thu-nghiem/p0-5/evidence-current.json'));assert.equal(e.webapp,null);assert.equal(e.sessions,null);assert.equal(e.browser,null);});
 console.log(JSON.stringify({suite:'P0.5-UI-B-submit-equations',passed:pass,failed:fail}));
 if(fail)process.exitCode=1;
