@@ -1,0 +1,18 @@
+/* Scoped 8-A / 8-B styles, isolated from G6 and Measurement V1.1. */
+.g74-cw-v11{max-width:850px;margin:0 auto;font:700 15px/1.45 system-ui,sans-serif;color:#243954}
+.g74-cw-v11 h3{font-size:17px;padding:12px 15px;border-radius:14px;border:2px solid #a6d2ee;background:#f0faff}
+.g74-cw-status{color:#5e7089;font-size:12px}
+.g74-cw-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:12px 0}
+.g74-cw-panel{border:2px solid #b8d9ed;background:#fff;border-radius:17px;padding:12px;display:flex;flex-direction:column;align-items:center;min-width:0;gap:7px}
+.g74-cw-panel svg{height:215px;max-width:100%}
+.g74-cw-panel p{font-size:12px;text-align:center;margin:3px}
+.g74-cw-controls{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:9px 0}
+.g74-cw-btn{border:2px solid #80b5df;border-radius:11px;cursor:pointer;background:#e8f6ff;color:#1b5688;min-height:44px;padding:9px 12px;font:800 13px system-ui}
+.g74-cw-btn:disabled{opacity:.5;cursor:not-allowed}
+.g74-cw-btn:focus-visible{outline:3px solid #265ee7;outline-offset:2px}
+.g74-cw-scale{border:2px solid #ecd6a1;background:#fff8e9;border-radius:18px;padding:12px;text-align:center}
+.g74-cw-scale>svg{width:100%;height:auto;max-width:530px}
+.g74-cw-balance{font-weight:800;color:#855b29}
+.g74-cw-asset{max-height:65px;max-width:120px;object-fit:contain}
+.g74-cw-asset-fallback{font-size:11px;color:#6a7c8d}
+@media(max-width:480px){.g74-cw-two{grid-template-columns:1fr}.g74-cw-panel svg{height:165px}}
