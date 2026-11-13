@@ -38,6 +38,8 @@ jobs:
           assert f'data-qa-mounted="{mounted}"' in s,(name,'mount mismatch')
           assert 'data-qa-original-question="true"' in s,(name,'original answer card mutated')
           if mounted=='true': assert 'data-qa-overflow="false"' in s,(name,'horizontal overflow')
+          if name=='b20_group': assert 'data-qa-groups="4"' in s,(name,'not four visual groups')
+          if name=='b20_sub': assert 'data-qa-removed="4"' in s,(name,'four apples not visually crossed out')
           print('PASS B5.14 browser',name,'images',expected,'mounted',mounted)
           PY
           }
@@ -48,7 +50,7 @@ jobs:
           run_case b20_group 'g74CountTest=1&sample=B20_DEMO_GROUP&width=390' 12 true
           run_case b20_compare 'g74CountTest=1&sample=B20_DEMO_COMPARE&width=360' 13 true
           run_case b20_add 'g74CountTest=1&sample=B20_DEMO_ADD&width=390' 12 true
-          run_case b20_sub 'g74CountTest=1&sample=B20_DEMO_SUB&width=320' 13 true
+          run_case b20_sub 'g74CountTest=1&sample=B20_DEMO_SUB&width=320' 9 true
           run_case b20_decor 'g74CountTest=1&sample=B20_DEMO_DECOR&width=360' 1 true
       - name: Runtime OFF by design
         run: |
