@@ -26,5 +26,14 @@ jobs:
         run: node thu-nghiem/p0-6/final-acceptance/kiem-thu-b21-g5-compatibility.cjs
       - name: F-B lessonVersion release gate and rollback
         run: node thu-nghiem/p0-6/fb/kiem-thu-fb-release-governance.cjs
+      - name: Export bounded JSON version and QA receipt
+        run: node thu-nghiem/p0-6/fb/xuat-bien-nhan-fb.cjs
+      - name: Upload TEST candidate and QA receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: fb-b21-test-candidate-evidence
+          path: thu-nghiem/p0-6/fb/generated-fb-evidence/
+          if-no-files-found: error
+          retention-days: 30
       - name: Verify feature off and production blocked
         run: echo 'F-B TEST ONLY / FEATURE_FLAG_DEFAULT_OFF / RELEASE_READY=false / NO DEPLOY'
