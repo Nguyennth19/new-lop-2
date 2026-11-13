@@ -19,3 +19,6 @@ Confirm exact B21 skill boundary and whether two provisional subskills are legit
 Per family sample educational intent, question operation and proof, wording suitability to Grade 2, no unlearned prerequisite, difficulty distinction, interaction equivalence, image role, correct output and explanation. The existing 8 composed questions' exact outputs are seed-dependent; no independent student UI signoff exists.
 
 Decision: `B21_PEDAGOGY_PENDING`, NOT a signed acceptance.
+
+## F-A.1 supplemental review
+An independent two-field regrouping reasoning overlay was authored for the two composed LV3 items; mathematical bridge and sum proofs verified in CI Run 43449443133 at 7e8fa5906f8f9988e45ab2ec7b6ff2f22eecb487. This constitutes **a substantive pedagogical proposal** but does **not** modify the original eight-question lesson output. Current runtime has no two-field reasoning renderer or rubric: G5 remains BLOCKED, approvals remain PENDING. Details: FA_B21_LV3_REASONING_PROPOSAL.md.
