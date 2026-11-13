@@ -9,7 +9,7 @@ var KLVisualIntentNhieuBaiTestV1=(function(){
 const VERSION='kidlearn-visual-intent-multilesson-gate-v1';
 const RELEASE='653bfbc73002a188dcea0b714247b84cc28a4fed';
 const RULES='kidlearn-asset-semantic-rules-v1';
-const LESSONS=['tv_b03_visual_demo','en_vocabulary_demo_visual'];
+const ID=/^[a-z][a-z0-9_]{3,80}$/;
 const SHA=/^[0-9a-f]{40}$/;
 const clone=x=>JSON.parse(JSON.stringify(x));
 function safe(pack,code,details){
@@ -25,7 +25,7 @@ function validateRegistry(registry){
   registry.lessons.length>8)return {ok:false,code:'REGISTRY_INVALID'};
  const seen=new Set(),approved=[];
  for(const l of registry.lessons){
-  if(!l||typeof l.lessonId!=='string'||!LESSONS.includes(l.lessonId)||
+  if(!l||typeof l.lessonId!=='string'||!ID.test(l.lessonId)||
     seen.has(l.lessonId)||!SHA.test(String(l.fixtureBlobSha||''))||
     l.enabled!==false||l.qaStatus!=='QA_PASS_CANDIDATE'||
     !Number.isInteger(l.expectedQuestions)||l.expectedQuestions<1||
