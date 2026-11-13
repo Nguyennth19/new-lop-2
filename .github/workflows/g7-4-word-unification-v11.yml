@@ -1,0 +1,21 @@
+name: G7.4 Word Problem Unification V1.1 TEST
+on:
+  push:
+    branches:
+      - test/g7-4-word-problem-unification-v11-20261114
+    paths:
+      - 'qa/g7-4-word-problem-unification-v11/**'
+      - '.github/workflows/g7-4-word-unification-v11.yml'
+  workflow_dispatch:
+jobs:
+  word-unification-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: G6 adapter contract, 180 variants, draft, locked source SHA
+        run: node qa/g7-4-word-problem-unification-v11/word-unification-v11.test.cjs
