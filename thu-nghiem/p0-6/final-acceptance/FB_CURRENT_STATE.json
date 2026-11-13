@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fb.handover-state.v1",
   "phase": "F-B",
-  "status": "TECHNICAL_PASS_TEST_ONLY",
+  "status": "IN_PROGRESS",
   "createdAt": "2026-11-13T22:36:01.202+07:00",
   "branch": "test/p0-6-fb-from-fa-20261113",
   "sourceBranch": "test/p0-6-fa-policy-pedagogy-20261113",
@@ -21,9 +21,10 @@
     "RELEASE_READY": false,
     "FB_LESSON_VERSION": "PASS",
     "FB_ROLLBACK": "PASS_BLOCKED_DEFAULT",
-    "GOOGLE_APPS_SCRIPT_V6": "NOT_IN_SCOPE"
+    "GOOGLE_APPS_SCRIPT_V6": "NOT_IN_SCOPE",
+    "FB2": "IN_PROGRESS"
   },
-  "recoveryPoint": "Latest known verified code run 43455957462 SUCCESS at 900edeebb5c88518312596aa3e7d784415d9c4b4. F-B QA report commit a1d30675cc3e4e13e5596734d53cac1e13e04239; journal 57e62dea90b6f599e7e9bafbd0e3834bea082d38. Reverify current final HEAD and CI on resumption.",
+  "recoveryPoint": "GitHub FB HEAD 964b100b5fd2708a52a04970de831ce1707ebc75, CI run 43456202013 success. Checkpoint before FB.2 files. No new lesson approved or activated.",
   "restrictions": [
     "No MAIN/test-theo-main/Web App TEST V6 edits",
     "No Apps Script deployment or student data/grades/stars",
@@ -31,8 +32,8 @@
     "Web App V6 integration not certified"
   ],
   "nextAction": "Continue F-B per-lesson policy/family rollout on isolated TEST only with separate review; no V6 deploy without authorization",
-  "updatedAt": "2026-11-13T22:47:51.421+07:00",
-  "currentOperation": "F-B.1 versioned lesson gate and rollback QA PASSED; next require per-lesson approval for expanded scope; Apps Script integration not authorized",
+  "updatedAt": "2026-11-13T23:01:00+07:00",
+  "currentOperation": "FB.2 multi-lesson policy/QA evidence registry, isolated version rollback; only B21 inherits prior verified allowlist",
   "evidence": {
     "fbRunId": 43455957462,
     "fbSourceCommit": "900edeebb5c88518312596aa3e7d784415d9c4b4",
