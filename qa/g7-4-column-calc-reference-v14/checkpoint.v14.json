@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "g7-4-column-calc-v14-audit-checkpoint-v1",
+  "createdDate": "2026-11-14",
+  "sourceBranch": "test/g7-4-column-calc-reference-v13-webapp-test-20261114",
+  "auditBranch": "test/g7-4-column-calc-reference-v14-e2e-audit-20261114",
+  "status": "E2E_PENDING_NOT_APPROVED",
+  "decision": "DO_NOT_CLOSE_V1_4",
+  "documentation": "docs/kiem-dinh/G7.4_COLUMN_CALC_REFERENCE_V1.4_E2E_AUDIT_20261114.md",
+  "inherited": {
+    "v13CI": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43478451737",
+    "assertions": 11819,
+    "variants": 2312,
+    "chromeHarnessChecks": 85,
+    "sourceOriginalSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced"
+  },
+  "gates": {
+    "sourceDefaultOff": "PASS_SOURCE",
+    "isolatedGasTestProject": "PENDING",
+    "realTestDeployment": "PENDING",
+    "pv100B20AdditionBridge": "PASS_SOURCE",
+    "pv100SubtractionLive": "NOT_IN_LIVE_SCOPE",
+    "pv1000PreviewActualBrowser": "PENDING",
+    "mobileDesktopActualBrowser": "PENDING",
+    "generatorB20ServerE2E": "PENDING",
+    "rewardsProgressServerE2E": "PENDING",
+    "g6ReplacementApproval": "PENDING",
+    "rollbackDocumented": "PASS_SOURCE",
+    "rollbackExecuted": "PENDING"
+  },
+  "restrictions": {
+    "mainModified": false,
+    "originalSourceModified": false,
+    "studentDataModified": false,
+    "backendGradingModified": false,
+    "productionActivation": false
+  },
+  "requiredNextEvidence": [
+    "Verify distinct GAS TEST project ID and deployment ID",
+    "Provide actual TEST Web App URL and Script Properties status",
+    "Execute mobile and desktop B20 dual-render / keypad / draft tests on deployed web app",
+    "Execute TEST server grading and progress before-after verification",
+    "Execute feature-OFF rollback and capture browser/server evidence",
+    "Owner approve or reject renderer G6 replacement in TEST"
+  ],
+  "checkpointIntegrity": "Recorded from repository source inspection and inherited V1.3 CI; does not assert live deployment."
+}
