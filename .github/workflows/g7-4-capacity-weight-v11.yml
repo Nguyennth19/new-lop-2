@@ -1,0 +1,20 @@
+name: G7.4 Capacity Weight Reference V1.1 TEST
+on:
+  push:
+    branches:
+      - test/g7-4-capacity-weight-reference-v11-20261114
+    paths:
+      - 'qa/g7-4-capacity-weight-reference-v11/**'
+      - '.github/workflows/g7-4-capacity-weight-v11.yml'
+  workflow_dispatch:
+jobs:
+  capacity-weight-unit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Capacity/weight contract, tilt, draft and frozen source
+        run: node qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11.test.cjs
