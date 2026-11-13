@@ -4,30 +4,34 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T22:27:51.008+07:00",
-  "status": "IN_PROGRESS",
-  "currentOperation": "G5 Browser QA: generate independent static B21 preview and run Chromium desktop/mobile via GitHub Actions",
-  "recoveryPoint": "Verified remote HEAD d3ac244d7d1b5457b72fd12de53d79724fb4dde1; source unchanged; next create standalone HTML build and Playwright E2E scripts",
+  "updatedAt": "2026-11-13T22:34:45.515+07:00",
+  "status": "DONE",
+  "currentOperation": "F-A closed for isolated B21 TEST preview; F-B handover ready; no production or V6 integration",
+  "recoveryPoint": "F-A QA confirmed Actions 43453411019 SUCCESS on 226bc61be8b7a8de10c9820d3fad38362fa9b4ce; evidence artifact 14053541276. Handover FA_FB_HANDOVER.md; journal commit 2eb1bf03539486dd9bfbc314a4bf60ac6d1ed894. Reverify final HEAD/CI before F-B.",
   "steps": {
     "FA0": "DONE",
     "FA1": "DONE",
     "FA2": "DONE",
     "FA3": "DONE",
     "FA4": "DONE",
-    "FA5": "BLOCKED",
+    "FA5": "DONE",
     "FA1_1": "DONE",
     "G5_BRIDGE": "DONE",
-    "G5_LIVE": "BLOCKED",
-    "G5_BROWSER_QA": "IN_PROGRESS"
+    "G5_LIVE": "NOT_IN_SCOPE_VERSION6",
+    "G5_BROWSER_QA": "DONE"
   },
   "gates": {
     "policyE0": "OWNER_APPROVED_TEST_SCOPE",
     "b21Pedagogy": "OWNER_APPROVED_TEST_SCOPE",
-    "g5": "BLOCKED_LIVE_INTEGRATION",
+    "g5": "PASS_ISOLATED_TEST_PREVIEW",
     "g7": "OWNER_APPROVED_TEST_SCOPE",
     "g8": "OWNER_APPROVED_TEST_SCOPE",
     "releaseReady": false,
-    "g5Offline": "PASS"
+    "g5Offline": "PASS",
+    "g5Browser": "PASS",
+    "webAppVersion6Integration": "NOT_IN_SCOPE",
+    "fA": "CLOSED_FOR_ISOLATED_TEST_SCOPE",
+    "fB": "READY_FOR_TEST_HANDOVER"
   },
   "evidence": {
     "sourceHead": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
@@ -50,14 +54,19 @@
     "g5FinalAuditRunId": 43451893690,
     "g5FinalAuditSha": "7aa1dfc0b8fd3fe9a1b4f28aeae0122f3d4d96a2",
     "g5FinalAuditConclusion": "success",
-    "g5StateMismatchFailedRunId": 43451745036
+    "g5StateMismatchFailedRunId": 43451745036,
+    "g5BrowserRunId": 43453411019,
+    "g5BrowserRunSha": "226bc61be8b7a8de10c9820d3fad38362fa9b4ce",
+    "g5BrowserConclusion": "success",
+    "g5BrowserArtifactId": 14053541276,
+    "g5BrowserInitialFailedRunId": 43453248981
   },
-  "lastConfirmedWrite": "20cb9dae9fd1057c927d373bad843cc544b249c6",
+  "lastConfirmedWrite": "2eb1bf03539486dd9bfbc314a4bf60ac6d1ed894",
   "nextActions": [
-    "Integrate bridge into isolated Web App TEST preview without touching Version 6",
-    "Capture 8/8 actual browser desktop/mobile tests of inputs and grading including LV3",
-    "Rerun G0-G8 and final regression against exact source SHA",
-    "Only then close full F-A and authorize F-B handover; RELEASE_READY remains false"
+    "Verify final F-A branch CI and create F-B TEST branch from confirmed commit",
+    "Read FA_FB_HANDOVER.md on F-B branch before new work",
+    "Keep production blocked, releaseReady false, Version 6 untouched",
+    "Any Web App TEST deployment needs separate owner authorization"
   ],
   "safety": {
     "testOnly": true,
@@ -65,5 +74,6 @@
     "noDeployment": true,
     "releaseReady": false,
     "protectedRefsUntouched": true
-  }
+  },
+  "acceptance": "CLOSED_FOR_ISOLATED_TEST_SCOPE"
 }
