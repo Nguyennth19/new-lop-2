@@ -1,0 +1,31 @@
+name: G7.4-B.5.7 PERF-A gallery optimization QA
+on:
+  push:
+    branches: [test/g7-4-b5-7-perf-a-gallery-20261113]
+    paths:
+      - 'qa/g7-4-b5-7-perf-a/**'
+      - '.github/workflows/g7-b57-perf-a.yml'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  perf-a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Optimized paged gallery contract
+        run: node qa/g7-4-b5-7-perf-a/test-gallery-performance.cjs
+      - name: Baseline B5.7 QA
+        run: node qa/g7-4-b5-7/test-288-library.cjs
+      - name: Previous standalone B5.6 visual QA
+        run: node qa/g7-4-b5-6/test-standalone-visual.cjs
+      - name: Multi-lesson B5.5 gating
+        run: node qa/g7-4-b5-5/test-multi-lesson-gate.cjs
+      - name: B20 scoring / six sessions and UI / fallback
+        run: |
+          node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
