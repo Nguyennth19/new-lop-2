@@ -48,3 +48,12 @@ Do not merge or deploy P0.5 branch. On regression, switch to `test/p0-4-qa-runne
 - Preflight environment is **NOT YET CONFIRMED**: connected GitHub/Drive tools cannot set Apps Script `ID_GOOGLE_SHEET_DU_LIEU` or `P05_EXPECTED_TEST_SHEET_ID` directly. User must configure both TEST Script Properties with the newly created private workbook ID, keep `P03_QA_TEST_APPROVED=NO`, and rerun `kiemTraMoiTruongP05KhongGhi`.
 - This isolated workbook is sufficient for P0.5 preflight structural check; it is **not** populated with lesson 01–04 data, so only the read-only B20 pilot path can be evaluated subsequently and only after binding/deployment verified.
 - `RELEASE_BLOCKED` remains until real TEST Web App, browser, six-session and pedagogy evidence.
+
+## P0.5-A REAL TEST PREFLIGHT PASS — user-executed GAS log (2026-11-13)
+User ran `kiemTraMoiTruongP05KhongGhi` in the TEST Apps Script after pulling `test/p0-5-release-gate-20261113`. Exact reported outcomes:
+- `version:P0.5-env-preflight-v1`, `status:PASS`, `codes:[]`, `environment:TEST_EXPECTED_SHEET`.
+- `testWorkbookVerified:true`, `p03Locked:true`, `noWrites:true`.
+- `90_Lan_lam_bai`: exists, lastRow=1, lastColumn=12.
+- `91_So_sao`: exists, lastRow=1, lastColumn=9.
+
+This closes the isolated-workbook **preflight prerequisite** based on a user-provided GAS execution log; it is NOT a verified `/exec` deployment/version, real browser QA, six browser-session grading, or student ledger write-transaction proof. `WEBAPP`, `SESSIONS`, and `BROWSER` remain PENDING. Next safe read-only checks in the same TEST Apps Script editor: `kiemTraGoiDuLieuUI20` and `kiemTraKetNoiB20`. Keep P03 lock NO; only then review Manage deployments for a new version and test the isolated Web App in browser.
