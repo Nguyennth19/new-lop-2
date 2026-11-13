@@ -143,5 +143,26 @@ check('Existing B20 renderer, CSS, source and nine-rule registry byte-identical'
   assert.equal(got,hash,path);
  }
 });
+check('Golden comparison records four normalized questions, two selected and two rejected',()=>{
+ const golden=JSON.parse(read('qa/g7-4-b5-4/expected-tv-demo-result.v1.json'));
+ const r=gate.run(base,on,deps),data=r.pack.assetScenes;
+ assert.equal(golden.reference_sha,'5bcbc9f38ee80d69f292fd21e58cc22d584e0b4b');
+ assert.equal(r.pack.questions.length,golden.expected.questionCount);
+ assert.equal(r.active,golden.expected.active);
+ assert.equal(r.code,golden.expected.code);
+ assert.equal(r.diagnostics.imageCount,golden.expected.autoSelected);
+ assert.equal(r.diagnostics.rejectedCount,golden.expected.rejected);
+ assert.equal(r.diagnostics.rulesCount,golden.expected.rulesCount);
+ for(const expected of golden.expected.selection){
+  const row=data.selectionDiagnostics.find(x=>x.questionId===expected.questionId);
+  assert(row,expected.questionId);assert.equal(row.result,expected.result);
+  const scene=data.question_scenes[expected.questionId];
+  if(expected.assetId){
+   assert.equal(row.concept,expected.concept);
+   assert.equal(scene.scene.groups[0].items[0].assetId,expected.assetId);
+   assert.equal(scene.scene.groups[0].items[0].count,expected.count);
+  }else assert.equal(scene,undefined);
+ }
+});
 console.log(JSON.stringify({stage:'G7.4-B.5.4',pass,fail,total:pass+fail}));
 process.exitCode=fail?1:0;
