@@ -1,0 +1,44 @@
+{
+  "schema_version": "kidlearn-visual-intent-multilesson-gate-v1",
+  "enabled": false,
+  "mode": "STAGING_ONLY",
+  "registryReleaseCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "rulesVersion": "kidlearn-asset-semantic-rules-v1",
+  "ruleCount": 9,
+  "maxLessons": 8,
+  "policy": {
+    "defaultOff": true,
+    "requirePerLessonEnabled": true,
+    "requireExactFixtureHash": true,
+    "requireQAPass": true,
+    "requireStagingPack": true,
+    "failOpenToOriginal": true,
+    "noProductionDeploy": true
+  },
+  "lessons": [
+    {
+      "lessonId": "tv_b03_visual_demo",
+      "subjectArea": "tieng_viet",
+      "enabled": false,
+      "qaStatus": "QA_PASS_CANDIDATE",
+      "fixture": "du-lieu/bien-the/chuan/tieng-viet-demo.visual-intent.v1.json",
+      "fixtureBlobSha": "5bcbc9f38ee80d69f292fd21e58cc22d584e0b4b",
+      "expectedQuestions": 4,
+      "expectedSelected": 2,
+      "expectedRejected": 2
+    },
+    {
+      "lessonId": "en_vocabulary_demo_visual",
+      "subjectArea": "tieng_anh",
+      "enabled": false,
+      "qaStatus": "QA_PASS_CANDIDATE",
+      "fixture": "du-lieu/bien-the/chuan/tieng-anh-demo.visual-intent.v1.json",
+      "fixtureBlobSha": "80d11858a7eecb02668509ea05b6f715050d693f",
+      "expectedQuestions": 5,
+      "expectedSelected": 3,
+      "expectedRejected": 2
+    }
+  ],
+  "rollback": "KEEP_ENABLED_FALSE_OR_REVERT_B54",
+  "promotion": "CI_PASS_ONLY_NOT_WEB_APP_RELEASE"
+}
