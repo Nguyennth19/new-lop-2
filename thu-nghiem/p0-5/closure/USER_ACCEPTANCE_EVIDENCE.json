@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "p0.5-operator-acceptance-v1",
+  "date": "2026-11-13",
+  "source": "USER_TEST_OPERATOR_IN_CONVERSATION",
+  "branchTested": "test/p0-5-ui-b-equations-20261113",
+  "context": "New isolated Apps Script TEST deployment attached to LOP2_P05_QA_ISOLATED_20261113",
+  "acceptance": {
+    "mobileMenu": "PASS_USER_SCREENSHOTS_UI_A",
+    "desktopLayout": "PASS_USER_ATTESTATION",
+    "mobileLayout": "PASS_USER_ATTESTATION",
+    "mathEquationSpacing": "PASS_USER_ATTESTATION",
+    "orderSubmitResultAnswers": "PASS_USER_ATTESTATION",
+    "correctWrongBlank": "PASS_USER_ATTESTATION",
+    "sixSessions": "PASS_USER_ATTESTATION_NO_PER_SESSION_NUMERICAL_LOG",
+    "gasEditorThirtyAnswers": "PASS_USER_LOG_30_OF_30",
+    "testWorkbookLedger": "HEADER_ONLY_INDEPENDENT_READ",
+    "testWorkbookAttemptRecords": 0,
+    "testWorkbookStarRecords": 0
+  },
+  "releaseGateLimitations": {
+    "deploymentRevision": "NOT_INDEPENDENTLY_VERIFIED",
+    "sixBrowserSessionNumericReceipts": "MISSING",
+    "imageFallbackCurrentDeployment": "NOT_INDEPENDENTLY_VERIFIED",
+    "pedagogySignedOff": false,
+    "releaseReady": false
+  }
+}
