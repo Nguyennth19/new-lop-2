@@ -1,0 +1,51 @@
+name: P0.6-E.0.3 Multi-Family Lesson Composition (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-6-e03-multi-family-composition-*'
+    paths:
+      - 'thu-nghiem/p0-6/**'
+      - '.github/workflows/p0-6-e03-multi-family.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  composition-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: E03 composition contract quotas coverage and negative cases
+        run: node thu-nghiem/p0-6/kiem-thu-multi-family-composer-v1.cjs
+      - name: E03 export reproducible multi-session G0-G8 receipts
+        run: node thu-nghiem/p0-6/xuat-bien-nhan-composition-v1.cjs
+      - name: E02 policy registry generator
+        run: node thu-nghiem/p0-6/kiem-thu-policy-generator-v1.cjs
+      - name: E01 math variant G0-G8
+        run: node thu-nghiem/p0-6/kiem-thu-math-variant-policy-v1.cjs
+      - name: E multi-lesson pipeline
+        run: node thu-nghiem/p0-6/kiem-thu-multi-lesson-v1.cjs
+      - name: D renderer parity
+        run: node thu-nghiem/p0-6/kiem-thu-renderer-registry-v1.cjs
+      - name: C grading
+        run: node thu-nghiem/p0-6/kiem-thu-qa-grading-v1.cjs
+      - name: B adapter
+        run: node thu-nghiem/p0-6/kiem-thu-adapter-registry-v1.cjs
+      - name: A data contract
+        run: node thu-nghiem/p0-6/kiem-thu-contract-v1.cjs
+      - name: P0.4 FULL_SAFE
+        run: node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: B20 original regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: P0.5 release gate remains closed
+        run: |
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json; then
+            echo 'UNEXPECTED RELEASE_READY'; exit 1
+          fi
+      - name: No tracked file mutations
+        run: test -z "$(git status --porcelain --untracked-files=no)"
