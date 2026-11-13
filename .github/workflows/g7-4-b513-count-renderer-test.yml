@@ -24,6 +24,30 @@ jobs:
           node --check qa/g7-4-b5-13/count-renderer-core.test.cjs
           node qa/g7-4-b5-13/count-renderer-core.test.cjs
           node qa/g7-4-b5-13/offline-html-and-b6.test.cjs
+      - name: Headless Chrome real browser count scenes
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          FILE="file://$PWD/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_B513_Count_Renderer_TEST.html"
+          run_case() {
+            case_name="$1"; params="$2"; expected="$3"; expected_icons="$4"
+            timeout 60s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=2500 --window-size=390,900 --dump-dom "$FILE?$params" > "/tmp/g74_$case_name.html" 2> "/tmp/g74_$case_name.log"
+            python3 - "$case_name" "$expected" "$expected_icons" <<'PY'
+          import sys,re,pathlib
+          name,expected,num=sys.argv[1:]
+          html=pathlib.Path('/tmp/g74_'+name+'.html').read_text()
+          assert 'id="stage"' in html, name+' stage missing'
+          assert f'data-qa-total="{expected}"' in html if expected!='BLOCKED' else ('class="error"' in html and 'BLOCKED' in html), name+' incorrect count or block'
+          actual=len(re.findall(r'class="obj"',html))
+          assert actual==int(num),(name,actual,num)
+          print('PASS browser',name,'images=',actual)
+          PY
+          }
+          run_case apple50 'asset=red_apple&qty=50&unit=qu%E1%BA%A3&width=320' 50 50
+          run_case grapes3 'asset=grapes&qty=3&unit=ch%C3%B9m&width=390' 3 3
+          run_case grapes_bad 'asset=grapes&qty=3&unit=qu%E1%BA%A3&width=390' BLOCKED 0
+          run_case books_bad 'asset=books&qty=3&unit=b%E1%BB%99&width=320' BLOCKED 0
+          run_case add12 'asset=rabbit&type=add&qty=7&group=5&unit=con&width=390' 12 12
       - name: Check offline gallery and source invariants
         run: |
           node - <<'JS'
