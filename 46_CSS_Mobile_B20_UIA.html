@@ -1,0 +1,157 @@
+/* P0.5-UI-A: mobile-only layout override for B20.
+ * Loaded AFTER all approved math CSS. No desktop, UI-B, grading or storage changes.
+ * Breakpoints are viewport CSS pixels (including device DPR).
+ */
+@media (max-width:760px) {
+ #mathFullScreen .ml-layout {
+  display:flex;
+  flex-direction:column;
+  flex:1 1 auto;
+  min-height:0;
+  min-width:0;
+  overflow:hidden;
+ }
+ #mathFullScreen .ml-sidebar {
+  flex:0 0 auto;
+  width:100%;
+  max-width:none;
+  min-width:0;
+  overflow:hidden;
+  padding:7px 9px 8px;
+  border-right:0;
+  border-bottom:1px solid #e2e8f0;
+  background:#fff;
+ }
+ #mathFullScreen .ml-sidebar-title {display:none}
+ #mathFullScreen .ml-navigation {
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center;
+  gap:7px;
+  width:100%;
+  min-width:0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  border-left:0;
+  margin:0;
+  padding:1px 1px 6px;
+ }
+ #mathFullScreen .ml-navigation button {
+  display:inline-flex;
+  flex:0 0 auto;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  min-width:0;
+  padding:9px 11px;
+  gap:6px;
+  font-size:12px;
+  line-height:1.2;
+  white-space:nowrap;
+  border:1px solid #e2e8f0;
+  border-radius:12px;
+  scroll-snap-align:start;
+ }
+ #mathFullScreen .ml-navigation button.active {
+  border-color:#93b4fa;
+ }
+ #mathFullScreen .ml-topic-icon {
+  width:17px;
+  height:17px;
+  flex:0 0 17px;
+ }
+ #mathFullScreen .ml-topic-text {
+  flex:0 0 auto;
+ }
+ #mathFullScreen .ml-workspace {
+  width:100%;
+  min-width:0;
+  flex:1 1 auto;
+  min-height:0;
+  display:block;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:9px 9px 125px;
+  overscroll-behavior:contain;
+ }
+ #mathFullScreen .ml-content {
+  width:100%;
+  min-width:0;
+  height:auto;
+  overflow:visible;
+ }
+ #mathFullScreen .ml-page {
+  width:100%;
+  min-width:0;
+  padding:12px 11px;
+ }
+ #mathFullScreen .ml-section-box {
+  min-width:0;
+  padding:12px;
+ }
+ #mathFullScreen .ml-results {
+  width:100%;
+  min-width:0;
+  max-width:none;
+  position:static;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  padding:12px 0 35px;
+  gap:10px;
+ }
+ #mathFullScreen .ml-result-card {min-width:0}
+ #mathFullScreen .ml-dock {left:0;right:0;width:auto}
+ #mathFullScreen .ml-show-keyboard {
+  bottom:10px;
+  right:9px;
+  max-width:calc(100vw - 18px);
+  padding:9px 13px;
+  font-size:13px;
+ }
+ #mathFullScreen .ml-cards {min-width:0}
+ #mathFullScreen .ml-card {min-width:0}
+ #mathFullScreen .ml-word-head, #mathFullScreen .ml-word-calc {min-width:0}
+ #mathFullScreen.ml-theory-mode .ml-workspace {padding:0 0 30px}
+}
+@media (max-width:640px) {
+ #mathFullScreen .ml-workspace {padding:7px 7px 125px}
+ #mathFullScreen .ml-page {padding:11px 8px}
+ #mathFullScreen .ml-section-box {padding:11px 9px}
+ #mathFullScreen .ml-cards {
+  grid-template-columns:minmax(0,1fr);
+  gap:12px;
+ }
+ #mathFullScreen .ml-vertical-card {
+  min-height:0;
+  padding:16px 12px;
+ }
+ #mathFullScreen .ml-vertical-matrix,
+ #mathFullScreen .ml-puzzle {
+  width:108px;
+  max-width:100%;
+  margin:12px auto;
+ }
+ #mathFullScreen .ml-vert-row {
+  grid-template-columns:22px 37px 37px;
+ }
+ #mathFullScreen .ml-vert-row .ml-input {width:33px}
+ #mathFullScreen .ml-vert-note {font-size:9px}
+ #mathFullScreen .ml-mental-group {min-width:0;padding:13px 8px}
+ #mathFullScreen .ml-mental-row {
+  max-width:100%;
+  grid-template-columns:minmax(48px,1fr) 17px 30px 17px 50px;
+  justify-content:center;
+  gap:1px;
+  font-size:16px;
+ }
+ #mathFullScreen .ml-mental-row .ml-input {width:48px}
+ #mathFullScreen .ml-word-card {min-width:0;padding:13px 10px}
+ #mathFullScreen .ml-word-calc {flex-wrap:wrap}
+ #mathFullScreen .ml-word-calc .ml-input {width:52px}
+ #mathFullScreen .ml-top {flex-shrink:0}
+ #mathFullScreen #mlTitle {max-width:calc(100vw - 102px)}
+}
