@@ -4,27 +4,29 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T22:15:00+07:00",
-  "status": "IN_PROGRESS",
-  "currentOperation": "G5 Compatibility Bridge: reuse 41 renderer and 26 grader in bounded offline TEST harness; record owner G7/G8 approvals",
-  "recoveryPoint": "Verified F-A HEAD 7629e50cf5d45b650abe74ea2dc64377a7833a58; no bridge written yet; E03 source and approved protected files untouched",
+  "updatedAt": "2026-11-13T22:21:03.532+07:00",
+  "status": "BLOCKED",
+  "currentOperation": "G5 offline bridge QA passed; pending actual Web App TEST/browser/mobile integration before F-A closure and F-B official handover",
+  "recoveryPoint": "Owner G7/G8 scoped approval on GitHub; bridge test run 43451418264 success at dc6e7ed0dc24aa371b2d30a10ee8528f57e5b069; last journal commit 20cb9dae9fd1057c927d373bad843cc544b249c6. Check current remote head/CI before resuming.",
   "steps": {
     "FA0": "DONE",
     "FA1": "DONE",
-    "FA2": "PENDING_APPROVAL",
+    "FA2": "DONE",
     "FA3": "DONE",
-    "FA4": "PENDING_APPROVAL",
+    "FA4": "DONE",
     "FA5": "BLOCKED",
     "FA1_1": "DONE",
-    "G5_BRIDGE": "IN_PROGRESS"
+    "G5_BRIDGE": "DONE",
+    "G5_LIVE": "BLOCKED"
   },
   "gates": {
-    "policyE0": "PENDING_APPROVAL",
-    "b21Pedagogy": "PENDING_APPROVAL",
-    "g5": "BLOCKED",
-    "g7": "PENDING_APPROVAL",
-    "g8": "PENDING_APPROVAL",
-    "releaseReady": false
+    "policyE0": "OWNER_APPROVED_TEST_SCOPE",
+    "b21Pedagogy": "OWNER_APPROVED_TEST_SCOPE",
+    "g5": "BLOCKED_LIVE_INTEGRATION",
+    "g7": "OWNER_APPROVED_TEST_SCOPE",
+    "g8": "OWNER_APPROVED_TEST_SCOPE",
+    "releaseReady": false,
+    "g5Offline": "PASS"
   },
   "evidence": {
     "sourceHead": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
@@ -38,15 +40,19 @@
     "faCiCommit": "2b3a3893226725b0e149811e0bea15e1fa3298cf",
     "fa1CiRunId": 43449443133,
     "fa1CiCommit": "7e8fa5906f8f9988e45ab2ec7b6ff2f22eecb487",
-    "fa1CiConclusion": "success"
+    "fa1CiConclusion": "success",
+    "g5RunId": 43451418264,
+    "g5RunSha": "dc6e7ed0dc24aa371b2d30a10ee8528f57e5b069",
+    "g5Conclusion": "success",
+    "g5InitialFailedRunId": 43451071228,
+    "ownerDecisionRef": "FA_OWNER_APPROVAL_G7_G8_20261113.md"
   },
-  "lastConfirmedWrite": "d0280cbfd09593296c1785d6baa0d21155cabe70",
+  "lastConfirmedWrite": "20cb9dae9fd1057c927d373bad843cc544b249c6",
   "nextActions": [
-    "Owner to decide P01-P06 with policy hash and scope",
-    "Pedagogy reviewer verify B21 source scope and LV1/LV2 families",
-    "Owner/reviewer decide LV3 two-field reasoning overlay or other scope-safe option",
-    "Keep G5 blocked until interactive two-field grading verified",
-    "No handover F-B until approval gates satisfied"
+    "Integrate bridge into isolated Web App TEST preview without touching Version 6",
+    "Capture 8/8 actual browser desktop/mobile tests of inputs and grading including LV3",
+    "Rerun G0-G8 and final regression against exact source SHA",
+    "Only then close full F-A and authorize F-B handover; RELEASE_READY remains false"
   ],
   "safety": {
     "testOnly": true,
