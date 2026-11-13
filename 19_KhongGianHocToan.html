@@ -139,7 +139,18 @@ function input(q,key,max,extra=''){
 function baseCard(q,inside,kind){
  return '<article class="ml-card ml-theme-'+E(q.theme||'blue')+' '+kind+'" data-ml-q-card="'+E(q.id)+'"><div class="ml-card-top"><b>'+E(q.label||('Câu '+q.order))+'</b><small class="ml-earned">'+(cauDaDungToan[q.id]?'✓':'')+'</small></div>'+inside+'</article>';
 }
-const {vertical,mental,puzzle,word,invalid}=taoHienThiCauToan({E,input,baseCard});
+const {vertical,mental:mentalBase,puzzle,word,invalid}=taoHienThiCauToan({E,input,baseCard});
+/* P0.5-UI-B: presentation-only spacing for compound sums.
+ * Keep the accepted source renderer and grading payload byte-identical.
+ * Adds only visible spaces inside the first human-readable expression span.
+ */
+function mental(q){
+ const html=mentalBase(q);
+ if(q.variantType!=='three'&&q.variantType!=='carry')return html;
+ return html.replace(/(<span class="ml-mental-first">)([^<]+)(<\/span>)/,
+  (whole,open,expression,close)=>open+
+   expression.replace(/\s*\+\s*/g,' + ').replace(/\s*=\s*/g,' = ')+close);
+}
 function keyValue(q,k){
  const el=shell().querySelector('[data-ml-field="'+q.id+':'+k+'"]');
  return el?el.value.trim():'';
@@ -225,6 +236,7 @@ function chamLuotBienThe(){
     seconds:typeof DEM_TUONG_TAC!=='undefined'?DEM_TUONG_TAC.seconds():0,
     total:result.total,correct:result.correct,answered:result.answered};
    refreshProgress();renderResults();
+   if(window.innerWidth<=840){const score=shell().querySelector('#mlScoreCard');if(score)score.scrollIntoView({behavior:'smooth',block:'start'});}
   }).withFailureHandler(error=>{
     failure('Chấm thử không thành công: '+(error?.message||'Lỗi máy chủ')+'. Hãy thử lại.');
   });
@@ -256,8 +268,12 @@ function renderResults(){
  const items=questions.map((q,i)=>{const status=gradingState[q.id]||'unanswered';const mark=status==='correct'?'✓':status==='wrong'?'✕':status==='empty'?'–':'·';return '<span class="ml-answer-chip '+status+'" title="'+E(q.label||q.id)+'">'+(i+1)+':'+mark+'</span>';}).join('');
  const submitDate=record?new Date(record.at).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}):'Chưa nộp bài';
  const duration=record?Math.floor(record.seconds/60)+' phút '+record.seconds%60+' giây':'Chưa nộp';
- panel.innerHTML='<div class="ml-result-card"><h2>Kết quả</h2><div class="ml-result-meta"><span>Thời gian nộp</span><strong>'+E(submitDate)+'</strong></div><div class="ml-result-meta"><span>Thời gian làm bài</span><strong>'+E(duration)+'</strong></div><div class="ml-result-meta"><span>Câu đã trả lời</span><strong>'+(record?record.answered:answered)+' / '+questions.length+'</strong></div><div class="ml-result-score"><strong>Điểm</strong><b>'+(record?Math.round(record.correct/Math.max(record.total,1)*100)/10:'—')+'</b></div></div>'+
- '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button></div><div class="ml-reward-sync" id="mlRewardSync" aria-live="polite">'+(fullData.variantPilot?'Thử nghiệm: không ghi Google Sheets, không cộng sao, không đánh dấu hoàn thành.':'Sao thưởng được tính khi máy chủ xác minh bài nộp.')+'</div></div>';
+ panel.innerHTML=
+ '<div class="ml-result-card ml-submit-card"><h2>Nộp bài</h2>'+
+ '<div class="ml-result-actions"><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button></div>'+
+ '<div class="ml-reward-sync" id="mlRewardSync" aria-live="polite">'+(fullData.variantPilot?'Thử nghiệm: không ghi Google Sheets, không cộng sao, không đánh dấu hoàn thành.':'Sao thưởng được tính khi máy chủ xác minh bài nộp.')+'</div></div>'+
+ '<div class="ml-result-card ml-score-card" id="mlScoreCard"><h2>Kết quả</h2><div class="ml-result-meta"><span>Thời gian nộp</span><strong>'+E(submitDate)+'</strong></div><div class="ml-result-meta"><span>Thời gian làm bài</span><strong>'+E(duration)+'</strong></div><div class="ml-result-meta"><span>Câu đã trả lời</span><strong>'+(record?record.answered:answered)+' / '+questions.length+'</strong></div><div class="ml-result-score"><strong>Điểm</strong><b>'+(record?Math.round(record.correct/Math.max(record.total,1)*100)/10:'—')+'</b></div></div>'+
+ '<div class="ml-result-card ml-answer-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div></div>';
 }
 function restoreDrafts(){
  shell().querySelectorAll('[data-ml-field]').forEach(el=>{if(drafts[el.dataset.mlField]!==undefined)el.value=drafts[el.dataset.mlField]});
