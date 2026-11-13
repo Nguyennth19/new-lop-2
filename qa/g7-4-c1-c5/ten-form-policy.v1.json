@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "g7-4-c1-10-exercise-visual-policy-v1",
+  "stage": "C1",
+  "approval": "POLICY_LOCKED_TEST_ONLY",
+  "sourceReference": "docs/kiem-dinh/G7.4-B.5.8R_10_DANG_BAI_DUNG_HINH_REFERENCE_INDEX_20261113.md",
+  "archivedFullVersionDrive": "https://drive.google.com/file/d/1QfJnDA1KpfdFv1-7CDeRv5pw_Vzohefs/view",
+  "legacyVisualModes": [
+    "EXACT_COUNT",
+    "REPRESENTATIVE",
+    "DECORATIVE"
+  ],
+  "semanticPriority": [
+    "PEDAGOGIC_SKILL",
+    "READABILITY",
+    "JOY_AND_AESTHETICS",
+    "REUSABILITY",
+    "RENDER_COST"
+  ],
+  "globalRules": {
+    "lessonGenerationVariant": true,
+    "sourceSGKStrictImageFidelity": false,
+    "noImageAllowed": true,
+    "representativeDoesNotImplyQuantity": true,
+    "exactRequiresReviewedCountAndUnit": true,
+    "mathMeasurementUsesParametricSVG": true,
+    "noSilentAnswerReveal": true,
+    "modelAllowedToSimplify": true,
+    "mainUntouched": true
+  },
+  "exerciseTypes": [
+    {
+      "index": 1,
+      "id": "NUMBER_BOND",
+      "title": "Điền trống / tách–gộp",
+      "defaultMode": "EXACT_COUNT",
+      "family": "number_bond",
+      "principle": "Cho phép khối hoặc vật đơn khi nhiệm vụ là đếm; nếu chỉ điền số thì DECORATIVE."
+    },
+    {
+      "index": 2,
+      "id": "COLUMN_CALC",
+      "title": "Đặt tính",
+      "defaultMode": "DECORATIVE",
+      "family": "column_calc",
+      "principle": "Dùng bố cục chữ số theo hàng; không chèn hình nếu không phục vụ thao tác."
+    },
+    {
+      "index": 3,
+      "id": "MATCHING_LINES",
+      "title": "Nối cặp",
+      "defaultMode": "REPRESENTATIVE",
+      "family": "matching",
+      "principle": "Hình cặp phải đúng nghĩa và không vô tình gợi đáp án sai."
+    },
+    {
+      "index": 4,
+      "id": "VISUAL_MCQ",
+      "title": "Trắc nghiệm",
+      "defaultMode": "REPRESENTATIVE",
+      "family": "multiple_choice",
+      "principle": "Hình đáp án khi là mục tiêu; câu thuần số có thể DECORATIVE."
+    },
+    {
+      "index": 5,
+      "id": "GEOMETRY_TANGRAM",
+      "title": "Hình học / Tangram",
+      "defaultMode": "EXACT_COUNT",
+      "family": "geometry",
+      "principle": "Hình học chính xác bằng SVG tham số; EXACT_COUNT ở đây là mức chính xác hình học, không đồng nghĩa lặp emoji."
+    },
+    {
+      "index": 6,
+      "id": "DRAG_SORT",
+      "title": "Kéo thả / phân loại",
+      "defaultMode": "REPRESENTATIVE",
+      "family": "drag_sort",
+      "principle": "Dùng hình nhận diện được; dùng EXACT_COUNT chỉ nếu chính số lượng là điều kiện của bài."
+    },
+    {
+      "index": 7,
+      "id": "COMPARISON_SIGN",
+      "title": "So sánh / điền dấu",
+      "defaultMode": "DECORATIVE",
+      "family": "comparison",
+      "principle": "So sánh số bằng chữ số; so sánh nhóm vật thì phải EXACT_COUNT."
+    },
+    {
+      "index": 8,
+      "id": "RULER_CLOCK",
+      "title": "Thước / đồng hồ",
+      "defaultMode": "EXACT_COUNT",
+      "family": "measurement",
+      "principle": "Bắt buộc chính xác thang đo, kim giờ, đoạn đo bằng SVG toán học; không dùng ảnh vật thể thay kết quả đo."
+    },
+    {
+      "index": 9,
+      "id": "PICTOGRAPH",
+      "title": "Biểu đồ tranh",
+      "defaultMode": "EXACT_COUNT",
+      "family": "pictograph",
+      "principle": "Một ký hiệu tương ứng đơn vị đã quy ước; có thể dùng các ký hiệu đơn giản; không suy đoán từ emoji."
+    },
+    {
+      "index": 10,
+      "id": "WORD_PROBLEM_3STEP",
+      "title": "Bài toán lời văn ba bước",
+      "defaultMode": "REPRESENTATIVE",
+      "family": "word_problem",
+      "principle": "Mặc định một ảnh biểu trưng, tóm tắt rõ ràng; chỉ EXACT_COUNT nếu yêu cầu đếm hình tường minh."
+    }
+  ],
+  "subtypeMapping": {
+    "NUMBER_BOND": "NUMBER_BOND",
+    "COLUMN_CALC": "COLUMN_CALC",
+    "MATCHING_LINES": "MATCHING_LINES",
+    "VISUAL_MCQ": "VISUAL_MCQ",
+    "GEOMETRY_SELECT": "GEOMETRY_TANGRAM",
+    "TANGRAM_SNAP": "GEOMETRY_TANGRAM",
+    "ORDERING_SORTING": "DRAG_SORT",
+    "COMPARISON_QUANTITY": "COMPARISON_SIGN",
+    "RULER_MEASURE": "RULER_CLOCK",
+    "CLOCK_READ_SET": "RULER_CLOCK",
+    "PICTOGRAPH_TAP_COUNT": "PICTOGRAPH",
+    "WORD_PROBLEM_SCAFFOLD": "WORD_PROBLEM_3STEP"
+  },
+  "representationStyles": [
+    "PARAMETRIC_SVG",
+    "WEBP_APPROVED",
+    "FLUENT_FLAT_PINNED",
+    "HTML_STRUCTURED",
+    "NO_IMAGE"
+  ],
+  "transformations": [
+    {
+      "id": "CHANGE_OBJECT",
+      "requires": [
+        "same_skill",
+        "unit_consistency",
+        "recomputed_answer_if_values_change"
+      ],
+      "example": "gà ↔ thỏ trong bài đếm vật đơn"
+    },
+    {
+      "id": "SIMPLIFY_VISUAL",
+      "requires": [
+        "same_target_skill",
+        "same_math_relationship",
+        "no_change_to_measurement_when_assessed"
+      ],
+      "example": "47+34 kẹo → một viên kẹo tượng trưng, giữ số từ đề"
+    },
+    {
+      "id": "REWRITE_VARIANT",
+      "requires": [
+        "new_variant_id",
+        "skill_equivalence",
+        "level_equivalence",
+        "validator_pass",
+        "correct_answer_recomputed"
+      ],
+      "example": "Hai độ dài AB=4cm, CD=3cm cộng 7cm thay sơ đồ zíc zắc chỉ khi kỹ năng cộng độ dài, KHÔNG phải đường gấp khúc"
+    }
+  ],
+  "transformForbidden": [
+    "Change zigzag to straight lines if target skill is broken-line geometry",
+    "Change length scale/time shown in image inconsistently with question data",
+    "Use decorative shape to imply count or an answer",
+    "Replace exact data with approximate image when counting is the task"
+  ],
+  "imageAssetPolicy": {
+    "webpApprovedCount": 288,
+    "fluentFlatPilotCount": 46,
+    "svgMath": "PARAMETRIC",
+    "newAssetIntake": "ON_DEMAND_ONLY",
+    "defaultNoAssetImport": true
+  },
+  "countLimits": {
+    "currentRepeatedIconQA": 50,
+    "notUniversalLessonLimit": true
+  },
+  "rollout": {
+    "runtimeEnabled": false,
+    "mainEnabled": false
+  }
+}
