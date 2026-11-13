@@ -10,9 +10,10 @@ const req=(id='toan_b21',v='p0.6-fb-test-b21-v1')=>({
  allowStudentUse:false,deploy:false,persist:false,awardStars:false,releaseReady:false
 });
 const c=structuredClone;
-t('catalog contains B21 and two independent PENDING lessons',()=>{
- const list=registry.list();assert.equal(list.length,3);
+t('catalog contains B21+B20 separately accepted and two PENDING lessons',()=>{
+ const list=registry.list();assert.equal(list.length,4);
  assert.equal(list.find(x=>x.lessonId==='toan_b21').hasIndependentEvidence,true);
+ assert.equal(list.find(x=>x.lessonId==='toan_b20').state,'INDEPENDENT_ACCEPTED_TEST_ONLY');
  assert(list.filter(x=>x.state==='PENDING_INDEPENDENT_QA').length===2);
 });
 t('B21 inherits exact E03/F-A verification and remains preview only',()=>{
@@ -66,7 +67,7 @@ t('invalid forged independent evidence fails closed even with matching anchor',(
  assert.equal(createMultiLessonRegistry(altered,anchor).select(req('toan_b24',e.lessonVersion)).code,'FB2_INDEPENDENT_PROOF_FAILED');
 });
 t('per-lesson rollback is scoped, deterministic and fail-closed',()=>{
- for(const id of ['toan_b21','toan_b24','tieng_viet_doc_hieu']){
+ for(const id of ['toan_b21','toan_b20','toan_b24','tieng_viet_doc_hieu']){
   const out=registry.rollback(id,'TEST_STOP');
   assert.equal(out.status,'ROLLED_BACK_TO_BLOCKED_DEFAULT');assert.equal(out.lessonId,id);
   assert.equal(out.featureFlag,false);assert.equal(out.releaseReady,false);
