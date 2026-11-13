@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fb.handover-state.v1",
   "phase": "F-B",
-  "status": "IN_PROGRESS",
+  "status": "FB2_TECHNICAL_PASS_TEST_ONLY",
   "createdAt": "2026-11-13T22:36:01.202+07:00",
   "branch": "test/p0-6-fb-from-fa-20261113",
   "sourceBranch": "test/p0-6-fa-policy-pedagogy-20261113",
@@ -22,18 +22,21 @@
     "FB_LESSON_VERSION": "PASS",
     "FB_ROLLBACK": "PASS_BLOCKED_DEFAULT",
     "GOOGLE_APPS_SCRIPT_V6": "NOT_IN_SCOPE",
-    "FB2": "IN_PROGRESS"
+    "FB2": "TECHNICAL_PASS_TEST_ONLY",
+    "toan_b21": "INHERITED_ACCEPTED_ISOLATED_TEST",
+    "toan_b24": "PENDING_INDEPENDENT_QA",
+    "tieng_viet_doc_hieu": "PENDING_INDEPENDENT_QA"
   },
-  "recoveryPoint": "GitHub FB HEAD 964b100b5fd2708a52a04970de831ce1707ebc75, CI run 43456202013 success. Checkpoint before FB.2 files. No new lesson approved or activated.",
+  "recoveryPoint": "Last verified QA run 43459000348 SUCCESS at 70c4eedd27b8e41bcccb71cf355cbe686480d26e. New FB2 docs added at edbdd7fdb64af9737d74c464003af782ef47bb78 and a59ef7a6516f5c934617bcf12ed19cb001349042. Reverify current HEAD and final CI.",
   "restrictions": [
     "No MAIN/test-theo-main/Web App TEST V6 edits",
     "No Apps Script deployment or student data/grades/stars",
     "No production release",
     "Web App V6 integration not certified"
   ],
-  "nextAction": "Continue F-B per-lesson policy/family rollout on isolated TEST only with separate review; no V6 deploy without authorization",
+  "nextAction": "F-B.3: independently validate next eligible lesson policy/skills/renderer/QA before creating its trust anchor; no Web App V6 deploy",
   "updatedAt": "2026-11-13T23:01:00+07:00",
-  "currentOperation": "FB.2 multi-lesson policy/QA evidence registry, isolated version rollback; only B21 inherits prior verified allowlist",
+  "currentOperation": "F-B.2 multi-lesson registry complete: B21 isolated inherited TEST only; B24/TV pending independent pedagogy/QA",
   "evidence": {
     "fbRunId": 43455957462,
     "fbSourceCommit": "900edeebb5c88518312596aa3e7d784415d9c4b4",
@@ -43,6 +46,10 @@
     "artifactId": 14052649246,
     "lessonVersion": "p0.6-fb-test-b21-v1",
     "candidateHash": "51e314ae033cc8fb85a301eeb82f65d80f0a5ae1647d569eba94c9d9b37237e3",
-    "inheritedFAQA": 43454026078
+    "inheritedFAQA": 43454026078,
+    "fb2RunId": 43459000348,
+    "fb2RunSha": "70c4eedd27b8e41bcccb71cf355cbe686480d26e",
+    "fb2RunConclusion": "success",
+    "fb2TestGroups": 12
   }
 }
