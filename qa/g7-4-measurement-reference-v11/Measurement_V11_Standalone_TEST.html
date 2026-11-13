@@ -1,0 +1,31 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 Measurement V1.1 TEST</title><link rel="stylesheet" href="measurement-v11.css"><style>
+body{margin:0;padding:14px;background:#f6fbf9;font:700 14px system-ui;color:#243a55}
+header,main{max-width:890px;margin:12px auto;background:white;padding:16px;border-radius:18px}
+header button{cursor:pointer;border:2px solid #a1badc;border-radius:10px;padding:11px;margin:4px;background:white;font:inherit}
+header button.active{background:#504ac9;color:white}
+</style></head><body><header><h1>G7.4 – Dạng 8 · Thước kẻ ảo &amp; Đồng hồ TEST</h1>
+<p>Hai chế độ độc lập, giữ bản nháp riêng. Không chấm, không cấp sao, không gửi dữ liệu học sinh.</p>
+<button id="ruler" class="active">📏 Chế độ 1 – Thước kẻ</button>
+<button id="clock">🕒 Chế độ 2 – Đồng hồ</button>
+<button id="reset">↻ Làm lại</button></header><main id="mount"></main>
+<script src="measurement-v11-core.js"></script>
+<script src="measurement-v11-fixtures.js"></script>
+<script src="measurement-v11-view.js"></script>
+<script>
+(function(){
+ const configs={RULER:KLMeasurementFixturesV11.ruler,CLOCK:KLMeasurementFixturesV11.clock};
+ const controls={RULER:document.getElementById('ruler'),CLOCK:document.getElementById('clock')};
+ let mode='RULER',controller=null;const drafts={};
+ function open(next){
+  if(controller){drafts[mode]=controller.snapshot();controller.destroy();}
+  mode=next;const parsed=KLMeasurementV11.compile(configs[mode]);const host=document.getElementById('mount');
+  if(!parsed.ok){host.textContent=parsed.reason;return;}
+  controller=KLMeasurementViewV11.mount(host,parsed.plan,{onChange:s=>{drafts[mode]=s;}});
+  if(drafts[mode])controller.restore(drafts[mode]);
+  for(const [k,b] of Object.entries(controls))b.classList.toggle('active',k===mode);
+ }
+ for(const [k,b] of Object.entries(controls))b.addEventListener('click',()=>{if(mode!==k)open(k)});
+ document.getElementById('reset').addEventListener('click',()=>{if(controller){controller.clear();drafts[mode]=controller.snapshot()}});
+ open(mode);
+})();
+</script></body></html>
