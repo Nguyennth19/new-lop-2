@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "g7-4-b6-expansion-request-v1",
+  "mode": "TEST_ONLY",
+  "requestId": "EXAMPLE-DO-NOT-IMPORT",
+  "lessonId": "TA2-EXAMPLE-01",
+  "subject": "TIENG_ANH",
+  "conceptKey": "fruit.apple",
+  "usage": "VOCABULARY",
+  "proposedAssetId": "apple_example_new",
+  "existingAssetSearch": {
+    "checkedWebP288": false,
+    "checkedApprovedFluent46": false,
+    "checkedParametricSvg": false,
+    "matchedAssets": []
+  },
+  "sourceRepository": "microsoft/fluentui-emoji",
+  "sourceCommit": "",
+  "sourcePath": "",
+  "license": "MIT",
+  "licenseEvidence": "",
+  "sha256": "",
+  "securityQa": "PENDING",
+  "visualQa": "PENDING",
+  "semanticQa": "PENDING",
+  "countQa": "NOT_APPROVED",
+  "ownerApproval": {
+    "reviewer": null,
+    "date": null
+  },
+  "lifecycle": "REQUESTED",
+  "notes": "Template only: search current registry before importing; never hotlink a CDN or overwrite existing SHA-pinned assets."
+}
