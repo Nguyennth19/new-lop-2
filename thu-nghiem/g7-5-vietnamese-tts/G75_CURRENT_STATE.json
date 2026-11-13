@@ -1,7 +1,7 @@
 {
   "schemaVersion": "g75.reference-state.v1",
   "date": "2026-11-14",
-  "status": "REFERENCE_SAVED_QA_PENDING",
+  "status": "REFERENCE_ARCHIVED_GITHUB_AND_DRIVE_QA_PENDING",
   "phase": "G7.5-REFERENCE",
   "branch": "test/g7-5-vietnamese-tts-reference-20261114",
   "baseCheckpoint": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
@@ -20,8 +20,12 @@
     ]
   },
   "drive": {
-    "status": "PENDING_SAVE",
-    "targetFolder": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8"
+    "status": "SAVED_AND_READBACK_VERIFIED",
+    "documentId": "1p6sDA8tllRNWMeT9QlFWfUGEalhcKJEcpnX7M_cbDvw",
+    "url": "https://docs.google.com/document/d/1p6sDA8tllRNWMeT9QlFWfUGEalhcKJEcpnX7M_cbDvw/edit?usp=drivesdk",
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "folderConfirmed": true,
+    "contentReadbackVerified": true
   },
   "qa": {
     "staticSourceRead": "PASS",
@@ -39,5 +43,5 @@
     "scores",
     "stars"
   ],
-  "next": "Save and verify Google Drive document copy, then update this checkpoint with verified Drive URL. No deployment."
+  "next": "Run G7.5 Web Speech API compatibility QA in isolated TEST when authorized. No integration, no release."
 }
