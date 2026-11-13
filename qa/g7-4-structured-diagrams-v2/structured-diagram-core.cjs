@@ -6,7 +6,7 @@
 const families=Object.freeze({
   MAKE_TEN_NUMBER_BOND:{skill:'ADD_THROUGH_TEN',strategy:'STRUCTURED_DIAGRAM',hidden:['splitToTen','remainder','tenStep','total']},
   UNIT_CONVERSION_LENGTH:{skill:'CONVERT_LENGTH_UNITS',strategy:'UNIT_CONVERSION_FIELDS',hidden:['convertedAmount']},
-  PLACE_VALUE_ADDITION:{skill:'COLUMN_ADDITION',strategy:'PLACE_VALUE_GRID',hidden:['carry','tens','ones','total']},
+  PLACE_VALUE_ADDITION:{skill:'COLUMN_ADDITION',strategy:'PLACE_VALUE_GRID',hidden:['carry','tens','ones','total'],rendererRole:'FALLBACK_ONLY'},
   SEGMENT_LENGTH_SUM:{skill:'ADD_LENGTHS',strategy:'PARAMETRIC_SEGMENTS',hidden:['totalLength']}
 });
 const scale=Object.freeze({m:100,dm:10,cm:1});
@@ -65,7 +65,8 @@ function compilePublic(spec){
    diagramFamily:spec.diagramFamily,skill:spec.skill,visualMode:'REPRESENTATIVE',
    renderStrategy:families[spec.diagramFamily].strategy,assetId:null,usesImageLibrary:false,
    sourceKind:'HTML_CSS_OR_PARAMETRIC_SVG',runtimeEnabled:false,gradable:false,
-   noAnswerLeak:true};
+   noAnswerLeak:true,rendererRole:spec.diagramFamily==='PLACE_VALUE_ADDITION'?'FALLBACK_ONLY':'PRIMARY_STRUCTURED',
+   notPermittedToReplaceColumnReference:spec.diagramFamily==='PLACE_VALUE_ADDITION'};
  switch(spec.diagramFamily){
  case 'MAKE_TEN_NUMBER_BOND':{
   const fields=[field('a','Số thứ nhất'),field('b','Số thứ hai'),field('splitToTen','Phần gộp đủ 10'),
