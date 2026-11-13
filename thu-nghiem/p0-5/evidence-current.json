@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "p0.5-evidence-v1",
+  "note": "Verified P0.4 CI evidence only; all remaining gates require new TEST deployment and signed artifacts.",
+  "staticCi": {
+    "conclusion": "success",
+    "runId": 43268208017,
+    "sha": "c84b93802df59a6861e5e37d770eef13e56eb66a",
+    "modes": {
+      "FAST": "PASS",
+      "FULL_SAFE": "PASS",
+      "UI_REGRESSION": "PASS"
+    },
+    "scope": "OFFLINE_ONLY"
+  },
+  "webapp": null,
+  "sessions": null,
+  "browser": null,
+  "pedagogy": {
+    "signedOff": false,
+    "questionCount": 30,
+    "lessonId": "toan_b20",
+    "sourceStatus": "STAGING_DEMO_ONLY_NOT_PEDAGOGY_SIGNED_OFF",
+    "reviewer": null,
+    "evidenceRef": null
+  }
+}
