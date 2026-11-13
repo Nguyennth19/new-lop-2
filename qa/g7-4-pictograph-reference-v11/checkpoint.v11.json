@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "g74-pictograph-v11-checkpoint-v1",
+  "createdDate": "2026-11-14",
+  "branch": "test/g7-4-pictograph-reference-v11-20261114",
+  "base": "test/g7-4-capacity-weight-reference-v11-20261114",
+  "status": "SOURCE_EXTRACTED_TEST_QA_PENDING",
+  "decision": "DO_NOT_CLOSE_V11",
+  "source": {
+    "path": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "immutable": true,
+    "functions": [
+      "renderType9_Pictograph",
+      "tapPictographItem",
+      "countAllPictographRow",
+      "t9Counted",
+      "checkAnswers Type9"
+    ]
+  },
+  "scope": {
+    "modes": [
+      "PRACTICE",
+      "ASSESSMENT"
+    ],
+    "rows": [
+      "apple:6",
+      "mango:4",
+      "orange:7"
+    ],
+    "questionTypes": [
+      "COUNT",
+      "COMPARE_DIFFERENCE"
+    ],
+    "tapOrdinalUsesInteractionOrder": true,
+    "reverseTapUncounts": true,
+    "practiceDemoOnly": true,
+    "noAutoGrading": true
+  },
+  "outputs": [
+    "qa/g7-4-pictograph-reference-v11/pictograph-v11-core.js",
+    "qa/g7-4-pictograph-reference-v11/pictograph-v11-view.js",
+    "qa/g7-4-pictograph-reference-v11/pictograph-v11-fixtures.js",
+    "qa/g7-4-pictograph-reference-v11/pictograph-v11.css",
+    "qa/g7-4-pictograph-reference-v11/Pictograph_V11_Standalone_TEST.html",
+    "qa/g7-4-pictograph-reference-v11/pictograph-v11.test.cjs",
+    ".github/workflows/g7-4-pictograph-v11.yml",
+    "docs/kiem-dinh/G7.4_PICTOGRAPH_REFERENCE_V1.1_20261114.md"
+  ],
+  "gates": {
+    "source": "PASS_COMMITTED",
+    "lockedSourceAndMain": "PASS_WRITE_SCOPE_PENDING_CI_SHA",
+    "unitRegression180Variants": "PENDING_CI",
+    "touchAndFocus": "DEFERRED_BATCH_QA",
+    "speechAdapter": "DEFERRED_BATCH_QA",
+    "assetResolver": "PENDING_MAPPING",
+    "generatorAndServerGrader": "PENDING_INTEGRATION",
+    "gasE2E": "DEFERRED_BATCH_QA",
+    "releaseOwner": "PENDING_OWNER"
+  },
+  "safety": {
+    "mainChanged": false,
+    "legacyRendererChanged": false,
+    "frozenHtmlChanged": false,
+    "studentDataChanged": false,
+    "pointsOrStarsGranted": false,
+    "gasDeployed": false
+  },
+  "risks": [
+    "The original idx+1 speech counts picture position, not actual touch sequence",
+    "Counting demonstration in assessment reveals a result and is prohibited",
+    "Data model 1 picture = 1 unit only; scaled pictographs require new policy",
+    "No CI run verified, browser or TTS device QA deferred"
+  ],
+  "rollback": "No imports into current Web App; revert isolated TEST branch if needed.",
+  "next": "G7.4-WORD_PROBLEM_REFERENCE_V1.1 then G7.4-RENDERER_BATCH_QA_V1"
+}
