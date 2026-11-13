@@ -40,6 +40,9 @@ jobs:
           assert f'data-qa-total="{expected}"' in html if expected!='BLOCKED' else ('class="error"' in html and 'BLOCKED' in html), name+' incorrect count or block'
           actual=len(re.findall(r'class="obj"',html))
           assert actual==int(num),(name,actual,num)
+          if expected!='BLOCKED':
+            assert 'data-qa-horizontal-overflow="false"' in html,name+' horizontal overflow detected'
+            assert f'data-qa-actual-icons="{num}"' in html,name+' actual icon count mismatch'
           print('PASS browser',name,'images=',actual)
           PY
           }
@@ -48,6 +51,10 @@ jobs:
           run_case grapes_bad 'asset=grapes&qty=3&unit=qu%E1%BA%A3&width=390' BLOCKED 0
           run_case books_bad 'asset=books&qty=3&unit=b%E1%BB%99&width=320' BLOCKED 0
           run_case add12 'asset=rabbit&type=add&qty=7&group=5&unit=con&width=390' 12 12
+          run_case banana3 'asset=banana&qty=3&unit=qu%E1%BA%A3&width=320' 3 3
+          run_case watermelon3 'asset=watermelon&qty=3&unit=mi%E1%BA%BFng&width=320' 3 3
+          run_case cherries3 'asset=cherries&qty=3&unit=ch%C3%B9m&width=390' 3 3
+          run_case subtract5 'asset=red_apple&type=subtract&qty=9&group=4&unit=qu%E1%BA%A3&width=390' 5 13
       - name: Check offline gallery and source invariants
         run: |
           node - <<'JS'
