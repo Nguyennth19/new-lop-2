@@ -85,6 +85,17 @@ test('Invalid reviewed reference cannot bypass evidence',()=>{
  const q=textQ();q.answerSpec.verification.type='manual_review';delete q.answerSpec.verification.evidence;
  assert.equal(gradeResponse(q,'quả táo').status,'BLOCKED');
 });
+test('Self-consistent but forged math proof rejected against source parameters',()=>{
+ const q=clone(verified.questions[2]);q.answerSpec.value=100;q.answerSpec.proof.operands=[70,30];
+ assert.equal(auditAnswerSpec(q).code,'MATH_PROOF_SOURCE_MISMATCH');
+});
+test('Text review must include evidence ref',()=>{
+ const q=textQ();q.answerSpec.verification.evidence={};
+ assert.equal(gradeResponse(q,'trái táo').status,'BLOCKED');
+ q.answerSpec.verification.evidence={ref:'fixture'};
+ q.answerSpec.verification.type='deterministic_rule';
+ assert.equal(gradeResponse(q,'trái táo').status,'BLOCKED');
+});
 test('Receipt for approved B20 is PASS with 30 records',()=>{
  const r=auditLesson(verified,{sourceCommit:'1dfa16c6dbde8045ab3f9145bc9f18bad08bd008'});
  assert.equal(r.status,'PASS');assert.equal(r.verified,30);assert.equal(r.records.length,30);
