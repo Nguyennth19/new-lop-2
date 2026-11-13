@@ -1,0 +1,20 @@
+{
+  "policyId": "LOP2-P06-E0-MATH-VARIANT-ACCEPTANCE-V1",
+  "status": "DRAFT_OWNER_SIGNOFF_PENDING",
+  "lessonId": "toan_b21",
+  "sourceScopeStatus": "INDEX_VERIFIED",
+  "allowedSkills": [
+    "ADD_CARRY_REVIEW"
+  ],
+  "allowedMathKinds": [
+    "ADD"
+  ],
+  "mathConstraints": {
+    "minOperand": 1,
+    "maxOperand": 99,
+    "minResult": 0,
+    "maxResult": 100,
+    "requireCarry": true
+  },
+  "ownerApprovalRef": null
+}
