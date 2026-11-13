@@ -1,0 +1,21 @@
+/* G7.4 Comparison V1.1 scoped TEST only; no G6/global overrides. */
+.g74-comparison-v11{max-width:730px;margin:0 auto;color:#253a50;font:700 15px/1.45 system-ui,sans-serif}
+.g74-cmp-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.g74-cmp-prompt{font-size:18px;font-weight:800;margin:0}
+.g74-cmp-tip{background:#e9faf2;padding:8px 12px;border-radius:14px;font-size:12px;color:#236c4c}
+.g74-cmp-hints{background:#fff0c6;border:2px solid #e9c26b;border-radius:10px;padding:8px;cursor:pointer;font:inherit}
+.g74-cmp-status{font-size:12px;color:#53677c}
+.g74-cmp-rows{display:grid;gap:10px}
+.g74-cmp-row{display:grid;grid-template-columns:minmax(0,1fr) 74px minmax(0,1fr);align-items:center;gap:8px;padding:12px;border:3px solid #d3e4f5;background:#fff;border-radius:16px;color:inherit;cursor:pointer;font:inherit;min-width:0}
+.g74-cmp-row.active{border-color:#efb84c;background:#fff8e7}
+.g74-cmp-row.answered .g74-cmp-symbol{background:#e2f4ff;border-color:#55b0d1;color:#1d6a91}
+.g74-cmp-side{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;overflow-wrap:anywhere}
+.g74-cmp-value{font-size:clamp(14px,3.8vw,23px)}
+.g74-cmp-symbol{border:3px solid #dba63e;border-radius:13px;background:#fff;min-height:53px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900}
+.g74-cmp-hint{font-size:11px;color:#647b92}
+.g74-cmp-asset{max-width:85px;max-height:70px;object-fit:contain}
+.g74-cmp-fallback{font-size:11px;color:#647b92}
+.g74-cmp-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:15px}
+.g74-cmp-sign{border:2px solid #9dc9ed;background:#e9f5ff;padding:12px 5px;min-height:54px;border-radius:13px;cursor:pointer;color:#235783;font:800 14px system-ui}
+.g74-cmp-row:focus-visible,.g74-cmp-sign:focus-visible,.g74-cmp-hints:focus-visible{outline:3px solid #255ce5;outline-offset:2px}
+@media(max-width:440px){.g74-cmp-row{grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:4px;padding:7px}.g74-cmp-symbol{min-height:45px;font-size:17px}.g74-cmp-sign{font-size:12px;padding:6px 2px}}
