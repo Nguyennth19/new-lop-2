@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.4 Geometry + Tangram V1.1 TEST</title><link rel="stylesheet" href="geometry-v11.css">
+<style>
+body{margin:0;padding:16px;background:#f7fbf5;color:#24354b;font:700 14px system-ui,sans-serif}
+header{max-width:900px;margin:0 auto 16px}
+h1{font-size:22px}
+.switch{display:flex;flex-wrap:wrap;gap:10px}
+.switch button{cursor:pointer;border:2px solid #97bbef;border-radius:12px;background:white;padding:12px;font:inherit;color:inherit}
+.switch button.active{color:white;background:#5144d8}
+#mount{max-width:880px;margin:auto;background:white;border:2px solid #c9ddec;border-radius:18px;padding:16px}
+.notice{font-weight:500;color:#526782}
+</style></head><body>
+<header><h1>G7.4 – Hình học &amp; Tangram · TEST độc lập</h1>
+<p class="notice">Dữ liệu mẫu trích từ Dạng 5 của HTML gốc; không chấm điểm, không ghi tiến độ, không triển khai GAS.</p>
+<div class="switch"><button id="shapes" class="active">🔷 Chế độ 1 – Chọn hình tứ giác</button>
+<button id="tangram">🧩 Chế độ 2 – Xoay và đặt Tangram</button>
+<button id="reset">↻ Làm lại chế độ này</button></div></header><main id="mount"></main>
+<script src="geometry-v11-core.js"></script>
+<script src="geometry-v11-fixtures.js"></script>
+<script src="geometry-v11-view.js"></script>
+<script>
+(function(){
+ const host=document.getElementById('mount'),buttons={SHAPE_SELECT:document.getElementById('shapes'),TANGRAM:document.getElementById('tangram')};
+ const configs={SHAPE_SELECT:KLGeometryFixturesV11.shape,TANGRAM:KLGeometryFixturesV11.tangram};
+ let active=null,mode='SHAPE_SELECT';const drafts={};
+ function open(next){
+  if(active){drafts[mode]=active.snapshot();active.destroy();active=null;}
+  mode=next;const compiled=KLGeometryTangramV11.compile(configs[mode]);
+  if(!compiled.ok){host.textContent='Lỗi dữ liệu: '+compiled.reason;return;}
+  active=KLGeometryTangramViewV11.mount(host,compiled.plan,{onChange:s=>{drafts[mode]=s;}});
+  if(drafts[mode])active.restore(drafts[mode]);
+  for(const [k,b] of Object.entries(buttons))b.classList.toggle('active',k===mode);
+ }
+ for(const [k,b] of Object.entries(buttons))b.addEventListener('click',()=>{if(k!==mode)open(k)});
+ document.getElementById('reset').addEventListener('click',()=>{if(active){active.clear();drafts[mode]=active.snapshot();}});
+ open(mode);
+})();
+</script></body></html>
