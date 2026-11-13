@@ -1,0 +1,52 @@
+name: G7.4 B5.12 Delegated Count Safe QA
+on:
+  push:
+    branches:
+      - test/g7-4-b5-12-delegated-count-safe-20261113
+    paths:
+      - 'qa/g7-4-b5-12-count-safe-delegated.v1.json'
+      - 'qa/g7-4-b6-batch-import/**'
+      - 'qa/g7-4-gates/**'
+      - 'hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json'
+      - 'hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Approved_TEST.html'
+      - '.github/workflows/g7-4-b512-count-safe-qa.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax test
+        run: |
+          node --check qa/g7-4-b6-batch-import/count-scene-plan.test-only.cjs
+          node --check qa/g7-4-b6-batch-import/count-scene-plan.test.cjs
+      - name: Explicit 40/46 Count-Safe QA
+        run: node qa/g7-4-b6-batch-import/count-scene-plan.test.cjs
+      - name: Pure semantics and source QA
+        run: node qa/g7-4-gates/count-expansion-gates.test.cjs
+      - name: Cross-subject reuse QA
+        run: node qa/g7-4-b6-batch-import/cross-subject.test.cjs
+      - name: Batch import and rollback QA
+        run: node qa/g7-4-b6-batch-import/stage-batch.test.cjs
+      - name: Assert HTML and production gates
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const p='hinh-anh/svg-fallback/fluent-emoji-flat/v1/';
+          const html=fs.readFileSync(p+'qa/G7_Count_Safe_46_Approved_TEST.html','utf8');
+          const manifest=JSON.parse(fs.readFileSync(p+'manifest.v1.json','utf8'));
+          const d=JSON.parse(fs.readFileSync('qa/g7-4-b5-12-count-safe-delegated.v1.json','utf8'));
+          assert.equal((html.match(/data:image\/svg\+xml/g)||[]).length,46);
+          assert.equal(manifest.icons.filter(x=>x.countQaStatus==='COUNT_SAFE_APPROVED').length,40);
+          assert.equal(manifest.icons.filter(x=>x.countQaStatus==='NOT_APPROVED').length,6);
+          assert.equal(d.records.length,46);
+          assert.equal(manifest.enabled,false);
+          assert.equal(manifest.productionActivation,false);
+          assert.equal(manifest.renderPolicy.allowCountInference,false);
+          console.log('PASS 46 SVG, 40 count-approved TEST, 6 blocked, runtime OFF');
+          JS
