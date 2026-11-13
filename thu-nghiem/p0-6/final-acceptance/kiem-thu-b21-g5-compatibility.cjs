@@ -24,7 +24,7 @@ for(const q of demo.lesson.questions){
  assert.deepEqual(adapter.evaluate(q.id,valid),{correct:true,complete:true});
  assert.deepEqual(adapter.evaluate(q.id,invalid),{correct:false,complete:true});
  assert.deepEqual(adapter.evaluate(q.id,{}),{correct:false,complete:false});
- assert.deepEqual(adapter.evaluate(q.id,{...valid,answer:'<svg/onload=alert(1)>'}),{correct:false,complete:false});
+ assert.deepEqual(adapter.evaluate(q.id,{...valid,[rendered.fields[0]]:'<svg/onload=alert(1)>'}),{correct:false,complete:false});
  checks++;
 }
 assert.throws(()=>adapter.render('UNKNOWN'),/G5_UNKNOWN_ID/);
