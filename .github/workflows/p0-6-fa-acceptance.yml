@@ -32,7 +32,7 @@ jobs:
         run: echo 'TEST ONLY; RELEASE_READY=false; no deployment, student write, scores or stars'
 
   g5-browser-preview:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     needs: fa-static-safety
     steps:
