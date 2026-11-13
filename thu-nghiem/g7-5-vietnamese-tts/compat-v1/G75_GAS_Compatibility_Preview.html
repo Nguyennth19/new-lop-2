@@ -1,0 +1,54 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.5 | Vietnamese TTS Compatibility Test V1</title>
+<style>body{font:16px system-ui,sans-serif;background:#f1f5f9;color:#172033;margin:0;padding:24px}main{max-width:740px;margin:auto;background:white;border-radius:18px;padding:24px;box-shadow:0 7px 30px #0001}button{border:1px solid #64748b;border-radius:12px;background:#fff;padding:12px 16px;cursor:pointer;font-size:16px;margin:5px}button:focus-visible{outline:3px solid #ea580c}output,pre{display:block;background:#f8fafc;padding:12px;border-radius:10px;white-space:pre-wrap;word-break:break-word}textarea{width:100%;box-sizing:border-box;padding:12px;font:inherit}label{display:block;margin-top:15px}h1{font-size:1.5rem}</style></head><body><main>
+<h1>G7.5 – Kiểm thử đọc tiếng Việt</h1>
+<p><strong>Chế độ TEST:</strong> không ghi dữ liệu học sinh, không gửi văn bản tới máy chủ dự án. Mỗi phép thử bắt đầu khi bấm nút. Kết quả STARTED không chứng minh tai người đã nghe được.</p>
+<div id="capabilities" aria-live="polite">Đang kiểm tra giọng đọc…</div>
+<label for="manual">Văn bản thử nghiệm (không nhập thông tin cá nhân):</label>
+<textarea id="manual" rows="3">Bé hãy đọc phép tính: tám cộng năm bằng mười ba.</textarea>
+<div>
+<button type="button" onclick="runSpeech('manual')">▶ Đọc đoạn thử</button>
+<button type="button" onclick="runSpeech('numbers')">▶ Đọc số và dấu</button>
+<button type="button" onclick="runSpeech('units')">▶ Đọc đơn vị đo</button>
+<button type="button" onclick="speech.stop()">■ Dừng</button>
+<button type="button" onclick="refresh()">↻ Kiểm tra giọng</button>
+</div>
+<fieldset><legend>Người kiểm tra xác nhận thực tế (bắt buộc để kết luận AUDIO_PASS)</legend>
+<label><input type="radio" name="audible" value="PASS"/> Tôi nghe rõ tiếng Việt, thanh điệu và từ toán đúng</label>
+<label><input type="radio" name="audible" value="FAIL"/> Không có âm thanh hoặc phát âm không đúng</label>
+<label><input type="radio" name="audible" value="UNTESTED" checked/> Chưa nghe kiểm tra</label>
+</fieldset>
+<label for="device">Thiết bị / trình duyệt kiểm thử (không nhập thông tin riêng tư):</label>
+<input id="device" placeholder="Ví dụ: Android Chrome / iOS Safari / GAS iframe" style="width:100%;box-sizing:border-box;padding:12px"/>
+<p><button type="button" onclick="copyReport()">Sao chép phiếu QA JSON</button></p>
+<pre id="log" aria-live="polite">Chưa có sự kiện phát âm.</pre>
+</main>
+<?!= g75Include('G75_SpeechService_JS'); ?>
+<script>
+"use strict";
+var logs=[], speech=new G75VietnameseSpeechService(window,function(event){
+ logs.push({status:event.status,purpose:event.purpose||null,errorCode:event.errorCode||null,lang:event.voiceLang||null});
+ document.getElementById('log').textContent=JSON.stringify(logs.slice(-20),null,2);
+});
+function refresh(){var cap=speech.getCapabilities();document.getElementById('capabilities').textContent=
+ 'API: '+(cap.supported?'Có':'Không')+' · Số giọng: '+cap.voiceCount+
+ ' · Giọng Việt: '+(cap.hasVietnameseVoice?(cap.selectedVoice+' ('+cap.selectedLang+')'):'Chưa tìm thấy');}
+function runSpeech(kind){
+ var sentences={
+  numbers:'Không cộng tám bằng tám. Tám cộng năm bằng mười ba. Mười lăm trừ sáu bằng chín. Hai nhân năm bằng mười. Mười chia hai bằng năm.',
+  units:'Một đề-xi-mét bằng mười xăng-ti-mét. Một mét bằng một trăm xăng-ti-mét. Bảy giờ mười lăm phút.'
+ };
+ speech.speak(kind==='manual'?document.getElementById('manual').value:sentences[kind],kind.toUpperCase());
+ refresh();
+}
+function copyReport(){
+ var selector=document.querySelector('input[name=audible]:checked');
+ var report={schema:'g75.manual-qa.v1',time:new Date().toISOString(),surface:document.getElementById('device').value||'UNSPECIFIED',
+ capabilities:speech.getCapabilities(),audible:selector?selector.value:'UNTESTED',
+ events:logs.slice(-20),disclaimer:'Self-reported manual observation; requires tester verification. No students.'};
+ var json=JSON.stringify(report,null,2);
+ if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(json).then(function(){alert('Đã sao chép phiếu QA');}).catch(function(){prompt('Sao chép thủ công:',json);});
+ else prompt('Sao chép thủ công:',json);
+}
+refresh();if(window.speechSynthesis&&window.speechSynthesis.addEventListener)window.speechSynthesis.addEventListener('voiceschanged',refresh);
+</script></body></html>
