@@ -13,7 +13,7 @@ const CountRendererG74 = (() => {
       label:item.canonicalPhrase,unit:null,quantityDisplayed:false};
     if(mode!=='count')return blocked('INVALID_MODE');
     if(item.status!=='COUNT_SAFE_APPROVED'||item.objectsPerAsset!==1) return blocked('COUNT_NOT_APPROVED');
-    if(typeof requestedUnit!=='string'||requestedUnit.trim()!==item.canonicalUnit) return blocked('UNIT_MISMATCH');
+    if(typeof requestedUnit!=='string'||!Array.isArray(item.countUnitAliases)||!item.countUnitAliases.includes(requestedUnit.trim())) return blocked('UNIT_MISMATCH');
     if(!isInt(requestedCount)||requestedCount<1||requestedCount>50)return blocked('INVALID_COUNT');
     if(!isInt(viewportWidth)||viewportWidth<240||viewportWidth>3840)return blocked('INVALID_VIEWPORT');
     const columns=viewportWidth<380?4:viewportWidth<600?5:viewportWidth<900?8:10;
@@ -27,7 +27,7 @@ const CountRendererG74 = (() => {
         groups.push({start,end:Math.min(requestedCount,start+groupSize),quantity:Math.min(groupSize,requestedCount-start)});
     }
     return {ok:true,status:'READY_TO_RENDER',assetId,canonicalUnit:item.canonicalUnit,
-      label:item.canonicalPhrase,count:requestedCount,renderCount:requestedCount,
+      label:item.canonicalPhrase,count:requestedCount,renderCount:requestedCount,requestedUnitUsed:requestedUnit.trim(),
       objectsPerAsset:1,totalObjects:requestedCount,columns,rows,iconPx,gapPx,groups,
       overflowY:'auto',containerMaxHeightPx:viewportWidth<600?330:400,
       sourceSha256:item.sourceSha256,quantityDisplayed:true,mode:'TEST_ONLY',
