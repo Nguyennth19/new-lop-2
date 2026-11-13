@@ -19,7 +19,7 @@ jobs:
         run: node thu-nghiem/p0-5/closure/kiem-thu-h1-bat-bien.cjs
       - name: Independent B20 legacy source -> contract adapter
         run: node thu-nghiem/p0-6/kiem-thu-adapter-registry-v1.cjs
-      - name: B20 renderer registry: all 30 source questions
+      - name: 'B20 renderer registry: all 30 source questions'
         run: node thu-nghiem/p0-6/kiem-thu-renderer-registry-v1.cjs
       - name: B20 scoring and layout regression
         run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
