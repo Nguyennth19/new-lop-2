@@ -1,0 +1,42 @@
+name: P0.5 Closure Audit Gate (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-5-release-closure-*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controlled-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Revalidate UI-B, UI-A, and inherited FULL_SAFE
+        run: |
+          node thu-nghiem/p0-5/ui-b/kiem-thu-ui-b.cjs
+          node thu-nghiem/p0-5/ui-a/kiem-thu-layout.cjs
+          node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: Revalidate B20 30-question renderer and grade cases
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Validate fail-closed release contract and TEST preflight guard
+        run: |
+          node thu-nghiem/p0-5/kiem-thu-release-gate.cjs
+          node thu-nghiem/p0-5/kiem-thu-preflight.cjs
+      - name: Ensure user UI acceptance does not bypass strict Release Gate
+        run: |
+          set -euo pipefail
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json > "$RUNNER_TEMP/release.json"; then
+            echo "FAIL: release should remain blocked without signed pedagogy"
+            exit 1
+          fi
+          node -e "const fs=require('node:fs');const a=require('./thu-nghiem/p0-5/closure/USER_ACCEPTANCE_EVIDENCE.json'),g=JSON.parse(fs.readFileSync(process.argv[1]));if(g.releaseReady!==false||g.status!=='RELEASE_BLOCKED'||g.gates.STATIC.status!=='PASS'||a.releaseGateLimitations.releaseReady!==false||a.releaseGateLimitations.pedagogySignedOff!==false) process.exit(1);console.log(JSON.stringify({uiUserAccepted:true,release:g.status,releaseReady:g.releaseReady,gates:g.gates}));" "$RUNNER_TEMP/release.json"
+      - name: Ensure no tracked file modified
+        run: test -z "$(git status --porcelain --untracked-files=no)"
