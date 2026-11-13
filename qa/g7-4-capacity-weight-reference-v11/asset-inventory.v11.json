@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "g74-capacity-weight-asset-audit-v11",
+  "date": "2026-11-14",
+  "sourceLibrary": "KIDLEARN_ASSET_LIBRARY",
+  "folders": {
+    "capacity": "https://drive.google.com/drive/folders/1xqNLbu2iZqFmP6gJBbBPUoT_xCmkIbj6",
+    "weight": "https://drive.google.com/drive/folders/1N5zEv1r406J2v2-z_R337u23MHmSs1NW",
+    "household": "https://drive.google.com/drive/folders/1CLdKt50T7GK6GGz3qTlbANDw7PlrVT5n",
+    "dailyObjects": "https://drive.google.com/drive/folders/1JXg7ssQ8Jzqso6FhBGT2Sdi1YSYRCZdy"
+  },
+  "assetVerificationPolicy": "Name and folder presence verified only; semantic contents, dimensions, WebP mapping, licenses and current resolver manifest not verified. No new assets authorized.",
+  "entries": [
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-01.png",
+      "driveId": "1wNEvObOSqxXXoBkU-JdhgzcGGnMt6Fqd",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-02.png",
+      "driveId": "1abbmoSY0TgxEberXpAoOeBe6cpy_V8OJ",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-03.png",
+      "driveId": "1uvvbFtsGEksNqMCE2bOIOgvrLMMyjVaF",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-04.png",
+      "driveId": "1hh95dZzesLTO1c1Hw9jIGL12dsdTJkXs",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-05.png",
+      "driveId": "1qqmnIjDW4wSsjnt_KVV8adj7U9kPkFMg",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-06.png",
+      "driveId": "1RmT1GoNw4l-e0cDcksun-Gbnwc02a9i4",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-07.png",
+      "driveId": "1TzXqHUnBA992bRB7RUHfMQB_AZRtpqDQ",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-08.png",
+      "driveId": "17bT5xcO02IwwRNn6XttbOjpywlV0zHzx",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-09.png",
+      "driveId": "15cwvMibrCmTTbL2mYCdyoSQvMVE3pyJ7",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-10.png",
+      "driveId": "167kGqsF-2iA3phJtnLyVNccLrmtMyT_V",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-11.png",
+      "driveId": "1JtA9wAZrd92TJEpAy7n-IfCelk8XFijs",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M05_CAPACITY",
+      "filename": "KL-M05-12.png",
+      "driveId": "116F9Etlfa1IF5nVIAh2dYhh7Qq_0rjjA",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-01.png",
+      "driveId": "1Tq481TgyU2mYFR7g8t3xZs0uQGQjgXI-",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-02.png",
+      "driveId": "1B2OYFn-o40WPhY3x0cPdeACB7URoX4JV",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-03.png",
+      "driveId": "1w8aqqOK8RfQuWOZbZAKAL2656vqFwMHA",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-04.png",
+      "driveId": "1eJMCclrFrk4cSGQjjw4d2SIA_2uIHX-E",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-05.png",
+      "driveId": "1shNln2o41dMwO5FFuYGdgPdGM9mScJ2T",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-06.png",
+      "driveId": "1HRZMGxcSUTE7Pr4lAtmxkrdPC7o9128g",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-07.png",
+      "driveId": "1jrDAaA3aW5HqDu3dkuQPjt5V49t3oWOA",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-08.png",
+      "driveId": "1TlH3pjmTNGMWE-Esmr2406IRzpt0iYgI",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-09.png",
+      "driveId": "1pEM_FdhXOjAbsDBTKNXHCUi4tQipnAAQ",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-10.png",
+      "driveId": "1fY-b64xbflI7HPSz0RBsKEjabDBcsaHY",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-11.png",
+      "driveId": "1xwf1oAjsGDiGrj7nHIbx5qjzwpP98Dy5",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    },
+    {
+      "family": "M04_WEIGHT",
+      "filename": "KL-M04-12.png",
+      "driveId": "19WNK78yipzht02_HFtb5oHS6lCdSJy5H",
+      "status": "FOUND_SOURCE_PNG_UNMAPPED",
+      "semanticTag": null,
+      "approvedAssetId": null
+    }
+  ],
+  "requiredTargets": [
+    "bình nước",
+    "bình đựng lượng lít",
+    "quả cân",
+    "túi gạo",
+    "cân đĩa"
+  ],
+  "mappingDecision": "PENDING_SEMANTIC_VISUAL_QA",
+  "newGeneration": "NOT_REQUESTED_NOT_JUSTIFIED"
+}
