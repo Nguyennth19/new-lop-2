@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "g7-4-structured-diagram-examples-v2",
+  "scope": "TEST_ONLY",
+  "examples": [
+    {
+      "variantId": "BOND_8_5_LV1",
+      "diagramFamily": "MAKE_TEN_NUMBER_BOND",
+      "skill": "ADD_THROUGH_TEN",
+      "visualMode": "REPRESENTATIVE",
+      "assetId": null,
+      "usesImageLibrary": false,
+      "parameters": {
+        "a": 8,
+        "b": 5
+      },
+      "hiddenFields": [
+        "splitToTen",
+        "remainder",
+        "tenStep",
+        "total"
+      ]
+    },
+    {
+      "variantId": "UNIT_DM_CM_LV1",
+      "diagramFamily": "UNIT_CONVERSION_LENGTH",
+      "skill": "CONVERT_LENGTH_UNITS",
+      "visualMode": "REPRESENTATIVE",
+      "assetId": null,
+      "usesImageLibrary": false,
+      "parameters": {
+        "amount": 1,
+        "fromUnit": "dm",
+        "toUnit": "cm"
+      },
+      "hiddenFields": [
+        "convertedAmount"
+      ]
+    },
+    {
+      "variantId": "UNIT_M_CM_LV1",
+      "diagramFamily": "UNIT_CONVERSION_LENGTH",
+      "skill": "CONVERT_LENGTH_UNITS",
+      "visualMode": "REPRESENTATIVE",
+      "assetId": null,
+      "usesImageLibrary": false,
+      "parameters": {
+        "amount": 1,
+        "fromUnit": "m",
+        "toUnit": "cm"
+      },
+      "hiddenFields": [
+        "convertedAmount"
+      ]
+    },
+    {
+      "variantId": "COL_67_16_LV2",
+      "diagramFamily": "PLACE_VALUE_ADDITION",
+      "skill": "COLUMN_ADDITION",
+      "visualMode": "REPRESENTATIVE",
+      "assetId": null,
+      "usesImageLibrary": false,
+      "parameters": {
+        "a": 67,
+        "b": 16
+      },
+      "hiddenFields": [
+        "carry",
+        "tens",
+        "ones",
+        "total"
+      ]
+    },
+    {
+      "variantId": "LENGTH_AB_CD_LV2",
+      "diagramFamily": "SEGMENT_LENGTH_SUM",
+      "skill": "ADD_LENGTHS",
+      "visualMode": "REPRESENTATIVE",
+      "assetId": null,
+      "usesImageLibrary": false,
+      "parameters": {
+        "ab": 4,
+        "cd": 3,
+        "unit": "cm"
+      },
+      "hiddenFields": [
+        "totalLength"
+      ]
+    }
+  ],
+  "nonNumericFallbacks": {
+    "WORD_PROBLEM_READING": "SINGLE_REPRESENTATIVE_ASSET",
+    "ARITHMETIC_NO_VISUAL_GOAL": "NO_IMAGE"
+  }
+}
