@@ -1,0 +1,29 @@
+name: P0.5 UI-A Mobile Regression (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-5-ui-a-mobile-*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mobile-style-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: UI-A CSS scope and approved baseline tests
+        run: node thu-nghiem/p0-5/ui-a/kiem-thu-layout.cjs
+      - name: Reuse P0.4 FULL_SAFE inherited suites
+        run: node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: Reuse B20 renderer and 30-question grading regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Ensure clean repository after read-only QA
+        run: test -z "$(git status --porcelain --untracked-files=no)"
