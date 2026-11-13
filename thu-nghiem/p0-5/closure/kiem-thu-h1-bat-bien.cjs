@@ -56,5 +56,11 @@ test('unchanged source role and explicit pending pedagogy signoff',()=>{
  for(const q of pack.questions)assert.equal(q.source_role,'PROJECT_ORIGINAL_VARIANT');
  assert.equal(pack.release_status,'STAGING_DEMO_ONLY_NOT_PEDAGOGY_SIGNED_OFF');
 });
+test('TEST B20 runtime source pinned to revised content commit with new cache key',()=>{
+ const server=fs.readFileSync(path.join(__dirname,'../../../B20_BienTheMayChu.gs'),'utf8');
+ assert(server.includes('/1e9c700f1fd85427b30e9f1f42c8c49669011e33/thu-nghiem/bai-20-bien-the/runtime.json'));
+ assert(server.includes('b20_pilot_20261113_h1_pedagogy_copy_v1'));
+ assert(!server.includes('/513e1dcefa0f229305a5d4523dac3cbdd201a908/thu-nghiem/bai-20-bien-the/runtime.json'));
+});
 console.log(JSON.stringify({suite:'P0.5-H1-frozen-content',passed,failed}));
 if(failed)process.exitCode=1;
