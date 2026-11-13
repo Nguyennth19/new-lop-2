@@ -20,6 +20,21 @@
       "releaseReady": false
     },
     {
+      "lessonId": "toan_b20",
+      "subject": "toan",
+      "lessonVersion": "p0.6-fb-test-b20-v1",
+      "state": "INDEPENDENT_ACCEPTED_TEST_ONLY",
+      "sourceScopeStatus": "INDEX_VERIFIED",
+      "sourceRef": "B20_H1_IMMUTABLE_JSON",
+      "rendererRef": "B20_41_42_26_RENDERER",
+      "policyReviewRef": "BIEN_BAN_H2_PHE_DUYET_CHU_DU_AN.md",
+      "qaEvidenceRef": "FB3_B20_BROWSER_QA_20261113.md",
+      "trustedAdapterId": "INDEPENDENT_B20_F_B_3",
+      "allowStudentUse": false,
+      "deploy": false,
+      "releaseReady": false
+    },
+    {
       "lessonId": "toan_b24",
       "subject": "toan",
       "lessonVersion": "p0.6-fb-test-b24-v1",
