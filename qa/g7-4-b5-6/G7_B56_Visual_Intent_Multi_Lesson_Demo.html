@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>G7.4-B.5.6 | Visual Intent – QA trực quan nhiều bài</title>
+<style>
+:root{color-scheme:light;--ink:#17304d;--soft:#5e7187;--line:#dde5ef;--blue:#2764cf;--good:#17815b;--bad:#aa6512;--bg:#f3f7fb;--card:#fff}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:linear-gradient(110deg,#174c8c,#386fbe);color:#fff;padding:27px max(18px,calc((100vw - 1080px)/2))}
+header h1{margin:0;font-size:clamp(22px,3.3vw,32px);line-height:1.24}header p{margin:7px 0 0;opacity:.88}
+main{max-width:1080px;margin:0 auto;padding:20px 15px 55px}
+.panel,.qa-card,.tile{border:1px solid var(--line);background:var(--card);border-radius:16px;box-shadow:0 2px 9px #17304d07}
+.panel{padding:18px;margin:0 0 17px}.muted{color:var(--soft)}.mini{font-size:12px}
+.pills,.tools,.statline{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.pill{background:#e9f2ff;border:1px solid #cde0ff;border-radius:100px;padding:5px 12px;font-size:13px;font-weight:650}
+button{border:1px solid #cbd9ea;color:var(--ink);padding:10px 14px;background:#fff;border-radius:11px;font:inherit;cursor:pointer}button:hover{border-color:#6192e0}button:focus-visible,input:focus-visible{outline:3px solid #91baf5;outline-offset:2px}
+button.active{background:#205fb8;color:#fff;border-color:#205fb8}
+.flag{font-weight:700;padding:5px 10px;border-radius:8px;background:#f1f3f8}.flag.on{background:#dff5e9;color:#166340}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.tile{padding:16px;min-width:0}
+.tile h3{margin:0 0 8px;font-size:15px}.tile p{margin:0 0 9px}.meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:9px}
+.code{font:12px ui-monospace,Consolas,monospace;background:#f0f3f7;padding:3px 7px;border-radius:6px;overflow-wrap:anywhere}
+.visual{height:190px;background:linear-gradient(45deg,#f4f9ff,#fff);border:1px dashed #d3deea;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;overflow:hidden}
+.visual img{width:160px;height:150px;object-fit:contain}.emoji{font-size:58px}.visual small{font-size:12px;color:#576879;padding:0 10px}
+.status{font-size:12px;font-weight:700;border-radius:7px;padding:4px 8px;background:#e9f5ee;color:#146446}.status.warn{background:#fff0d7;color:#835312}.status.off{background:#edf0f5;color:#5b6675}
+.qa-card{padding:12px 15px;margin-top:12px}.qa-card label{display:flex;gap:9px;align-items:start;cursor:pointer}
+.qa-card input{width:18px;height:18px;flex-shrink:0;margin-top:3px;accent-color:var(--good)}
+section h2{font-size:20px;margin:0 0 10px}select{padding:8px;border:1px solid var(--line);border-radius:9px}
+#report{white-space:pre-wrap;overflow:auto;max-height:270px;font-size:12px;background:#102b49;color:#e8f1ff;padding:13px;border-radius:12px}
+footer{color:#697c90;font-size:12px;margin-top:16px}
+@media(max-width:690px){header{padding:23px 17px}.grid{grid-template-columns:1fr}.visual{height:175px}.panel{padding:14px}.tile{padding:14px}}
+</style></head><body>
+<header><h1>🖼️ G7.4-B.5.6 — Visual Intent QA</h1><p>Kiểm thử trực quan độc lập · Tiếng Việt + Tiếng Anh · Không kết nối Apps Script hoặc dữ liệu học sinh</p></header>
+<main>
+<div class="panel"><div class="pills"><span class="pill">2 bài TEST</span><span class="pill">9 câu mẫu</span><span class="pill">5 hình tự chọn</span><span class="pill">4 từ chối an toàn</span></div>
+<p class="muted mini">Dữ liệu câu hỏi và 9 quy tắc lấy từ nhánh TEST B.5.5; ảnh WebP thật tải từ GitHub theo commit bất biến. Cờ kích hoạt chỉ tồn tại trong trang demo này, không thay đổi cấu hình dự án.</p></div>
+<section class="panel"><h2>1. Chọn bài để kiểm tra</h2><div id="tabs" class="tools"></div>
+<div class="tools" style="margin-top:14px"><button id="toggle" class="active" aria-pressed="true">Visual Intent: ON (demo)</button><button id="fail">Giả lập lỗi tải ảnh: OFF</button><span class="flag on" id="flag">Đã bật riêng trong demo</span></div>
+<p class="muted mini" id="summary" style="margin-bottom:0"></p></section>
+<section class="panel"><h2>2. Đối chiếu hình và lý do lựa chọn</h2><div id="cards" class="grid"></div></section>
+<section class="panel"><h2>3. Xác nhận trực quan</h2><p class="muted">Đánh dấu từng câu sau khi bạn đã xem ảnh, nội dung và fallback thực tế. Trạng thái này chỉ nằm trên trang đang mở; không tự ghi vào dự án.</p>
+<div id="checks"></div><div class="tools" style="margin-top:15px"><button id="export">Xuất biên bản QA (.json)</button><button id="refresh">Làm mới kết quả</button><span id="checkedSummary" class="pill"></span></div></section>
+<section class="panel"><h2>4. Nhật ký chẩn đoán</h2><pre id="report" aria-live="polite"></pre></section>
+<footer>Build B5.6 · Base branch test/g7-4-b5-5-multi-lesson-visual-intent-qa-20261113 · MAIN/SGK/SBT/Bài 20 không bị sửa. Nếu mất mạng, hình WebP sẽ hiện fallback có ghi rõ. Kết quả hình ảnh cần người dùng xác nhận.</footer>
+</main>
+<script>
+const DATA={"schema_version":"g7-b56-standalone-v1","demoOnly":true,"sourceBranch":"test/g7-4-b5-5-multi-lesson-visual-intent-qa-20261113","release":"653bfbc73002a188dcea0b714247b84cc28a4fed","lessons":[{"id":"tv_b03_visual_demo","label":"Tiếng Việt","subject":"tieng_viet","questions":[{"question_id":"TV_DEMO_001","lesson_id":"tv_b03_visual_demo","type":"vocabulary","prompt":"Bé đi xe đạp đến trường.","visualIntent":"decorative","quantityMode":"symbolic","subject":"xe đạp","semanticTags":["xe đạp"]},{"question_id":"TV_DEMO_002","lesson_id":"tv_b03_visual_demo","type":"vocabulary","prompt":"Bé chuẩn bị chiếc ba lô.","visualIntent":"decorative","quantityMode":"symbolic","subject":"ba lô","semanticTags":["ba lô"]},{"question_id":"TV_DEMO_003","lesson_id":"tv_b03_visual_demo","type":"counting","prompt":"Vẽ chính xác ba quả dưa hấu.","visualIntent":"counting","quantityMode":"exact","requestedCount":3,"subject":"dưa hấu","semanticTags":["dưa hấu"]},{"question_id":"TV_DEMO_004","lesson_id":"tv_b03_visual_demo","type":"vocabulary","prompt":"Trong tranh có xe đạp và ba lô.","visualIntent":"decorative","quantityMode":"symbolic","semanticTags":["xe đạp","ba lô"]}],"expected":{"selected":2,"rejected":2}},{"id":"en_vocabulary_demo_visual","label":"Tiếng Anh","subject":"tieng_anh","questions":[{"question_id":"EN_DEMO_001","lesson_id":"en_vocabulary_demo_visual","type":"vocabulary","prompt":"Choose the picture of a bicycle.","visualIntent":"decorative","quantityMode":"symbolic","subject":"xe đạp","semanticTags":["xe đạp"]},{"question_id":"EN_DEMO_002","lesson_id":"en_vocabulary_demo_visual","type":"vocabulary","prompt":"Find the school bag.","visualIntent":"decorative","quantityMode":"symbolic","subject":"ba lô","semanticTags":["ba lô"]},{"question_id":"EN_DEMO_003","lesson_id":"en_vocabulary_demo_visual","type":"vocabulary","prompt":"Choose a watermelon.","visualIntent":"decorative","quantityMode":"symbolic","subject":"dưa hấu","semanticTags":["dưa hấu"]},{"question_id":"EN_DEMO_004","lesson_id":"en_vocabulary_demo_visual","type":"counting","prompt":"Count exactly 3 bicycles.","visualIntent":"counting","quantityMode":"exact","requestedCount":3,"subject":"xe đạp","semanticTags":["xe đạp"]},{"question_id":"EN_DEMO_005","lesson_id":"en_vocabulary_demo_visual","type":"vocabulary","prompt":"A bag and a bicycle.","visualIntent":"decorative","quantityMode":"symbolic","semanticTags":["ba lô","xe đạp"]}],"expected":{"selected":3,"rejected":2}}],"rules":[{"concept":"wrapped_candy","assetId":"KL_SH02_010","phrases":["chiếc kẹo","viên kẹo","kẹo bọc giấy","kẹo"],"label":"kẹo bọc giấy","approval":"LABEL_APPROVED","emoji":"🍬"},{"concept":"dragon_fruit","assetId":"KL_SH01_010","phrases":["quả thanh long","trái thanh long","thanh long"],"label":"thanh long","approval":"LABEL_APPROVED","emoji":"🍉"},{"concept":"guava","assetId":"KL_SH01_011","phrases":["quả ổi","trái ổi","ổi"],"label":"ổi","approval":"LABEL_APPROVED","emoji":"🍈"},{"concept":"school_backpack","assetId":"KL_SH09_007","phrases":["ba lô học sinh","chiếc ba lô","cái ba lô","ba lô"],"label":"ba lô học sinh","approval":"LABEL_APPROVED","emoji":"🎒"},{"concept":"kids_bicycle","assetId":"KL_SH11_012","phrases":["chiếc xe đạp","xe đạp trẻ em","xe đạp"],"label":"xe đạp trẻ em","approval":"LABEL_APPROVED","emoji":"🚲"},{"concept":"watermelon","assetId":"KL_M04_007","phrases":["quả dưa hấu","trái dưa hấu","dưa hấu"],"label":"quả dưa hấu","approval":"LABEL_APPROVED","emoji":"🍉"},{"concept":"rice_bag","assetId":"KL_M04_006","phrases":["bao gạo","túi gạo"],"label":"bao gạo","approval":"LABEL_APPROVED","emoji":"🌾"},{"concept":"water_bucket","assetId":"KL_M05_006","phrases":["xô nước","xô đựng nước"],"label":"xô nước","approval":"LABEL_APPROVED","emoji":"🪣"},{"concept":"baseball_cap","assetId":"KL_SH09_004","phrases":["mũ lưỡi trai","nón lưỡi trai"],"label":"mũ lưỡi trai","approval":"LABEL_APPROVED","emoji":"🧢"}],"assets":{"KL_SH02_010":{"label":"kẹo bọc giấy","path":"WEBP/SH02/KL-SH02-10.webp","emoji":"🍬","status":"LABEL_APPROVED"},"KL_SH01_010":{"label":"thanh long","path":"WEBP/SH01/KL-SH01-10.webp","emoji":"🍉","status":"LABEL_APPROVED"},"KL_SH01_011":{"label":"ổi","path":"WEBP/SH01/KL-SH01-11.webp","emoji":"🍈","status":"LABEL_APPROVED"},"KL_SH09_007":{"label":"ba lô học sinh","path":"WEBP/SH09/KL-SH09-07.webp","emoji":"🎒","status":"LABEL_APPROVED"},"KL_SH11_012":{"label":"xe đạp trẻ em","path":"WEBP/SH11/KL-SH11-12.webp","emoji":"🚲","status":"LABEL_APPROVED"},"KL_M04_007":{"label":"quả dưa hấu","path":"WEBP/M04/KL-M04-07.webp","emoji":"🍉","status":"LABEL_APPROVED"},"KL_M04_006":{"label":"bao gạo","path":"WEBP/M04/KL-M04-06.webp","emoji":"🌾","status":"LABEL_APPROVED"},"KL_M05_006":{"label":"xô nước","path":"WEBP/M05/KL-M05-06.webp","emoji":"🪣","status":"LABEL_APPROVED"},"KL_SH09_004":{"label":"mũ lưỡi trai","path":"WEBP/SH09/KL-SH09-04.webp","emoji":"🧢","status":"LABEL_APPROVED"}}};
+const BASE='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/'+DATA.release+'/hinh-anh/webp-g7/v1/';
+const state={lesson:DATA.lessons[0].id,enabled:true,simulateFailure:false,checks:{},events:[]};
+const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').toLowerCase().replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
+function decide(q){
+ if(q.visualIntent!=='decorative'||q.quantityMode==='exact'||q.quantityMode==='counting'||q.quantityMode==='literal')
+  return {result:'REQUIRES_QUANTITY_VERIFICATION',label:'Chặn yêu cầu đếm chính xác'};
+ const content=' '+norm([q.prompt,q.unit,q.subject,...(q.semanticTags||[])].join(' '))+' ';
+ const found=DATA.rules.filter(r=>r.approval==='LABEL_APPROVED'&&r.phrases.some(p=>content.includes(' '+norm(p)+' ')));
+ if(!found.length)return {result:'NO_SAFE_MATCH',label:'Không có hình đủ điều kiện'};
+ if(found.length>1)return {result:'AMBIGUOUS_SEMANTICS',label:'Có nhiều đối tượng, không chọn tùy ý'};
+ const rule=found[0];
+ return {result:'CURATED_AUTO',label:rule.label,assetId:rule.assetId,concept:rule.concept,emoji:rule.emoji};
+}
+function selectedLesson(){return DATA.lessons.find(l=>l.id===state.lesson)}
+function build(){
+ const lesson=selectedLesson();
+ document.getElementById('tabs').innerHTML=DATA.lessons.map(l=>'<button class="'+(l.id===state.lesson?'active':'')+'" data-lesson="'+esc(l.id)+'">'+esc(l.label)+' ('+l.questions.length+' câu)</button>').join('');
+ document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>{state.lesson=b.dataset.lesson;render()});
+ const t=document.getElementById('toggle');t.className=state.enabled?'active':'';t.textContent='Visual Intent: '+(state.enabled?'ON (demo)':'OFF (gốc)');t.setAttribute('aria-pressed',String(state.enabled));
+ document.getElementById('fail').textContent='Giả lập lỗi tải ảnh: '+(state.simulateFailure?'ON':'OFF');
+ const f=document.getElementById('flag');f.className=state.enabled?'flag on':'flag';f.textContent=state.enabled?'Đã bật riêng trong demo':'Chỉ hiện dữ liệu gốc';
+ const outcomes=lesson.questions.map(q=>({q,...decide(q)}));
+ const good=outcomes.filter(x=>x.result==='CURATED_AUTO').length;
+ document.getElementById('summary').textContent='Kết quả theo bộ chọn: '+good+' hình phù hợp, '+(outcomes.length-good)+' từ chối an toàn · Dự kiến '+lesson.expected.selected+'/'+lesson.expected.rejected+' · '+(state.enabled?'đang xem ảnh':'đang tắt hình');
+ const root=document.getElementById('cards');root.innerHTML='';
+ state.events=[];
+ for(const x of outcomes){
+  const tile=document.createElement('article');tile.className='tile';
+  const active=state.enabled&&x.result==='CURATED_AUTO';
+  const warning=state.enabled&&x.result!=='CURATED_AUTO';
+  const status=state.enabled?(active?'Đã chọn Asset ID':'Không tự chọn hình'):'Cờ OFF — giữ nguyên';
+  tile.innerHTML='<h3>'+esc(x.q.question_id)+'</h3><p>'+esc(x.q.prompt)+'</p>'+
+   '<div class="visual" data-slot></div><div class="meta"><span class="status '+(warning?'warn':state.enabled?'':'off')+'">'+status+'</span>'+
+   (active?'<span class="code">'+esc(x.assetId)+'</span>':'')+'</div>'+
+   '<p class="muted mini">'+esc(x.q.visualIntent)+' · '+esc(x.q.quantityMode)+' · '+esc(x.label)+'</p>';
+  const slot=tile.querySelector('[data-slot]');
+  if(!state.enabled){slot.innerHTML='<span class="emoji">⏸️</span><small>Không bổ sung ảnh — dữ liệu gốc không đổi</small>'}
+  else if(!active){slot.innerHTML='<span class="emoji">🛡️</span><small>'+esc(x.result)+'</small>'}
+  else{
+   const a=DATA.assets[x.assetId];
+   if(!a){slot.innerHTML='<span class="emoji">⚠️</span><small>Asset ID không có trong manifest</small>';state.events.push({questionId:x.q.question_id,status:'ASSET_MISSING'});}
+   else{
+    const img=new Image();img.alt=a.label;img.loading='eager';img.decoding='async';img.referrerPolicy='no-referrer';
+    const note=document.createElement('small');note.textContent=a.label+' · hình đại diện (count=1)';
+    img.onload=()=>{state.events.push({questionId:x.q.question_id,status:'WEBP_LOADED',assetId:x.assetId});updateReport()};
+    img.onerror=()=>{slot.innerHTML='<span class="emoji">'+esc(a.emoji)+'</span><small>WebP không tải được → fallback · '+esc(x.assetId)+'</small>';state.events.push({questionId:x.q.question_id,status:'WEBP_FALLBACK',assetId:x.assetId});updateReport()};
+    slot.append(img,note);
+    img.src=state.simulateFailure?'data:image/webp;base64,INVALID_TEST_ASSET':BASE+a.path;
+   }
+  }
+  root.appendChild(tile);
+ }
+ document.getElementById('checks').innerHTML=outcomes.map(x=>{
+  const key=lesson.id+'::'+x.q.question_id;return '<div class="qa-card"><label><input type="checkbox" data-check="'+esc(key)+'" '+(state.checks[key]?'checked':'')+'><span><b>'+esc(x.q.question_id)+'</b>: '+esc(x.result==='CURATED_AUTO'?'Ảnh đúng chủ đề, cân đối, không che chữ':'Lý do từ chối rõ ràng và không gán ảnh sai')+'</span></label></div>';
+ }).join('');
+ document.querySelectorAll('[data-check]').forEach(x=>x.onchange=()=>{state.checks[x.dataset.check]=x.checked;updateReport()});
+ updateReport();
+}
+function updateReport(){
+ const l=selectedLesson(),results=l.questions.map(q=>({questionId:q.question_id,...decide(q)}));
+ const checked=l.questions.filter(q=>state.checks[l.id+'::'+q.question_id]).length;
+ document.getElementById('checkedSummary').textContent='Đã xác nhận '+checked+'/'+l.questions.length+' câu';
+ const report={version:DATA.schema_version,visualQAStatus:checked===l.questions.length?'USER_MARKED_ALL':'USER_REVIEW_PENDING',
+ lessonId:l.id,featureFlag:state.enabled?'ON_LOCAL_ONLY':'OFF',forcedImageFail:state.simulateFailure,
+ count:{questions:l.questions.length,selected:results.filter(x=>x.result==='CURATED_AUTO').length,rejected:results.filter(x=>x.result!=='CURATED_AUTO').length,checked},
+ expected:l.expected,
+ results:results.map(x=>({questionId:x.questionId,decision:x.result,assetId:x.assetId||null,checked:!!state.checks[l.id+'::'+x.questionId]})),
+ imageEvents:state.events,sourceBranch:DATA.sourceBranch,releaseCommit:DATA.release};
+ document.getElementById('report').textContent=JSON.stringify(report,null,2);
+ return report;
+}
+function render(){build()}
+document.getElementById('toggle').onclick=()=>{state.enabled=!state.enabled;render()};
+document.getElementById('fail').onclick=()=>{state.simulateFailure=!state.simulateFailure;render()};
+document.getElementById('refresh').onclick=()=>render();
+document.getElementById('export').onclick=()=>{
+ const report=updateReport(),blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='G7-B56-QA-'+report.lessonId+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+};
+render();
+</script></body></html>
