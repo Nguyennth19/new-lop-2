@@ -1,0 +1,25 @@
+/* Standalone isolated G7.4 Geometry/Tangram V1.1 CSS only. */
+.g74-geo-v11{width:100%;max-width:880px;margin:0 auto;color:#26354a;font:700 15px/1.5 system-ui,sans-serif}
+.g74-geo-prompt{padding:12px 16px;border-radius:14px;background:#eaf7ff;color:#244b7e}
+.g74-geo-status{font-size:13px;color:#485d76;margin:8px 0 12px}
+.g74-geo-shape-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.g74-geo-shape{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:150px;padding:12px;border:3px solid #d6e1f0;border-radius:16px;background:white;color:#26354a;cursor:pointer;font:inherit}
+.g74-geo-shape.selected{background:#fff8df;border-color:#e5aa24;box-shadow:0 0 0 2px #f9df8f}
+.g74-geo-shape:focus-visible,.g74-tangram-piece:focus-visible,.g74-tangram-tool:focus-visible,.g74-tangram-target-button:focus-visible{outline:3px solid #275eea;outline-offset:2px}
+.g74-geo-svg{width:min(100%,150px);height:110px;fill:#c9e6fa;stroke:#256996;stroke-width:4}
+.g74-geo-shape.selected .g74-geo-svg{fill:#f9c653;stroke:#9d671b}
+.g74-geo-svg polyline{fill:none}
+.g74-geo-order{position:absolute;top:8px;right:8px;color:white;background:#dd9b1b;border-radius:50%;min-width:28px;padding:3px}
+.g74-geo-label{font-size:12px}
+.g74-tangram-tools{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.g74-tangram-tool,.g74-tangram-piece,.g74-tangram-target-button{cursor:pointer;border:2px solid #afb9ed;border-radius:12px;background:#f5f5ff;color:#292d68;font:700 13px/1.4 system-ui;padding:9px 12px}
+.g74-tangram-tool:disabled,.g74-tangram-target-button:disabled{opacity:.5;cursor:not-allowed}
+.g74-tangram-layout{display:grid;grid-template-columns:minmax(170px,1fr) minmax(0,2fr);gap:12px}
+.g74-tangram-pieces{display:flex;flex-direction:column;gap:8px}
+.g74-tangram-piece.selected{background:#dddafa;border-color:#6256dc}
+.g74-tangram-board{min-width:0;border:2px solid #efce84;border-radius:15px;background:#fffaf0;padding:8px}
+.g74-tangram-svg{display:block;width:100%;height:auto;max-height:350px}
+.g74-tangram-target{stroke:#e59a40;stroke-width:3;stroke-dasharray:7 5;fill:#fff0c7;cursor:pointer}
+.g74-tangram-active-piece{stroke:#293f67;stroke-width:3;fill:#92c2eb;pointer-events:none}
+.g74-tangram-target-buttons{display:flex;flex-wrap:wrap;gap:6px}
+@media(max-width:540px){.g74-geo-shape-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.g74-tangram-layout{grid-template-columns:1fr}.g74-tangram-pieces{flex-direction:row;flex-wrap:wrap}.g74-geo-shape{min-height:135px}}
