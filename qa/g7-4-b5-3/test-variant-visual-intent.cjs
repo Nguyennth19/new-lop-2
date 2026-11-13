@@ -139,5 +139,24 @@ check('Demo 13/13 approved baseline is inherited not re-certified from screensho
  assert.equal(secondary.questions.length,4);
  assert.equal(read('du-lieu/bien-the/chuan/tieng-viet-demo.visual-intent.v1.json').includes('"visualIntent"'),true);
 });
+check('End-to-end B20 pipeline projects 30 questions and preserves explicit image precedence',()=>{
+ const before=JSON.stringify(raw);
+ const normalizedSidecar={schema_version:manual.schema_version,mode:'STAGING_ONLY',question_scenes:manual.question_scenes};
+ const result=adapter.projectAndSelect(raw,normalizedSidecar,compiled,selector);
+ assert.equal(result.questions.length,30);assert.equal(result.sessions.length,6);
+ assert.equal(result.assetScenes.selectionDiagnostics.length,30);
+ assert.equal(Object.keys(result.assetScenes.question_scenes).length,2);
+ assert.equal(result.assetScenes.question_scenes.VAR_B20_20261112_021.scene.groups[0].items[0].assetId,'KL_SH03_006');
+ assert.equal(JSON.stringify(raw),before);
+});
+check('End-to-end second lesson creates scenes without HTML changes or question-specific rules',()=>{
+ const before=JSON.stringify(secondary);
+ const output=adapter.projectAndSelect(secondary,null,compiled,selector);
+ assert.equal(output.questions.length,4);
+ assert.equal(output.assetScenes.selectionDiagnostics.length,4);
+ assert.equal(Object.keys(output.assetScenes.question_scenes).length,2);
+ assert.equal(output.assetScenes.selectionDiagnostics.filter(x=>x.result==='CURATED_AUTO').length,2);
+ assert.equal(JSON.stringify(secondary),before);
+});
 console.log(JSON.stringify({stage:'G7.4-B.5.3',passed,failed,total:passed+failed}));
 process.exitCode=failed?1:0;
