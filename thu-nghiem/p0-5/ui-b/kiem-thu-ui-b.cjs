@@ -18,7 +18,13 @@ function resultMarkup(options={}){
 }
 test('UI-B CSS is loaded after UI-A',()=>{const a=shell.indexOf("napThanhPhan('46_CSS_Mobile_B20_UIA')"),b=shell.indexOf("napThanhPhan('47_CSS_B20_UIB_CanChinh')");assert(a>0&&b>a)});
 test('accepted renderer 41 remains byte-identical',()=>assert.equal(hash('41_HienThiCauHoiToan.html'),'50501ccc3cb5e7801fd563807e21b76d2a51c8f9'));
-test('accepted server B20 stays untouched',()=>assert.equal(hash('B20_BienTheMayChu.gs'),'2cac0c171aa5c60a01bf5d918f4e2f4b53a1c16c'));
+test('B20 server is byte-identical except approved pinned JSON source and cache key',()=>{
+ const server=read('B20_BienTheMayChu.gs');
+ const restored=server
+ .replace('https://raw.githubusercontent.com/Nguyennth19/new-lop-2/1e9c700f1fd85427b30e9f1f42c8c49669011e33/thu-nghiem/bai-20-bien-the/runtime.json','https://raw.githubusercontent.com/Nguyennth19/new-lop-2/513e1dcefa0f229305a5d4523dac3cbdd201a908/thu-nghiem/bai-20-bien-the/runtime.json')
+ .replace('b20_pilot_20261113_h1_pedagogy_copy_v1','b20_pilot_20261112_pack_g7_b31_v1');
+ assert.equal(cp.execFileSync('git',['hash-object','--stdin'],{input:restored,encoding:'utf8'}).trim(),'2cac0c171aa5c60a01bf5d918f4e2f4b53a1c16c');
+});
 test('accepted score styles module stays untouched',()=>assert.equal(hash('29_CSS_BangKetQua_V26.html'),'3650f80fb38193f1b703e1f8581f089cfdb0604a'));
 test('UI-A mobile nav stays in source',()=>assert(uiA.includes('overflow-x:auto')&&uiA.includes('flex-direction:column')));
 test('submission then result then answer reading order',()=>{
