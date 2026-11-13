@@ -4,10 +4,10 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T22:05:00+07:00",
-  "status": "IN_PROGRESS",
-  "currentOperation": "F-A.1 policy review / B21 LV3 differentiated cognitive strategy and regression QA",
-  "recoveryPoint": "Prior verified branch HEAD fec8f9abcba786149a3c6e58ece13e8fd939bfea. No B21 changes yet; next create controlled LV3 revision.",
+  "updatedAt": "2026-11-13T22:09:22+07:00",
+  "status": "PENDING_APPROVAL",
+  "currentOperation": "F-A.1 technical QA complete; await owner E0 P01-P06 and B21 pedagogical decision; interactive G5 BLOCKED",
+  "recoveryPoint": "New LV3 reasoning overlay, policy packet, journal, evidence and draft minutes committed. Last journal SHA d0280cbfd09593296c1785d6baa0d21155cabe70. CI 43449443133 SUCCESS for code SHA 7e8fa5906f8f9988e45ab2ec7b6ff2f22eecb487; reverify latest documentation-only branch HEAD/CI before resuming.",
   "steps": {
     "FA0": "DONE",
     "FA1": "DONE",
@@ -15,7 +15,7 @@
     "FA3": "DONE",
     "FA4": "PENDING_APPROVAL",
     "FA5": "BLOCKED",
-    "FA1_1": "IN_PROGRESS"
+    "FA1_1": "DONE"
   },
   "gates": {
     "policyE0": "PENDING_APPROVAL",
@@ -34,14 +34,18 @@
     "faCiConclusion": "success",
     "latestSourceCiRunId": 43440539685,
     "latestSourceCiConclusion": "success",
-    "faCiCommit": "2b3a3893226725b0e149811e0bea15e1fa3298cf"
+    "faCiCommit": "2b3a3893226725b0e149811e0bea15e1fa3298cf",
+    "fa1CiRunId": 43449443133,
+    "fa1CiCommit": "7e8fa5906f8f9988e45ab2ec7b6ff2f22eecb487",
+    "fa1CiConclusion": "success"
   },
-  "lastConfirmedWrite": "5deee5b87f2d72abdef52400f7cb4db4b8918e5c",
+  "lastConfirmedWrite": "d0280cbfd09593296c1785d6baa0d21155cabe70",
   "nextActions": [
-    "Obtain owner policy E.0 SHA-bound decision",
-    "Resolve B21 exact skill scope and LV3 cognitive differentiation",
-    "Rerun relevant QA after any owner-authorized edits",
-    "Verify G5 interactive separately before F-B handover"
+    "Owner to decide P01-P06 with policy hash and scope",
+    "Pedagogy reviewer verify B21 source scope and LV1/LV2 families",
+    "Owner/reviewer decide LV3 two-field reasoning overlay or other scope-safe option",
+    "Keep G5 blocked until interactive two-field grading verified",
+    "No handover F-B until approval gates satisfied"
   ],
   "safety": {
     "testOnly": true,
