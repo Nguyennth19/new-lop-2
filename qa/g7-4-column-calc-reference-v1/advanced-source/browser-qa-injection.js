@@ -48,7 +48,12 @@
       const passWithoutCarry=successBanner.classList.contains('bg-emerald-100');
       record('grade-with-wrong-carry',passWithoutCarry);
       record('original-carry-grading-gap',passWithoutCarry);
-      const required=['fields','original-2-column','original-3-column','auto-ones-to-tens','auto-tens-to-hundreds','value-484','toggle-carry-1','carry-preserves-answer','hundreds-carry-off','value-72','grade-with-carry'];
+      // A wrong hundreds digit must still be rejected by the original grader.
+      inputValues.t2_q2_h='9';updateSlotDOM('t2_q2_h');
+      checkCurrentExercise();
+      record('wrong-digit-rejected',!successBanner.classList.contains('bg-emerald-100'));
+      inputValues.t2_q2_h='4';updateSlotDOM('t2_q2_h');
+      const required=['fields','original-2-column','original-3-column','auto-ones-to-tens','auto-tens-to-hundreds','value-484','toggle-carry-1','carry-preserves-answer','hundreds-carry-off','value-72','grade-with-carry','wrong-digit-rejected'];
       const checks=required.every(k=>root.getAttribute('data-v11-'+k)===(k==='fields'?'5':'true'));
       record('success',checks);
       record('html-scroll-overflow',document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
