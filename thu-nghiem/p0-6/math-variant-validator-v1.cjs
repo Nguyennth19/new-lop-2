@@ -65,7 +65,7 @@ function mathAudit(q,policy,variant){
  }
  return gate('PASS','ARITHMETIC_VERIFIED');
 }
-function visualAudit(variant){
+function visualAudit(variant,question){
  const v=variant.visual;
  if(!isObj(v)||!nonempty(v.role))return gate('BLOCKED','VISUAL_PLAN_MISSING');
  if(v.role==='NONE')return gate('NOT_APPLICABLE','NO_VISUAL_REQUIRED');
@@ -78,6 +78,11 @@ function visualAudit(variant){
     return gate('FAIL','COUNT_VALUES_INVALID');
   if(JSON.stringify(v.expectedGroups)!==JSON.stringify(v.actualGroups))
     return gate('FAIL','COUNT_GROUPS_MISMATCH');
+  if(!question||!Array.isArray(question.parameters?.visualGroups)||
+     JSON.stringify(question.parameters.visualGroups)!==JSON.stringify(v.expectedGroups))
+    return gate('BLOCKED','COUNT_NOT_BOUND_TO_QUESTION');
+  if(!nonempty(v.renderQaEvidenceRef))
+    return gate('BLOCKED','COUNT_RENDER_EVIDENCE_MISSING');
   if(v.assetCountSafe!==true||v.labelsVerified!==true)return gate('BLOCKED','COUNT_ASSET_NOT_VERIFIED');
   if(!nonempty(v.assetEvidenceRef))return gate('BLOCKED','COUNT_ASSET_EVIDENCE_MISSING');
   return gate('PASS','COUNT_SAFE_VERIFIED');
@@ -102,6 +107,13 @@ function interactionAudit(v){
   if(!nonempty(i.transformationEvidenceRef)||!Number.isInteger(i.assessedRelationCount)||
      !Number.isInteger(i.requiredRelationCount)||i.assessedRelationCount<i.requiredRelationCount)
      return gate('PENDING','INTERACTION_EQUIVALENCE_UNPROVEN');
+ }
+ if(i.to==='CHOICE'){
+  if(!Array.isArray(i.optionValues)||i.optionValues.length<3||
+     new Set(i.optionValues.map(x=>JSON.stringify(x))).size!==i.optionValues.length||
+     !Object.hasOwn(i,'correctOptionValue')||
+     i.optionValues.filter(x=>JSON.stringify(x)===JSON.stringify(i.correctOptionValue)).length!==1)
+   return gate('BLOCKED','CHOICE_OPTIONS_NOT_VERIFIED');
  }
  return gate('PASS','INTERACTION_COVERAGE_VERIFIED');
 }
@@ -131,7 +143,7 @@ function auditVariant(lesson,policy,variant,context={}){
   variant.variantLevel==='V3_STRUCTURAL'?gate('PENDING','V3_EXPERT_REVIEW_REQUIRED'):
   variant.variantLevel==='V2_INTERACTION'&&!isObj(variant.interaction)?
    gate('BLOCKED','V2_INTERACTION_MAP_REQUIRED'):gate('PASS','VARIANT_LEVEL_CLASSIFIED');
- gates.G3=visualAudit(variant);
+ gates.G3=visualAudit(variant,q);
  gates.G4=interactionAudit(variant);
  const r=variant.renderer||{};
  gates.G5=!q||r.kind!==q.kind||q.renderer?.component!==q.kind?
