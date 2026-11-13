@@ -1,0 +1,73 @@
+name: G7.4 Column Calc V1.3 Web App TEST
+on:
+  push:
+    branches: ['test/g7-4-column-calc-reference-v13-webapp-test-20261114']
+    paths:
+      - 'qa/g7-4-column-calc-reference-v13/**'
+      - '5?_G74_V13_*'
+      - '19_KhongGianHocToan.html'
+      - 'GiaoDien.html'
+      - '.github/workflows/g7-4-column-v13-webapp-test.yml'
+  workflow_dispatch:
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: V1.2 source regression and contract gates
+        run: |
+          node qa/g7-4-column-calc-reference-v12/column-v12.test.cjs
+      - name: Verify V1.3 integration and no unapproved production changes
+        run: |
+          node - <<'JS'
+          const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto');
+          const read=p=>fs.readFileSync(p,'utf8');
+          const gate=read('52_G74_V13_ColumnGateTEST.gs'),app=read('GiaoDien.html');
+          const lesson=read('19_KhongGianHocToan.html');
+          const core=read('53_G74_V13_ColumnCoreTEST.html');
+          const view=read('54_G74_V13_ColumnViewTEST.html');
+          const bridge=read('56_G74_V13_ColumnBridgeTEST.html');
+          const css=read('55_CSS_G74_V13_ColumnTEST.html');
+          for(const js of [core,view,bridge])new vm.Script(js);
+          assert.equal(core,read('qa/g7-4-column-calc-reference-v12/column-v12-core.js'));
+          assert.equal(view,read('qa/g7-4-column-calc-reference-v12/column-v12-view.js'));
+          assert.ok(gate.includes("G74_V13_COLUMN_TEST"));
+          assert.ok(gate.includes("ISOLATED_TEST_WEBAPP"));
+          assert.ok(app.includes("<? if (g74V13ColumnTestAllowed_()) { ?>"));
+          assert.ok(app.includes("56_G74_V13_ColumnBridgeTEST"));
+          assert.ok(lesson.includes("KL_G74_V13.mount("));
+          assert.ok(!bridge.includes('google.script.run')&&!bridge.includes('fetch('));
+          assert.ok(!bridge.includes('localStorage'));
+          assert.ok(!css.includes('body{')&&!css.includes('.ml-vertical-card{'));
+          const frozen=fs.readFileSync('qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html');
+          assert.equal(crypto.createHash('sha256').update(frozen).digest('hex'),'78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced');
+          for(const p of ['41_HienThiCauHoiToan.html','26_ChamCauHoiToan.html','42_AdapterBienTheB20.html']){
+            assert.equal(read(p),read('qa/g7-4-column-calc-reference-v1/snapshot/'+p),p+' legacy changed');
+          }
+          console.log('PASS: gate default OFF, 3 unchanged G6 modules, V1.2 byte-equivalent and original SHA');
+          JS
+      - name: Actual Chrome dual-render B20 and 1000 previews
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          FILE="file://$PWD/qa/g7-4-column-calc-reference-v13/WebApp_V13_Integration_Harness.html"
+          for width in 320 360 390 768 1024; do
+            timeout 75s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=3000 --window-size="$width,960" --dump-dom "$FILE" > "/tmp/v13_$width.html" 2> "/tmp/v13_$width.err"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for width in [320,360,390,768,1024]:
+              s=Path(f'/tmp/v13_{width}.html').read_text()
+              attrs=dict(re.findall(r'data-qa-([\w-]+)="([^"]*)"',s))
+              print('width',width,'metrics',attrs)
+              assert attrs.get('total')=='17',(width,attrs,'expected 17 checks')
+              assert attrs.get('passed')=='17',(width,attrs,'failed a bridge check')
+              assert attrs.get('errors')=='0',(width,attrs,'runtime failure')
+              assert attrs.get('overflow')=='false',(width,attrs,'document overflow')
+          print('PASS Chrome: 17 assertions x 5 widths; mirrored legacy fields, 1000 preview, safe fallback')
+          PY
