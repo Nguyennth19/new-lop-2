@@ -26,15 +26,34 @@ function validateProof(answerSpec){
  return value===answerSpec.value?result('PASS','INDEPENDENT_PROOF_MATCH'):
    result('FAIL','ANSWER_PROOF_MISMATCH');
 }
+function checkMathBinding(question){
+ if(!question.kind||!question.kind.startsWith('math.'))return result('PASS','NOT_MATH');
+ const p=question.parameters||{},proof=question.answerSpec&&question.answerSpec.proof;
+ const a=p.a,b=p.b,c=p.c;
+ if(!isSafeInt(a)||!isSafeInt(b)||!isObj(proof))return result('BLOCKED','MATH_SOURCE_PARAMETERS_MISSING');
+ let expected;
+ switch(question.kind){
+  case 'math.carry':expected={operation:'carry_tens',operands:[a,b]};break;
+  case 'math.reverse':expected={operation:'missing_addend',operands:[a+b,b]};break;
+  case 'math.three':if(!isSafeInt(c))return result('BLOCKED','MATH_THIRD_PARAMETER_MISSING');expected={operation:'sum',operands:[a,b,c]};break;
+  case 'math.vertical':case 'math.mental':case 'math.word':
+   expected={operation:'add',operands:[a,b]};break;
+  default:return result('BLOCKED','MATH_KIND_UNSUPPORTED');
+ }
+ if(proof.operation!==expected.operation||
+   JSON.stringify(proof.operands)!==JSON.stringify(expected.operands))
+   return result('FAIL','MATH_PROOF_SOURCE_MISMATCH');
+ return result('PASS','MATH_PROOF_BOUND_TO_PARAMETERS');
+}
 function auditAnswerSpec(question){
  if(!isObj(question)||!isObj(question.answerSpec))return result('BLOCKED','ANSWER_SPEC_MISSING');
  const a=question.answerSpec,v=a.verification,approval=a.pedagogyApproval;
  if(!isObj(v)||!isObj(approval))return result('BLOCKED','PROVENANCE_MISSING');
  if(v.status==='FAIL'||approval.status==='REJECTED')return result('FAIL','SOURCE_OR_PEDAGOGY_REJECTED');
  if(v.status!=='PASS'||!approved.has(approval.status))return result('REVIEW_REQUIRED','VERIFICATION_OR_APPROVAL_PENDING');
- if(a.mode==='exact')return validateProof(a);
+ if(a.mode==='exact'){const bound=checkMathBinding(question);if(bound.status!=='PASS')return bound;return validateProof(a);}
  if(a.mode==='normalized_text'||a.mode==='set_of_answers'){
-  if(v.type!=='reviewed_reference'&&!isObj(v.evidence))return result('BLOCKED','TEXT_VERIFICATION_EVIDENCE_MISSING');
+  if(v.type!=='reviewed_reference'||!isObj(v.evidence)||typeof v.evidence.ref!=='string'||!v.evidence.ref.trim())return result('BLOCKED','TEXT_VERIFICATION_EVIDENCE_MISSING');
   const values=a.mode==='normalized_text'?[a.value]:a.acceptedValues;
   if(!Array.isArray(values)||values.length===0||!values.every(x=>typeof x==='string'&&x.trim().length>0))
    return result('BLOCKED','ACCEPTED_VALUES_INVALID');
