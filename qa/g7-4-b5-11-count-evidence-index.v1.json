@@ -1,0 +1,652 @@
+{
+  "schemaVersion": "g7-4-b5-11-count-evidence-index-v1",
+  "source": "manifest sha256 + SVG rendered at 44px in self-contained QA page",
+  "ownerVisualPreviousApproval": true,
+  "ownerCountApproval": false,
+  "records": [
+    {
+      "id": "chicken",
+      "sha256": "697797fdd9ba34d7a69e448de2bbcbafdb6b3f6a15e1b63b91538dddc881bc64",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-chicken",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "rooster",
+      "sha256": "52b2a8d0f55e1fcf2aef0518f40142a06f5438bddde74ef969c1c9b5c9a7e67c",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-rooster",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "books",
+      "sha256": "41e2686cdc526bfa41ea599e2a74378f3a02788ff7e8cd1b9ad0a39ea157000c",
+      "classification": "COMPOSITE_BLOCKED",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-books",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "BLOCK counted components"
+    },
+    {
+      "id": "red_apple",
+      "sha256": "bc69f7c89a3621fb564482f9e13818019c6eac3a9d16fe996852514f3b19a073",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-red_apple",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "green_apple",
+      "sha256": "8d16350d03ee8c98f1d58985453b4c7fbe4d69da3fde37cbf8b5c70ecb80bbd4",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-green_apple",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "banana",
+      "sha256": "40047ed9d10462ba41457b0c55beb05b6fde4ce590e6c1f88577539e46c2f20d",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-banana",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "mango",
+      "sha256": "5747bef4b8d4857d84e6bf784e65ef8b3925d162ae6ca099ab37e33e5b4d33bd",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-mango",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "tangerine",
+      "sha256": "c820b266373b52bb1854213b08801c8d582d60dae06d380fdb4beaf89d569ea3",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-tangerine",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "grapes",
+      "sha256": "e959e27685f84cead6cc230c719c75feaf3a3cfde878cf00819473036005edd0",
+      "classification": "COMPOSITE_BLOCKED",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-grapes",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "BLOCK counted components"
+    },
+    {
+      "id": "watermelon",
+      "sha256": "33ce86d2784776504191684fd34495c68ac54be7b98e100ef18c3a19297c735e",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-watermelon",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "strawberry",
+      "sha256": "d8522f848f305fc81040dd9c5467f97df483fde5e2568429046e7f1ae1a23d91",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-strawberry",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "pear",
+      "sha256": "ddab6102c0ab2fef2dee700b7bb3d427187df8bfa010b23c4e2516e15c226551",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-pear",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "peach",
+      "sha256": "a144b995f3b094fb28d3eb016efebd6372c5ae82273cf3c0379741eb0c9d4657",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-peach",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "carrot",
+      "sha256": "99521ccf4753d9b5312707541eafc41f00b35f616bb6e96cada9acfc7bf1d396",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-carrot",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "rabbit",
+      "sha256": "e78f7552298062c599bd7290ff52bad25de352477a9475e34332c52eafe2c5d7",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-rabbit",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "cat",
+      "sha256": "59f5401062509f4d0fb310817ce9a9656724c6c924a4d42f2a33ac6bb0964602",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-cat",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "dog",
+      "sha256": "e3ee366f39d9f47bbb5a6dc22a521dbea32f05f2216d0665a551b134ca2474da",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-dog",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "cow",
+      "sha256": "2aa1806bbf6299d6a8fc865587d9384dff832fabc2fe04ff6d11aa01b53b5109",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-cow",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "pig",
+      "sha256": "790bb801b792327d607bf51f7410be069fb26f2a2908b2a691c851a947bdba08",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-pig",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "duck",
+      "sha256": "4d793eb8e867817586ae2a03784cbad9814f0e89f195a3503c77f8cb8441e35d",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-duck",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "fish",
+      "sha256": "1fc7329fd735a8b8bd7482a39bc100e3c347e7f0e9ce36473fde81d19e96a1ee",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-fish",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "bird",
+      "sha256": "c99882e3162e56084e1099575a4b5032bcf07c56c17a6d97e3ca344db42ee596",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-bird",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "butterfly",
+      "sha256": "118a7aee6fb3360fef0dcf86aeaac8e022c35c3f52529145750155a8893f50fc",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-butterfly",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "sunflower",
+      "sha256": "af0f5db9816f1545121d2d4c80a145e8809d50830f8516fd99a631bca7702ea6",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-sunflower",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "school",
+      "sha256": "03febeb59b9c13ee792874a87cd04aea413e7c6ef23b1e7752837dc5d6cbe34d",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-school",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "backpack",
+      "sha256": "9a3ea2d79e670de01c0f6e742b80d5b679c172edc4532c08a7c3083d703b4f23",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-backpack",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "pencil",
+      "sha256": "f82b7820c41b57d2cca96ef75e32fdedcb07d2d8b786a781274c25fe306c76d7",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-pencil",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "pen",
+      "sha256": "302d3ce8f609b09dbff8af43ea9e0b5fbd9a4e9404e8381f0190fd98b4c991d8",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-pen",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "scissors",
+      "sha256": "67d643e25a39792627bfef5aaea3866cdd083fe047a7e449d0070945e32f163f",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-scissors",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "crayon",
+      "sha256": "27f73eca2adb077f87c7843b18372b8afae4141c02e8b8917437d508177e5da6",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-crayon",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "paintbrush",
+      "sha256": "78757c4c943e8e05cf3485d017b172ebc622d1e5f70e5ab6371a28f97102770d",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-paintbrush",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "notebook",
+      "sha256": "88d97d0a553b501eab3ed70feb191481dfcf12a308ecc7ece2afdbfb74f102c1",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-notebook",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "alarm_clock",
+      "sha256": "e5356b8830074a3ca21fff8bb74807003ce996645341d46c25e26e06f0385d3b",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-alarm_clock",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "balance_scale",
+      "sha256": "086e82d739451ebd0cf8dc7b23376bd3e2e019373dda6da487f8971bc0437e00",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-balance_scale",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "basket",
+      "sha256": "ba3325690df45f79d0254dd290b72432c6799977be42d6818caf7f0bd4fedb75",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-basket",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "bucket",
+      "sha256": "ef9ec134a928ab8e5450a4ebaa983e339c6138f4d37511fcf7058e99c2726526",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-bucket",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "bicycle",
+      "sha256": "0241c712d2ea30a7ab0253422f94f1687838f6312a7a628f6d9c8da509faadf9",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-bicycle",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "soccer_ball",
+      "sha256": "ca792d91995ac20dc37be0c1bd1f9f46d2f7ea4aea3bd4d0c69df1083bd641c9",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-soccer_ball",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "teddy_bear",
+      "sha256": "83e2f3bd7cdeadade4be675ed238b8d1ba9e90e967ff1c10e8de8423043e568d",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-teddy_bear",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "cookie",
+      "sha256": "d02b9e85fa0394a4c59fd74654244c069eddb9aaf72abbcba8d0d3060262d6af",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-cookie",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "candy",
+      "sha256": "4e9e88bea7076d443d09a06afbc0070c08d4cb09a7248d3fc991297e904bd937",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-candy",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "bread",
+      "sha256": "ef08e033f63a4f215744a3067a9c0693411ebcfe57b36bf9d197495ecbccf156",
+      "classification": "CONTEXT_REVIEW",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-bread",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Requires semantic unit review"
+    },
+    {
+      "id": "lemon",
+      "sha256": "f3a924a7031fc0dd7c57a90e5f9794cf72859d860151dec321c4adc38605e4cc",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-lemon",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "pineapple",
+      "sha256": "9d064d8f8796b53a9eeb18b642e6e16628848ad2fa944576b597e7c7f36a95be",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-pineapple",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    },
+    {
+      "id": "cherries",
+      "sha256": "67c243eed8f6430539076d065d71b90d8f7bb25ccd41c87c02a6f6f419dacf9f",
+      "classification": "COMPOSITE_BLOCKED",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-cherries",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "BLOCK counted components"
+    },
+    {
+      "id": "egg",
+      "sha256": "1c7146a519276e93c0f939756e80beb5b0edb4e9a350dbe58ab63c7d0bcc5204",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "renderAt44": {
+        "qaPage": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-11-count-evidence-b6-batch-import-20261113/hinh-anh/svg-fallback/fluent-emoji-flat/v1/qa/G7_Count_Safe_46_Review.html",
+        "anchor": "asset-egg",
+        "sizePx": 44
+      },
+      "countUnit": null,
+      "objectsPerAsset": null,
+      "approval": "PENDING_PER_ASSET_COUNT_REVIEW",
+      "note": "Single-object candidate, count-specific approval required"
+    }
+  ]
+}
