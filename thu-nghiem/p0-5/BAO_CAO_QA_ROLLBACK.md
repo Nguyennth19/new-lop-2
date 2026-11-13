@@ -78,3 +78,16 @@ After that, user should inspect TEST deployment at `Deploy → Manage deployment
 - Important distinction: the function constructs correct-answer fixtures and checks correct-scoring in Apps Script. It does not cover wrong-answer/browser input in real /exec nor verify pre/post ledger digest at moment of interaction; those remain pending. Do not mark full P0.5 `SESSIONS:PASS`.
 - The user-provided deployed TEST candidate remains `https://script.google.com/macros/s/AKfycbxzHiRvKpQLsxAg0wBP6NhkwHeiZ4zMLOaj7_QpmJ6oN3twHjrpFkyrZ1o_MvxfXMIcUQ/exec`. Attempted independent web open could not fetch rendered content (cache miss); **NOT** evidence of Web App failure or success.
 - Next operational gate: Apps Script `Deploy → Manage deployments`, select this exact /exec deployment and check it points to latest version created after pulling P0.5 code; save version number/deployment date (no student data). Browser interaction on QA-only app after version confirmed. Ensure QA ledger 90/91 remains unmodified. Pedagogy signoff separately pending. `RELEASE_READY=false`.
+
+## P0.5-E screenshot-backed desktop browser smoke — user report, 2026-11-13
+User supplied three screenshots:
+1. Desktop Chrome shows Math B20 six navigation sessions (LV1-A=6, LV1-B=6, LV2-A=5, LV2-B=5, LV3-A=4, LV3-B=4), first input panels, right-side score/answer cards and read-only staging notice.
+2. Desktop Chrome roadmap shows `LỚP 2 · V2.2` application label, subject Math B20, six sessions and three levels. **V2.2 is an application label, not an independently verified Apps Script deployment version.**
+3. Desktop Chrome after grading partial `LV1-A` shows `3/6` answered, score `3.3`, and answer chip states for correct/incorrect/blank; screenshot timestamp UI indicates 2026-11-13. This is NOT complete six-session browser acceptance.
+
+A **deployment identity discrepancy** is visible: the browser address bar shows an Apps Script `/exec` deployment identifier beginning `AKfycbwVxQnRxm...`, different from previously provided candidate beginning `AKfycbxzHiRv...`. Do not link evidence to the previous deployment without explicit verification in `Deploy → Manage deployments`. This is a blocker for full WEBAPP_PASS.
+
+Independently reread TEST QA workbook `LOP2_P05_QA_ISOLATED_20261113` via Google Drive read-only connection after the user screenshots: `90_Lan_lam_bai` returned only header row (12 header cells), `91_So_sao` only header row (9 header cells). Consistent with user report of no new attempt/star records, but does not prove which deployment the screenshot browser actually used. No writes performed by assistant.
+
+Status: `P05_BROWSER_DESKTOP_PARTIAL_PASS (USER_SCREENSHOTS)`; `P05_QA_LEDGER_STILL_HEADER_ONLY (READ_VERIFIED)`. `BROWSER` remains PENDING due mobile and full six-session visual QA; `WEBAPP` remains PENDING due deployment-URL mismatch/source version verification; `SESSIONS` remains PENDING (only LV1-A partial browser evidence); `PEDAGOGY` unsigned. `RELEASE_READY=false`.
+Next: verify the exact deployment URL in the screenshot against `Deploy → Manage deployments` and confirm script TEST/QA binding, then capture complete six browser sessions (correct+wrong/blank), mobile layout and pre/post ledger controls; avoid student data and PRODUCTION.
