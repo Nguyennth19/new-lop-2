@@ -3,14 +3,14 @@
 const CountRendererG74 = (() => {
   const isInt=n=>Number.isSafeInteger(n);
   const blocked=(code)=>({ok:false,status:'BLOCKED',code});
-  function plan({registry,assetId,requestedCount,requestedUnit,viewportWidth=360,mode='count',groupSize=null}={}) {
+  function plan({registry,assetId,requestedCount,requestedUnit,viewportWidth=360,mode='count',groupSize=null,decorativePhrase=null}={}) {
     if (!registry || registry.schemaVersion!=='g7-4-b5-13-count-renderer-contract-v1' ||
       registry.runtimeEnabled!==false || registry.productionActivation!==false || registry.countInference!==false)
       return blocked('INVALID_STAGING_POLICY');
     const item=(registry.assets||[]).find(a=>a.assetId===assetId);
     if (!item)return blocked('UNKNOWN_ASSET');
-    if(mode==='illustration') return {ok:true,status:'ILLUSTRATION',assetId,renderCount:1,
-      label:item.canonicalPhrase,unit:null,quantityDisplayed:false};
+    if(mode==='illustration') {if(decorativePhrase!==null && !(item.decorativePhrasesVi||[]).includes(decorativePhrase))return blocked('INVALID_DECORATIVE_PHRASE');
+      return {ok:true,status:'ILLUSTRATION',assetId,renderCount:1,label:decorativePhrase||item.canonicalPhrase,unit:null,quantityDisplayed:false};}
     if(mode!=='count')return blocked('INVALID_MODE');
     if(item.status!=='COUNT_SAFE_APPROVED'||item.objectsPerAsset!==1) return blocked('COUNT_NOT_APPROVED');
     if(typeof requestedUnit!=='string'||!Array.isArray(item.countUnitAliases)||!item.countUnitAliases.includes(requestedUnit.trim())) return blocked('UNIT_MISMATCH');
