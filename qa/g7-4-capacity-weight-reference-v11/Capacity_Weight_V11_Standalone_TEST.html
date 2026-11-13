@@ -1,0 +1,24 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 Lít & Kg V1.1 TEST</title><link rel="stylesheet" href="capacity-weight-v11.css">
+<style>body{margin:0;padding:16px;background:#f4fbf7;color:#28405a;font:700 14px system-ui}header,main{max-width:900px;margin:12px auto;padding:16px;background:white;border-radius:18px}header button{border:2px solid #93c1e5;border-radius:10px;padding:10px;font:inherit;cursor:pointer;background:white;margin:4px}header button.active{background:#4d50bd;color:white}</style></head>
+<body><header><h1>G7.4 – Dạng 8-A Lít / 8-B Kg · TEST độc lập</h1><p>Hình cân đã sửa: 3 kg ở cao, 5 kg hạ thấp. Không chấm, không cấp sao, không ghi tiến độ.</p>
+<button id="liter" class="active">8-A: Dung tích (L)</button>
+<button id="weight">8-B: Cân (kg)</button>
+<button id="reset">Làm lại</button></header><main id="mount"></main>
+<script src="capacity-weight-v11-core.js"></script><script src="capacity-weight-v11-fixtures.js"></script><script src="capacity-weight-v11-view.js"></script>
+<script>
+(function(){
+ const data={LITER:KLCapacityWeightFixturesV11.liter,WEIGHT:KLCapacityWeightFixturesV11.weight};
+ const tabs={LITER:document.getElementById('liter'),WEIGHT:document.getElementById('weight')};
+ const drafts={};let mode='LITER',controller=null;
+ function open(next){
+  if(controller){drafts[mode]=controller.snapshot();controller.destroy();}
+  mode=next;const v=KLCapacityWeightV11.compile(data[mode]),host=document.getElementById('mount');
+  if(!v.ok){host.textContent=v.reason;return;}
+  controller=KLCapacityWeightViewV11.mount(host,v.plan,{onChange:s=>drafts[mode]=s});
+  if(drafts[mode])controller.restore(drafts[mode]);
+  for(const [key,btn] of Object.entries(tabs))btn.classList.toggle('active',mode===key);
+ }
+ for(const [key,btn] of Object.entries(tabs))btn.addEventListener('click',()=>{if(key!==mode)open(key)});
+ document.getElementById('reset').addEventListener('click',()=>{controller.clear();drafts[mode]=controller.snapshot()});open(mode);
+})();
+</script></body></html>
