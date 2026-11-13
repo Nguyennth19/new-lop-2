@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Thực Hành Toán Lớp 2 - Chân Trời Sáng Tạo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Quicksand', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        body {
+            background: linear-gradient(135deg, #E0F2FE 0%, #FEF3C7 50%, #DCFCE7 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60A5FA;
+            border-radius: 10px;
+        }
+        /* Game Buttons 3D Effect */
+        .btn-3d {
+            transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 0 rgba(0,0,0,0.18);
+            transform: translateY(0);
+        }
+        .btn-3d:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.18);
+        }
+        .numpad-btn {
+            box-shadow: 0 5px 0 #CBD5E1;
+            transition: all 0.1s;
+        }
+        .numpad-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #CBD5E1;
+        }
+        /* Active Input Box Animation */
+        .input-slot {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .input-slot.active-slot {
+            border-color: #F59E0B !important;
+            background-color: #FEF3C7 !important;
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.35);
+            transform: scale(1.06);
+        }
+        .input-slot.correct-slot {
+            border-color: #10B981 !important;
+            background-color: #D1FAE5 !important;
+            color: #065F46 !important;
+        }
+        .input-slot.wrong-slot {
+            border-color: #EF4444 !important;
+            background-color: #FEE2E2 !important;
+            color: #991B1B !important;
+            animation: shake 0.4s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        @keyframes popBounce {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.35) translateY(-8px); }
+            70% { transform: scale(0.92); }
+            100% { transform: scale(1); }
+        }
+        .animate-pop {
+            animation: popBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        /* Number Bond Connecting Lines */
+        .bond-line {
+            stroke: #64748B;
+            stroke-width: 3.5;
+            stroke-linecap: round;
+        }
+    </style>
+</head>
+<body class="pb-72 md:pb-64 text-slate-800">
+
+    <!-- HEADER & CURRICULUM FILTER BAR -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md shadow-md border-b-4 border-sky-300">
+        <div class="max-w-6xl mx-auto px-3 py-2.5 flex flex-wrap items-center justify-between gap-2">
+            <!-- Brand & Topic Selector -->
+            <div class="flex items-center gap-2.5">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-2xl shadow-md">
+                    🌟
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-extrabold text-sky-900 leading-tight">
+                        Toán Lớp 2 • Chân Trời Sáng Tạo
+                    </h1>
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-slate-500">
+                        <span>Phòng Thực Hành 10 Dạng Bài Tập Tương Tác</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curriculum 6 Topics Filter & Score -->
+            <div class="flex items-center gap-2 flex-wrap">
+                <select id="curriculumFilter" onchange="handleTopicChange(this.value)" class="bg-sky-50 border-2 border-sky-300 text-sky-900 text-xs md:text-sm font-bold rounded-xl px-3 py-2 focus:outline-none focus:border-sky-500 cursor-pointer">
+                    <option value="all">📚 Tất cả 6 Chủ đề (HK1 & HK2)</option>
+                    <option value="hk1_1">HK1 • CĐ1: Ôn tập các số đến 100 (dm, tia số)</option>
+                    <option value="hk1_2">HK1 • CĐ2: Cộng, trừ qua 10 trong phạm vi 20</option>
+                    <option value="hk1_3">HK1 • CĐ3: Cộng, trừ có nhớ PV 100 (lít, kg, lịch, hình)</option>
+                    <option value="hk2_4">HK2 • CĐ4: Phép nhân, phép chia (Bảng 2, 5, giờ-phút)</option>
+                    <option value="hk2_5">HK2 • CĐ5: Các số đến 1000 (m, km, khối trụ/cầu, tứ giác)</option>
+                    <option value="hk2_6">HK2 • CĐ6: Cộng trừ PV 1000 (Tiền VN, Biểu đồ, Xác suất)</option>
+                </select>
+
+                <!-- Star Counter -->
+                <div class="flex items-center gap-1.5 bg-amber-100 border-2 border-amber-400 px-3 py-1.5 rounded-2xl shadow-sm">
+                    <span class="text-xl">⭐</span>
+                    <span id="starScore" class="font-extrabold text-amber-800 text-base">12</span>
+                </div>
+
+                <!-- Sound Toggle -->
+                <button onclick="toggleMute()" id="muteBtn" class="bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 p-2 rounded-xl text-lg" title="Bật/Tắt âm thanh">
+                    🔊
+                </button>
+            </div>
+        </div>
+
+        <!-- 10 EXERCISE TYPES NAVIGATION BAR -->
+        <div class="bg-sky-50/90 border-t border-sky-200 px-2 py-2">
+            <div class="max-w-6xl mx-auto flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar" id="typeTabsContainer">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN PRACTICE WORKSPACE -->
+    <main class="max-w-4xl mx-auto px-3 pt-4">
+        <!-- Topic & Format Badge Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2">
+                <span id="currentTypeBadge" class="bg-indigo-600 text-white text-xs md:text-sm font-extrabold px-3 py-1 rounded-full shadow-sm">
+                    Dạng 1/10
+                </span>
+                <span id="currentTopicBadge" class="bg-amber-100 text-amber-900 border border-amber-300 text-xs md:text-sm font-bold px-3 py-1 rounded-full">
+                    HK1 • Cộng qua 10
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="resetCurrentExercise()" class="bg-white hover:bg-slate-100 text-slate-700 border-2 border-slate-300 font-bold text-xs md:text-sm px-3 py-1.5 rounded-xl flex items-center gap-1 btn-3d">
+                    🔄 Làm lại bài này
+                </button>
+                <button onclick="nextExerciseType()" class="bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs md:text-sm px-3 py-1.5 rounded-xl flex items-center gap-1 btn-3d">
+                    Dạng tiếp theo ➡️
+                </button>
+            </div>
+        </div>
+
+        <!-- Exercise Card Container -->
+        <div class="bg-white rounded-3xl shadow-xl border-4 border-sky-200 overflow-hidden transition-all duration-300">
+            <!-- Question Header with Text-To-Speech Speaker -->
+            <div class="bg-gradient-to-r from-sky-100 via-indigo-50 to-amber-50 p-4 md:p-5 border-b-2 border-sky-200 flex items-start justify-between gap-3">
+                <div class="flex items-start gap-3">
+                    <button onclick="speakCurrentPrompt()" class="w-12 h-12 rounded-2xl bg-amber-400 hover:bg-amber-500 text-slate-900 flex-shrink-0 flex items-center justify-center text-2xl shadow-md btn-3d" title="Nghe đọc đề bài">
+                        🔊
+                    </button>
+                    <div>
+                        <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 mb-0.5" id="exerciseSubtitle">
+                            KỸ THUẬT TÁCH - GỘP SỐ ĐỦ CHỤC
+                        </div>
+                        <h2 id="exercisePrompt" class="text-lg md:text-2xl font-extrabold text-slate-800 leading-snug">
+                            Đang tải bài tập...
+                        </h2>
+                    </div>
+                </div>
+                <button onclick="togglePedagogicalTip()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 border-2 border-emerald-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex-shrink-0 flex items-center gap-1">
+                    💡 Mẹo SGK
+                </button>
+            </div>
+
+            <!-- Collapsible Pedagogical Tip Banner -->
+            <div id="pedagogicalTipBox" class="hidden bg-emerald-50 border-b-2 border-emerald-200 px-4 py-3 text-xs md:text-sm text-emerald-900 font-bold flex items-center justify-between">
+                <div id="pedagogicalTipText"></div>
+                <button onclick="togglePedagogicalTip()" class="text-emerald-700 font-extrabold ml-3">✖</button>
+            </div>
+
+            <!-- Dynamic Interactive Stage -->
+            <div id="interactiveStage" class="p-4 md:p-6 min-h-[340px] flex flex-col justify-center items-center relative">
+                <!-- Rendered by JavaScript -->
+            </div>
+
+            <!-- Feedback Message Banner Inside Card -->
+            <div id="feedbackBanner" class="hidden px-5 py-3.5 border-t-2 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                    <span id="feedbackIcon" class="text-2xl">🎉</span>
+                    <span id="feedbackText" class="font-extrabold text-base md:text-lg">Chính xác! Bé giỏi quá!</span>
+                </div>
+                <button onclick="checkCurrentExercise()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-5 py-2 rounded-xl text-sm btn-3d">
+                    Kiểm tra lại
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- FLOATING CUSTOM NUMPAD & ACTION BAR (Designed for 7-8 year olds, replaces native keyboard) -->
+    <div id="customNumpadDock" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t-4 border-indigo-300 shadow-[0_-8px_25px_rgba(0,0,0,0.12)] px-2 py-2.5 transition-transform duration-300">
+        <div class="max-w-4xl mx-auto">
+            <!-- Top Numpad Helper Row -->
+            <div class="flex items-center justify-between mb-2 px-1">
+                <div class="flex items-center gap-2">
+                    <span class="inline-block w-3 h-3 rounded-full bg-amber-400 animate-ping"></span>
+                    <span id="numpadStatusText" class="text-xs md:text-sm font-extrabold text-slate-600">
+                        Bàn phím Toán Lớp 2: Chạm vào ô trống trên màn hình rồi bấm số
+                    </span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleNumpadMinimize()" id="toggleNumpadBtn" class="text-xs font-extrabold bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded-lg">
+                        🔽 Thu gọn bàn phím
+                    </button>
+                </div>
+            </div>
+
+            <!-- Numpad Keys Container -->
+            <div id="numpadKeysGrid" class="grid grid-cols-7 md:grid-cols-11 gap-1.5 md:gap-2">
+                <!-- Numbers 0 - 9 -->
+                <button onclick="handleNumpadPress('1')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">1</button>
+                <button onclick="handleNumpadPress('2')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">2</button>
+                <button onclick="handleNumpadPress('3')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">3</button>
+                <button onclick="handleNumpadPress('4')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">4</button>
+                <button onclick="handleNumpadPress('5')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">5</button>
+                <button onclick="handleNumpadPress('6')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">6</button>
+                <button onclick="handleNumpadPress('7')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">7</button>
+                <button onclick="handleNumpadPress('8')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">8</button>
+                <button onclick="handleNumpadPress('9')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">9</button>
+                <button onclick="handleNumpadPress('0')" class="numpad-btn bg-sky-50 hover:bg-sky-100 border-2 border-sky-300 text-sky-900 font-extrabold text-xl md:text-2xl py-2.5 rounded-2xl">0</button>
+
+                <!-- Delete Button -->
+                <button onclick="handleNumpadBackspace()" class="numpad-btn bg-rose-100 hover:bg-rose-200 border-2 border-rose-300 text-rose-800 font-extrabold text-base md:text-lg py-2.5 rounded-2xl flex items-center justify-center">
+                    ⌫ Xóa
+                </button>
+
+                <!-- Operators Row + Check Answer Button -->
+                <button onclick="handleNumpadPress('+')" class="numpad-btn bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 text-amber-900 font-extrabold text-xl md:text-2xl py-2 rounded-2xl">+</button>
+                <button onclick="handleNumpadPress('-')" class="numpad-btn bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 text-amber-900 font-extrabold text-xl md:text-2xl py-2 rounded-2xl">−</button>
+                <button onclick="handleNumpadPress('×')" class="numpad-btn bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 text-amber-900 font-extrabold text-xl md:text-2xl py-2 rounded-2xl">×</button>
+                <button onclick="handleNumpadPress(':')" class="numpad-btn bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 text-amber-900 font-extrabold text-xl md:text-2xl py-2 rounded-2xl">:</button>
+
+                <!-- Big Primary Check Button -->
+                <button onclick="checkCurrentExercise()" class="col-span-3 md:col-span-7 btn-3d bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-extrabold text-lg md:text-xl py-2.5 rounded-2xl flex items-center justify-center gap-2 shadow-lg">
+                    <span>✅ KIỂM TRA BÀI LÀM</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================================
+           1. AUDIO SYNTHESIZER (WEB AUDIO API) & VIETNAMESE TTS (WEB SPEECH API)
+           ========================================================================= */
+        let isMuted = false;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) audioCtx = new AudioContext();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playSound(type) {
+            if (isMuted) return;
+            try {
+                initAudio();
+                if (!audioCtx) return;
+                const now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(520, now);
+                    osc.frequency.exponentialRampToValueAtTime(680, now + 0.06);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.06);
+                } else if (type === 'pop') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(400, now);
+                    osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+                    gain.gain.setValueAtTime(0.22, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.12);
+                } else if (type === 'success') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+                    notes.forEach((freq, idx) => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.09);
+                        gain.gain.setValueAtTime(0.22, now + idx * 0.09);
+                        gain.gain.exponentialRampToValueAtTime(0.008, now + idx * 0.09 + 0.28);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now + idx * 0.09);
+                        osc.stop(now + idx * 0.09 + 0.28);
+                    });
+                } else if (type === 'error') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.linearRampToValueAtTime(150, now + 0.25);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.26);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.26);
+                }
+            } catch (e) {
+                console.warn('Audio error:', e);
+            }
+        }
+
+        function speakVietnamese(text) {
+            if (isMuted) return;
+            playSound('click');
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'vi-VN';
+                utter.rate = 0.95;
+                utter.pitch = 1.1;
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            document.getElementById('muteBtn').innerText = isMuted ? '🔇' : '🔊';
+            if (isMuted && 'speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+
+        /* =========================================================================
+           2. MASTER DATA: 10 EXERCISE TYPES & 6 CURRICULUM TOPICS
+           ========================================================================= */
+        const EXERCISE_TYPES = [
+            {
+                id: 1,
+                shortTitle: '1. Điền trống & Tách gộp',
+                subtitle: 'DẠNG 1: ĐIỀN VÀO CHỖ TRỐNG & SƠ ĐỒ TÁCH - GỘP SỐ',
+                topicCode: 'hk1_2',
+                topicBadge: 'HK1 • Phép cộng qua 10 & Đơn vị đo (dm, cm, m)',
+                prompt: 'Em hãy điền số thích hợp vào sơ đồ tách - gộp số (làm tròn chục) và đổi đơn vị đo độ dài nhé!',
+                tip: 'Đặc trưng sách Chân trời sáng tạo: Muốn cộng 8 + 5, ta tách 5 thành 2 và 3 để gộp 8 + 2 = 10, rồi lấy 10 + 3 = 13.'
+            },
+            {
+                id: 2,
+                shortTitle: '2. Đặt tính rồi tính',
+                subtitle: 'DẠNG 2: ĐẶT TÍNH RỒI TÍNH (NHẬP TỪ PHẢI SANG TRÁI + Ô NHỚ)',
+                topicCode: 'hk1_3',
+                topicBadge: 'HK1 & HK2 • Cộng trừ có nhớ PV 100 & 1000',
+                prompt: 'Thực hiện phép tính dọc từ hàng đơn vị sang hàng chục, hàng trăm. Đừng quên bấm vào ô Nhớ nhỏ màu vàng phía trên nhé!',
+                tip: 'Con trỏ tự động nhảy từ phải sang trái (Đơn vị → Chục → Trăm) để rèn đúng quy tắc đặt tính của học sinh lớp 2.'
+            },
+            {
+                id: 3,
+                shortTitle: '3. Nối cặp tương ứng',
+                subtitle: 'DẠNG 3: NỐI CẶP TƯƠNG ỨNG (CHẠM 2 ĐIỂM HOẶC KÉO DÂY)',
+                topicCode: 'hk2_4',
+                topicBadge: 'HK2 • Phép nhân 2, 5 & Khối trụ - Khối cầu',
+                prompt: 'Nối mỗi thẻ bên trái với thẻ tương ứng bên phải (Em có thể chạm 2 điểm hoặc giữ chuột/ngón tay kéo vẽ dây nối).',
+                tip: 'Khi nối đúng dây sẽ chuyển màu xanh lá và khóa lại. Nếu nối sai dây sẽ báo đỏ và tự thu hồi!'
+            },
+            {
+                id: 4,
+                shortTitle: '4. Trắc nghiệm + Loa đọc',
+                subtitle: 'DẠNG 4: TRẮC NGHIỆM LỰA CHỌN CÓ GIỌNG ĐỌC & THẺ TRỰC QUAN',
+                topicCode: 'hk2_6',
+                topicBadge: 'HK2 • Xác suất (Chắc chắn/Có thể/Không thể) & Tiền Việt Nam',
+                prompt: 'Bấm vào nút Loa 🔊 ở từng phương án để nghe đọc và chọn câu trả lời đúng cho cả 2 câu hỏi dưới đây!',
+                tip: 'Mọi phương án chữ đều có hình minh họa trực quan và nút đọc tiếng Việt hỗ trợ các bé lớp 2 đọc chữ còn chậm.'
+            },
+            {
+                id: 5,
+                shortTitle: '5. Hình học & Tangram',
+                subtitle: 'DẠNG 5: CHỌN HÌNH PHÁT SÁNG & XẾP HÌNH TANGRAM LỚP 2',
+                topicCode: 'hk2_5',
+                topicBadge: 'HK1 & HK2 • Hình tứ giác, Đường gấp khúc & Xếp hình',
+                prompt: 'Chạm vào các hình tứ giác để tô màu đếm không bị sót, hoặc chuyển sang chế độ Xếp hình Tangram để lắp ghép nhé!',
+                tip: 'Khi bé chạm vào một hình, vùng đó sẽ phát sáng màu và đánh số thứ tự giúp bé không đếm trùng hay đếm sót.'
+            },
+            {
+                id: 6,
+                shortTitle: '6. Kéo thả & Phân loại',
+                subtitle: 'DẠNG 6: KÉO THẢ SẮP XẾP SỐ & PHÂN LOẠI VÀO GIỎ',
+                topicCode: 'hk2_5',
+                topicBadge: 'HK2 • Các số đến 1000 & So sánh kết quả với 50',
+                prompt: 'Kéo các thẻ số (hoặc chạm chọn thẻ rồi chạm vào ô) để sắp xếp từ bé đến lớn và phân loại phép tính vào đúng giỏ!',
+                tip: 'Vùng bắt dính rộng (Snap-to-grid) tự động hút thẻ vào ô khi kéo lại gần, phù hợp vận động tinh của trẻ 7-8 tuổi.'
+            },
+            {
+                id: 7,
+                shortTitle: '7. So sánh Cá Sấu',
+                subtitle: 'DẠNG 7: SO SÁNH BIỂU THỨC & ĐẠI LƯỢNG VỚI CÁ SẤU HÁ MIỆNG',
+                topicCode: 'hk1_1',
+                topicBadge: 'HK1 & HK2 • So sánh số, phép nhân, độ dài (m, cm) & lít',
+                prompt: 'Chọn dấu >, <, = thích hợp vào ô trống. Nhớ quy tắc: Miệng cá sấu luôn há to về phía số lớn hơn nhé!',
+                tip: 'Hình tượng "Miệng cá sấu há về phía bên lớn hơn" giúp học sinh không bị nhầm lẫn chiều của dấu > và <.'
+            },
+            {
+                id: 8,
+                shortTitle: '8. Thước kẻ & Đồng hồ',
+                subtitle: 'DẠNG 8: ĐO ĐỘ DÀI BẰNG THƯỚC KẺ ẢO & XOAY KIM ĐỒNG HỒ',
+                topicCode: 'hk1_3',
+                topicBadge: 'HK1 & HK2 • Đo đoạn thẳng (cm) & Xem đồng hồ (giờ, phút)',
+                prompt: 'Dùng ngón tay kéo thước kẻ đặt vạch số 0 trùng điểm đầu đoạn thẳng AB để đo, hoặc xoay kim đồng hồ đúng giờ yêu cầu!',
+                tip: 'Rèn kỹ năng thực hành: Đặt vạch số 0 của thước trùng khít với điểm đầu đoạn thẳng trước khi đọc số đo.'
+            },
+            {
+                id: 9,
+                shortTitle: '9. Biểu đồ tranh',
+                subtitle: 'DẠNG 9: ĐỌC BIỂU ĐỒ TRANH - CHẠM ĐỂ ĐẾM (TAP-TO-COUNT)',
+                topicCode: 'hk2_6',
+                topicBadge: 'HK2 • Biểu đồ tranh: Thu hoạch trái cây nông trại',
+                prompt: 'Em hãy chạm vào từng quả trên biểu đồ để đếm to thành tiếng, sau đó điền số vào các câu trả lời bên dưới!',
+                tip: 'Khi chạm vào từng biểu tượng trên biểu đồ, hình sẽ nảy lên kèm số đếm 1, 2, 3... giúp bé không bị hoa mắt.'
+            },
+            {
+                id: 10,
+                shortTitle: '10. Toán có lời văn',
+                subtitle: 'DẠNG 10: GIẢI TOÁN CÓ LỜI VĂN THEO 3 BƯỚC (SCAFFOLDING)',
+                topicCode: 'hk1_3',
+                topicBadge: 'HK1 & HK2 • Bài toán nhiều hơn / ít hơn & Phép nhân chia',
+                prompt: 'Bao gạo tẻ cân nặng 36 kg, bao gạo nếp nhẹ hơn bao gạo tẻ 12 kg. Hỏi bao gạo nếp cân nặng bao nhiêu ki-lô-gam?',
+                tip: 'Chia nhỏ bài toán có lời văn thành 3 bước: (1) Chọn lời giải sẵn -> (2) Lập phép tính -> (3) Điền đáp số.'
+            }
+        ];
+
+        /* =========================================================================
+           3. APPLICATION STATE VARIABLES
+           ========================================================================= */
+        let currentTypeIndex = 0; // 0 to 9
+        let starCount = 12;
+        let activeInputId = null;
+        let inputValues = {}; // Stores values of all custom numpad slots
+        let isNumpadMinimized = false;
+
+        // State for Type 1 (Number Bond + Units)
+        // 8 + 5 -> split 5 into [t1_split1=2] and [t1_split2=3], 8+2=[t1_ten=10], 10+3=[t1_ans=13]
+        // Units: 1 dm = [t1_dm=10] cm, 1 m = [t1_m=100] cm
+
+        // State for Type 2 (Vertical Calculation right-to-left)
+        let t2Carries = { c1_tens: false, c2_tens: false, c2_hundreds: false };
+        const t2Sequence = ['t2_q1_u', 't2_q1_t', 't2_q2_u', 't2_q2_t', 't2_q2_h'];
+
+        // State for Type 3 (Matching)
+        const t3LeftItems = [
+            { id: 'L1', text: '2 + 2 + 2', icon: '🍎🍎 + 🍎🍎 + 🍎🍎', matchId: 'R2' },
+            { id: 'L2', text: 'Lon sữa bò', icon: '🥫', matchId: 'R1' },
+            { id: 'L3', text: 'Quả bóng đá', icon: '⚽', matchId: 'R4' },
+            { id: 'L4', text: '5 × 4', icon: '🖐️🖐️🖐️🖐️', matchId: 'R3' }
+        ];
+        const t3RightItems = [
+            { id: 'R1', text: 'Khối trụ', icon: '🛢️' },
+            { id: 'R2', text: '2 × 3 = 6', icon: '✨' },
+            { id: 'R3', text: '20', icon: '🎯' },
+            { id: 'R4', text: 'Khối cầu', icon: '🔮' }
+        ];
+        let t3MatchedPairs = {}; // { L1: 'R2', ... }
+        let t3SelectedLeft = null;
+        let t3TempDrag = null; // { startX, startY, currX, currY, leftId }
+        let t3WrongPair = null;
+
+        // State for Type 4 (Multiple Choice)
+        let t4Answers = { q1: null, q2: null };
+
+        // State for Type 5 (Geometry & Tangram)
+        let t5SubMode = 'quad'; // 'quad' or 'tangram'
+        let t5SelectedShapes = new Set();
+        let t5TangramPieces = [
+            { id: 'roof', name: 'Mái nhà (Tam giác đỏ)', type: 'triangle', color: '#EF4444', x: 35, y: 40, rot: 90, targetX: 190, targetY: 75, targetRot: 0, placed: false },
+            { id: 'wall', name: 'Thân nhà (Hình vuông xanh)', type: 'square', color: '#3B82F6', x: 35, y: 155, rot: 0, targetX: 190, targetY: 165, targetRot: 0, placed: false },
+            { id: 'tree', name: 'Tán cây (Tam giác lá)', type: 'smalltri', color: '#10B981', x: 35, y: 255, rot: 180, targetX: 330, targetY: 145, targetRot: 0, placed: false }
+        ];
+        let t5SelectedPieceId = 'roof';
+
+        // State for Type 6 (Drag & Drop Ordering + Sorting Baskets)
+        let t6SubMode = 'order'; // 'order' or 'basket'
+        let t6OrderPool = [615, 289, 804, 450];
+        let t6OrderSlots = [null, null, null, null];
+        let t6SelectedCard = null;
+        let t6BasketItems = [
+            { id: 'b1', label: '28 + 15', val: 43, basket: null },
+            { id: 'b2', label: '82 - 19', val: 63, basket: null },
+            { id: 'b3', label: '5 × 8', val: 40, basket: null },
+            { id: 'b4', label: '36 + 27', val: 63, basket: null }
+        ];
+        let t6SelectedBasketItem = null;
+
+        // State for Type 7 (Crocodile Comparison)
+        let t7ShowCrocHint = true;
+        let t7Choices = { c1: null, c2: null, c3: null }; // '>', '<', '='
+        let t7ActiveRow = 'c1';
+
+        // State for Type 8 (Virtual Ruler & Interactive Clock)
+        let t8SubMode = 'ruler'; // 'ruler' or 'clock'
+        let t8RulerX = 115; // Target 0 mark at X = 60
+        let t8IsDraggingRuler = false;
+        let t8DragOffsetX = 0;
+        let t8ClockHour = 7;
+        let t8ClockMinute = 0; // Target: 7 giờ 15 phút
+
+        // State for Type 9 (Pictograph Tap-to-count)
+        let t9Counted = {
+            apple: [false, false, false, false, false, false], // 6
+            mango: [false, false, false, false], // 4
+            orange: [false, false, false, false, false, false, false] // 7
+        };
+
+        // State for Type 10 (3-Step Word Problem)
+        let t10SelectedStatement = null;
+
+        /* =========================================================================
+           4. NAVIGATION & INITIALIZATION
+           ========================================================================= */
+        window.onload = function() {
+            renderTypeTabs();
+            loadExerciseType(0);
+        };
+
+        function renderTypeTabs() {
+            const container = document.getElementById('typeTabsContainer');
+            const filterVal = document.getElementById('curriculumFilter').value;
+
+            container.innerHTML = EXERCISE_TYPES.map((ex, idx) => {
+                const isFilteredOut = filterVal !== 'all' && ex.topicCode !== filterVal;
+                const isActive = idx === currentTypeIndex;
+                return `
+                    <button onclick="loadExerciseType(${idx})"
+                        class="flex-shrink-0 px-3 py-1.5 rounded-xl font-extrabold text-xs md:text-sm transition-all flex items-center gap-1.5 border-2
+                        ${isActive
+                            ? 'bg-indigo-600 text-white border-indigo-700 shadow-md scale-105'
+                            : isFilteredOut
+                                ? 'bg-slate-100 text-slate-400 border-slate-200 opacity-60'
+                                : 'bg-white hover:bg-indigo-50 text-slate-700 border-sky-200'}">
+                        <span>${ex.shortTitle}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function handleTopicChange(topicCode) {
+            playSound('click');
+            renderTypeTabs();
+            if (topicCode !== 'all') {
+                const foundIdx = EXERCISE_TYPES.findIndex(e => e.topicCode === topicCode);
+                if (foundIdx !== -1) loadExerciseType(foundIdx);
+            }
+        }
+
+        function loadExerciseType(index) {
+            playSound('click');
+            currentTypeIndex = index;
+            const ex = EXERCISE_TYPES[index];
+
+            document.getElementById('currentTypeBadge').innerText = `Dạng ${ex.id}/10`;
+            document.getElementById('currentTopicBadge').innerText = ex.topicBadge;
+            document.getElementById('exerciseSubtitle').innerText = ex.subtitle;
+            document.getElementById('exercisePrompt').innerText = ex.prompt;
+            document.getElementById('pedagogicalTipText').innerText = `💡 Kiến nghị Sư phạm: ${ex.tip}`;
+            document.getElementById('feedbackBanner').classList.add('hidden');
+
+            renderTypeTabs();
+            renderStageForCurrentType();
+        }
+
+        function nextExerciseType() {
+            const nextIdx = (currentTypeIndex + 1) % EXERCISE_TYPES.length;
+            loadExerciseType(nextIdx);
+        }
+
+        function resetCurrentExercise() {
+            playSound('click');
+            const id = EXERCISE_TYPES[currentTypeIndex].id;
+            if (id === 1) {
+                ['t1_split1','t1_split2','t1_ten','t1_ans','t1_dm','t1_m'].forEach(k => delete inputValues[k]);
+            } else if (id === 2) {
+                t2Sequence.forEach(k => delete inputValues[k]);
+                t2Carries = { c1_tens: false, c2_tens: false, c2_hundreds: false };
+            } else if (id === 3) {
+                t3MatchedPairs = {};
+                t3SelectedLeft = null;
+            } else if (id === 4) {
+                t4Answers = { q1: null, q2: null };
+            } else if (id === 5) {
+                t5SelectedShapes.clear();
+                t5TangramPieces.forEach((p, i) => {
+                    p.placed = false;
+                    p.x = 35;
+                    p.y = 40 + i * 105;
+                    p.rot = i === 0 ? 90 : (i === 2 ? 180 : 0);
+                });
+            } else if (id === 6) {
+                t6OrderPool = [615, 289, 804, 450];
+                t6OrderSlots = [null, null, null, null];
+                t6SelectedCard = null;
+                t6BasketItems.forEach(b => b.basket = null);
+            } else if (id === 7) {
+                t7Choices = { c1: null, c2: null, c3: null };
+                t7ActiveRow = 'c1';
+            } else if (id === 8) {
+                t8RulerX = 125;
+                delete inputValues['t8_len'];
+                t8ClockHour = 7;
+                t8ClockMinute = 0;
+            } else if (id === 9) {
+                t9Counted = {
+                    apple: [false, false, false, false, false, false],
+                    mango: [false, false, false, false],
+                    orange: [false, false, false, false, false, false, false]
+                };
+                ['t9_apple', 't9_diff'].forEach(k => delete inputValues[k]);
+            } else if (id === 10) {
+                t10SelectedStatement = null;
+                ['t10_n1','t10_op','t10_n2','t10_res','t10_final'].forEach(k => delete inputValues[k]);
+            }
+            document.getElementById('feedbackBanner').classList.add('hidden');
+            renderStageForCurrentType();
+        }
+
+        function speakCurrentPrompt() {
+            const ex = EXERCISE_TYPES[currentTypeIndex];
+            speakVietnamese(ex.prompt);
+        }
+
+        function togglePedagogicalTip() {
+            const box = document.getElementById('pedagogicalTipBox');
+            box.classList.toggle('hidden');
+        }
+
+        function toggleNumpadMinimize() {
+            isNumpadMinimized = !isNumpadMinimized;
+            const grid = document.getElementById('numpadKeysGrid');
+            const btn = document.getElementById('toggleNumpadBtn');
+            if (isNumpadMinimized) {
+                grid.classList.add('hidden');
+                btn.innerText = '🔼 Mở bàn phím số';
+            } else {
+                grid.classList.remove('hidden');
+                btn.innerText = '🔽 Thu gọn bàn phím';
+            }
+        }
+
+        /* =========================================================================
+           5. CUSTOM NUMPAD & INPUT SLOT SYSTEM
+           ========================================================================= */
+        function renderInputSlot(slotId, placeholder = '?', widthClass = 'w-14 h-14', maxLen = 3) {
+            const val = inputValues[slotId] !== undefined && inputValues[slotId] !== '' ? inputValues[slotId] : '';
+            const isActive = activeInputId === slotId;
+            return `
+                <div id="slot_${slotId}"
+                     onclick="selectInputSlot('${slotId}', ${maxLen})"
+                     data-maxlen="${maxLen}"
+                     class="input-slot inline-flex items-center justify-center ${widthClass} rounded-2xl border-4 font-extrabold text-xl md:text-2xl shadow-inner
+                     ${isActive ? 'active-slot' : 'border-sky-400 bg-white text-indigo-900'}">
+                    ${val !== '' ? val : `<span class="text-slate-300 text-lg">${placeholder}</span>`}
+                </div>
+            `;
+        }
+
+        function selectInputSlot(slotId, maxLen = 3) {
+            playSound('click');
+            activeInputId = slotId;
+            if (isNumpadMinimized) toggleNumpadMinimize();
+
+            document.querySelectorAll('.input-slot').forEach(el => {
+                el.classList.remove('active-slot', 'correct-slot', 'wrong-slot');
+            });
+            const targetEl = document.getElementById(`slot_${slotId}`);
+            if (targetEl) {
+                targetEl.classList.add('active-slot');
+                targetEl.dataset.maxlen = maxLen;
+            }
+        }
+
+        function handleNumpadPress(char) {
+            playSound('pop');
+            if (!activeInputId) {
+                // Auto-focus first available input slot on page
+                const firstSlot = document.querySelector('.input-slot');
+                if (firstSlot) {
+                    const id = firstSlot.id.replace('slot_', '');
+                    selectInputSlot(id, parseInt(firstSlot.dataset.maxlen || '3', 10));
+                } else {
+                    return;
+                }
+            }
+
+            const slotEl = document.getElementById(`slot_${activeInputId}`);
+            const maxLen = slotEl ? parseInt(slotEl.dataset.maxlen || '3', 10) : 3;
+            const currentVal = inputValues[activeInputId] || '';
+
+            // Operator slot handling
+            if (['+', '-', '×', ':'].includes(char)) {
+                inputValues[activeInputId] = char;
+            } else {
+                if (['+', '-', '×', ':'].includes(currentVal) || maxLen === 1) {
+                    inputValues[activeInputId] = char;
+                } else if (currentVal.length < maxLen) {
+                    inputValues[activeInputId] = currentVal + char;
+                } else {
+                    inputValues[activeInputId] = char;
+                }
+            }
+
+            updateSlotDOM(activeInputId);
+
+            // Special Auto-Advance right-to-left for Type 2 (Vertical Calculation)
+            if (EXERCISE_TYPES[currentTypeIndex].id === 2 && maxLen === 1) {
+                const idx = t2Sequence.indexOf(activeInputId);
+                if (idx !== -1 && idx + 1 < t2Sequence.length) {
+                    setTimeout(() => selectInputSlot(t2Sequence[idx + 1], 1), 120);
+                }
+            }
+        }
+
+        function handleNumpadBackspace() {
+            playSound('click');
+            if (!activeInputId) return;
+            const currentVal = inputValues[activeInputId] || '';
+            inputValues[activeInputId] = currentVal.slice(0, -1);
+            updateSlotDOM(activeInputId);
+        }
+
+        function updateSlotDOM(slotId) {
+            const el = document.getElementById(`slot_${slotId}`);
+            if (!el) return;
+            const val = inputValues[slotId] || '';
+            el.innerHTML = val !== '' ? val : `<span class="text-slate-300 text-lg">?</span>`;
+        }
+
+        /* =========================================================================
+           6. RENDERERS FOR ALL 10 INTERACTIVE EXERCISE TYPES
+           ========================================================================= */
+        function renderStageForCurrentType() {
+            const stage = document.getElementById('interactiveStage');
+            const exId = EXERCISE_TYPES[currentTypeIndex].id;
+            activeInputId = null;
+
+            switch (exId) {
+                case 1: renderType1_NumberBond(stage); break;
+                case 2: renderType2_VerticalCalc(stage); break;
+                case 3: renderType3_Matching(stage); break;
+                case 4: renderType4_MultipleChoice(stage); break;
+                case 5: renderType5_GeometryTangram(stage); break;
+                case 6: renderType6_DragDropOrdering(stage); break;
+                case 7: renderType7_ComparisonCroc(stage); break;
+                case 8: renderType8_RulerAndClock(stage); break;
+                case 9: renderType9_Pictograph(stage); break;
+                case 10: renderType10_WordProblem(stage); break;
+            }
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 1: FILL-IN-THE-BLANK & NUMBER BOND (TÁCH - GỘP SỐ ĐỦ CHỤC)
+           ------------------------------------------------------------------------- */
+        function renderType1_NumberBond(stage) {
+            stage.innerHTML = `
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <!-- Left: Number Bond Visual Diagram (8 + 5) -->
+                    <div class="bg-amber-50/80 border-2 border-amber-300 rounded-3xl p-4 flex flex-col items-center">
+                        <div class="text-sm font-extrabold text-amber-900 mb-2 flex items-center gap-2">
+                            <span>✨ Phần A: Tách số cho đủ chục (8 + 5)</span>
+                            <button onclick="speakVietnamese('Tám cộng năm. Tách năm thành hai và mấy để tám gộp với hai bằng mười?')" class="bg-amber-200 px-2 py-0.5 rounded-lg text-xs">🔊</button>
+                        </div>
+
+                        <!-- Number Bond Diagram -->
+                        <div class="relative w-64 h-44 flex flex-col items-center justify-start pt-2">
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 260 170">
+                                <!-- Split lines from 5 (x=175, y=38) to two children (x=135, y=105) and (x=215, y=105) -->
+                                <line x1="175" y1="52" x2="135" y2="95" class="bond-line" />
+                                <line x1="175" y1="52" x2="215" y2="95" class="bond-line" />
+                                <!-- Group dashed loop around 8 and first split box -->
+                                <rect x="42" y="10" width="122" height="132" rx="22" fill="none" stroke="#10B981" stroke-width="3" stroke-dasharray="6 4"/>
+                                <text x="52" y="158" fill="#047857" font-size="12" font-weight="bold">Gộp đủ 10</text>
+                            </svg>
+
+                            <!-- Top Equation Row: 8 + 5 -->
+                            <div class="flex items-center gap-5 z-10">
+                                <div class="w-14 h-14 rounded-2xl bg-sky-500 text-white font-extrabold text-2xl flex items-center justify-center shadow">8</div>
+                                <span class="text-2xl font-extrabold text-slate-700">+</span>
+                                <div class="w-14 h-14 rounded-2xl bg-orange-500 text-white font-extrabold text-2xl flex items-center justify-center shadow">5</div>
+                            </div>
+
+                            <!-- Split Row under 5 -->
+                            <div class="flex items-center gap-6 mt-7 ml-20 z-10">
+                                ${renderInputSlot('t1_split1', '2', 'w-14 h-14', 1)}
+                                ${renderInputSlot('t1_split2', '?', 'w-14 h-14', 1)}
+                            </div>
+                        </div>
+
+                        <!-- Step-by-step equations -->
+                        <div class="w-full space-y-2.5 mt-2 bg-white p-3 rounded-2xl border border-amber-200">
+                            <div class="flex items-center justify-center gap-2 text-lg font-extrabold">
+                                <span class="text-emerald-700">Bước 1 (Gộp chục):</span>
+                                <span>8 + 2 =</span>
+                                ${renderInputSlot('t1_ten', '?', 'w-14 h-12', 2)}
+                            </div>
+                            <div class="flex items-center justify-center gap-2 text-lg font-extrabold">
+                                <span class="text-indigo-700">Bước 2 (Cộng tiếp):</span>
+                                <span>10 + 3 =</span>
+                                ${renderInputSlot('t1_ans', '?', 'w-14 h-12', 2)}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Measurement Unit Conversion -->
+                    <div class="bg-sky-50/80 border-2 border-sky-300 rounded-3xl p-4 flex flex-col justify-between h-full">
+                        <div>
+                            <div class="text-sm font-extrabold text-sky-900 mb-3 flex items-center justify-between">
+                                <span>📏 Phần B: Quy đổi đơn vị đo độ dài</span>
+                                <button onclick="speakVietnamese('Điền số thích hợp: Một đề xi mét bằng bao nhiêu xăng ti mét? Một mét bằng bao nhiêu xăng ti mét?')" class="bg-sky-200 px-2 py-0.5 rounded-lg text-xs">🔊</button>
+                            </div>
+
+                            <div class="space-y-4 my-2">
+                                <div class="bg-white p-4 rounded-2xl border-2 border-sky-200 flex items-center justify-between shadow-sm">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-2xl">✏️</span>
+                                        <span class="text-xl font-extrabold text-slate-800">1 dm =</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        ${renderInputSlot('t1_dm', '?', 'w-20 h-14', 3)}
+                                        <span class="text-xl font-extrabold text-slate-700">cm</span>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white p-4 rounded-2xl border-2 border-sky-200 flex items-center justify-between shadow-sm">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-2xl">📏</span>
+                                        <span class="text-xl font-extrabold text-slate-800">1 m =</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        ${renderInputSlot('t1_m', '?', 'w-20 h-14', 3)}
+                                        <span class="text-xl font-extrabold text-slate-700">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-100/80 text-indigo-900 p-3 rounded-2xl text-xs font-bold">
+                            💡 Gợi ý: Chạm vào từng ô dấu hỏi (?) rồi bấm số trên bàn phím bên dưới màn hình.
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => selectInputSlot('t1_split1', 1), 60);
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 2: VERTICAL CALCULATION (ĐẶT TÍNH RỒI TÍNH + Ô NHỚ)
+           ------------------------------------------------------------------------- */
+        function renderType2_VerticalCalc(stage) {
+            stage.innerHTML = `
+                <div class="w-full">
+                    <div class="text-center mb-4">
+                        <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 px-4 py-1.5 rounded-full text-xs md:text-sm font-extrabold">
+                            ⬅️ Con trỏ tự động nhảy từ Phải sang Trái (Hàng đơn vị → Hàng chục → Hàng trăm)
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                        <!-- Problem 1: 47 + 25 = 72 (PV 100) -->
+                        <div class="bg-sky-50 border-2 border-sky-300 rounded-3xl p-5 flex flex-col items-center shadow-sm">
+                            <div class="w-full flex items-center justify-between mb-2">
+                                <span class="text-xs font-extrabold uppercase bg-sky-200 text-sky-900 px-3 py-1 rounded-full">Câu 1 • Phạm vi 100</span>
+                                <button onclick="speakVietnamese('Bốn mươi bảy cộng hai mươi lăm bằng bao nhiêu? Nhớ bấm ô nhớ một ở hàng chục nhé!')" class="bg-sky-200 px-2.5 py-1 rounded-lg text-xs font-bold">🔊 Nghe</button>
+                            </div>
+
+                            <!-- Column Headers -->
+                            <div class="grid grid-cols-3 gap-3 items-center text-center mt-1">
+                                <div></div>
+                                <div class="text-xs font-extrabold text-slate-400">Chục</div>
+                                <div class="text-xs font-extrabold text-slate-400">Đơn vị</div>
+
+                                <!-- Carry Row -->
+                                <div class="text-xs font-bold text-amber-700">Nhớ:</div>
+                                <div class="flex justify-center">
+                                    <button onclick="toggleCarry('c1_tens')"
+                                        class="w-10 h-9 rounded-xl border-2 border-dashed font-extrabold text-sm flex items-center justify-center transition-all
+                                        ${t2Carries.c1_tens ? 'bg-amber-400 text-slate-900 border-amber-600 scale-105 shadow' : 'bg-amber-50/70 text-amber-400 border-amber-300'}">
+                                        ${t2Carries.c1_tens ? '+1' : 'nhớ'}
+                                    </button>
+                                </div>
+                                <div></div>
+
+                                <!-- First Number: 47 -->
+                                <div></div>
+                                <div class="text-4xl font-extrabold text-slate-800">4</div>
+                                <div class="text-4xl font-extrabold text-slate-800">7</div>
+
+                                <!-- Second Number: + 25 -->
+                                <div class="text-3xl font-extrabold text-indigo-600">+</div>
+                                <div class="text-4xl font-extrabold text-slate-800">2</div>
+                                <div class="text-4xl font-extrabold text-slate-800">5</div>
+
+                                <!-- Horizontal Line -->
+                                <div class="col-span-3 border-b-4 border-slate-700 my-1"></div>
+
+                                <!-- Result Row (Right-to-Left IDs: t2_q1_u first, then t2_q1_t) -->
+                                <div></div>
+                                <div>${renderInputSlot('t2_q1_t', 'Chục', 'w-14 h-14', 1)}</div>
+                                <div>${renderInputSlot('t2_q1_u', 'ĐV', 'w-14 h-14', 1)}</div>
+                            </div>
+                        </div>
+
+                        <!-- Problem 2: 356 + 128 = 484 (PV 1000) -->
+                        <div class="bg-indigo-50 border-2 border-indigo-300 rounded-3xl p-5 flex flex-col items-center shadow-sm">
+                            <div class="w-full flex items-center justify-between mb-2">
+                                <span class="text-xs font-extrabold uppercase bg-indigo-200 text-indigo-900 px-3 py-1 rounded-full">Câu 2 • Phạm vi 1000</span>
+                                <button onclick="speakVietnamese('Ba trăm năm mươi sáu cộng một trăm hai mươi tám bằng bao nhiêu?')" class="bg-indigo-200 px-2.5 py-1 rounded-lg text-xs font-bold">🔊 Nghe</button>
+                            </div>
+
+                            <!-- Column Headers -->
+                            <div class="grid grid-cols-4 gap-2.5 items-center text-center mt-1">
+                                <div></div>
+                                <div class="text-xs font-extrabold text-slate-400">Trăm</div>
+                                <div class="text-xs font-extrabold text-slate-400">Chục</div>
+                                <div class="text-xs font-extrabold text-slate-400">Đơn vị</div>
+
+                                <!-- Carry Row -->
+                                <div class="text-xs font-bold text-amber-700">Nhớ:</div>
+                                <div class="flex justify-center">
+                                    <button onclick="toggleCarry('c2_hundreds')"
+                                        class="w-10 h-9 rounded-xl border-2 border-dashed font-extrabold text-sm flex items-center justify-center transition-all
+                                        ${t2Carries.c2_hundreds ? 'bg-amber-400 text-slate-900 border-amber-600 scale-105 shadow' : 'bg-amber-50/70 text-amber-400 border-amber-300'}">
+                                        ${t2Carries.c2_hundreds ? '+1' : 'nhớ'}
+                                    </button>
+                                </div>
+                                <div class="flex justify-center">
+                                    <button onclick="toggleCarry('c2_tens')"
+                                        class="w-10 h-9 rounded-xl border-2 border-dashed font-extrabold text-sm flex items-center justify-center transition-all
+                                        ${t2Carries.c2_tens ? 'bg-amber-400 text-slate-900 border-amber-600 scale-105 shadow' : 'bg-amber-50/70 text-amber-400 border-amber-300'}">
+                                        ${t2Carries.c2_tens ? '+1' : 'nhớ'}
+                                    </button>
+                                </div>
+                                <div></div>
+
+                                <!-- First Number: 356 -->
+                                <div></div>
+                                <div class="text-4xl font-extrabold text-slate-800">3</div>
+                                <div class="text-4xl font-extrabold text-slate-800">5</div>
+                                <div class="text-4xl font-extrabold text-slate-800">6</div>
+
+                                <!-- Second Number: + 128 -->
+                                <div class="text-3xl font-extrabold text-indigo-600">+</div>
+                                <div class="text-4xl font-extrabold text-slate-800">1</div>
+                                <div class="text-4xl font-extrabold text-slate-800">2</div>
+                                <div class="text-4xl font-extrabold text-slate-800">8</div>
+
+                                <!-- Horizontal Line -->
+                                <div class="col-span-4 border-b-4 border-slate-700 my-1"></div>
+
+                                <!-- Result Row -->
+                                <div></div>
+                                <div>${renderInputSlot('t2_q2_h', 'Trăm', 'w-14 h-14', 1)}</div>
+                                <div>${renderInputSlot('t2_q2_t', 'Chục', 'w-14 h-14', 1)}</div>
+                                <div>${renderInputSlot('t2_q2_u', 'ĐV', 'w-14 h-14', 1)}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => selectInputSlot('t2_q1_u', 1), 60);
+        }
+
+        function toggleCarry(carryKey) {
+            playSound('pop');
+            t2Carries[carryKey] = !t2Carries[carryKey];
+            const prevActive = activeInputId;
+            renderType2_VerticalCalc(document.getElementById('interactiveStage'));
+            if (prevActive) selectInputSlot(prevActive, 1);
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 3: MATCHING (NỐI CẶP TƯƠNG ỨNG: CHẠM 2 ĐIỂM HOẶC KÉO DÂY)
+           ------------------------------------------------------------------------- */
+        function renderType3_Matching(stage) {
+            const matchedCount = Object.keys(t3MatchedPairs).length;
+            stage.innerHTML = `
+                <div class="w-full max-w-2xl mx-auto">
+                    <div class="flex items-center justify-between mb-3 px-1">
+                        <span class="text-xs md:text-sm font-extrabold text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full">
+                            ✨ Đã nối đúng: ${matchedCount} / 4 cặp
+                        </span>
+                        <span class="text-xs font-bold text-slate-500">
+                            Chạm 2 điểm hoặc giữ chuột kéo dây nối
+                        </span>
+                    </div>
+
+                    <div id="matchingBoard" class="relative w-full grid grid-cols-2 gap-12 md:gap-24 py-2 select-none">
+                        <!-- SVG Overlay for Connecting Lines -->
+                        <svg id="matchingSvg" class="absolute inset-0 w-full h-full pointer-events-none z-10"></svg>
+
+                        <!-- Left Column -->
+                        <div class="space-y-3 z-20">
+                            ${t3LeftItems.map(item => {
+                                const isMatched = Boolean(t3MatchedPairs[item.id]);
+                                const isSelected = t3SelectedLeft === item.id;
+                                return `
+                                    <div id="match_${item.id}"
+                                         onpointerdown="startMatchDrag(event, '${item.id}')"
+                                         onclick="handleLeftCardTap('${item.id}')"
+                                         class="p-3 rounded-2xl border-4 cursor-pointer transition-all flex items-center justify-between shadow-sm
+                                         ${isMatched
+                                            ? 'bg-emerald-100 border-emerald-500 text-emerald-900'
+                                            : isSelected
+                                                ? 'bg-amber-100 border-amber-500 scale-105 shadow-md'
+                                                : 'bg-white hover:bg-sky-50 border-sky-300'}">
+                                        <div>
+                                            <div class="text-base md:text-lg font-extrabold">${item.text}</div>
+                                            <div class="text-sm">${item.icon}</div>
+                                        </div>
+                                        <div id="anchor_${item.id}" class="w-5 h-5 rounded-full ${isMatched ? 'bg-emerald-500' : 'bg-sky-400'} border-2 border-white shadow"></div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="space-y-3 z-20">
+                            ${t3RightItems.map(item => {
+                                const isMatched = Object.values(t3MatchedPairs).includes(item.id);
+                                return `
+                                    <div id="match_${item.id}"
+                                         data-rightid="${item.id}"
+                                         onclick="handleRightCardTap('${item.id}')"
+                                         class="p-3 rounded-2xl border-4 cursor-pointer transition-all flex items-center justify-between shadow-sm
+                                         ${isMatched
+                                            ? 'bg-emerald-100 border-emerald-500 text-emerald-900'
+                                            : 'bg-white hover:bg-amber-50 border-indigo-300'}">
+                                        <div id="anchor_${item.id}" class="w-5 h-5 rounded-full ${isMatched ? 'bg-emerald-500' : 'bg-indigo-400'} border-2 border-white shadow"></div>
+                                        <div class="text-right">
+                                            <div class="text-base md:text-lg font-extrabold">${item.text}</div>
+                                            <div class="text-lg">${item.icon}</div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(drawMatchingLines, 30);
+        }
+
+        function handleLeftCardTap(leftId) {
+            if (t3MatchedPairs[leftId]) return;
+            playSound('click');
+            t3SelectedLeft = leftId;
+            renderType3_Matching(document.getElementById('interactiveStage'));
+        }
+
+        function handleRightCardTap(rightId) {
+            if (!t3SelectedLeft) return;
+            verifyMatchAttempt(t3SelectedLeft, rightId);
+        }
+
+        function startMatchDrag(e, leftId) {
+            if (t3MatchedPairs[leftId]) return;
+            t3SelectedLeft = leftId;
+            const board = document.getElementById('matchingBoard');
+            if (!board) return;
+            const rect = board.getBoundingClientRect();
+            const anchorEl = document.getElementById(`anchor_${leftId}`);
+            const aRect = anchorEl.getBoundingClientRect();
+
+            t3TempDrag = {
+                leftId,
+                startX: aRect.left + aRect.width / 2 - rect.left,
+                startY: aRect.top + aRect.height / 2 - rect.top,
+                currX: e.clientX - rect.left,
+                currY: e.clientY - rect.top
+            };
+
+            const moveHandler = (moveEvt) => {
+                if (!t3TempDrag) return;
+                t3TempDrag.currX = moveEvt.clientX - rect.left;
+                t3TempDrag.currY = moveEvt.clientY - rect.top;
+                drawMatchingLines();
+            };
+
+            const upHandler = (upEvt) => {
+                window.removeEventListener('pointermove', moveHandler);
+                window.removeEventListener('pointerup', upHandler);
+                if (!t3TempDrag) return;
+
+                const targetEl = document.elementFromPoint(upEvt.clientX, upEvt.clientY);
+                const rightCard = targetEl ? targetEl.closest('[data-rightid]') : null;
+                const draggedLeft = t3TempDrag.leftId;
+                t3TempDrag = null;
+
+                if (rightCard) {
+                    verifyMatchAttempt(draggedLeft, rightCard.dataset.rightid);
+                } else {
+                    renderType3_Matching(document.getElementById('interactiveStage'));
+                }
+            };
+
+            window.addEventListener('pointermove', moveHandler);
+            window.addEventListener('pointerup', upHandler);
+        }
+
+        function verifyMatchAttempt(leftId, rightId) {
+            const leftObj = t3LeftItems.find(i => i.id === leftId);
+            if (!leftObj) return;
+
+            if (leftObj.matchId === rightId) {
+                playSound('success');
+                t3MatchedPairs[leftId] = rightId;
+                t3SelectedLeft = null;
+                renderType3_Matching(document.getElementById('interactiveStage'));
+                if (Object.keys(t3MatchedPairs).length === t3LeftItems.length) {
+                    showFeedback(true, 'Tuyệt vời! Em đã nối đúng tất cả 4 cặp tương ứng!');
+                }
+            } else {
+                playSound('error');
+                t3WrongPair = { leftId, rightId };
+                t3SelectedLeft = null;
+                drawMatchingLines();
+                setTimeout(() => {
+                    t3WrongPair = null;
+                    renderType3_Matching(document.getElementById('interactiveStage'));
+                }, 500);
+            }
+        }
+
+        function drawMatchingLines() {
+            const svg = document.getElementById('matchingSvg');
+            const board = document.getElementById('matchingBoard');
+            if (!svg || !board) return;
+            const boardRect = board.getBoundingClientRect();
+
+            let pathsHtml = '';
+
+            // Draw confirmed green matches
+            Object.entries(t3MatchedPairs).forEach(([lId, rId]) => {
+                const lAnchor = document.getElementById(`anchor_${lId}`);
+                const rAnchor = document.getElementById(`anchor_${rId}`);
+                if (lAnchor && rAnchor) {
+                    const lRect = lAnchor.getBoundingClientRect();
+                    const rRect = rAnchor.getBoundingClientRect();
+                    const x1 = lRect.left + lRect.width / 2 - boardRect.left;
+                    const y1 = lRect.top + lRect.height / 2 - boardRect.top;
+                    const x2 = rRect.left + rRect.width / 2 - boardRect.left;
+                    const y2 = rRect.top + rRect.height / 2 - boardRect.top;
+                    pathsHtml += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#10B981" stroke-width="5" stroke-linecap="round" />`;
+                }
+            });
+
+            // Draw temporary dragging line
+            if (t3TempDrag) {
+                pathsHtml += `<line x1="${t3TempDrag.startX}" y1="${t3TempDrag.startY}" x2="${t3TempDrag.currX}" y2="${t3TempDrag.currY}" stroke="#F59E0B" stroke-width="5" stroke-dasharray="8 6" stroke-linecap="round" />`;
+            }
+
+            // Draw wrong pair red flash line
+            if (t3WrongPair) {
+                const lAnchor = document.getElementById(`anchor_${t3WrongPair.leftId}`);
+                const rAnchor = document.getElementById(`anchor_${t3WrongPair.rightId}`);
+                if (lAnchor && rAnchor) {
+                    const lRect = lAnchor.getBoundingClientRect();
+                    const rRect = rAnchor.getBoundingClientRect();
+                    const x1 = lRect.left + lRect.width / 2 - boardRect.left;
+                    const y1 = lRect.top + lRect.height / 2 - boardRect.top;
+                    const x2 = rRect.left + rRect.width / 2 - boardRect.left;
+                    const y2 = rRect.top + rRect.height / 2 - boardRect.top;
+                    pathsHtml += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#EF4444" stroke-width="6" stroke-linecap="round" />`;
+                }
+            }
+
+            svg.innerHTML = pathsHtml;
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 4: MULTIPLE CHOICE WITH TTS & VISUAL CARDS (XÁC SUẤT & TIỀN VN)
+           ------------------------------------------------------------------------- */
+        function renderType4_MultipleChoice(stage) {
+            const q1Options = [
+                { id: 'chac_chan', label: 'Chắc chắn', desc: 'Tất cả đều là bóng đỏ', icon: '🎯' },
+                { id: 'co_the', label: 'Có thể', desc: 'Có lúc lấy được, có lúc không', icon: '🤔' },
+                { id: 'khong_the', label: 'Không thể', desc: 'Trong hộp không có bóng xanh', icon: '🚫' }
+            ];
+            const q2Options = [
+                { id: '200d', label: 'Tờ 200 đồng', color: 'bg-amber-700 text-amber-100', val: '200đ' },
+                { id: '500d', label: 'Tờ 500 đồng', color: 'bg-rose-600 text-white', val: '500đ' },
+                { id: '1000d', label: 'Tờ 1000 đồng', color: 'bg-emerald-700 text-emerald-100', val: '1000đ' }
+            ];
+
+            stage.innerHTML = `
+                <div class="w-full space-y-6">
+                    <!-- Question 1: Probability -->
+                    <div class="bg-amber-50/90 border-2 border-amber-300 rounded-3xl p-4">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">🎁</span>
+                                <p class="font-extrabold text-slate-800 text-base md:text-lg">
+                                    Câu 1: Trong hộp chỉ có 4 quả bóng màu đỏ 🔴🔴🔴🔴. Khả năng em lấy được 1 quả bóng màu xanh 🔵 là:
+                                </p>
+                            </div>
+                            <button onclick="speakVietnamese('Trong hộp chỉ có bốn quả bóng màu đỏ. Khả năng em lấy được một quả bóng màu xanh là chắc chắn, có thể, hay không thể?')" class="bg-amber-300 hover:bg-amber-400 px-3 py-1.5 rounded-xl text-sm font-extrabold flex-shrink-0">🔊 Đọc</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            ${q1Options.map(opt => {
+                                const selected = t4Answers.q1 === opt.id;
+                                return `
+                                    <div onclick="selectMCQ('q1', '${opt.id}')"
+                                         class="p-3.5 rounded-2xl border-4 cursor-pointer transition-all flex items-center justify-between
+                                         ${selected ? 'bg-indigo-600 text-white border-indigo-800 scale-[1.02] shadow-md' : 'bg-white hover:bg-amber-100/60 border-amber-200 text-slate-800'}">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-3xl">${opt.icon}</span>
+                                            <div>
+                                                <div class="font-extrabold text-lg">${opt.label}</div>
+                                                <div class="text-xs ${selected ? 'text-indigo-100' : 'text-slate-500'} font-bold">${opt.desc}</div>
+                                            </div>
+                                        </div>
+                                        <button onclick="event.stopPropagation(); speakVietnamese('${opt.label}. ${opt.desc}')"
+                                                class="w-9 h-9 rounded-xl ${selected ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center text-base">
+                                            🔊
+                                        </button>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Question 2: Vietnamese Currency -->
+                    <div class="bg-emerald-50/90 border-2 border-emerald-300 rounded-3xl p-4">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">💵</span>
+                                <p class="font-extrabold text-slate-800 text-base md:text-lg">
+                                    Câu 2: Em mua kẹo hết 1000 đồng. Em hãy chọn đúng tờ tiền Việt Nam có mệnh giá 1000 đồng nhé!
+                                </p>
+                            </div>
+                            <button onclick="speakVietnamese('Em mua kẹo hết một nghìn đồng. Em hãy chọn đúng tờ tiền Việt Nam có mệnh giá một nghìn đồng nhé!')" class="bg-emerald-300 hover:bg-emerald-400 px-3 py-1.5 rounded-xl text-sm font-extrabold flex-shrink-0">🔊 Đọc</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            ${q2Options.map(opt => {
+                                const selected = t4Answers.q2 === opt.id;
+                                return `
+                                    <div onclick="selectMCQ('q2', '${opt.id}')"
+                                         class="p-3.5 rounded-2xl border-4 cursor-pointer transition-all flex items-center justify-between
+                                         ${selected ? 'bg-emerald-600 text-white border-emerald-900 scale-[1.02] shadow-md' : 'bg-white hover:bg-emerald-100/60 border-emerald-200 text-slate-800'}">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-16 h-10 rounded-lg ${opt.color} border-2 border-white shadow flex items-center justify-center font-extrabold text-sm">
+                                                ${opt.val}
+                                            </div>
+                                            <div class="font-extrabold text-base">${opt.label}</div>
+                                        </div>
+                                        <button onclick="event.stopPropagation(); speakVietnamese('${opt.label}')"
+                                                class="w-9 h-9 rounded-xl ${selected ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-700'} flex items-center justify-center text-base">
+                                            🔊
+                                        </button>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectMCQ(qKey, optId) {
+            playSound('pop');
+            t4Answers[qKey] = optId;
+            renderType4_MultipleChoice(document.getElementById('interactiveStage'));
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 5: VISUAL SELECTION (HIGHLIGHT QUADRILATERALS) & TANGRAM PUZZLE
+           ------------------------------------------------------------------------- */
+        function renderType5_GeometryTangram(stage) {
+            stage.innerHTML = `
+                <div class="w-full">
+                    <!-- Sub-mode Switcher -->
+                    <div class="flex justify-center gap-2 mb-4">
+                        <button onclick="switchT5Mode('quad')"
+                                class="px-4 py-2 rounded-2xl font-extrabold text-sm border-2 transition-all
+                                ${t5SubMode === 'quad' ? 'bg-indigo-600 text-white border-indigo-800 shadow' : 'bg-white text-slate-700 border-slate-300'}">
+                            🔷 Chế độ 1: Chạm phát sáng đếm Hình Tứ Giác (${t5SelectedShapes.size}/3)
+                        </button>
+                        <button onclick="switchT5Mode('tangram')"
+                                class="px-4 py-2 rounded-2xl font-extrabold text-sm border-2 transition-all
+                                ${t5SubMode === 'tangram' ? 'bg-amber-500 text-slate-900 border-amber-700 shadow' : 'bg-white text-slate-700 border-slate-300'}">
+                            🧩 Chế độ 2: Xếp hình Tangram Lớp 2
+                        </button>
+                    </div>
+
+                    ${t5SubMode === 'quad' ? renderT5QuadMode() : renderT5TangramMode()}
+                </div>
+            `;
+        }
+
+        function switchT5Mode(mode) {
+            playSound('click');
+            t5SubMode = mode;
+            renderType5_GeometryTangram(document.getElementById('interactiveStage'));
+        }
+
+        function renderT5QuadMode() {
+            const shapes = [
+                { id: 's1', name: 'Hình 1 (Tứ giác)', isQuad: true, svg: `<polygon points="30,25 130,20 115,105 20,100" />` },
+                { id: 's2', name: 'Hình 2 (Tam giác)', isQuad: false, svg: `<polygon points="75,18 135,105 15,105" />` },
+                { id: 's3', name: 'Hình 3 (Tứ giác)', isQuad: true, svg: `<polygon points="20,25 130,25 110,105 40,105" />` },
+                { id: 's4', name: 'Hình 4 (Hình tròn)', isQuad: false, svg: `<circle cx="75" cy="62" r="45" />` },
+                { id: 's5', name: 'Hình 5 (Đường gấp khúc)', isQuad: false, svg: `<polyline points="15,95 55,25 95,90 135,30" fill="none" stroke-width="8" />` },
+                { id: 's6', name: 'Hình 6 (Tứ giác)', isQuad: true, svg: `<polygon points="75,15 135,62 75,110 15,62" />` }
+            ];
+
+            let countOrder = Array.from(t5SelectedShapes);
+
+            return `
+                <div class="bg-sky-50 border-2 border-sky-200 rounded-3xl p-4">
+                    <div class="text-center text-sm font-extrabold text-sky-900 mb-3">
+                        ✨ Em hãy chạm vào tất cả <b>3 hình tứ giác</b> (hình có 4 cạnh, 4 đỉnh). Hình được chọn sẽ phát sáng và đánh số thứ tự!
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        ${shapes.map(sh => {
+                            const isSelected = t5SelectedShapes.has(sh.id);
+                            const badgeIndex = countOrder.indexOf(sh.id) + 1;
+                            return `
+                                <div onclick="toggleT5Shape('${sh.id}')"
+                                     class="relative bg-white rounded-2xl p-3 border-4 cursor-pointer transition-all flex flex-col items-center
+                                     ${isSelected ? 'border-amber-400 bg-amber-50 shadow-[0_0_20px_rgba(251,191,36,0.6)] scale-105' : 'border-slate-200 hover:border-sky-300'}">
+                                    ${isSelected ? `
+                                        <span class="absolute top-2 right-2 w-8 h-8 rounded-full bg-amber-500 text-white font-extrabold flex items-center justify-center shadow">
+                                            #${badgeIndex}
+                                        </span>
+                                    ` : ''}
+                                    <svg viewBox="0 0 150 125" class="w-32 h-24 ${isSelected ? 'fill-amber-400 stroke-amber-700' : 'fill-sky-200 stroke-sky-700'} stroke-[4]">
+                                        ${sh.svg}
+                                    </svg>
+                                    <span class="text-xs font-extrabold text-slate-700 mt-1">${sh.name}</span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleT5Shape(shapeId) {
+            playSound('pop');
+            if (t5SelectedShapes.has(shapeId)) {
+                t5SelectedShapes.delete(shapeId);
+            } else {
+                t5SelectedShapes.add(shapeId);
+            }
+            renderType5_GeometryTangram(document.getElementById('interactiveStage'));
+        }
+
+        function renderT5TangramMode() {
+            const selectedPiece = t5TangramPieces.find(p => p.id === t5SelectedPieceId);
+            return `
+                <div class="bg-amber-50 border-2 border-amber-300 rounded-3xl p-4 flex flex-col items-center">
+                    <div class="flex flex-wrap items-center justify-between w-full gap-2 mb-3">
+                        <span class="text-xs md:text-sm font-extrabold text-amber-900">
+                            🧩 Xoay mảnh ghép về góc 0° rồi bấm "Đặt vào khung mẫu" (hoặc chạm trực tiếp vào khung mẫu):
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <button onclick="rotateSelectedTangram()" class="btn-3d bg-indigo-600 text-white font-extrabold text-xs md:text-sm px-3 py-1.5 rounded-xl">
+                                🔄 Xoay mảnh đang chọn (+90°)
+                            </button>
+                            <button onclick="snapSelectedTangram()" class="btn-3d bg-emerald-600 text-white font-extrabold text-xs md:text-sm px-3 py-1.5 rounded-xl">
+                                ✨ Đặt vào khung mẫu
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full items-center">
+                        <!-- Left Selector List -->
+                        <div class="space-y-2">
+                            ${t5TangramPieces.map(p => `
+                                <div onclick="selectTangramPiece('${p.id}')"
+                                     class="p-3 rounded-2xl border-3 cursor-pointer flex items-center justify-between font-extrabold text-sm
+                                     ${t5SelectedPieceId === p.id ? 'bg-white border-4 border-indigo-600 shadow' : 'bg-white/70 border-2 border-amber-200'}">
+                                    <span>${p.name}</span>
+                                    <span class="px-2 py-0.5 rounded-lg text-xs ${p.placed ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900'}">
+                                        ${p.placed ? '✅ Đã ghép' : `Góc: ${p.rot}°`}
+                                    </span>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <!-- SVG Tangram Board -->
+                        <div class="md:col-span-2 bg-white rounded-2xl border-2 border-amber-200 p-2 flex justify-center">
+                            <svg viewBox="0 0 420 260" class="w-full max-w-md h-56">
+                                <!-- Target Outlines (House + Tree) -->
+                                <g onclick="snapSelectedTangram()" class="cursor-pointer">
+                                    <!-- Roof Target -->
+                                    <polygon points="190,25 250,95 130,95" fill="#FEE2E2" stroke="#EF4444" stroke-width="3" stroke-dasharray="6 4"/>
+                                    <!-- Wall Target -->
+                                    <rect x="145" y="95" width="90" height="90" fill="#DBEAFE" stroke="#3B82F6" stroke-width="3" stroke-dasharray="6 4"/>
+                                    <!-- Tree Target -->
+                                    <polygon points="330,95 375,165 285,165" fill="#D1FAE5" stroke="#10B981" stroke-width="3" stroke-dasharray="6 4"/>
+                                    <rect x="320" y="165" width="20" height="30" fill="#92400E" />
+                                </g>
+
+                                <!-- Active Pieces -->
+                                ${t5TangramPieces.map(p => {
+                                    const cx = p.placed ? p.targetX : 65;
+                                    const cy = p.placed ? p.targetY : (p.id === 'roof' ? 55 : p.id === 'wall' ? 135 : 215);
+                                    const rot = p.placed ? 0 : p.rot;
+                                    let shapeMarkup = '';
+                                    if (p.type === 'triangle') {
+                                        shapeMarkup = `<polygon points="0,-45 60,25 -60,25" fill="${p.color}" stroke="#1E293B" stroke-width="3"/>`;
+                                    } else if (p.type === 'square') {
+                                        shapeMarkup = `<rect x="-45" y="-70" width="90" height="90" fill="${p.color}" stroke="#1E293B" stroke-width="3"/>`;
+                                    } else {
+                                        shapeMarkup = `<polygon points="0,-50 45,20 -45,20" fill="${p.color}" stroke="#1E293B" stroke-width="3"/>`;
+                                    }
+                                    return `
+                                        <g transform="translate(${cx}, ${cy}) rotate(${rot})"
+                                           onclick="selectTangramPiece('${p.id}')"
+                                           class="cursor-pointer transition-all duration-300">
+                                            ${shapeMarkup}
+                                        </g>
+                                    `;
+                                }).join('')}
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectTangramPiece(id) {
+            playSound('click');
+            t5SelectedPieceId = id;
+            renderType5_GeometryTangram(document.getElementById('interactiveStage'));
+        }
+
+        function rotateSelectedTangram() {
+            playSound('pop');
+            const p = t5TangramPieces.find(item => item.id === t5SelectedPieceId);
+            if (!p) return;
+            p.placed = false;
+            p.rot = (p.rot + 90) % 360;
+            renderType5_GeometryTangram(document.getElementById('interactiveStage'));
+        }
+
+        function snapSelectedTangram() {
+            const p = t5TangramPieces.find(item => item.id === t5SelectedPieceId);
+            if (!p) return;
+            p.rot = 0;
+            p.placed = true;
+            playSound('success');
+            renderType5_GeometryTangram(document.getElementById('interactiveStage'));
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 6: DRAG & DROP ORDERING AND BASKET SORTING
+           ------------------------------------------------------------------------- */
+        function renderType6_DragDropOrdering(stage) {
+            stage.innerHTML = `
+                <div class="w-full space-y-6">
+                    <!-- Part A: Order 3-digit numbers from smallest to largest -->
+                    <div class="bg-sky-50 border-2 border-sky-300 rounded-3xl p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-extrabold text-sky-900 text-sm md:text-base">
+                                🔢 Phần A: Xếp các số có 3 chữ số theo thứ tự từ BÉ đến LỚN
+                            </span>
+                            <span class="text-xs font-bold text-slate-500">Chạm thẻ số rồi chạm ô trống (hoặc kéo thả)</span>
+                        </div>
+
+                        <!-- Source Cards Pool -->
+                        <div class="flex flex-wrap justify-center gap-3 mb-4">
+                            ${t6OrderPool.map((num, idx) => {
+                                const isUsed = t6OrderSlots.includes(num);
+                                const isSelected = t6SelectedCard === num;
+                                return `
+                                    <div draggable="${!isUsed}"
+                                         ondragstart="e => e.dataTransfer.setData('text/plain', '${num}')"
+                                         onclick="selectT6Card(${num})"
+                                         class="w-20 h-14 rounded-2xl font-extrabold text-xl flex items-center justify-center border-4 transition-all cursor-pointer
+                                         ${isUsed
+                                            ? 'bg-slate-200 text-slate-400 border-slate-300 opacity-40 pointer-events-none'
+                                            : isSelected
+                                                ? 'bg-amber-400 text-slate-900 border-amber-600 scale-110 shadow-md'
+                                                : 'bg-white hover:bg-sky-100 text-sky-900 border-sky-400 shadow-sm'}">
+                                        ${num}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Target Snap Slots -->
+                        <div class="flex items-center justify-center gap-2 md:gap-4">
+                            ${t6OrderSlots.map((slotVal, sIdx) => `
+                                <div onclick="placeT6CardInSlot(${sIdx})"
+                                     ondragover="event.preventDefault()"
+                                     ondrop="placeT6CardInSlot(${sIdx})"
+                                     class="w-20 h-16 rounded-2xl border-4 border-dashed flex flex-col items-center justify-center cursor-pointer transition-all
+                                     ${slotVal !== null ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-extrabold text-xl' : 'bg-white border-sky-400 text-slate-400 text-xs font-bold'}">
+                                    ${slotVal !== null ? slotVal : `Ô thứ ${sIdx + 1}`}
+                                </div>
+                                ${sIdx < 3 ? `<span class="text-xl font-extrabold text-sky-600">&lt;</span>` : ''}
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Part B: Classify Expressions into 2 Baskets (< 50 vs > 50) -->
+                    <div class="bg-amber-50 border-2 border-amber-300 rounded-3xl p-4">
+                        <div class="font-extrabold text-amber-900 text-sm md:text-base mb-3">
+                            🧺 Phần B: Phân loại phép tính vào đúng giỏ (Chạm phép tính rồi chạm giỏ)
+                        </div>
+
+                        <!-- Unsorted Expressions -->
+                        <div class="flex flex-wrap justify-center gap-3 mb-4">
+                            ${t6BasketItems.map(item => {
+                                const isSelected = t6SelectedBasketItem === item.id;
+                                return `
+                                    <div onclick="selectT6BasketItem('${item.id}')"
+                                         class="px-4 py-2 rounded-2xl border-3 font-extrabold text-base cursor-pointer transition-all
+                                         ${isSelected
+                                            ? 'bg-indigo-600 text-white border-indigo-800 scale-105 shadow-md'
+                                            : item.basket
+                                                ? 'bg-emerald-100 text-emerald-900 border-emerald-400'
+                                                : 'bg-white text-slate-800 border-amber-400 shadow-sm'}">
+                                        ${item.label} ${item.basket ? `(${item.basket === 'lt50' ? '< 50' : '> 50'})` : ''}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Two Baskets -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div onclick="assignToBasket('lt50')"
+                                 class="bg-white hover:bg-sky-50 border-4 border-sky-400 rounded-2xl p-3 cursor-pointer flex flex-col items-center min-h-[90px]">
+                                <div class="font-extrabold text-sky-900 text-sm mb-2">🧺 Giỏ 1: Kết quả BÉ HƠN 50</div>
+                                <div class="flex flex-wrap gap-2">
+                                    ${t6BasketItems.filter(i => i.basket === 'lt50').map(i => `
+                                        <span class="bg-sky-100 text-sky-900 border border-sky-300 px-3 py-1 rounded-xl font-extrabold text-sm">${i.label}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div onclick="assignToBasket('gt50')"
+                                 class="bg-white hover:bg-orange-50 border-4 border-orange-400 rounded-2xl p-3 cursor-pointer flex flex-col items-center min-h-[90px]">
+                                <div class="font-extrabold text-orange-900 text-sm mb-2">🧺 Giỏ 2: Kết quả LỚN HƠN 50</div>
+                                <div class="flex flex-wrap gap-2">
+                                    ${t6BasketItems.filter(i => i.basket === 'gt50').map(i => `
+                                        <span class="bg-orange-100 text-orange-900 border border-orange-300 px-3 py-1 rounded-xl font-extrabold text-sm">${i.label}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectT6Card(num) {
+            playSound('click');
+            t6SelectedCard = num;
+            // Auto place into first empty slot for rapid 1-tap accessibility
+            const emptyIdx = t6OrderSlots.findIndex(v => v === null);
+            if (emptyIdx !== -1) {
+                t6OrderSlots[emptyIdx] = num;
+                t6SelectedCard = null;
+            }
+            renderType6_DragDropOrdering(document.getElementById('interactiveStage'));
+        }
+
+        function placeT6CardInSlot(slotIdx) {
+            playSound('pop');
+            if (t6SelectedCard !== null) {
+                t6OrderSlots[slotIdx] = t6SelectedCard;
+                t6SelectedCard = null;
+            } else if (t6OrderSlots[slotIdx] !== null) {
+                // Tap filled slot to remove
+                t6OrderSlots[slotIdx] = null;
+            }
+            renderType6_DragDropOrdering(document.getElementById('interactiveStage'));
+        }
+
+        function selectT6BasketItem(itemId) {
+            playSound('click');
+            t6SelectedBasketItem = itemId;
+            renderType6_DragDropOrdering(document.getElementById('interactiveStage'));
+        }
+
+        function assignToBasket(basketKey) {
+            if (!t6SelectedBasketItem) return;
+            playSound('pop');
+            const item = t6BasketItems.find(i => i.id === t6SelectedBasketItem);
+            if (item) item.basket = basketKey;
+            t6SelectedBasketItem = null;
+            renderType6_DragDropOrdering(document.getElementById('interactiveStage'));
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 7: COMPARISON WITH CROCODILE MOUTH (CÁ SẤU HÁ MIỆNG >, <, =)
+           ------------------------------------------------------------------------- */
+        function renderType7_ComparisonCroc(stage) {
+            const rows = [
+                { id: 'c1', left: '2 × 5', leftHint: '= 10', right: '15 − 5', rightHint: '= 10' },
+                { id: 'c2', left: '1 m', leftHint: '= 100 cm', right: '90 cm', rightHint: '90 cm' },
+                { id: 'c3', left: '15 l + 20 l', leftHint: '= 35 l', right: '40 l', rightHint: '40 l' }
+            ];
+
+            stage.innerHTML = `
+                <div class="w-full max-w-2xl mx-auto">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs md:text-sm font-extrabold text-emerald-900 bg-emerald-100 px-3 py-1.5 rounded-full">
+                            🐊 Cá sấu tham ăn luôn há miệng về phía số LỚN HƠN!
+                        </span>
+                        <button onclick="toggleCrocHint()" class="text-xs font-extrabold bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 px-3 py-1.5 rounded-xl">
+                            ${t7ShowCrocHint ? '🙈 Ẩn gợi ý cá sấu' : '🐊 Hiện gợi ý cá sấu'}
+                        </button>
+                    </div>
+
+                    <!-- 3 Comparison Rows -->
+                    <div class="space-y-3 mb-5">
+                        ${rows.map(r => {
+                            const val = t7Choices[r.id];
+                            const isActive = t7ActiveRow === r.id;
+                            return `
+                                <div onclick="setT7ActiveRow('${r.id}')"
+                                     class="p-3.5 rounded-2xl border-4 cursor-pointer transition-all grid grid-cols-3 items-center text-center
+                                     ${isActive ? 'bg-amber-50 border-amber-400 shadow-md scale-[1.01]' : 'bg-white border-sky-200'}">
+                                    <div>
+                                        <div class="text-xl md:text-2xl font-extrabold text-slate-800">${r.left}</div>
+                                        ${t7ShowCrocHint ? `<div class="text-xs font-bold text-slate-400">${r.leftHint}</div>` : ''}
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <div class="w-16 h-14 rounded-2xl border-4 flex items-center justify-center text-2xl font-extrabold
+                                            ${val ? 'bg-emerald-100 border-emerald-500 text-emerald-900' : 'bg-white border-amber-400 text-slate-300'}">
+                                            ${val ? renderCrocSymbol(val) : '?'}
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="text-xl md:text-2xl font-extrabold text-slate-800">${r.right}</div>
+                                        ${t7ShowCrocHint ? `<div class="text-xs font-bold text-slate-400">${r.rightHint}</div>` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <!-- Crocodile Mouth Buttons -->
+                    <div class="grid grid-cols-3 gap-3">
+                        <button onclick="pickComparisonSign('>')" class="btn-3d bg-emerald-500 hover:bg-emerald-600 text-white p-3 rounded-2xl flex flex-col items-center">
+                            <span class="text-3xl font-extrabold">🐊 &gt;</span>
+                            <span class="text-xs font-bold mt-1">Lớn hơn (Há sang trái)</span>
+                        </button>
+                        <button onclick="pickComparisonSign('=')" class="btn-3d bg-sky-500 hover:bg-sky-600 text-white p-3 rounded-2xl flex flex-col items-center">
+                            <span class="text-3xl font-extrabold">⚖️ =</span>
+                            <span class="text-xs font-bold mt-1">Bằng nhau</span>
+                        </button>
+                        <button onclick="pickComparisonSign('<')" class="btn-3d bg-amber-500 hover:bg-amber-600 text-slate-900 p-3 rounded-2xl flex flex-col items-center">
+                            <span class="text-3xl font-extrabold">&lt; 🐊</span>
+                            <span class="text-xs font-bold mt-1">Bé hơn (Há sang phải)</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCrocSymbol(sign) {
+            if (!t7ShowCrocHint) return sign;
+            if (sign === '>') return `<span title="Cá sấu há sang trái">&gt;🐊</span>`;
+            if (sign === '<') return `<span title="Cá sấu há sang phải">🐊&lt;</span>`;
+            return '=';
+        }
+
+        function toggleCrocHint() {
+            playSound('click');
+            t7ShowCrocHint = !t7ShowCrocHint;
+            renderType7_ComparisonCroc(document.getElementById('interactiveStage'));
+        }
+
+        function setT7ActiveRow(rowId) {
+            playSound('click');
+            t7ActiveRow = rowId;
+            renderType7_ComparisonCroc(document.getElementById('interactiveStage'));
+        }
+
+        function pickComparisonSign(sign) {
+            playSound('pop');
+            t7Choices[t7ActiveRow] = sign;
+            if (t7ActiveRow === 'c1') t7ActiveRow = 'c2';
+            else if (t7ActiveRow === 'c2') t7ActiveRow = 'c3';
+            renderType7_ComparisonCroc(document.getElementById('interactiveStage'));
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 8: INTERACTIVE VIRTUAL RULER & CLOCK HANDS
+           ------------------------------------------------------------------------- */
+        function renderType8_RulerAndClock(stage) {
+            stage.innerHTML = `
+                <div class="w-full">
+                    <div class="flex justify-center gap-2 mb-4">
+                        <button onclick="switchT8Mode('ruler')"
+                                class="px-4 py-2 rounded-2xl font-extrabold text-sm border-2 transition-all
+                                ${t8SubMode === 'ruler' ? 'bg-indigo-600 text-white border-indigo-800 shadow' : 'bg-white text-slate-700 border-slate-300'}">
+                            📏 Công cụ 1: Thước kẻ ảo đo đoạn thẳng AB
+                        </button>
+                        <button onclick="switchT8Mode('clock')"
+                                class="px-4 py-2 rounded-2xl font-extrabold text-sm border-2 transition-all
+                                ${t8SubMode === 'clock' ? 'bg-amber-500 text-slate-900 border-amber-700 shadow' : 'bg-white text-slate-700 border-slate-300'}">
+                            🕒 Công cụ 2: Xoay kim đồng hồ (7 giờ 15 phút)
+                        </button>
+                    </div>
+
+                    ${t8SubMode === 'ruler' ? renderT8Ruler() : renderT8Clock()}
+                </div>
+            `;
+            if (t8SubMode === 'ruler') {
+                setTimeout(() => selectInputSlot('t8_len', 2), 60);
+            }
+        }
+
+        function switchT8Mode(mode) {
+            playSound('click');
+            t8SubMode = mode;
+            renderType8_RulerAndClock(document.getElementById('interactiveStage'));
+        }
+
+        function renderT8Ruler() {
+            // Segment AB starts at x = 60, length = 7 cm * 32px/cm = 224px (ends at x = 284)
+            const isAligned = Math.abs(t8RulerX - 60) <= 10;
+            let ticksSvg = '';
+            for (let cm = 0; cm <= 10; cm++) {
+                const tx = 16 + cm * 32;
+                ticksSvg += `
+                    <line x1="${tx}" y1="0" x2="${tx}" y2="18" stroke="#1E293B" stroke-width="2.5"/>
+                    <text x="${tx}" y="34" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E293B">${cm}</text>
+                `;
+                if (cm < 10) {
+                    const halfX = tx + 16;
+                    ticksSvg += `<line x1="${halfX}" y1="0" x2="${halfX}" y2="10" stroke="#64748B" stroke-width="1.5"/>`;
+                }
+            }
+
+            return `
+                <div class="bg-sky-50 border-2 border-sky-300 rounded-3xl p-4 flex flex-col items-center">
+                    <div class="flex flex-wrap items-center justify-between w-full gap-2 mb-2">
+                        <span class="text-xs md:text-sm font-extrabold ${isAligned ? 'text-emerald-700' : 'text-amber-700'}">
+                            ${isAligned
+                                ? '✅ Vạch số 0 đã trùng khít điểm A! Hãy nhìn điểm B ứng với vạch số mấy nhé!'
+                                : '⚠️ Hãy kéo thước sang trái hoặc bấm nút "Căn chuẩn vạch 0" để vạch số 0 trùng điểm A!'}
+                        </span>
+                        <button onclick="alignRulerToZero()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-3 py-1.5 rounded-xl btn-3d">
+                            🎯 Căn chuẩn vạch số 0 trùng điểm A
+                        </button>
+                    </div>
+
+                    <!-- Interactive SVG Ruler Canvas -->
+                    <svg id="rulerSvg" viewBox="0 0 420 155" class="w-full max-w-xl h-40 bg-white rounded-2xl border-2 border-sky-200 touch-none select-none"
+                         onpointermove="moveRulerDrag(event)" onpointerup="endRulerDrag()">
+                        <!-- Vertical alignment helper line at A (x=60) -->
+                        <line x1="60" y1="20" x2="60" y2="140" stroke="${isAligned ? '#10B981' : '#F59E0B'}" stroke-width="2" stroke-dasharray="4 4"/>
+
+                        <!-- Line Segment AB (7 cm = 224px) -->
+                        <line x1="60" y1="50" x2="284" y2="50" stroke="#2563EB" stroke-width="6" stroke-linecap="round"/>
+                        <circle cx="60" cy="50" r="6" fill="#1D4ED8"/>
+                        <circle cx="284" cy="50" r="6" fill="#1D4ED8"/>
+                        <text x="60" y="35" text-anchor="middle" font-size="16" font-weight="bold" fill="#1E3A8A">A</text>
+                        <text x="284" y="35" text-anchor="middle" font-size="16" font-weight="bold" fill="#1E3A8A">B</text>
+
+                        <!-- Draggable Virtual Ruler (0 mark is at local x=16, so translate by t8RulerX - 16) -->
+                        <g transform="translate(${t8RulerX - 16}, 70)"
+                           onpointerdown="startRulerDrag(event)"
+                           class="cursor-grab active:cursor-grabbing">
+                            <rect x="0" y="0" width="352" height="52" rx="8" fill="#FDE047" stroke="#CA8A04" stroke-width="3"/>
+                            ${ticksSvg}
+                            <text x="176" y="47" text-anchor="middle" font-size="10" font-weight="bold" fill="#854D0E">↔ KÉO THƯỚC KẺ (ĐƠN VỊ: CM) ↔</text>
+                        </g>
+                    </svg>
+
+                    <div class="mt-4 flex items-center gap-3 text-lg md:text-xl font-extrabold">
+                        <span>Đoạn thẳng AB dài:</span>
+                        ${renderInputSlot('t8_len', '?', 'w-16 h-14', 2)}
+                        <span>cm</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function startRulerDrag(e) {
+            t8IsDraggingRuler = true;
+            const svg = document.getElementById('rulerSvg');
+            const pt = svg.createSVGPoint();
+            pt.x = e.clientX;
+            pt.y = e.clientY;
+            const cursorPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+            t8DragOffsetX = cursorPt.x - t8RulerX;
+        }
+
+        function moveRulerDrag(e) {
+            if (!t8IsDraggingRuler) return;
+            const svg = document.getElementById('rulerSvg');
+            if (!svg) return;
+            const pt = svg.createSVGPoint();
+            pt.x = e.clientX;
+            pt.y = e.clientY;
+            const cursorPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+            let newX = cursorPt.x - t8DragOffsetX;
+            if (Math.abs(newX - 60) < 12) newX = 60; // Magnetic snap to Point A
+            t8RulerX = Math.max(25, Math.min(180, newX));
+            renderType8_RulerAndClock(document.getElementById('interactiveStage'));
+        }
+
+        function endRulerDrag() {
+            t8IsDraggingRuler = false;
+        }
+
+        function alignRulerToZero() {
+            playSound('pop');
+            t8RulerX = 60;
+            renderType8_RulerAndClock(document.getElementById('interactiveStage'));
+        }
+
+        function renderT8Clock() {
+            const minAngle = t8ClockMinute * 6; // 0, 90, 180, 270
+            const hourAngle = (t8ClockHour % 12) * 30 + (t8ClockMinute / 60) * 30;
+
+            let numbersSvg = '';
+            for (let n = 1; n <= 12; n++) {
+                const rad = ((n * 30 - 90) * Math.PI) / 180;
+                const nx = 110 + 76 * Math.cos(rad);
+                const ny = 110 + 76 * Math.sin(rad) + 6;
+                numbersSvg += `<text x="${nx}" y="${ny}" text-anchor="middle" font-size="16" font-weight="bold" fill="#1E293B">${n}</text>`;
+            }
+
+            return `
+                <div class="bg-amber-50 border-2 border-amber-300 rounded-3xl p-4 flex flex-col md:flex-row items-center justify-around gap-6">
+                    <!-- Clock SVG -->
+                    <div class="flex flex-col items-center">
+                        <svg viewBox="0 0 220 220" class="w-52 h-52 drop-shadow-md">
+                            <circle cx="110" cy="110" r="100" fill="#FFFFFF" stroke="#F59E0B" stroke-width="8"/>
+                            ${numbersSvg}
+                            <!-- Hour Hand (Short, Red) -->
+                            <line x1="110" y1="110"
+                                  x2="${110 + 48 * Math.cos(((hourAngle - 90) * Math.PI) / 180)}"
+                                  y2="${110 + 48 * Math.sin(((hourAngle - 90) * Math.PI) / 180)}"
+                                  stroke="#EF4444" stroke-width="7" stroke-linecap="round"/>
+                            <!-- Minute Hand (Long, Blue) -->
+                            <line x1="110" y1="110"
+                                  x2="${110 + 68 * Math.cos(((minAngle - 90) * Math.PI) / 180)}"
+                                  y2="${110 + 68 * Math.sin(((minAngle - 90) * Math.PI) / 180)}"
+                                  stroke="#2563EB" stroke-width="5" stroke-linecap="round"/>
+                            <circle cx="110" cy="110" r="7" fill="#1E293B"/>
+                        </svg>
+                    </div>
+
+                    <!-- Interactive Controls -->
+                    <div class="space-y-3 text-center md:text-left">
+                        <div class="bg-white p-3 rounded-2xl border-2 border-amber-200">
+                            <div class="text-xs font-extrabold text-slate-400 uppercase">Yêu cầu đề bài:</div>
+                            <div class="text-xl font-extrabold text-indigo-900">Xoay kim đến 7 giờ 15 phút</div>
+                            <div class="text-sm font-bold text-emerald-700 mt-1">
+                                Đồng hồ đang chỉ: ${t8ClockHour} giờ ${t8ClockMinute === 0 ? 'đúng (00 phút)' : t8ClockMinute + ' phút'}
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                            <button onclick="adjustClock(0, 15)" class="btn-3d bg-sky-500 hover:bg-sky-600 text-white font-extrabold px-4 py-2.5 rounded-2xl text-sm">
+                                🔵 Xoay kim phút (+15 phút)
+                            </button>
+                            <button onclick="adjustClock(1, 0)" class="btn-3d bg-rose-500 hover:bg-rose-600 text-white font-extrabold px-4 py-2.5 rounded-2xl text-sm">
+                                🔴 Xoay kim giờ (+1 giờ)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function adjustClock(addHour, addMin) {
+            playSound('pop');
+            t8ClockMinute = (t8ClockMinute + addMin) % 60;
+            t8ClockHour = ((t8ClockHour - 1 + addHour) % 12) + 1;
+            renderType8_RulerAndClock(document.getElementById('interactiveStage'));
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 9: PICTOGRAPH READING - TAP TO COUNT (CHẠM ĐỂ ĐẾM)
+           ------------------------------------------------------------------------- */
+        function renderType9_Pictograph(stage) {
+            const rows = [
+                { key: 'apple', name: 'Táo đỏ', emoji: '🍎', items: t9Counted.apple },
+                { key: 'mango', name: 'Xoài chín', emoji: '🥭', items: t9Counted.mango },
+                { key: 'orange', name: 'Cam vàng', emoji: '🍊', items: t9Counted.orange }
+            ];
+
+            stage.innerHTML = `
+                <div class="w-full space-y-4">
+                    <div class="bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-extrabold text-emerald-900 text-sm md:text-base">
+                                👆 Em hãy chạm vào từng quả để đếm to thành tiếng (1, 2, 3...):
+                            </span>
+                            <button onclick="countAllPictographRow('apple')" class="text-xs font-extrabold bg-emerald-200 text-emerald-900 px-3 py-1 rounded-xl">
+                                ✨ Đếm mẫu hàng Táo
+                            </button>
+                        </div>
+
+                        <div class="space-y-3">
+                            ${rows.map(row => {
+                                const countedTotal = row.items.filter(Boolean).length;
+                                return `
+                                    <div class="bg-white rounded-2xl p-3 border-2 border-emerald-200 flex flex-wrap items-center justify-between gap-2">
+                                        <div class="w-28 font-extrabold text-slate-800 text-base flex items-center gap-1.5">
+                                            <span>${row.emoji}</span>
+                                            <span>${row.name}</span>
+                                        </div>
+
+                                        <div class="flex-1 flex flex-wrap items-center gap-2">
+                                            ${row.items.map((isCounted, idx) => `
+                                                <button onclick="tapPictographItem('${row.key}', ${idx})"
+                                                        id="picto_${row.key}_${idx}"
+                                                        class="relative w-12 h-12 rounded-2xl border-2 flex items-center justify-center text-2xl transition-all
+                                                        ${isCounted
+                                                            ? 'bg-amber-100 border-amber-500 scale-105 shadow-sm'
+                                                            : 'bg-slate-50 hover:bg-sky-50 border-slate-200'}">
+                                                    <span>${row.emoji}</span>
+                                                    ${isCounted ? `
+                                                        <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-600 text-white font-extrabold text-xs flex items-center justify-center shadow">
+                                                            ${idx + 1}
+                                                        </span>
+                                                    ` : ''}
+                                                </button>
+                                            `).join('')}
+                                        </div>
+
+                                        <div class="w-20 text-right font-extrabold text-sm text-indigo-700">
+                                            Đã đếm: ${countedTotal}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Questions below Pictograph -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 flex items-center justify-between">
+                            <span class="font-extrabold text-slate-800 text-base">1. Có tất cả bao nhiêu quả Táo đỏ 🍎?</span>
+                            ${renderInputSlot('t9_apple', '?', 'w-16 h-14', 2)}
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 flex items-center justify-between">
+                            <span class="font-extrabold text-slate-800 text-base">2. Số quả Cam 🍊 nhiều hơn Xoài 🥭 mấy quả?</span>
+                            ${renderInputSlot('t9_diff', '?', 'w-16 h-14', 2)}
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => selectInputSlot('t9_apple', 2), 60);
+        }
+
+        function tapPictographItem(rowKey, idx) {
+            t9Counted[rowKey][idx] = true;
+            const countNum = idx + 1;
+            speakVietnamese(String(countNum));
+            renderType9_Pictograph(document.getElementById('interactiveStage'));
+            const btn = document.getElementById(`picto_${rowKey}_${idx}`);
+            if (btn) btn.classList.add('animate-pop');
+        }
+
+        function countAllPictographRow(rowKey) {
+            t9Counted[rowKey] = t9Counted[rowKey].map(() => true);
+            speakVietnamese('Một, hai, ba, bốn, năm, sáu! Có sáu quả táo đỏ!');
+            renderType9_Pictograph(document.getElementById('interactiveStage'));
+        }
+
+        /* -------------------------------------------------------------------------
+           TYPE 10: 3-STEP SCAFFOLDED WORD PROBLEM (GIẢI TOÁN CÓ LỜI VĂN 3 BƯỚC)
+           ------------------------------------------------------------------------- */
+        function renderType10_WordProblem(stage) {
+            const statements = [
+                { id: 'st1', text: 'Số ki-lô-gam bao gạo nếp cân nặng là:' },
+                { id: 'st2', text: 'Số ki-lô-gam cả hai bao gạo cân nặng là:' },
+                { id: 'st3', text: 'Số ki-lô-gam bao gạo tẻ nặng hơn là:' }
+            ];
+
+            stage.innerHTML = `
+                <div class="w-full space-y-4">
+                    <!-- Step 1: Select Solution Statement -->
+                    <div class="bg-sky-50 border-2 border-sky-300 rounded-3xl p-4">
+                        <div class="text-sm font-extrabold text-sky-900 mb-2">
+                            🔹 Bước 1: Em hãy chọn câu lời giải đúng (không cần gõ chữ dài):
+                        </div>
+                        <div class="space-y-2">
+                            ${statements.map(st => {
+                                const selected = t10SelectedStatement === st.id;
+                                return `
+                                    <div onclick="selectT10Statement('${st.id}')"
+                                         class="p-3 rounded-2xl border-3 cursor-pointer flex items-center justify-between transition-all
+                                         ${selected ? 'bg-indigo-600 text-white border-indigo-800 font-extrabold shadow' : 'bg-white hover:bg-sky-100 text-slate-800 border-sky-200 font-bold'}">
+                                        <span>${st.text}</span>
+                                        <button onclick="event.stopPropagation(); speakVietnamese('${st.text}')"
+                                                class="w-8 h-8 rounded-lg ${selected ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-700'}">
+                                            🔊
+                                        </button>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Equation Builder -->
+                    <div class="bg-amber-50 border-2 border-amber-300 rounded-3xl p-4 flex flex-wrap items-center justify-between gap-3">
+                        <div class="text-sm font-extrabold text-amber-900">
+                            🔹 Bước 2: Điền số và dấu phép tính (+, −):
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            ${renderInputSlot('t10_n1', '36', 'w-16 h-14', 2)}
+                            ${renderInputSlot('t10_op', '−', 'w-14 h-14', 1)}
+                            ${renderInputSlot('t10_n2', '12', 'w-16 h-14', 2)}
+                            <span class="text-2xl font-extrabold">=</span>
+                            ${renderInputSlot('t10_res', '?', 'w-16 h-14', 2)}
+                            <span class="text-lg font-extrabold text-slate-700">(kg)</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Final Answer -->
+                    <div class="bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-4 flex items-center justify-between">
+                        <div class="text-sm md:text-base font-extrabold text-emerald-900">
+                            🔹 Bước 3: Điền Đáp số hoàn chỉnh:
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-lg">Đáp số:</span>
+                            ${renderInputSlot('t10_final', '?', 'w-20 h-14', 2)}
+                            <span class="font-extrabold text-lg">kg</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => selectInputSlot('t10_n1', 2), 60);
+        }
+
+        function selectT10Statement(stId) {
+            playSound('pop');
+            t10SelectedStatement = stId;
+            renderType10_WordProblem(document.getElementById('interactiveStage'));
+        }
+
+        /* =========================================================================
+           7. VALIDATION & FEEDBACK ENGINE FOR ALL 10 TYPES
+           ========================================================================= */
+        function checkCurrentExercise() {
+            const exId = EXERCISE_TYPES[currentTypeIndex].id;
+            let isCorrect = false;
+            let msg = '';
+
+            if (exId === 1) {
+                const checks = [
+                    { id: 't1_split1', ans: '2' },
+                    { id: 't1_split2', ans: '3' },
+                    { id: 't1_ten', ans: '10' },
+                    { id: 't1_ans', ans: '13' },
+                    { id: 't1_dm', ans: '10' },
+                    { id: 't1_m', ans: '100' }
+                ];
+                isCorrect = validateSlotList(checks);
+                msg = isCorrect
+                    ? 'Xuất sắc! Em đã nắm vững kỹ thuật tách 5 thành 2 và 3 để gộp đủ chục (8 + 2 = 10) và thuộc bảng đơn vị đo!'
+                    : 'Có ô chưa chính xác. Gợi ý: 5 tách thành 2 và 3; 1 dm = 10 cm; 1 m = 100 cm.';
+            } else if (exId === 2) {
+                const checks = [
+                    { id: 't2_q1_u', ans: '2' },
+                    { id: 't2_q1_t', ans: '7' },
+                    { id: 't2_q2_u', ans: '4' },
+                    { id: 't2_q2_t', ans: '8' },
+                    { id: 't2_q2_h', ans: '4' }
+                ];
+                isCorrect = validateSlotList(checks);
+                msg = isCorrect
+                    ? 'Giỏi lắm! 47 + 25 = 72 và 356 + 128 = 484. Em đặt tính từ phải sang trái rất chuẩn!'
+                    : 'Em kiểm tra lại các chữ số màu đỏ nhé (Lưu ý: 7 + 5 = 12 viết 2 nhớ 1; 6 + 8 = 14 viết 4 nhớ 1).';
+            } else if (exId === 3) {
+                isCorrect = Object.keys(t3MatchedPairs).length === 4;
+                msg = isCorrect
+                    ? 'Hoàn hảo! Em đã nối đúng cả 4 cặp phép nhân và khối hình học!'
+                    : 'Em hãy nối hết cả 4 cặp thẻ ở hai cột nhé!';
+            } else if (exId === 4) {
+                isCorrect = t4Answers.q1 === 'khong_the' && t4Answers.q2 === '1000d';
+                msg = isCorrect
+                    ? 'Chính xác! Hộp toàn bóng đỏ nên KHÔNG THỂ lấy được bóng xanh, và em đã chọn đúng tờ 1000 đồng!'
+                    : 'Em hãy kiểm tra lại nhé: Trong hộp chỉ có bóng đỏ thì có lấy được bóng xanh không?';
+            } else if (exId === 5) {
+                if (t5SubMode === 'quad') {
+                    isCorrect = t5SelectedShapes.size === 3 &&
+                                t5SelectedShapes.has('s1') &&
+                                t5SelectedShapes.has('s3') &&
+                                t5SelectedShapes.has('s6');
+                    msg = isCorrect
+                        ? 'Tuyệt vời! Em đã tìm đúng cả 3 hình tứ giác (Hình 1, Hình 3 và Hình 6)!'
+                        : 'Em lưu ý: Hình tứ giác là hình có đúng 4 cạnh và 4 đỉnh (Hình 1, 3, 6).';
+                } else {
+                    isCorrect = t5TangramPieces.every(p => p.placed);
+                    msg = isCorrect
+                        ? 'Khéo tay quá! Em đã ghép hoàn chỉnh ngôi nhà và cái cây bằng bộ Tangram!'
+                        : 'Em hãy chọn từng mảnh ghép và bấm "Đặt vào khung mẫu" cho đủ 3 mảnh nhé!';
+                }
+            } else if (exId === 6) {
+                const orderOk = t6OrderSlots[0] === 289 && t6OrderSlots[1] === 450 && t6OrderSlots[2] === 615 && t6OrderSlots[3] === 804;
+                const basketOk = t6BasketItems.every(item =>
+                    (item.val < 50 && item.basket === 'lt50') || (item.val > 50 && item.basket === 'gt50')
+                );
+                isCorrect = orderOk && basketOk;
+                msg = isCorrect
+                    ? 'Chính xác 100%! Thứ tự từ bé đến lớn là 289 < 450 < 615 < 804 và các giỏ đều đúng!'
+                    : 'Em kiểm tra lại thứ tự từ bé đến lớn (289 < 450 < 615 < 804) và phân loại hết 4 phép tính vào 2 giỏ nhé!';
+            } else if (exId === 7) {
+                isCorrect = t7Choices.c1 === '=' && t7Choices.c2 === '>' && t7Choices.c3 === '<';
+                msg = isCorrect
+                    ? 'Đúng rồi! 2×5 = 15−5 (cùng bằng 10); 1m > 90cm (vì 100cm > 90cm); 15l + 20l < 40l!'
+                    : 'Em nhớ quy tắc cá sấu há miệng về bên lớn hơn nhé: Câu 1 (=), Câu 2 (>), Câu 3 (<).';
+            } else if (exId === 8) {
+                if (t8SubMode === 'ruler') {
+                    const rulerAligned = Math.abs(t8RulerX - 60) <= 10;
+                    const lenOk = validateSlotList([{ id: 't8_len', ans: '7' }]);
+                    isCorrect = rulerAligned && lenOk;
+                    msg = isCorrect
+                        ? 'Chuẩn xác! Em đã đặt vạch 0 trùng điểm A và đo được đoạn thẳng AB dài 7 cm!'
+                        : 'Nhớ kéo thước để vạch số 0 trùng khít điểm A, rồi điền độ dài 7 cm nhé!';
+                } else {
+                    isCorrect = t8ClockHour === 7 && t8ClockMinute === 15;
+                    msg = isCorrect
+                        ? 'Giỏi quá! Đồng hồ đã chỉ đúng 7 giờ 15 phút!'
+                        : 'Em hãy bấm nút xoay kim giờ đến số 7 và kim phút đến 15 phút (số 3) nhé!';
+                }
+            } else if (exId === 9) {
+                const checks = [
+                    { id: 't9_apple', ans: '6' },
+                    { id: 't9_diff', ans: '3' }
+                ];
+                isCorrect = validateSlotList(checks);
+                msg = isCorrect
+                    ? 'Tuyệt vời! Có 6 quả táo đỏ, và 7 quả cam nhiều hơn 4 quả xoài là 3 quả (7 − 4 = 3)!'
+                    : 'Em hãy chạm đếm lại trên biểu đồ nhé: Có 6 quả táo; Cam (7) nhiều hơn Xoài (4) là 3 quả.';
+            } else if (exId === 10) {
+                const stOk = t10SelectedStatement === 'st1';
+                const checks = [
+                    { id: 't10_n1', ans: '36' },
+                    { id: 't10_op', ans: '-' },
+                    { id: 't10_n2', ans: '12' },
+                    { id: 't10_res', ans: '24' },
+                    { id: 't10_final', ans: '24' }
+                ];
+                const mathOk = validateSlotList(checks);
+                isCorrect = stOk && mathOk;
+                msg = isCorrect
+                    ? 'Hoàn thành xuất sắc bài toán có lời văn! 36 − 12 = 24 (kg)!'
+                    : 'Em nhớ chọn lời giải "Số ki-lô-gam bao gạo nếp cân nặng là:" và phép tính 36 − 12 = 24 nhé!';
+            }
+
+            showFeedback(isCorrect, msg);
+        }
+
+        function validateSlotList(checks) {
+            let allOk = true;
+            checks.forEach(item => {
+                const rawVal = (inputValues[item.id] || '').trim().replace('−', '-');
+                const targetVal = item.ans.replace('−', '-');
+                const el = document.getElementById(`slot_${item.id}`);
+                if (rawVal === targetVal) {
+                    if (el) {
+                        el.classList.remove('wrong-slot', 'active-slot');
+                        el.classList.add('correct-slot');
+                    }
+                } else {
+                    allOk = false;
+                    if (el) {
+                        el.classList.remove('correct-slot', 'active-slot');
+                        el.classList.add('wrong-slot');
+                    }
+                }
+            });
+            return allOk;
+        }
+
+        function showFeedback(isSuccess, message) {
+            const banner = document.getElementById('feedbackBanner');
+            const icon = document.getElementById('feedbackIcon');
+            const text = document.getElementById('feedbackText');
+
+            banner.classList.remove('hidden', 'bg-emerald-100', 'border-emerald-400', 'text-emerald-900', 'bg-rose-100', 'border-rose-400', 'text-rose-900');
+
+            if (isSuccess) {
+                playSound('success');
+                starCount += 1;
+                document.getElementById('starScore').innerText = starCount;
+                banner.classList.add('bg-emerald-100', 'border-emerald-400', 'text-emerald-900');
+                icon.innerText = '🎉';
+            } else {
+                playSound('error');
+                banner.classList.add('bg-rose-100', 'border-rose-400', 'text-rose-900');
+                icon.innerText = '💪';
+            }
+
+            text.innerText = message;
+            speakVietnamese(message);
+        }
+    </script>
+</body>
+</html>
