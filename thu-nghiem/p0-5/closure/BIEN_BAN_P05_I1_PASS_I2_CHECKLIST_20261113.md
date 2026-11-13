@@ -34,3 +34,13 @@ Những kết quả này là **USER_EXECUTION_LOG**; không giả định rằng
 
 ## Quy tắc sư phạm cho P0.6
 SGK/SBT có thể không cung cấp đáp án; câu hỏi biến thể dùng đáp án do dự án tính/biên soạn, xác minh bằng rule engine hoặc rubric phù hợp môn, lưu nguồn đáp án riêng biệt với trạng thái phê duyệt. Bài 20 là pilot, không cố định sáu lượt hay loại câu vào kiến trúc chung.
+
+## I.2-A — Bằng chứng phiên bản deployment TEST (người vận hành cung cấp)
+- Ảnh Manage deployments có thông báo "Đã cập nhật thành công hoạt động triển khai", version **6**, lúc **18:18 ngày 13/11/2026** (Asia/Ho_Chi_Minh).
+- Deployment ID trùng giữa ảnh quản lý và URL TEST: `AKfycbwVxQnRxmWtNKszA9SIk6ahglpPJz008TYVlHPRR0pz5ZVf9FX5IlC36jM8zhQrRy7iXg`; endpoint `/exec`.
+- URL `/dev` người vận hành cung cấp có mã riêng, phục vụ kiểm tra mã Editor gần nhất, không phải bằng chứng version 6; không gộp hai URL.
+- Đã thử tải cả `/exec` và `/dev` từ môi trường truy cập độc lập nhưng không thể tải nội dung (cache miss). Kết quả này không chứng minh webapp hoạt động hay lỗi.
+- Ảnh không cung cấp ánh xạ trực tiếp từ Apps Script version 6 sang Git commit SHA H.2. Chưa đủ bằng chứng Web App `ping/load` và thời điểm chạy thực tế; **WEBAPP_PENDING**. Có thể xác minh phiên bản bằng UI nội dung 7 câu đã duyệt, nhưng để có nguồn commit bất biến vẫn cần kiểm tra provenance deployment.
+- Google Sheets QA vừa đọc lại tại đầu I.2: `90_Lan_lam_bai` và `91_So_sao` đều chỉ có một hàng tiêu đề, chưa có bản ghi. Đây là mốc đối chiếu trước sáu lượt, không phải bằng chứng sau thử.
+- Tiếp theo: Trên chính `/exec` version 6, kiểm trực quan ba nhãn LV1 (004/007/010), bốn nhãn còn lại (022/024/026/030), điều hướng desktop/mobile, chấm đủ 6 lượt và 1 lượt sai/bỏ trống mẫu, rồi so sánh lại tab 90/91. Không tự điền `evidence-current.json` trước khi có số liệu kiểm chứng.
+- Không thay MAIN, nguồn 30 câu, ScriptProperties, deployment production, điểm/sao hoặc dữ liệu học sinh.
