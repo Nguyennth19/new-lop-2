@@ -4,17 +4,17 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T21:55:26+07:00",
-  "status": "IN_PROGRESS",
-  "currentOperation": "Initialize execution journal and audit F-A policy / B21 pedagogy",
-  "recoveryPoint": "Fresh F-A branch created from verified E03 source; no pedagogical files altered.",
+  "updatedAt": "2026-11-13T21:59:26+07:00",
+  "status": "PENDING_APPROVAL",
+  "currentOperation": "Await owner approval of E0 P01-P06 and B21 subskills/LV3; no write, merge or deployment authorized",
+  "recoveryPoint": "F-A audit and workflow present. QA run 43447904122 SUCCESS at commit 2b3a3893226725b0e149811e0bea15e1fa3298cf. Documentation-only evidence updates may post-date that tested SHA; verify current head on resume.",
   "steps": {
     "FA0": "DONE",
-    "FA1": "IN_PROGRESS",
+    "FA1": "DONE",
     "FA2": "PENDING_APPROVAL",
-    "FA3": "IN_PROGRESS",
+    "FA3": "DONE",
     "FA4": "PENDING_APPROVAL",
-    "FA5": "IN_PROGRESS"
+    "FA5": "BLOCKED"
   },
   "gates": {
     "policyE0": "PENDING_APPROVAL",
@@ -29,14 +29,18 @@
     "priorCiRunId": 43440199612,
     "priorCiCommit": "4da9e6eedce8e39a912a9dfbedfe255421941a40",
     "priorCiConclusion": "success",
-    "faCiRunId": null,
-    "faCiConclusion": null
+    "faCiRunId": 43447904122,
+    "faCiConclusion": "success",
+    "latestSourceCiRunId": 43440539685,
+    "latestSourceCiConclusion": "success",
+    "faCiCommit": "2b3a3893226725b0e149811e0bea15e1fa3298cf"
   },
-  "lastConfirmedWrite": null,
+  "lastConfirmedWrite": "5deee5b87f2d72abdef52400f7cb4db4b8918e5c",
   "nextActions": [
-    "Audit E.0 / B21 source policy and pedagogical evidence",
-    "Document decisions and QA matrix",
-    "Verify latest F-A branch and CI; request owner approval"
+    "Obtain owner policy E.0 SHA-bound decision",
+    "Resolve B21 exact skill scope and LV3 cognitive differentiation",
+    "Rerun relevant QA after any owner-authorized edits",
+    "Verify G5 interactive separately before F-B handover"
   ],
   "safety": {
     "testOnly": true,
