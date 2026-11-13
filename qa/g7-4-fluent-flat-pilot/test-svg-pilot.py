@@ -34,7 +34,7 @@ for x in manifest["icons"]:
     if not f.is_file(): continue
     b=f.read_bytes()
     require(len(b)==x["bytes"] and hashlib.sha256(b).hexdigest()==x["sha256"],item+" sha256 and bytes match")
-    upstream_blob=hashlib.sha1(f"blob {len(b)}\\0".encode("ascii").replace(b"\\0",b"\\x00")+b).hexdigest()
+    upstream_blob=hashlib.sha1(f"blob {len(b)}".encode("ascii")+bytes([0])+b).hexdigest()
     require(upstream_blob==x["upstreamBlob"],item+" exact upstream git blob")
     require(b.startswith(b"<svg") and len(b)<=100000,item+" SVG size/root")
     require(b"<!DOCTYPE" not in b.upper() and b"<!ENTITY" not in b.upper(),item+" no DTD/entity")
