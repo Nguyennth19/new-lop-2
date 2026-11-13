@@ -68,7 +68,19 @@
         "total"
       ],
       "skill": "COLUMN_ADDITION",
-      "source": "HTML_CSS"
+      "source": "HTML_CSS",
+      "rendererRole": "FALLBACK_ONLY",
+      "primaryRendererContract": "qa/g7-4-column-calc-reference-v1/contract.v1.json",
+      "fallbackBoundary": {
+        "operation": "ADD",
+        "profile": "PV100",
+        "twoDigitOperands": true,
+        "maxResult": 99,
+        "requiresExplicitDegradedConsent": true,
+        "requiresFallbackQa": true,
+        "forbidAutoPromotion": true,
+        "referenceSourceVerifiedBeforeProduction": true
+      }
     },
     {
       "id": "SEGMENT_LENGTH_SUM",
@@ -183,5 +195,6 @@
     "AB 4cm + CD 3cm = 7cm",
     "blocked broken-line skill changes",
     "hidden answers not leaked"
-  ]
+  ],
+  "columnCalcSourceOfTruth": "COLUMN_CALC_REFERENCE_V1 — advanced source pending, G6 two-digit source frozen"
 }
