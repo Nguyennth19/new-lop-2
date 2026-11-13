@@ -44,3 +44,12 @@ SGK/SBT có thể không cung cấp đáp án; câu hỏi biến thể dùng đ�
 - Google Sheets QA vừa đọc lại tại đầu I.2: `90_Lan_lam_bai` và `91_So_sao` đều chỉ có một hàng tiêu đề, chưa có bản ghi. Đây là mốc đối chiếu trước sáu lượt, không phải bằng chứng sau thử.
 - Tiếp theo: Trên chính `/exec` version 6, kiểm trực quan ba nhãn LV1 (004/007/010), bốn nhãn còn lại (022/024/026/030), điều hướng desktop/mobile, chấm đủ 6 lượt và 1 lượt sai/bỏ trống mẫu, rồi so sánh lại tab 90/91. Không tự điền `evidence-current.json` trước khi có số liệu kiểm chứng.
 - Không thay MAIN, nguồn 30 câu, ScriptProperties, deployment production, điểm/sao hoặc dữ liệu học sinh.
+
+## I.2-B — Người vận hành xác nhận hoàn tất sáu lượt (13/11/2026)
+- Người vận hành xác nhận: LV1-A và cả **5 lượt còn lại** đều đạt kết quả tương tự, không phát hiện lỗi. Ảnh đã cung cấp của LV1-A thể hiện **6/6**, điểm 10, bố cục câu đặt tính, vùng Nộp bài / Kết quả / Đáp án và bàn phím số trên desktop.
+- Checklist người vận hành xác nhận PASS: **7 câu H.1 hiển thị đúng**, đáp án cố ý sai được chấm sai, bỏ trống xử lý đúng, desktop và mobile hiển thị/nhập liệu bình thường, hình và fallback hoạt động.
+- **Phân loại chứng cứ:** `OPERATOR_ACCEPTANCE_PASS` cho tất cả sáu lượt và browser; `SCREENSHOT_LV1_A_6_OF_6` cho một lượt. Không có đủ **sáu dòng biên nhận số học độc lập** (`correct, total, wrongCorrect, recorded, starsAwarded`) từ chính /exec Version 6; không tự suy ra/sáng tác các trường này từ mô tả “tương tự”.
+- Đọc độc lập Google Sheets QA **sau lời xác nhận thử cả sáu lượt**: `90_Lan_lam_bai!A1:L1000` có đúng 1 hàng tiêu đề, 0 bản ghi; `91_So_sao!A1:I1000` có đúng 1 hàng tiêu đề, 0 bản ghi. `NO_SHEET_WRITE_OBSERVED`; không chứng minh độc lập mọi đường ghi khác.
+- **BROWSER_VISUAL_USER_PASS**; **SESSIONS_OPERATOR_PASS**; **WEBAPP_DEPLOYMENT_V6_USER_SCREENSHOT_PASS**, nhưng Release Gate máy vẫn `WEBAPP/SESSIONS/BROWSER=PENDING` cho đến khi hồ sơ evidence đáp ứng hợp đồng chính xác và được xác minh nguồn.
+- Giữ `thu-nghiem/p0-5/evidence-current.json` ở trạng thái null cho các chứng cứ chưa hoàn chỉnh; `RELEASE_READY=false`. Không yêu cầu người vận hành làm lại sáu lượt chỉ để tạo kết quả đã có: ưu tiên xuất log/receipt hiện hữu; nếu không còn thì ghi nhận giới hạn và duy trì khóa gate.
+- Rollback: Apps Script TEST về deployment version trước 6 nếu phát hiện sai lệch; không sửa MAIN, test-theo-main, gói JSON được duyệt, production hoặc dữ liệu học sinh.
