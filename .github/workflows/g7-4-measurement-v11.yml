@@ -1,0 +1,20 @@
+name: G7.4 Measurement Reference V1.1 TEST
+on:
+  push:
+    branches:
+      - test/g7-4-measurement-reference-v11-20261114
+    paths:
+      - 'qa/g7-4-measurement-reference-v11/**'
+      - '.github/workflows/g7-4-measurement-v11.yml'
+  workflow_dispatch:
+jobs:
+  measurement-unit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Ruler / clock contract and state, wraparound, source SHA
+        run: node qa/g7-4-measurement-reference-v11/measurement-v11.test.cjs
