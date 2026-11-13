@@ -1,0 +1,38 @@
+name: G7.4-B.5.7 Asset Library 288 QA
+on:
+  push:
+    branches:
+      - test/g7-4-b5-7-asset-library-288-qa-20261113
+    paths:
+      - 'ThuVienAsset288Test.gs'
+      - 'qa/g7-4-b5-7/**'
+      - '.github/workflows/g7-b57-library-288.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  library-and-b20:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 288 source assets, secure URL loader and gallery
+        run: node qa/g7-4-b5-7/test-288-library.cjs
+      - name: Regression of B5.6 standalone gallery
+        run: node qa/g7-4-b5-6/test-standalone-visual.cjs
+      - name: Multi-lesson QA and visual intent gate
+        run: node qa/g7-4-b5-5/test-multi-lesson-gate.cjs
+      - name: Original B20 render + correct/incorrect grading across six sessions
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Approved CSS and image fallback behavior
+        run: |
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
+      - name: GAS library syntax check
+        run: |
+          cp ThuVienAsset288Test.gs /tmp/g7-b57-288.cjs
+          node --check /tmp/g7-b57-288.cjs
