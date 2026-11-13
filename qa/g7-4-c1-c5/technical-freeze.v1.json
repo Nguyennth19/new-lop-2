@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "g7-4-c5-technical-closure-v1",
+  "date": "2026-11-13",
+  "branch": "test/g7-4-c1-c5-visual-closure-20261113",
+  "scope": "TEST_ONLY",
+  "designPolicy": "FROZEN_FOR_THIS_PILOT",
+  "assetScope": {
+    "webpApprovedLabels": 288,
+    "fluentFlatAssets": 46,
+    "newSvgRequiredByVerifiedDemand": 0,
+    "fluentFlatCountSafeForExplicitSymbols": 45,
+    "fluentFlatIllustrationOnly": 1,
+    "assetImportClosedForPilot": true,
+    "maintenanceIntake": "ONLY_BY_FAILED_REUSE_MATCH_AND_EXPLICIT_LESSON_NEED"
+  },
+  "stages": {
+    "C1": {
+      "status": "POLICY_LOCKED",
+      "evidence": "qa/g7-4-c1-c5/ten-form-policy.v1.json",
+      "coveredExerciseFamilies": 10,
+      "coveredSubtypes": 12
+    },
+    "C2": {
+      "status": "PURE_ORCHESTRATOR_IMPLEMENTED",
+      "evidence": "qa/g7-4-c1-c5/visual-orchestrator.cjs",
+      "runtimeIntegrationAllTen": false,
+      "mathScenesRequireTrustedRegistry": true
+    },
+    "C3": {
+      "status": "CHROME_HARNESS_PASS_OWNER_VISUAL_PENDING",
+      "evidence": "qa/g7-4-c1-c5/G7_C3_Ten_Form_Visual_Review.html",
+      "exerciseExamples": 10,
+      "realPublishedLessonsCovered": 0
+    },
+    "C4": {
+      "status": "B20_POLICY_AUDIT_INTEGRATED_DEFAULT_OFF",
+      "evidence": "49_G74_C4_VisualPolicyTest.html",
+      "B20Questions": 30,
+      "B20Representative": 2,
+      "B20Decorative": 28,
+      "B20Exact": 0,
+      "actualGoogleAppsScriptTestDeployment": false,
+      "B21B24Integrated": false
+    },
+    "C5": {
+      "status": "TECHNICAL_FREEZE_PREPARED_RELEASE_PENDING",
+      "evidence": "docs/kiem-dinh/G7.4-C1-C5_VISUAL_TECHNICAL_CLOSURE_20261113.md",
+      "ownerSignoffOnNewTenFormGallery": false,
+      "liveGoogleAppsScriptQa": false,
+      "productionMerge": false
+    }
+  },
+  "safety": {
+    "mainUnchanged": true,
+    "studentDataUnchanged": true,
+    "gradingUnchanged": true,
+    "questionContentUnchanged": true,
+    "existingB514CountRendererUntouched": true,
+    "serverFeatureGateDefaultOff": true,
+    "rollback": "G74_C4_VISUAL_POLICY property unset in isolated TEST Apps Script project, or revert TEST branch to test/g7-4-b5-14a-visual-mode-policy-20261113"
+  },
+  "definitionOfDone": {
+    "specAndPureResolver": true,
+    "tenFormAutomatedQa": true,
+    "B20GatedPolicyProbe": true,
+    "ownerVisualSignoff": false,
+    "realWebAppGASTest": false,
+    "productionRelease": false
+  },
+  "nextReleaseGate": "Owner visual approval of the 10-form gallery, Apps Script isolated TEST deployment, regression of real lesson UI, explicit release decision",
+  "followUpRule": "After technical freeze, new SVGs enter B6 demand intake and ordinary maintenance; do not reopen C1/C2 per asset."
+}
