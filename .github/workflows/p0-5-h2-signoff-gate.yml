@@ -21,6 +21,8 @@ jobs:
           node-version: '22'
       - name: Check approved 30 question content invariants
         run: node thu-nghiem/p0-5/closure/kiem-thu-h1-bat-bien.cjs
+      - name: TEST-only runtime content receipt regressions
+        run: node thu-nghiem/p0-5/closure/kiem-thu-p05-i-doc.cjs
       - name: Reuse B20 grading and renderer regression
         run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
       - name: Reuse offline FULL_SAFE and UI-A/B
