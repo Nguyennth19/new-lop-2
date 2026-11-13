@@ -1,0 +1,42 @@
+name: G7.4-B.5.8 Semantic 288 + TEST Exact Count Composition
+on:
+  push:
+    branches: [test/g7-4-b5-8-semantic-count-composition-20261113]
+    paths:
+      - 'BoDungHinhDinhLuongB58Test.gs'
+      - 'du-lieu/asset-selector/count-composition-b58-test.v1.json'
+      - 'qa/g7-4-b5-8/**'
+      - '.github/workflows/g7-b58-semantic-composition.yml'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  b58-ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: B5.8 searchable labels and fail-closed quantity TEST QA
+        run: node qa/g7-4-b5-8/test-semantic-count-composition.cjs
+      - name: All 288 owner labels and audit unchanged
+        run: node qa/g7-4-b5-7-perf-a/test-owner-label-approval.cjs
+      - name: Previous gallery performance and baseline
+        run: |
+          node qa/g7-4-b5-7/test-288-library.cjs
+          node qa/g7-4-b5-7-perf-a/test-gallery-performance.cjs
+      - name: Prior visual and multi-lesson QA
+        run: |
+          node qa/g7-4-b5-6/test-standalone-visual.cjs
+          node qa/g7-4-b5-5/test-multi-lesson-gate.cjs
+      - name: B20 original sessions and styling
+        run: |
+          node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
+      - name: GAS source syntax
+        run: |
+          cp BoDungHinhDinhLuongB58Test.gs /tmp/b58.cjs
+          node --check /tmp/b58.cjs
