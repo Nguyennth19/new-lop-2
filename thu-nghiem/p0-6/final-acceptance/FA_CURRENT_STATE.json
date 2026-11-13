@@ -4,10 +4,10 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T22:21:03.532+07:00",
+  "updatedAt": "2026-11-13T22:24:30+07:00",
   "status": "BLOCKED",
   "currentOperation": "G5 offline bridge QA passed; pending actual Web App TEST/browser/mobile integration before F-A closure and F-B official handover",
-  "recoveryPoint": "Owner G7/G8 scoped approval on GitHub; bridge test run 43451418264 success at dc6e7ed0dc24aa371b2d30a10ee8528f57e5b069; last journal commit 20cb9dae9fd1057c927d373bad843cc544b249c6. Check current remote head/CI before resuming.",
+  "recoveryPoint": "Confirmed CI 43451893690 success at 7aa1dfc0b8fd3fe9a1b4f28aeae0122f3d4d96a2. Most recent code fix corrects FA static audit approval expectation. Live Web App mobile/desktop integration not performed. Verify current HEAD / latest CI before any continuation.",
   "steps": {
     "FA0": "DONE",
     "FA1": "DONE",
@@ -45,7 +45,11 @@
     "g5RunSha": "dc6e7ed0dc24aa371b2d30a10ee8528f57e5b069",
     "g5Conclusion": "success",
     "g5InitialFailedRunId": 43451071228,
-    "ownerDecisionRef": "FA_OWNER_APPROVAL_G7_G8_20261113.md"
+    "ownerDecisionRef": "FA_OWNER_APPROVAL_G7_G8_20261113.md",
+    "g5FinalAuditRunId": 43451893690,
+    "g5FinalAuditSha": "7aa1dfc0b8fd3fe9a1b4f28aeae0122f3d4d96a2",
+    "g5FinalAuditConclusion": "success",
+    "g5StateMismatchFailedRunId": 43451745036
   },
   "lastConfirmedWrite": "20cb9dae9fd1057c927d373bad843cc544b249c6",
   "nextActions": [
