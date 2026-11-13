@@ -22,6 +22,8 @@ jobs:
           node-version: '22'
       - name: E02 policy digest, deterministic variants, G0-G8 negative cases
         run: node thu-nghiem/p0-6/kiem-thu-policy-generator-v1.cjs
+      - name: E02 sanitized generator QA receipts
+        run: node thu-nghiem/p0-6/xuat-bien-nhan-generator-v1.cjs
       - name: E01 math variant G0-G8 gates
         run: node thu-nghiem/p0-6/kiem-thu-math-variant-policy-v1.cjs
       - name: E multi-lesson pipeline
