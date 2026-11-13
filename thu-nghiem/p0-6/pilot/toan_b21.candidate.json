@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "lop2.lesson.v1",
+  "lessonId": "toan_b21",
+  "subject": "toan",
+  "curriculum": {
+    "grade": 2,
+    "lessonRef": "MATH_B021"
+  },
+  "contentVersion": "p0.6-e-candidate-1",
+  "source": {
+    "questionOrigin": "PROJECT_ORIGINAL_VARIANT",
+    "references": [
+      {
+        "sourceType": "PROJECT",
+        "ref": "Drive Curriculum Matrix MATH_B021, SGK_B001_B024_AUDIT, QA_REFERENCE_CASES: QA_B021_VALID"
+      }
+    ]
+  },
+  "levels": [
+    {
+      "id": "LV1",
+      "intent": "Luyện tập phép cộng có nhớ trong phạm vi 100"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "LV1-A",
+      "levelId": "LV1",
+      "questionIds": [
+        "VAR_B21_E_001",
+        "VAR_B21_E_002"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "VAR_B21_E_001",
+      "kind": "math.mental",
+      "levelId": "LV1",
+      "sessionId": "LV1-A",
+      "prompt": "Tính: 67 + 3 = ?",
+      "parameters": {
+        "a": 67,
+        "b": 3
+      },
+      "answerSpec": {
+        "mode": "exact",
+        "origin": "PROJECT_DERIVED",
+        "value": 70,
+        "proof": {
+          "operation": "add",
+          "operands": [
+            67,
+            3
+          ]
+        },
+        "verification": {
+          "type": "deterministic_rule",
+          "status": "PASS"
+        },
+        "pedagogyApproval": {
+          "status": "PENDING"
+        }
+      },
+      "renderer": {
+        "component": "math.mental"
+      },
+      "assets": {
+        "sceneId": null,
+        "usage": "decorative"
+      }
+    },
+    {
+      "id": "VAR_B21_E_002",
+      "kind": "math.mental",
+      "levelId": "LV1",
+      "sessionId": "LV1-A",
+      "prompt": "Tính: 48 + 7 = ?",
+      "parameters": {
+        "a": 48,
+        "b": 7
+      },
+      "answerSpec": {
+        "mode": "exact",
+        "origin": "PROJECT_DERIVED",
+        "value": 55,
+        "proof": {
+          "operation": "add",
+          "operands": [
+            48,
+            7
+          ]
+        },
+        "verification": {
+          "type": "deterministic_rule",
+          "status": "PASS"
+        },
+        "pedagogyApproval": {
+          "status": "PENDING"
+        }
+      },
+      "renderer": {
+        "component": "math.mental"
+      },
+      "assets": {
+        "sceneId": null,
+        "usage": "decorative"
+      }
+    }
+  ]
+}
