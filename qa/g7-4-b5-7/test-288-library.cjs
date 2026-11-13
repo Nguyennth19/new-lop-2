@@ -22,7 +22,7 @@ t('Approved candy mapping remains unchanged',()=>assert.equal(lib.resolve(index,
 t('No ID and invalid ID return typed safe result',()=>{
  assert.equal(lib.resolve(index,'KL_SH99_001').code,'INVALID_ASSET_ID');
  assert.equal(lib.resolve(index,'<script>').code,'INVALID_ASSET_ID');
- assert.equal(lib.resolve(index,'KL_SH01_999').code,'ASSET_NOT_FOUND');
+ assert.equal(lib.resolve(index,'KL_SH01_013').code,'ASSET_NOT_FOUND');
 });
 t('404/network fallback contains no score or student writes',()=>{
  const f=lib.fallback('HTTP_404','KL_SH01_001');assert.equal(f.ok,false);
