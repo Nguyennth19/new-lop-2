@@ -26,7 +26,7 @@ jobs:
       - name: Install browser test dependency
         run: |
           npm install --no-save --ignore-scripts playwright@1.56.1
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
       - name: Build frozen-source independent B20 preview
         run: node thu-nghiem/p0-6/fb/build-fb3-b20-preview.cjs
       - name: Test real Chromium desktop/mobile 30/30
