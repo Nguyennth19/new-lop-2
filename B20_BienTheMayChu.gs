@@ -2,8 +2,8 @@
  * Không ghi điểm, sao hoặc trạng thái hoàn thành. Không đưa token GitHub vào mã nguồn.
  * URL khóa theo commit, thay phiên bản phải cập nhật commit và QA lại.
  */
-const B20_PILOT_URL="https://raw.githubusercontent.com/Nguyennth19/new-lop-2/513e1dcefa0f229305a5d4523dac3cbdd201a908/thu-nghiem/bai-20-bien-the/runtime.json";
-const B20_PILOT_CACHE_KEY='b20_pilot_20261112_pack_g7_b31_v1';
+const B20_PILOT_URL="https://raw.githubusercontent.com/Nguyennth19/new-lop-2/1e9c700f1fd85427b30e9f1f42c8c49669011e33/thu-nghiem/bai-20-bien-the/runtime.json";
+const B20_PILOT_CACHE_KEY='b20_pilot_20261113_h1_pedagogy_copy_v1';
 function b20DocPackThu_(){
   const cache=CacheService.getScriptCache();
   const cached=cache.get(B20_PILOT_CACHE_KEY);
