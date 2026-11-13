@@ -118,6 +118,14 @@ function render(){
        KLVariantAssetBridgeV1,KL_ASSET_V5,{document});
    }).catch(()=>{}); // Existing SVG/emoji/G5 illustration stays in place.
  }
+ // G7.4-B.5.14: readonly, opt-in isolated TEST panel; questions, grading, drafts unchanged.
+ if(typeof KL_G74_B514!=='undefined'&&fullData.variantPilot&&
+     fullData.lesson&&fullData.lesson.id==='toan_b20'){
+   try{
+     KL_G74_B514.mount({root:target,document,location:window.location,
+       lesson:fullData.lesson,variantPilot:true,view});
+   }catch(e){/* Preserve existing lesson on TEST-panel failure. */}
+ }
  target.scrollTop=0;
  renderResults();
 }
