@@ -1,0 +1,487 @@
+{
+  "schemaVersion": "g7-4-b5-9-review-matrix-v1",
+  "sourceBranch": "test/g7-4-b5-8r-fluent-flat-pilot-import-20261113",
+  "sourceCommit": "1ffb34c752ecf5d402f04cfb4b392c77f57c54bc",
+  "scope": "TEST_ONLY",
+  "validatedFrom": "existing manifest + offline review HTML",
+  "reviewResult": "DATA_CROSSCHECK_PASS__VISUAL_OWNER_PENDING",
+  "counts": {
+    "manifest": 46,
+    "labelCandidates": 46,
+    "labelIdMismatch": 0,
+    "compositeCountBlocked": 3,
+    "specialReview": 8,
+    "singleObjectCandidates": 35,
+    "countSafeApproved": 0
+  },
+  "gate": {
+    "security": "PRIOR_CI_PASS",
+    "actual32px": "NOT_EXECUTED",
+    "actual44px": "NOT_EXECUTED",
+    "actual64px": "NOT_EXECUTED",
+    "ownerApproval": "PENDING",
+    "runtimeEnabled": false
+  },
+  "items": [
+    {
+      "index": 1,
+      "id": "chicken",
+      "labelVi": "gà (hình chung)",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "697797fdd9ba34d7a69e448de2bbcbafdb6b3f6a15e1b63b91538dddc881bc64"
+    },
+    {
+      "index": 2,
+      "id": "rooster",
+      "labelVi": "gà trống",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "52b2a8d0f55e1fcf2aef0518f40142a06f5438bddde74ef969c1c9b5c9a7e67c"
+    },
+    {
+      "index": 3,
+      "id": "books",
+      "labelVi": "nhiều cuốn sách",
+      "classification": "COMPOSITE_COUNT_BLOCK",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "41e2686cdc526bfa41ea599e2a74378f3a02788ff7e8cd1b9ad0a39ea157000c"
+    },
+    {
+      "index": 4,
+      "id": "red_apple",
+      "labelVi": "quả táo đỏ",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "bc69f7c89a3621fb564482f9e13818019c6eac3a9d16fe996852514f3b19a073"
+    },
+    {
+      "index": 5,
+      "id": "green_apple",
+      "labelVi": "quả táo xanh",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "8d16350d03ee8c98f1d58985453b4c7fbe4d69da3fde37cbf8b5c70ecb80bbd4"
+    },
+    {
+      "index": 6,
+      "id": "banana",
+      "labelVi": "quả chuối",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "40047ed9d10462ba41457b0c55beb05b6fde4ce590e6c1f88577539e46c2f20d"
+    },
+    {
+      "index": 7,
+      "id": "mango",
+      "labelVi": "quả xoài",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "5747bef4b8d4857d84e6bf784e65ef8b3925d162ae6ca099ab37e33e5b4d33bd"
+    },
+    {
+      "index": 8,
+      "id": "tangerine",
+      "labelVi": "quả quýt",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "c820b266373b52bb1854213b08801c8d582d60dae06d380fdb4beaf89d569ea3"
+    },
+    {
+      "index": 9,
+      "id": "grapes",
+      "labelVi": "chùm nho",
+      "classification": "COMPOSITE_COUNT_BLOCK",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "e959e27685f84cead6cc230c719c75feaf3a3cfde878cf00819473036005edd0"
+    },
+    {
+      "index": 10,
+      "id": "watermelon",
+      "labelVi": "quả dưa hấu",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "33ce86d2784776504191684fd34495c68ac54be7b98e100ef18c3a19297c735e"
+    },
+    {
+      "index": 11,
+      "id": "strawberry",
+      "labelVi": "quả dâu tây",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "d8522f848f305fc81040dd9c5467f97df483fde5e2568429046e7f1ae1a23d91"
+    },
+    {
+      "index": 12,
+      "id": "pear",
+      "labelVi": "quả lê",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "ddab6102c0ab2fef2dee700b7bb3d427187df8bfa010b23c4e2516e15c226551"
+    },
+    {
+      "index": 13,
+      "id": "peach",
+      "labelVi": "quả đào",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "a144b995f3b094fb28d3eb016efebd6372c5ae82273cf3c0379741eb0c9d4657"
+    },
+    {
+      "index": 14,
+      "id": "carrot",
+      "labelVi": "củ cà rốt",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "99521ccf4753d9b5312707541eafc41f00b35f616bb6e96cada9acfc7bf1d396"
+    },
+    {
+      "index": 15,
+      "id": "rabbit",
+      "labelVi": "con thỏ",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "e78f7552298062c599bd7290ff52bad25de352477a9475e34332c52eafe2c5d7"
+    },
+    {
+      "index": 16,
+      "id": "cat",
+      "labelVi": "con mèo",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "59f5401062509f4d0fb310817ce9a9656724c6c924a4d42f2a33ac6bb0964602"
+    },
+    {
+      "index": 17,
+      "id": "dog",
+      "labelVi": "con chó",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "e3ee366f39d9f47bbb5a6dc22a521dbea32f05f2216d0665a551b134ca2474da"
+    },
+    {
+      "index": 18,
+      "id": "cow",
+      "labelVi": "con bò",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "2aa1806bbf6299d6a8fc865587d9384dff832fabc2fe04ff6d11aa01b53b5109"
+    },
+    {
+      "index": 19,
+      "id": "pig",
+      "labelVi": "con lợn",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "790bb801b792327d607bf51f7410be069fb26f2a2908b2a691c851a947bdba08"
+    },
+    {
+      "index": 20,
+      "id": "duck",
+      "labelVi": "con vịt",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "4d793eb8e867817586ae2a03784cbad9814f0e89f195a3503c77f8cb8441e35d"
+    },
+    {
+      "index": 21,
+      "id": "fish",
+      "labelVi": "con cá",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "1fc7329fd735a8b8bd7482a39bc100e3c347e7f0e9ce36473fde81d19e96a1ee"
+    },
+    {
+      "index": 22,
+      "id": "bird",
+      "labelVi": "con chim",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "c99882e3162e56084e1099575a4b5032bcf07c56c17a6d97e3ca344db42ee596"
+    },
+    {
+      "index": 23,
+      "id": "butterfly",
+      "labelVi": "con bướm",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "118a7aee6fb3360fef0dcf86aeaac8e022c35c3f52529145750155a8893f50fc"
+    },
+    {
+      "index": 24,
+      "id": "sunflower",
+      "labelVi": "hoa hướng dương",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "af0f5db9816f1545121d2d4c80a145e8809d50830f8516fd99a631bca7702ea6"
+    },
+    {
+      "index": 25,
+      "id": "school",
+      "labelVi": "trường học",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "03febeb59b9c13ee792874a87cd04aea413e7c6ef23b1e7752837dc5d6cbe34d"
+    },
+    {
+      "index": 26,
+      "id": "backpack",
+      "labelVi": "ba lô",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "9a3ea2d79e670de01c0f6e742b80d5b679c172edc4532c08a7c3083d703b4f23"
+    },
+    {
+      "index": 27,
+      "id": "pencil",
+      "labelVi": "bút chì",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "f82b7820c41b57d2cca96ef75e32fdedcb07d2d8b786a781274c25fe306c76d7"
+    },
+    {
+      "index": 28,
+      "id": "pen",
+      "labelVi": "bút mực",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "302d3ce8f609b09dbff8af43ea9e0b5fbd9a4e9404e8381f0190fd98b4c991d8"
+    },
+    {
+      "index": 29,
+      "id": "scissors",
+      "labelVi": "cái kéo",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "67d643e25a39792627bfef5aaea3866cdd083fe047a7e449d0070945e32f163f"
+    },
+    {
+      "index": 30,
+      "id": "crayon",
+      "labelVi": "bút sáp màu",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "27f73eca2adb077f87c7843b18372b8afae4141c02e8b8917437d508177e5da6"
+    },
+    {
+      "index": 31,
+      "id": "paintbrush",
+      "labelVi": "cọ vẽ",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "78757c4c943e8e05cf3485d017b172ebc622d1e5f70e5ab6371a28f97102770d"
+    },
+    {
+      "index": 32,
+      "id": "notebook",
+      "labelVi": "quyển vở",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "88d97d0a553b501eab3ed70feb191481dfcf12a308ecc7ece2afdbfb74f102c1"
+    },
+    {
+      "index": 33,
+      "id": "alarm_clock",
+      "labelVi": "đồng hồ báo thức",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "e5356b8830074a3ca21fff8bb74807003ce996645341d46c25e26e06f0385d3b"
+    },
+    {
+      "index": 34,
+      "id": "balance_scale",
+      "labelVi": "cân hai đĩa (minh họa)",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "086e82d739451ebd0cf8dc7b23376bd3e2e019373dda6da487f8971bc0437e00"
+    },
+    {
+      "index": 35,
+      "id": "basket",
+      "labelVi": "cái giỏ",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "ba3325690df45f79d0254dd290b72432c6799977be42d6818caf7f0bd4fedb75"
+    },
+    {
+      "index": 36,
+      "id": "bucket",
+      "labelVi": "cái xô",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "ef9ec134a928ab8e5450a4ebaa983e339c6138f4d37511fcf7058e99c2726526"
+    },
+    {
+      "index": 37,
+      "id": "bicycle",
+      "labelVi": "xe đạp",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "0241c712d2ea30a7ab0253422f94f1687838f6312a7a628f6d9c8da509faadf9"
+    },
+    {
+      "index": 38,
+      "id": "soccer_ball",
+      "labelVi": "quả bóng đá",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "ca792d91995ac20dc37be0c1bd1f9f46d2f7ea4aea3bd4d0c69df1083bd641c9"
+    },
+    {
+      "index": 39,
+      "id": "teddy_bear",
+      "labelVi": "gấu bông",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "83e2f3bd7cdeadade4be675ed238b8d1ba9e90e967ff1c10e8de8423043e568d"
+    },
+    {
+      "index": 40,
+      "id": "cookie",
+      "labelVi": "bánh quy",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "d02b9e85fa0394a4c59fd74654244c069eddb9aaf72abbcba8d0d3060262d6af"
+    },
+    {
+      "index": 41,
+      "id": "candy",
+      "labelVi": "viên kẹo",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "4e9e88bea7076d443d09a06afbc0070c08d4cb09a7248d3fc991297e904bd937"
+    },
+    {
+      "index": 42,
+      "id": "bread",
+      "labelVi": "bánh mì",
+      "classification": "SPECIAL_REVIEW",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "ef08e033f63a4f215744a3067a9c0693411ebcfe57b36bf9d197495ecbccf156"
+    },
+    {
+      "index": 43,
+      "id": "lemon",
+      "labelVi": "quả chanh",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "f3a924a7031fc0dd7c57a90e5f9794cf72859d860151dec321c4adc38605e4cc"
+    },
+    {
+      "index": 44,
+      "id": "pineapple",
+      "labelVi": "quả dứa",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "9d064d8f8796b53a9eeb18b642e6e16628848ad2fa944576b597e7c7f36a95be"
+    },
+    {
+      "index": 45,
+      "id": "cherries",
+      "labelVi": "chùm/quả anh đào (cần xác minh)",
+      "classification": "COMPOSITE_COUNT_BLOCK",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "67c243eed8f6430539076d065d71b90d8f7bb25ccd41c87c02a6f6f419dacf9f"
+    },
+    {
+      "index": 46,
+      "id": "egg",
+      "labelVi": "quả trứng",
+      "classification": "SINGLE_OBJECT_CANDIDATE",
+      "visualStatus": "PENDING_OWNER_VISUAL",
+      "countStatus": "NOT_APPROVED",
+      "objectsPerAsset": null,
+      "sha256": "1c7146a519276e93c0f939756e80beb5b0edb4e9a350dbe58ab63c7d0bcc5204"
+    }
+  ]
+}
