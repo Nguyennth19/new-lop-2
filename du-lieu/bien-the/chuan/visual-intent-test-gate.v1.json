@@ -1,0 +1,13 @@
+{
+  "schema_version": "kidlearn-variant-visual-intent-generator-gate-v1",
+  "enabled": false,
+  "mode": "STAGING_ONLY",
+  "allowedLessonId": "tv_b03_visual_demo",
+  "registryReleaseCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "rulesVersion": "kidlearn-asset-semantic-rules-v1",
+  "sourceFixture": "du-lieu/bien-the/chuan/tieng-viet-demo.visual-intent.v1.json",
+  "baselineSHA": "5bcbc9f38ee80d69f292fd21e58cc22d584e0b4b",
+  "switchPolicy": "OFF_DEFAULT_ON_EXPLICIT_TEST_INVOCATION",
+  "rollback": "DISABLE_FLAG_OR_USE_B5_3_BRANCH",
+  "notes": "Do not set enabled:true in tracked config. The isolated CI test constructs an ephemeral enabled copy only."
+}
