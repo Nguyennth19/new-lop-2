@@ -1,0 +1,17 @@
+/* Scoped G7.4 Drag Sort V1.1. No global styles or G6 overrides. */
+.g74-ds-v11{max-width:850px;margin:0 auto;font:700 15px/1.5 system-ui,sans-serif;color:#243449}
+.g74-ds-v11 h3{font-size:17px;background:#eef7ff;border:2px solid #acd4f7;border-radius:14px;padding:12px}
+.g74-ds-status{font-size:12px;color:#526783;margin:10px 0}
+.g74-ds-source{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0}
+.g74-ds-card{border:3px solid #8ecdf1;background:#fff;color:#234b6c;border-radius:14px;padding:10px;min-height:54px;min-width:78px;font:800 17px/1.4 system-ui;cursor:grab}
+.g74-ds-card[aria-pressed="true"]{background:#ffe8a8;border-color:#eab346}
+.g74-ds-card.assigned{border-color:#70c8a8;background:#e9fff4}
+.g74-ds-targets{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.g74-ds-target{border:3px dashed #89bbe5;background:#f6fbff;border-radius:14px;min-height:90px;padding:10px;font:700 14px/1.35 system-ui;color:#304e6a;display:flex;flex-direction:column;gap:7px;align-items:center;cursor:pointer}
+.g74-ds-target-name{font-size:13px}
+.g74-ds-placeholder{font-size:12px;color:#6c849c}
+.g74-ds-placed{border-radius:8px;padding:4px 9px;background:#d8f6e8;color:#166a4a;font-size:14px}
+.g74-ds-card:focus-visible,.g74-ds-target:focus-visible{outline:3px solid #275be5;outline-offset:2px}
+.g74-ds-asset{max-width:60px;max-height:60px;object-fit:contain;margin:0 5px}
+.g74-ds-fallback{font-size:12px;color:#62758a}
+@media(max-width:430px){.g74-ds-targets{grid-template-columns:repeat(2,minmax(0,1fr))}.g74-ds-card{font-size:15px}}
