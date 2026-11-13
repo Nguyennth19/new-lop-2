@@ -24,5 +24,7 @@ jobs:
         run: node thu-nghiem/p0-6/kiem-thu-policy-generator-v1.cjs
       - name: Existing multi-family composer
         run: node thu-nghiem/p0-6/kiem-thu-multi-family-composer-v1.cjs
+      - name: B21 LV3 two-field regrouping strategy offline proof
+        run: node thu-nghiem/p0-6/final-acceptance/kiem-thu-b21-lv3-reasoning.cjs
       - name: No release or deployment
         run: echo 'TEST ONLY; RELEASE_READY=false; no deployment, student write, scores or stars'
