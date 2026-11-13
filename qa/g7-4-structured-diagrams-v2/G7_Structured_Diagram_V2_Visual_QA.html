@@ -1,0 +1,94 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 · Structured Diagram V2 QA</title><style>
+:root{font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;background:#f1f6fd;color:#263b57}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
+header{background:linear-gradient(120deg,#1670b9,#45a0b3);color:white;padding:20px clamp(14px,4vw,34px)}
+header>div,.container{max-width:1160px;margin:auto}h1{font-size:clamp(21px,3vw,30px);margin:3px 0}header p{margin:0;font-size:14px;opacity:.9}
+.container{padding:16px 12px 35px}.toolbar,.panel,.notice{background:white;border:1px solid #cfdfed;border-radius:16px;padding:15px;margin-bottom:12px}
+.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.toolbar label{font-size:13px;font-weight:700;display:grid;gap:4px;min-width:240px;flex:1}
+select{border:1.5px solid #9bc2dc;border-radius:10px;padding:10px;background:#fff;min-height:44px}
+.flag{display:inline-flex;background:#e4f8f2;color:#177459;border-radius:20px;padding:5px 11px;font-size:12px;font-weight:800}
+.lesson-head{background:#e8f4ff;padding:14px;border-radius:12px;margin-bottom:14px}
+.lesson-head h2{margin:3px 0;font-size:20px}.lesson-head p{font-size:13px;color:#5a7085;margin:0}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}.box{border:2px solid #c5e0f6;border-radius:15px;padding:14px;background:#f9fcff;min-width:0}
+.box.gold{border-color:#f1cf71;background:#fffdf6}.box h3{font-size:14px;color:#305b83;margin:0 0 12px}
+.equation{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:10px 0;font-size:22px;font-weight:800;color:#254c79}
+.field{display:inline-flex;justify-content:center;align-items:center;min-width:54px;min-height:50px;padding:6px;border-radius:11px;border:2px solid #add6f0;background:#fff;color:#176ca7}
+.field.given{background:#eef7ff;border-color:transparent}.field.number{font-size:23px}
+.field.answer{width:64px;text-align:center;font-size:22px;outline-offset:2px;min-height:52px;color:#215a8f}.field.answer:focus{outline:3px solid #7fc0f2}
+.branch{display:grid;place-items:center;gap:0;margin:4px auto 6px}
+.branch-top{display:flex;gap:15px}.branch-top .field{background:#d9edff;color:#1674b8}
+.branch svg{width:170px;height:32px;margin:0 auto;display:block}
+.branch-children{display:flex;gap:30px}
+.step{background:white;border:1px solid #d5e6f6;border-radius:11px;padding:10px;margin-top:10px}
+.hint{font-size:12px;color:#587089;padding-top:9px}
+.unit-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding:13px;background:white;border:1px solid #cfe5f6;border-radius:12px;margin-bottom:10px}
+.unit-row b{font-size:17px}.unit-row .field{height:50px}
+.paper{padding:15px;border-radius:13px;background-image:linear-gradient(#e4f2ff 1px,transparent 1px),linear-gradient(90deg,#e4f2ff 1px,transparent 1px);background-size:24px 24px;background-color:#fff}
+.vertical{display:grid;grid-template-columns:36px 56px 56px;gap:5px;align-items:center;justify-content:center;font-size:25px;font-weight:800;text-align:center}
+.vertical small{font-size:11px;font-weight:650}.vertical hr{grid-column:1/4;border:0;border-top:3px solid #3a78ae;width:100%;margin:4px 0}
+.vertical input{width:51px;min-width:0}.segments{display:grid;gap:16px;padding:12px;background:#fff;border:1px solid #d3e4f1;border-radius:10px}
+.segment-line{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.segment-line svg{max-width:100%;width:210px}
+.actions{margin-top:15px;display:flex;flex-wrap:wrap;gap:10px}.btn{border:1px solid #8cbbdc;background:#fff;color:#236497;border-radius:11px;padding:10px 14px;font-size:13px;font-weight:800;min-height:44px}
+.btn.primary{background:#237dbb;color:white;border-color:#237dbb}.feedback{padding:12px;border-radius:12px;background:#e8f6ff;border:1px solid #b2dbf4;color:#315a7c;margin-top:12px;font-size:13px}
+.notice{font-size:13px;color:#547089}.notice strong{color:#254a71}
+@media(max-width:630px){.twocol{grid-template-columns:1fr}.toolbar{align-items:stretch}.toolbar label{min-width:0}.panel{padding:10px}.box{padding:10px}.equation{font-size:19px;gap:4px}.field{min-width:43px}.field.answer{width:54px}}
+</style></head>
+<body><header><div><small>TOÁN LỚP 2 · G7.4 RULE V2</small><h1>Sơ đồ toán học có cấu trúc</h1><p>Bản nghiệm thu cách dựng dùng chung cho bài biến thể. Không dùng kho ảnh, không ghi dữ liệu học sinh.</p></div></header>
+<main class="container"><section class="toolbar"><label>Chọn mẫu bài thử<select id="choose"></select></label><span class="flag">TEST · Không đổi Web App</span></section>
+<section class="panel"><div class="lesson-head"><h2 id="title"></h2><p id="meta"></p></div><div id="stage" aria-label="Bài thực hành sơ đồ toán học"></div>
+<div class="actions"><button id="audit" class="btn primary" type="button">Kiểm tra ô đã điền</button><button id="reset" class="btn" type="button">Làm lại</button></div><div id="status" role="status" class="feedback"></div></section>
+<section class="notice"><strong>Nguyên tắc:</strong> Chỉ dựng cấu trúc cần cho việc hiểu bài. Ô chưa có đáp án luôn để trống; sơ đồ không tự chấm điểm. Tách–gộp qua 10, đổi đơn vị, đặt tính và cộng hai đoạn là các mô hình tái sử dụng giữa nhiều bài. Đối với bài lời văn 47 + 34 chiếc kẹo, chỉ cần một hình đại diện, không thay bằng sơ đồ này khi không cần.</section>
+</main><script>
+const plans=[{"id":"BOND_8_5_LV1","family":"MAKE_TEN_NUMBER_BOND","title":"Tách – gộp 8 + 5 qua 10","mode":"STRUCTURED_DIAGRAM","fields":{"a":8,"b":5,"splitToTen":null,"remainder":null,"tenStep":null,"total":null},"hidden":["splitToTen","remainder","tenStep","total"]},{"id":"UNIT_DM_CM_LV1","family":"UNIT_CONVERSION_LENGTH","title":"Đổi từ dm sang cm","mode":"UNIT_CONVERSION_FIELDS","fields":{"amount":1,"fromUnit":"dm","convertedAmount":null,"toUnit":"cm"},"hidden":["convertedAmount"]},{"id":"UNIT_M_CM_LV1","family":"UNIT_CONVERSION_LENGTH","title":"Đổi từ m sang cm","mode":"UNIT_CONVERSION_FIELDS","fields":{"amount":1,"fromUnit":"m","convertedAmount":null,"toUnit":"cm"},"hidden":["convertedAmount"]},{"id":"COL_67_16_LV2","family":"PLACE_VALUE_ADDITION","title":"Đặt tính 67 + 16","mode":"PLACE_VALUE_GRID","fields":{"a":67,"b":16,"carry":null,"tens":null,"ones":null,"total":null},"hidden":["carry","tens","ones","total"]},{"id":"LENGTH_AB_CD_LV2","family":"SEGMENT_LENGTH_SUM","title":"Cộng độ dài hai đoạn AB và CD","mode":"PARAMETRIC_SEGMENTS","fields":{"ab":4,"cd":3,"unit":"cm","totalLength":null},"hidden":["totalLength"]}];
+const $=id=>document.getElementById(id);
+const node=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e;};
+const fields={};let current=0;
+function value(container,key,label){
+ const raw=plans[current].fields[key],wrap=node('span','');
+ if(raw===null){const input=node('input','field answer');input.setAttribute('aria-label',label);input.inputMode='numeric';input.pattern='[0-9]*';input.autocomplete='off';input.dataset.field=key;input.type='text';input.maxLength=4;wrap.append(input);}
+ else{wrap.append(node('span','field given number',raw));}
+ return wrap;
+}
+function eq(root,arr){const div=node('div','equation');for(const t of arr){if(t[0]==='$')div.append(value(root,t.slice(1),t.slice(1)));else div.append(node('span','',t));}root.append(div);}
+function bond(host){const grid=node('div','twocol');
+const a=node('section','box gold');a.append(node('h3','','Phần A · Sơ đồ tách – gộp'));
+const branch=node('div','branch');const top=node('div','branch-top');top.append(value(branch,'a','Số đầu tiên'),node('span','','+'),value(branch,'b','Số cần tách'));branch.append(top);
+const svg=node('div');svg.innerHTML='<svg viewBox="0 0 170 32" aria-hidden="true"><path d="M110 2L50 30M110 2L125 30" stroke="#408db8" stroke-width="2.5" fill="none"/></svg>';branch.append(svg);
+const bottom=node('div','branch-children');bottom.append(value(branch,'splitToTen','Phần gộp thành mười'),value(branch,'remainder','Phần còn lại'));branch.append(bottom);
+a.append(branch,node('div','hint','Hãy tách số thứ hai thành hai phần. Một phần sẽ giúp số đầu tiên thành 10.'));
+const b=node('section','box');b.append(node('h3','','Phần B · Cộng theo hai bước'));
+const step1=node('div','step');step1.append(node('strong','','Bước 1 · Gộp thành chục'));eq(step1,['$a','+','$splitToTen','=','$tenStep']);
+const step2=node('div','step');step2.append(node('strong','','Bước 2 · Cộng phần còn lại'));eq(step2,['$tenStep','+','$remainder','=','$total']);b.append(step1,step2);
+grid.append(a,b);host.append(grid);
+}
+function conversion(host){const box=node('section','box');box.append(node('h3','','Đổi đơn vị độ dài · Không cần dựng thước thật'));
+const line=node('div','unit-row');line.append(node('span','', 'Điền số thích hợp'));const formula=node('div','equation');for(const part of ['$amount','$fromUnit','=','$convertedAmount','$toUnit']){if(part.startsWith('$'))formula.append(value(line,part.slice(1),part.slice(1)));else formula.append(node('span','',part));}
+line.append(formula);box.append(line,node('p','hint','Đọc đơn vị hai bên, áp dụng mối quan hệ đã học và điền đúng số.'));
+host.append(box);
+}
+function column(host){const box=node('section','box');box.append(node('h3','','Đặt tính theo cột · Căn hàng đơn vị và hàng chục'));
+const paper=node('div','paper'),v=node('div','vertical');for(const l of ['','Chục','Đơn vị'])v.append(node('small','',l));
+const p=plans[current].fields;
+for(const [op,k] of [['', 'a'],['+','b']]){v.append(node('span','',op));const n=p[k];v.append(node('span','',Math.floor(n/10)),node('span','',n%10));}
+v.append(node('hr'));v.append(node('span','','='),value(v,'tens','Chữ số hàng chục'),value(v,'ones','Chữ số hàng đơn vị'));
+paper.append(v);box.append(paper);
+const steps=node('div','step');eq(steps,['Số nhớ:','$carry']);eq(steps,['Tổng:','$total']);box.append(steps);host.append(box);
+}
+function segments(host){const box=node('section','box');box.append(node('h3','','Cộng độ dài của hai đoạn thẳng'));
+const lines=node('div','segments');for(const [name,key,wide] of [['AB','ab',210],['CD','cd',160]]){const row=node('div','segment-line');row.innerHTML='<svg viewBox="0 0 220 36" aria-hidden="true"><line x1="12" y1="18" x2="'+wide+'" y2="18" stroke="#2b81bd" stroke-width="4"/><circle cx="12" cy="18" r="5" fill="#276fa9"/><circle cx="'+wide+'" cy="18" r="5" fill="#276fa9"/><text x="12" y="10" font-size="12" fill="#1f557c">'+name[0]+'</text><text x="'+wide+'" y="10" font-size="12" fill="#1f557c">'+name[1]+'</text></svg>';row.append(node('span','',name+' ='),value(row,key,name+' length'),node('span','','cm'));lines.append(row)}
+box.append(lines);eq(box,['$ab','+','$cd','=','$totalLength','cm']);box.append(node('p','hint','Hai đoạn được vẽ đơn giản để cộng độ dài; không dùng thay cho bài yêu cầu nhận biết đường gấp khúc.'));host.append(box);
+}
+function render(){current=Number($('choose').value);const data=plans[current];$('title').textContent=data.title;$('meta').textContent=data.mode+' · '+data.family+' · Không dùng thư viện hình';
+const host=$('stage');host.replaceChildren();if(data.family==='MAKE_TEN_NUMBER_BOND')bond(host);if(data.family==='UNIT_CONVERSION_LENGTH')conversion(host);if(data.family==='PLACE_VALUE_ADDITION')column(host);if(data.family==='SEGMENT_LENGTH_SUM')segments(host);
+$('status').textContent='Đây là bản xem cách dựng. Không chứa đáp án chấm trong dữ liệu giao diện.';document.body.dataset.qaFamily=data.family;document.body.dataset.qaInputs=String(host.querySelectorAll('input').length);}
+plans.forEach((p,i)=>{const o=node('option','',p.title);o.value=i;$('choose').append(o)});
+$('choose').onchange=render;$('reset').onclick=render;$('audit').onclick=()=>{
+ const vals=[...$('stage').querySelectorAll('input')];const filled=vals.filter(x=>/^[0-9]+$/.test(x.value.trim())).length;
+ $('status').textContent='Đã điền '+filled+'/'+vals.length+' ô. Không chấm đáp án trên giao diện; đáp án thuộc hệ thống chấm độc lập.';
+};
+const q=new URLSearchParams(location.search),v=Number(q.get('scene'));if(Number.isInteger(v)&&v>=1&&v<=plans.length)$('choose').value=String(v-1);
+render();
+document.body.dataset.qaSceneCount=String(plans.length);
+document.body.dataset.qaHorizontalOverflow=String(document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
+</script></body></html>
