@@ -31,12 +31,23 @@
       "sha256": "697797fdd9ba34d7a69e448de2bbcbafdb6b3f6a15e1b63b91538dddc881bc64",
       "bytes": 2973,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#chicken",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "gà",
+        "một con gà"
+      ]
     },
     {
       "id": "rooster",
@@ -47,12 +58,23 @@
       "sha256": "52b2a8d0f55e1fcf2aef0518f40142a06f5438bddde74ef969c1c9b5c9a7e67c",
       "bytes": 2772,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#rooster",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "gà trống",
+        "chú gà trống"
+      ]
     },
     {
       "id": "books",
@@ -68,7 +90,18 @@
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": null,
+      "countUnit": null,
+      "countRole": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#books",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chồng sách",
+        "nhiều cuốn sách"
+      ]
     },
     {
       "id": "red_apple",
@@ -79,12 +112,23 @@
       "sha256": "bc69f7c89a3621fb564482f9e13818019c6eac3a9d16fe996852514f3b19a073",
       "bytes": 563,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#red_apple",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái táo đỏ",
+        "quả táo"
+      ]
     },
     {
       "id": "green_apple",
@@ -95,12 +139,23 @@
       "sha256": "8d16350d03ee8c98f1d58985453b4c7fbe4d69da3fde37cbf8b5c70ecb80bbd4",
       "bytes": 575,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#green_apple",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái táo xanh",
+        "quả táo"
+      ]
     },
     {
       "id": "banana",
@@ -116,7 +171,18 @@
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": null,
+      "countUnit": null,
+      "countRole": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#banana",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái chuối",
+        "nải chuối"
+      ]
     },
     {
       "id": "mango",
@@ -127,12 +193,22 @@
       "sha256": "5747bef4b8d4857d84e6bf784e65ef8b3925d162ae6ca099ab37e33e5b4d33bd",
       "bytes": 651,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#mango",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái xoài"
+      ]
     },
     {
       "id": "tangerine",
@@ -143,12 +219,22 @@
       "sha256": "c820b266373b52bb1854213b08801c8d582d60dae06d380fdb4beaf89d569ea3",
       "bytes": 347,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#tangerine",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái quýt"
+      ]
     },
     {
       "id": "grapes",
@@ -164,7 +250,18 @@
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": null,
+      "countUnit": null,
+      "countRole": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#grapes",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "bó nho",
+        "quả nho"
+      ]
     },
     {
       "id": "watermelon",
@@ -180,7 +277,18 @@
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": null,
+      "countUnit": null,
+      "countRole": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#watermelon",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái dưa hấu",
+        "miếng dưa hấu"
+      ]
     },
     {
       "id": "strawberry",
@@ -191,12 +299,22 @@
       "sha256": "d8522f848f305fc81040dd9c5467f97df483fde5e2568429046e7f1ae1a23d91",
       "bytes": 2048,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#strawberry",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái dâu tây"
+      ]
     },
     {
       "id": "pear",
@@ -207,12 +325,22 @@
       "sha256": "ddab6102c0ab2fef2dee700b7bb3d427187df8bfa010b23c4e2516e15c226551",
       "bytes": 636,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#pear",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái lê"
+      ]
     },
     {
       "id": "peach",
@@ -223,12 +351,22 @@
       "sha256": "a144b995f3b094fb28d3eb016efebd6372c5ae82273cf3c0379741eb0c9d4657",
       "bytes": 1048,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#peach",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái đào"
+      ]
     },
     {
       "id": "carrot",
@@ -239,12 +377,23 @@
       "sha256": "99521ccf4753d9b5312707541eafc41f00b35f616bb6e96cada9acfc7bf1d396",
       "bytes": 1448,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "củ",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#carrot",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "củ cà-rốt",
+        "cà rốt"
+      ]
     },
     {
       "id": "rabbit",
@@ -255,12 +404,22 @@
       "sha256": "e78f7552298062c599bd7290ff52bad25de352477a9475e34332c52eafe2c5d7",
       "bytes": 2493,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#rabbit",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chú thỏ"
+      ]
     },
     {
       "id": "cat",
@@ -271,12 +430,22 @@
       "sha256": "59f5401062509f4d0fb310817ce9a9656724c6c924a4d42f2a33ac6bb0964602",
       "bytes": 3210,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#cat",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chú mèo"
+      ]
     },
     {
       "id": "dog",
@@ -287,12 +456,22 @@
       "sha256": "e3ee366f39d9f47bbb5a6dc22a521dbea32f05f2216d0665a551b134ca2474da",
       "bytes": 2255,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#dog",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chú chó"
+      ]
     },
     {
       "id": "cow",
@@ -303,12 +482,22 @@
       "sha256": "2aa1806bbf6299d6a8fc865587d9384dff832fabc2fe04ff6d11aa01b53b5109",
       "bytes": 3351,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#cow",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "bò"
+      ]
     },
     {
       "id": "pig",
@@ -319,12 +508,22 @@
       "sha256": "790bb801b792327d607bf51f7410be069fb26f2a2908b2a691c851a947bdba08",
       "bytes": 1571,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#pig",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "con heo"
+      ]
     },
     {
       "id": "duck",
@@ -335,12 +534,22 @@
       "sha256": "4d793eb8e867817586ae2a03784cbad9814f0e89f195a3503c77f8cb8441e35d",
       "bytes": 1457,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#duck",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "vịt"
+      ]
     },
     {
       "id": "fish",
@@ -351,12 +560,22 @@
       "sha256": "1fc7329fd735a8b8bd7482a39bc100e3c347e7f0e9ce36473fde81d19e96a1ee",
       "bytes": 1646,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#fish",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cá"
+      ]
     },
     {
       "id": "bird",
@@ -367,12 +586,22 @@
       "sha256": "c99882e3162e56084e1099575a4b5032bcf07c56c17a6d97e3ca344db42ee596",
       "bytes": 1096,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#bird",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chim"
+      ]
     },
     {
       "id": "butterfly",
@@ -383,12 +612,22 @@
       "sha256": "118a7aee6fb3360fef0dcf86aeaac8e022c35c3f52529145750155a8893f50fc",
       "bytes": 4050,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#butterfly",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "bướm"
+      ]
     },
     {
       "id": "sunflower",
@@ -399,12 +638,23 @@
       "sha256": "af0f5db9816f1545121d2d4c80a145e8809d50830f8516fd99a631bca7702ea6",
       "bytes": 3955,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "bông",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Đếm bông hoa, không tự suy ra số cánh hoặc số cây.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#sunflower",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "đóa hoa hướng dương",
+        "cây hoa hướng dương"
+      ]
     },
     {
       "id": "school",
@@ -415,12 +665,23 @@
       "sha256": "03febeb59b9c13ee792874a87cd04aea413e7c6ef23b1e7752837dc5d6cbe34d",
       "bytes": 3438,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "ngôi",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm mỗi biểu tượng là một ngôi trường; không đếm cửa sổ, lớp học.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#school",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trường học",
+        "ngôi trường học"
+      ]
     },
     {
       "id": "backpack",
@@ -431,12 +692,23 @@
       "sha256": "9a3ea2d79e670de01c0f6e742b80d5b679c172edc4532c08a7c3083d703b4f23",
       "bytes": 2948,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "chiếc",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#backpack",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cái ba lô",
+        "ba lô"
+      ]
     },
     {
       "id": "pencil",
@@ -447,12 +719,23 @@
       "sha256": "f82b7820c41b57d2cca96ef75e32fdedcb07d2d8b786a781274c25fe306c76d7",
       "bytes": 785,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "chiếc",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#pencil",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cây bút chì",
+        "bút chì"
+      ]
     },
     {
       "id": "pen",
@@ -463,12 +746,23 @@
       "sha256": "302d3ce8f609b09dbff8af43ea9e0b5fbd9a4e9404e8381f0190fd98b4c991d8",
       "bytes": 1557,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "chiếc",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#pen",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cây bút mực",
+        "bút mực"
+      ]
     },
     {
       "id": "scissors",
@@ -479,12 +773,22 @@
       "sha256": "67d643e25a39792627bfef5aaea3866cdd083fe047a7e449d0070945e32f163f",
       "bytes": 1283,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "cái",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Một cái kéo là một dụng cụ, không đếm từng lưỡi kéo.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#scissors",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chiếc kéo"
+      ]
     },
     {
       "id": "crayon",
@@ -495,12 +799,23 @@
       "sha256": "27f73eca2adb077f87c7843b18372b8afae4141c02e8b8917437d508177e5da6",
       "bytes": 1433,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "cây",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#crayon",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chiếc bút sáp màu",
+        "bút sáp màu"
+      ]
     },
     {
       "id": "paintbrush",
@@ -511,12 +826,23 @@
       "sha256": "78757c4c943e8e05cf3485d017b172ebc622d1e5f70e5ab6371a28f97102770d",
       "bytes": 984,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "cây",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#paintbrush",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chiếc cọ vẽ",
+        "cọ vẽ"
+      ]
     },
     {
       "id": "notebook",
@@ -527,12 +853,23 @@
       "sha256": "88d97d0a553b501eab3ed70feb191481dfcf12a308ecc7ece2afdbfb74f102c1",
       "bytes": 738,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quyển",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#notebook",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cuốn vở",
+        "vở"
+      ]
     },
     {
       "id": "alarm_clock",
@@ -543,12 +880,22 @@
       "sha256": "e5356b8830074a3ca21fff8bb74807003ce996645341d46c25e26e06f0385d3b",
       "bytes": 1541,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "chiếc",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Một chiếc đồng hồ; không đọc giờ hoặc đếm kim từ emoji.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#alarm_clock",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cái đồng hồ báo thức"
+      ]
     },
     {
       "id": "balance_scale",
@@ -559,12 +906,23 @@
       "sha256": "086e82d739451ebd0cf8dc7b23376bd3e2e019373dda6da487f8971bc0437e00",
       "bytes": 2887,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "cái",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Một cái cân; không suy ra khối lượng hay số đĩa.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#balance_scale",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chiếc cân hai đĩa",
+        "cái cân"
+      ]
     },
     {
       "id": "basket",
@@ -575,12 +933,23 @@
       "sha256": "ba3325690df45f79d0254dd290b72432c6799977be42d6818caf7f0bd4fedb75",
       "bytes": 3628,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "cái",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#basket",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chiếc giỏ",
+        "giỏ"
+      ]
     },
     {
       "id": "bucket",
@@ -591,12 +960,23 @@
       "sha256": "ef9ec134a928ab8e5450a4ebaa983e339c6138f4d37511fcf7058e99c2726526",
       "bytes": 1389,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "cái",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#bucket",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chiếc xô",
+        "xô"
+      ]
     },
     {
       "id": "bicycle",
@@ -607,12 +987,23 @@
       "sha256": "0241c712d2ea30a7ab0253422f94f1687838f6312a7a628f6d9c8da509faadf9",
       "bytes": 3376,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "chiếc",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Một chiếc xe; không đếm bánh xe, bàn đạp.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#bicycle",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cái xe đạp",
+        "xe đạp"
+      ]
     },
     {
       "id": "soccer_ball",
@@ -623,12 +1014,23 @@
       "sha256": "ca792d91995ac20dc37be0c1bd1f9f46d2f7ea4aea3bd4d0c69df1083bd641c9",
       "bytes": 7732,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#soccer_ball",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái bóng đá",
+        "quả bóng"
+      ]
     },
     {
       "id": "teddy_bear",
@@ -639,12 +1041,23 @@
       "sha256": "83e2f3bd7cdeadade4be675ed238b8d1ba9e90e967ff1c10e8de8423043e568d",
       "bytes": 4281,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "con",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#teddy_bear",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chú gấu bông",
+        "gấu bông"
+      ]
     },
     {
       "id": "cookie",
@@ -655,12 +1068,23 @@
       "sha256": "d02b9e85fa0394a4c59fd74654244c069eddb9aaf72abbcba8d0d3060262d6af",
       "bytes": 2020,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "chiếc",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Đếm chiếc bánh quy, không đếm hạt/đốm trên bánh.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#cookie",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cái bánh quy",
+        "miếng bánh quy"
+      ]
     },
     {
       "id": "candy",
@@ -671,12 +1095,23 @@
       "sha256": "4e9e88bea7076d443d09a06afbc0070c08d4cb09a7248d3fc991297e904bd937",
       "bytes": 3023,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "viên",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Đếm một viên kẹo bọc giấy, không suy số viên nằm trong hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#candy",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cái kẹo",
+        "chiếc kẹo"
+      ]
     },
     {
       "id": "bread",
@@ -692,7 +1127,18 @@
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": null,
+      "countUnit": null,
+      "countRole": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#bread",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "chiếc bánh mì",
+        "lát bánh mì"
+      ]
     },
     {
       "id": "lemon",
@@ -703,12 +1149,22 @@
       "sha256": "f3a924a7031fc0dd7c57a90e5f9794cf72859d860151dec321c4adc38605e4cc",
       "bytes": 713,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#lemon",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái chanh"
+      ]
     },
     {
       "id": "pineapple",
@@ -719,12 +1175,23 @@
       "sha256": "9d064d8f8796b53a9eeb18b642e6e16628848ad2fa944576b597e7c7f36a95be",
       "bytes": 4821,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#pineapple",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái thơm",
+        "quả khóm"
+      ]
     },
     {
       "id": "cherries",
@@ -740,7 +1207,18 @@
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": null,
+      "countUnit": null,
+      "countRole": "ILLUSTRATION_ONLY_PENDING_SPECIFIC_UNIT",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#cherries",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "cặp quả anh đào",
+        "quả anh đào"
+      ]
     },
     {
       "id": "egg",
@@ -751,12 +1229,22 @@
       "sha256": "1c7146a519276e93c0f939756e80beb5b0edb4e9a350dbe58ab63c7d0bcc5204",
       "bytes": 412,
       "semanticStatus": "OWNER_SEMANTIC_APPROVED",
-      "countQaStatus": "NOT_APPROVED",
+      "countQaStatus": "COUNT_SAFE_APPROVED",
       "role": "DECORATIVE_ONLY",
       "securityQaStatus": "PENDING_CI",
       "visualQaStatus": "OWNER_VISUAL_APPROVED",
       "approvedConceptKey": null,
-      "objectsPerAsset": null
+      "objectsPerAsset": 1,
+      "countUnit": "quả",
+      "countRole": "REPEAT_SINGLE_ICON",
+      "countRestrictions": "Chỉ đếm đối tượng chính; không đếm chi tiết trên hình.",
+      "countEvidenceRef": "qa/g7-4-b5-12-count-safe-delegated.v1.json#egg",
+      "countReviewer": "ASSISTANT_DELEGATED_SEMANTIC_REVIEW",
+      "countReviewDate": "2026-11-13",
+      "countApprovalScope": "TEST_ONLY_OWNER_DELEGATED",
+      "aliasesVi": [
+        "trái trứng"
+      ]
     }
   ],
   "notes": [
@@ -773,5 +1261,14 @@
     "countApproval": false,
     "source": "G7.4-B.5.9",
     "notes": "No per-icon export submitted; approval attested by owner directly."
+  },
+  "countSafeDelegatedApproval": {
+    "date": "2026-11-13",
+    "source": "explicit user delegation in project conversation",
+    "type": "SEMANTIC_OBJECT_UNIT_REVIEW",
+    "approved": 40,
+    "held": 6,
+    "scope": "TEST_ONLY",
+    "note": "No independent per-icon visual signoff by assistant; owner visual signoff 46/46 from B.5.9. Explicit count rendering still controlled by separate gate."
   }
 }
