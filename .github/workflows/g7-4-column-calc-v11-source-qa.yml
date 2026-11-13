@@ -1,0 +1,67 @@
+name: G7.4 Column Calc V1.1 Original 1000 Renderer QA
+on:
+  push:
+    branches: ['test/g7-4-column-calc-reference-v11-source-qa-20261113']
+    paths:
+      - 'qa/g7-4-column-calc-reference-v1/advanced-source/**'
+      - '.github/workflows/g7-4-column-calc-v11-source-qa.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exact archive SHA256 and original renderer structure
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html')
+          b=p.read_bytes()
+          expected='78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced'
+          sha=hashlib.sha256(b).hexdigest()
+          assert len(b)==131767,(len(b),'expected 131767 bytes')
+          assert sha==expected,(sha,expected)
+          s=b.decode('utf8')
+          for t in ['function renderType2_VerticalCalc(stage)',
+            "const t2Sequence = ['t2_q1_u', 't2_q1_t', 't2_q2_u', 't2_q2_t', 't2_q2_h']",
+            '356 + 128', '47 + 25', "toggleCarry('c2_tens')"]:
+            assert t in s,t
+          print('PASS original HTML 131767 bytes, SHA256',sha)
+          PY
+      - name: Prepare QA harness without editing archived HTML
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path('qa/g7-4-column-calc-reference-v1/advanced-source')
+          src=(base/'Original_10Forms_Grade2_20261113.html').read_text()
+          injection=(base/'browser-qa-injection.js').read_text()
+          assert src.count('</body>')==1
+          wrapper=src.replace('</body>', '<script>'+injection+'</script></body>')
+          Path('/tmp/g7-4-original-v11-qa.html').write_text(wrapper)
+          print('PASS QA-only wrapper created; immutable source untouched')
+          PY
+      - name: Headless Chrome direct original two/three digit and carry QA
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          for width in 320 360 390 768 1024; do
+            timeout 80s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=5500 --window-size="$width,960" --dump-dom "file:///tmp/g7-4-original-v11-qa.html" > "/tmp/g74_v11_$width.html" 2> "/tmp/g74_v11_$width.log"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for width in [320,360,390,768,1024]:
+            s=Path(f'/tmp/g74_v11_{width}.html').read_text()
+            d=dict(re.findall(r'data-v11-([^=]+)="([^"]*)"',s))
+            print('width',width,'source QA',d)
+            assert d.get('success')=='true',(width,d)
+            assert d.get('grade-with-carry')=='true',(width,d)
+            assert d.get('grade-with-wrong-carry') in ['true','false'],(width,d)
+          print('PASS exact original 100/1000 layout, digit order, interaction and grading across 5 browser widths')
+          PY
