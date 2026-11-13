@@ -1,0 +1,84 @@
+name: G7.4 C1-C5 Visual Closure QA
+on:
+  push:
+    branches: ['test/g7-4-c1-c5-visual-closure-20261113']
+    paths:
+      - 'qa/g7-4-c1-c5/**'
+      - '49_G74_C4_VisualPolicyTest.html'
+      - '48_CongTac_G74_B514_Test.gs'
+      - 'GiaoDien.html'
+      - '19_KhongGianHocToan.html'
+      - '.github/workflows/g7-4-c1-c5-visual-closure.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Ten-form policy, resolver and variation gate tests
+        run: |
+          node --check qa/g7-4-c1-c5/visual-orchestrator.cjs
+          node --check qa/g7-4-c1-c5/visual-orchestrator.test.cjs
+          node qa/g7-4-c1-c5/visual-orchestrator.test.cjs
+      - name: C4 integration and source isolation checks
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm');
+          const read=p=>fs.readFileSync(p,'utf8');
+          const c4=read('49_G74_C4_VisualPolicyTest.html');
+          new vm.Script(c4,{filename:'G74_C4.js'});
+          const layout=read('GiaoDien.html'),lesson=read('19_KhongGianHocToan.html');
+          const flags=read('48_CongTac_G74_B514_Test.gs');
+          assert.ok(layout.includes("<? if (g74C4ChoPhepTest_()) { ?>"));
+          assert.ok(layout.includes("49_G74_C4_VisualPolicyTest"));
+          assert.ok(lesson.includes("KL_G74_C4.audit("));
+          assert.ok(flags.includes("'G74_C4_VISUAL_POLICY'")&&flags.includes("'ISOLATED_TEST_WEBAPP'"));
+          assert.ok(!c4.includes('google.script.run')&&!c4.includes('localStorage')&&!c4.includes('fetch('));
+          const p=JSON.parse(read('qa/g7-4-c1-c5/ten-form-policy.v1.json'));
+          const m=JSON.parse(read('hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json'));
+          assert.equal(p.exerciseTypes.length,10);assert.equal(m.enabled,false);
+          assert.equal(m.productionActivation,false);assert.equal(p.rollout.runtimeEnabled,false);
+          const cases=JSON.parse(read('qa/g7-4-c1-c5/ten-form-scenarios.v1.json'));
+          assert.equal(cases.scenarios.length,10);
+          for(const f of ['G7_C3_Ten_Form_Visual_Review.html','G7_C4_B20_Policy_Harness.html']){
+            const x=read('qa/g7-4-c1-c5/'+f);
+            for(const match of x.matchAll(/<script>([\s\S]*?)<\/script>/g))new vm.Script(match[1]);
+          }
+          console.log('PASS source isolation, C4 gated, 10 scenarios and HTML inline JS syntax');
+          JS
+      - name: Actual Chrome 10-form and 30-question visual-policy harness
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          run_html(){
+            key="$1"; file="$2"
+            timeout 70s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=3500 --window-size=390,900 --dump-dom "file://$PWD/qa/g7-4-c1-c5/$file" > "/tmp/g74_$key.html" 2> "/tmp/g74_$key.log"
+          }
+          run_html c3 G7_C3_Ten_Form_Visual_Review.html
+          run_html c4 G7_C4_B20_Policy_Harness.html
+          python3 - <<'PY'
+          from pathlib import Path
+          c3=Path('/tmp/g74_c3.html').read_text()
+          c4=Path('/tmp/g74_c4.html').read_text()
+          assert 'data-qa-cases="10"' in c3, 'not 10 rendered forms'
+          assert 'data-qa-total="30"' in c4, 'not 30 questions'
+          assert 'data-qa-representative="2"' in c4, 'representative count mismatch'
+          assert 'data-qa-decorative="28"' in c4, 'decorative count mismatch'
+          assert 'data-qa-exact="0"' in c4, 'exact count mismatch'
+          assert 'data-qa-preserved="true"' in c4, 'B20 answer inputs changed'
+          print('PASS CHROME: 10 visible visual-mode forms, B20 30 cards classified, answers preserved')
+          PY
+      - name: Verify no production activation or new SVG imports
+        run: |
+          node - <<'JS'
+          const assert=require('node:assert/strict'),fs=require('node:fs');
+          const manifest=JSON.parse(fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json','utf8'));
+          const ledger=JSON.parse(fs.readFileSync('qa/g7-4-b6-demand-ledger.v1.json','utf8'));
+          assert.equal(manifest.icons.length,46);assert.equal(manifest.enabled,false);assert.equal(manifest.productionActivation,false);
+          assert.equal(ledger.summary.needsNewSvgImport,0);
+          console.log('PASS 46-pilot stable, B6 demand 0 new SVG, production OFF');
+          JS
