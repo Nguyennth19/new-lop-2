@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "g7-4-column-calc-v13-checkpoint-v1",
+  "createdDate": "2026-11-14",
+  "branch": "test/g7-4-column-calc-reference-v13-webapp-test-20261114",
+  "base": "test/g7-4-column-calc-reference-v12-variant-renderer-20261114",
+  "priorOwnerApproval": {
+    "stage": "V1.2",
+    "decision": "VISUAL_APPROVED",
+    "date": "2026-11-14"
+  },
+  "status": "SOURCE_INTEGRATED_TEST_QA_PASS_GAS_DEPLOY_PENDING",
+  "appEntry": "GiaoDien.html",
+  "lessonMount": "19_KhongGianHocToan.html",
+  "gate": "52_G74_V13_ColumnGateTEST.gs",
+  "modules": [
+    "53_G74_V13_ColumnCoreTEST.html",
+    "54_G74_V13_ColumnViewTEST.html",
+    "55_CSS_G74_V13_ColumnTEST.html",
+    "56_G74_V13_ColumnBridgeTEST.html"
+  ],
+  "sourceQA": {
+    "runId": 43478451737,
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43478451737",
+    "conclusion": "SUCCESS",
+    "v12Assertions": 11819,
+    "validVariations": 2312,
+    "chromeChecksPerWidth": 17,
+    "widths": [
+      320,
+      360,
+      390,
+      768,
+      1024
+    ],
+    "totalChromeChecks": 85,
+    "sourceUnchanged": true
+  },
+  "b20": {
+    "lessonId": "toan_b20",
+    "pilot": true,
+    "verticalQuestionsInPack": 8,
+    "liveSupportedProfile": "PV100",
+    "legacyInputFields": [
+      "ones",
+      "tens",
+      "carry"
+    ],
+    "legacyServerGradingUnchanged": true,
+    "wordProblemsUnaffected": true
+  },
+  "pv1000": {
+    "mode": "PREVIEW_ONLY",
+    "examples": [
+      "356+128",
+      "402-187"
+    ],
+    "submittedToServer": false,
+    "progressWrites": false
+  },
+  "features": {
+    "scopeProperty": "G74_B514_SCOPE",
+    "scopeValue": "ISOLATED_TEST_WEBAPP",
+    "featureProperty": "G74_V13_COLUMN_TEST",
+    "featureValue": "ENABLED",
+    "urlQuery": "g74ColumnTest=1",
+    "defaultEnabled": false
+  },
+  "safety": {
+    "mainChanged": false,
+    "studentDataModified": false,
+    "originalRendererKept": true,
+    "legacyServerScorerKept": true,
+    "productionActivation": false
+  },
+  "blockers": [
+    "Deploy on isolated Google Apps Script TEST project",
+    "Actual TEST Web App browser QA with lesson B20 and keypad",
+    "Server-end-to-end check of B20 grading and progress",
+    "Owner V1.3 visual acceptance and release decision"
+  ],
+  "rollback": "Remove G74_V13_COLUMN_TEST from isolated GAS TEST Script Properties or revert TEST branch to V1.2"
+}
