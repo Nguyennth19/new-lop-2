@@ -1,0 +1,1146 @@
+{
+  "stage": "G7.4-B.5.7-PERF-A-OWNER-LABEL-SIGNOFF",
+  "date": "2026-11-13",
+  "approvalBasis": "Explicit owner confirmation in project conversation: all images meet quality; request all OWNER_SIGNOFF_PENDING -> LABEL_APPROVED",
+  "scope": "LABEL_STATUS_ONLY",
+  "originalRegistryBlobSha": "d63d383cefef8252cb6ead6eaf7fa39bd072e92a",
+  "approvedRegistryBlobSha": "544377bf3cbc0d7b19a4a6f76efd9ae84845b123",
+  "images": 288,
+  "changed": 188,
+  "unchangedApproved": 100,
+  "finalApproved": 288,
+  "finalPending": 0,
+  "nonLabelPolicies": "UNCHANGED",
+  "semanticRules": "UNCHANGED_NINE",
+  "sourceWebpBinary": "UNCHANGED",
+  "changes": [
+    {
+      "assetId": "KL_SH01_001",
+      "label": "táo",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_002",
+      "label": "cam",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_003",
+      "label": "chuối",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_004",
+      "label": "xoài",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_005",
+      "label": "chùm nho",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_006",
+      "label": "dưa hấu",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_007",
+      "label": "dâu tây",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_008",
+      "label": "lê",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_009",
+      "label": "dứa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH01_012",
+      "label": "đu đủ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_001",
+      "label": "cà rốt",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_002",
+      "label": "cà chua",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_003",
+      "label": "khoai tây",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_004",
+      "label": "bắp cải",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_005",
+      "label": "bí đỏ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_006",
+      "label": "bắp ngô",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_007",
+      "label": "quả trứng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_008",
+      "label": "ổ bánh mì",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_009",
+      "label": "bánh quy",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_011",
+      "label": "bánh kem",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH02_012",
+      "label": "hộp sữa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_001",
+      "label": "bút chì",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_002",
+      "label": "bút mực",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_003",
+      "label": "cục tẩy",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_004",
+      "label": "thước kẻ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_005",
+      "label": "quyển vở",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_006",
+      "label": "sách giáo khoa đóng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_007",
+      "label": "cặp sách",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_008",
+      "label": "hộp bút",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_009",
+      "label": "kéo học sinh",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_010",
+      "label": "hồ dán",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_011",
+      "label": "bảng con",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH03_012",
+      "label": "viên phấn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_001",
+      "label": "bóng cao su",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_002",
+      "label": "gấu bông",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_003",
+      "label": "búp bê",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_004",
+      "label": "ô tô đồ chơi",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_005",
+      "label": "tàu hỏa đồ chơi",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_006",
+      "label": "máy bay đồ chơi",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_007",
+      "label": "robot đồ chơi",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_008",
+      "label": "bóng bay",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_009",
+      "label": "xúc xắc",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_010",
+      "label": "khối xếp hình",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_011",
+      "label": "diều giấy",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH04_012",
+      "label": "chong chóng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_001",
+      "label": "mèo",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_002",
+      "label": "chó",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_003",
+      "label": "thỏ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_004",
+      "label": "gà mái",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_005",
+      "label": "vịt",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_006",
+      "label": "chim sẻ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_007",
+      "label": "cá vàng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_008",
+      "label": "bướm",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_009",
+      "label": "ong mật",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_010",
+      "label": "ếch",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_011",
+      "label": "voi",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH05_012",
+      "label": "khỉ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_001",
+      "label": "bàn ăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_002",
+      "label": "ghế tựa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_003",
+      "label": "giường ngủ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_004",
+      "label": "tủ áo",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_005",
+      "label": "đèn bàn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_006",
+      "label": "đồng hồ treo tường trang trí",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_007",
+      "label": "cốc uống nước",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_008",
+      "label": "đĩa ăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_009",
+      "label": "bát ăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_010",
+      "label": "thìa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_011",
+      "label": "chậu nhựa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH06_012",
+      "label": "giỏ đựng đồ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_001",
+      "label": "xe đạp",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_002",
+      "label": "xe máy",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_003",
+      "label": "ô tô con",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_004",
+      "label": "xe buýt",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_005",
+      "label": "tàu hỏa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_006",
+      "label": "thuyền buồm",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_007",
+      "label": "máy bay",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_008",
+      "label": "cây thân gỗ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_011",
+      "label": "mặt trời vui",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH07_012",
+      "label": "đám mây trắng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_001",
+      "label": "giỏ mua sắm",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_002",
+      "label": "túi giấy",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_003",
+      "label": "hộp quà",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_004",
+      "label": "kệ hàng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_005",
+      "label": "quầy bán hàng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_006",
+      "label": "vé xe trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_007",
+      "label": "chậu cây",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_008",
+      "label": "bình hoa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_009",
+      "label": "ô che mưa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_010",
+      "label": "áo đồng phục",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH08_012",
+      "label": "đôi giày thể thao",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH11_001",
+      "label": "cầu trượt",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH11_002",
+      "label": "xích đu",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH11_003",
+      "label": "bập bênh",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_SH12_001",
+      "label": "xe đẩy hàng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M01_001",
+      "label": "que tính đơn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M01_002",
+      "label": "bó 10 que tính",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M01_003",
+      "label": "bó 100 que tính",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M01_004",
+      "label": "hạt đếm tròn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M01_006",
+      "label": "khung 10 ô trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M03_001",
+      "label": "khay 2 ngăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M03_002",
+      "label": "khay 5 ngăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M04_001",
+      "label": "cân hai đĩa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M04_002",
+      "label": "cân lò xo",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M05_001",
+      "label": "chai nước trong",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_001",
+      "label": "quả bóng cầu",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_002",
+      "label": "lon hình trụ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_003",
+      "label": "hộp quà lập phương",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_004",
+      "label": "hộp giấy chữ nhật",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_005",
+      "label": "biển báo tam giác trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_006",
+      "label": "khung ảnh vuông",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_007",
+      "label": "viên gạch chữ nhật",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_008",
+      "label": "cửa sổ vòm",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_009",
+      "label": "mặt bàn tròn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_010",
+      "label": "ống giấy trụ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_011",
+      "label": "quả địa cầu trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M06_012",
+      "label": "hộp nắp tròn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_001",
+      "label": "đồng hồ tròn không kim",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_002",
+      "label": "bộ kim đồng hồ rời",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_003",
+      "label": "đồng hồ số màn hình trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_004",
+      "label": "lịch tháng trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_005",
+      "label": "lịch bàn trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_006",
+      "label": "đồng hồ báo thức không số",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_007",
+      "label": "đồng hồ cát",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_008",
+      "label": "chuông báo giờ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_009",
+      "label": "thẻ buổi sáng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_010",
+      "label": "thẻ buổi trưa",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_011",
+      "label": "thẻ buổi chiều",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M07_012",
+      "label": "thẻ buổi tối",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_001",
+      "label": "thước 20 cm không số",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_002",
+      "label": "thước mét không số",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_003",
+      "label": "thước cuộn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_004",
+      "label": "dây đo mềm",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_005",
+      "label": "thước gấp",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_006",
+      "label": "đoạn dây thừng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_007",
+      "label": "băng ruy băng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_008",
+      "label": "thanh gỗ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_009",
+      "label": "cây bút để đo",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_010",
+      "label": "vạch mốc đo trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_011",
+      "label": "bàn đo chiều dài",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M08_012",
+      "label": "cọc đo chiều cao",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_001",
+      "label": "ví tiền",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_002",
+      "label": "hộp đựng tiền",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_003",
+      "label": "khay tiền trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_004",
+      "label": "quầy thu ngân",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_005",
+      "label": "giỏ đi chợ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_006",
+      "label": "túi tiền xu giả lập",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_007",
+      "label": "hộp tiết kiệm hình heo",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_008",
+      "label": "kệ sản phẩm",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_009",
+      "label": "giỏ đồ nhỏ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_010",
+      "label": "máy quét mã hàng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_011",
+      "label": "khay trả tiền",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M09_012",
+      "label": "bảng tổng tiền trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_001",
+      "label": "túi vải kín",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_002",
+      "label": "hộp bí mật kín",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_003",
+      "label": "hộp trong suốt trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_004",
+      "label": "giỏ phân loại 2 ngăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_005",
+      "label": "giỏ phân loại 3 ngăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_006",
+      "label": "khay nhiều màu không số",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_007",
+      "label": "bình đựng bóng trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_008",
+      "label": "bảng cài tranh trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_009",
+      "label": "hộp bốc thăm",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_010",
+      "label": "thẻ phân loại trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_011",
+      "label": "lọ bi trong suốt trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M10_012",
+      "label": "vòng quay trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_001",
+      "label": "cân thăng bằng đồ chơi trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_002",
+      "label": "hai hộp khác kích cỡ",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_003",
+      "label": "ba cốc khác chiều cao",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_004",
+      "label": "ba thanh gỗ độ dài khác nhau",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_005",
+      "label": "tháp xếp chồng",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_006",
+      "label": "dãy hạt màu xen kẽ không số",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_007",
+      "label": "khay sắp mẫu",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_008",
+      "label": "bộ khối màu",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_009",
+      "label": "đường đua trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_010",
+      "label": "bậc thang đồ chơi",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_011",
+      "label": "sọt chứa nhiều ít",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M11_012",
+      "label": "hai bình khác dung tích",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_001",
+      "label": "mê cung ô trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_002",
+      "label": "đường đi lát gạch",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_003",
+      "label": "bàn cờ ô vuông trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_004",
+      "label": "khay suy luận 3 ô",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_005",
+      "label": "khay suy luận 4 ô",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_006",
+      "label": "hộp logic 2 ngăn",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_007",
+      "label": "tháp vòng xếp",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_008",
+      "label": "bộ thẻ hình trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_009",
+      "label": "mô hình hàng ghế",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_010",
+      "label": "giàn ô chữ số trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_011",
+      "label": "sơ đồ cây trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    },
+    {
+      "assetId": "KL_M12_012",
+      "label": "bảng quy luật trống",
+      "previous": "OWNER_SIGNOFF_PENDING",
+      "current": "LABEL_APPROVED"
+    }
+  ]
+}
