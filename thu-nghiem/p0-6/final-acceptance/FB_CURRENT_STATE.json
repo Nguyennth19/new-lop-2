@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "fb.handover-state.v1",
+  "phase": "F-B",
+  "status": "READY_FOR_TEST_WORK",
+  "createdAt": "2026-11-13T22:36:01.202+07:00",
+  "branch": "test/p0-6-fb-from-fa-20261113",
+  "sourceBranch": "test/p0-6-fa-policy-pedagogy-20261113",
+  "sourceCommit": "612bcf54c5c67247c97be1c2c6a931c367ddeb5b",
+  "sourceCi": {
+    "runId": 43454026078,
+    "sha": "612bcf54c5c67247c97be1c2c6a931c367ddeb5b",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "gateStatus": {
+    "G5": "PASS_FOR_ISOLATED_TEST_PREVIEW",
+    "G7": "OWNER_APPROVED_TEST_SCOPE",
+    "G8": "OWNER_APPROVED_TEST_SCOPE",
+    "F_A": "CLOSED_FOR_ISOLATED_TEST_SCOPE",
+    "F_B": "READY_FOR_TEST_WORK",
+    "RELEASE_READY": false
+  },
+  "recoveryPoint": "F-B branch created from F-A last verified CI-passed commit. Read FA_FB_HANDOVER.md and FA_G5_BROWSER_QA_20261113.md first; no F-B code yet.",
+  "restrictions": [
+    "No MAIN/test-theo-main/Web App TEST V6 edits",
+    "No Apps Script deployment or student data/grades/stars",
+    "No production release",
+    "Web App V6 integration not certified"
+  ],
+  "nextAction": "Open F-B planning/implementation within P0 scope with separate QA and explicit authorization for any TEST deployment"
+}
