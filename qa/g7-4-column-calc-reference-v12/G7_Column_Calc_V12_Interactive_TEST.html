@@ -1,0 +1,218 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 COLUMN_CALC_REFERENCE_V1.2 – TEST</title><style>
+:root{font-family:Quicksand,"Segoe UI",system-ui,sans-serif;background:linear-gradient(120deg,#eff8f8,#fbf3c9);color:#2d3950}
+*{box-sizing:border-box}body{margin:0;min-width:0}button,input{font:inherit}
+button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #f4aa12;outline-offset:2px}
+.shell{max-width:1120px;margin:0 auto;padding:16px 12px}.hero{padding:16px;background:#e1f2ff;border:2px solid #a4dbff;border-radius:18px;margin-bottom:12px}
+.hero h1{font-size:clamp(20px,3vw,27px);margin:2px 0 8px}.hero p{margin:0;line-height:1.65;font-size:14px}
+.pill{display:inline-flex;gap:5px;background:#fff8d3;border:1px solid #ffdf80;padding:5px 10px;border-radius:18px;color:#8a6200;font-size:11px;font-weight:750}
+.kl-col-v12-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,410px),1fr));gap:16px;align-items:stretch}
+.kl-col-v12-card{min-width:0;border:2px solid #9ed4ff;border-radius:22px;background:#f0f9ff;padding:clamp(12px,2vw,22px);display:flex;flex-direction:column;align-items:center;box-shadow:0 3px 10px #4a769a12}
+.kl-col-v12-card.indigo{border-color:#ada7ff;background:#f3f2ff}
+.kl-col-v12-head{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.kl-col-v12-cap{display:inline-flex;border-radius:16px;background:#cfebff;color:#285e89;padding:5px 10px;font-size:11px;font-weight:800}
+.indigo .kl-col-v12-cap{background:#ddd8ff;color:#4e468e}
+.kl-col-v12-read{border:0;border-radius:8px;background:#d7ebfc;color:#386d98;font-size:12px;padding:7px 10px;font-weight:750}
+.kl-col-v12-number-grid{width:max-content;max-width:100%;display:grid;grid-template-columns:32px repeat(calc(var(--math-cols) - 1),minmax(46px,56px));gap:clamp(5px,1.5vw,12px);align-items:center;justify-items:center}
+.kl-col-v12-col-title{font-size:11px;color:#7c94af;font-weight:800}
+.kl-col-v12-carry-title{font-size:11px;color:#bb7918;font-weight:800}
+.kl-col-v12-transition{font-size:12px;font-weight:850;color:#e8ae28;background:#fffdf1;border:2px dashed #f6bd48;border-radius:10px;min-width:34px;min-height:36px;padding:2px 4px}
+.kl-col-v12-transition.selected{color:#744a00;background:#fbc853;border:2px solid #e2a013;transform:scale(1.04)}
+.kl-col-v12-digit{font-weight:850;font-size:clamp(27px,3vw,33px);color:#28364d;font-variant-numeric:tabular-nums}
+.kl-col-v12-sign{color:#624bfa;font-size:25px;font-weight:850}
+.kl-col-v12-rule{grid-column:1/-1;width:100%;border-bottom:3px solid #38465b;height:2px;margin:2px 0 4px}
+.kl-col-v12-answer{font-size:22px;font-weight:850;text-align:center;border:3px solid #5fc0fc;background:white;color:#2469aa;border-radius:12px;width:clamp(41px,12vw,52px);height:53px;padding:0;min-width:0}
+.kl-col-v12-answer.active{border-color:#f2ad11;box-shadow:0 0 0 4px #fdf0bb;background:#fffaf0}
+.kl-col-v12-answer::placeholder{font-size:12px;color:#a1b7c9;font-weight:650}
+.kl-col-v12-note{margin-top:12px;font-size:12px;color:#536c85;line-height:1.45;min-height:34px;text-align:center}
+.kl-col-v12-controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:auto;padding-top:12px}
+.kl-col-v12-controls button{padding:9px 12px;border-radius:9px;min-height:43px;border:1.5px solid #8ebee4;background:white;color:#2c6691;font-size:12px;font-weight:800}
+.kl-col-v12-controls .kl-col-v12-send{background:#3d9ddb;color:white;border-color:#3d9ddb}
+.kl-col-v12-status{font-size:12px;color:#46768d;min-height:22px;margin-top:8px;text-align:center}
+.notice{margin:12px 0;padding:12px;background:#fff;border:1px solid #d4e0eb;border-radius:13px;font-size:13px;line-height:1.6}
+.notice strong{color:#2f649a}.footer{font-size:12px;color:#57748d}
+@media(max-width:430px){.shell{padding:8px}.kl-col-v12-card{padding:10px}.kl-col-v12-number-grid{grid-template-columns:27px repeat(calc(var(--math-cols) - 1),43px);gap:4px}.kl-col-v12-answer{width:41px}.kl-col-v12-digit{font-size:29px}}
+</style></head><body>
+<div class="shell"><section class="hero"><span class="pill">G7.4 · COLUMN_CALC_REFERENCE_V1.2 · TEST</span><h1>Đặt tính rồi tính — bộ dữ liệu biến thể</h1><p>Giao diện kế thừa mẫu Type 2 đã nghiệm thu nguồn, hỗ trợ phạm vi 100 và 1000; cộng/trừ, có nhớ và mượn qua số 0. Đây là trang kiểm định độc lập, không ghi điểm hoặc thay Web App.</p></section>
+<div id="stage"></div><section class="notice"><strong>Chính sách ô nhớ:</strong> mặc định ô nhớ/mượn chỉ là bước hướng dẫn. Những bài có chính sách bài học phê duyệt mới bắt buộc chấm trạng thái nhớ/mượn. Bộ chấm chạy phía máy chủ, không đặt đáp án ẩn trong HTML.<p id="note"></p></section><div class="footer">Nguồn tham chiếu: nguyên bản 131.767 byte, SHA-256 78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced. Mẫu này là adapter V1.2, không ghi đè file gốc.</div></div>
+<script>'use strict';
+/* G7.4 COLUMN_CALC_REFERENCE_V1.2 — parameterized adapter for the ORIGINAL 10-form Type 2.
+ * Pure plan compiler. Never serializes answer/carry solution. No DOM, no write to GAS.
+ * Deliberately retains the original left-to-right columns and right-to-left input UX.
+ */
+(function(root,factory){
+  const api=factory();
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  else root.KLColumnV12=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ const PLACES=['ones','tens','hundreds','thousands'];
+ const PROFILES={PV100:{max:99,columns:2},PV1000:{max:999,columns:3}};
+ const fail=(reason)=>({ok:false,reason});
+ const isInt=(v,a,b)=>Number.isSafeInteger(v)&&v>=a&&v<=b;
+ function validateSpec(q){
+   if(!q||typeof q!=='object'||typeof q.variantId!=='string'||!/^COL_[A-Za-z0-9_-]{4,70}$/.test(q.variantId))return fail('INVALID_ID');
+   if(!Object.hasOwn(PROFILES,q.profile))return fail('UNSUPPORTED_PROFILE');
+   if(!['ADD','SUBTRACT'].includes(q.operation))return fail('UNSUPPORTED_OPERATION');
+   if(!['LV1','LV2','LV3'].includes(q.level))return fail('INVALID_LEVEL');
+   if(!['OPTIONAL_HINT','REQUIRED_ASSESSED'].includes(q.carryPolicy))return fail('CARRY_POLICY_MISSING');
+   if(q.carryPolicy==='REQUIRED_ASSESSED'&&q.assessmentAuthority!=='LESSON_POLICY_APPROVED')return fail('CARRY_ASSESSMENT_NOT_APPROVED');
+   const p=PROFILES[q.profile];
+   if(!isInt(q.a,0,p.max)||!isInt(q.b,0,p.max))return fail('OPERAND_OUT_OF_SCOPE');
+   const result=q.operation==='ADD'?q.a+q.b:q.a-q.b;
+   if(result<0||result>p.max)return fail('RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+   if(q.answer!==undefined||q.result!==undefined||q.expectedDigits!==undefined||
+      q.carryAnswers!==undefined||q.borrowAnswers!==undefined||q.correctValue!==undefined)return fail('ANSWER_IN_UNTRUSTED_SPEC');
+   if(q.assetId!==undefined&&q.assetId!==null)return fail('COLUMN_ASSET_NOT_ALLOWED');
+   return {ok:true,columns:p.columns};
+ }
+ function split(n,c){return Array.from({length:c},(_,i)=>Math.floor(n/Math.pow(10,i))%10)}
+ function publicPlan(q){
+   const v=validateSpec(q);if(!v.ok)return v;
+   const places=PLACES.slice(0,v.columns),a=split(q.a,v.columns),b=split(q.b,v.columns);
+   return {ok:true,schemaVersion:'column-calc-reference-v12-public',variantId:q.variantId,
+     family:'COLUMN_CALC',profile:q.profile,operation:q.operation,level:q.level,
+     carryPolicy:q.carryPolicy,renderStrategy:'COLUMN_CALC_REFERENCE',visualMode:'REPRESENTATIVE',
+     assetId:null,usesImageLibrary:false,gradingEnabled:false,runtimeEnabled:false,
+     columns:v.columns,displayOrder:places.slice().reverse(),inputOrder:places.slice(),
+     a:places.map((place,i)=>({place,digit:a[i]})),b:places.map((place,i)=>({place,digit:b[i]})),
+     answerSlots:places.map(place=>({id:'result_'+place,place,role:'ANSWER_INPUT',value:null})),
+     transitionSlots:places.slice(1).map(place=>({id:(q.operation==='ADD'?'carry_':'borrow_')+place,
+       place,role:'LEARNER_TOGGLE',value:null})),
+     accessibility:{defaultFocus:'result_ones',nativeKeyboard:true,focusOutline:true,
+       guidance:q.operation==='ADD'?'Điền từ đơn vị sang chục, trăm.':'Trừ từ đơn vị sang chục, trăm. Các ô mượn nằm phía trên.'}};
+ }
+ function batch(qs){
+   if(!Array.isArray(qs)||qs.length<1||qs.length>10)return fail('INVALID_BATCH_SIZE');
+   const ids=new Set(),plans=[];
+   for(const q of qs){
+     const p=publicPlan(q);if(!p.ok)return {ok:false,reason:p.reason,variantId:q?.variantId||null};
+     if(ids.has(p.variantId))return fail('DUPLICATE_VARIANT_ID');
+     ids.add(p.variantId);plans.push(p);
+   }
+   return {ok:true,plans,renderer:'COLUMN_CALC_REFERENCE_V12',sourceKind:'HTML_CSS_STRUCTURED',
+     noAssetImport:true,serverGradingRequired:true};
+ }
+ return Object.freeze({validateSpec,publicPlan,batch,PLACES});
+});
+</script><script>'use strict';
+/* G7.4 V1.2: original Type 2-inspired layout adapted to variable operands.
+ * Browser-only rendering, NOT a grader. Original archive left immutable.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.KLColumnViewV12=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ const PLACES={ones:'Đơn vị',tens:'Chục',hundreds:'Trăm',thousands:'Nghìn'};
+ const el=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e};
+ function mount(container,plans,callbacks={}){
+  if(!container||!Array.isArray(plans)||plans.length<1||plans.some(p=>!p?.ok||p.schemaVersion!=='column-calc-reference-v12-public'))return {ok:false,reason:'INVALID_PUBLIC_PLANS'};
+  const state=plans.map(()=>({digits:{},transitions:{},active:'result_ones'}));
+  container.replaceChildren();const cards=el('div','kl-col-v12-grid');container.append(cards);
+  function collect(i){
+    const s=state[i],plan=plans[i],out={variantId:plan.variantId};
+    for(const v of plan.answerSlots)out[v.id]=s.digits[v.id]??'';
+    for(const v of plan.transitionSlots)out[v.id]=Boolean(s.transitions[v.id]);
+    return out;
+  }
+  function makeCard(plan,index){
+   const s=state[index],n=plan.columns,order=plan.displayOrder,accent=index%2===0?'sky':'indigo';
+   const outer=el('article','kl-col-v12-card '+accent);
+   outer.dataset.variantId=plan.variantId;outer.dataset.columns=String(n);outer.dataset.operation=plan.operation;
+   const head=el('div','kl-col-v12-head');
+   head.append(el('span','kl-col-v12-cap','Câu '+(index+1)+' • '+(plan.profile==='PV100'?'Phạm vi 100':'Phạm vi 1000')));
+   const read=el('button','kl-col-v12-read','🔊 Nghe');read.type='button';read.setAttribute('aria-label','Nghe hướng dẫn phép tính');
+   read.onclick=()=>{if(typeof callbacks.onSpeak==='function')callbacks.onSpeak(plan);else if(typeof speechSynthesis!=='undefined'){
+     const content=plan.a.slice().reverse().map(x=>x.digit).join('')+' '+(plan.operation==='ADD'?'cộng':'trừ')+' '+plan.b.slice().reverse().map(x=>x.digit).join('');
+     const u=new SpeechSynthesisUtterance(content);u.lang='vi-VN';speechSynthesis.speak(u);
+   }};
+   head.append(read);outer.append(head);
+   const grid=el('div','kl-col-v12-number-grid');grid.style.setProperty('--math-cols',String(n+1));
+   grid.setAttribute('role','group');grid.setAttribute('aria-label',plan.operation==='ADD'?'Đặt tính cộng':'Đặt tính trừ');
+   grid.append(el('span',''));for(const p of order)grid.append(el('span','kl-col-v12-col-title',PLACES[p]));
+   grid.append(el('span','kl-col-v12-carry-title',plan.operation==='ADD'?'Nhớ:':'Mượn:'));
+   for(const place of order){
+     const slot=plan.transitionSlots.find(x=>x.place===place);
+     if(!slot){grid.append(el('span','kl-col-v12-transition-blank',''));continue}
+     const btn=el('button','kl-col-v12-transition',plan.operation==='ADD'?'nhớ':'mượn');
+     btn.type='button';btn.dataset.transition=slot.id;btn.dataset.place=place;
+     btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',(plan.operation==='ADD'?'Bật hoặc tắt ô nhớ hàng ':'Bật hoặc tắt ô mượn hàng ')+PLACES[place].toLowerCase());
+     const show=()=>{const yes=Boolean(s.transitions[slot.id]);btn.textContent=yes?'+1':(plan.operation==='ADD'?'nhớ':'mượn');btn.setAttribute('aria-pressed',String(yes));btn.classList.toggle('selected',yes)};
+     btn.onclick=()=>{s.transitions[slot.id]=!s.transitions[slot.id];show();if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index))};
+     show();grid.append(btn);
+   }
+   for(const [marker,key] of [['','a'],[plan.operation==='ADD'?'+':'−','b']]){
+     grid.append(el('span','kl-col-v12-sign',marker));
+     for(const place of order){const item=plan[key].find(x=>x.place===place);grid.append(el('span','kl-col-v12-digit',item.digit));}
+   }
+   grid.append(el('div','kl-col-v12-rule'),el('span',''));
+   for(const place of order){
+     const id='result_'+place,inp=el('input','kl-col-v12-answer');
+     inp.type='text';inp.inputMode='numeric';inp.autocomplete='off';inp.maxLength=1;
+     inp.dataset.answer=id;inp.dataset.place=place;inp.placeholder=place==='hundreds'?'Trăm':place==='tens'?'Chục':'ĐV';
+     inp.setAttribute('aria-label','Chữ số hàng '+PLACES[place].toLowerCase());
+     inp.value=s.digits[id]??'';
+     inp.onfocus=()=>{s.active=id;grid.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.classList.toggle('active',x===inp))};
+     inp.oninput=()=>{
+       const raw=inp.value.replace(/[^0-9]/g,'').slice(-1);inp.value=raw;s.digits[id]=raw;
+       if(raw){const idx=plan.inputOrder.indexOf(place),next=plan.inputOrder[idx+1];if(next)grid.querySelector('[data-answer="result_'+next+'"]')?.focus();}
+       if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index));
+     };
+     inp.onkeydown=e=>{if(e.key==='ArrowLeft'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const next=plan.inputOrder[idx+1];if(next)grid.querySelector('[data-answer="result_'+next+'"]')?.focus();}
+       if(e.key==='ArrowRight'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const prev=plan.inputOrder[idx-1];if(prev)grid.querySelector('[data-answer="result_'+prev+'"]')?.focus();}};
+     grid.append(inp);
+   }
+   outer.append(grid);
+   outer.append(el('div','kl-col-v12-note',plan.carryPolicy==='REQUIRED_ASSESSED'?'Ô nhớ/mượn tham gia đánh giá theo chính sách bài học.':'Ô nhớ/mượn chỉ là gợi ý thao tác, không bắt buộc khi chấm.'));
+   const controls=el('div','kl-col-v12-controls');
+   const reset=el('button','kl-col-v12-reset','↺ Làm lại');reset.type='button';reset.onclick=()=>{
+     s.digits={};s.transitions={};outer.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.value='');
+     outer.querySelectorAll('.kl-col-v12-transition').forEach(x=>{x.classList.remove('selected');x.textContent=plan.operation==='ADD'?'nhớ':'mượn';x.setAttribute('aria-pressed','false')});
+     outer.querySelector('[data-answer="result_ones"]')?.focus();if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index));
+   };controls.append(reset);
+   const send=el('button','kl-col-v12-send','Ghi nhận câu trả lời');send.type='button';send.onclick=()=>{
+     if(typeof callbacks.onSubmit==='function')callbacks.onSubmit(index,collect(index));
+     else outer.querySelector('.kl-col-v12-status').textContent='Đã ghi nhận trên TEST (không chấm hoặc gửi dữ liệu).';
+   };controls.append(send);outer.append(controls);
+   const status=el('div','kl-col-v12-status');status.setAttribute('role','status');outer.append(status);
+   cards.append(outer);
+  }
+  for(let i=0;i<plans.length;i++)makeCard(plans[i],i);
+  cards.querySelector('[data-answer="result_ones"]')?.focus();
+  return {ok:true,collect,cards,states:state,
+    focus:(i,place)=>cards.children[i]?.querySelector('[data-answer="result_'+place+'"]')?.focus(),
+    reset:()=>{for(let i=0;i<plans.length;i++)cards.children[i].querySelector('.kl-col-v12-reset').click();}};
+ }
+ return Object.freeze({mount});
+});
+</script><script>
+const DEMOS=[{"variantId":"COL_V12_A100_4725","profile":"PV100","operation":"ADD","level":"LV1","a":47,"b":25,"carryPolicy":"OPTIONAL_HINT","assetId":null},{"variantId":"COL_V12_A1000_356128","profile":"PV1000","operation":"ADD","level":"LV2","a":356,"b":128,"carryPolicy":"OPTIONAL_HINT","assetId":null},{"variantId":"COL_V12_A1000_475428","profile":"PV1000","operation":"ADD","level":"LV2","a":475,"b":428,"carryPolicy":"REQUIRED_ASSESSED","assessmentAuthority":"LESSON_POLICY_APPROVED","assetId":null},{"variantId":"COL_V12_S1000_402187","profile":"PV1000","operation":"SUBTRACT","level":"LV3","a":402,"b":187,"carryPolicy":"REQUIRED_ASSESSED","assessmentAuthority":"LESSON_POLICY_APPROVED","assetId":null},{"variantId":"COL_V12_A100_2413","profile":"PV100","operation":"ADD","level":"LV1","a":24,"b":13,"carryPolicy":"OPTIONAL_HINT","assetId":null},{"variantId":"COL_V12_S100_7328","profile":"PV100","operation":"SUBTRACT","level":"LV2","a":73,"b":28,"carryPolicy":"OPTIONAL_HINT","assetId":null},{"variantId":"COL_V12_A1000_202307","profile":"PV1000","operation":"ADD","level":"LV2","a":202,"b":307,"carryPolicy":"OPTIONAL_HINT","assetId":null},{"variantId":"COL_V12_S1000_100099","profile":"PV1000","operation":"SUBTRACT","level":"LV3","a":100,"b":99,"carryPolicy":"REQUIRED_ASSESSED","assessmentAuthority":"LESSON_POLICY_APPROVED","assetId":null}];
+const compiled=KLColumnV12.batch(DEMOS);
+if(!compiled.ok)throw Error('Invalid fixtures: '+compiled.reason);
+const demo=KLColumnViewV12.mount(document.getElementById('stage'),compiled.plans,
+ {onSubmit:(i,values)=>{document.querySelectorAll('.kl-col-v12-status')[i].textContent='Đã nhận trong bộ nhớ TEST: '+Object.keys(values).length+' trường; chưa chấm.';}});
+if(!demo.ok)throw Error('Mount failed '+demo.reason);
+document.body.dataset.qaCardCount=String(demo.cards.children.length);
+const note=document.getElementById('note');
+note.textContent='V1.2: HTML/CSS theo bố cục Type 2 gốc, hai/ba cột tự động; mỗi câu có visualMode REPRESENTATIVE và thao tác theo hàng. Đáp án không được nhúng vào HTML.';
+if(new URLSearchParams(location.search).has('qaAuto')){
+ let passes=0;const issues=[],samples=[];
+ for(let i=0;i<compiled.plans.length;i++){
+  const p=compiled.plans[i],c=demo.cards.children[i],s=DEMOsDummy(p);
+  try{
+   if(c.querySelectorAll('.kl-col-v12-answer').length!==p.columns)throw Error('wrong columns');
+   const ones=c.querySelector('[data-answer="result_ones"]');ones.focus();ones.value='5';ones.dispatchEvent(new Event('input',{bubbles:true}));
+   const expected=p.columns>=2?'result_tens':null;
+   if(expected&&!c.querySelector('[data-answer="'+expected+'"]').classList.contains('active'))throw Error('not RTL auto focused');
+   const t=c.querySelector('.kl-col-v12-transition');
+   if(t){t.click();if(t.getAttribute('aria-pressed')!=='true')throw Error('toggle not active');}
+   const collected=demo.collect(i);
+   if(collected.result_ones!=='5'||(t&&collected[t.dataset.transition]!==true))throw Error('state corrupted');
+   c.querySelector('.kl-col-v12-reset').click();
+   if(demo.collect(i).result_ones!=='')throw Error('reset not empty');
+   if(t&&demo.collect(i)[t.dataset.transition]!==false)throw Error('reset carry not false');
+   passes++;samples.push({index:i,cols:p.columns,operation:p.operation,policy:p.carryPolicy,status:'PASS'});
+  }catch(e){issues.push({index:i,message:e.message})}
+ }
+ document.body.dataset.qaPassed=String(passes);
+ document.body.dataset.qaFailed=String(issues.length);
+ document.body.dataset.qaOverflow=String(document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
+ const result=document.createElement('pre');result.id='qaReport';result.textContent=JSON.stringify({passes,issues,samples});document.body.append(result);
+}
+function DEMOsDummy(plan){return plan.variantId;}
+</script></body></html>
