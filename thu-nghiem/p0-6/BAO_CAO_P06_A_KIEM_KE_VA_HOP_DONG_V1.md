@@ -41,3 +41,14 @@ Không suy luận `verification.status=PASS` chỉ vì JSON hợp schema; valida
 
 ## Rollback
 Chỉ xóa/revert các file mới dưới `thu-nghiem/p0-6` và workflow `p0-6-a-contract.yml` trên nhánh P0.6 TEST; hoàn toàn không chạm Apps Script TEST Version 6, dữ liệu H.1 hay MAIN. Mốc P0.5: `test/p0-5-i2-webapp-evidence-20261113`.
+
+## Kết quả CI thực tế (đã xác minh)
+- GitHub Actions: https://github.com/Nguyennth19/new-lop-2/actions/runs/43418492205
+- Source commit: `43b659208b41ae41d86ea6756f229186ecee3760`.
+- Workflow `P0.6-A Lesson Contract (TEST only)` completed **SUCCESS**.
+- Step **P0.6-A multi-subject fixtures and B20 invariants**: SUCCESS (11 ca kiểm trong fixture).
+- Step **Inherited P0.4 FULL_SAFE**: SUCCESS.
+- Step **B20 original complete regression**: SUCCESS.
+- Step **P0.5 gate remains fail-closed**: SUCCESS.
+- Step **No tracked file mutations**: SUCCESS.
+- Không coi các fixture giả lập Tiếng Việt/Anh là nghiệm thu nội dung sư phạm hay kiểm thử Web App thật.
