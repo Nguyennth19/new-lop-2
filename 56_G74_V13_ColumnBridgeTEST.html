@@ -100,6 +100,32 @@ function mount(context){
    events.push({id:q.id,status:'FAIL_OPEN_LEGACY_PRESERVED'});
   }
  }
+ // Test preview PV1000 uses V1.2's approved QA fixtures; it is NOT a B20 question.
+ // Deliberately excluded from grade/answers/progress and all data-ml-field inputs.
+ if(mounted>0&&!root.querySelector('[data-g74-v13-preview]')){
+  const demos=[
+   {variantId:'COL_V13_PREVIEW_ADD_356128',operation:'ADD',profile:'PV1000',
+    level:'LV2',a:356,b:128,carryPolicy:'OPTIONAL_HINT',assetId:null},
+   {variantId:'COL_V13_PREVIEW_SUB_402187',operation:'SUBTRACT',profile:'PV1000',
+    level:'LV3',a:402,b:187,carryPolicy:'OPTIONAL_HINT',assetId:null}
+  ];
+  const batch=KLColumnV12.batch(demos);
+  if(batch.ok){
+   const aside=doc.createElement('aside');aside.dataset.g74V13='1';
+   aside.dataset.g74V13Preview='1';
+   aside.setAttribute('aria-label','Bản xem thử đặt tính phạm vi 1000');
+   const h=doc.createElement('div');h.className='g74v13-heading';
+   h.textContent='PV1000 · XEM THỬ TRÊN WEB APP TEST (KHÔNG CHẤM / KHÔNG GHI TIẾN ĐỘ)';
+   const note=doc.createElement('p');note.className='g74v13-guidance';
+   note.textContent='Cộng 356 + 128 và trừ 402 − 187. Chỉ kiểm bố cục, nhớ/mượn và nhập liệu. Đây không phải câu hỏi B20.';
+   const holder=doc.createElement('div');holder.className='g74v13-host';
+   aside.append(h,note,holder);
+   root.append(aside);
+   try{const preview=KLColumnViewV12.mount(holder,batch.plans);
+     if(!preview.ok)aside.remove();
+   }catch(e){aside.remove();}
+  }
+ }
  root.dataset.g74V13Mounted=String(mounted);
  return {ok:true,status:'TEST_DUAL_RENDER',count:mounted,events,grading:'LEGACY_SERVER_ONLY'};
 }
