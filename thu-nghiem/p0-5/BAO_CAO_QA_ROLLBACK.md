@@ -57,3 +57,15 @@ User ran `kiemTraMoiTruongP05KhongGhi` in the TEST Apps Script after pulling `te
 - `91_So_sao`: exists, lastRow=1, lastColumn=9.
 
 This closes the isolated-workbook **preflight prerequisite** based on a user-provided GAS execution log; it is NOT a verified `/exec` deployment/version, real browser QA, six browser-session grading, or student ledger write-transaction proof. `WEBAPP`, `SESSIONS`, and `BROWSER` remain PENDING. Next safe read-only checks in the same TEST Apps Script editor: `kiemTraGoiDuLieuUI20` and `kiemTraKetNoiB20`. Keep P03 lock NO; only then review Manage deployments for a new version and test the isolated Web App in browser.
+
+## P0.5-C REAL APPS SCRIPT EDITOR DATA/API CHECKS PASS — user execution logs, 2026-11-13
+File: `B20_BienTheMayChu.gs`. Both tests executed by the user inside the TEST Apps Script editor after isolated preflight PASS.
+
+1. `kiemTraGoiDuLieuUI20`: `ok:true`, `apiVersion:"ui20-02a-data-check-20261112"`, `lessonId:"toan_b20"`, `variantPilot:true`, `questionCount:30`, `sessionCount:6`, `lessonKeys:["assetScenes","lesson","packVersion","questions","sessions","variantPilot"]`, `noWrites:true`.
+2. `kiemTraKetNoiB20`: `ok:true`, `apiVersion:"b20-r1-3-1-20261112"`, `lessonId:"toan_b20"`, `gradingEndpoint:"chamLuotToan20BienThe"`, `endpointReady:true`, `stagingOnly:true`, `noWrites:true`.
+
+Assessment: `P05_EDITOR_DATA_API_PASS (USER_LOG)`. This verifies TEST editor API/data contracts only. It **does not** prove the published /exec deployment serves the same version or that browser/mobile workflows and actual six-session submissions pass. `WEBAPP`, `SESSIONS`, `BROWSER` still PENDING, `PEDAGOGY` unsigned, `RELEASE_READY=false`.
+
+Next read-only server action, explicitly file and function: file `B20_BienTheMayChu.gs` → function `kiemTraChamLuotB20` → Run in the **TEST Apps Script editor**, expect `ok:true,total:30`, six session totals LV1-A 6, LV1-B 6, LV2-A 5, LV2-B 5, LV3-A 4, LV3-B 4, `recorded:false,starsAwarded:0`. This is a repeatable isolated GAS scoring check and remains distinct from browser QA. Keep P03 lock NO, do not modify student ledger.
+
+After that, user should inspect TEST deployment at `Deploy → Manage deployments`, select existing /exec deployment and ensure newly deployed version is the latest TEST code; pull alone may not update a versioned /exec deployment. Only then perform browser/mobile manual QA and capture 90/91 snapshots; never mark release-ready from editor PASS alone.
