@@ -1,0 +1,40 @@
+name: G7.4 Count-Safe and Expansion QA
+on:
+  push:
+    branches:
+      - 'test/g7-4-b5-10-count-safe-b6-expansion-20261113'
+    paths:
+      - 'qa/g7-4-gates/**'
+      - 'qa/g7-4-b5-10-count-safe-matrix.v1.json'
+      - 'qa/g7-4-b6-expansion-request.example.json'
+      - '.github/workflows/g7-4-count-expansion-qa.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run count-safe and expansion gate tests
+        run: node qa/g7-4-gates/count-expansion-gates.test.cjs
+      - name: Verify staged approvals and coverage
+        run: |
+          node - <<'JS'
+          const assert=require('node:assert/strict');
+          const fs=require('node:fs');
+          const m=JSON.parse(fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json','utf8'));
+          const qa=JSON.parse(fs.readFileSync('qa/g7-4-b5-10-count-safe-matrix.v1.json','utf8'));
+          assert.equal(m.icons.length,46);
+          assert.equal(qa.records.length,46);
+          assert.equal(new Set(qa.records.map(x=>x.assetId)).size,46);
+          assert.deepEqual(new Set(qa.records.map(x=>x.assetId)),new Set(m.icons.map(x=>x.id)));
+          assert.equal(qa.records.filter(x=>x.countQaStatus==='COUNT_SAFE_APPROVED').length,0);
+          assert.equal(m.icons.filter(x=>x.visualQaStatus==='OWNER_VISUAL_APPROVED').length,46);
+          assert.equal(m.enabled,false);
+          assert.equal(m.productionActivation,false);
+          console.log('PASS 46/46 staged, no count inference, runtime OFF');
+          JS
