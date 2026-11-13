@@ -14,11 +14,11 @@ check('quota and total consistency',()=>{assert.equal(m.totalQuestions,8);assert
 check('families unique and skill-allowlisted',()=>{assert.equal(new Set(m.families.map(x=>x.id)).size,3);assert.ok(m.families.every(x=>p.allowedSkills.includes(x.skillId)));assert.ok(m.families.every(x=>x.mathKind==='ADD'))});
 check('session allocations and no duplicate IDs',()=>{assert.equal(m.sessions.length,4);assert.equal(new Set(m.sessions.map(s=>s.id)).size,4);const sums={};for(const s of m.sessions){assert.ok(m.levels.some(l=>l.id===s.levelId));for(const a of s.allocations){assert.ok(m.families.some(f=>f.id===a.familyId));sums[a.familyId]=(sums[a.familyId]||0)+a.count}}assert.deepEqual(sums,m.familyQuotas);assert.deepEqual(m.sessions.map(s=>s.allocations.reduce((n,a)=>n+a.count,0)),[2,2,2,2])});
 check('safe asset policy',()=>{assert.ok(m.families.every(f=>f.requiredAssetRole==='NONE'));assert.ok(m.families.every(f=>f.variantLevel==='V1_SURFACE'))});
-check('release must remain blocked',()=>{assert.equal(state.safety.releaseReady,false);assert.equal(state.safety.noStudentData,true);assert.equal(state.gates.policyE0,'PENDING_APPROVAL')});
+check('release must remain blocked',()=>{assert.equal(state.safety.releaseReady,false);assert.equal(state.safety.noStudentData,true);assert.equal(state.gates.policyE0,'OWNER_APPROVED_TEST_SCOPE');assert.equal(state.gates.g7,'OWNER_APPROVED_TEST_SCOPE');assert.equal(state.gates.g8,'OWNER_APPROVED_TEST_SCOPE');assert.equal(state.gates.g5,'BLOCKED_LIVE_INTEGRATION');assert.equal(state.gates.g5Offline,'PASS')});
 const lv2=m.families.find(f=>f.id==='F_2D_2D'),lv3=m.families.find(f=>f.id==='F_2D_2D_CHALLENGE');
 const ambiguity=lv2.skillId===lv3.skillId&&lv2.interaction===lv3.interaction&&lv2.variantLevel===lv3.variantLevel;
 assert.equal(ambiguity,true,'Update the pedagogy review and test if LV3 content changes');
 console.log('PENDING_APPROVAL B21 LV3: same skill, interaction and variant class as LV2; higher cognitive demand not evidenced');
-console.log('PENDING_APPROVAL E0 owner policy and B21 educational signoff');
-console.log('BLOCKED G5 interactive; RELEASE_READY=false');
+console.log('OWNER_APPROVED_TEST_SCOPE G7/G8; JSON candidate remains unsigned/TEST-only');
+console.log('PASS G5 offline bridge; BLOCKED G5 live Web App integration; RELEASE_READY=false');
 console.log('FA_SAFE_STATIC_QA_PASS '+count+'/'+count+' (not pedagogical signoff)');
