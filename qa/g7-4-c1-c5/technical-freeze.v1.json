@@ -43,7 +43,7 @@
       "B21B24Integrated": false
     },
     "C5": {
-      "status": "TECHNICAL_FREEZE_PREPARED_RELEASE_PENDING",
+      "status": "TECHNICAL_TEST_FREEZE_PASS_RELEASE_PENDING",
       "evidence": "docs/kiem-dinh/G7.4-C1-C5_VISUAL_TECHNICAL_CLOSURE_20261113.md",
       "ownerSignoffOnNewTenFormGallery": false,
       "liveGoogleAppsScriptQa": false,
@@ -68,5 +68,15 @@
     "productionRelease": false
   },
   "nextReleaseGate": "Owner visual approval of the 10-form gallery, Apps Script isolated TEST deployment, regression of real lesson UI, explicit release decision",
-  "followUpRule": "After technical freeze, new SVGs enter B6 demand intake and ordinary maintenance; do not reopen C1/C2 per asset."
+  "followUpRule": "After technical freeze, new SVGs enter B6 demand intake and ordinary maintenance; do not reopen C1/C2 per asset.",
+  "ciEvidence": {
+    "workflow": "G7.4 C1-C5 Visual Closure QA",
+    "runId": 43449528743,
+    "status": "SUCCESS",
+    "pureAssertions": 54,
+    "purePassed": 54,
+    "tenFormChrome": 10,
+    "b20ChromeCards": 30,
+    "unmodifiedAnswerInputs": true
+  }
 }
