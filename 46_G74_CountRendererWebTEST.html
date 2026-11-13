@@ -84,38 +84,61 @@ function sceneFor(sample,width){
   default:return {ok:false,code:'INVALID_DEMO_TYPE'};
  }
 }
-function images(doc,scene,assetId){
+function images(doc,scene,assetId,removedCount=0){
  const item=REGISTRY.assets.find(x=>x.assetId===assetId);
  const wrap=el(doc,'div','g74-b514-scene');if(!item||!DATA[assetId])return wrap;
- if(scene.status==='ILLUSTRATION'){const im=el(doc,'img','g74-b514-item');im.src=DATA[assetId];im.alt=item.canonicalPhrase;im.width=64;im.height=64;wrap.append(im);return wrap}
- const grid=el(doc,'div','g74-b514-grid');
- grid.style.setProperty('--g74-cols',String(scene.columns));
- grid.style.setProperty('--g74-icon',scene.iconPx+'px');grid.style.setProperty('--g74-gap',scene.gapPx+'px');
- grid.style.setProperty('--g74-max',scene.containerMaxHeightPx+'px');
- for(let i=0;i<scene.renderCount;i++){
-  const im=el(doc,'img','g74-b514-item');im.src=DATA[assetId];im.alt='';im.setAttribute('aria-hidden','true');grid.append(im);
+ if(scene.status==='ILLUSTRATION'){
+  const im=el(doc,'img','g74-b514-item');im.src=DATA[assetId];im.alt=item.canonicalPhrase;im.width=64;im.height=64;wrap.append(im);return wrap;
  }
- wrap.append(grid);return wrap;
+ const drawGrid=(count,offset=0)=>{
+  const grid=el(doc,'div','g74-b514-grid');
+  grid.style.setProperty('--g74-cols',String(scene.columns));
+  grid.style.setProperty('--g74-icon',scene.iconPx+'px');grid.style.setProperty('--g74-gap',scene.gapPx+'px');
+  grid.style.setProperty('--g74-max',scene.containerMaxHeightPx+'px');
+  for(let i=0;i<count;i++){
+   const removed=offset+i>=scene.renderCount-removedCount;
+   const im=el(doc,'img','g74-b514-item'+(removed?' g74-b514-removed':''));
+   im.src=DATA[assetId];im.alt='';im.setAttribute('aria-hidden','true');grid.append(im);
+  }
+  return grid;
+ };
+ if(scene.groups&&scene.groups.length){
+  for(let i=0;i<scene.groups.length;i++){
+   const g=scene.groups[i],group=el(doc,'div','g74-b514-subgroup');
+   group.append(el(doc,'small','', 'Nhóm '+(i+1)+': '+g.quantity+' '+scene.canonicalUnit));
+   group.append(drawGrid(g.quantity,g.start));wrap.append(group);
+  }
+ }else wrap.append(drawGrid(scene.renderCount));
+ return wrap;
 }
 function draw(doc,target,sample,width){
  const result=sceneFor(sample,width);target.replaceChildren();
- if(!result.ok){target.append(el(doc,'p','g74-b514-blocked','Không dựng: '+(result.code||'Không đủ điều kiện')));return {ok:false,code:result.code||'BLOCKED'}}
- const scenes=result.scenes|| (result.initial&&result.second?[result.initial,result.second]:[result]);
+ if(!result.ok){
+  target.append(el(doc,'p','g74-b514-blocked','Không dựng: '+(result.code||'Không đủ điều kiện')));
+  target.dataset.g74Status='BLOCKED';return {ok:false,code:result.code||'BLOCKED'};
+ }
+ const subtract=result.initial&&result.second&&result.operator==='-';
+ const scenes=subtract?[result.initial]:(result.scenes||(result.initial&&result.second?[result.initial,result.second]:[result]));
  let actual=0;
  for(let i=0;i<scenes.length;i++){
   const scene=scenes[i];const item=el(doc,'div','g74-b514-group');
   if(scenes.length>1)item.append(el(doc,'small','',i===0?'Nhóm 1':'Nhóm 2'));
-  item.append(images(doc,scene,sample.assetId));target.append(item);actual+=scene.renderCount;
+  item.append(images(doc,scene,sample.assetId,subtract?result.removedCount:0));
+  target.append(item);actual+=scene.renderCount;
  }
  if(result.initial&&result.second){
+  if(subtract)target.append(el(doc,'p','g74-b514-calculation',
+     'Gạch bớt '+result.right+' '+sample.unit+' trong '+result.left+' '+sample.unit+'. Còn '+result.total+' '+sample.unit+'.'));
   target.append(el(doc,'p','g74-b514-calculation',result.left+' '+result.operator+' '+result.right+' = '+result.total+' '+sample.unit));
- }else if(result.groups?.length){target.append(el(doc,'p','g74-b514-calculation',
-  result.groups.length+' nhóm · tổng '+result.totalObjects+' '+sample.unit));}
- else if(result.scenes){target.append(el(doc,'p','g74-b514-calculation',
-  result.totals[0]+' và '+result.totals[1]+' '+sample.unit));}
- else if(result.status!=='ILLUSTRATION'){target.append(el(doc,'p','g74-b514-calculation',
-  'Có '+result.totalObjects+' '+sample.unit));}
+ }else if(result.groups?.length)target.append(el(doc,'p','g74-b514-calculation',
+    result.groups.length+' nhóm · tổng '+result.totalObjects+' '+sample.unit));
+ else if(result.scenes)target.append(el(doc,'p','g74-b514-calculation',
+    result.totals[0]+' và '+result.totals[1]+' '+sample.unit));
+ else if(result.status!=='ILLUSTRATION')target.append(el(doc,'p','g74-b514-calculation',
+    'Có '+result.totalObjects+' '+sample.unit));
  target.dataset.g74Actual=String(actual);target.dataset.g74Status='PASS';
+ target.dataset.g74Groups=String(target.querySelectorAll('.g74-b514-subgroup').length);
+ target.dataset.g74Removed=String(target.querySelectorAll('.g74-b514-removed').length);
  return {ok:true,actual,scene:sample.id,expected:result.totalObjects??result.total??null};
 }
 function mount(opts){
