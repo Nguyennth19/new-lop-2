@@ -32,3 +32,14 @@
 **F-B.3 = TECHNICAL_PASS_FOR_ISOLATED_TEST** sau khi các job F-B.3 mới đạt CI. Đây là chứng cứ mở ứng viên TEST độc lập cho B20, **không** phê duyệt Google Apps Script V6 hay production; không tạo quyền ghi tiến độ, điểm, sao. Rollback chỉ khóa riêng `lessonId` trên registry, **không** chỉnh Apps Script deployment.
 
 **Bước sau F-B.3:** chuyển sang hoàn thiện hội đồng gate/kiểm toán P0 theo chứng cứ A–F, không mở V6 hay MAIN nếu chưa có quyết định riêng.
+
+## Final source-backed F-B.3 CI and JSON receipt
+
+- **Independent B20 final QA:** [GitHub run 43461674746](https://github.com/Nguyennth19/new-lop-2/actions/runs/43461674746), code SHA `42f7d47dfb9168e34f10b4da4371e8ca224dd1bc`, conclusion **SUCCESS**.
+- Browser result explicitly verified in Actions logs: desktop Chromium **30/30 PASS** (1366px), mobile emulation **30/30 PASS** (390px), six B20 kinds checked; 0 JS errors; no horizontal overflow. Correct/wrong/blank cases tested for every question.
+- **Independent B20 JSON receipt and rollback:** step `xuat-bien-nhan-fb3-b20.cjs` PASS, pinned H1 source blob, H2 approval blob, 3 renderer/grader blobs; receipt verifies 30 items and `ROLLED_BACK_TO_BLOCKED_DEFAULT`.
+- Downloadable workflow artifact: [14055893099](https://github.com/Nguyennth19/new-lop-2/actions/runs/43461674746/artifacts/14055893099), 1,564,519 bytes, contains generated independent HTML preview, desktop/mobile screenshots, browser results JSON and B20-specific QA/rollback receipt. Zip SHA256 `403fb6570b73c06b2465e0f93f869e2f3e1bf5bee89f12bab07bc6ce1b797efc`.
+- Governance with two distinct trusted lessons: [run 43461583845](https://github.com/Nguyennth19/new-lop-2/actions/runs/43461583845) **SUCCESS**; B20 and B21 selection and cross-lesson isolation passed, while B24 and Tiếng Việt remain locked.
+- **Recovered CI failure:** run `43461382294` failed before browser QA due GitHub runner Ubuntu's external Microsoft apt repository network/release error during `playwright install --with-deps`; switched to `playwright install chromium` on pinned Ubuntu 24.04. No app/teaching content was changed; final run `43461674746` succeeded.
+
+**Closure:** `F-B.3 TECHNICAL_PASS_FOR_ISOLATED_TEST`. No production/app-deployment authorization is implied; `RELEASE_READY=false`.
