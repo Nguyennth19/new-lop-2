@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "g74-drag-sort-reference-v11-checkpoint-v1",
+  "createdDate": "2026-11-14",
+  "branch": "test/g7-4-drag-sort-reference-v11-20261114",
+  "base": "test/g7-4-geometry-tangram-reference-v11-20261114",
+  "status": "SOURCE_EXTRACTED_TEST_QA_PENDING",
+  "decision": "DO_NOT_CLOSE_V11",
+  "modes": [
+    "ORDER",
+    "SORT"
+  ],
+  "source": {
+    "path": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "lockedSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "immutable": true,
+    "originalFunctions": [
+      "renderType6_DragDropOrdering",
+      "selectT6Card",
+      "placeT6CardInSlot",
+      "selectT6BasketItem",
+      "assignToBasket"
+    ]
+  },
+  "files": [
+    "qa/g7-4-drag-sort-reference-v11/drag-sort-v11-core.js",
+    "qa/g7-4-drag-sort-reference-v11/drag-sort-v11-view.js",
+    "qa/g7-4-drag-sort-reference-v11/drag-sort-v11-fixtures.js",
+    "qa/g7-4-drag-sort-reference-v11/drag-sort-v11.css",
+    "qa/g7-4-drag-sort-reference-v11/Drag_Sort_V11_Standalone_TEST.html",
+    "qa/g7-4-drag-sort-reference-v11/drag-sort-v11.test.cjs",
+    ".github/workflows/g7-4-drag-sort-v11.yml",
+    "docs/kiem-dinh/G7.4_DRAG_SORT_REFERENCE_V1.1_20261114.md"
+  ],
+  "gates": {
+    "sourceFiles": "PASS_COMMITTED",
+    "mainNotEdited": "PASS",
+    "frozenOriginal": "PASS_NO_WRITE_PENDING_CI_SHA",
+    "unitRegression200Variants": "PENDING_CI",
+    "browserDesktopDrag": "PENDING_BATCH_QA",
+    "mobileTap": "PENDING_BATCH_QA",
+    "assetResolver": "PENDING_INTEGRATION",
+    "generatorLessonComposition": "PENDING_INTEGRATION",
+    "serverGradingAndProgress": "DEFERRED_GAS_E2E"
+  },
+  "criticalNotes": [
+    "Original drag handler is not reliable and not treated as tested",
+    "Original order click auto-fills first empty slot, TEST now selects then places explicitly",
+    "Values exactly 50 have no group in the two-basket fixture; generator must exclude or define third group",
+    "ORDER and SORT are separate reference modes but original form contains both in one exercise",
+    "No client-side answer values or verification"
+  ],
+  "safety": {
+    "mainChanged": false,
+    "legacyRendererChanged": false,
+    "frozenSourceChanged": false,
+    "studentDataChanged": false,
+    "pointsStarsProgressGranted": false,
+    "gasDeployed": false
+  },
+  "rollback": "No imports into current Web App; revert TEST branch or ignore new modules",
+  "next": "Continue other form references, aggregate QA in G7.4-RENDERER_BATCH_QA_V1"
+}
