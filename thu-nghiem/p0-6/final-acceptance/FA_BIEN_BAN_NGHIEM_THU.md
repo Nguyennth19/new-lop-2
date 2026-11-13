@@ -12,7 +12,7 @@
 | G0–G4/G6 inherited technical | DONE (E03 scope only) | Offline receipts; not an F-A pedagogy approval |
 | G5 interactive | BLOCKED | Readonly renderer only |
 | G7/G8 | PENDING_APPROVAL | Policy and educational review remain pending |
-| F-A new QA | PENDING | Record confirmed run ID / SHA / conclusion after execution |
+| F-A new QA | DONE (TECHNICAL TEST ONLY) | Run 43447904122 SUCCESS at 2b3a3893226725b0e149811e0bea15e1fa3298cf; pedagogical signoff still pending |
 | F-B handover readiness | BLOCKED | Await owner decision and required gates |
 | RELEASE_READY | false | No deployment permitted |
 
