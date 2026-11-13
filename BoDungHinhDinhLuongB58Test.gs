@@ -30,7 +30,7 @@ function compile(registry,policy){
 function search(catalog,query){
  if(!catalog||catalog.total!==288)return [];
  const q=normalize(query);if(!q)return [];
- return Object.values(catalog.byId).filter(a=>normalize(a.label_vi).includes(q)||normalize(a.asset_id).includes(q)).map(a=>({assetId:a.asset_id,label:a.label_vi,countCandidate:!!catalog.candidates[a.asset_id]})).slice(0,30);
+ return Object.values(catalog.byId).filter(a=>normalize(a.label_vi).includes(q)||normalize(a.asset_id).includes(q)||(catalog.candidates[a.asset_id]||{aliases:[]}).aliases.some(alias=>alias.includes(q))).map(a=>({assetId:a.asset_id,label:a.label_vi,countCandidate:!!catalog.candidates[a.asset_id]})).slice(0,30);
 }
 function plan(catalog,request){
  if(!catalog||catalog.total!==288)return fail('CATALOG_NOT_READY');
