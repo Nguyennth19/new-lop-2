@@ -28,6 +28,8 @@ jobs:
         run: node thu-nghiem/p0-6/fb/kiem-thu-fb-release-governance.cjs
       - name: F-B.2 multi-lesson isolation and rollback regression
         run: node thu-nghiem/p0-6/fb/kiem-thu-fb2-multi-lesson.cjs
+      - name: F-B.3 independent second-lesson onboarding and scoped rollback
+        run: node thu-nghiem/p0-6/fb/kiem-thu-fb3-second-lesson.cjs
       - name: Export bounded JSON version and QA receipt
         run: node thu-nghiem/p0-6/fb/xuat-bien-nhan-fb.cjs
       - name: Upload TEST candidate and QA receipt
