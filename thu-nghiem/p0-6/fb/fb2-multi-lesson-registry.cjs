@@ -18,13 +18,13 @@ function createMultiLessonRegistry(catalog,trustAnchors={}){
  for(const raw of catalog.lessons){
   if(!isObj(raw)||!ID.test(raw.lessonId)||!VERSION.test(raw.lessonVersion)||
    !['toan','tieng_viet','tieng_anh'].includes(raw.subject)||registry.has(raw.lessonId)||
-   !['INHERITED_ACCEPTED_TEST_ONLY','PENDING_INDEPENDENT_QA'].includes(raw.state)||
+   !['INHERITED_ACCEPTED_TEST_ONLY','INDEPENDENT_ACCEPTED_TEST_ONLY','PENDING_INDEPENDENT_QA'].includes(raw.state)||
    raw.allowStudentUse!==false||raw.deploy!==false||raw.releaseReady!==false||
    !['INDEX_VERIFIED','NOT_VERIFIED'].includes(raw.sourceScopeStatus))throw Error('FB2_ENTRY_INVALID');
   for(const field of ['sourceRef','rendererRef','policyReviewRef','qaEvidenceRef','trustedAdapterId'])
    if(raw[field]!==null&&(typeof raw[field]!=='string'||!REF.test(raw[field])))throw Error('FB2_PROVENANCE_INVALID');
   const present=['sourceRef','rendererRef','policyReviewRef','qaEvidenceRef','trustedAdapterId'].every(k=>raw[k]!==null);
-  if(raw.state==='INHERITED_ACCEPTED_TEST_ONLY'&&!present)throw Error('FB2_APPROVED_EVIDENCE_INCOMPLETE');
+  if(['INHERITED_ACCEPTED_TEST_ONLY','INDEPENDENT_ACCEPTED_TEST_ONLY'].includes(raw.state)&&!present)throw Error('FB2_APPROVED_EVIDENCE_INCOMPLETE');
   if(raw.state==='PENDING_INDEPENDENT_QA'&&present)throw Error('FB2_PENDING_CANNOT_SELF_APPROVE');
   registry.set(raw.lessonId,Object.freeze(clone(raw)));
  }
@@ -37,7 +37,7 @@ function createMultiLessonRegistry(catalog,trustAnchors={}){
   if(request.lessonVersion!==entry.lessonVersion)return denied('FB2_VERSION_MISMATCH',{lessonId:entry.lessonId});
   if(request.allowStudentUse!==false||request.deploy===true||request.persist===true||
     request.awardStars===true||request.releaseReady===true)return denied('FB2_CAPABILITY_DENIED');
-  if(entry.state!=='INHERITED_ACCEPTED_TEST_ONLY')return denied('FB2_INDEPENDENT_QA_REQUIRED',{lessonId:entry.lessonId});
+  if(!['INHERITED_ACCEPTED_TEST_ONLY','INDEPENDENT_ACCEPTED_TEST_ONLY'].includes(entry.state))return denied('FB2_INDEPENDENT_QA_REQUIRED',{lessonId:entry.lessonId});
   const anchor=trustAnchors[entry.trustedAdapterId];
   if(!isObj(anchor)||anchor.lessonId!==entry.lessonId||anchor.lessonVersion!==entry.lessonVersion||
     anchor.sourceRef!==entry.sourceRef||anchor.rendererRef!==entry.rendererRef||
@@ -71,6 +71,6 @@ function createMultiLessonRegistry(catalog,trustAnchors={}){
  }
  return Object.freeze({select,rollback,
   list:()=>[...registry.values()].map(e=>({lessonId:e.lessonId,subject:e.subject,
-   lessonVersion:e.lessonVersion,state:e.state,hasIndependentEvidence:e.state==='INHERITED_ACCEPTED_TEST_ONLY'}))});
+   lessonVersion:e.lessonVersion,state:e.state,hasIndependentEvidence:['INHERITED_ACCEPTED_TEST_ONLY','INDEPENDENT_ACCEPTED_TEST_ONLY'].includes(e.state)}))});
 }
 module.exports={createMultiLessonRegistry};
