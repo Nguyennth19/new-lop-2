@@ -1,6 +1,6 @@
 /**
  * G7.4-B.5.5 multi-lesson, audited TEST-only visualIntent gate.
- * Pure integration wrapper; no HTTP, SpreadsheetApp, DOM, student writes or score logic.
+ * Pure integration wrapper; no HTTP, spreadsheet service calls, DOM, student writes or score logic.
  * Previous B5.4 single-lesson gate stays untouched as a rollback baseline.
  * Every lesson must pass registry eligibility AND an explicit per-lesson opt-in.
  */
