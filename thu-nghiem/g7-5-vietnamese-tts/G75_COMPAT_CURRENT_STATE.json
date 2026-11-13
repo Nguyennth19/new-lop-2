@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "g75.compat-state.v1",
+  "date": "2026-11-14",
+  "phase": "G7.5-COMPATIBILITY_TEST_V1",
+  "status": "TEST_HARNESS_READY_REAL_DEVICE_GAS_QA_PENDING",
+  "branch": "test/g7-5-vi-tts-compat-v1-20261114",
+  "baselineRef": "test/g7-5-vietnamese-tts-reference-20261114",
+  "baselineCommit": "9d952154d606f95c5ba3aa703bea07a0462a28a9",
+  "p06ClosedCheckpoint": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "sourceFileSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+  "referenceDoc": "thu-nghiem/g7-5-vietnamese-tts/G75_WEB_SPEECH_API_VIETNAMESE_REFERENCE_V1_20261114.md",
+  "testDirectory": "thu-nghiem/g7-5-vietnamese-tts/compat-v1",
+  "qaReport": "thu-nghiem/g7-5-vietnamese-tts/G75_COMPAT_V1_QA_PLAN_AND_EXECUTION_20261114.md",
+  "qa": {
+    "mockAndStatic": "PASS",
+    "ciRuns": [
+      {
+        "id": 43493249490,
+        "headSha": "7c0c7dae3336b4eba04008568a220c6a0082f562",
+        "conclusion": "success"
+      },
+      {
+        "id": 43493300679,
+        "headSha": "eb5ae3fe01b23e60d7427cf60fe351317ca33414",
+        "conclusion": "success",
+        "artifact": "G75-VIETNAMESE-TTS-COMPAT-V1",
+        "artifactRetentionDays": 14
+      }
+    ],
+    "desktopAudible": "PENDING_REAL_DEVICE",
+    "androidAudible": "PENDING_REAL_DEVICE",
+    "iosAudible": "PENDING_REAL_DEVICE",
+    "gasHtmlService": "PENDING_ISOLATED_DEPLOYMENT_AND_REAL_HUMAN_AUDIO",
+    "mathSpeechFormatter": "PENDING"
+  },
+  "releaseReady": false,
+  "appVersion6Changed": false,
+  "productionDeployed": false,
+  "nextAction": "Use GitHub Actions artifact to run actual standalone listening tests and a separately authorized isolated Apps Script TEST project. Collect manual JSON QA, do not mark QA-01..06 PASS without direct evidence."
+}
