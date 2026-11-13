@@ -1,0 +1,21 @@
+name: G7.4 Pictograph Reference V1.1 TEST
+on:
+  push:
+    branches:
+      - test/g7-4-pictograph-reference-v11-20261114
+    paths:
+      - 'qa/g7-4-pictograph-reference-v11/**'
+      - '.github/workflows/g7-4-pictograph-v11.yml'
+  workflow_dispatch:
+jobs:
+  pictograph-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tap count, question drafts, policies, variants, locked SHA
+        run: node qa/g7-4-pictograph-reference-v11/pictograph-v11.test.cjs
