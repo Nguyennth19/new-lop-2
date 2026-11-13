@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fc.audit-state.v1",
-  "phase": "F-C.2",
-  "status": "FC2_RAW_DIGEST_CI_PASS_OWNER_EXCEPTION_PENDING",
+  "phase": "F-C.3",
+  "status": "P06_ISOLATED_TEST_CLOSURE_PACKET_READY_OWNER_FINAL_DECISION_PENDING",
   "auditBranch": "test/p0-6-fc-audit-20261114",
   "sourceBranch": "test/p0-6-fb-from-fa-20261113",
   "sourceCheckpoint": "f60eb781df402df3373c4c0f5987087ab01a5764",
@@ -12,7 +12,7 @@
     "conclusion": "success",
     "sha": "f60eb781df402df3373c4c0f5987087ab01a5764"
   },
-  "closureDecision": "REQUEST_CORRECTION_BEFORE_P0_CLOSURE",
+  "closureDecision": "PENDING_SEPARATE_OWNER_P0_CLOSURE_APPROVAL",
   "releaseReady": false,
   "scope": "ISOLATED_TEST_ONLY",
   "protectedSurfaces": [
@@ -23,24 +23,20 @@
     "scores",
     "stars"
   ],
-  "nextAction": "Obtain explicit bounded owner decision on E0 canonical version, pinned digest and TEST attestation exception or formal signature. Do not close P0, deploy or change approved modules.",
+  "nextAction": "Present completed TEST technical P0.6 closure packet for separate owner decision; do not sign on owner behalf, merge, deploy or set RELEASE_READY true. Reverify current F-C HEAD before next mutation.",
   "closureAuthorized": false,
   "ownerDirection": "Complete FC-01/FC-02 before considering P0 closure; do not sign or release",
   "fc01": {
-    "status": "DOCUMENTARY_RECONCILED_FOR_TEST",
+    "status": "PASS_DOCUMENTARY_TEST",
     "evidence": "thu-nghiem/p0-6/final-acceptance/FC_OWNER_DECISION_AND_FC01_FC02_20261114.md",
     "scope": "TEST_ONLY"
   },
   "fc02": {
-    "status": "RAW_DIGEST_VERIFIED_OWNER_ATTESTATION_PENDING",
+    "status": "PASS_FOR_ISOLATED_TEST_DOCUMENTARY_ATTESTATION",
     "policyGitBlob": "69c07906f621b1ad91eba184a595544fe3b6d87c",
     "policyRetrievedUtf8Sha256": "33636d43f895bc417e4916dcec8befcb27a489ff08f774ec1897aa4804cc486e",
     "digestMethod": "SHA256 of UTF-8 re-encoded text returned by GitHub connector; raw Git bytes not independently checked",
-    "pending": [
-      "owner confirmation of canonical E0 policy version (proposed V1.0-TEST)",
-      "owner explicit acknowledgement exact digest/version covered by G8 TEST decision",
-      "owner choice on TEST exception vs independent reviewedAt/signature"
-    ],
+    "pending": [],
     "evidence": "thu-nghiem/p0-6/final-acceptance/FC_POLICY_INTEGRITY_EVIDENCE_20261114.md",
     "crossVerification": {
       "methods": [
@@ -65,8 +61,18 @@
       }
     },
     "fC1Dossier": "thu-nghiem/p0-6/final-acceptance/FC1_E0_POLICY_ATTESTATION_RECONCILIATION_20261114.md",
-    "fc2DecisionPacket": "thu-nghiem/p0-6/final-acceptance/FC2_E0_VERSION_DIGEST_TEST_EXCEPTION_DECISION_PACKET_20261114.md"
+    "fc2DecisionPacket": "thu-nghiem/p0-6/final-acceptance/FC2_E0_VERSION_DIGEST_TEST_EXCEPTION_DECISION_PACKET_20261114.md",
+    "ownerDecision": {
+      "status": "OWNER_CONFIRMED_E0_AND_TEST_EXCEPTION",
+      "canonicalPolicyVersion": "V1.0-TEST",
+      "policySha256": "33636d43f895bc417e4916dcec8befcb27a489ff08f774ec1897aa4804cc486e",
+      "scope": "ISOLATED_TEST_ONLY",
+      "evidencePath": "thu-nghiem/p0-6/final-acceptance/FC3_E0_OWNER_TEST_EXCEPTION_DECISION_20261114.md",
+      "independentSignature": "NOT_APPLICABLE_UNDER_OWNER_TEST_EXCEPTION"
+    }
   },
   "decisionRecord": "thu-nghiem/p0-6/final-acceptance/FC_OWNER_DECISION_AND_FC01_FC02_20261114.md",
-  "latestDocumentedAuditCommit": "0bcab4b0c9a6b7a39e4748e3d320a759b8c9261d"
+  "latestDocumentedAuditCommit": "c9b8b11cd15df945cbb28d22ada4820b54e3e888",
+  "closureReadiness": "READY_TO_PREPARE_OWNER_P0_6_TEST_CLOSURE_PACKET_WITH_EXCLUSIONS",
+  "fc3ReadinessReport": "thu-nghiem/p0-6/final-acceptance/FC3_P06_TEST_CLOSURE_READINESS_20261114.md"
 }
