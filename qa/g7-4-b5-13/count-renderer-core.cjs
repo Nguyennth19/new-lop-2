@@ -43,6 +43,19 @@ const CountRendererG74 = (() => {
     const scene=plan({...options,groupSize:options?.groupSize});
     return scene.ok?{...scene,questionType:'GROUPING'}:scene;
   }
-  return {plan,planComparison,planGrouping};
+  function planArithmetic({registry,assetId,requestedUnit,viewportWidth=360,operator,left,right}={}){
+    if(!['+','-'].includes(operator)||!isInt(left)||!isInt(right)||left<1||right<1)
+      return blocked('INVALID_ARITHMETIC');
+    const total=operator==='+'?left+right:left-right;
+    if(total<0||total>50||left>50||right>50)return blocked('ARITHMETIC_OUT_OF_RANGE');
+    const initial=plan({registry,assetId,requestedCount:left,requestedUnit,viewportWidth});
+    const second=plan({registry,assetId,requestedCount:right,requestedUnit,viewportWidth});
+    if(!initial.ok||!second.ok)return blocked('ARITHMETIC_ASSET_OR_UNIT_BLOCKED');
+    return {ok:true,status:'READY_TO_RENDER',operator,left,right,total,
+      countUnit:requestedUnit,initial,second,removedCount:operator==='-'?right:0,
+      semantics:operator==='+'?'MERGE_GROUPS':'REMOVE_FROM_FIRST_GROUP',
+      mode:'TEST_ONLY',runtimeEnabled:false};
+  }
+  return {plan,planComparison,planGrouping,planArithmetic};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=CountRendererG74;
