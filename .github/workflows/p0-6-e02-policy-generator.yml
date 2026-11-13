@@ -1,0 +1,47 @@
+name: P0.6-E.0.2 Policy Registry Generator (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-6-e02-policy-registry-generator-*'
+    paths:
+      - 'thu-nghiem/p0-6/**'
+      - '.github/workflows/p0-6-e02-policy-generator.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-generator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: E02 policy digest, deterministic variants, G0-G8 negative cases
+        run: node thu-nghiem/p0-6/kiem-thu-policy-generator-v1.cjs
+      - name: E01 math variant G0-G8 gates
+        run: node thu-nghiem/p0-6/kiem-thu-math-variant-policy-v1.cjs
+      - name: E multi-lesson pipeline
+        run: node thu-nghiem/p0-6/kiem-thu-multi-lesson-v1.cjs
+      - name: D renderer compatibility
+        run: node thu-nghiem/p0-6/kiem-thu-renderer-registry-v1.cjs
+      - name: C answer verification
+        run: node thu-nghiem/p0-6/kiem-thu-qa-grading-v1.cjs
+      - name: B adapter registry
+        run: node thu-nghiem/p0-6/kiem-thu-adapter-registry-v1.cjs
+      - name: A JSON contracts
+        run: node thu-nghiem/p0-6/kiem-thu-contract-v1.cjs
+      - name: P0.4 inherited FULL_SAFE
+        run: node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: B20 immutable regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Release gate must stay closed
+        run: |
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json; then
+            echo 'UNEXPECTED RELEASE_READY'; exit 1
+          fi
+      - name: No tracked file writes
+        run: test -z "$(git status --porcelain --untracked-files=no)"
