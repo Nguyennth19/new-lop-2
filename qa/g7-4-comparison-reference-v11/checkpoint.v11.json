@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "g74-comparison-v11-checkpoint-v1",
+  "createdDate": "2026-11-14",
+  "branch": "test/g7-4-comparison-reference-v11-20261114",
+  "base": "test/g7-4-drag-sort-reference-v11-20261114",
+  "status": "SOURCE_EXTRACTED_TEST_QA_PENDING",
+  "decision": "DO_NOT_CLOSE_V11",
+  "source": {
+    "path": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "immutable": true,
+    "functions": [
+      "renderType7_ComparisonCroc",
+      "renderCrocSymbol",
+      "toggleCrocHint",
+      "setT7ActiveRow",
+      "pickComparisonSign"
+    ]
+  },
+  "files": [
+    "qa/g7-4-comparison-reference-v11/comparison-v11-core.js",
+    "qa/g7-4-comparison-reference-v11/comparison-v11-view.js",
+    "qa/g7-4-comparison-reference-v11/comparison-v11-fixtures.js",
+    "qa/g7-4-comparison-reference-v11/comparison-v11.css",
+    "qa/g7-4-comparison-reference-v11/Comparison_V11_Standalone_TEST.html",
+    "qa/g7-4-comparison-reference-v11/comparison-v11.test.cjs",
+    ".github/workflows/g7-4-comparison-v11.yml",
+    "docs/kiem-dinh/G7.4_COMPARISON_REFERENCE_V1.1_20261114.md"
+  ],
+  "gates": {
+    "sourceCommitted": "PASS",
+    "mainUnchanged": "PASS_SCOPE",
+    "lockedHTMLUnmodified": "PASS_NO_WRITE_PENDING_CI_SHA",
+    "unitTests": "PENDING_CI",
+    "browserMobileDesktop": "PENDING_BATCH_QA",
+    "hintPolicy": "PASS_SOURCE_DESIGN_PENDING_TEST",
+    "generatorUnitConversion": "PENDING_INTEGRATION",
+    "assetResolver": "PENDING_INTEGRATION",
+    "serverScoringProgress": "DEFERRED_BATCH_E2E",
+    "gasDeployment": "DEFERRED_BATCH_E2E"
+  },
+  "safety": {
+    "mainChanged": false,
+    "frozenSourceEdited": false,
+    "legacyG6Edited": false,
+    "studentDataModified": false,
+    "rewardsGranted": false,
+    "productionActivated": false
+  },
+  "risks": [
+    "Source hints can expose comparison reasoning; assessment fixture carries no hints",
+    "Crocodile illustration must not obscure mathematical comparison sign",
+    "Unit conversion must be correct in trusted generator/backend",
+    "CI not yet verified; no runtime QA claim"
+  ],
+  "rollback": "Not imported into existing app; ignore new TEST modules or revert TEST branch",
+  "next": "Continue form 8 then G7.4-RENDERER_BATCH_QA_V1"
+}
