@@ -20,6 +20,9 @@
 <?!= napThanhPhan('35_CSS_HinhAnhPilot') ?>
 <?!= napThanhPhan('37_CSS_PhuHuynh') ?>
 <?!= napThanhPhan('43_CSS_ThanhPhanBaiToan') ?>
+<? if (g74V13ColumnTestAllowed_()) { ?>
+<?!= napThanhPhan('55_CSS_G74_V13_ColumnTEST') ?>
+<? } ?>
 <? if (g74B514ChoPhepTest_()) { ?>
 <?!= napThanhPhan('47_CSS_G74_CountRendererWebTEST') ?>
 <? } ?>
@@ -128,6 +131,11 @@
 <? } ?>
 <? if (g74C4ChoPhepTest_()) { ?>
 <?!= napThanhPhan('49_G74_C4_VisualPolicyTest') ?>
+<? } ?>
+<? if (g74V13ColumnTestAllowed_()) { ?>
+<?!= napThanhPhan('53_G74_V13_ColumnCoreTEST') ?>
+<?!= napThanhPhan('54_G74_V13_ColumnViewTEST') ?>
+<?!= napThanhPhan('56_G74_V13_ColumnBridgeTEST') ?>
 <? } ?>
 <?!= napThanhPhan('42_AdapterBienTheB20') ?>
 <?!= napThanhPhan('19_KhongGianHocToan') ?>
