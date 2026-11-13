@@ -1,0 +1,20 @@
+name: G7.4 Comparison Reference V1.1 TEST
+on:
+  push:
+    branches:
+      - test/g7-4-comparison-reference-v11-20261114
+    paths:
+      - 'qa/g7-4-comparison-reference-v11/**'
+      - '.github/workflows/g7-4-comparison-v11.yml'
+  workflow_dispatch:
+jobs:
+  comparison-unit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Signs, hints, drafts, variants and source SHA regression
+        run: node qa/g7-4-comparison-reference-v11/comparison-v11.test.cjs
