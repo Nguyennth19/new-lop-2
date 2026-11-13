@@ -4,10 +4,10 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T22:24:30+07:00",
-  "status": "BLOCKED",
-  "currentOperation": "G5 offline bridge QA passed; pending actual Web App TEST/browser/mobile integration before F-A closure and F-B official handover",
-  "recoveryPoint": "Confirmed CI 43451893690 success at 7aa1dfc0b8fd3fe9a1b4f28aeae0122f3d4d96a2. Most recent code fix corrects FA static audit approval expectation. Live Web App mobile/desktop integration not performed. Verify current HEAD / latest CI before any continuation.",
+  "updatedAt": "2026-11-13T22:27:51.008+07:00",
+  "status": "IN_PROGRESS",
+  "currentOperation": "G5 Browser QA: generate independent static B21 preview and run Chromium desktop/mobile via GitHub Actions",
+  "recoveryPoint": "Verified remote HEAD d3ac244d7d1b5457b72fd12de53d79724fb4dde1; source unchanged; next create standalone HTML build and Playwright E2E scripts",
   "steps": {
     "FA0": "DONE",
     "FA1": "DONE",
@@ -17,7 +17,8 @@
     "FA5": "BLOCKED",
     "FA1_1": "DONE",
     "G5_BRIDGE": "DONE",
-    "G5_LIVE": "BLOCKED"
+    "G5_LIVE": "BLOCKED",
+    "G5_BROWSER_QA": "IN_PROGRESS"
   },
   "gates": {
     "policyE0": "OWNER_APPROVED_TEST_SCOPE",
