@@ -62,6 +62,8 @@ jobs:
             print('width',width,'source QA',d)
             assert d.get('success')=='true',(width,d)
             assert d.get('grade-with-carry')=='true',(width,d)
+            assert d.get('wrong-digit-rejected')=='true',(width,d)
+            assert d.get('original-carry-grading-gap')=='true',(width,'expected known source defect changed; review grading policy')
             assert d.get('grade-with-wrong-carry') in ['true','false'],(width,d)
           print('PASS exact original 100/1000 layout, digit order, interaction and grading across 5 browser widths')
           PY
