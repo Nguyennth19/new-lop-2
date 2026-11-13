@@ -125,7 +125,7 @@ scene.append(dom('div','Tổng: '+result.totalObjects+' '+result.canonicalUnit+'
 }
 let resultHistory=[];
 function draw(){const assetId=assetSelect.value,quantity=Number($('quantity').value),viewportWidth=Number($('width').value),requestedUnit=$('unit').value.trim(),mode=$('type').value;
-const stage=$('stage');stage.replaceChildren();stage.style.setProperty('--stage-width',viewportWidth+'px');
+const stage=$('stage');stage.replaceChildren();stage.removeAttribute('data-qa-total');stage.style.setProperty('--stage-width',viewportWidth+'px');
 let result;
 if(mode==='illustration')result=CountRendererG74.plan({registry,assetId,mode:'illustration',decorativePhrase:$('decorative').value});
 else if(mode==='compare')result=CountRendererG74.planComparison([{registry,assetId,requestedCount:quantity,requestedUnit,viewportWidth},{registry,assetId,requestedCount:Math.max(1,quantity-3),requestedUnit,viewportWidth}]);
@@ -135,9 +135,17 @@ else result=CountRendererG74.plan({registry,assetId,requestedCount:quantity,requ
 if(!result.ok){$('status').textContent='BLOCKED · '+(result.code||'COMPARISON_ITEM_BLOCKED');$('status').className='error';resultHistory.push({assetId,mode,status:'BLOCKED',reason:result.code||'COMPARISON_ITEM_BLOCKED'});return}
 $('status').textContent='PASS · '+mode+' · '+(result.totalObjects??result.total??result.totals?.join(' và ')??'Minh họa')+' · '+viewportWidth+' px';$('status').className='good';
 if(result.initial&&result.second){stage.append(renderOne(result.initial));stage.append(dom('div',result.operator==='+'?'Gộp thêm nhóm thứ hai:':'Bỏ đi nhóm thứ hai:','scene-head'));stage.append(renderOne(result.second));stage.append(dom('div',result.left+' '+result.operator+' '+result.right+' = '+result.total+' '+result.countUnit,'scene-footer'))}else for(const one of (result.scenes||[result]))stage.append(renderOne(one));
-resultHistory.push({assetId,mode,status:'PASS',count:result.totalObjects??null,width:viewportWidth});}
+stage.setAttribute('data-qa-total',String(result.totalObjects??result.total??(result.totals?result.totals.reduce((a,b)=>a+b,0):0)));resultHistory.push({assetId,mode,status:'PASS',count:result.totalObjects??result.total??null,width:viewportWidth});}
 const samples=[['5 quả táo',CountRendererG74.plan({registry,assetId:'red_apple',requestedCount:5,requestedUnit:'quả',viewportWidth:320})],['50 chiếc bút',CountRendererG74.plan({registry,assetId:'pencil',requestedCount:50,requestedUnit:'chiếc',viewportWidth:360})],['12 chia 3',CountRendererG74.planGrouping({registry,assetId:'pencil',requestedCount:12,requestedUnit:'chiếc',viewportWidth:390,groupSize:3})],['8 và 5 quả táo',CountRendererG74.planComparison([{registry,assetId:'red_apple',requestedCount:8,requestedUnit:'quả',viewportWidth:768},{registry,assetId:'red_apple',requestedCount:5,requestedUnit:'quả',viewportWidth:768}])],['Cộng 7+5 con thỏ',CountRendererG74.planArithmetic({registry,assetId:'rabbit',requestedUnit:'con',operator:'+',left:7,right:5,viewportWidth:320})],['Trừ 9-4 quả táo',CountRendererG74.planArithmetic({registry,assetId:'red_apple',requestedUnit:'quả',operator:'-',left:9,right:4,viewportWidth:360})],['Không đếm nho bằng quả',CountRendererG74.plan({registry,assetId:'grapes',requestedCount:3,requestedUnit:'quả'})],['Không đếm sách',CountRendererG74.plan({registry,assetId:'books',requestedCount:3,requestedUnit:'bộ'})],['Không đổi chùm thành quả',CountRendererG74.plan({registry,assetId:'grapes',requestedCount:3,requestedUnit:'quả'})]].map(([name,result])=>({name,result}));
 for(const x of samples){const good=x.name.startsWith('Không')?!x.result.ok:x.result.ok;const d=dom('div',(good?'✓ ':'✗ ')+x.name+' · '+(good?'PASS':'FAIL'));d.style.color=good?'#227447':'#b4322e';$('checks').append(d)}
 $('report').onclick=()=>{const data={test:'G7.4-B.5.13',policy:'TEST_ONLY',decisions:registry.approvedCount,illustrationOnly:registry.illustrationOnlyCount,checks:samples.map(x=>({name:x.name,ok:x.name.startsWith('Không')?!x.result.ok:x.result.ok})),manualRuns:resultHistory,generatedAt:new Date().toISOString()};const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download='G7_B513_RENDERER_VISUAL_QA.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),500)};
+const params=new URLSearchParams(location.search);
+const requestedAsset=params.get('asset');
+if(requestedAsset&&registry.assets.some(x=>x.assetId===requestedAsset)){assetSelect.value=requestedAsset;const a=registry.assets.find(x=>x.assetId===requestedAsset);$('unit').value=a.canonicalUnit||'';updateDecorative()}
+if(['count','groups','compare','illustration','add','subtract'].includes(params.get('type')))$('type').value=params.get('type');
+if(params.has('qty'))$('quantity').value=params.get('qty');
+if(params.has('group'))$('groupSize').value=params.get('group');
+if(['320','360','390','768','1024'].includes(params.get('width')))$('width').value=params.get('width');
+if(params.has('unit'))$('unit').value=params.get('unit');
 draw();
 </script></body></html>
