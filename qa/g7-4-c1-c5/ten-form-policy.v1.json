@@ -25,7 +25,8 @@
     "mathMeasurementUsesParametricSVG": true,
     "noSilentAnswerReveal": true,
     "modelAllowedToSimplify": true,
-    "mainUntouched": true
+    "mainUntouched": true,
+    "geometricPrecisionSeparateFromIconCount": true
   },
   "exerciseTypes": [
     {
@@ -64,9 +65,10 @@
       "index": 5,
       "id": "GEOMETRY_TANGRAM",
       "title": "Hình học / Tangram",
-      "defaultMode": "EXACT_COUNT",
+      "defaultMode": "REPRESENTATIVE",
       "family": "geometry",
-      "principle": "Hình học chính xác bằng SVG tham số; EXACT_COUNT ở đây là mức chính xác hình học, không đồng nghĩa lặp emoji."
+      "principle": "Hình học chính xác bằng SVG tham số; Hình học chính xác theo tọa độ độc lập với chế độ đếm vật, không lặp emoji.",
+      "precisionRequirement": "PARAMETRIC_SVG_EXACT"
     },
     {
       "index": 6,
@@ -88,9 +90,10 @@
       "index": 8,
       "id": "RULER_CLOCK",
       "title": "Thước / đồng hồ",
-      "defaultMode": "EXACT_COUNT",
+      "defaultMode": "REPRESENTATIVE",
       "family": "measurement",
-      "principle": "Bắt buộc chính xác thang đo, kim giờ, đoạn đo bằng SVG toán học; không dùng ảnh vật thể thay kết quả đo."
+      "principle": "Bắt buộc chính xác thang đo, kim giờ, đoạn đo bằng SVG toán học; không dùng ảnh vật thể thay kết quả đo.",
+      "precisionRequirement": "PARAMETRIC_SVG_EXACT"
     },
     {
       "index": 9,
