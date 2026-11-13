@@ -1,0 +1,41 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
+const policy=read('qa/g7-4-c1-c5/ten-form-policy.v1.json');
+const scenarios=read('qa/g7-4-c1-c5/ten-form-scenarios.v1.json');
+const b20=read('qa/g7-4-b5-14a/visual-mode-policy.v1.json');
+const rules=read('du-lieu/asset-selector/semantic-rules.v1.json');
+const count=read('qa/g7-4-b5-13-count-renderer-contract.v1.json');
+const {resolve,resolveVariant}=require('./visual-orchestrator.cjs');
+let n=0;function eq(x,y,name){assert.deepEqual(x,y,name);n++}
+eq(policy.exerciseTypes.length,10);eq(Object.keys(policy.subtypeMapping).length,12);
+eq(new Set(policy.exerciseTypes.map(x=>x.id)).size,10);
+eq(policy.globalRules.noImageAllowed,true);eq(policy.globalRules.sourceSGKStrictImageFidelity,false);
+eq(policy.rollout.runtimeEnabled,false);
+eq(scenarios.scenarios.length,10);
+const env={policy,semanticRules:rules,countRegistry:count};
+for(const item of scenarios.scenarios){
+ const asset=count.assets.find(a=>a.assetId===item.request.assetId);
+ const request={...item.request,exerciseType:item.type,questionId:item.questionId||item.id};
+ if(asset)request.assetSha256=asset.sourceSha256;
+ const result=resolve(request,env);
+ eq(result.ok,true,item.id+': '+JSON.stringify(result));
+ eq(result.renderMode||result.sourceKind,item.expected,item.id);
+ eq(result.answerDisclosure,'NONE',item.id);
+ if(item.num!==undefined)eq(result.quantity,item.num,item.id);
+}
+eq(b20.currentB20.counts,{EXACT_COUNT:0,REPRESENTATIVE:2,DECORATIVE:28});
+const cand=resolve({exerciseType:'WORD_PROBLEM_3STEP',conceptKey:'wrapped_candy',quantity:81},env);
+eq(cand.ok,false,'symbolic candy cannot inherit quantity');
+const symbolic=resolve({exerciseType:'WORD_PROBLEM_3STEP',conceptKey:'wrapped_candy'},env);
+eq(symbolic.assetId,'KL_SH02_010');eq(symbolic.quantitySemantics,'NONE');
+const wrong=resolve({exerciseType:'NUMBER_BOND',visualMode:'EXACT_COUNT',assetId:'grapes',assetSha256:count.assets.find(x=>x.assetId==='grapes').sourceSha256,unit:'quả',quantity:3,directCountIntent:true},env);
+eq(wrong.ok,false,'bunch may not count as individual fruits');
+eq(resolve({exerciseType:'RULER_CLOCK',mathScene:{verified:false,geometryType:'CLOCK'}},env).ok,false);
+eq(resolve({exerciseType:'VISUAL_MCQ',conceptKey:'unknown'},env).sourceKind,'NONE');
+eq(resolve({exerciseType:'NUMBER_BOND',visualMode:'EXACT_COUNT',assetId:'red_apple',assetSha256:count.assets.find(x=>x.assetId==='red_apple').sourceSha256,unit:'quả',quantity:81,directCountIntent:true},env).ok,false);
+eq(resolveVariant({questionId:'Q1'},{type:'SIMPLIFY_VISUAL',sameSkill:true,sameMathRelationship:true,measurementAssessed:false}).ok,true);
+eq(resolveVariant({questionId:'Q1'},{type:'SIMPLIFY_VISUAL',sameSkill:true,sameMathRelationship:true,measurementAssessed:true,changesGeometry:true}).ok,false);
+eq(resolveVariant({questionId:'Q1'},{type:'REWRITE_VARIANT',newVariantId:'Q2',sameSkill:true,levelEquivalent:true,answerRecomputed:true,validatorPassed:true,breaksTargetGeometry:true}).ok,false);
+eq(resolveVariant({questionId:'Q1'},{type:'REWRITE_VARIANT',newVariantId:'Q2',sameSkill:true,levelEquivalent:true,answerRecomputed:true,validatorPassed:true}).ok,true);
+console.log('PASS '+n+'/'+n+' 10-form C1/C2/C3 validations and variation guardrails');
