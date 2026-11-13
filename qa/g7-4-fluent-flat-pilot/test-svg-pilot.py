@@ -34,6 +34,8 @@ for x in manifest["icons"]:
     if not f.is_file(): continue
     b=f.read_bytes()
     require(len(b)==x["bytes"] and hashlib.sha256(b).hexdigest()==x["sha256"],item+" sha256 and bytes match")
+    upstream_blob=hashlib.sha1(f"blob {len(b)}\\0".encode("ascii").replace(b"\\0",b"\\x00")+b).hexdigest()
+    require(upstream_blob==x["upstreamBlob"],item+" exact upstream git blob")
     require(b.startswith(b"<svg") and len(b)<=100000,item+" SVG size/root")
     require(b"<!DOCTYPE" not in b.upper() and b"<!ENTITY" not in b.upper(),item+" no DTD/entity")
     require(not re.search(rb"<\s*(script|foreignObject|iframe|object|embed|image|style)\b",b,re.I),item+" no forbidden tags")
@@ -62,6 +64,13 @@ for x in manifest["icons"]:
             x["approvedConceptKey"] is None,item+" no fake semantic/count approval")
     require(x["upstreamPath"].endswith("/Flat/"+item+"_flat.svg"),item+" upstream trace")
 require(len(ids)==len(paths)==46,"uniqueness")
+semantic=json.loads((root/"qa"/"semantic-review-candidates.v1.json").read_text("utf-8"))
+require(semantic["enabled"] is False and semantic["mode"]=="OWNER_REVIEW_ONLY","semantic review gate OFF")
+require(len(semantic["items"])==46,"semantic candidate count")
+for x in semantic["items"]:
+    require(x["id"] in ids and bool(x["draftLabelVi"]) and x["semanticReview"]=="OWNER_PENDING" and x["countSafe"] is False,x["id"]+" source label owner pending")
+gallery=(root/"qa"/"G7_Fluent_Flat_Review.html").read_text("utf-8")
+require("naturalWidth>0" in gallery and "countSafeApproved:false" in gallery and "FLAT/" in gallery,"gallery never grants count-safe/false loaded")
 require(len(list(root_dir.glob("*.svg")))==46,"exactly 46 vendored SVGs")
 for n in range(1,5):
     data=json.loads((root/"qa"/f"hash-part-{n:02d}.json").read_text("utf-8"))
