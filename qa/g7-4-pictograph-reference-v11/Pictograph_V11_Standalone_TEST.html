@@ -1,0 +1,25 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 Pictograph V1.1 TEST</title><link rel="stylesheet" href="pictograph-v11.css"><style>
+body{margin:0;padding:16px;background:#f4fbf7;font:700 14px/1.45 system-ui;color:#293e55}header,main{max-width:930px;margin:12px auto;border-radius:18px;background:white;padding:15px}header button{border:2px solid #9ac5b4;border-radius:10px;padding:10px;margin:3px;cursor:pointer;font:inherit;background:white}header button.active{background:#3d8b68;color:white}
+</style></head><body><header><h1>G7.4 – Dạng 9: Biểu đồ tranh TEST</h1>
+<p>Luyện tập có nút đếm mẫu, kiểm tra không có nút đếm mẫu. Cả hai đều chưa chấm.</p>
+<button id="practice" class="active">Luyện tập</button><button id="assessment">Kiểm tra</button><button id="reset">Làm lại</button>
+</header><main id="app"></main>
+<script src="pictograph-v11-core.js"></script><script src="pictograph-v11-fixtures.js"></script><script src="pictograph-v11-view.js"></script>
+<script>
+(function(){
+ const payload={PRACTICE:KLPictographFixturesV11.practice,ASSESSMENT:KLPictographFixturesV11.assessment};
+ const controls={PRACTICE:document.getElementById('practice'),ASSESSMENT:document.getElementById('assessment')};
+ const drafts={};let mode='PRACTICE',instance=null;
+ function open(next){
+  if(instance){drafts[mode]=instance.snapshot();instance.destroy();}
+  mode=next;const parsed=KLPictographV11.compile(payload[mode]),host=document.getElementById('app');
+  if(!parsed.ok){host.textContent='Cấu hình lỗi: '+parsed.reason;return;}
+  instance=KLPictographViewV11.mount(host,parsed.plan,{onChange:s=>{drafts[mode]=s;}});
+  if(drafts[mode])instance.restore(drafts[mode]);
+  for(const [name,button] of Object.entries(controls))button.classList.toggle('active',name===mode);
+ }
+ for(const [name,button] of Object.entries(controls))button.addEventListener('click',()=>{if(mode!==name)open(name)});
+ document.getElementById('reset').addEventListener('click',()=>{instance.clear();drafts[mode]=instance.snapshot();});
+ open(mode);
+})();
+</script></body></html>
