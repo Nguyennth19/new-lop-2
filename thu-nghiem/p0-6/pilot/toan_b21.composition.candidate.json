@@ -1,0 +1,141 @@
+{
+  "manifestVersion": "p0.6-e03-composition-v1",
+  "status": "TEST_CANDIDATE_ONLY",
+  "lessonId": "toan_b21",
+  "curriculumRef": "MATH_B021",
+  "contentVersion": "p0.6-e03-draft-1",
+  "seed": "B21_MULTIFAMILY_FIXED",
+  "totalQuestions": 8,
+  "sourceScopeStatus": "INDEX_VERIFIED",
+  "policyRef": "B21_MULTIFAMILY_DRAFT_PINNED",
+  "requiredSkills": [
+    "ADD_CARRY_2D_1D",
+    "ADD_CARRY_2D_2D"
+  ],
+  "familyQuotas": {
+    "F_2D_1D": 4,
+    "F_2D_2D": 2,
+    "F_2D_2D_CHALLENGE": 2
+  },
+  "levels": [
+    {
+      "id": "LV1",
+      "intent": "Thực hành cộng có nhớ 2 chữ số với 1 chữ số",
+      "pedagogyStatus": "PENDING"
+    },
+    {
+      "id": "LV2",
+      "intent": "Luyện tập cộng có nhớ 2 chữ số với 2 chữ số",
+      "pedagogyStatus": "PENDING"
+    },
+    {
+      "id": "LV3",
+      "intent": "Vận dụng thêm phép cộng có nhớ 2 chữ số; độ khó cần duyệt",
+      "pedagogyStatus": "PENDING"
+    }
+  ],
+  "families": [
+    {
+      "id": "F_2D_1D",
+      "skillId": "ADD_CARRY_2D_1D",
+      "mathKind": "ADD",
+      "variantLevel": "V1_SURFACE",
+      "interaction": "NUMBER_INPUT",
+      "rendererKind": "math.mental",
+      "requiredAssetRole": "NONE",
+      "ranges": {
+        "a": [
+          10,
+          89
+        ],
+        "b": [
+          1,
+          9
+        ]
+      }
+    },
+    {
+      "id": "F_2D_2D",
+      "skillId": "ADD_CARRY_2D_2D",
+      "mathKind": "ADD",
+      "variantLevel": "V1_SURFACE",
+      "interaction": "NUMBER_INPUT",
+      "rendererKind": "math.vertical",
+      "requiredAssetRole": "NONE",
+      "ranges": {
+        "a": [
+          10,
+          79
+        ],
+        "b": [
+          10,
+          79
+        ]
+      }
+    },
+    {
+      "id": "F_2D_2D_CHALLENGE",
+      "skillId": "ADD_CARRY_2D_2D",
+      "mathKind": "ADD",
+      "variantLevel": "V1_SURFACE",
+      "interaction": "NUMBER_INPUT",
+      "rendererKind": "math.mental",
+      "requiredAssetRole": "NONE",
+      "ranges": {
+        "a": [
+          20,
+          79
+        ],
+        "b": [
+          20,
+          79
+        ]
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "id": "LV1-A",
+      "levelId": "LV1",
+      "allocations": [
+        {
+          "familyId": "F_2D_1D",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "LV1-B",
+      "levelId": "LV1",
+      "allocations": [
+        {
+          "familyId": "F_2D_1D",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "LV2-A",
+      "levelId": "LV2",
+      "allocations": [
+        {
+          "familyId": "F_2D_2D",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "LV3-A",
+      "levelId": "LV3",
+      "allocations": [
+        {
+          "familyId": "F_2D_2D_CHALLENGE",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "allowStudentUse": false,
+  "qaEvidenceRef": null,
+  "ownerSignoffRef": null
+}
