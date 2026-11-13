@@ -30,3 +30,28 @@ jobs:
         run: node thu-nghiem/p0-6/final-acceptance/kiem-thu-b21-g5-compatibility.cjs
       - name: No release or deployment
         run: echo 'TEST ONLY; RELEASE_READY=false; no deployment, student write, scores or stars'
+
+  g5-browser-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: fa-static-safety
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Chromium testing dependency
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Build standalone G5 preview from legacy renderer/grader
+        run: node thu-nghiem/p0-6/final-acceptance/build-b21-g5-browser-preview.cjs
+      - name: Execute 8/8 desktop and mobile browser interactions
+        run: node thu-nghiem/p0-6/final-acceptance/kiem-thu-g5-browser.cjs
+      - name: Upload HTML preview, screenshots and QA JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fa-g5-browser-evidence
+          path: |
+            thu-nghiem/p0-6/final-acceptance/g5-b21-preview.generated.html
+            thu-nghiem/p0-6/final-acceptance/g5-browser-evidence/
+          if-no-files-found: warn
+          retention-days: 30
