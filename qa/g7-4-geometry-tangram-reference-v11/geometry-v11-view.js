@@ -13,6 +13,12 @@
   else if(type==='circle')for(const k of ['cx','cy','r'])el.setAttribute(k,String(g[k]));
   return el;
  }
+ function center(g){
+  if(g.type==='circle')return {x:g.cx,y:g.cy};
+  if(g.type==='rect'||g.type==='square')return {x:g.x+g.width/2,y:g.y+g.height/2};
+  const xs=g.points.map(p=>p[0]),ys=g.points.map(p=>p[1]);
+  return {x:(Math.min(...xs)+Math.max(...xs))/2,y:(Math.min(...ys)+Math.max(...ys))/2};
+ }
  function mount(host,plan,options={}){
   if(!host||!host.ownerDocument||!plan||plan.schemaVersion!=='g74-geometry-tangram-v11'||
      typeof KLGeometryTangramV11==='undefined')return {ok:false,reason:'INVALID_HOST_OR_CORE'};
@@ -78,7 +84,8 @@
     // Explicit placedTargetId remains a candidate, not an inferred correct answer.
     // A ghost at the target is rendered only after placement; geometry stays at user's rotation.
     const target=plan.targets.find(t=>t.id===p.placedTargetId);
-    const x=target?210:p.x,y=target?140:p.y;
+    const c=target?center(target.geometry):null;
+    const x=c?c.x:p.x,y=c?c.y:p.y;
     g.setAttribute('transform','translate('+x+' '+y+') rotate('+p.rotation+')');
     g.classList.add('g74-tangram-active-piece');g.append(draw(doc,item.geometry));
     svg.append(g);
