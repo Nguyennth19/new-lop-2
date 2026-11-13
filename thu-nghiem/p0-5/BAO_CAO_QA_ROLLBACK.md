@@ -69,3 +69,12 @@ Assessment: `P05_EDITOR_DATA_API_PASS (USER_LOG)`. This verifies TEST editor API
 Next read-only server action, explicitly file and function: file `B20_BienTheMayChu.gs` → function `kiemTraChamLuotB20` → Run in the **TEST Apps Script editor**, expect `ok:true,total:30`, six session totals LV1-A 6, LV1-B 6, LV2-A 5, LV2-B 5, LV3-A 4, LV3-B 4, `recorded:false,starsAwarded:0`. This is a repeatable isolated GAS scoring check and remains distinct from browser QA. Keep P03 lock NO, do not modify student ledger.
 
 After that, user should inspect TEST deployment at `Deploy → Manage deployments`, select existing /exec deployment and ensure newly deployed version is the latest TEST code; pull alone may not update a versioned /exec deployment. Only then perform browser/mobile manual QA and capture 90/91 snapshots; never mark release-ready from editor PASS alone.
+
+## P0.5-D REAL TEST EDITOR SIX-SESSION GRADING PASS — user-run GAS log (2026-11-13)
+- Source file: `B20_BienTheMayChu.gs`; function: `kiemTraChamLuotB20`.
+- User supplied Apps Script TEST log: `ok:true`, `apiVersion:"b20-r1-3-1-20261112"`, `total:30`.
+- Six session results: `LV1-A=6/6, LV1-B=6/6, LV2-A=5/5, LV2-B=5/5, LV3-A=4/4, LV3-B=4/4`.
+- `recorded:false`, `starsAwarded:0`. Accepted as `P05_GAS_EDITOR_6_SESSIONS_PASS (USER_LOG)`.
+- Important distinction: the function constructs correct-answer fixtures and checks correct-scoring in Apps Script. It does not cover wrong-answer/browser input in real /exec nor verify pre/post ledger digest at moment of interaction; those remain pending. Do not mark full P0.5 `SESSIONS:PASS`.
+- The user-provided deployed TEST candidate remains `https://script.google.com/macros/s/AKfycbxzHiRvKpQLsxAg0wBP6NhkwHeiZ4zMLOaj7_QpmJ6oN3twHjrpFkyrZ1o_MvxfXMIcUQ/exec`. Attempted independent web open could not fetch rendered content (cache miss); **NOT** evidence of Web App failure or success.
+- Next operational gate: Apps Script `Deploy → Manage deployments`, select this exact /exec deployment and check it points to latest version created after pulling P0.5 code; save version number/deployment date (no student data). Browser interaction on QA-only app after version confirmed. Ensure QA ledger 90/91 remains unmodified. Pedagogy signoff separately pending. `RELEASE_READY=false`.
