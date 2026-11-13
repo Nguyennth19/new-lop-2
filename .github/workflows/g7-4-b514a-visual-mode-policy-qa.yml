@@ -1,0 +1,36 @@
+name: G7.4 B5.14-A Visual Mode Policy QA
+on:
+  push:
+    branches: ['test/g7-4-b5-14a-visual-mode-policy-20261113']
+    paths:
+      - 'qa/g7-4-b5-14a/**'
+      - '.github/workflows/g7-4-b514a-visual-mode-policy-qa.yml'
+  workflow_dispatch:
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pure policy, B20 30/30 classification and safety tests
+        run: |
+          node --check qa/g7-4-b5-14a/visual-mode-policy.cjs
+          node --check qa/g7-4-b5-14a/visual-mode-policy.test.cjs
+          node qa/g7-4-b5-14a/visual-mode-policy.test.cjs
+      - name: Assert B5.14-A did not activate renderer
+        run: |
+          node - <<'JS'
+          const assert=require('node:assert/strict'),fs=require('node:fs');
+          const p=JSON.parse(fs.readFileSync('qa/g7-4-b5-14a/visual-mode-policy.v1.json','utf8'));
+          const m=JSON.parse(fs.readFileSync('hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json','utf8'));
+          assert.equal(p.featureActivation,false);
+          assert.equal(p.lessonMutation,false);
+          assert.equal(m.enabled,false);
+          assert.equal(m.productionActivation,false);
+          assert.equal(p.futureLessons.every(x=>x.runtime===false),true);
+          console.log('PASS: policy-only, runtime off, B21/B24 unclassified');
+          JS
