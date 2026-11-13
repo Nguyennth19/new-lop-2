@@ -91,3 +91,18 @@ Independently reread TEST QA workbook `LOP2_P05_QA_ISOLATED_20261113` via Google
 
 Status: `P05_BROWSER_DESKTOP_PARTIAL_PASS (USER_SCREENSHOTS)`; `P05_QA_LEDGER_STILL_HEADER_ONLY (READ_VERIFIED)`. `BROWSER` remains PENDING due mobile and full six-session visual QA; `WEBAPP` remains PENDING due deployment-URL mismatch/source version verification; `SESSIONS` remains PENDING (only LV1-A partial browser evidence); `PEDAGOGY` unsigned. `RELEASE_READY=false`.
 Next: verify the exact deployment URL in the screenshot against `Deploy → Manage deployments` and confirm script TEST/QA binding, then capture complete six browser sessions (correct+wrong/blank), mobile layout and pre/post ledger controls; avoid student data and PRODUCTION.
+
+## P0.5-E deployment identity clarified by TEST operator (2026-11-13)
+The user explicitly clarified the screenshots came from a **new Apps Script TEST deployment created from** the newly created spreadsheet `LOP2_P05_QA_ISOLATED_20261113`, then pulled branch `test/p0-5-release-gate-20261113` into that Apps Script TEST project and deployed it. The old /exec URL previously supplied is therefore **superseded for P0.5 acceptance**; different deployment IDs are expected, not evidence of mistaken deployment.
+
+New authoritative TEST workbook:
+https://docs.google.com/spreadsheets/d/1BJ4E2LXVdGCA8maAm5bIH7HIG142Z-keLCbuUUrqkog/edit
+The user-linked URL fragment `gid=2006` is tab `92_Ghi_chu_phu_huynh`, **not** a deployment/script version marker. This was verified using Google Sheets metadata. The Apps Script TEST project is attached/created from that workbook by user account; no independent Apps Script deployment API was used.
+
+Post-clarification direct read-only check of the same isolated QA workbook:
+- `90_Lan_lam_bai`: 1 row containing 12 header cells; no attempt records.
+- `91_So_sao`: 1 row containing 9 header cells; no star records.
+
+Assessment: `TEST_DEPLOYMENT_IDENTITY_USER_CONFIRMED` and `DESKTOP_VISUAL_PARTIAL_PASS`, with correct QA workbook preflight supported by prior GAS user log. This **resolves the apparent different-URL contradiction** but does NOT make the full WEBAPP/SESSIONS/BROWSER gates PASS. Independent /exec version verification and six entire browser submissions (not only LV1-A 3/6), plus mobile check and pedagogy review, remain outstanding. Release remains BLOCKED.
+
+Next action: On this *new* TEST deployment only, complete all six B20 sessions via browser, capture final score/status evidence for both correct and intentionally wrong/blank answers and confirm no rows in the two QA ledger tabs after the exercise. Then test mobile responsive UI. No need to re-pull or redeploy solely to resolve URL mismatch, and do not touch MAIN, old deployment or production sheet.
