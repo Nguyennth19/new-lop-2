@@ -1,0 +1,28 @@
+name: G7.4 Microsoft Fluent Emoji Flat 46 SVG pilot – TEST
+on:
+  push:
+    branches: [test/g7-4-b5-8r-fluent-flat-pilot-import-20261113]
+    paths:
+      - 'hinh-anh/svg-fallback/fluent-emoji-flat/v1/**'
+      - 'qa/g7-4-fluent-flat-pilot/**'
+      - '.github/workflows/g7-fluent-flat-pilot.yml'
+  workflow_dispatch:
+permissions: { contents: read }
+jobs:
+  flat-svg-static-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: Static SVG security, source integrity, MIT, 46 exact assets
+        run: python3 qa/g7-4-fluent-flat-pilot/test-svg-pilot.py
+      - name: Preserve pure visual resolver tests
+        run: node qa/g7-4-visual-resolver/test-pure-resolver.cjs
+      - name: Keep previous approved B5.8, owner labels and CSS/B20 regression
+        run: |
+          node qa/g7-4-b5-8/test-semantic-count-composition.cjs
+          node qa/g7-4-b5-7-perf-a/test-owner-label-approval.cjs
+          node qa/g7-4-b5-7-perf-a/test-gallery-performance.cjs
+          node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
