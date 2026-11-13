@@ -32,3 +32,9 @@ No changes to main, test-theo-main, Web App TEST Version 6, H.1 Bài 20 or stude
 ## G5 gate-state regression repair
 - Run `43451745036` at SHA `487ab8d846241194c91e3470b367365dd3baad09` FAILED at FA static auditor: old assertion still required PENDING policy after owner TEST-scope G7/G8 approval; other tests were skipped. Changed only audit assertion/output to distinguish owner approval vs unsigned source JSON.
 - Run `43451893690` at SHA `7aa1dfc0b8fd3fe9a1b4f28aeae0122f3d4d96a2`: `success`. The FA static auditor, original E0 validator/generator/composer, LV3 reasoning and G5 legacy renderer/grader compatibility all completed successfully. Browser/mobile deployment test still unperformed; fail-closed G5 live remains blocked.
+
+## Final Chromium browser evidence and closure
+- CI [43453411019](https://github.com/Nguyennth19/new-lop-2/actions/runs/43453411019) at SHA `226bc61be8b7a8de10c9820d3fad38362fa9b4ce` SUCCESS. Static F-A validator/generator/composer and browser tests succeeded. Chromium browser actual DOM interactions: desktop 1366px 8/8 PASS, mobile 390px 8/8 PASS, correct/wrong/blank, 0 JS page errors, 0 horizontal overflow.
+- Artifact `14053541276` (HTML generated preview + `desktop.png`, `mobile.png`, `results.json`), 485335 bytes, 30-day retention. Details / reproducibility: `FA_G5_BROWSER_QA_20261113.md`.
+- Failure recovery: run `43453248981` was blocked by unsupported Ubuntu 26.04 Playwright environment, fixed by using Ubuntu 24.04. GitHub Actions demonstrates browser QA for isolated TEST preview, not Apps Script Web App Version 6. No deployment.
+- Gate summary: G5 `PASS_FOR_ISOLATED_TEST_PREVIEW`; G7/G8 `OWNER_APPROVED_TEST_SCOPE`; `RELEASE_READY=false`. Full F-A closure limited to TEST/standalone preview only; production/live-version integration remains separate from this acceptance.
