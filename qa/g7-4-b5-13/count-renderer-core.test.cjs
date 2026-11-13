@@ -54,6 +54,9 @@ eq(plan({registry,assetId:'bread',requestedCount:3,requestedUnit:'miếng'}).cod
 eq(plan({registry,assetId:'grapes',requestedCount:3,requestedUnit:'quả'}).code,'UNIT_MISMATCH');
 eq(plan({registry,assetId:'cherries',requestedCount:3,requestedUnit:'quả'}).code,'UNIT_MISMATCH');
 eq(plan({registry,assetId:'banana',requestedCount:3,requestedUnit:'nải'}).code,'UNIT_MISMATCH');
+eq(plan({registry,assetId:'books',mode:'illustration',decorativePhrase:'chồng sách'}).label,'chồng sách');
+eq(plan({registry,assetId:'cherries',mode:'illustration',decorativePhrase:'quả anh đào (chỉ minh họa)'}).ok,true);
+eq(plan({registry,assetId:'cherries',mode:'illustration',decorativePhrase:'3 quả anh đào'}).code,'INVALID_DECORATIVE_PHRASE');
 const plus=planArithmetic({registry,assetId:'rabbit',requestedUnit:'con',operator:'+',left:7,right:5,viewportWidth:320});
 eq(plus.ok,true);eq(plus.total,12);eq(plus.initial.totalObjects,7);eq(plus.second.totalObjects,5);
 const minus=planArithmetic({registry,assetId:'red_apple',requestedUnit:'quả',operator:'-',left:9,right:4,viewportWidth:360});
