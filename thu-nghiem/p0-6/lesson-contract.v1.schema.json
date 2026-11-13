@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-platform-foundation-20261113/thu-nghiem/p0-6/lesson-contract.v1.schema.json",
+  "title": "Lop2 general lesson contract v1 (P0.6-A, staging)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "lessonId",
+    "subject",
+    "curriculum",
+    "contentVersion",
+    "source",
+    "levels",
+    "sessions",
+    "questions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "lop2.lesson.v1"
+    },
+    "lessonId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{2,95}$"
+    },
+    "subject": {
+      "enum": [
+        "toan",
+        "tieng_viet",
+        "tieng_anh"
+      ]
+    },
+    "curriculum": {
+      "type": "object",
+      "required": [
+        "grade",
+        "lessonRef"
+      ],
+      "properties": {
+        "grade": {
+          "const": 2
+        },
+        "lessonRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "contentVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "questionOrigin",
+        "references"
+      ],
+      "properties": {
+        "questionOrigin": {
+          "enum": [
+            "TEXTBOOK_DERIVED",
+            "WORKBOOK_DERIVED",
+            "PROJECT_ORIGINAL_VARIANT",
+            "REFERENCE_DERIVED"
+          ]
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "sourceType",
+              "ref"
+            ],
+            "properties": {
+              "sourceType": {
+                "enum": [
+                  "SGK",
+                  "SBT",
+                  "REFERENCE",
+                  "PROJECT"
+                ]
+              },
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "intent"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "intent": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "levelId",
+          "questionIds"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "levelId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "questionIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "levelId",
+          "sessionId",
+          "prompt",
+          "answerSpec",
+          "renderer"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "pattern": "^[a-z_]+\\.[a-z_]+$"
+          },
+          "levelId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sessionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "answerSpec": {
+            "type": "object",
+            "required": [
+              "mode",
+              "origin",
+              "verification",
+              "pedagogyApproval"
+            ],
+            "properties": {
+              "mode": {
+                "enum": [
+                  "exact",
+                  "normalized_text",
+                  "set_of_answers",
+                  "rubric",
+                  "manual_review"
+                ]
+              },
+              "origin": {
+                "enum": [
+                  "SOURCE_PROVIDED",
+                  "PROJECT_DERIVED"
+                ]
+              },
+              "value": {},
+              "acceptedValues": {
+                "type": "array"
+              },
+              "rubricRef": {
+                "type": "string"
+              },
+              "verification": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "status"
+                ],
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "deterministic_rule",
+                      "reviewed_reference",
+                      "rubric_review",
+                      "manual_review"
+                    ]
+                  },
+                  "status": {
+                    "enum": [
+                      "PASS",
+                      "PENDING",
+                      "FAIL"
+                    ]
+                  }
+                }
+              },
+              "pedagogyApproval": {
+                "type": "object",
+                "required": [
+                  "status"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "APPROVED_BY_PROJECT_OWNER",
+                      "APPROVED_BY_TEACHER",
+                      "PENDING",
+                      "REJECTED"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "renderer": {
+            "type": "object",
+            "required": [
+              "component"
+            ],
+            "properties": {
+              "component": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "assets": {
+            "type": "object",
+            "properties": {
+              "sceneId": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "usage": {
+                "enum": [
+                  "decorative",
+                  "countable",
+                  "instructional"
+                ]
+              },
+              "countVerified": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
