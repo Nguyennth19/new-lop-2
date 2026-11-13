@@ -1,0 +1,69 @@
+{
+  "schema_version": "kidlearn-variant-visual-intent-v1",
+  "lesson_id": "en_vocabulary_demo_visual",
+  "subjectArea": "tieng_anh",
+  "mode": "STAGING_DEMO_ONLY",
+  "questions": [
+    {
+      "question_id": "EN_DEMO_001",
+      "lesson_id": "en_vocabulary_demo_visual",
+      "type": "vocabulary",
+      "prompt": "Choose the picture of a bicycle.",
+      "visualIntent": "decorative",
+      "quantityMode": "symbolic",
+      "subject": "xe đạp",
+      "semanticTags": [
+        "xe đạp"
+      ]
+    },
+    {
+      "question_id": "EN_DEMO_002",
+      "lesson_id": "en_vocabulary_demo_visual",
+      "type": "vocabulary",
+      "prompt": "Find the school bag.",
+      "visualIntent": "decorative",
+      "quantityMode": "symbolic",
+      "subject": "ba lô",
+      "semanticTags": [
+        "ba lô"
+      ]
+    },
+    {
+      "question_id": "EN_DEMO_003",
+      "lesson_id": "en_vocabulary_demo_visual",
+      "type": "vocabulary",
+      "prompt": "Choose a watermelon.",
+      "visualIntent": "decorative",
+      "quantityMode": "symbolic",
+      "subject": "dưa hấu",
+      "semanticTags": [
+        "dưa hấu"
+      ]
+    },
+    {
+      "question_id": "EN_DEMO_004",
+      "lesson_id": "en_vocabulary_demo_visual",
+      "type": "counting",
+      "prompt": "Count exactly 3 bicycles.",
+      "visualIntent": "counting",
+      "quantityMode": "exact",
+      "requestedCount": 3,
+      "subject": "xe đạp",
+      "semanticTags": [
+        "xe đạp"
+      ]
+    },
+    {
+      "question_id": "EN_DEMO_005",
+      "lesson_id": "en_vocabulary_demo_visual",
+      "type": "vocabulary",
+      "prompt": "A bag and a bicycle.",
+      "visualIntent": "decorative",
+      "quantityMode": "symbolic",
+      "semanticTags": [
+        "ba lô",
+        "xe đạp"
+      ]
+    }
+  ]
+}
