@@ -1,0 +1,43 @@
+name: P0.6-E Multi-Lesson Pilot (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-6-e-multi-lesson-pilot-*'
+    paths:
+      - 'thu-nghiem/p0-6/**'
+      - '.github/workflows/p0-6-e-multi-lesson.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-multi-lesson:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: E two-subject source-aware candidate pipeline
+        run: node thu-nghiem/p0-6/kiem-thu-multi-lesson-v1.cjs
+      - name: D renderer and B20 HTML parity
+        run: node thu-nghiem/p0-6/kiem-thu-renderer-registry-v1.cjs
+      - name: C grading and QA receipts
+        run: node thu-nghiem/p0-6/kiem-thu-qa-grading-v1.cjs
+      - name: B adapter registry
+        run: node thu-nghiem/p0-6/kiem-thu-adapter-registry-v1.cjs
+      - name: A contract fixtures
+        run: node thu-nghiem/p0-6/kiem-thu-contract-v1.cjs
+      - name: P0.4 inherited FULL_SAFE
+        run: node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: B20 original regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: P0.5 release gate fail closed
+        run: |
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json; then
+            echo 'FAIL: production release unexpectedly enabled'; exit 1
+          fi
+      - name: No tracked files modified
+        run: test -z "$(git status --porcelain --untracked-files=no)"
