@@ -1,0 +1,31 @@
+name: G7.4-B.5.6 Standalone Visual QA and B20 Regression
+on:
+  push:
+    branches:
+      - test/g7-4-b5-6-standalone-visual-qa-20261113
+    paths:
+      - 'qa/g7-4-b5-6/**'
+      - '.github/workflows/g7-b56-standalone-visual.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-visual-artifact-and-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify standalone HTML mirrors two fixtures and approved assets
+        run: node qa/g7-4-b5-6/test-standalone-visual.cjs
+      - name: Multi-lesson gate remains unchanged (30 cases)
+        run: node qa/g7-4-b5-5/test-multi-lesson-gate.cjs
+      - name: B20 30 question six session scoring and renderer regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: UI baseline and candy/book fallback regressions
+        run: |
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
