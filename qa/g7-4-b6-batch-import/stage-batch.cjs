@@ -17,7 +17,8 @@ function checkSvg(s){
   if(!/^<svg\b/.test(s.trim())||!/xmlns="http:\/\/www\.w3\.org\/2000\/svg"/.test(s))die('INVALID_SVG_ROOT');
   if(!/viewBox="0 0 32 32"/.test(s))die('INVALID_VIEWBOX');
   if(/<!|<\?|<\/?(?:script|foreignObject|image|iframe|style|animate|set|use|audio|video|filter|mask|pattern)\b/i.test(s))die('BANNED_SVG_ELEMENT');
-  if(/\bon[a-z]+\s*=|(?:xlink:)?href\s*=|url\s*\(|data:|javascript:|https?:|@import|<[^>]+\sstyle\s*=/i.test(s))die('BANNED_SVG_ATTRIBUTE');
+  const withoutAllowedNamespace=s.replace(/xmlns="http:\/\/www\.w3\.org\/2000\/svg"/g,'');
+  if(/\bon[a-z]+\s*=|(?:xlink:)?href\s*=|url\s*\(|data:|javascript:|https?:|@import|<[^>]+\sstyle\s*=/i.test(withoutAllowedNamespace))die('BANNED_SVG_ATTRIBUTE');
   const tags=[...s.matchAll(/<\/?\s*([A-Za-z][\w:-]*)\b/g)].map(a=>a[1]);
   if(tags.some(t=>!['svg','path','g','circle','rect','ellipse','line','polyline','polygon','defs','linearGradient','radialGradient','stop'].includes(t)))die('UNKNOWN_SVG_TAG');
 }
