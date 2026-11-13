@@ -1,0 +1,51 @@
+{
+  "schema_version": "kidlearn-b54-golden-comparison-v1",
+  "lesson_id": "tv_b03_visual_demo",
+  "reference_source": "du-lieu/bien-the/chuan/tieng-viet-demo.visual-intent.v1.json",
+  "reference_sha": "5bcbc9f38ee80d69f292fd21e58cc22d584e0b4b",
+  "gate_policy": "STAGING_ONLY",
+  "expected": {
+    "questionCount": 4,
+    "active": true,
+    "code": "VISUAL_INTENT_TEST_ACTIVE",
+    "autoSelected": 2,
+    "rejected": 2,
+    "rulesCount": 9,
+    "selection": [
+      {
+        "questionId": "TV_DEMO_001",
+        "result": "CURATED_AUTO",
+        "assetId": "KL_SH11_012",
+        "concept": "kids_bicycle",
+        "count": 1
+      },
+      {
+        "questionId": "TV_DEMO_002",
+        "result": "CURATED_AUTO",
+        "assetId": "KL_SH09_007",
+        "concept": "school_backpack",
+        "count": 1
+      },
+      {
+        "questionId": "TV_DEMO_003",
+        "result": "REQUIRES_QUANTITY_VERIFICATION",
+        "assetId": null
+      },
+      {
+        "questionId": "TV_DEMO_004",
+        "result": "AMBIGUOUS_SEMANTICS",
+        "assetId": null
+      }
+    ]
+  },
+  "offMode": {
+    "active": false,
+    "code": "FLAG_OFF",
+    "preserveInput": true
+  },
+  "wrongLesson": {
+    "active": false,
+    "code": "LESSON_NOT_ALLOWLISTED",
+    "preserveInput": true
+  }
+}
