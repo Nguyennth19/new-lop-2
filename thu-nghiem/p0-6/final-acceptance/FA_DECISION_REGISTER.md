@@ -9,7 +9,7 @@
 | FA-P06 | Approve family/templates + deterministic 100% generated QA, targeted expert sampling | ACCEPT_WITH_CONDITIONS | PENDING_APPROVAL | E.0 P06 |
 | FA-B21-S1 | B21 technical subskills ADD_CARRY_2D_1D and ADD_CARRY_2D_2D | REVIEW_AND_CONFIRM_SCOPE | PENDING_APPROVAL | policy candidate and composition |
 | FA-B21-S2 | LV1 2D+1D, LV2 2D+2D | ACCEPT_AS_CANDIDATE | PENDING_APPROVAL | composition candidate |
-| FA-B21-S3 | LV3 challenge on same ADD_CARRY_2D_2D, V1_NUMBER_INPUT | REVISE_OR_JUSTIFY_DIFFERENCE | PENDING_APPROVAL | no demonstrated higher cognition |
+| FA-B21-S3 | LV3 cognitive differentiation | PROPOSE_TWO_FIELD_BRIDGE_TO_TEN_OFFLINE | PENDING_APPROVAL | FA_B21_LV3_REASONING_PROPOSAL.md; offline proof CI 43449443133; G5 BLOCKED |
 | FA-B21-S4 | 4/2/2, 3 families, four sessions | ACCEPT_AS_PILOT_ONLY | PENDING_APPROVAL | composer manifest; not universal |
 | FA-B21-IMG | No essential asset used in current math.mental/math.vertical family | ACCEPT_NONE_IF_PROMPT_SELF_CONTAINED | PENDING_APPROVAL | B21 manifest requiredAssetRole=NONE |
 | FA-G5 | Renderer interactive integration | DO_NOT_WAIVE | BLOCKED | E03 readonly renderer only |
