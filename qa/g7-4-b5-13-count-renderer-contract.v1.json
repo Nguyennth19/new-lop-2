@@ -31,7 +31,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "697797fdd9ba34d7a69e448de2bbcbafdb6b3f6a15e1b63b91538dddc881bc64"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con gà",
+        "gà",
+        "một con gà"
+      ]
     },
     {
       "assetId": "rooster",
@@ -53,7 +61,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "52b2a8d0f55e1fcf2aef0518f40142a06f5438bddde74ef969c1c9b5c9a7e67c"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con gà trống",
+        "gà trống",
+        "chú gà trống"
+      ]
     },
     {
       "assetId": "books",
@@ -76,7 +92,13 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "User explicit six-icon unit instructions 2026-11-13",
         "svgSha256": "41e2686cdc526bfa41ea599e2a74378f3a02788ff7e8cd1b9ad0a39ea157000c"
-      }
+      },
+      "countUnitAliases": [],
+      "decorativePhrasesVi": [
+        "bộ sách",
+        "chồng sách",
+        "sách nói chung"
+      ]
     },
     {
       "assetId": "red_apple",
@@ -98,7 +120,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "bc69f7c89a3621fb564482f9e13818019c6eac3a9d16fe996852514f3b19a073"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả táo đỏ",
+        "trái táo đỏ",
+        "quả táo"
+      ]
     },
     {
       "assetId": "green_apple",
@@ -120,7 +151,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "8d16350d03ee8c98f1d58985453b4c7fbe4d69da3fde37cbf8b5c70ecb80bbd4"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả táo xanh",
+        "trái táo xanh",
+        "quả táo"
+      ]
     },
     {
       "assetId": "banana",
@@ -142,7 +182,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "User explicit six-icon unit instructions 2026-11-13",
         "svgSha256": "40047ed9d10462ba41457b0c55beb05b6fde4ce590e6c1f88577539e46c2f20d"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả chuối",
+        "trái chuối"
+      ]
     },
     {
       "assetId": "mango",
@@ -163,7 +211,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "5747bef4b8d4857d84e6bf784e65ef8b3925d162ae6ca099ab37e33e5b4d33bd"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả xoài",
+        "trái xoài"
+      ]
     },
     {
       "assetId": "tangerine",
@@ -184,7 +240,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "c820b266373b52bb1854213b08801c8d582d60dae06d380fdb4beaf89d569ea3"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả quýt",
+        "trái quýt"
+      ]
     },
     {
       "assetId": "grapes",
@@ -198,14 +262,22 @@
       "objectsPerAsset": 1,
       "usage": "COUNT_OBJECT_EXPLICIT",
       "sourceDecision": "OWNER_EXPLICIT_UNIT_CONFIRMATION_2026-11-13",
-      "unitPolicy": "Mỗi SVG đại diện 1 chùm nho, KHÔNG đếm từng quả nho trong chùm.",
+      "unitPolicy": "Mỗi SVG đại diện 1 chùm nho, KHÔNG đếm từng quả nho trong chùm. Dùng 'quả' để diễn đạt khái quát khi minh họa không số; muốn đếm quả riêng phải dùng SVG một quả.",
       "strictCountUnit": true,
       "reviewEvidence": {
         "ownerVisualApproval": "B.5.9 46/46",
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "User explicit six-icon unit instructions 2026-11-13",
         "svgSha256": "e959e27685f84cead6cc230c719c75feaf3a3cfde878cf00819473036005edd0"
-      }
+      },
+      "countUnitAliases": [
+        "chùm"
+      ],
+      "decorativePhrasesVi": [
+        "chùm nho",
+        "nho (không đếm)",
+        "quả nho (chỉ minh họa)"
+      ]
     },
     {
       "assetId": "watermelon",
@@ -227,7 +299,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "User explicit six-icon unit instructions 2026-11-13",
         "svgSha256": "33ce86d2784776504191684fd34495c68ac54be7b98e100ef18c3a19297c735e"
-      }
+      },
+      "countUnitAliases": [
+        "miếng",
+        "lát"
+      ],
+      "decorativePhrasesVi": [
+        "miếng dưa hấu",
+        "lát dưa hấu",
+        "quả dưa hấu (chỉ minh họa hoặc dùng hình nguyên quả khác)"
+      ]
     },
     {
       "assetId": "strawberry",
@@ -248,7 +329,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "d8522f848f305fc81040dd9c5467f97df483fde5e2568429046e7f1ae1a23d91"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả dâu tây",
+        "trái dâu tây"
+      ]
     },
     {
       "assetId": "pear",
@@ -269,7 +358,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "ddab6102c0ab2fef2dee700b7bb3d427187df8bfa010b23c4e2516e15c226551"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả lê",
+        "trái lê"
+      ]
     },
     {
       "assetId": "peach",
@@ -290,7 +387,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "a144b995f3b094fb28d3eb016efebd6372c5ae82273cf3c0379741eb0c9d4657"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả đào",
+        "trái đào"
+      ]
     },
     {
       "assetId": "carrot",
@@ -312,7 +417,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "99521ccf4753d9b5312707541eafc41f00b35f616bb6e96cada9acfc7bf1d396"
-      }
+      },
+      "countUnitAliases": [
+        "củ"
+      ],
+      "decorativePhrasesVi": [
+        "củ cà rốt",
+        "củ cà-rốt",
+        "cà rốt"
+      ]
     },
     {
       "assetId": "rabbit",
@@ -333,7 +446,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "e78f7552298062c599bd7290ff52bad25de352477a9475e34332c52eafe2c5d7"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con thỏ",
+        "chú thỏ"
+      ]
     },
     {
       "assetId": "cat",
@@ -354,7 +474,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "59f5401062509f4d0fb310817ce9a9656724c6c924a4d42f2a33ac6bb0964602"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con mèo",
+        "chú mèo"
+      ]
     },
     {
       "assetId": "dog",
@@ -375,7 +502,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "e3ee366f39d9f47bbb5a6dc22a521dbea32f05f2216d0665a551b134ca2474da"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con chó",
+        "chú chó"
+      ]
     },
     {
       "assetId": "cow",
@@ -396,7 +530,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "2aa1806bbf6299d6a8fc865587d9384dff832fabc2fe04ff6d11aa01b53b5109"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con bò",
+        "bò"
+      ]
     },
     {
       "assetId": "pig",
@@ -417,7 +558,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "790bb801b792327d607bf51f7410be069fb26f2a2908b2a691c851a947bdba08"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con lợn",
+        "con heo"
+      ]
     },
     {
       "assetId": "duck",
@@ -438,7 +586,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "4d793eb8e867817586ae2a03784cbad9814f0e89f195a3503c77f8cb8441e35d"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con vịt",
+        "vịt"
+      ]
     },
     {
       "assetId": "fish",
@@ -459,7 +614,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "1fc7329fd735a8b8bd7482a39bc100e3c347e7f0e9ce36473fde81d19e96a1ee"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con cá",
+        "cá"
+      ]
     },
     {
       "assetId": "bird",
@@ -480,7 +642,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "c99882e3162e56084e1099575a4b5032bcf07c56c17a6d97e3ca344db42ee596"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con chim",
+        "chim"
+      ]
     },
     {
       "assetId": "butterfly",
@@ -501,7 +670,14 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "118a7aee6fb3360fef0dcf86aeaac8e022c35c3f52529145750155a8893f50fc"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con bướm",
+        "bướm"
+      ]
     },
     {
       "assetId": "sunflower",
@@ -523,7 +699,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "af0f5db9816f1545121d2d4c80a145e8809d50830f8516fd99a631bca7702ea6"
-      }
+      },
+      "countUnitAliases": [
+        "bông",
+        "đóa"
+      ],
+      "decorativePhrasesVi": [
+        "bông hoa hướng dương",
+        "bông hoa hướng dương",
+        "đóa hoa hướng dương"
+      ]
     },
     {
       "assetId": "school",
@@ -545,7 +730,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "03febeb59b9c13ee792874a87cd04aea413e7c6ef23b1e7752837dc5d6cbe34d"
-      }
+      },
+      "countUnitAliases": [
+        "ngôi"
+      ],
+      "decorativePhrasesVi": [
+        "ngôi trường",
+        "trường học",
+        "ngôi trường học"
+      ]
     },
     {
       "assetId": "backpack",
@@ -567,7 +760,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "9a3ea2d79e670de01c0f6e742b80d5b679c172edc4532c08a7c3083d703b4f23"
-      }
+      },
+      "countUnitAliases": [
+        "chiếc",
+        "cái"
+      ],
+      "decorativePhrasesVi": [
+        "chiếc ba lô",
+        "cái ba lô",
+        "ba lô"
+      ]
     },
     {
       "assetId": "pencil",
@@ -589,7 +791,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "f82b7820c41b57d2cca96ef75e32fdedcb07d2d8b786a781274c25fe306c76d7"
-      }
+      },
+      "countUnitAliases": [
+        "chiếc",
+        "cái"
+      ],
+      "decorativePhrasesVi": [
+        "chiếc bút chì",
+        "cây bút chì",
+        "bút chì"
+      ]
     },
     {
       "assetId": "pen",
@@ -611,7 +822,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "302d3ce8f609b09dbff8af43ea9e0b5fbd9a4e9404e8381f0190fd98b4c991d8"
-      }
+      },
+      "countUnitAliases": [
+        "chiếc",
+        "cái"
+      ],
+      "decorativePhrasesVi": [
+        "chiếc bút mực",
+        "cây bút mực",
+        "bút mực"
+      ]
     },
     {
       "assetId": "scissors",
@@ -632,7 +852,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "67d643e25a39792627bfef5aaea3866cdd083fe047a7e449d0070945e32f163f"
-      }
+      },
+      "countUnitAliases": [
+        "cái",
+        "chiếc"
+      ],
+      "decorativePhrasesVi": [
+        "cái kéo",
+        "chiếc kéo"
+      ]
     },
     {
       "assetId": "crayon",
@@ -654,7 +882,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "27f73eca2adb077f87c7843b18372b8afae4141c02e8b8917437d508177e5da6"
-      }
+      },
+      "countUnitAliases": [
+        "cây",
+        "chiếc"
+      ],
+      "decorativePhrasesVi": [
+        "cây bút sáp màu",
+        "chiếc bút sáp màu",
+        "bút sáp màu"
+      ]
     },
     {
       "assetId": "paintbrush",
@@ -676,7 +913,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "78757c4c943e8e05cf3485d017b172ebc622d1e5f70e5ab6371a28f97102770d"
-      }
+      },
+      "countUnitAliases": [
+        "cây",
+        "chiếc"
+      ],
+      "decorativePhrasesVi": [
+        "cây cọ vẽ",
+        "chiếc cọ vẽ",
+        "cọ vẽ"
+      ]
     },
     {
       "assetId": "notebook",
@@ -698,7 +944,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "88d97d0a553b501eab3ed70feb191481dfcf12a308ecc7ece2afdbfb74f102c1"
-      }
+      },
+      "countUnitAliases": [
+        "quyển",
+        "cuốn"
+      ],
+      "decorativePhrasesVi": [
+        "quyển vở",
+        "cuốn vở",
+        "vở"
+      ]
     },
     {
       "assetId": "alarm_clock",
@@ -719,7 +974,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "e5356b8830074a3ca21fff8bb74807003ce996645341d46c25e26e06f0385d3b"
-      }
+      },
+      "countUnitAliases": [
+        "chiếc",
+        "cái"
+      ],
+      "decorativePhrasesVi": [
+        "chiếc đồng hồ báo thức",
+        "cái đồng hồ báo thức"
+      ]
     },
     {
       "assetId": "balance_scale",
@@ -741,7 +1004,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "086e82d739451ebd0cf8dc7b23376bd3e2e019373dda6da487f8971bc0437e00"
-      }
+      },
+      "countUnitAliases": [
+        "cái",
+        "chiếc"
+      ],
+      "decorativePhrasesVi": [
+        "cái cân hai đĩa",
+        "chiếc cân hai đĩa",
+        "cái cân"
+      ]
     },
     {
       "assetId": "basket",
@@ -763,7 +1035,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "ba3325690df45f79d0254dd290b72432c6799977be42d6818caf7f0bd4fedb75"
-      }
+      },
+      "countUnitAliases": [
+        "cái",
+        "chiếc"
+      ],
+      "decorativePhrasesVi": [
+        "cái giỏ",
+        "chiếc giỏ",
+        "giỏ"
+      ]
     },
     {
       "assetId": "bucket",
@@ -785,7 +1066,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "ef9ec134a928ab8e5450a4ebaa983e339c6138f4d37511fcf7058e99c2726526"
-      }
+      },
+      "countUnitAliases": [
+        "cái",
+        "chiếc"
+      ],
+      "decorativePhrasesVi": [
+        "cái xô",
+        "chiếc xô",
+        "xô"
+      ]
     },
     {
       "assetId": "bicycle",
@@ -807,7 +1097,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "0241c712d2ea30a7ab0253422f94f1687838f6312a7a628f6d9c8da509faadf9"
-      }
+      },
+      "countUnitAliases": [
+        "chiếc",
+        "cái"
+      ],
+      "decorativePhrasesVi": [
+        "chiếc xe đạp",
+        "cái xe đạp",
+        "xe đạp"
+      ]
     },
     {
       "assetId": "soccer_ball",
@@ -829,7 +1128,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "ca792d91995ac20dc37be0c1bd1f9f46d2f7ea4aea3bd4d0c69df1083bd641c9"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả bóng đá",
+        "trái bóng đá",
+        "quả bóng"
+      ]
     },
     {
       "assetId": "teddy_bear",
@@ -851,7 +1159,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "83e2f3bd7cdeadade4be675ed238b8d1ba9e90e967ff1c10e8de8423043e568d"
-      }
+      },
+      "countUnitAliases": [
+        "con"
+      ],
+      "decorativePhrasesVi": [
+        "con gấu bông",
+        "chú gấu bông",
+        "gấu bông"
+      ]
     },
     {
       "assetId": "cookie",
@@ -873,7 +1189,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "d02b9e85fa0394a4c59fd74654244c069eddb9aaf72abbcba8d0d3060262d6af"
-      }
+      },
+      "countUnitAliases": [
+        "chiếc",
+        "cái"
+      ],
+      "decorativePhrasesVi": [
+        "chiếc bánh quy",
+        "cái bánh quy",
+        "chiếc bánh quy"
+      ]
     },
     {
       "assetId": "candy",
@@ -895,7 +1220,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "4e9e88bea7076d443d09a06afbc0070c08d4cb09a7248d3fc991297e904bd937"
-      }
+      },
+      "countUnitAliases": [
+        "viên"
+      ],
+      "decorativePhrasesVi": [
+        "viên kẹo",
+        "cái kẹo",
+        "chiếc kẹo"
+      ]
     },
     {
       "assetId": "bread",
@@ -917,7 +1250,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "User explicit six-icon unit instructions 2026-11-13",
         "svgSha256": "ef08e033f63a4f215744a3067a9c0693411ebcfe57b36bf9d197495ecbccf156"
-      }
+      },
+      "countUnitAliases": [
+        "ổ"
+      ],
+      "decorativePhrasesVi": [
+        "ổ bánh mì",
+        "miếng bánh mì (chỉ minh họa)",
+        "bánh mì"
+      ]
     },
     {
       "assetId": "lemon",
@@ -938,7 +1279,15 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "f3a924a7031fc0dd7c57a90e5f9794cf72859d860151dec321c4adc38605e4cc"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả chanh",
+        "trái chanh"
+      ]
     },
     {
       "assetId": "pineapple",
@@ -960,7 +1309,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "9d064d8f8796b53a9eeb18b642e6e16628848ad2fa944576b597e7c7f36a95be"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả dứa",
+        "trái thơm",
+        "quả khóm"
+      ]
     },
     {
       "assetId": "cherries",
@@ -975,14 +1333,22 @@
       "objectsPerAsset": 1,
       "usage": "COUNT_OBJECT_EXPLICIT",
       "sourceDecision": "OWNER_EXPLICIT_UNIT_CONFIRMATION_2026-11-13",
-      "unitPolicy": "Mỗi SVG đại diện 1 chùm/cụm anh đào; không dùng để đếm từng quả anh đào trong chùm.",
+      "unitPolicy": "Mỗi SVG đại diện 1 chùm/cụm anh đào; không dùng để đếm từng quả anh đào trong chùm. Dùng 'quả' để diễn đạt khái quát khi minh họa không số; muốn đếm quả riêng phải dùng SVG một quả.",
       "strictCountUnit": true,
       "reviewEvidence": {
         "ownerVisualApproval": "B.5.9 46/46",
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "User explicit six-icon unit instructions 2026-11-13",
         "svgSha256": "67c243eed8f6430539076d065d71b90d8f7bb25ccd41c87c02a6f6f419dacf9f"
-      }
+      },
+      "countUnitAliases": [
+        "chùm"
+      ],
+      "decorativePhrasesVi": [
+        "chùm anh đào",
+        "quả anh đào (chỉ minh họa)",
+        "anh đào"
+      ]
     },
     {
       "assetId": "egg",
@@ -1004,7 +1370,16 @@
         "countAuthorization": "2026-11-13 user request delegates Count-Safe determination based on Vietnamese labels",
         "unitConfirmation": "Delegated B.5.12 decisions",
         "svgSha256": "1c7146a519276e93c0f939756e80beb5b0edb4e9a350dbe58ab63c7d0bcc5204"
-      }
+      },
+      "countUnitAliases": [
+        "quả",
+        "trái"
+      ],
+      "decorativePhrasesVi": [
+        "quả trứng",
+        "quả trứng",
+        "trứng"
+      ]
     }
   ],
   "assertions": [
@@ -1013,5 +1388,6 @@
     "COUNT requires an explicit exact unit, never inferred from decorative aliases.",
     "A composite is counted as one group, never as its component fruits/books.",
     "No production activation from TEST registry."
-  ]
+  ],
+  "unitAliasRule": "Only aliases in countUnitAliases are equivalent count classifiers; decorativePhrasesVi cannot authorize quantity. Canonical unit remains unchanged."
 }
