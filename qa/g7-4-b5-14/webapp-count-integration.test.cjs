@@ -22,7 +22,7 @@ assert.ok(!js.includes("cauDaDungToan"));
 assert.ok(!js.includes("TIEN_DO_HOC"));
 assert.ok(!css.includes(".ml-word-head")&&!css.includes(".ml-card{"));
 assert.equal((js.match(/data:image\/svg\+xml/g)||[]).length,9);
-const ctx=vm.createContext({});
+const ctx=vm.createContext({URL});
 moduleScript.runInContext(ctx);
 const mod=vm.runInContext('KL_G74_B514',ctx);
 assert.equal(mod.samples.length,6);
