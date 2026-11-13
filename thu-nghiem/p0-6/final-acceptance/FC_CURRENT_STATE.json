@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fc.audit-state.v1",
-  "phase": "F-C",
-  "status": "OWNER_CORRECTIONS_REQUESTED_FC01_RECONCILED_FC02_PENDING",
+  "phase": "F-C.1",
+  "status": "FC1_SOURCE_CROSS_VERIFIED_FORMAL_SIGNOFF_PENDING",
   "auditBranch": "test/p0-6-fc-audit-20261114",
   "sourceBranch": "test/p0-6-fb-from-fa-20261113",
   "sourceCheckpoint": "f60eb781df402df3373c4c0f5987087ab01a5764",
@@ -23,7 +23,7 @@
     "scores",
     "stars"
   ],
-  "nextAction": "Close documentary gaps FC-02 only on verified evidence, present to owner for explicit P0 closure decision. Maintain RELEASE_READY=false. Verify new checkpoint HEAD/CI before next write.",
+  "nextAction": "Verify new F-C.1 HEAD; independently check source raw-byte hash if possible; obtain explicit owner scoped version/digest and attestation exception/confirmation. Do not close P0 or deploy.",
   "closureAuthorized": false,
   "ownerDirection": "Complete FC-01/FC-02 before considering P0 closure; do not sign or release",
   "fc01": {
@@ -32,18 +32,30 @@
     "scope": "TEST_ONLY"
   },
   "fc02": {
-    "status": "PENDING_FORMAL_ATTESTATION",
+    "status": "PARTIAL_SOURCE_CROSS_VERIFIED_SIGNOFF_PENDING",
     "policyGitBlob": "69c07906f621b1ad91eba184a595544fe3b6d87c",
     "policyRetrievedUtf8Sha256": "33636d43f895bc417e4916dcec8befcb27a489ff08f774ec1897aa4804cc486e",
     "digestMethod": "SHA256 of UTF-8 re-encoded text returned by GitHub connector; raw Git bytes not independently checked",
     "pending": [
-      "canonical policyVersion",
-      "raw Git byte-level independent digest verification",
-      "owner acknowledgement of exact digest",
-      "independently attested reviewedAt/signature"
+      "independent raw Git byte-level SHA256 proof",
+      "canonical approved policyVersion",
+      "explicit owner confirmation of exact digest/version for G8 scope",
+      "reviewedAt/signature attestation or explicitly owner-approved TEST exception"
     ],
-    "evidence": "thu-nghiem/p0-6/final-acceptance/FC_POLICY_INTEGRITY_EVIDENCE_20261114.md"
+    "evidence": "thu-nghiem/p0-6/final-acceptance/FC_POLICY_INTEGRITY_EVIDENCE_20261114.md",
+    "crossVerification": {
+      "methods": [
+        "GitHub fetch_blob exact SHA",
+        "GitHub fetch_file at pinned commit",
+        "GitHub raw file at pinned commit"
+      ],
+      "textEquality": true,
+      "gitBlob": "69c07906f621b1ad91eba184a595544fe3b6d87c",
+      "sourceCommit": "2c39eb555de9e2c8fe44ef156ae0fbf12d5c8a6f",
+      "rawByteIndependentVerification": "PENDING"
+    },
+    "fC1Dossier": "thu-nghiem/p0-6/final-acceptance/FC1_E0_POLICY_ATTESTATION_RECONCILIATION_20261114.md"
   },
   "decisionRecord": "thu-nghiem/p0-6/final-acceptance/FC_OWNER_DECISION_AND_FC01_FC02_20261114.md",
-  "latestDocumentedAuditCommit": "0bdd44ac77fa45db639211e1d16a9aefbf51043c"
+  "latestDocumentedAuditCommit": "2ea7c3f1a343e309d6ffac97ca87c84cb0c6c0ee"
 }
