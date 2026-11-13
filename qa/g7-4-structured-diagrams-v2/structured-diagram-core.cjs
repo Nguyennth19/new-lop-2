@@ -35,7 +35,7 @@ function verify(spec){
   if(!inInt(out,1,1000))return fail('NON_INTEGER_OR_OUT_OF_RANGE_CONVERSION');
   break;}
  case 'PLACE_VALUE_ADDITION':
-  if(!inInt(p.a,10,99)||!inInt(p.b,10,99)||p.a+p.b>100||p.total!==undefined||
+  if(!inInt(p.a,10,99)||!inInt(p.b,10,99)||p.a+p.b>99||p.total!==undefined||
      p.carry!==undefined)return fail('INVALID_COLUMN_PARAMETERS');
   break;
  case 'SEGMENT_LENGTH_SUM':
