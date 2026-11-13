@@ -115,7 +115,30 @@
       "silently_switching_ui"
     ]
   },
-  "requiresAdvancedReferenceSource": true,
-  "referenceStatus": "USER_SCREENSHOT_PRESENT_SOURCE_NOT_IDENTIFIED",
-  "mainDeployment": false
+  "requiresAdvancedReferenceSource": false,
+  "referenceStatus": "ADVANCED_1000_ORIGINAL_SOURCE_VERIFIED_FIXED_EXAMPLE_QA_PASS_CARRY_GRADING_GAP_OPEN",
+  "mainDeployment": false,
+  "advancedReference": {
+    "path": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "sizeBytes": 131767,
+    "fixedExamples": [
+      {
+        "a": 47,
+        "b": 25,
+        "result": 72,
+        "profile": "PV100"
+      },
+      {
+        "a": 356,
+        "b": 128,
+        "result": 484,
+        "profile": "PV1000"
+      }
+    ],
+    "fullVariantGenerationSupported": false,
+    "subtractionUIVerified": false,
+    "gradingCarryPolicy": "NOT_GRADED_IN_ORIGINAL",
+    "ownerFinalApproval": false
+  }
 }
