@@ -210,6 +210,10 @@ if(qs.get('qaAuto')==='1'){
  document.body.dataset.qaPassed=String(passed);document.body.dataset.qaErrors=String(errors.length);
  document.body.dataset.qaFinished=String(Object.keys(finished).length);
  document.body.dataset.qaImagesLoaded=String([...document.images].filter(x=>x.complete&&x.naturalWidth>0).length);
+ Promise.all([...document.images].map(x=>x.decode().then(()=>true,()=>false))).then(results=>{
+  document.body.dataset.qaImagesDecoded=String(results.every(Boolean));
+  document.body.dataset.qaImagesLoaded=String(results.filter(Boolean).length);
+ }).catch(e=>{document.body.dataset.qaImagesDecoded='false';document.body.dataset.qaDecodeError=String(e)});
  document.body.dataset.qaHorizontalOverflow=String(document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
  const result=document.createElement('pre');result.id='qaAutoResult';result.textContent=JSON.stringify({passed,errors,samples},null,2);document.body.append(result);
 }
