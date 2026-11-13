@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "G7.4_RENDERER_BATCH_QA_V1_QA_A_CHECKPOINT",
+  "createdOn": "2026-11-14",
+  "stage": "QA-A",
+  "stageStatus": "PENDING_ITEMS",
+  "overallStatus": "NOT_READY_FOR_INTEGRATION",
+  "branch": "test/g7-4-renderer-batch-qa-v1-20261114",
+  "baseBranch": "test/g7-4-word-problem-unification-v11-20261114",
+  "baseCommit": "c81d33fd7deb28238ab670d8909af960ae4e0f80",
+  "mainHeadAtStart": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+  "lastVerifiedSource": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+  "sourceSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+  "sourceHashVerification": "PASS_VERIFIED_FROM_FILE_BYTES_131767",
+  "evidenceScope": {
+    "github": "API read via connected GitHub",
+    "drive": "list and read G7.4 policies; no unverified Drive SHA claims",
+    "browserDevice": "NOT_EXECUTED_IN_BATCH",
+    "gasTestDeployment": "NOT_EXECUTED",
+    "mainMutation": false,
+    "g6Mutation": false,
+    "originalHtmlMutation": false,
+    "studentDataMutation": false
+  },
+  "qaGates": {
+    "A": "PARTIAL_SOURCE_INVENTORY_VERIFIED_D1_MAPPING_D2_V14_CI_PENDING",
+    "B": "PENDING",
+    "C": "PENDING",
+    "D": "PENDING",
+    "E": "BLOCKED_D10_TRUSTED_GRADE_AND_LEGACY_LEAK",
+    "F": "DEFERRED_GAS_PRECONDITIONS"
+  },
+  "ciEvidence": [
+    {
+      "id": "D1",
+      "run": 43455844671,
+      "status": "success",
+      "note": "latest branch HEAD adds documentation only since CI"
+    },
+    {
+      "id": "D2_v12",
+      "run": 43472432436,
+      "status": "success",
+      "note": "latest branch HEAD changes documentation only since CI"
+    },
+    {
+      "id": "D2_v13",
+      "run": 43478782395,
+      "status": "success",
+      "note": "CI on v13 branch HEAD; v14 audit branch has NO action run"
+    },
+    {
+      "id": "D3",
+      "run": 43481155494,
+      "status": "success"
+    },
+    {
+      "id": "D4",
+      "run": 43483355140,
+      "status": "success"
+    },
+    {
+      "id": "D5",
+      "run": 43484450053,
+      "status": "success"
+    },
+    {
+      "id": "D6",
+      "run": 43485212567,
+      "status": "success"
+    },
+    {
+      "id": "D7",
+      "run": 43485881706,
+      "status": "success"
+    },
+    {
+      "id": "D8",
+      "run": 43486883467,
+      "status": "success"
+    },
+    {
+      "id": "D8A_D8B",
+      "run": 43490762721,
+      "status": "success"
+    },
+    {
+      "id": "D9",
+      "run": 43491795665,
+      "status": "success"
+    },
+    {
+      "id": "D10",
+      "run": 43493299008,
+      "status": "success"
+    },
+    {
+      "id": "TTS_G7_5",
+      "run": 43493300679,
+      "status": "success_mock_static_only"
+    }
+  ],
+  "findings": [
+    {
+      "id": "QA-A-001",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No dedicated standalone Type 1 renderer V1.1 bundle; original Type1 plus Structured Diagram V2 only"
+    },
+    {
+      "id": "QA-A-002",
+      "priority": "P1",
+      "state": "BLOCKED",
+      "subject": "D2 v14 E2E project/deployment/rollback unverified; no CI run for v14 branch"
+    },
+    {
+      "id": "QA-A-003",
+      "priority": "P0",
+      "state": "BLOCKED",
+      "subject": "G6/B20 legacy answer,n1,n2,op fields in client; D10 scaffold filtering does not remove legacy payload leak"
+    },
+    {
+      "id": "QA-A-004",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No trusted statement-choice grading contract in server for D10"
+    },
+    {
+      "id": "QA-A-005",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8A/D8B asset inventory has 0 approved mapped Asset IDs; filenames only verified"
+    },
+    {
+      "id": "QA-A-006",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8B tilt visual regression 3kg vs 5kg has unit CI success but no actual browser screenshot in batch"
+    },
+    {
+      "id": "QA-A-007",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Vietnamese TTS G7.5 CI is mock/static only; device voice and Apps Script TEST not verified"
+    },
+    {
+      "id": "QA-A-008",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Generator/Lesson Composer/server grading and GAS E2E across 12 items not verified"
+    }
+  ],
+  "nextAllowed": "QA-B READ-ONLY data contracts, logic, state, variants and tests; QA-C browser only after source mapping and regression plan",
+  "gasLaunchGate": "DENY until QA-A missing items and QA-B/C/D/E prerequisites satisfy each corresponding acceptance gate, isolated GAS TEST deployment verified",
+  "rollback": {
+    "beforeAnyGasChanges": "No runtime rollback needed; audit branch is documentation only. To resume from base use test/g7-4-word-problem-unification-v11-20261114 @ c81d33fd7deb28238ab670d8909af960ae4e0f80.",
+    "ifLaterTestMounted": "Feature OFF + restore G6, verify unchanged student data, score, stars, drafts and previous renderer on real TEST before approval",
+    "main": "NEVER TOUCH"
+  }
+}
