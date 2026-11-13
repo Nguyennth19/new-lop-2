@@ -1,0 +1,62 @@
+name: P0.5-H2 Owner Signoff and Release Gate (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-5-h2-owner-signoff-*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  signoff-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check approved 30 question content invariants
+        run: node thu-nghiem/p0-5/closure/kiem-thu-h1-bat-bien.cjs
+      - name: Reuse B20 grading and renderer regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Reuse offline FULL_SAFE and UI-A/B
+        run: |
+          node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+          node thu-nghiem/p0-5/ui-a/kiem-thu-layout.cjs
+          node thu-nghiem/p0-5/ui-b/kiem-thu-ui-b.cjs
+      - name: Check signoff evidence is bound to exact H1 JSON and not a release bypass
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict');
+          const e=require('./thu-nghiem/p0-5/evidence-current.json');
+          const p=e.pedagogy;
+          assert.equal(p.signedOff,true);
+          assert.equal(p.lessonId,'toan_b20');
+          assert.equal(p.questionCount,30);
+          assert.equal(p.approvalScope,'APPROVED_H1_30_QUESTIONS');
+          assert.equal(p.signedVia,'USER_CHAT_ATTESTATION_NOT_INDEPENDENT_CRYPTOGRAPHIC_SIGNATURE');
+          assert.equal(p.sourceStatus,'PEDAGOGY_APPROVED_STAGING_NO_RELEASE');
+          const hash=cp.execFileSync('git',['hash-object','thu-nghiem/bai-20-bien-the/runtime.json'],{encoding:'utf8'}).trim();
+          assert.equal(hash,p.sourceJsonBlobSha);
+          const json=JSON.parse(fs.readFileSync('thu-nghiem/bai-20-bien-the/runtime.json','utf8'));
+          assert.equal(json.release_status,'STAGING_DEMO_ONLY_NOT_PEDAGOGY_SIGNED_OFF');
+          assert.equal(e.webapp,null);
+          assert.equal(e.sessions,null);
+          assert.equal(e.browser,null);
+          console.log('PASS: owner H1 content signoff, source hash immutable; no TEST Web App/browser receipts fabricated');
+          NODE
+      - name: Gate: pedagogy passes but overall release stays BLOCKED
+        run: |
+          set -euo pipefail
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json > "$RUNNER_TEMP/h2-gate.json"; then
+            echo "FAIL: release incorrectly ready without Web App verification"
+            exit 1
+          fi
+          node -e "const fs=require('fs');const g=JSON.parse(fs.readFileSync(process.argv[1]));if(g.releaseReady!==false||g.status!=='RELEASE_BLOCKED'||g.gates.STATIC.status!=='PASS'||g.gates.PEDAGOGY.status!=='PASS'||g.gates.WEBAPP.status!=='PENDING'||g.gates.SESSIONS.status!=='PENDING'||g.gates.BROWSER.status!=='PENDING')process.exit(1);console.log(JSON.stringify({status:g.status,releaseReady:g.releaseReady,gateStates:Object.fromEntries(Object.entries(g.gates).map(([k,v])=>[k,v.status]))}));" "$RUNNER_TEMP/h2-gate.json"
+      - name: No test-induced changes
+        run: test -z "$(git status --porcelain --untracked-files=no)"
