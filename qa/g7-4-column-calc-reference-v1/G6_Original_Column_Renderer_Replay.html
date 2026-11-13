@@ -1,0 +1,292 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 Column Calc — G6 original source replay</title>
+<style>body{background:#eef4fb;margin:0;font-family:system-ui,sans-serif;color:#23374f}header{padding:12px 18px;background:#235f99;color:white}header h1{font-size:18px;margin:4px 0}.note{font-size:12px;margin:6px 0;line-height:1.5}#mathFullScreen{display:block;position:relative;width:100%;min-height:280px;background:#fff;overflow:auto}.ml-content{max-width:800px;padding:15px;margin:auto}.ml-input{height:46px;width:46px;border:2px solid #7dbce5;border-radius:9px;text-align:center;background:#fff;color:#265f98;font-size:20px}.ml-vertical-paper{border:1px solid #a4d3ef;border-radius:13px;background:#f7fbff;padding:14px;margin:6px auto;max-width:600px}.ml-vertical-matrix{display:grid;justify-content:center}.ml-vert-row{display:grid;grid-template-columns:48px 52px 52px;gap:6px;align-items:center;justify-items:center;margin:5px 0}.ml-vert-row.numbers{font-size:25px}.ml-vert-note{text-align:center;font-weight:bold;font-size:12px}.ml-remember-label{font-size:11px}.ml-vert-row.rule{border-bottom:2px solid #406b8b}.ml-card small{font-size:12px}button{cursor:pointer;min-height:42px;border:1px solid #7aadd6;border-radius:8px;padding:9px;font:inherit}button:focus-visible,input:focus-visible{outline:3px solid #83b8eb}.toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:10px}.result{padding:8px;font-size:13px;text-align:center}#mathFullScreen .math-screen{position:relative}#mathFullScreen .ml-card{width:min(100%,550px)}.baseline{max-width:800px;margin:auto;background:#fff;border:1px solid #b7d1e6;border-radius:13px;overflow:hidden}</style>
+<style>
+/* Lớp 2 · Không gian Toán v2.3: ưu tiên rõ ràng, dùng được với chuột và cảm ứng */
+body.math-learning{margin:0;overflow:hidden}
+body.math-learning>.app,body.math-learning>#mobileNav{display:none!important}
+.math-screen{position:fixed;inset:0;background:#f1f6fc;z-index:10000;display:flex;flex-direction:column;color:#172033;font-family:Inter,Arial,sans-serif;font-size:14px}
+.math-screen *{box-sizing:border-box}
+.math-screen button,.math-screen input{font:inherit}
+.math-screen button{cursor:pointer;touch-action:manipulation}
+.ml-top{height:72px;min-height:72px;display:flex;align-items:center;gap:14px;background:#f7faff;border-bottom:1px solid #e2e8f0;padding:9px 16px}
+.ml-back{border:1px solid #d9e2ec;background:#fff;border-radius:12px;width:40px;height:40px;font-size:28px;line-height:1;color:#15243b}
+.ml-file{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:#fff;font-size:25px;background:linear-gradient(145deg,#4279f1,#52b9d9)}
+.ml-heading{min-width:0;display:flex;flex-direction:column;gap:4px}
+.ml-heading-meta{display:flex;align-items:center;gap:9px;font-size:12px;white-space:nowrap}
+.ml-heading-meta strong{font-size:13px}
+.ml-doc-label{background:#e9efff;color:#315ce0;padding:3px 9px;border-radius:999px;font-weight:700}
+.ml-progress{width:130px;height:7px;background:#dee7f6;overflow:hidden;border-radius:10px}
+.ml-progress i{height:100%;background:linear-gradient(90deg,#4870e9,#49b6ce);display:block;width:0;transition:width .2s}
+#mlPct{color:#315bdc}
+#mlTitle{font-size:16px;color:#101828;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100vw}
+.ml-layout{display:flex;flex:1;min-height:0}
+.ml-sidebar{flex:0 0 275px;max-width:275px;background:#fff;border-right:1px solid #e2e8f0;padding:22px 14px;overflow:auto}
+.ml-sidebar-title{display:block;font-size:12px;letter-spacing:.02em;margin-bottom:18px}
+.ml-navigation{display:grid;gap:6px}
+.ml-navigation button{border:0;background:transparent;display:flex;align-items:center;text-align:left;gap:10px;padding:13px 10px;border-radius:11px;color:#334155;font-weight:700;min-height:48px}
+.ml-navigation button:hover,.ml-navigation button.active{background:#eaf0ff;color:#285ade}
+.ml-check{width:20px;height:20px;border:1.5px solid #cbd5e1;border-radius:6px;flex:0 0 20px;display:grid;place-items:center;background:#fff;color:transparent}
+.ml-check.is-done{border-color:#16a34a;background:#dcfce7;color:#15803d;font-weight:900}
+.ml-content{min-width:0;flex:1;overflow:auto;padding:24px 22px 140px;overscroll-behavior:contain}
+.ml-page{max-width:1250px;margin:auto;padding:26px;background:#fffdf9;min-height:100%;border:1px solid #f7eede}
+.ml-theory-empty{background:#fff;min-height:calc(100vh - 130px);border-radius:12px}
+.ml-loading,.ml-warning{padding:26px;border-radius:16px;background:#fff;color:#334155;font-weight:700}
+.ml-warning{color:#be123c}
+.ml-section{margin-bottom:36px}
+.ml-section-heading{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:0 0 18px}
+.ml-step{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:50%;background:#ec3f68;color:white;font-size:17px}
+.ml-section:nth-child(2n) .ml-step{background:#36b987}
+.ml-section-heading h3{font-size:18px;color:#a3093e;font-weight:800;background:#fff1f4;border:1px solid #fecdd3;border-radius:999px;padding:10px 19px;margin:0}
+.ml-section:nth-child(2n) .ml-section-heading h3{background:#ecfdf5;border-color:#a7f3d0;color:#166534}
+.ml-section-heading>button{border:1px solid #93c5fd;border-radius:999px;background:#e0f2fe;color:#0369a1;font-size:12px;font-weight:800;padding:9px 12px}
+.ml-section-box{border:2px dashed #fecdd3;border-radius:22px;background:#fff8f9;padding:24px}
+.ml-section:nth-child(2n) .ml-section-box{border-color:#a7f3d0;background:#f6fffa}
+.ml-cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.ml-card{position:relative;border:2px solid var(--ml-border,#38bdf8);background:var(--ml-bg,#f0f9ff);border-radius:17px;padding:13px;min-width:0}
+.ml-theme-pink{--ml-border:#f472b6;--ml-bg:#fff0f5;--ml-ink:#db2777}
+.ml-theme-blue{--ml-border:#38bdf8;--ml-bg:#f0f9ff;--ml-ink:#0284c7}
+.ml-theme-yellow{--ml-border:#facc15;--ml-bg:#fefce8;--ml-ink:#d97706}
+.ml-theme-green{--ml-border:#4ade80;--ml-bg:#f0fdf4;--ml-ink:#16a34a}
+.ml-theme-purple{--ml-border:#c084fc;--ml-bg:#faf5ff;--ml-ink:#9333ea}
+.ml-theme-orange{--ml-border:#fb923c;--ml-bg:#fff7ed;--ml-ink:#ea580c}
+.ml-card-top{display:flex;justify-content:space-between;gap:4px;color:var(--ml-ink,#0369a1);font-size:12px}
+.ml-earned{color:#15803d}
+.ml-vert-note{text-align:right;font-size:9px;color:#94a3b8;font-weight:800;margin:9px 0 7px}
+.ml-vertical-matrix,.ml-puzzle{width:108px;max-width:100%;margin:auto;font-family:ui-monospace,Consolas,monospace}
+.ml-vert-row{display:grid;grid-template-columns:22px 37px 37px;align-items:center;justify-items:center;min-height:31px}
+.ml-vert-row small{font-size:10px;color:#94a3b8;font-weight:800}
+.ml-vert-row.numbers{font-size:26px;color:#0f172a;line-height:1.2}
+.ml-vert-row.rule{border-bottom:2px solid #111827;padding-bottom:3px}
+.ml-vert-row.answers{background:repeating-linear-gradient(0deg,transparent 0 7px,#dff3fe 7px 8px),repeating-linear-gradient(90deg,transparent 0 7px,#dff3fe 7px 8px);border:1px solid #bae6fd;border-radius:9px;min-height:53px;margin-top:8px}
+.ml-remember-label{font-family:Inter,sans-serif;font-size:9px;color:#b45309}
+.ml-vert-row .operator{font-size:22px;color:#f43f5e;font-weight:800}
+.ml-input{max-width:100%;height:39px;min-width:0;border:1.5px dashed #7dd3fc;border-radius:8px;background:white;text-align:center;font-size:23px!important;font-weight:800!important;color:#1d4ed8;outline:0;box-shadow:none}
+.ml-vert-row .ml-input{width:33px;height:38px}
+.ml-vert-row .ml-carry{width:26px;height:26px;background:#fffbeb;border-color:#fbbf24;font-size:15px!important}
+.ml-input:focus{border:2px solid #0284c7;box-shadow:0 0 0 3px #bae6fd}
+.ml-input.ml-right{background:#dcfce7;border-color:#22c55e;color:#166534}
+.ml-input.ml-wrong{background:#ffe4e6;border-color:#fb7185;color:#be123c}
+.ml-input.ml-empty{background:#fef3c7;border-color:#f59e0b}
+.ml-correct{box-shadow:0 0 0 2px rgba(34,197,94,.18)}
+.ml-mental-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ml-mental-group{background:var(--ml-bg);border:2px solid var(--ml-border);border-radius:16px;padding:16px 12px}
+.ml-mental-group h4{color:var(--ml-ink);font-size:12px;text-align:center;margin:0 0 16px;padding-bottom:9px;border-bottom:1px solid var(--ml-border)}
+.ml-mental-row{display:grid;grid-template-columns:78px 18px 36px 18px 56px;justify-content:center;align-items:center;gap:0;margin:9px 0;font-family:ui-monospace,Consolas,monospace;font-size:19px;font-weight:800}
+.ml-mental-row .ml-mental-first{text-align:right;padding-right:4px}
+.ml-mental-row span{text-align:center}
+.ml-mental-row b{color:var(--ml-ink);text-align:center}
+.ml-mental-row .ml-input{width:56px;height:38px;font-size:20px!important}
+.ml-puzzle-card .ml-puzzle{padding:15px 0 9px}
+.ml-puzzle .ml-vert-row:last-child{margin-top:8px;padding-top:5px;background:#eaf8ff;border:1px solid #bae6fd;border-radius:8px}
+.ml-word-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ml-word-card{padding:18px}
+.ml-word-head{display:flex;align-items:center;gap:14px}
+.ml-word-head p{line-height:1.6;font-size:14px;font-weight:650}
+.ml-svg{width:88px;min-width:88px;height:82px;background:#fff;border:1px solid #cbd5e1;border-radius:12px;display:grid;place-items:center}
+.ml-svg svg{width:86px;height:80px}
+.ml-word-summary{background:#fff9e4;border:1px dashed #eab308;border-radius:10px;padding:9px 11px;margin:12px 0;font-size:12px;line-height:1.6}
+.ml-graph-paper{background-color:#fff;background-image:linear-gradient(#d7f1ff 1px,transparent 1px),linear-gradient(90deg,#d7f1ff 1px,transparent 1px);background-size:28px 28px;border:1px solid #bae6fd;border-radius:12px;padding:13px}
+.ml-graph-paper h4{text-align:center;font-size:15px;text-decoration:underline;margin:2px 0 12px}
+.ml-graph-paper p{margin:0 0 10px;font-size:13px;font-weight:700}
+.ml-word-calc{display:flex;align-items:center;gap:8px}
+.ml-word-calc .ml-input{width:49px;height:36px;font-size:18px!important}
+.ml-word-result{display:flex;align-items:center;gap:7px;margin-top:12px;font-weight:700;font-size:13px}
+.ml-word-result .ml-input{width:72px;height:36px;font-size:18px!important}
+.ml-invalid{background:#fff7ed;border-color:#fdba74;font-size:12px;color:#9a3412}
+.ml-section-actions{display:flex;justify-content:flex-end;align-items:center;gap:11px;flex-wrap:wrap;margin-top:26px}
+.ml-section-actions button,.ml-bottom button{border:0;background:#32b981;color:white;font-weight:800;padding:12px 17px;border-radius:12px;box-shadow:0 3px 0 #15803d}
+.ml-section-actions button.ml-reset{background:#fef3c7;color:#92400e;box-shadow:none;border:1px solid #fcd34d}
+.ml-section-feedback{font-size:12px;font-weight:800;color:#0f766e;margin-right:auto}
+.ml-bottom{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;padding:28px}
+.ml-dock{position:absolute;left:275px;right:0;bottom:0;border-top:3px solid #7dd3fc;background:rgba(255,255,255,.98);box-shadow:0 -5px 25px rgba(14,116,144,.12);padding:9px 16px;z-index:1}
+.ml-dock-heading{display:flex;justify-content:space-between;max-width:1050px;margin:auto;font-size:12px;color:#075985}
+.ml-dock-heading button{border:0;background:#f1f5f9;color:#475569;padding:4px 9px;border-radius:6px}
+.ml-dock-keys{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:5px;max-width:1050px;margin:7px auto 0}
+.ml-key{height:43px;border:2px solid #7dd3fc;border-radius:9px;background:#f0f9ff;font-size:19px!important;font-weight:800!important;color:#0c4a6e;user-select:none;-webkit-tap-highlight-color:transparent}
+.ml-key:active{transform:translateY(2px);background:#bae6fd}
+.ml-key.erase{background:#fff1f2;border-color:#fda4af;color:#be123c;font-size:15px!important}
+.ml-key.next{background:#10b981;border-color:#059669;color:white;font-size:14px!important}
+.ml-show-keyboard{position:absolute;bottom:15px;right:20px;z-index:3;border:1px solid #38bdf8;border-radius:20px;padding:12px;background:#e0f2fe;color:#075985;font-weight:800}
+@media(max-width:1150px){.ml-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.ml-mental-groups{grid-template-columns:1fr}.ml-word-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.ml-sidebar{flex-basis:170px;max-width:170px;padding:13px 7px}.ml-sidebar-title{font-size:10px}.ml-navigation button{font-size:11px;padding:11px 5px;gap:5px}.ml-dock{left:170px}.ml-content{padding:12px 8px 120px}.ml-page{padding:12px}.ml-section-box{padding:12px}.ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.ml-heading-meta{gap:6px}.ml-progress{width:64px}.ml-key{height:42px}.ml-dock-keys{grid-template-columns:repeat(7,minmax(0,1fr))}}
+@media(max-width:520px){.ml-top{height:64px;min-height:64px;padding:6px;gap:6px}.ml-back{width:32px;height:35px}.ml-file{width:34px;height:35px}.ml-heading-meta{font-size:10px}.ml-heading-meta strong{font-size:10px}#mlTitle{font-size:12px}.ml-sidebar{flex-basis:118px;max-width:118px}.ml-navigation button{font-size:10px;flex-direction:column;align-items:flex-start;gap:4px}.ml-content{padding:7px 5px 145px}.ml-page{padding:8px}.ml-section-heading h3{font-size:13px;padding:7px 10px}.ml-section-heading>button{font-size:10px}.ml-step{width:28px;height:28px;flex-basis:28px}.ml-cards{gap:8px}.ml-card{padding:7px}.ml-vert-row{grid-template-columns:16px 31px 31px}.ml-vertical-matrix,.ml-puzzle{width:78px}.ml-vert-row .ml-input{width:28px}.ml-vert-note{font-size:7px}.ml-mental-group{padding:10px 4px}.ml-mental-row{grid-template-columns:66px 17px 32px 17px 50px;font-size:17px}.ml-mental-row .ml-input{width:50px}.ml-word-head{flex-direction:column}.ml-word-calc{gap:3px}.ml-word-calc .ml-input{width:37px}.ml-dock{left:0;padding:8px}.ml-dock-keys{grid-template-columns:repeat(7,minmax(0,1fr))}.ml-dock-heading{font-size:10px}}
+</style><style>/* UI20-02A | Component-only enhancement from lop-2-new.
+ * Scope #mathFullScreen ONLY. No imported Tailwind, Baloo, Quicksand, or global selectors.
+ * Do not change header/sidebar/dock/results or baseline styles. 
+ */
+#mathFullScreen .ml-word-card.ml-word-structured{
+ border-color:#f6cd55;background:#fff;box-shadow:0 1px 2px #0f172a08;
+}
+#mathFullScreen .ml-word-structured .ml-word-head{
+ display:flex;align-items:flex-start;gap:15px;
+}
+#mathFullScreen .ml-word-structured .ml-word-head p{
+ margin:0;line-height:1.75;font-size:15px;color:#182438;font-weight:650;
+}
+#mathFullScreen .ml-word-structured .ml-word-summary{
+ background:#fffbeb;border:1.5px dashed #f2bb29;border-radius:14px;
+ padding:10px 13px;color:#263144;font-size:13px;line-height:1.7;
+}
+#mathFullScreen .ml-word-structured .ml-word-summary b{
+ color:#9a5300;text-decoration:underline;text-underline-offset:2px;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper,
+#mathFullScreen .ml-vertical-paper .ml-vert-row.answers,
+#mathFullScreen .ml-puzzle-paper .ml-vert-row:last-child{
+ background-color:#fff;
+ background-image:
+  linear-gradient(to right,rgba(56,189,248,.16) 1px,transparent 1px),
+  linear-gradient(to bottom,rgba(56,189,248,.16) 1px,transparent 1px),
+  linear-gradient(to right,rgba(186,230,253,.12) .5px,transparent .5px),
+  linear-gradient(to bottom,rgba(186,230,253,.12) .5px,transparent .5px);
+ background-size:28px 28px,28px 28px,7px 7px,7px 7px;
+ background-position:-1px -1px;
+ border-color:#b8e4fc;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper{
+ border-radius:14px;padding:16px 18px;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper h4{
+ margin:0 0 13px;font-size:15px;font-weight:850;
+ color:#162338;text-underline-offset:3px;
+}
+#mathFullScreen .ml-word-structured .ml-graph-paper p{
+ margin:0 0 9px;font-size:14px;font-weight:700;line-height:1.65;
+}
+#mathFullScreen .ml-word-calc-line{
+ display:flex;align-items:center;gap:9px;flex-wrap:wrap;min-width:0;
+ font-size:13px;font-weight:750;color:#172033;
+}
+#mathFullScreen .ml-word-calc-line>strong{white-space:nowrap}
+#mathFullScreen .ml-word-structured .ml-word-calc{
+ flex-wrap:wrap;gap:6px;align-items:center;min-width:0;
+}
+#mathFullScreen .ml-word-structured .ml-word-calc .ml-input,
+#mathFullScreen .ml-word-structured .ml-word-result .ml-input{
+ border:0;border-bottom:2px dashed #63b9e8;border-radius:5px 5px 0 0;
+ height:39px;background:transparent;box-shadow:none;
+ color:#1d4ed8;font-family:Inter,Arial,sans-serif!important;
+}
+#mathFullScreen .ml-word-structured .ml-word-calc .ml-input:focus,
+#mathFullScreen .ml-word-structured .ml-word-result .ml-input:focus{
+ border-bottom:2px solid #0284c7;background:#fef9c3;
+ outline:2px solid #bae6fd;outline-offset:0;
+}
+#mathFullScreen .ml-word-structured .ml-word-result{
+ border-top:1px solid #c7e8ff;padding-top:12px;margin-top:12px;flex-wrap:wrap;
+}
+#mathFullScreen .ml-vertical-paper .ml-vert-row.answers{
+ border-radius:12px;min-height:54px;
+}
+#mathFullScreen .ml-vertical-paper .ml-vertical-matrix{margin:10px auto}
+#mathFullScreen .ml-vertical-paper .ml-vert-note{letter-spacing:.01em}
+#mathFullScreen .ml-puzzle-paper .ml-puzzle{padding:12px 0}
+#mathFullScreen .ml-puzzle-paper .ml-vert-row:last-child{
+ border-radius:10px;margin-top:8px;min-height:54px;
+}
+@media(max-width:760px){
+ #mathFullScreen .ml-word-structured .ml-word-head{flex-direction:column}
+ #mathFullScreen .ml-word-structured .ml-word-calc-line{align-items:flex-start}
+ #mathFullScreen .ml-word-structured .ml-graph-paper{padding:12px 10px}
+ #mathFullScreen .ml-word-structured .ml-word-calc .ml-input{width:43px}
+ #mathFullScreen .ml-word-structured .ml-word-result .ml-input{width:67px}
+}
+</style></head>
+<body><header><h1>G7.4 – Bản phát lại G6 gốc (chỉ 2 chữ số)</h1><p class="note">Nguồn HTML/CSS/JS chụp nguyên trạng từ GitHub G6. Trang bao kiểm thử ở đây không phải renderer nâng cao 100/1000 trong ảnh; không dùng thay thế bản đó.</p></header>
+<section class="baseline"><div class="toolbar"><button id="show47" type="button">47 + 25</button><button id="show37" type="button">37 + 18</button><button id="grade" type="button">Kiểm tra</button></div><div id="mathFullScreen"><div class="ml-content" id="cards"></div></div><div class="result" id="result" aria-live="polite">Chưa kiểm tra</div></section>
+<script>
+/* G6 – Renderer câu Toán thuần HTML, tách khỏi điều hướng và chấm điểm. */
+function taoHienThiCauToan({E,input,baseCard}){
+function vertical(q){
+ if(!q.valid)return invalid(q);
+ const a=String(q.n1).padStart(2,'0'),b=String(q.n2).padStart(2,'0');
+ const answer=String(q.answer).padStart(2,'0');
+ const inside='<div class="ml-vert-note">ĐV → Nhớ → Chục</div><div class="ml-vertical-matrix">'+
+ '<div class="ml-vert-row"><span></span><small>CHỤC</small><small>ĐV</small></div>'+
+ '<div class="ml-vert-row"><span class="ml-remember-label">nhớ</span>'+input(q,q.id+':carry',1,'data-ml-carry="1"')+'<span></span></div>'+
+ '<div class="ml-vert-row numbers"><span></span><b>'+E(a[0])+'</b><b>'+E(a[1])+'</b></div>'+
+ '<div class="ml-vert-row numbers rule"><span class="operator">+</span><b>'+E(b[0])+'</b><b>'+E(b[1])+'</b></div>'+
+ '<div class="ml-vert-row answers"><span></span>'+input(q,q.id+':tens',1)+input(q,q.id+':ones',1)+'</div></div>';
+ return baseCard(q,inside,'ml-vertical-card ml-vertical-paper');
+}
+function mental(q){
+ const row='ml-mental-row',first='ml-mental-first';
+ // Sử dụng grid năm cột có sẵn của test-theo-main; không đưa câu dài vào ô số.
+ if(q.variantType==='carry'){
+   const a=Number(q.n1)%10,b=Number(q.n2)%10;
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(a+'+'+b+'='+(a+b))+'</span><b>→</b><span>nhớ</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+ }
+ if(q.variantType==='reverse'){
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'">'+input(q,q.id+':answer',3)+'<b>+</b><span>'+E(q.n2)+'</span><b>=</b><span>'+E(Number(q.n1)+Number(q.n2))+'</span></div>';
+ }
+ if(q.variantType==='three'){
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+'+'+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+ }
+ if(q.pilotPrompt)return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+'</div>';
+ return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+}
+function puzzle(q){
+ if(!q.valid)return invalid(q);
+ const inside='<div class="ml-puzzle">'+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>v&&typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v==null?'':v)+'</b>').join('')+'</div>').join('')+'</div>';
+ return baseCard(q,inside,'ml-puzzle-card ml-puzzle-paper');
+}
+function word(q){
+ if(!q.valid)return invalid(q);
+ // Preserve existing G7 SVG/WebP loader; missing asset stays a visual fallback.
+ const summary=String(q.summary||'').trim();
+ const explanation=String(q.solutionPrompt||'').trim();
+ const unit=String(q.unit||'').trim();
+ const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'" role="img" aria-label="Hình minh họa cho bài toán"></div><p>'+E(q.prompt)+'</p></div>'+
+ (summary?'<div class="ml-word-summary"><b>TÓM TẮT:</b> '+E(summary)+'</div>':'')+
+ '<div class="ml-graph-paper"><h4>BÀI GIẢI</h4>'+
+ '<p>'+E(explanation||'Em viết phép tính thích hợp:')+'</p>'+
+ '<div class="ml-word-calc-line"><strong>Phép tính:</strong><div class="ml-word-calc">'+
+ input(q,q.id+':n1',2)+input(q,q.id+':op',1)+input(q,q.id+':n2',2)+'<b>=</b>'+input(q,q.id+':sum',3)+
+ (unit?' <span>('+E(unit)+')</span>':'')+'</div></div>'+
+ '<div class="ml-word-result">Đáp số: '+input(q,q.id+':answer',3)+(unit?' <span>'+E(unit)+'</span>':'')+'</div></div>';
+ return baseCard(q,inside,'ml-word-card ml-word-structured');
+}
+function invalid(q){return '<article class="ml-card ml-invalid"><small>'+E(q.label||q.id)+'</small><p>⚠ Dữ liệu câu hỏi chưa hoàn chỉnh trong Google Sheet.</p></article>';}
+
+return Object.freeze({vertical,mental,puzzle,word,invalid});
+}
+
+/* Bộ chấm bài thuần dữ liệu, có thể tái sử dụng bởi các bài Toán khác.
+   Không thao tác DOM, không ghi tiến độ. */
+function danhGiaCauToan(q,read){
+ if(!q||!q.valid)return false;
+ const val=k=>String(read(k)||'').trim();
+ if(q.type==='vertical'){
+  const ans=String(q.answer).padStart(2,'0');
+  const carry=(Number(q.n1)%10+Number(q.n2)%10)>=10?'1':'0';
+  return val('ones')===ans[1]&&val('tens')===ans[0]&&val('carry')===carry;
+ }
+ if(q.type==='mental')return val('answer')!==''&&Number(val('answer'))===Number(q.answer);
+ if(q.type==='missing_digit')return Array.isArray(q.puzzle)&&q.puzzle.every((row,ri)=>row.every((v,ci)=>!v||typeof v!=='object'||val('p'+ri+ci)===String(v.ans)));
+ if(q.type==='word_problem'){
+  const a=Number(val('n1')),b=Number(val('n2'));
+  return val('n1')!==''&&val('n2')!==''&&
+   ((a===Number(q.n1)&&b===Number(q.n2))||(a===Number(q.n2)&&b===Number(q.n1)))&&
+   val('op')===q.op&&val('sum')!==''&&Number(val('sum'))===Number(q.answer)&&
+   val('answer')!==''&&Number(val('answer'))===Number(q.answer);
+ }
+ return false;
+}
+
+const $=id=>document.getElementById(id);
+const E=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function input(q,key,max,attr){return '<input class="ml-input" type="text" inputmode="numeric" maxlength="'+max+'" data-ml-field="'+E(key)+'" '+(attr||'')+' aria-label="'+E(key)+'">'}
+function baseCard(q,inside,extra){return '<article class="ml-card '+(extra||'')+'" data-ml-q-card="'+E(q.id)+'"><small>Đặt tính rồi tính · '+E(q.n1)+' + '+E(q.n2)+'</small>'+inside+'</article>';}
+const g6=taoHienThiCauToan({E,input,baseCard});let q=null;
+function mount(a,b){q={id:'COL_DEMO',n1:a,n2:b,answer:String(a+b),type:'vertical',valid:true};$('cards').innerHTML=g6.vertical(q);$('result').textContent='Chưa kiểm tra';
+ const inputs=[...$('cards').querySelectorAll('input')];document.body.dataset.qaInputs=String(inputs.length);
+ document.body.dataset.qaFields=inputs.map(x=>x.dataset.mlField.split(':').pop()).join(',');}
+$('show47').onclick=()=>mount(47,25);$('show37').onclick=()=>mount(37,18);
+$('grade').onclick=()=>{const vals=Object.fromEntries([...document.querySelectorAll('[data-ml-field]')].map(x=>[x.dataset.mlField.split(':').pop(),x.value]));const pass=danhGiaCauToan(q,name=>vals[name]);$('result').textContent=pass?'Đúng!':'Chưa đúng';document.body.dataset.qaGrade=String(pass)};
+mount(47,25);
+if(new URLSearchParams(location.search).has('auto')){
+ for(const [name,value] of [['carry','1'],['tens','7'],['ones','2']]){const el=[...document.querySelectorAll('input')].find(x=>x.dataset.mlField.endsWith(':'+name));if(el)el.value=value;}
+ $('grade').click();
+}
+document.body.dataset.qaOverflow=String(document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
+</script></body></html>
