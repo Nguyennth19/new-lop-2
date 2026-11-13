@@ -13,7 +13,7 @@ eq(new Set(policy.exerciseTypes.map(x=>x.id)).size,10);
 eq(policy.globalRules.noImageAllowed,true);eq(policy.globalRules.sourceSGKStrictImageFidelity,false);
 eq(policy.rollout.runtimeEnabled,false);
 eq(scenarios.scenarios.length,10);
-const env={policy,semanticRules:rules,countRegistry:count};
+const env={policy,semanticRules:rules,countRegistry:count,mathScenes:scenarios.approvedParametricSceneRegistry};
 for(const item of scenarios.scenarios){
  const asset=count.assets.find(a=>a.assetId===item.request.assetId);
  const request={...item.request,exerciseType:item.type,questionId:item.questionId||item.id};
@@ -32,6 +32,9 @@ eq(symbolic.assetId,'KL_SH02_010');eq(symbolic.quantitySemantics,'NONE');
 const wrong=resolve({exerciseType:'NUMBER_BOND',visualMode:'EXACT_COUNT',assetId:'grapes',assetSha256:count.assets.find(x=>x.assetId==='grapes').sourceSha256,unit:'quả',quantity:3,directCountIntent:true},env);
 eq(wrong.ok,false,'bunch may not count as individual fruits');
 eq(resolve({exerciseType:'RULER_CLOCK',mathScene:{verified:false,geometryType:'CLOCK'}},env).ok,false);
+eq(resolve({exerciseType:'RULER_CLOCK',mathScene:{sceneId:'DEMO_CLOCK_0730',geometryType:'CLOCK',hour:15,minute:30}},env).ok,false);
+eq(resolve({exerciseType:'GEOMETRY_TANGRAM',mathScene:{sceneId:'DEMO_TRIANGLE_01',geometryType:'TRIANGLE',points:[[0,0],[2,0],[Infinity,3]]}},env).ok,false);
+eq(resolve({exerciseType:'RULER_CLOCK',mathScene:{sceneId:'UNKNOWN',geometryType:'CLOCK',hour:7,minute:30}},env).ok,false);
 eq(resolve({exerciseType:'VISUAL_MCQ',conceptKey:'unknown'},env).sourceKind,'NONE');
 eq(resolve({exerciseType:'NUMBER_BOND',visualMode:'EXACT_COUNT',assetId:'red_apple',assetSha256:count.assets.find(x=>x.assetId==='red_apple').sourceSha256,unit:'quả',quantity:81,directCountIntent:true},env).ok,false);
 eq(resolveVariant({questionId:'Q1'},{type:'SIMPLIFY_VISUAL',sameSkill:true,sameMathRelationship:true,measurementAssessed:false}).ok,true);
