@@ -1,0 +1,39 @@
+name: P0.6-C QA Grading Contract (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-6-c-qa-grading-*'
+    paths:
+      - 'thu-nghiem/p0-6/**'
+      - '.github/workflows/p0-6-c-qa-grading.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: P0.6-C answer verification, grading and receipts
+        run: node thu-nghiem/p0-6/kiem-thu-qa-grading-v1.cjs
+      - name: P0.6-B adapter registry compatibility
+        run: node thu-nghiem/p0-6/kiem-thu-adapter-registry-v1.cjs
+      - name: P0.6-A schema contract fixtures
+        run: node thu-nghiem/p0-6/kiem-thu-contract-v1.cjs
+      - name: P0.4 inherited FULL_SAFE
+        run: node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: B20 original 30-question regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: P0.5 release gate remains blocked
+        run: |
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json; then
+            echo 'FAIL: release gate unexpectedly open'; exit 1
+          fi
+      - name: No tracked files modified
+        run: test -z "$(git status --porcelain --untracked-files=no)"
