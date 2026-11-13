@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fb.handover-state.v1",
   "phase": "F-B",
-  "status": "IN_PROGRESS",
+  "status": "TECHNICAL_PASS_TEST_ONLY",
   "createdAt": "2026-11-13T22:36:01.202+07:00",
   "branch": "test/p0-6-fb-from-fa-20261113",
   "sourceBranch": "test/p0-6-fa-policy-pedagogy-20261113",
@@ -17,17 +17,31 @@
     "G7": "OWNER_APPROVED_TEST_SCOPE",
     "G8": "OWNER_APPROVED_TEST_SCOPE",
     "F_A": "CLOSED_FOR_ISOLATED_TEST_SCOPE",
-    "F_B": "READY_FOR_TEST_WORK",
-    "RELEASE_READY": false
+    "F_B": "TECHNICAL_PASS_TEST_ONLY",
+    "RELEASE_READY": false,
+    "FB_LESSON_VERSION": "PASS",
+    "FB_ROLLBACK": "PASS_BLOCKED_DEFAULT",
+    "GOOGLE_APPS_SCRIPT_V6": "NOT_IN_SCOPE"
   },
-  "recoveryPoint": "Verified FB HEAD 42181b6056e8ad4119a784f8d3514e20c23289d0. Next build isolated governance with feature-flag OFF default; source code unchanged.",
+  "recoveryPoint": "Latest known verified code run 43455957462 SUCCESS at 900edeebb5c88518312596aa3e7d784415d9c4b4. F-B QA report commit a1d30675cc3e4e13e5596734d53cac1e13e04239; journal 57e62dea90b6f599e7e9bafbd0e3834bea082d38. Reverify current final HEAD and CI on resumption.",
   "restrictions": [
     "No MAIN/test-theo-main/Web App TEST V6 edits",
     "No Apps Script deployment or student data/grades/stars",
     "No production release",
     "Web App V6 integration not certified"
   ],
-  "nextAction": "Open F-B planning/implementation within P0 scope with separate QA and explicit authorization for any TEST deployment",
-  "updatedAt": "2026-11-13T22:43:31.847+07:00",
-  "currentOperation": "F-B governance gate: immutable per-lesson release candidate, rollback resolver and inherited E03/F-A QA, no deploy"
+  "nextAction": "Continue F-B per-lesson policy/family rollout on isolated TEST only with separate review; no V6 deploy without authorization",
+  "updatedAt": "2026-11-13T22:47:51.421+07:00",
+  "currentOperation": "F-B.1 versioned lesson gate and rollback QA PASSED; next require per-lesson approval for expanded scope; Apps Script integration not authorized",
+  "evidence": {
+    "fbRunId": 43455957462,
+    "fbSourceCommit": "900edeebb5c88518312596aa3e7d784415d9c4b4",
+    "fbConclusion": "success",
+    "fbTestsPassed": 10,
+    "fbTestsFailed": 0,
+    "artifactId": 14052649246,
+    "lessonVersion": "p0.6-fb-test-b21-v1",
+    "candidateHash": "51e314ae033cc8fb85a301eeb82f65d80f0a5ae1647d569eba94c9d9b37237e3",
+    "inheritedFAQA": 43454026078
+  }
 }
