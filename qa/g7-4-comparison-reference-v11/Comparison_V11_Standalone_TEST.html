@@ -1,0 +1,22 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 Cá sấu so sánh V1.1 TEST</title><link rel="stylesheet" href="comparison-v11.css">
+<style>body{margin:0;background:#f6fbf7;padding:16px;color:#25415a;font:700 14px system-ui}header,main{max-width:780px;margin:12px auto;background:white;border-radius:18px;padding:16px}header button{cursor:pointer;background:#eef3ff;border:2px solid #b4c5ed;border-radius:12px;padding:10px;margin:4px}header button.active{background:#4e4abf;color:white}</style></head><body>
+<header><h1>Dạng 7 – Cá sấu so sánh · TEST độc lập</h1><p>Không tự chấm/cấp sao. Gợi ý chỉ có trong bản luyện tập, không xuất hiện trong bản đánh giá.</p>
+<button id="practice" class="active">Luyện tập: có gợi ý tùy chọn</button>
+<button id="assessment">Kiểm tra: ẩn gợi ý</button>
+<button id="reset">Làm lại</button></header><main id="app"></main>
+<script src="comparison-v11-core.js"></script><script src="comparison-v11-fixtures.js"></script><script src="comparison-v11-view.js"></script>
+<script>
+(function(){const conf={practice:KLComparisonFixturesV11.practice,assessment:KLComparisonFixturesV11.assessment};
+ const ui={practice:document.getElementById('practice'),assessment:document.getElementById('assessment')};
+ const drafts={};let active=null,mode='practice';
+ function open(next){if(active){drafts[mode]=active.snapshot();active.destroy()}mode=next;
+ const c=KLComparisonV11.compile(conf[mode]);if(!c.ok){document.getElementById('app').textContent=c.reason;return;}
+ active=KLComparisonViewV11.mount(document.getElementById('app'),c.plan,{onChange:s=>{drafts[mode]=s}});
+ if(drafts[mode])active.restore(drafts[mode]);
+ for(const [k,b] of Object.entries(ui))b.classList.toggle('active',k===mode);
+ }
+ for(const [k,b] of Object.entries(ui))b.addEventListener('click',()=>{if(k!==mode)open(k)});
+ document.getElementById('reset').addEventListener('click',()=>{active?.clear();drafts[mode]=active.snapshot()});
+ open(mode);
+})();
+</script></body></html>
