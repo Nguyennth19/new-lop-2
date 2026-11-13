@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "g7-4-column-calc-reference-v1",
+  "status": "G6_SOURCE_SNAPSHOT_VERIFIED_ADVANCED_REFERENCE_SOURCE_PENDING",
+  "date": "2026-11-13",
+  "branch": "test/g7-4-column-calc-reference-v1-20261113",
+  "baseBranch": "test/g7-4-structured-diagram-rules-v2-20261113",
+  "sourceFiles": [
+    {
+      "path": "41_HienThiCauHoiToan.html",
+      "snapshot": "qa/g7-4-column-calc-reference-v1/snapshot/41_HienThiCauHoiToan.html",
+      "blobSha": "50501ccc3cb5e7801fd563807e21b76d2a51c8f9",
+      "byteExact": true
+    },
+    {
+      "path": "43_CSS_ThanhPhanBaiToan.html",
+      "snapshot": "qa/g7-4-column-calc-reference-v1/snapshot/43_CSS_ThanhPhanBaiToan.html",
+      "blobSha": "ce7f279fc9185901d8f638bc87628b9c20bfda65",
+      "byteExact": true
+    },
+    {
+      "path": "20_CSS_KhongGianHocToan.html",
+      "snapshot": "qa/g7-4-column-calc-reference-v1/snapshot/20_CSS_KhongGianHocToan.html",
+      "blobSha": "3933b7f1812e08831bb7de90c1bf0f39ab87b073",
+      "byteExact": true
+    },
+    {
+      "path": "26_ChamCauHoiToan.html",
+      "snapshot": "qa/g7-4-column-calc-reference-v1/snapshot/26_ChamCauHoiToan.html",
+      "blobSha": "d2c9e0dbf745366eabeadfefe0686b60cf5d9a47",
+      "byteExact": true
+    },
+    {
+      "path": "42_AdapterBienTheB20.html",
+      "snapshot": "qa/g7-4-column-calc-reference-v1/snapshot/42_AdapterBienTheB20.html",
+      "blobSha": "e14a0c831837a91125a59dd5ce2d65288d056038",
+      "byteExact": true
+    },
+    {
+      "path": "appsscript.json",
+      "snapshot": "qa/g7-4-column-calc-reference-v1/snapshot/appsscript.json",
+      "blobSha": "84a68bfb3508861d536c0d7280218e3f51a344b5",
+      "byteExact": true
+    }
+  ],
+  "visualReference": {
+    "source": "user-supplied screenshot 2026-11-13",
+    "referenceKind": "SCREENSHOT_NOT_EXECUTABLE_SOURCE",
+    "featuresObserved": [
+      "range_100_two_columns",
+      "range_1000_three_columns",
+      "carry_cells_above_columns",
+      "right_to_left_answer_focus",
+      "parallel_practice_cards",
+      "highlight_active_answer",
+      "spoken_instruction_controls",
+      "mobile_friendly_visual_style"
+    ],
+    "claimOfByteIdenticalAdvancedRenderer": false,
+    "originalAdvancedHTMLLocated": false
+  },
+  "release": {
+    "mainUnchanged": true,
+    "appsScriptProjectUnchanged": true,
+    "runtimeFlagOff": true,
+    "advancedRendererPromotedToCanonical": false,
+    "legacyG6SnapshotPreserved": true
+  },
+  "freezeRule": "Never overwrite snapshot. Upgrade status only after original advanced HTML/CSS/JS/config source found, SHA validated and QA passes."
+}
