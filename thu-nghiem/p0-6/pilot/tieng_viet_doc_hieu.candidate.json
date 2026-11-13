@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "lop2.lesson.v1",
+  "lessonId": "tieng_viet_doc_hieu_pilot",
+  "subject": "tieng_viet",
+  "curriculum": {
+    "grade": 2,
+    "lessonRef": "DOC_HIEU_PILOT_CHUA_GAN_BAI_SGK"
+  },
+  "contentVersion": "p0.6-e-candidate-1",
+  "source": {
+    "questionOrigin": "PROJECT_ORIGINAL_VARIANT",
+    "references": [
+      {
+        "sourceType": "PROJECT",
+        "ref": "Original reading microtext written for technical pilot; not SGK quotation"
+      },
+      {
+        "sourceType": "SGK",
+        "ref": "Drive SGK Tieng Viet 2 Tap 1 PDF file 1qefOcVt-FgZfvWbUxzjyeSdhWjwElq5a; page/lesson mapping not verified"
+      }
+    ]
+  },
+  "levels": [
+    {
+      "id": "LV1",
+      "intent": "Đọc hiểu câu ngắn"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "LV1-A",
+      "levelId": "LV1",
+      "questionIds": [
+        "VAR_TV_E_001"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "VAR_TV_E_001",
+      "kind": "language.reading",
+      "levelId": "LV1",
+      "sessionId": "LV1-A",
+      "prompt": "Đọc: “Sáng nay, Lan đến lớp sớm.” Hỏi: Lan đến đâu?",
+      "parameters": {
+        "passage": "Sáng nay, Lan đến lớp sớm."
+      },
+      "answerSpec": {
+        "mode": "set_of_answers",
+        "origin": "PROJECT_DERIVED",
+        "acceptedValues": [
+          "đến lớp",
+          "lớp học"
+        ],
+        "normalization": {
+          "ignoreCase": false,
+          "trimWhitespace": true
+        },
+        "verification": {
+          "type": "rubric_review",
+          "status": "PENDING"
+        },
+        "pedagogyApproval": {
+          "status": "PENDING"
+        }
+      },
+      "renderer": {
+        "component": "language.reading"
+      },
+      "assets": {
+        "sceneId": null,
+        "usage": "decorative"
+      }
+    }
+  ]
+}
