@@ -50,7 +50,7 @@ jobs:
           assert.equal(e.browser,null);
           console.log('PASS: owner H1 content signoff, source hash immutable; no TEST Web App/browser receipts fabricated');
           NODE
-      - name: Gate: pedagogy passes but overall release stays BLOCKED
+      - name: 'Gate — pedagogy passes, overall release remains BLOCKED'
         run: |
           set -euo pipefail
           if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json > "$RUNNER_TEMP/h2-gate.json"; then
