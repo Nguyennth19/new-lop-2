@@ -10,6 +10,27 @@ const clone=x=>structuredClone(x);
 const isInt=Number.isSafeInteger;
 const fail=(code,extra={})=>({ok:false,status:'BLOCKED',code,...extra});
 const APPROVED_KINDS=new Set(['ADD','SUBTRACT','ADD_SUB_CHAIN']);
+function seededCandidates(policy,template,seed,count){
+ // Enumerate only permitted small integer pairs; generator does not invent new skills.
+ if(template.mathKind!=='ADD'&&template.mathKind!=='SUBTRACT')return null;
+ const c=policy.mathConstraints;
+ if(!Number.isSafeInteger(c.minOperand)||!Number.isSafeInteger(c.maxOperand)||
+    !Number.isSafeInteger(c.minResult)||!Number.isSafeInteger(c.maxResult)||
+    c.maxOperand-c.minOperand>150)return null;
+ const pool=[];
+ for(let a=Math.max(10,c.minOperand);a<=Math.min(99,c.maxOperand);a++)
+  for(let b=Math.max(1,c.minOperand);b<=Math.min(99,c.maxOperand);b++){
+   const value=template.mathKind==='ADD'?a+b:a-b;
+   if(value<c.minResult||value>c.maxResult)continue;
+   if(template.mathKind==='ADD'&&c.requireCarry===true&&(a%10+b%10)<10)continue;
+   if(template.mathKind==='ADD'&&c.requireCarry===false&&(a%10+b%10)>=10)continue;
+   if(template.mathKind==='SUBTRACT'&&c.requireBorrow===true&&a%10>=b%10)continue;
+   pool.push([a,b]);
+  }
+ if(pool.length<count)return null;
+ const start=parseInt(hash({lessonId:policy.lessonId,templateId:template.skillId,seed}).slice(0,8),16)%pool.length;
+ return Array.from({length:count},(_,i)=>pool[(start+i)%pool.length]);
+}
 function createVariantGenerator(registry,templates){
  if(!registry||typeof registry.resolve!=='function'||!templates||typeof templates!=='object')
   throw Error('GENERATOR_DEPENDENCIES_MISSING');
@@ -24,7 +45,10 @@ function createVariantGenerator(registry,templates){
     !policy.allowedMathKinds.includes(t.mathKind)||
     t.sourceInteraction!=='NUMBER_INPUT'||!['NUMBER_INPUT','CHOICE'].includes(interaction))
     return fail('TEMPLATE_UNSUPPORTED_OR_NOT_SCOPED');
+  const generationMode=candidates===undefined?'SEEDED_AUTO':'EXPLICIT_POOL';
+  if(generationMode==='SEEDED_AUTO')candidates=seededCandidates(policy,t,seed,count);
   if(!Array.isArray(candidates)||candidates.length<count||candidates.length>32)return fail('CANDIDATE_POOL_INVALID');
+  if(!['NONE','DECORATIVE','COUNTABLE','COMPARISON','MEASUREMENT','GEOMETRY'].includes(t.requiredAssetRole||'NONE'))return fail('ASSET_ROLE_UNSUPPORTED');
   if(!t.lessonSkeleton||!Array.isArray(t.lessonSkeleton.questions)||!t.lessonSkeleton.questions.length)
     return fail('TEMPLATE_LESSON_INVALID');
   const seen=new Set(),results=[];
@@ -60,7 +84,8 @@ function createVariantGenerator(registry,templates){
    q.assets={sceneId:null,usage:'decorative'};
    lesson.questions=[q];lesson.sessions=[{id:q.sessionId,levelId:q.levelId,questionIds:[q.id]}];
    const variant={questionId:qid,skillId:t.skillId,variantLevel:interaction==='CHOICE'?'V2_INTERACTION':'V1_SURFACE',
-     mathKind:t.mathKind,visual:{role:'NONE'},
+     mathKind:t.mathKind,visual:t.requiredAssetRole==='DECORATIVE'?{role:'DECORATIVE',semanticSafe:false}:
+       t.requiredAssetRole&&t.requiredAssetRole!=='NONE'?{role:t.requiredAssetRole}:{role:'NONE'},
      interaction:{from:'NUMBER_INPUT',to:interaction,skillsBefore:[t.skillId],skillsAfter:[t.skillId],
        difficultyDelta:interaction==='CHOICE'?'SIMPLIFIED':'EQUIVALENT',
        ...(interaction==='CHOICE'?{
@@ -77,11 +102,13 @@ function createVariantGenerator(registry,templates){
      return fail('VARIANT_SCOPE_OR_MATH_REJECTED',{rejectedId:qid,
        rejectionCodes:Object.entries(receipt.gates).filter(([,g])=>g.status==='FAIL').map(([id,g])=>id+':'+g.code)});
    if(receipt.status==='PASS_FOR_TEST')return fail('UNEXPECTED_AUTOMATIC_APPROVAL');
+   if(receipt.gates.G3.status==='BLOCKED'&&variant.visual.role!=='NONE')
+    return fail('VISUAL_ASSET_PLAN_REQUIRES_QA');
    results.push({question:q,variant,receipt});
   }
   if(results.length!==count)return fail('GENERATION_COUNT_MISMATCH');
   return {ok:true,status:'CANDIDATES_PENDING_APPROVAL',lessonId,templateId,
-    policySha256:resolved.policySha256,sourcePolicyStatus:policy.status,
+    policySha256:resolved.policySha256,sourcePolicyStatus:policy.status,generationMode,
     count:results.length,results,noWrites:true,noStars:true,scope:'OFFLINE_ONLY'};
  }
  return Object.freeze({generate});
