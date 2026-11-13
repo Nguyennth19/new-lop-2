@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "g7-4-column-calc-reference-contract-v1",
+  "status": "CONTRACT_V1_TEST_ONLY",
+  "purpose": "Protect previously designed Column Calc UX. Contracts are independent of code source. Advanced renderer must be verified before promoting canonical.",
+  "visualMode": "REPRESENTATIVE",
+  "renderStrategy": "COLUMN_CALC_REFERENCE",
+  "imageAssetRequired": false,
+  "arithmetic": {
+    "operations": [
+      "ADD",
+      "SUBTRACT"
+    ],
+    "allowedNonNegativeInteger": true,
+    "negativeResultAllowed": false,
+    "profiles": [
+      {
+        "id": "PV100",
+        "maxOperand": 99,
+        "maxResult": 99,
+        "minColumns": 2,
+        "maxColumns": 2,
+        "requiresCarryAndBorrow": true
+      },
+      {
+        "id": "PV1000",
+        "maxOperand": 999,
+        "maxResult": 999,
+        "minColumns": 3,
+        "maxColumns": 3,
+        "requiresCarryAndBorrow": true
+      },
+      {
+        "id": "PV1000_BOUNDARY",
+        "maxOperand": 1000,
+        "maxResult": 1000,
+        "minColumns": 4,
+        "maxColumns": 4,
+        "advancedFourColumnVerified": false,
+        "status": "BLOCK_UNTIL_FOUR_COLUMN_RENDERER_QA"
+      }
+    ],
+    "digitsByPlace": [
+      "ones",
+      "tens",
+      "hundreds",
+      "thousands"
+    ],
+    "inputOrder": "RTL_ONES_TENS_HUNDREDS_THOUSANDS",
+    "displayOrder": "LTR_THOUSANDS_HUNDREDS_TENS_ONES",
+    "keyboardOrder": "native_tab_maintained; custom_arrow_navigation_only_if_accessible",
+    "carry": {
+      "ADD": "sum-of-digit-with-carry-in>=10,carry-out=1",
+      "SUBTRACT": "top-digit-borrow-in<bottom-digit,borrow-out=1",
+      "emptyBoxesMustNotRevealComputedAnswer": true
+    },
+    "resultFields": "one input per result digit, no answer result placed in public markup",
+    "rendering": {
+      "answerFields": "digit inputs anchored by place",
+      "carryFields": "separate carry/borrow per place",
+      "activeFocusHighlight": true,
+      "liveRegionHint": true,
+      "answerDirectionRightToLeft": true,
+      "firstFocusPlace": "ones",
+      "dynamicColumns": "exactly 2 or 3 according to profile; 4 requires separately signed QA"
+    }
+  },
+  "levels": [
+    {
+      "id": "LV1",
+      "definition": "one skill with scaffold/optional carry hints",
+      "carryRequirement": "ALLOW",
+      "questionSourceAuthority": "LESSON_CONFIG"
+    },
+    {
+      "id": "LV2",
+      "definition": "practice with fewer prompts and carry/borrow",
+      "carryRequirement": "ALLOW",
+      "questionSourceAuthority": "LESSON_CONFIG"
+    },
+    {
+      "id": "LV3",
+      "definition": "application/combined reasoning with validated operands",
+      "carryRequirement": "ALLOW",
+      "questionSourceAuthority": "LESSON_CONFIG"
+    }
+  ],
+  "validation": {
+    "computeResultServerSide": true,
+    "doNotSerializeCorrectDigitsToPublicPlan": true,
+    "exposeOnlyPreApprovedGivenDigits": true,
+    "limitByLessonSkillAndCurriculum": true,
+    "zeroLeadingResultProhibited": true,
+    "carryGradingDependsOnQuestionConfig": true,
+    "abortIfScopeMismatch": true,
+    "avoidChangingPreviouslyApprovedB20Questions": true
+  },
+  "fallback": {
+    "simpleEngine": "qa/g7-4-structured-diagrams-v2/structured-diagram-core.cjs",
+    "family": "PLACE_VALUE_ADDITION",
+    "allowedOnlyWhen": [
+      "primary_reference_renderer_unavailable",
+      "explicit_degraded_mode_opt_in",
+      "operation_ADD",
+      "a_and_b_both_2_digit",
+      "sum<=99",
+      "fallback_qa_pass",
+      "no_carry_or_RTL_feature_claim_as_primary"
+    ],
+    "neverAutomaticReplacement": true,
+    "forbidden": [
+      "SUBTRACT",
+      "PV1000",
+      "four_column_boundary",
+      "unapproved_interaction_unsupported",
+      "silently_switching_ui"
+    ]
+  },
+  "requiresAdvancedReferenceSource": true,
+  "referenceStatus": "USER_SCREENSHOT_PRESENT_SOURCE_NOT_IDENTIFIED",
+  "mainDeployment": false
+}
