@@ -49,7 +49,7 @@
     {
       "id": "T05",
       "type": "GEOMETRY_TANGRAM",
-      "mode": "EXACT_COUNT",
+      "mode": "REPRESENTATIVE",
       "desc": "Hình tam giác tham số, chính xác ngữ nghĩa",
       "request": {
         "mathScene": {
@@ -94,7 +94,7 @@
     {
       "id": "T08",
       "type": "RULER_CLOCK",
-      "mode": "EXACT_COUNT",
+      "mode": "REPRESENTATIVE",
       "desc": "Đọc đồng hồ 07:30 bằng SVG tham số",
       "request": {
         "mathScene": {
