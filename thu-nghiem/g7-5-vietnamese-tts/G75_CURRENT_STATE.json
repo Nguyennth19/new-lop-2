@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "g75.reference-state.v1",
+  "date": "2026-11-14",
+  "status": "REFERENCE_SAVED_QA_PENDING",
+  "phase": "G7.5-REFERENCE",
+  "branch": "test/g7-5-vietnamese-tts-reference-20261114",
+  "baseCheckpoint": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "referencePath": "thu-nghiem/g7-5-vietnamese-tts/G75_WEB_SPEECH_API_VIETNAMESE_REFERENCE_V1_20261114.md",
+  "referenceCommit": "de08bcdc2c4ce2bc5f3c039fd0586b701f1c8abe",
+  "sourceArtifact": {
+    "filename": "th_c_h_nh_to_n_l_p_2_ch_n_tr_i_s_ng_t_o.html",
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "title": "Thực Hành Toán Lớp 2 - Chân Trời Sáng Tạo",
+    "speechFunction": "speakVietnamese",
+    "knownLimitations": [
+      "no explicit vi-VN voice selection",
+      "no voiceschanged lifecycle",
+      "no onstart/onend/onerror",
+      "no independent browser/GAS success proof"
+    ]
+  },
+  "drive": {
+    "status": "PENDING_SAVE",
+    "targetFolder": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8"
+  },
+  "qa": {
+    "staticSourceRead": "PASS",
+    "voiceDevices": "PENDING",
+    "gasIframe": "PENDING",
+    "formatter": "PENDING"
+  },
+  "releaseReady": false,
+  "protected": [
+    "main",
+    "test-theo-main",
+    "Apps Script Web App TEST Version 6",
+    "P0.6 closure records",
+    "student data",
+    "scores",
+    "stars"
+  ],
+  "next": "Save and verify Google Drive document copy, then update this checkpoint with verified Drive URL. No deployment."
+}
