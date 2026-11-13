@@ -1,0 +1,34 @@
+name: G7.5 Vietnamese TTS Compatibility V1 (mock/static only)
+on:
+  push:
+    branches:
+      - test/g7-5-vi-tts-compat-v1-20261114
+    paths:
+      - '.github/workflows/g7-5-vi-tts-compat-v1.yml'
+      - 'thu-nghiem/g7-5-vietnamese-tts/compat-v1/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-and-mock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Syntax check
+        run: node --check thu-nghiem/g7-5-vietnamese-tts/compat-v1/G75_VietnameseSpeechService.js
+      - name: Speech API mock QA (not audible)
+        run: node thu-nghiem/g7-5-vietnamese-tts/compat-v1/G75_SpeechService.test.cjs
+      - name: GAS preview static contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          d='thu-nghiem/g7-5-vietnamese-tts/compat-v1'
+          grep -F "g75Include('G75_SpeechService_JS')" "$d/G75_GAS_Compatibility_Preview.html"
+          grep -F 'function doGet(e)' "$d/G75_GAS_TestServer.gs"
+          grep -F 'SpeechSynthesisUtterance' "$d/G75_SpeechService_JS.html"
+          echo 'GAS_TEMPLATE_STATIC_PASS=true'
+          echo 'GAS_DEPLOYED=false'
+          echo 'AUDIBLE_VERIFIED=false'
