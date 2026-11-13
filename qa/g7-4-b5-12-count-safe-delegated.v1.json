@@ -153,8 +153,8 @@
       "labelVi": "quả chuối",
       "canonicalPhrase": "quả chuối",
       "aliasesVi": [
-        "trái chuối",
-        "nải chuối"
+        "quả chuối",
+        "nải chuối (KHÁC ĐƠN VỊ)"
       ],
       "unit": "quả",
       "objectsPerAsset": null,
@@ -235,8 +235,8 @@
       "labelVi": "chùm nho",
       "canonicalPhrase": "chùm nho",
       "aliasesVi": [
-        "bó nho",
-        "quả nho"
+        "chùm nho",
+        "quả nho (KHÁC ĐƠN VỊ)"
       ],
       "unit": "chùm",
       "objectsPerAsset": null,
@@ -264,7 +264,7 @@
       "canonicalPhrase": "quả dưa hấu",
       "aliasesVi": [
         "trái dưa hấu",
-        "miếng dưa hấu"
+        "miếng dưa hấu (KHÁC ĐƠN VỊ)"
       ],
       "unit": "quả",
       "objectsPerAsset": null,
@@ -643,8 +643,8 @@
       "labelVi": "bông hoa hướng dương",
       "canonicalPhrase": "bông hoa hướng dương",
       "aliasesVi": [
-        "đóa hoa hướng dương",
-        "cây hoa hướng dương"
+        "bông hoa hướng dương",
+        "đóa hoa hướng dương"
       ],
       "unit": "bông",
       "objectsPerAsset": 1,
@@ -1090,7 +1090,7 @@
       "canonicalPhrase": "chiếc bánh quy",
       "aliasesVi": [
         "cái bánh quy",
-        "miếng bánh quy"
+        "chiếc bánh quy"
       ],
       "unit": "chiếc",
       "objectsPerAsset": 1,
@@ -1146,7 +1146,7 @@
       "canonicalPhrase": "ổ bánh mì",
       "aliasesVi": [
         "chiếc bánh mì",
-        "lát bánh mì"
+        "lát bánh mì (KHÁC ĐƠN VỊ)"
       ],
       "unit": "ổ",
       "objectsPerAsset": null,
@@ -1256,7 +1256,8 @@
       "labelVi": "quả trứng",
       "canonicalPhrase": "quả trứng",
       "aliasesVi": [
-        "trái trứng"
+        "quả trứng",
+        "trứng"
       ],
       "unit": "quả",
       "objectsPerAsset": 1,
@@ -1278,5 +1279,6 @@
       "requiresFollowUp": false,
       "reason": "Tên gọi gắn với một đối tượng chính, quyền đếm theo đơn vị tiếng Việt."
     }
-  ]
+  ],
+  "aliasPolicy": "aliasesVi are display/search hints only, never change counting units; strings marked KHÁC ĐƠN VỊ must not be treated as equivalent classifiers"
 }
