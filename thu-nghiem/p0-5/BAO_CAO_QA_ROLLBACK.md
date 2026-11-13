@@ -40,3 +40,11 @@ Do not merge or deploy P0.5 branch. On regression, switch to `test/p0-4-qa-runne
 - GitHub Actions TEST run https://github.com/Nguyennth19/new-lop-2/actions/runs/43346203480 **SUCCESS**: P0.5 contract 15/15 PASS, environment preflight 7/7 PASS, inherited FULL_SAFE PASS, incomplete evidence properly RELEASE_BLOCKED.
 - Next operational step: synchronize helper to **separate TEST project only**; set `ID_GOOGLE_SHEET_DU_LIEU` and `P05_EXPECTED_TEST_SHEET_ID` both to independently approved QA workbook ID (not default); leave P03 lock NO; run `kiemTraMoiTruongP05KhongGhi`; supply redacted PASS log and TEST deployment URL for browser acceptance. Do not alter MAIN, current student workbook or student scores.
 - `RELEASE_READY=false` still. Rollback: drop helper/test/workflow modifications in TEST branch if needed, no production actions required.
+
+## P0.5 QA isolated workbook — created and verified
+- A NEW native Google Sheets workbook `LOP2_P05_QA_ISOLATED_20261113` has been created via authorized Google Drive integration, entirely separate from the app's default workbook.
+- Seven tabs were created with the correct header schemas only: `01_Bai_hoc` (17), `02_Cap_do` (19), `03_Nhom_bai` (5), `04_Cau_hoi` (21), `90_Lan_lam_bai` (12), `91_So_sao` (9), `92_Ghi_chu_phu_huynh` (4).
+- Re-read all seven tabs after authoring: exactly one header row in each, **zero copied data rows**, no real student ledger or star events. QA workbook ID deliberately omitted from public repo; record in the authorized TEST Script Properties only.
+- Preflight environment is **NOT YET CONFIRMED**: connected GitHub/Drive tools cannot set Apps Script `ID_GOOGLE_SHEET_DU_LIEU` or `P05_EXPECTED_TEST_SHEET_ID` directly. User must configure both TEST Script Properties with the newly created private workbook ID, keep `P03_QA_TEST_APPROVED=NO`, and rerun `kiemTraMoiTruongP05KhongGhi`.
+- This isolated workbook is sufficient for P0.5 preflight structural check; it is **not** populated with lesson 01–04 data, so only the read-only B20 pilot path can be evaluated subsequently and only after binding/deployment verified.
+- `RELEASE_BLOCKED` remains until real TEST Web App, browser, six-session and pedagogy evidence.
