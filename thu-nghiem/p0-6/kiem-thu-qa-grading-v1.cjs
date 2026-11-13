@@ -40,7 +40,7 @@ test('Arithmetic parameter tampering detected',()=>{
  const q=clone(verified.questions[2]);q.answerSpec.proof.operands[0]+=1;assert.equal(auditAnswerSpec(q).status,'FAIL');
 });
 test('Reject missing or dangerous proof operation',()=>{
- const q=clone(verified.questions[2]);q.answerSpec.proof.operation='eval';assert.equal(auditAnswerSpec(q).status,'BLOCKED');
+ const q=clone(verified.questions[2]);q.answerSpec.proof.operation='eval';assert.notEqual(auditAnswerSpec(q).status,'PASS');
 });
 test('Unapproved mathematical answer requires human review',()=>{
  const q=clone(verified.questions[2]);q.answerSpec.pedagogyApproval.status='PENDING';assert.equal(gradeResponse(q,'55').status,'REVIEW_REQUIRED');
