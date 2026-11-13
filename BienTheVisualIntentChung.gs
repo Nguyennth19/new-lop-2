@@ -61,5 +61,20 @@ function toSelectionRequest(q,options){
   visualIntent:q.visualIntent,quantityMode:q.quantityMode,
   ...(Number.isInteger(q.requestedCount)?{requestedCount:q.requestedCount}:{})};
 }
-return Object.freeze({VERSION,enrichQuestion,projectPack,toSelectionRequest});
+/**
+ * Generic pipeline, injected selector prevents coupling to GAS or a single lesson:
+ * raw variant pack -> enriched questions -> optional sidecar + auto scene selection.
+ * Never edits source pack, questions, manual mappings or score data.
+ */
+function projectAndSelect(pack,manualSidecar,compiledRules,selector,options){
+ const enriched=projectPack(pack,options);
+ if(!selector||typeof selector.mergeQuestions!=='function')
+   throw Error('VISUAL_SELECTOR_REQUIRED');
+ const sidecar=manualSidecar||{
+  schema_version:'kidlearn-variant-asset-scene-v1',mode:'STAGING_ONLY',question_scenes:{}
+ };
+ const selected=selector.mergeQuestions(enriched.questions,sidecar,compiledRules);
+ return Object.assign({},enriched,{assetScenes:selected});
+}
+return Object.freeze({VERSION,enrichQuestion,projectPack,toSelectionRequest,projectAndSelect});
 })();
