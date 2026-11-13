@@ -1,0 +1,71 @@
+name: G7.4 Column Calc V1.2 Variant Renderer QA
+on:
+  push:
+    branches: ['test/g7-4-column-calc-reference-v12-variant-renderer-20261114']
+    paths:
+      - 'qa/g7-4-column-calc-reference-v12/**'
+      - '.github/workflows/g7-4-column-calc-v12.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Contract, arithmetic, carry/borrow policy, original source protection
+        run: |
+          node --check qa/g7-4-column-calc-reference-v12/column-v12-core.js
+          node --check qa/g7-4-column-calc-reference-v12/column-v12-view.js
+          node --check qa/g7-4-column-calc-reference-v12/column-v12-server-grader.cjs
+          node qa/g7-4-column-calc-reference-v12/column-v12.test.cjs
+      - name: HTML browser syntax and no client answer key
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+          const s=fs.readFileSync('qa/g7-4-column-calc-reference-v12/G7_Column_Calc_V12_Interactive_TEST.html','utf8');
+          const scripts=[...s.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(x=>x[1]);
+          assert.equal(scripts.length,3);
+          for(const script of scripts)new vm.Script(script);
+          assert.equal(s.includes('function grade('),false);
+          assert.equal(s.includes('function answerKey('),false);
+          assert.equal(s.includes('google.script.run'),false);
+          assert.equal(s.includes('localStorage'),false);
+          assert.equal(s.includes('fetch('),false);
+          console.log('PASS static HTML: 3 parsable scripts; no grading or storage in client');
+          JS
+      - name: Browser interaction on 5 viewports
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          FILE="file://$PWD/qa/g7-4-column-calc-reference-v12/G7_Column_Calc_V12_Interactive_TEST.html?qaAuto=1"
+          for width in 320 360 390 768 1024; do
+            timeout 80s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=3500 --window-size="$width,980" --dump-dom "$FILE" > "/tmp/g7v12_$width.html" 2> /tmp/g7v12_error.log
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          for width in [320,360,390,768,1024]:
+              s=Path(f'/tmp/g7v12_{width}.html').read_text()
+              from re import findall
+              attrs=findall(r'data-qa-[\w-]+="[^"]*"',s)
+              print(width,attrs[-6:])
+              for x in ['data-qa-card-count="8"','data-qa-passed="8"','data-qa-failed="0"','data-qa-overflow="false"']:
+                  assert x in s,(width,x)
+          print('PASS Chrome 8 activities, input focus, carry toggles/reset and layout in 5 widths')
+          PY
+      - name: Fail closed and primary renderer priority
+        run: |
+          node - <<'JS'
+          const assert=require('node:assert/strict'),fs=require('node:fs');
+          const c=JSON.parse(fs.readFileSync('qa/g7-4-column-calc-reference-v1/contract.v1.json','utf8'));
+          const pol=JSON.parse(fs.readFileSync('qa/g7-4-structured-diagrams-v2/policy.v2.json','utf8'));
+          const f=pol.families.find(x=>x.id==='PLACE_VALUE_ADDITION');
+          assert.equal(f.rendererRole,'FALLBACK_ONLY');assert.equal(c.fallback.neverAutomaticReplacement,true);
+          assert.equal(c.mainDeployment,false);
+          const original=fs.readFileSync('qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html');
+          assert.equal(original.length,131767);
+          console.log('PASS source preserved; fallback only, MAIN OFF');
+          JS
