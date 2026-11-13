@@ -62,3 +62,10 @@ Option C: REJECT.
 3. Check latest F-C audit commit for documentation-only changes. If an Actions run did not trigger on documentation-only branch, mark F-C CI PENDING/NOT_APPLICABLE rather than infer SUCCESS.
 4. Resume issue register from the earliest PENDING; do not rerun known-PASS functional suites unless SHA/source/toolchain drifts or evidence is missing.
 5. Never merge, deploy, persist learner/grades/stars, or set RELEASE_READY=true without a separate explicit authorization.
+
+## Amendment 2026-11-14 — Owner requested documentary corrections before P0 closure
+- Owner instruction: `REQUEST_CORRECTION_BEFORE_P0_CLOSURE` and `CLOSURE_WITHHELD`. This supersedes any interpretation that owner has approved P0 closure. Source: `FC_OWNER_DECISION_AND_FC01_FC02_20261114.md`.
+- FC-01: `DOCUMENTARY_RECONCILED_FOR_TEST` by explaining historical E.0 proposal PENDING and subsequent explicit F-A G8 TEST approval; no old record edited and no production approval.
+- FC-02: `PENDING_FORMAL_ATTESTATION`, source blob `69c07906f621b1ad91eba184a595544fe3b6d87c`, computed connector-text UTF-8 SHA-256 `33636d43f895bc417e4916dcec8befcb27a489ff08f774ec1897aa4804cc486e`; independent raw-byte verification, canonical policy version, owner confirmation of exact hash, and independent signing timestamp remain open. See `FC_POLICY_INTEGRITY_EVIDENCE_20261114.md`.
+- FC-06: `OWNER_CLOSURE_WITHHELD` pending corrections and a later explicit closure decision. F-C checklist documentation improved, but P0 is **NOT CLOSED**. `RELEASE_READY=false`.
+- This amendment only adds evidence/documentation to F-C branch. No A-F module redevelopment, learner data, grades, stars, Version 6 deployment or protected branch edits. No new F-C CI PASS asserted.
