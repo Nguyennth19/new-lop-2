@@ -24,5 +24,8 @@ All timestamps are ISO 8601. Never infer an action succeeded after an interrupte
 | 2026-11-13T22:20:45.545+07:00 | F-A-G7G8 | DONE | Recorded owner's explicit approval of G7 and G8 for F-A TEST scope, not production; policy P01-P06 decision register updated with scope limitation. | FA_OWNER_APPROVAL_G7_G8_20261113.md; FA_DECISION_REGISTER.md | dc6e7ed0dc24aa371b2d30a10ee8528f57e5b069 |
 | 2026-11-13T22:20:45.545+07:00 | F-A-CLOSURE | BLOCKED | Live Web App TEST integration (G5) and responsive browser/mobile evidence absent; no deployment, no F-B official handover or signed full closure. | FA_BIEN_BAN_NGHIEM_THU.md; FA_CURRENT_STATE.json | ad0fb954d06274bef680d14152cf06eaeee2ec8d |
 
+| 2026-11-13T22:24:00+07:00 | F-A-G5-QA3 | FAILED | Run 43451745036 failed because FA auditor expected policyE0 PENDING although owner had approved G7/G8 for TEST. Code fail-closed; fixed assertion to distinguish signed TEST decision from still-draft candidate JSON. | fa-readonly-audit.cjs | 43451745036 |
+| 2026-11-13T22:24:30+07:00 | F-A-G5-QA4 | DONE | Run 43451893690 SUCCESS at 7aa1dfc0b8fd3fe9a1b4f28aeae0122f3d4d96a2; original validation/generation/composition plus G5 bridge pass. G5 actual TEST Web App and mobile still NOT TESTED; F-A closure BLOCKED. | fa-readonly-audit.cjs; FA_QA_EVIDENCE.md | 43451893690 |
+
 ## Rules
 Every material edit / QA / detected failure must append a checkpoint in the same relevant work commit where practicable. A log row marked DONE means GitHub confirmed the operation; rows reporting planned activities remain IN_PROGRESS. For future runs: create/update FA_CURRENT_STATE.json with current operation and recoveryPoint before starting; do NOT write student data, credentials, scores, stars or any production flag. Never self-sign.
