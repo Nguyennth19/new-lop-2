@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "g7-4-structured-diagram-rules-v2",
+  "status": "POLICY_OPTIMIZED_TEST_ONLY",
+  "scope": "NO_APP_RUNTIME_CHANGES",
+  "originDocument": "docs/kiem-dinh/G7.4_QUY_TAC_SO_DO_CAU_TRUC_TOAN_HOC_TACH_GOP_DOI_DON_VI_20261113.md",
+  "visualModesUnchanged": [
+    "EXACT_COUNT",
+    "REPRESENTATIVE",
+    "DECORATIVE"
+  ],
+  "separation": {
+    "visualMode": "Pedagogic function of visuals",
+    "renderStrategy": "Technical representation; NOT a fourth visualMode",
+    "diagramFamily": "Mathematical relationship and fields",
+    "grading": "Independent from visual generation"
+  },
+  "families": [
+    {
+      "id": "MAKE_TEN_NUMBER_BOND",
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_DIAGRAM",
+      "required": [
+        "a",
+        "b",
+        "variantId",
+        "hiddenFields"
+      ],
+      "allowedHidden": [
+        "splitToTen",
+        "remainder",
+        "tenStep",
+        "total"
+      ],
+      "skill": "ADD_THROUGH_TEN",
+      "source": "HTML_CSS_WITH_OPTIONAL_PARAMETRIC_LINES"
+    },
+    {
+      "id": "UNIT_CONVERSION_LENGTH",
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "UNIT_CONVERSION_FIELDS",
+      "required": [
+        "amount",
+        "fromUnit",
+        "toUnit",
+        "variantId",
+        "hiddenFields"
+      ],
+      "allowedHidden": [
+        "convertedAmount"
+      ],
+      "skill": "CONVERT_LENGTH_UNITS",
+      "source": "HTML_CSS"
+    },
+    {
+      "id": "PLACE_VALUE_ADDITION",
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "PLACE_VALUE_GRID",
+      "required": [
+        "a",
+        "b",
+        "variantId",
+        "hiddenFields"
+      ],
+      "allowedHidden": [
+        "carry",
+        "tens",
+        "ones",
+        "total"
+      ],
+      "skill": "COLUMN_ADDITION",
+      "source": "HTML_CSS"
+    },
+    {
+      "id": "SEGMENT_LENGTH_SUM",
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "PARAMETRIC_SEGMENTS",
+      "required": [
+        "ab",
+        "cd",
+        "variantId",
+        "hiddenFields"
+      ],
+      "allowedHidden": [
+        "totalLength"
+      ],
+      "skill": "ADD_LENGTHS",
+      "source": "PARAMETRIC_SVG"
+    }
+  ],
+  "selectorRules": [
+    {
+      "priority": 1,
+      "intent": "DIRECT_VISUAL_COUNT",
+      "strategy": "REPEAT_APPROVED_ASSET",
+      "requires": "COUNT_SAFE_ASSET_AND_UNIT"
+    },
+    {
+      "priority": 2,
+      "intent": "ADD_THROUGH_TEN",
+      "strategy": "STRUCTURED_DIAGRAM",
+      "family": "MAKE_TEN_NUMBER_BOND"
+    },
+    {
+      "priority": 3,
+      "intent": "CONVERT_LENGTH_UNITS",
+      "strategy": "UNIT_CONVERSION_FIELDS",
+      "family": "UNIT_CONVERSION_LENGTH"
+    },
+    {
+      "priority": 4,
+      "intent": "COLUMN_ADDITION",
+      "strategy": "PLACE_VALUE_GRID",
+      "family": "PLACE_VALUE_ADDITION"
+    },
+    {
+      "priority": 5,
+      "intent": "ADD_LENGTHS",
+      "strategy": "PARAMETRIC_SEGMENTS",
+      "family": "SEGMENT_LENGTH_SUM"
+    },
+    {
+      "priority": 6,
+      "intent": "READ_CLOCK_OR_RULER",
+      "strategy": "PARAMETRIC_MEASUREMENT_SVG",
+      "requires": "APPROVED_MEASUREMENT_SCENE"
+    },
+    {
+      "priority": 7,
+      "intent": "WORD_PROBLEM_READING",
+      "strategy": "SINGLE_REPRESENTATIVE_ASSET",
+      "requires": "SEMANTIC_MATCH_NO_COUNT"
+    },
+    {
+      "priority": 8,
+      "intent": "ARITHMETIC_NO_VISUAL_GOAL",
+      "strategy": "NO_IMAGE"
+    }
+  ],
+  "constraints": {
+    "assetIdMustBeNull": true,
+    "usesImageLibrary": false,
+    "rendererIsNotGrader": true,
+    "strictSkillEquivalence": true,
+    "hiddenAnswersNeverSerializedToPublicPlan": true,
+    "accessibleTextCannotContainHiddenAnswer": true,
+    "noImageAllowed": true,
+    "noAutoSVGImports": true,
+    "illustrationCannotChangeQuestionNumerals": true,
+    "noNewVisualMode": true,
+    "studentDataWrites": false
+  },
+  "units": {
+    "m": 100,
+    "dm": 10,
+    "cm": 1
+  },
+  "unitConversion": {
+    "validUnits": [
+      "m",
+      "dm",
+      "cm"
+    ],
+    "integerOnly": true,
+    "maxSourceAmount": 100,
+    "maxTargetResult": 1000
+  },
+  "variantRules": {
+    "allowSimplificationWhen": "sameSkill and sameMathRelationship and approvedNewVariantIfQuestionRewritten",
+    "forbid": "BROKEN_LINE_LENGTH -> independent straight segments unless learning skill is ADD_LENGTHS and a new approved variant was created"
+  },
+  "testViewportWidths": [
+    320,
+    360,
+    390,
+    768,
+    1024
+  ],
+  "testCases": [
+    "8+5 through ten",
+    "1dm=10cm",
+    "1m=100cm",
+    "67+16 column addition",
+    "AB 4cm + CD 3cm = 7cm",
+    "blocked broken-line skill changes",
+    "hidden answers not leaked"
+  ]
+}
