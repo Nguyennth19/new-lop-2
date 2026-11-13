@@ -1,0 +1,71 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 Word Problem Unification V1.1 TEST</title><link rel="stylesheet" href="word-unification-v11.css"><style>
+body{margin:0;padding:14px;background:#f2f8fb;color:#263750;font:700 14px/1.5 Inter,Arial,sans-serif}
+header{max-width:900px;margin:10px auto;padding:14px;background:white;border-radius:16px}
+header button{cursor:pointer;border:2px solid #adc6e7;border-radius:10px;padding:10px;background:#fff;font:inherit;margin:4px}
+#mathFullScreen{max-width:900px;margin:10px auto}
+.ml-word-card.ml-word-structured{background:#fff;border:2px solid #efd186;border-radius:16px;padding:15px}
+.ml-word-head{display:flex;gap:15px;align-items:start}.ml-word-head p{margin:0}
+.ml-svg{width:110px;height:100px;border:2px dashed #bcddf1;border-radius:13px;background:#edf8ff;flex:none}
+.ml-svg::after{content:"Hình minh họa G6";font-size:11px;display:grid;place-items:center;height:100%;text-align:center}
+.ml-word-summary{padding:11px;margin:12px 0;border:2px dashed #eed18c;background:#fff9e9;border-radius:13px}
+.ml-graph-paper{border:2px solid #b4dbed;border-radius:14px;padding:15px;
+ background-image:linear-gradient(to right,#d9eff9 1px,transparent 1px),linear-gradient(to bottom,#d9eff9 1px,transparent 1px);background-size:27px 27px}
+.ml-graph-paper h4{margin:0 0 12px}.ml-word-calc-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.ml-word-calc{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
+.ml-word-result{margin-top:12px;border-top:1px solid #a5d3eb;padding-top:12px}
+.ml-input{border:0;border-bottom:2px dashed #399ccd;background:#fffce7;border-radius:5px;height:39px;width:50px;text-align:center;font:800 17px Arial}
+.notice{font-weight:600;color:#596e80}
+</style></head><body><header><h1>G7.4 – Hợp nhất giải toán G6 + Scaffolding Dạng 10</h1>
+<p class="notice">Đây là thẻ bài giải mô phỏng G6 để kiểm tra adapter. Không thay bộ renderer chính; không tự chấm.</p>
+<button id="rice">Dạng 10: Bao gạo</button><button id="b20">Thẻ G6: Bài toán cộng</button><button id="reset">Bỏ chọn lời giải</button></header>
+<div id="mathFullScreen"><main id="app"></main></div>
+<script src="word-unification-v11-core.js"></script><script src="word-unification-v11-fixtures.js"></script><script src="word-unification-v11-adapter.js"></script>
+<script>
+(function(){
+ const F=KLWordUnificationFixturesV11,host=document.getElementById('app'),drafts={};let active=null,mode=null,controller=null;
+ function card(publicPlan,legacy){
+  // Test fixture recreates the minimal *existing* G6 DOM contract. Production G6 untouched.
+  const article=document.createElement('article');article.className='ml-word-card ml-word-structured';
+  article.setAttribute('data-ml-q-card',publicPlan.questionId);
+  const head=document.createElement('div');head.className='ml-word-head';
+  const asset=document.createElement('div');asset.className='ml-svg';
+  const prompt=document.createElement('p');prompt.textContent=publicPlan.prompt;head.append(asset,prompt);
+  const summary=document.createElement('div');summary.className='ml-word-summary';
+  summary.textContent='TÓM TẮT: '+publicPlan.summary;
+  const paper=document.createElement('div');paper.className='ml-graph-paper';
+  const title=document.createElement('h4');title.textContent='BÀI GIẢI';
+  const sentence=document.createElement('p');sentence.textContent=legacy;
+  const calcLine=document.createElement('div');calcLine.className='ml-word-calc-line';
+  const titleCalc=document.createElement('strong');titleCalc.textContent='Phép tính:';
+  const calc=document.createElement('div');calc.className='ml-word-calc';
+  function field(k,max){const el=document.createElement('input');el.type='text';el.inputMode='numeric';
+   el.maxLength=max;el.className='ml-input';el.setAttribute('data-ml-field',publicPlan.questionId+':'+k);return el}
+  for(const [idx,k] of ['n1','op','n2','sum'].entries()){
+   if(idx===3){const equal=document.createElement('strong');equal.textContent='=';calc.append(equal)}
+   calc.append(field(k,k==='op'?1:3));
+  }
+  if(publicPlan.unit){const u=document.createElement('span');u.textContent=' ('+publicPlan.unit+')';calc.append(u)}
+  calcLine.append(titleCalc,calc);
+  const final=document.createElement('div');final.className='ml-word-result';
+  final.append(document.createTextNode('Đáp số: '),field('answer',3));
+  final.append(document.createTextNode(' '+publicPlan.unit));
+  paper.append(title,sentence,calcLine,final);article.append(head,summary,paper);
+  return article;
+ }
+ function open(next){
+  if(controller&&mode)drafts[mode]=controller.snapshot();
+  if(controller)controller.destroy();host.replaceChildren();mode=next;
+  const compiled=next==='rice'?KLWordUnificationV11.compile(F.rice):
+   KLWordUnificationV11.publicPayloadFromG6(F.g6Compatible,F.g6Compatible.options);
+  if(!compiled.ok){host.textContent=compiled.reason;return;}
+  const legacy=next==='rice'?F.rice.statementOptions[0].text:F.g6Compatible.solutionPrompt;
+  const el=card(compiled.plan,legacy);host.append(el);
+  controller=KLWordUnificationAdapterV11.mount(el,compiled.plan,{onChange:s=>{drafts[mode]=s;}});
+  if(controller.ok&&drafts[mode])controller.restore(drafts[mode]);
+ }
+ document.getElementById('rice').addEventListener('click',()=>open('rice'));
+ document.getElementById('b20').addEventListener('click',()=>open('b20'));
+ document.getElementById('reset').addEventListener('click',()=>{if(controller&&controller.ok)controller.clear()});
+ open('rice');
+})();
+</script></body></html>
