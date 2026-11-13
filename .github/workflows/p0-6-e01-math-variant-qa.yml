@@ -22,6 +22,8 @@ jobs:
           node-version: '22'
       - name: E.0.1 math variant G0-G8 positive negative and review cases
         run: node thu-nghiem/p0-6/kiem-thu-math-variant-policy-v1.cjs
+      - name: E.0.1 emit sanitized per-question G0-G8 QA receipts
+        run: node thu-nghiem/p0-6/xuat-bien-nhan-bien-the-toan-v1.cjs
       - name: E multi-lesson pipeline
         run: node thu-nghiem/p0-6/kiem-thu-multi-lesson-v1.cjs
       - name: D renderer parity
