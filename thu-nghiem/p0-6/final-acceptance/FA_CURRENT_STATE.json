@@ -4,10 +4,10 @@
   "branch": "test/p0-6-fa-policy-pedagogy-20261113",
   "sourceBranch": "test/p0-6-e03-multi-family-composition-20261113",
   "sourceCommit": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
-  "updatedAt": "2026-11-13T22:09:22+07:00",
-  "status": "PENDING_APPROVAL",
-  "currentOperation": "F-A.1 technical QA complete; await owner E0 P01-P06 and B21 pedagogical decision; interactive G5 BLOCKED",
-  "recoveryPoint": "New LV3 reasoning overlay, policy packet, journal, evidence and draft minutes committed. Last journal SHA d0280cbfd09593296c1785d6baa0d21155cabe70. CI 43449443133 SUCCESS for code SHA 7e8fa5906f8f9988e45ab2ec7b6ff2f22eecb487; reverify latest documentation-only branch HEAD/CI before resuming.",
+  "updatedAt": "2026-11-13T22:15:00+07:00",
+  "status": "IN_PROGRESS",
+  "currentOperation": "G5 Compatibility Bridge: reuse 41 renderer and 26 grader in bounded offline TEST harness; record owner G7/G8 approvals",
+  "recoveryPoint": "Verified F-A HEAD 7629e50cf5d45b650abe74ea2dc64377a7833a58; no bridge written yet; E03 source and approved protected files untouched",
   "steps": {
     "FA0": "DONE",
     "FA1": "DONE",
@@ -15,7 +15,8 @@
     "FA3": "DONE",
     "FA4": "PENDING_APPROVAL",
     "FA5": "BLOCKED",
-    "FA1_1": "DONE"
+    "FA1_1": "DONE",
+    "G5_BRIDGE": "IN_PROGRESS"
   },
   "gates": {
     "policyE0": "PENDING_APPROVAL",
