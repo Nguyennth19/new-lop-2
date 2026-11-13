@@ -16,6 +16,6 @@ test('full width mobile workspace and cards',()=>{assert(css.includes('flex-dire
 test('vertical input dimensions and keyboard dock protected',()=>{assert(css.includes('grid-template-columns:22px 37px 37px'));assert(css.includes('.ml-dock {left:0;right:0;width:auto}'))});
 test('UI-B action and result positioning untouched',()=>{for(const bad of ['data-ml-submit','ml-result-actions','ml-result-score','ml-answer-grid'])assert(!css.includes(bad),bad)});
 test('no sheet/student data/grade logic introduced',()=>assert(!/(SpreadsheetApp|setValue\s*\(|google\.script|localStorage|starsAwarded|chamLuot)/.test(css)));
-test('release block evidence retained',()=>assert(read('thu-nghiem/p0-5/evidence-current.json').includes('STAGING_DEMO_ONLY_NOT_PEDAGOGY_SIGNED_OFF')));
+test('release remains blocked until TEST WebApp/browser/sessions evidence',()=>{const e=JSON.parse(read('thu-nghiem/p0-5/evidence-current.json'));assert.equal(e.webapp,null);assert.equal(e.sessions,null);assert.equal(e.browser,null);assert(read('thu-nghiem/bai-20-bien-the/runtime.json').includes('STAGING_DEMO_ONLY_NOT_PEDAGOGY_SIGNED_OFF'));});
 console.log(JSON.stringify({suite:'P0.5-UI-A-layout',passed,failed}));
 if(failed)process.exitCode=1;
