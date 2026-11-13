@@ -37,6 +37,7 @@ eq(verify(mutate(conversion,{parameters:{fromUnit:'mm'}})).ok,false);
 eq(verify(mutate(conversion,{parameters:{amount:2,fromUnit:'cm',toUnit:'dm'}})).ok,false);
 eq(verify(mutate(conversion,{parameters:{amount:100,fromUnit:'m',toUnit:'cm'}})).ok,false);
 eq(verify(mutate(column,{parameters:{a:99,b:99}})).ok,false);
+eq(verify(mutate(column,{parameters:{a:50,b:50}})).ok,false);
 eq(verify(mutate(segments,{parameters:{originalSkill:'BROKEN_LINE_LENGTH'}})).ok,false);
 eq(verify(mutate(segments,{rewriteOriginal:true,sourceVariantId:'LENGTH_AB_CD_LV2'})).ok,false);
 eq(verify(mutate(segments,{rewriteOriginal:true,sourceVariantId:'ORIGINAL_BROKEN_1',signedSkillEquivalence:true,answerRecomputed:true})).ok,true);
