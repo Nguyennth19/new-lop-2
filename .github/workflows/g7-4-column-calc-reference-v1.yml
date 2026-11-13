@@ -20,6 +20,7 @@ jobs:
           node --check qa/g7-4-column-calc-reference-v1/column-calc-contract.cjs
           node --check qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs
           node qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs
+          node qa/g7-4-structured-diagrams-v2/structured-diagram-core.test.cjs
       - name: G6 original renderer in Chromium mobile and desktop
         run: |
           set -eu
@@ -48,6 +49,13 @@ jobs:
           assert.equal(lock.release.advancedRendererPromotedToCanonical,false);
           assert.equal(lock.release.mainUnchanged,true);
           assert.equal(contract.fallback.neverAutomaticReplacement,true);
+          const oldPolicy=JSON.parse(fs.readFileSync('qa/g7-4-structured-diagrams-v2/policy.v2.json','utf8'));
+          const family=oldPolicy.families.find(x=>x.id==='PLACE_VALUE_ADDITION');
+          assert.equal(family.rendererRole,'FALLBACK_ONLY');
+          assert.equal(family.fallbackBoundary.forbidAutoPromotion,true);
+          const v2=fs.readFileSync('qa/g7-4-structured-diagrams-v2/structured-diagram-core.cjs','utf8');
+          assert.ok(v2.includes("notPermittedToReplaceColumnReference"));
+
           assert.equal(contract.requiresAdvancedReferenceSource,true);
           assert.equal(contract.arithmetic.profiles.find(x=>x.id==='PV1000_BOUNDARY').advancedFourColumnVerified,false);
           console.log('PASS: screenshot ≠ executable source; source lock and strict fallback preserved');
