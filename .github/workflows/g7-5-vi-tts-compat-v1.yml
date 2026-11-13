@@ -32,3 +32,9 @@ jobs:
           echo 'GAS_TEMPLATE_STATIC_PASS=true'
           echo 'GAS_DEPLOYED=false'
           echo 'AUDIBLE_VERIFIED=false'
+      - name: Archive isolated TEST kit for browser and GAS manual QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: G75-VIETNAMESE-TTS-COMPAT-V1
+          path: thu-nghiem/g7-5-vietnamese-tts/compat-v1/
+          retention-days: 14
