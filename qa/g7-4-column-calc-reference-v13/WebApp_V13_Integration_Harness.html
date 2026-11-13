@@ -1,0 +1,367 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 V1.3 Web App TEST Integration Harness</title>
+<style>body{font-family:system-ui,sans-serif;background:#f2f7fa;color:#29445f;margin:0;padding:12px}h1{font-size:19px;line-height:1.4}#mlContent{max-width:790px;margin:auto}.ml-card{margin:10px 0;background:white;border:1px solid #d0e2f1;padding:14px;border-radius:14px}.ml-card-top{font-size:12px;color:#657f91;font-weight:bold;margin-bottom:8px}.ml-vertical-matrix{padding:9px;border:1px dashed #c9deec}.ml-legacy-inputs{display:flex;gap:6px;flex-wrap:wrap}.ml-legacy-inputs input{width:42px;min-height:42px;border:2px solid #8ec0e1;border-radius:7px;text-align:center}.ml-card h3{font-size:16px}.summary{padding:12px;background:#fff6db;border-radius:10px}#qaOutput{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}button{cursor:pointer}</style>
+<style>/* G7.4 V1.3 isolated scoped styling. Does not modify B20 legacy card CSS. */
+#mathFullScreen [data-g74-v13]{margin-top:14px;padding:12px;border:2px dashed #93c8e8;border-radius:15px;background:#f2faff;min-width:0;max-width:100%}
+#mathFullScreen [data-g74-v13] .g74v13-heading{font-size:12px;font-weight:900;letter-spacing:.03em;color:#2876a8}
+#mathFullScreen [data-g74-v13] .g74v13-guidance{font-size:12px;line-height:1.5;color:#506c88;margin:7px 0 12px}
+#mathFullScreen [data-g74-v13] .kl-col-v12-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:9px}
+#mathFullScreen [data-g74-v13] .kl-col-v12-card{max-width:100%;min-width:0;border-radius:15px;border:1.5px solid #a0cbeb;background:#fff;padding:12px;display:flex;flex-direction:column;align-items:center}
+#mathFullScreen [data-g74-v13] .kl-col-v12-head{display:flex;justify-content:space-between;align-items:center;gap:7px;width:100%;flex-wrap:wrap}
+#mathFullScreen [data-g74-v13] .kl-col-v12-cap{color:#2870a0;font-size:11px;font-weight:850}
+#mathFullScreen [data-g74-v13] .kl-col-v12-read{font-size:12px;background:#e5f3fd;border:1px solid #bcdaee;border-radius:7px;min-height:38px;padding:6px 10px}
+#mathFullScreen [data-g74-v13] .kl-col-v12-number-grid{--g74-col-width:44px;display:grid;grid-template-columns:29px repeat(calc(var(--math-cols) - 1),var(--g74-col-width));gap:7px;align-items:center;justify-items:center;margin:8px auto}
+#mathFullScreen [data-g74-v13] .kl-col-v12-col-title{font-size:10px;color:#577c98;font-weight:850}
+#mathFullScreen [data-g74-v13] .kl-col-v12-carry-title{font-size:11px;color:#95661c}
+#mathFullScreen [data-g74-v13] .kl-col-v12-transition{background:#fff8d7;color:#8e600d;border:1.5px dashed #e5b34a;border-radius:8px;padding:4px 6px;min-height:34px;min-width:33px;font-size:11px}
+#mathFullScreen [data-g74-v13] .kl-col-v12-transition.selected{background:#ffcf65;color:#674300}
+#mathFullScreen [data-g74-v13] .kl-col-v12-digit{font-size:27px;font-weight:900;color:#273e55}
+#mathFullScreen [data-g74-v13] .kl-col-v12-sign{font-size:24px;font-weight:900;color:#465bc0}
+#mathFullScreen [data-g74-v13] .kl-col-v12-rule{grid-column:1/-1;width:100%;border-top:3px solid #45667f}
+#mathFullScreen [data-g74-v13] .kl-col-v12-answer{width:44px;height:48px;text-align:center;min-width:0;font-size:23px;color:#216995;border:2px solid #6ab7df;border-radius:10px;background:white}
+#mathFullScreen [data-g74-v13] .kl-col-v12-answer.active{background:#fff9e2;border-color:#e7a82f;box-shadow:0 0 0 2px #f7df8a}
+#mathFullScreen [data-g74-v13] .kl-col-v12-answer::placeholder{font-size:10px}
+#mathFullScreen [data-g74-v13] .kl-col-v12-note{font-size:11px;color:#667b92;line-height:1.4;text-align:center}
+#mathFullScreen [data-g74-v13] .kl-col-v12-controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+#mathFullScreen [data-g74-v13] .kl-col-v12-controls button{font-size:11px;border:1px solid #96c3e0;background:#f6fbff;border-radius:8px;padding:8px 10px;min-height:40px}
+#mathFullScreen [data-g74-v13] .kl-col-v12-status,#mathFullScreen [data-g74-v13] .g74v13-message{font-size:11px;color:#4a7187;line-height:1.5;text-align:center;margin-top:7px;overflow-wrap:anywhere}
+@media(max-width:360px){#mathFullScreen [data-g74-v13]{padding:7px}#mathFullScreen [data-g74-v13] .kl-col-v12-number-grid{--g74-col-width:41px;gap:4px}#mathFullScreen [data-g74-v13] .kl-col-v12-answer{width:41px}}
+</style></head><body><h1>G7.4 V1.3 – Kiểm tích hợp đặt tính với B20 TEST</h1><p>Giữ nguyên ô gốc và mẫu bài có lời văn. Bản V1.3 đồng bộ câu đặt tính, preview 1000 chỉ là minh họa, không chấm.</p><main id="mlContent"></main><pre id="qaOutput"></pre>
+<script>'use strict';
+/* G7.4 COLUMN_CALC_REFERENCE_V1.2 — parameterized adapter for the ORIGINAL 10-form Type 2.
+ * Pure plan compiler. Never serializes answer/carry solution. No DOM, no write to GAS.
+ * Deliberately retains the original left-to-right columns and right-to-left input UX.
+ */
+(function(root,factory){
+  const api=factory();
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  else root.KLColumnV12=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ const PLACES=['ones','tens','hundreds','thousands'];
+ const PROFILES={PV100:{max:99,columns:2},PV1000:{max:999,columns:3}};
+ const fail=(reason)=>({ok:false,reason});
+ const isInt=(v,a,b)=>Number.isSafeInteger(v)&&v>=a&&v<=b;
+ function validateSpec(q){
+   if(!q||typeof q!=='object'||typeof q.variantId!=='string'||!/^COL_[A-Za-z0-9_-]{4,70}$/.test(q.variantId))return fail('INVALID_ID');
+   if(!Object.hasOwn(PROFILES,q.profile))return fail('UNSUPPORTED_PROFILE');
+   if(!['ADD','SUBTRACT'].includes(q.operation))return fail('UNSUPPORTED_OPERATION');
+   if(!['LV1','LV2','LV3'].includes(q.level))return fail('INVALID_LEVEL');
+   if(!['OPTIONAL_HINT','REQUIRED_ASSESSED'].includes(q.carryPolicy))return fail('CARRY_POLICY_MISSING');
+   if(q.carryPolicy==='REQUIRED_ASSESSED'&&q.assessmentAuthority!=='LESSON_POLICY_APPROVED')return fail('CARRY_ASSESSMENT_NOT_APPROVED');
+   const p=PROFILES[q.profile];
+   if(!isInt(q.a,0,p.max)||!isInt(q.b,0,p.max))return fail('OPERAND_OUT_OF_SCOPE');
+   const result=q.operation==='ADD'?q.a+q.b:q.a-q.b;
+   if(result<0||result>p.max)return fail('RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+   if(q.answer!==undefined||q.result!==undefined||q.expectedDigits!==undefined||
+      q.carryAnswers!==undefined||q.borrowAnswers!==undefined||q.correctValue!==undefined)return fail('ANSWER_IN_UNTRUSTED_SPEC');
+   if(q.assetId!==undefined&&q.assetId!==null)return fail('COLUMN_ASSET_NOT_ALLOWED');
+   return {ok:true,columns:p.columns};
+ }
+ function split(n,c){return Array.from({length:c},(_,i)=>Math.floor(n/Math.pow(10,i))%10)}
+ function publicPlan(q){
+   const v=validateSpec(q);if(!v.ok)return v;
+   const places=PLACES.slice(0,v.columns),a=split(q.a,v.columns),b=split(q.b,v.columns);
+   return {ok:true,schemaVersion:'column-calc-reference-v12-public',variantId:q.variantId,
+     family:'COLUMN_CALC',profile:q.profile,operation:q.operation,level:q.level,
+     carryPolicy:q.carryPolicy,renderStrategy:'COLUMN_CALC_REFERENCE',visualMode:'REPRESENTATIVE',
+     assetId:null,usesImageLibrary:false,gradingEnabled:false,runtimeEnabled:false,
+     columns:v.columns,displayOrder:places.slice().reverse(),inputOrder:places.slice(),
+     a:places.map((place,i)=>({place,digit:a[i]})),b:places.map((place,i)=>({place,digit:b[i]})),
+     answerSlots:places.map(place=>({id:'result_'+place,place,role:'ANSWER_INPUT',value:null})),
+     transitionSlots:places.slice(1).map(place=>({id:(q.operation==='ADD'?'carry_':'borrow_')+place,
+       place,role:'LEARNER_TOGGLE',value:null})),
+     accessibility:{defaultFocus:'result_ones',nativeKeyboard:true,focusOutline:true,
+       guidance:q.operation==='ADD'?'Điền từ đơn vị sang chục, trăm.':'Trừ từ đơn vị sang chục, trăm. Các ô mượn nằm phía trên.'}};
+ }
+ function batch(qs){
+   if(!Array.isArray(qs)||qs.length<1||qs.length>10)return fail('INVALID_BATCH_SIZE');
+   const ids=new Set(),plans=[];
+   for(const q of qs){
+     const p=publicPlan(q);if(!p.ok)return {ok:false,reason:p.reason,variantId:q?.variantId||null};
+     if(ids.has(p.variantId))return fail('DUPLICATE_VARIANT_ID');
+     ids.add(p.variantId);plans.push(p);
+   }
+   return {ok:true,plans,renderer:'COLUMN_CALC_REFERENCE_V12',sourceKind:'HTML_CSS_STRUCTURED',
+     noAssetImport:true,serverGradingRequired:true};
+ }
+ return Object.freeze({validateSpec,publicPlan,batch,PLACES});
+});
+</script><script>'use strict';
+/* G7.4 V1.2: original Type 2-inspired layout adapted to variable operands.
+ * Browser-only rendering, NOT a grader. Original archive left immutable.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.KLColumnViewV12=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ const PLACES={ones:'Đơn vị',tens:'Chục',hundreds:'Trăm',thousands:'Nghìn'};
+ const el=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e};
+ function mount(container,plans,callbacks={}){
+  if(!container||!Array.isArray(plans)||plans.length<1||plans.some(p=>!p?.ok||p.schemaVersion!=='column-calc-reference-v12-public'))return {ok:false,reason:'INVALID_PUBLIC_PLANS'};
+  const state=plans.map(()=>({digits:{},transitions:{},active:'result_ones'}));
+  container.replaceChildren();const cards=el('div','kl-col-v12-grid');container.append(cards);
+  function collect(i){
+    const s=state[i],plan=plans[i],out={variantId:plan.variantId};
+    for(const v of plan.answerSlots)out[v.id]=s.digits[v.id]??'';
+    for(const v of plan.transitionSlots)out[v.id]=Boolean(s.transitions[v.id]);
+    return out;
+  }
+  function makeCard(plan,index){
+   const s=state[index],n=plan.columns,order=plan.displayOrder,accent=index%2===0?'sky':'indigo';
+   const outer=el('article','kl-col-v12-card '+accent);
+   outer.dataset.variantId=plan.variantId;outer.dataset.columns=String(n);outer.dataset.operation=plan.operation;
+   const head=el('div','kl-col-v12-head');
+   head.append(el('span','kl-col-v12-cap','Câu '+(index+1)+' • '+(plan.profile==='PV100'?'Phạm vi 100':'Phạm vi 1000')));
+   const read=el('button','kl-col-v12-read','🔊 Nghe');read.type='button';read.setAttribute('aria-label','Nghe hướng dẫn phép tính');
+   read.onclick=()=>{if(typeof callbacks.onSpeak==='function')callbacks.onSpeak(plan);else if(typeof speechSynthesis!=='undefined'){
+     const content=plan.a.slice().reverse().map(x=>x.digit).join('')+' '+(plan.operation==='ADD'?'cộng':'trừ')+' '+plan.b.slice().reverse().map(x=>x.digit).join('');
+     const u=new SpeechSynthesisUtterance(content);u.lang='vi-VN';speechSynthesis.speak(u);
+   }};
+   head.append(read);outer.append(head);
+   const grid=el('div','kl-col-v12-number-grid');grid.style.setProperty('--math-cols',String(n+1));
+   grid.setAttribute('role','group');grid.setAttribute('aria-label',plan.operation==='ADD'?'Đặt tính cộng':'Đặt tính trừ');
+   grid.append(el('span',''));for(const p of order)grid.append(el('span','kl-col-v12-col-title',PLACES[p]));
+   grid.append(el('span','kl-col-v12-carry-title',plan.operation==='ADD'?'Nhớ:':'Mượn:'));
+   for(const place of order){
+     const slot=plan.transitionSlots.find(x=>x.place===place);
+     if(!slot){grid.append(el('span','kl-col-v12-transition-blank',''));continue}
+     const btn=el('button','kl-col-v12-transition',plan.operation==='ADD'?'nhớ':'mượn');
+     btn.type='button';btn.dataset.transition=slot.id;btn.dataset.place=place;
+     btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',(plan.operation==='ADD'?'Bật hoặc tắt ô nhớ hàng ':'Bật hoặc tắt ô mượn hàng ')+PLACES[place].toLowerCase());
+     const show=()=>{const yes=Boolean(s.transitions[slot.id]);btn.textContent=yes?'+1':(plan.operation==='ADD'?'nhớ':'mượn');btn.setAttribute('aria-pressed',String(yes));btn.classList.toggle('selected',yes)};
+     btn.onclick=()=>{s.transitions[slot.id]=!s.transitions[slot.id];show();if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index))};
+     show();grid.append(btn);
+   }
+   for(const [marker,key] of [['','a'],[plan.operation==='ADD'?'+':'−','b']]){
+     grid.append(el('span','kl-col-v12-sign',marker));
+     const high=Math.max(0,...plan[key].filter(x=>x.digit!==0).map(x=>plan.inputOrder.indexOf(x.place)));
+     for(const place of order){const item=plan[key].find(x=>x.place===place);const index=plan.inputOrder.indexOf(place);
+       grid.append(el('span','kl-col-v12-digit',index>high?'':item.digit));}
+   }
+   grid.append(el('div','kl-col-v12-rule'),el('span',''));
+   const activate=field=>{s.active=field.dataset.answer;grid.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.classList.toggle('active',x===field))};
+   for(const place of order){
+     const id='result_'+place,inp=el('input','kl-col-v12-answer');
+     inp.type='text';inp.inputMode='numeric';inp.autocomplete='off';inp.maxLength=1;
+     inp.dataset.answer=id;inp.dataset.place=place;inp.placeholder=place==='hundreds'?'Trăm':place==='tens'?'Chục':'ĐV';
+     inp.setAttribute('aria-label','Chữ số hàng '+PLACES[place].toLowerCase());
+     inp.value=s.digits[id]??'';
+     inp.onfocus=()=>activate(inp);
+     inp.oninput=()=>{
+       const raw=inp.value.replace(/[^0-9]/g,'').slice(-1);inp.value=raw;s.digits[id]=raw;
+       if(raw){const idx=plan.inputOrder.indexOf(place),next=plan.inputOrder[idx+1];if(next){const target=grid.querySelector('[data-answer="result_'+next+'"]');if(target){target.focus();activate(target)}}}
+       if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index));
+     };
+     inp.onkeydown=e=>{if(e.key==='ArrowLeft'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const next=plan.inputOrder[idx+1];if(next)grid.querySelector('[data-answer="result_'+next+'"]')?.focus();}
+       if(e.key==='ArrowRight'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const prev=plan.inputOrder[idx-1];if(prev){const target=grid.querySelector('[data-answer="result_'+prev+'"]');if(target){target.focus();activate(target)}}}};
+     grid.append(inp);
+   }
+   outer.append(grid);
+   outer.append(el('div','kl-col-v12-note',plan.carryPolicy==='REQUIRED_ASSESSED'?'Ô nhớ/mượn tham gia đánh giá theo chính sách bài học.':'Ô nhớ/mượn chỉ là gợi ý thao tác, không bắt buộc khi chấm.'));
+   const controls=el('div','kl-col-v12-controls');
+   const reset=el('button','kl-col-v12-reset','↺ Làm lại');reset.type='button';reset.onclick=()=>{
+     s.digits={};s.transitions={};outer.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.value='');
+     outer.querySelectorAll('.kl-col-v12-transition').forEach(x=>{x.classList.remove('selected');x.textContent=plan.operation==='ADD'?'nhớ':'mượn';x.setAttribute('aria-pressed','false')});
+     outer.querySelector('[data-answer="result_ones"]')?.focus();if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index));
+   };controls.append(reset);
+   const send=el('button','kl-col-v12-send','Ghi nhận câu trả lời');send.type='button';send.onclick=()=>{
+     if(typeof callbacks.onSubmit==='function')callbacks.onSubmit(index,collect(index));
+     else outer.querySelector('.kl-col-v12-status').textContent='Đã ghi nhận trên TEST (không chấm hoặc gửi dữ liệu).';
+   };controls.append(send);outer.append(controls);
+   const status=el('div','kl-col-v12-status');status.setAttribute('role','status');outer.append(status);
+   cards.append(outer);
+  }
+  for(let i=0;i<plans.length;i++)makeCard(plans[i],i);
+  cards.querySelector('[data-answer="result_ones"]')?.focus();
+  return {ok:true,collect,cards,states:state,
+    focus:(i,place)=>cards.children[i]?.querySelector('[data-answer="result_'+place+'"]')?.focus(),
+    reset:()=>{for(let i=0;i<plans.length;i++)cards.children[i].querySelector('.kl-col-v12-reset').click();}};
+ }
+ return Object.freeze({mount});
+});
+</script><script>/* G7.4 V1.3, Apps Script TEST only. No direct grading or rewards.
+ * Opt-in via isolated project Script Properties + URL ?g74ColumnTest=1.
+ * The preexisting B20 scorer remains authoritative.
+ */
+var KL_G74_V13=(function(){
+'use strict';
+function allowed(context){
+ try{
+  const q=new URLSearchParams(context.location?.search||'');
+  return context.variantPilot===true&&context.lessonId==='toan_b20'&&
+    /^LV[123]-[AB]$/.test(context.view||'')&&q.get('g74ColumnTest')==='1'&&
+    typeof KLColumnV12!=='undefined'&&typeof KLColumnViewV12!=='undefined';
+ }catch(e){return false;}
+}
+function mapQuestion(q){
+ if(!q||q.type!=='vertical'||q.valid!==true||
+    !Number.isSafeInteger(q.n1)||!Number.isSafeInteger(q.n2)||
+    q.n1<0||q.n2<0||q.n1>99||q.n2>99||q.n1+q.n2>99||q.op!=='+')return null;
+ const spec={variantId:'COL_'+q.id,operation:'ADD',profile:'PV100',
+   level:String(q.level).slice(0,3),a:q.n1,b:q.n2,
+   carryPolicy:'OPTIONAL_HINT',assetId:null};
+ const result=KLColumnV12.publicPlan(spec);
+ return result.ok?result:null;
+}
+function bindLegacy(card,q,values,doc){
+ const names={result_ones:'ones',result_tens:'tens',carry_tens:'carry'};
+ for(const [field,legacy] of Object.entries(names)){
+  const input=card.querySelector('[data-ml-field="'+q.id+':'+legacy+'"]');
+  if(!input)return {ok:false,reason:'LEGACY_FIELD_MISSING_'+legacy};
+ }
+ const active=doc.activeElement;
+ for(const [field,legacy] of Object.entries(names)){
+  const input=card.querySelector('[data-ml-field="'+q.id+':'+legacy+'"]');
+  const next=field==='carry_tens'?(values.carry_tens?'1':'0'):String(values[field]||'');
+  if(input.value!==next){
+   input.value=next;
+   // Existing B20 listener updates in-memory draft and invalidates an older TEST grading result.
+   const ev=typeof InputEvent==='function'?
+     new InputEvent('input',{bubbles:true,inputType:'insertReplacementText'}):
+     new Event('input',{bubbles:true});
+   input.dispatchEvent(ev);
+  }
+ }
+ if(active&&typeof active.focus==='function'&&active.isConnected)active.focus({preventScroll:true});
+ return {ok:true};
+}
+function mount(context){
+ if(!allowed(context))return {ok:false,status:'SKIPPED_GATE'};
+ const root=context.root,doc=context.document||document;
+ if(!root||!Array.isArray(context.questions))return {ok:false,status:'INVALID_CONTEXT'};
+ const selected=context.questions.filter(q=>q.level===context.view&&q.type==='vertical');
+ const events=[];
+ let mounted=0;
+ for(const q of selected){
+  const card=[...root.querySelectorAll('[data-ml-q-card]')].find(el=>el.dataset.mlQCard===q.id);
+  if(!card){events.push({id:q.id,status:'CARD_MISSING'});continue}
+  if(card.querySelector('[data-g74-v13]'))continue;
+  const plan=mapQuestion(q);
+  if(!plan){events.push({id:q.id,status:'UNSUPPORTED_SPEC'});continue}
+  const required=['ones','tens','carry'].map(x=>card.querySelector('[data-ml-field="'+q.id+':'+x+'"]'));
+  if(required.some(x=>!x)){events.push({id:q.id,status:'LEGACY_FIELDS_MISSING'});continue}
+  const box=doc.createElement('section');box.dataset.g74V13='1';box.dataset.qaLesson=q.id;
+  box.setAttribute('aria-label','Bản đặt tính V1.3 thử nghiệm');
+  const title=doc.createElement('div');title.className='g74v13-heading';
+  title.textContent='ĐẶT TÍNH V1.3 · TEST (đồng bộ với bài hiện có)';
+  const hint=doc.createElement('p');hint.className='g74v13-guidance';
+  hint.textContent='Thử giao diện mới. Kết quả được đưa vào ô bài cũ; dùng nút Nộp bài của B20 để máy chủ xác minh. B20 hiện vẫn chấm cả ô nhớ.';
+  const host=doc.createElement('div');host.className='g74v13-host';
+  const message=doc.createElement('div');message.className='g74v13-message';message.setAttribute('role','status');
+  box.append(title,hint,host,message);
+  card.append(box);
+  try{
+   const controller=KLColumnViewV12.mount(host,[plan],{
+    onChange:(_index,v)=>{
+      const result=bindLegacy(card,q,v,doc);
+      message.textContent=result.ok?'Đã đồng bộ vào bài hiện có.':'Không thể đồng bộ: '+result.reason;
+    },
+    onSubmit:(_index,v)=>{
+      const result=bindLegacy(card,q,v,doc);
+      message.textContent=result.ok?'Đã đồng bộ. Chọn Nộp bài ở cuối lượt để chấm trên máy chủ.':'Không thể đồng bộ: '+result.reason;
+    }
+   });
+   if(!controller.ok)throw Error(controller.reason||'V12_VIEW_UNAVAILABLE');
+   // Mirror current B20 draft values after the original lesson has restored its own drafts.
+   const fromLegacy={
+     result_ones:required[0].value,result_tens:required[1].value,
+     carry_tens:required[2].value==='1'
+   };
+   // V12 view is a visual adjunct. Existing B20 input fields remain fully accessible.
+   for(const [place,value] of [['ones',fromLegacy.result_ones],['tens',fromLegacy.result_tens]]){
+    if(value){const i=host.querySelector('[data-answer="result_'+place+'"]');if(i){
+      i.value=value;i.dispatchEvent(new Event('input',{bubbles:true}));
+    }}
+   }
+   if(fromLegacy.carry_tens)host.querySelector('[data-transition="carry_tens"]')?.click();
+   mounted++;
+   events.push({id:q.id,status:'MOUNTED_DUAL_INPUT_TEST'});
+  }catch(e){
+   box.remove();
+   events.push({id:q.id,status:'FAIL_OPEN_LEGACY_PRESERVED'});
+  }
+ }
+ // Test preview PV1000 uses V1.2's approved QA fixtures; it is NOT a B20 question.
+ // Deliberately excluded from grade/answers/progress and all data-ml-field inputs.
+ if(mounted>0&&!root.querySelector('[data-g74-v13-preview]')){
+  const demos=[
+   {variantId:'COL_V13_PREVIEW_ADD_356128',operation:'ADD',profile:'PV1000',
+    level:'LV2',a:356,b:128,carryPolicy:'OPTIONAL_HINT',assetId:null},
+   {variantId:'COL_V13_PREVIEW_SUB_402187',operation:'SUBTRACT',profile:'PV1000',
+    level:'LV3',a:402,b:187,carryPolicy:'OPTIONAL_HINT',assetId:null}
+  ];
+  const batch=KLColumnV12.batch(demos);
+  if(batch.ok){
+   const aside=doc.createElement('aside');aside.dataset.g74V13='1';
+   aside.dataset.g74V13Preview='1';
+   aside.setAttribute('aria-label','Bản xem thử đặt tính phạm vi 1000');
+   const h=doc.createElement('div');h.className='g74v13-heading';
+   h.textContent='PV1000 · XEM THỬ TRÊN WEB APP TEST (KHÔNG CHẤM / KHÔNG GHI TIẾN ĐỘ)';
+   const note=doc.createElement('p');note.className='g74v13-guidance';
+   note.textContent='Cộng 356 + 128 và trừ 402 − 187. Chỉ kiểm bố cục, nhớ/mượn và nhập liệu. Đây không phải câu hỏi B20.';
+   const holder=doc.createElement('div');holder.className='g74v13-host';
+   aside.append(h,note,holder);
+   root.append(aside);
+   try{const preview=KLColumnViewV12.mount(holder,batch.plans);
+     if(!preview.ok)aside.remove();
+   }catch(e){aside.remove();}
+  }
+ }
+ root.dataset.g74V13Mounted=String(mounted);
+ return {ok:true,status:'TEST_DUAL_RENDER',count:mounted,events,grading:'LEGACY_SERVER_ONLY'};
+}
+return Object.freeze({allowed,mapQuestion,bindLegacy,mount});
+})();
+</script>
+<script>
+const testQ=[{"id":"VAR_B20_20261112_002","type":"vertical","valid":true,"op":"+","n1":67,"n2":16,"level":"LV1-A"},{"id":"VAR_B20_20261112_003","type":"vertical","valid":true,"op":"+","n1":37,"n2":18,"level":"LV1-A"},{"id":"VAR_B20_20261112_016","type":"word_problem","valid":true,"op":"+","n1":47,"n2":34,"level":"LV1-A"}];
+const root=document.getElementById('mlContent'),errors=[],checks={};
+const inputs=['ones','tens','carry'];
+for(const q of testQ){
+ const article=document.createElement('article');article.className='ml-card';article.dataset.mlQCard=q.id;
+ const head=document.createElement('div');head.className='ml-card-top';head.textContent=q.type==='vertical'?'B20 · Đặt tính rồi tính':'B20 · Toán có lời văn';
+ article.append(head);
+ if(q.type==='vertical'){
+  const orig=document.createElement('div');orig.className='ml-vertical-matrix';
+  orig.append(document.createTextNode(q.n1+' + '+q.n2+' · Legacy G6 inputs: '));
+  const fields=document.createElement('div');fields.className='ml-legacy-inputs';
+  for(const id of inputs){const input=document.createElement('input');input.dataset.mlField=q.id+':'+id;input.dataset.mlQ=q.id;input.setAttribute('aria-label',id);fields.append(input);}
+  orig.append(fields);article.append(orig);
+ }else{const text=document.createElement('div');text.className='summary';text.textContent='Có 47 chiếc kẹo, thêm 34 chiếc kẹo. Hỏi tất cả bao nhiêu?';article.append(text);}
+ root.append(article);
+}
+let inputEvents=0;root.addEventListener('input',e=>{if(e.target.matches('[data-ml-field]'))inputEvents++;});
+const ctx={root,document,location:{search:'?g74ColumnTest=1'},lessonId:'toan_b20',variantPilot:true,view:'LV1-A',questions:testQ};
+try{
+ const failOff=KL_G74_V13.allowed({...ctx,location:{search:''}});
+ checks.defaultOff=failOff===false;
+ checks.otherLesson=KL_G74_V13.allowed({...ctx,lessonId:'toan_b21'})===false;
+ checks.notValidView=KL_G74_V13.allowed({...ctx,view:'THEORY'})===false;
+ const result=KL_G74_V13.mount(ctx);
+ checks.mounted=result.ok===true&&result.count===2;
+ const cards=[...root.querySelectorAll('[data-ml-q-card]')];
+ checks.legacyUntouched=cards.every(c=>c.dataset.mlQCard.endsWith('016')||c.querySelectorAll('[data-ml-field]').length===3);
+ checks.wordUnchanged=cards[2].querySelector('[data-g74-v13]')===null;
+ checks.previewCount=root.querySelectorAll('[data-g74-v13-preview] [data-columns="3"]').length===2;
+ const first=cards[0],ones=first.querySelector('[data-g74-v13] [data-answer="result_ones"]');
+ ones.focus();ones.value='3';ones.dispatchEvent(new Event('input',{bubbles:true}));
+ checks.syncedOnes=first.querySelector('[data-ml-field$=":ones"]').value==='3';
+ checks.focusRetention=document.activeElement===first.querySelector('[data-answer="result_tens"]');
+ const tens=first.querySelector('[data-g74-v13] [data-answer="result_tens"]');
+ tens.value='8';tens.dispatchEvent(new Event('input',{bubbles:true}));
+ checks.syncedTens=first.querySelector('[data-ml-field$=":tens"]').value==='8';
+ const toggle=first.querySelector('[data-g74-v13] [data-transition="carry_tens"]');
+ toggle.click();
+ checks.syncedCarry=first.querySelector('[data-ml-field$=":carry"]').value==='1';
+ checks.legacyInputEvents=inputEvents>=3;
+ const second=cards[1],secondOnes=second.querySelector('[data-g74-v13] [data-answer="result_ones"]');
+ secondOnes.value='5';secondOnes.dispatchEvent(new Event('input',{bubbles:true}));
+ checks.secondQuestionIsolation=first.querySelector('[data-ml-field$=":ones"]').value==='3'&&second.querySelector('[data-ml-field$=":ones"]').value==='5';
+ checks.zeroGradeHooks=typeof window.google==='undefined';
+ const again=KL_G74_V13.mount(ctx);checks.noDuplicate=again.count===0&&root.querySelectorAll('[data-g74-v13-preview]').length===1;
+ const originalCount=root.querySelectorAll('[data-ml-field]').length;checks.originalFieldsRetained=originalCount===6;
+ const stat=root.querySelectorAll('[data-g74-v13-preview] [data-answer]').length;
+ checks.pv1000PreviewInputs=stat===6;
+}catch(e){errors.push(String(e&&e.stack||e));}
+document.body.dataset.qaPassed=String(Object.values(checks).filter(Boolean).length);
+document.body.dataset.qaTotal=String(Object.keys(checks).length);
+document.body.dataset.qaErrors=String(errors.length);
+document.body.dataset.qaOverflow=String(document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
+document.getElementById('qaOutput').textContent=JSON.stringify({checks,errors,inputEvents},null,2);
+</script></body></html>
