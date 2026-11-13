@@ -138,7 +138,9 @@ button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid
    }
    for(const [marker,key] of [['','a'],[plan.operation==='ADD'?'+':'−','b']]){
      grid.append(el('span','kl-col-v12-sign',marker));
-     for(const place of order){const item=plan[key].find(x=>x.place===place);grid.append(el('span','kl-col-v12-digit',item.digit));}
+     const high=Math.max(0,...plan[key].filter(x=>x.digit!==0).map(x=>plan.inputOrder.indexOf(x.place)));
+     for(const place of order){const item=plan[key].find(x=>x.place===place);const index=plan.inputOrder.indexOf(place);
+       grid.append(el('span','kl-col-v12-digit',index>high?'':item.digit));}
    }
    grid.append(el('div','kl-col-v12-rule'),el('span',''));
    const activate=field=>{s.active=field.dataset.answer;grid.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.classList.toggle('active',x===field))};
