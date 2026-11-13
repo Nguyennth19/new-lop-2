@@ -1,0 +1,24 @@
+{
+  "policyId": "LOP2-P06-E0-MATH-VARIANT-ACCEPTANCE-V1",
+  "status": "DRAFT_OWNER_SIGNOFF_PENDING",
+  "lessonId": "toan_b21",
+  "sourceScopeStatus": "INDEX_VERIFIED",
+  "allowedSkills": [
+    "ADD_CARRY_2D_1D",
+    "ADD_CARRY_2D_2D"
+  ],
+  "allowedMathKinds": [
+    "ADD"
+  ],
+  "mathConstraints": {
+    "minOperand": 1,
+    "maxOperand": 99,
+    "minResult": 0,
+    "maxResult": 100,
+    "requireCarry": true
+  },
+  "ownerApprovalRef": null,
+  "policyExtension": "P0.6-E03-TEST-COMPOSITION-DRAFT",
+  "scopeParent": "ADD_CARRY_REVIEW",
+  "sourceEvidence": "PROJECT_CURRICULUM_MATRIX_MATH_B021_INDEX_ONLY"
+}
