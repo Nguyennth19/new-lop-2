@@ -16,7 +16,7 @@ function countDecision(asset, review) {
   if (!review || review.decision !== 'COUNT_SAFE_APPROVED' || review.ownerApproved !== true) reasons.push('NO_EXPLICIT_COUNT_SIGNOFF');
   if (!review || review.objectsPerAsset !== 1 || !isText(review.countUnit)) reasons.push('INVALID_UNIT_COUNT');
   if (!review || !isText(review.render44pxEvidence) || !isText(review.reviewer) ||
-      !/^\\d{4}-\\d{2}-\\d{2}$/.test(review.reviewDate||'')) reasons.push('MISSING_COUNT_EVIDENCE');
+      !/^\d{4}-\d{2}-\d{2}$/.test(review.reviewDate||'')) reasons.push('MISSING_COUNT_EVIDENCE');
   return {ok:reasons.length===0,status:reasons.length?'BLOCKED':'COUNT_SAFE_APPROVED',reasons};
 }
 function composeCount(asset, review, requestedCount) {
