@@ -1,0 +1,40 @@
+name: G7.4-B.5.7 PERF-A Owner Signoff 288 Labels
+on:
+  push:
+    branches:
+      - test/g7-4-b5-7-perf-a-owner-label-approval-20261113
+    paths:
+      - 'du-lieu/asset-selector/asset-registry-288.v1.json'
+      - 'qa/g7-4-b5-7/**'
+      - 'qa/g7-4-b5-7-perf-a/**'
+      - '.github/workflows/g7-b57-approval-288.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owner-label-approval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify 188 owner approval transitions only, audit and immutable gallery URLs
+        run: node qa/g7-4-b5-7-perf-a/test-owner-label-approval.cjs
+      - name: 288 library legacy contract under new approval state
+        run: node qa/g7-4-b5-7/test-288-library.cjs
+      - name: PERF-A lazy gallery speed contract
+        run: node qa/g7-4-b5-7-perf-a/test-gallery-performance.cjs
+      - name: Previous visual and multi-lesson gates
+        run: |
+          node qa/g7-4-b5-6/test-standalone-visual.cjs
+          node qa/g7-4-b5-5/test-multi-lesson-gate.cjs
+      - name: Original B20 renderer/grading six sessions, CSS, fallback
+        run: |
+          node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
