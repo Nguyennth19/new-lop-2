@@ -1,6 +1,6 @@
 {
   "schemaVersion": "p0.5-evidence-v1",
-  "note": "Verified P0.4 CI evidence only; all remaining gates require new TEST deployment and signed artifacts.",
+  "note": "P0.5-H.2 project owner pedagogical signoff is recorded from the user's explicit chat confirmation; TEST deployment, six Web App numeric receipts and browser evidence are still pending. Runtime JSON remains STAGING for no-write contract.",
   "staticCi": {
     "conclusion": "success",
     "runId": 43268208017,
@@ -16,11 +16,14 @@
   "sessions": null,
   "browser": null,
   "pedagogy": {
-    "signedOff": false,
+    "signedOff": true,
     "questionCount": 30,
     "lessonId": "toan_b20",
-    "sourceStatus": "STAGING_DEMO_ONLY_NOT_PEDAGOGY_SIGNED_OFF",
-    "reviewer": null,
-    "evidenceRef": null
+    "reviewer": "Project owner – explicit chat approval, 2026-11-13",
+    "sourceStatus": "PEDAGOGY_APPROVED_STAGING_NO_RELEASE",
+    "evidenceRef": "thu-nghiem/p0-5/closure/BIEN_BAN_H2_PHE_DUYET_CHU_DU_AN.md",
+    "approvalScope": "APPROVED_H1_30_QUESTIONS",
+    "sourceJsonBlobSha": "b14d556c5deeb561106e0c81f275387bef538842",
+    "signedVia": "USER_CHAT_ATTESTATION_NOT_INDEPENDENT_CRYPTOGRAPHIC_SIGNATURE"
   }
 }
