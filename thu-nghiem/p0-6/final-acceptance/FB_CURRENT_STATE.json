@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fb.handover-state.v1",
   "phase": "F-B",
-  "status": "FB2_TECHNICAL_PASS_TEST_ONLY",
+  "status": "IN_PROGRESS",
   "createdAt": "2026-11-13T22:36:01.202+07:00",
   "branch": "test/p0-6-fb-from-fa-20261113",
   "sourceBranch": "test/p0-6-fa-policy-pedagogy-20261113",
@@ -25,9 +25,10 @@
     "FB2": "TECHNICAL_PASS_TEST_ONLY",
     "toan_b21": "INHERITED_ACCEPTED_ISOLATED_TEST",
     "toan_b24": "PENDING_INDEPENDENT_QA",
-    "tieng_viet_doc_hieu": "PENDING_INDEPENDENT_QA"
+    "tieng_viet_doc_hieu": "PENDING_INDEPENDENT_QA",
+    "FB3": "IN_PROGRESS"
   },
-  "recoveryPoint": "Last verified QA run 43459000348 SUCCESS at 70c4eedd27b8e41bcccb71cf355cbe686480d26e. New FB2 docs added at edbdd7fdb64af9737d74c464003af782ef47bb78 and a59ef7a6516f5c934617bcf12ed19cb001349042. Reverify current HEAD and final CI.",
+  "recoveryPoint": "Verified FB2 HEAD 6287d8ac524ddc434a5bbdd6c522db8786c5be89; B20 source blob b14d556c5deeb561106e0c81f275387bef538842; approval H2 separate. No new trust adapter yet.",
   "restrictions": [
     "No MAIN/test-theo-main/Web App TEST V6 edits",
     "No Apps Script deployment or student data/grades/stars",
@@ -35,8 +36,8 @@
     "Web App V6 integration not certified"
   ],
   "nextAction": "F-B.3: independently validate next eligible lesson policy/skills/renderer/QA before creating its trust anchor; no Web App V6 deploy",
-  "updatedAt": "2026-11-13T23:01:00+07:00",
-  "currentOperation": "F-B.2 multi-lesson registry complete: B21 isolated inherited TEST only; B24/TV pending independent pedagogy/QA",
+  "updatedAt": "2026-11-13T23:04:00+07:00",
+  "currentOperation": "F-B.3: B20 independent H1 immutable source H2 owner pedagogy and renderer/grade QA; gate remains locked until separate browser QA",
   "evidence": {
     "fbRunId": 43455957462,
     "fbSourceCommit": "900edeebb5c88518312596aa3e7d784415d9c4b4",
