@@ -1,0 +1,45 @@
+name: P0.6 F-B.3 Independent Second-Lesson B20 QA (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-6-fb-from-fa-20261113'
+    paths:
+      - 'thu-nghiem/p0-6/fb/**'
+      - '.github/workflows/p0-6-fb3-b20-independent.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  b20-independent:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable H1 B20 30 questions and approved copy
+        run: node thu-nghiem/p0-5/closure/kiem-thu-h1-bat-bien.cjs
+      - name: Independent B20 legacy source -> contract adapter
+        run: node thu-nghiem/p0-6/kiem-thu-adapter-registry-v1.cjs
+      - name: B20 renderer registry: all 30 source questions
+        run: node thu-nghiem/p0-6/kiem-thu-renderer-registry-v1.cjs
+      - name: B20 scoring and layout regression
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Install browser test dependency
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Build frozen-source independent B20 preview
+        run: node thu-nghiem/p0-6/fb/build-fb3-b20-preview.cjs
+      - name: Test real Chromium desktop/mobile 30/30
+        run: node thu-nghiem/p0-6/fb/kiem-thu-fb3-b20-browser.cjs
+      - name: Store B20 browser evidence (30 days)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fb3-b20-browser-independent-evidence
+          path: |
+            thu-nghiem/p0-6/fb/fb3-b20-preview.generated.html
+            thu-nghiem/p0-6/fb/fb3-b20-browser-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: No live deployment or student records
+        run: echo 'F-B.3 ISOLATED ONLY; RELEASE_READY=false; Web App V6 untouched'
