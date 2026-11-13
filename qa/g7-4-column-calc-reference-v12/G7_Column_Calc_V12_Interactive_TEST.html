@@ -198,7 +198,7 @@ if(new URLSearchParams(location.search).has('qaAuto')){
    if(c.querySelectorAll('.kl-col-v12-answer').length!==p.columns)throw Error('wrong columns');
    const ones=c.querySelector('[data-answer="result_ones"]');ones.focus();ones.value='5';ones.dispatchEvent(new Event('input',{bubbles:true}));
    const expected=p.columns>=2?'result_tens':null;
-   if(expected&&!c.querySelector('[data-answer="'+expected+'"]').classList.contains('active'))throw Error('not RTL auto focused');
+   if(expected&&!c.querySelector('[data-answer="'+expected+'"]').classList.contains('active'))throw Error('not RTL auto focused: actual='+String(document.activeElement?.dataset?.answer)+' target='+expected+' state='+String(demo.states[i].active));
    const t=c.querySelector('.kl-col-v12-transition');
    if(t){t.click();if(t.getAttribute('aria-pressed')!=='true')throw Error('toggle not active');}
    const collected=demo.collect(i);
