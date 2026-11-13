@@ -1,0 +1,90 @@
+/* P0.5-UI-B: equation alignment and submit/feedback reading order.
+ * Applies to math learning screen only; existing B20 renderer and scores unchanged.
+ * Loaded after mobile UI-A override so it corrects shared desktop/mobile geometry.
+ */
+#mathFullScreen .ml-mental-group {
+ min-width:0;
+}
+#mathFullScreen .ml-mental-row {
+ display:flex;
+ flex-direction:row;
+ flex-wrap:wrap;
+ align-items:center;
+ justify-content:center;
+ column-gap:clamp(6px,1.2vw,12px);
+ row-gap:9px;
+ width:100%;
+ max-width:100%;
+ margin:12px auto;
+ padding:2px 0;
+ min-height:42px;
+ font-variant-numeric:tabular-nums;
+ font-size:clamp(15px,1.35vw,20px);
+ line-height:1.5;
+}
+#mathFullScreen .ml-mental-row > span,
+#mathFullScreen .ml-mental-row > b {
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ flex:0 0 auto;
+ min-width:0;
+ text-align:center;
+ white-space:nowrap;
+}
+#mathFullScreen .ml-mental-row > .ml-mental-first {
+ flex:0 0 auto;
+ padding:0;
+ text-align:center;
+ white-space:pre;
+ letter-spacing:.015em;
+}
+#mathFullScreen .ml-mental-row > .ml-input {
+ flex:0 0 66px;
+ width:66px;
+ min-width:0;
+ height:42px;
+ margin:0;
+ font-size:19px!important;
+}
+#mathFullScreen .ml-mental-row > b {
+ padding:0 1px;
+ font-weight:850;
+}
+/* Submission is an action, never part of the answer key. */
+#mathFullScreen .ml-submit-card .ml-result-actions {
+ margin:0 0 12px;
+}
+#mathFullScreen .ml-submit-card .ml-reward-sync {
+ margin-top:8px;
+}
+#mathFullScreen .ml-score-card {
+ scroll-margin-top:16px;
+}
+#mathFullScreen .ml-results {
+ align-content:start;
+}
+@media(max-width:840px){
+ #mathFullScreen .ml-results {
+  grid-template-columns:minmax(0,1fr);
+  gap:12px;
+ }
+ #mathFullScreen .ml-submit-card {order:0}
+ #mathFullScreen .ml-score-card {order:1}
+ #mathFullScreen .ml-answer-card {order:2}
+}
+@media(max-width:480px){
+ #mathFullScreen .ml-mental-row {
+  column-gap:6px;
+  font-size:16px;
+ }
+ #mathFullScreen .ml-mental-row > .ml-input {
+  flex-basis:54px;
+  width:54px;
+  height:39px;
+  font-size:18px!important;
+ }
+ #mathFullScreen .ml-submit-card .ml-result-actions button {
+  min-height:46px;
+ }
+}
