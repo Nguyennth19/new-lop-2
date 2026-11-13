@@ -22,6 +22,8 @@ jobs:
           node-version: '22'
       - name: E two-subject source-aware candidate pipeline
         run: node thu-nghiem/p0-6/kiem-thu-multi-lesson-v1.cjs
+      - name: E emit traceable no-write QA receipts
+        run: node thu-nghiem/p0-6/xuat-bien-nhan-pilot-v1.cjs
       - name: D renderer and B20 HTML parity
         run: node thu-nghiem/p0-6/kiem-thu-renderer-registry-v1.cjs
       - name: C grading and QA receipts
