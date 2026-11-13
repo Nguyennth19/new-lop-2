@@ -1,0 +1,39 @@
+name: G7.4-B.5.4 Visual Intent Generator TEST Gate
+on:
+  push:
+    branches:
+      - test/g7-4-b5-4-visual-intent-generator-gate-20261113
+    paths:
+      - 'BoSinhBienTheVisualIntentTest.gs'
+      - 'du-lieu/bien-the/chuan/visual-intent-test-gate.v1.json'
+      - 'qa/g7-4-b5-4/**'
+      - '.github/workflows/g7-b54-visual-intent-generator.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-test-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Feature flag, B5.3 JSON parity, one-lesson isolation and rollback tests
+        run: node qa/g7-4-b5-4/test-generator-gate.cjs
+      - name: Existing variant schema and end-to-end Visual Intent QA
+        run: node qa/g7-4-b5-3/test-variant-visual-intent.cjs
+      - name: Shared selector behavior and contract QA
+        run: node qa/g7-4-b5-1/test-shared-selector.cjs
+      - name: B20 30-question six-session renderer and grading QA
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Existing UI hashes and book/candy image fallback
+        run: |
+          node qa/g7-4-b3-1/test-controlled-merge.cjs
+          node qa/g7-4-b3-1/test-visual-fallback.cjs
+          node qa/hotfix-b20-book/test-book-illustration.cjs
+      - name: Verify Apps Script JavaScript syntax
+        run: |
+          cp BoSinhBienTheVisualIntentTest.gs /tmp/g7-b54-gate.cjs
+          node --check /tmp/g7-b54-gate.cjs
