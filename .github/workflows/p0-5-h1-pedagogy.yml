@@ -1,0 +1,45 @@
+name: P0.5-H1 Pedagogy Copy Controlled QA (TEST only)
+on:
+  push:
+    branches:
+      - 'test/p0-5-h1-pedagogy-copy-*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controlled-copy-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Frozen 30 question IDs/numbers/answers and seven H1 copy edits
+        run: node thu-nghiem/p0-5/closure/kiem-thu-h1-bat-bien.cjs
+      - name: Independent pedagogical warning and arithmetic audit
+        run: |
+          node thu-nghiem/p0-5/closure/audit-pedagogy-b20.cjs > "$RUNNER_TEMP/p05-h1-audit.json"
+          node -e "const fs=require('fs');const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.arithmeticPassed!==30||r.questionCount!==30||r.technicalErrors.length!==0||r.reviewQuestionCount!==0||r.pedagogySignoff!=='UNSIGNED')process.exit(1);console.log(JSON.stringify({status:r.status,mathCorrect:r.arithmeticPassed,remainingHeuristicWarnings:r.reviewQuestionCount,signoff:r.pedagogySignoff}));" "$RUNNER_TEMP/p05-h1-audit.json"
+      - name: Reuse B20 UI renderer and correct/wrong-answer scoring tests
+        run: node thu-nghiem/bai-20-bien-the/kiem-tra-hoi-quy.js
+      - name: Reuse FULL_SAFE CI suites
+        run: node thu-nghiem/p0-4/qa-runner.cjs FULL_SAFE
+      - name: Reuse UI-A and UI-B regression
+        run: |
+          node thu-nghiem/p0-5/ui-a/kiem-thu-layout.cjs
+          node thu-nghiem/p0-5/ui-b/kiem-thu-ui-b.cjs
+      - name: Confirm unsigned pedagogy cannot release
+        run: |
+          set -euo pipefail
+          if node thu-nghiem/p0-5/release-gate.cjs thu-nghiem/p0-5/evidence-current.json > "$RUNNER_TEMP/gate.json"; then
+            echo "FAIL: unexpected release approval"
+            exit 1
+          fi
+          node -e "const r=JSON.parse(require('fs').readFileSync(process.argv[1]));if(r.releaseReady||r.gates.PEDAGOGY.status!=='FAIL')process.exit(1);console.log('PASS RELEASE_BLOCKED, PEDAGOGY_UNSIGNED');" "$RUNNER_TEMP/gate.json"
+      - name: Confirm no tracked source files modified by testing
+        run: test -z "$(git status --porcelain --untracked-files=no)"
