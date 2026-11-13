@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "p0.6.fb2.catalog.v1",
+  "environment": "ISOLATED_TEST",
+  "defaultFeatureFlag": false,
+  "releaseReady": false,
+  "lessons": [
+    {
+      "lessonId": "toan_b21",
+      "subject": "toan",
+      "lessonVersion": "p0.6-fb-test-b21-v1",
+      "state": "INHERITED_ACCEPTED_TEST_ONLY",
+      "sourceScopeStatus": "INDEX_VERIFIED",
+      "sourceRef": "E03_COMPOSER_B21",
+      "rendererRef": "FA_G5_B21_ISOLATED_PREVIEW",
+      "policyReviewRef": "FA_OWNER_APPROVAL_G7_G8_20261113.md",
+      "qaEvidenceRef": "FA_G5_BROWSER_QA_20261113.md",
+      "trustedAdapterId": "INHERITED_B21_F_B_1",
+      "allowStudentUse": false,
+      "deploy": false,
+      "releaseReady": false
+    },
+    {
+      "lessonId": "toan_b24",
+      "subject": "toan",
+      "lessonVersion": "p0.6-fb-test-b24-v1",
+      "state": "PENDING_INDEPENDENT_QA",
+      "sourceScopeStatus": "NOT_VERIFIED",
+      "sourceRef": null,
+      "rendererRef": null,
+      "policyReviewRef": null,
+      "qaEvidenceRef": null,
+      "trustedAdapterId": null,
+      "allowStudentUse": false,
+      "deploy": false,
+      "releaseReady": false
+    },
+    {
+      "lessonId": "tieng_viet_doc_hieu",
+      "subject": "tieng_viet",
+      "lessonVersion": "p0.6-fb-test-tv-v1",
+      "state": "PENDING_INDEPENDENT_QA",
+      "sourceScopeStatus": "NOT_VERIFIED",
+      "sourceRef": null,
+      "rendererRef": null,
+      "policyReviewRef": null,
+      "qaEvidenceRef": null,
+      "trustedAdapterId": null,
+      "allowStudentUse": false,
+      "deploy": false,
+      "releaseReady": false
+    }
+  ]
+}
