@@ -12,7 +12,7 @@ const MODES=new Set(['PRACTICE','ASSESSMENT']);
 const VMODES=new Set(['EXACT_COUNT','REPRESENTATIVE','DECORATIVE']);
 const STRATEGIES=new Set(['STRUCTURED_DIAGRAM','PARAMETRIC_SVG','REPEAT_APPROVED_ASSET','STATIC_APPROVED_ASSET','HTML_FIELDS','NO_VISUAL']);
 const FORBIDDEN=new Set(['answer','answerkey','correctanswer','expectedanswer','expectedvalue','expectedresult','solution','teachersolution',
- 'prefilledsolution','gradingkey','iscorrect','correctstatementid','correctchoiceid','correctoption','secret','markscheme',
+ 'prefilledsolution','result','gradingkey','iscorrect','correctstatementid','correctchoiceid','correctoption','secret','markscheme',
  'gradingrubric','gradingscript','privatepayload','privatemetadata','auth','token','authorization','password','__proto__',
  'constructor','prototype']);
 const STRATEGY={
@@ -46,7 +46,7 @@ function checkManifest(m){
  if(m.speechProfiles?.defaultProfileId!=='vi_math_v2_dynamic')throw Error('TTS_DEFAULT_MISMATCH');
  if(!m.dataIntegration?.forbiddenPublicFields?.includes('answerKey'))throw Error('ANSWER_GUARD_MISSING');
  for(const item of m.rendererRegistry){
-  if(!Array.isArray(item.source?.files)||!item.source.files.length||item.source.files.some(f=>!validId(f.path.replaceAll('/','_').replaceAll('-','_'))&&(!f.path||!f.gitBlobSha)))throw Error('INVALID_SOURCE_REF_'+item.id);
+  if(!Array.isArray(item.source?.files)||!item.source.files.length||item.source.files.some(f=>typeof f.path!=='string'||!/^qa\/[a-zA-Z0-9_./-]+$/.test(f.path)||f.path.includes('..')||!/^([a-f0-9]{40})$/.test(f.gitBlobSha)))throw Error('INVALID_SOURCE_REF_'+item.id);
   if(item.qa?.releaseStatus!=='ISOLATED_TEST_REFERENCE_ONLY'||item.speech.integratedInGas!==false)throw Error('ITEM_DEPLOY_STATE_INVALID_'+item.id);
   if(item.speech.profileId!==m.speechProfiles.defaultProfileId)throw Error('VOICE_PROFILE_MISMATCH_'+item.id);
  }
