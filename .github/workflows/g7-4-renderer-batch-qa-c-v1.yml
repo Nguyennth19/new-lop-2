@@ -33,10 +33,13 @@ jobs:
         run: |
           set -eu
           BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
-          timeout 105s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --virtual-time-budget=30000 --window-size=1440,960 --dump-dom \
-            'http://127.0.0.1:8793/qa/g7-4-renderer-batch-qa-v1/qa-c-browser-comparison.html?qaAuto=1' \
-            >/tmp/g74-qac-browser-dom.html 2>/tmp/g74-qac-browser-stderr.log
-          python3 qa/g7-4-renderer-batch-qa-v1/qa-c-verify-browser.py
+          for profile in desktop mobile; do
+            if [ "$profile" = desktop ]; then size="1440,960"; else size="390,960"; fi
+            timeout 105s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --virtual-time-budget=30000 --window-size="$size" --dump-dom \
+              'http://127.0.0.1:8793/qa/g7-4-renderer-batch-qa-v1/qa-c-browser-comparison.html?qaAuto=1' \
+              >"/tmp/g74-qac-browser-dom-$profile.html" 2>"/tmp/g74-qac-browser-$profile.log"
+            python3 qa/g7-4-renderer-batch-qa-v1/qa-c-verify-browser.py "/tmp/g74-qac-browser-dom-$profile.html" "$profile"
+          done
       - name: Capture frozen-demo versus TEST screenshots desktop/mobile
         if: always()
         run: |
@@ -68,7 +71,7 @@ jobs:
         with:
           name: g74-renderer-batch-qac-browser-evidence
           path: |
-            qa/g7-4-renderer-batch-qa-v1/artifacts/qa-c-chrome-browser-results.json
+            qa/g7-4-renderer-batch-qa-v1/artifacts/qa-c-chrome-browser-results-*.json
             qa/g7-4-renderer-batch-qa-v1/artifacts/qa-b1-execution.json
             qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots/*.png
           if-no-files-found: warn
