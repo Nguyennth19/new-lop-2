@@ -33,8 +33,15 @@ jobs:
         run: |
           set -eu
           BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
-          for profile in desktop mobile; do
-            if [ "$profile" = desktop ]; then size="1440,960"; else size="390,960"; fi
+          for profile in width320 width360 mobile width768 width1024 desktop; do
+            case "$profile" in
+              width320) size="320,960" ;;
+              width360) size="360,960" ;;
+              mobile) size="390,960" ;;
+              width768) size="768,960" ;;
+              width1024) size="1024,960" ;;
+              desktop) size="1440,960" ;;
+            esac
             timeout 105s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --virtual-time-budget=30000 --window-size="$size" --dump-dom \
               'http://127.0.0.1:8793/qa/g7-4-renderer-batch-qa-v1/qa-c-browser-comparison.html?qaAuto=1' \
               >"/tmp/g74-qac-browser-dom-$profile.html" 2>"/tmp/g74-qac-browser-$profile.log"
