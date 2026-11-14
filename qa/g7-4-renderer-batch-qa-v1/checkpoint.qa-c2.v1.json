@@ -57,5 +57,11 @@
     "studentDataWrites": false,
     "releaseReady": false
   },
-  "next": "Owner visual parity signoff for D1/D2; asset mapping for D8A/B; trusted server D10 route after legacy client leak isolation; no GAS deployment."
+  "next": "Owner visual parity signoff for D1/D2; asset mapping for D8A/B; trusted server D10 route after legacy client leak isolation; no GAS deployment.",
+  "drive": {
+    "documentId": "1ZaJCcdNnjSkhCbVyuegA8DxxydZNYhGPVUklxCmkt7U",
+    "url": "https://docs.google.com/document/d/1ZaJCcdNnjSkhCbVyuegA8DxxydZNYhGPVUklxCmkt7U/edit",
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "status": "SAVED_AND_MOVED"
+  }
 }
