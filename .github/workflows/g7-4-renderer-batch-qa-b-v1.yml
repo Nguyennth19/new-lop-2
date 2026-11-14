@@ -1,0 +1,30 @@
+name: G7.4 Renderer Batch QA-B V1 (contracts, state and variants)
+on:
+  push:
+    branches:
+      - test/g7-4-renderer-batch-qa-b-v1-20261114
+    paths:
+      - 'qa/g7-4-renderer-batch-qa-v1/**'
+      - '.github/workflows/g7-4-renderer-batch-qa-b-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa-b-readonly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify locked source and run 12 native suites plus cross-renderer contract probes
+        run: node qa/g7-4-renderer-batch-qa-v1/qa-b-batch-runner.cjs
+      - name: Preserve machine-readable QA-B evidence for recovery, even if a gate fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g74-renderer-batch-qab-evidence
+          path: qa/g7-4-renderer-batch-qa-v1/artifacts/qa-b-execution.json
+          if-no-files-found: warn
+          retention-days: 30
