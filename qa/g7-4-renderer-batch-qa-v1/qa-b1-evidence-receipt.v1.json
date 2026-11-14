@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "G7.4_RENDERER_BATCH_QA_B1_CI_EVIDENCE_V1",
+  "date": "2026-11-14",
+  "baseBranch": "test/g7-4-renderer-batch-qa-b-v1-20261114",
+  "baseCommit": "d046fae83b9ed1881958bde956db64ae66cc02eb",
+  "qaB1Branch": "test/g7-4-renderer-batch-qa-b1-v1-20261114",
+  "run": {
+    "id": 43566398015,
+    "headSha": "b2f0f45153d8f8f82559eddc602f0ef5cccd8ba3",
+    "jobId": 132361092911,
+    "conclusion": "success",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43566398015",
+    "artifactId": 14102945540,
+    "artifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43566398015/artifacts/14102945540",
+    "artifactZipSha256": "ed82213842ac332fbfb60c55afd4714fe5940a857a83271c05818ee7cf2b530d",
+    "artifactRetentionDays": 30
+  },
+  "qaBHistoricalFailurePreserved": {
+    "run": 43565074617,
+    "conclusion": "failure",
+    "cause": "outdated V1 test expected source found=false; actual true",
+    "receipt": "qa/g7-4-renderer-batch-qa-v1/qa-b-ci-execution-receipt.v1.json"
+  },
+  "measurements": {
+    "nativeSuite": {
+      "pass": 12,
+      "total": 12
+    },
+    "crossCheck": {
+      "pass": 11,
+      "total": 11
+    },
+    "newQab1Assertions": 308,
+    "v1ColumnAssertions": 73396,
+    "v1ColumnValidPairs": 14707,
+    "v1IndependentRecheckCandidatePairs": 29086,
+    "v12ColumnAssertions": 11819,
+    "v12ColumnVariants": 2312,
+    "type1DemoSlotsMapped": 6,
+    "type1DemoSlotTotal": 6,
+    "type1MakeTenVariants": 36
+  },
+  "demo": {
+    "sourcePath": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "bytes": 131767,
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "shaMatch": true,
+    "htmlAltered": false,
+    "manualOwnerExperience": "USER_REPORTED_INTERACTIVE_DEMO_COMPLETE_NO_VISIBLE_ERRORS",
+    "independentBrowserReplayInThisStage": "NOT_EXECUTED",
+    "sourceType1Grading": "DEMO_CLIENT_HARDCODED_NOT_TRUSTED_PRODUCTION",
+    "type1VariableDomBinding": "PENDING_QA_C",
+    "type1StaticDataMapping": "PASS_6_OF_6"
+  },
+  "sourceChanges": {
+    "patchedTestOnly": "qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs",
+    "updatedIndependentReportNarrative": "qa/g7-4-renderer-batch-qa-v1/qa-b-v1-independent-recheck.cjs",
+    "newType1Map": "qa/g7-4-renderer-batch-qa-v1/type1-demo-source-map.qa-b1.cjs",
+    "newD10TrustedService": "qa/g7-4-renderer-batch-qa-v1/d10-trusted-boundary.qa-b1.cjs",
+    "newPV1000BoundaryPolicy": "qa/g7-4-renderer-batch-qa-v1/column-pv1000-boundary-policy.qa-b1.json",
+    "newTest": "qa/g7-4-renderer-batch-qa-v1/qa-b1.test.cjs",
+    "workflow": ".github/workflows/g7-4-renderer-batch-qa-b1-v1.yml"
+  },
+  "policy": {
+    "profile": "PV1000",
+    "currentMaxResult": 999,
+    "exact1000": "BLOCKED_FOUR_COLUMNS_PENDING_LESSON_OWNER_APPROVAL",
+    "fourthColumnActivated": false
+  },
+  "d10": {
+    "publicPlanNoCorrectKeys": true,
+    "privateReferenceValidatedOffline": true,
+    "gradedSubmissionTest": "PASS_OFFLINE_FIXTURE",
+    "guidedAssessmentDenied": true,
+    "realPedagogyApproval": "NOT_ASSERTED_TEST_FIXTURE_ONLY",
+    "legacyG6ClientAnswerLeak": "BLOCKED_QA-A-003",
+    "realGASServerIntegrated": false
+  },
+  "originalQaAFindingsUnchanged": [
+    {
+      "id": "QA-A-001",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No dedicated standalone Type 1 renderer V1.1 bundle; original Type1 plus Structured Diagram V2 only"
+    },
+    {
+      "id": "QA-A-002",
+      "priority": "P1",
+      "state": "BLOCKED",
+      "subject": "D2 v14 E2E project/deployment/rollback unverified; no CI run for v14 branch"
+    },
+    {
+      "id": "QA-A-003",
+      "priority": "P0",
+      "state": "BLOCKED",
+      "subject": "G6/B20 legacy answer,n1,n2,op fields in client; D10 scaffold filtering does not remove legacy payload leak"
+    },
+    {
+      "id": "QA-A-004",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No trusted statement-choice grading contract in server for D10"
+    },
+    {
+      "id": "QA-A-005",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8A/D8B asset inventory has 0 approved mapped Asset IDs; filenames only verified"
+    },
+    {
+      "id": "QA-A-006",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8B tilt visual regression 3kg vs 5kg has unit CI success but no actual browser screenshot in batch"
+    },
+    {
+      "id": "QA-A-007",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Vietnamese TTS G7.5 CI is mock/static only; device voice and Apps Script TEST not verified"
+    },
+    {
+      "id": "QA-A-008",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Generator/Lesson Composer/server grading and GAS E2E across 12 items not verified"
+    }
+  ],
+  "qaBPrePatchFindingReferences": [
+    {
+      "id": "QA-B-001",
+      "priorStatus": "FAIL"
+    },
+    {
+      "id": "QA-B-002",
+      "priorStatus": "BLOCKED"
+    },
+    {
+      "id": "QA-B-003",
+      "priorStatus": "PENDING"
+    },
+    {
+      "id": "QA-B-004",
+      "priorStatus": "PENDING"
+    }
+  ],
+  "qaB1FindingProgress": [
+    {
+      "id": "QA-B-001",
+      "status": "RESOLVED_TEST_PATCH_VERIFIED_CI",
+      "scope": "Expected metadata in historical V1 unit test only; old CI failure remains archived"
+    },
+    {
+      "id": "QA-B-002",
+      "status": "CONTAINED_NOT_CLOSED",
+      "scope": "Three-column max 999; exactly 1000 blocked until four-column and policy approval"
+    },
+    {
+      "id": "QA-B-003",
+      "status": "PENDING",
+      "scope": "12-family integration with P0.6 Composer not proven"
+    },
+    {
+      "id": "QA-B-004",
+      "status": "PASS_OFFLINE_POLICY_DENY_ONLY",
+      "scope": "GUIDED assessment denied in offline service; not mounted to trusted GAS"
+    }
+  ],
+  "releaseDecision": "QA_B1_SOURCE_AND_UNIT_GATE_PASS_QA_B_OVERALL_PENDING_D1_DYNAMIC_BINDING_AND_D10_TRUSTED_GAS",
+  "qaC": "PENDING",
+  "qaD": "PENDING",
+  "qaE": "BLOCKED",
+  "qaF": "DEFERRED",
+  "noWriteClaims": {
+    "main": false,
+    "g6": false,
+    "lockedDemo": false,
+    "actualGasRuntime": false,
+    "studentData": false,
+    "stars": false
+  },
+  "nextAction": "QA-C browser/per-device evidence compared to frozen demo + QA-E trusted server adapter interface and G6 payload containment in isolated TEST after owner policy; no GAS deployment before preconditions."
+}
