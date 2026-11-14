@@ -101,14 +101,16 @@
         "sourceBranch": "test/g7-5-v2-prosody-20261114",
         "sourceCommit": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
         "sourcePath": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js",
-        "status": "APPROVED_STANDALONE_NOT_GAS_INTEGRATED"
+        "status": "APPROVED_STANDALONE_NOT_GAS_INTEGRATED",
+        "gitBlobSha": "605a8ed9b335526af82c8870dca4753bd511b913"
       },
       {
         "id": "vi_math_v12_stable",
         "label": "Chuẩn V1.2",
         "sourceBranch": "test/g7-5-vi-tts-compat-v1-20261114",
         "sourcePath": "thu-nghiem/g7-5-vietnamese-tts/compat-v1/G75_V12_Test_DocPhepToan_Kg_DauToan_DocLap.html",
-        "status": "APPROVED_STANDALONE_NOT_GAS_INTEGRATED"
+        "status": "APPROVED_STANDALONE_NOT_GAS_INTEGRATED",
+        "gitBlobSha": "f67c87ddd4633d937248de3f75273eb1d7940e40"
       }
     ],
     "safety": [
