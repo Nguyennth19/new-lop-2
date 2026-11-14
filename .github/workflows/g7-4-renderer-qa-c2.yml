@@ -1,0 +1,77 @@
+name: G7.4 QA-C2 Type1 real renderer, D2 keypad, 8A/B assets, D10 trust preflight
+on:
+  push:
+    branches:
+      - test/g7-4-renderer-qa-c2-variant-integration-20261114
+    paths:
+      - '.github/workflows/g7-4-renderer-qa-c2.yml'
+      - 'qa/g7-4-renderer-batch-qa-v1/qa-c2-*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-browser-security:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Frozen source and source / security regressions
+        run: |
+          set -eu
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          node --check qa/g7-4-renderer-batch-qa-v1/qa-c2-type1-variant-renderer.js
+          node --check qa/g7-4-renderer-batch-qa-v1/qa-c2-column-keypad-adapter.js
+          node qa/g7-4-renderer-batch-qa-v1/qa-c1-type1-public-fixtures.test.cjs
+          node qa/g7-4-renderer-batch-qa-v1/qa-c2-security-asset-boundary.test.cjs
+          node qa/g7-4-renderer-batch-qa-v1/qa-e-d10-offline-handoff.test.cjs
+      - name: Start local HTTP static test server
+        run: |
+          python3 -m http.server 8796 --bind 127.0.0.1 >/tmp/g74-c2-server.log 2>&1 &
+          sleep 2
+      - name: Browser DOM and keypad regression – 390 and 1440 CSS px
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 115s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+              --virtual-time-budget=45000 --window-size="$size" --dump-dom \
+              'http://127.0.0.1:8796/qa/g7-4-renderer-batch-qa-v1/qa-c2-renderer-parity-lab.html?qaAuto=1' \
+              >"/tmp/g74-c2-$width.html" 2>"/tmp/g74-c2-$width.log"
+            python3 - "/tmp/g74-c2-$width.html" <<'PY'
+          import json,sys
+          from html.parser import HTMLParser
+          class P(HTMLParser):
+            def __init__(self):super().__init__();self.reading=False;self.data='';self.attrs={}
+            def handle_starttag(self,tag,attrs):
+              if tag=='pre' and dict(attrs).get('id')=='qa':self.reading=True;self.attrs=dict(attrs)
+            def handle_endtag(self,tag):
+              if tag=='pre':self.reading=False
+            def handle_data(self,data):
+              if self.reading:self.data+=data
+          p=P();p.feed(open(sys.argv[1],encoding='utf-8').read())
+          assert p.attrs.get('data-done')=='true',(p.attrs,p.data[:500])
+          obj=json.loads(p.data);assert obj['pass'],obj
+          assert len(obj['reports'])==4,obj
+          assert obj['reports'][-1]['id']=='D2_KEYPAD',obj
+          print('QA_C2_BROWSER_PASS',sys.argv[1],[(x['id'],x['pass']) for x in obj['reports']])
+          PY
+          done
+      - name: Capture QA-C2 comparison images
+        if: always()
+        run: |
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g74-c2-shots
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 60s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+              --virtual-time-budget=5500 --window-size="$size" --screenshot="/tmp/g74-c2-shots/c2-$width.png" \
+              'http://127.0.0.1:8796/qa/g7-4-renderer-batch-qa-v1/qa-c2-renderer-parity-lab.html?qaAuto=1' >/tmp/g74-c2-shot.log 2>&1 || true
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: G74-QAC2-Renderer-Variant-Parity
+          path: /tmp/g74-c2-shots/
+          retention-days: 30
