@@ -19,7 +19,8 @@ body.focus-candidate header p,body.focus-candidate nav{display:none}
 body.focus-candidate #comparison{display:block}
 body.focus-candidate #comparison>.panel:first-child{display:none}
 body.focus-candidate iframe{height:780px}
-@media(max-width:700px){#comparison{grid-template-columns:minmax(0,1fr)}iframe{height:530px}}
+/* Viewports <=1100px: do not artificially halve tablet widths during comparison. */
+@media(max-width:1100px){#comparison{grid-template-columns:minmax(0,1fr)}iframe{height:530px}}
 </style></head><body>
 <header><h1>G7.4 QA-C · Đối chiếu với demo gốc (không thay giao diện)</h1>
 <p>Bên trái: file demo 10 dạng đã khóa SHA. Bên phải: renderer TEST hiện có. Dạng 8-A/8-B là phần mở rộng nên chỉ có đối chiếu chức năng theo phạm vi mới, không nhận là pixel-parity với Type 8.</p>
