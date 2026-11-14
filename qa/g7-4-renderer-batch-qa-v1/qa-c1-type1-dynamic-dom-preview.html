@@ -1,0 +1,54 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G7.4 QA-C.1 – Type1 dynamic DOM evidence only</title>
+<style>body{margin:0;font:15px system-ui;background:#eef7ff;color:#17314d}header{background:white;padding:14px;border-bottom:3px solid #92c2eb}header h1{margin:0;font-size:22px}small{color:#51677e}button,select{font:inherit;border:1px solid #7ca7cb;padding:9px;border-radius:10px;background:white}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #f59e0b}main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:12px}.pane{background:white;border:2px solid #bbd6eb;border-radius:12px;overflow:hidden}.pane h2{font-size:14px;padding:10px;margin:0;background:#dff2ff}iframe{display:block;border:0;width:100%;height:680px}.alert{background:#fff2d9;padding:10px;font-size:13px}.controls{padding:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}pre{font:12px/1.5 ui-monospace,monospace;background:#10243a;color:#e2f2ff;padding:14px;white-space:pre-wrap;margin:12px} @media(max-width:1100px){main{grid-template-columns:minmax(0,1fr)}iframe{height:530px}}</style></head><body>
+<header><h1>QA-C.1 – Dạng 1: kiểm chứng DOM biến thể trên bố cục gốc</h1>
+<p>Khung trái giữ nguyên demo khóa nguồn. Khung phải <strong>chỉ làm thử việc thay dữ liệu trên DOM của demo</strong>; chưa phải renderer có dữ liệu/chấm đáp án đáng tin cậy.</p>
+<div class="controls"><label>Biến thể: <select id="variant"><option value="0">Gốc: 8 + 5; 1 dm; 1 m</option><option value="1">Biến thể: 7 + 6; 2 dm; 2 m</option><option value="2">Biến thể: 9 + 4; 3 dm; 3 m</option></select></label><button id="run">Thử biến thể</button><button id="export">Xuất kết quả QA JSON</button></div>
+<div class="alert">Chỉ kiểm tra bố cục và ô nhập. Bản demo có đáp án cố định trong JavaScript; nút chấm bài và nút đọc nguồn cố định <strong>bị vô hiệu hóa ở khung biến thể</strong>. Không dùng để chấm học sinh hoặc đưa vào GAS.</div>
+</header><main><section class="pane"><h2>Demo gốc – không sửa</h2><iframe id="original" title="Original immutable demo"></iframe></section><section class="pane"><h2>DOM ứng viên – chỉ để so hình và kiểm tra ô trống</h2><iframe id="candidate" title="QA dynamic preview; not production"></iframe></section></main><pre id="result" aria-live="polite">Chưa chạy.</pre>
+<script>
+const demo='../g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html';
+const cases=[{id:'FROZEN_8_5',a:8,b:5,dm:1,m:1},{id:'VARIANT_7_6',a:7,b:6,dm:2,m:2},{id:'VARIANT_9_4',a:9,b:4,dm:3,m:3}];
+const ids=['t1_split1','t1_split2','t1_ten','t1_ans','t1_dm','t1_m'];const $=id=>document.getElementById(id);
+let report={status:'NOT_RUN',checks:[]};
+function load(f,url){return new Promise((ok,fail)=>{const timer=setTimeout(()=>fail(Error('IFRAME_TIMEOUT')),9000);f.onload=()=>{clearTimeout(timer);ok()};f.onerror=()=>{clearTimeout(timer);fail(Error('IFRAME_FAILED'))};f.src=url;});}
+function walkText(root,fn){const w=root.ownerDocument.createTreeWalker(root,NodeFilter.SHOW_TEXT);const arr=[];while(w.nextNode())arr.push(w.currentNode);arr.forEach(n=>{n.nodeValue=fn(n.nodeValue)});}
+function mutatePreview(w,v){
+ const d=w.document,stage=d.getElementById('interactiveStage');if(!stage)throw Error('NO_STAGE');
+ // The original HTML remains byte-for-byte frozen; only rendered DOM is altered.
+ const swap=[[/8 \+ 5/g,v.a+' + '+v.b],[/8 \+ 2 =/g,v.a+' + ? ='],[/10 \+ 3 =/g,'10 + ? ='],[/1 dm =/g,v.dm+' dm ='],[/1 m =/g,v.m+' m =']];
+ walkText(stage,t=>swap.reduce((out,[re,x])=>out.replace(re,x),t));
+ const top=stage.querySelector('.bg-sky-500');const second=stage.querySelector('.bg-orange-500');
+ if(top)top.textContent=String(v.a);if(second)second.textContent=String(v.b);
+ const prompt=d.getElementById('exercisePrompt');if(prompt)prompt.textContent='Điền ô trống: '+v.a+' + '+v.b+'; '+v.dm+' dm và '+v.m+' m đổi sang cm.';
+ // Hard-coded source voice prompts and grading MUST NEVER be used on variant data.
+ d.querySelectorAll('button[onclick]').forEach(b=>{const act=b.getAttribute('onclick')||'';
+  if(/speakVietnamese|checkCurrentExercise|nextExerciseType|resetCurrentExercise/.test(act)){
+   b.disabled=true;b.title='Không sử dụng chức năng nguồn cố định trong bản thử biến thể';
+   b.style.opacity='.40';b.style.pointerEvents='none';
+  }
+ });
+ w.speakVietnamese=function(){};w.checkCurrentExercise=function(){throw Error('QA_ONLY_STATIC_GRADER_BLOCKED')};
+}
+async function run(){
+ const id=Number($('variant').value),v=cases[id];report={caseId:v.id,originSource:'LOCKED_DEMO',candidate:'DOM_PREVIEW_ONLY',releaseReady:false,checks:[]};
+ const test=(name,pass)=>report.checks.push({name,pass:Boolean(pass)});
+ try{
+ await Promise.all([load($('original'),demo),load($('candidate'),demo)]);
+ $('original').contentWindow.loadExerciseType(0);$('candidate').contentWindow.loadExerciseType(0);
+ mutatePreview($('candidate').contentWindow,v);const d=$('candidate').contentDocument,stage=d.getElementById('interactiveStage');
+ test('SIX_INPUT_SLOTS',ids.every(i=>!!d.getElementById('slot_'+i)));
+ test('SIX_EMPTY_SLOTS',ids.every(i=>!d.getElementById('slot_'+i).textContent.trim().match(/^\d+$/)));
+ test('DYNAMIC_TOP_OPERANDS',stage.querySelector('.bg-sky-500')?.textContent===String(v.a)&&stage.querySelector('.bg-orange-500')?.textContent===String(v.b));
+ test('DYNAMIC_CONVERSIONS',stage.textContent.includes(v.dm+' dm =')&&stage.textContent.includes(v.m+' m ='));
+ test('ORIGINAL_UNMODIFIED', $('original').contentDocument.getElementById('interactiveStage').textContent.includes('8 + 5'));
+ test('FIXED_GRADER_DISABLED',Array.from(d.querySelectorAll('button[onclick*="checkCurrentExercise"]')).every(b=>b.disabled));
+ test('FIXED_TTS_DISABLED',Array.from(stage.querySelectorAll('button[onclick*="speakVietnamese"]')).every(b=>b.disabled));
+ test('ORIGINAL_NUMPAD_PRESERVED',!!d.getElementById('numpadKeysGrid'));
+ report.status=report.checks.every(c=>c.pass)?'PASS_DYNAMIC_DOM_PREVIEW_ONLY':'FAIL';
+ }catch(e){report.status='FAIL';report.error=String(e);}
+ $('result').textContent=JSON.stringify(report,null,2);
+}
+$('run').onclick=run;$('variant').onchange=run;
+$('export').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));a.download='G74_QAC1_Type1_DOM_Preview_Manual_Report.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);};
+run();
+</script></body></html>
