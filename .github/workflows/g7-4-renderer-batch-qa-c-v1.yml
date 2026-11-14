@@ -53,6 +53,14 @@ jobs:
                 >/tmp/g74-qac-shot.log 2>&1 || echo "PENDING_SCREENSHOT $target"
             done
           done
+          # Additional screenshot frames only: show the candidate clearly on narrow devices.
+          for item in D1 D2 D8B D9 D10; do
+            target="qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots/mobile-solo-$item.png"
+            timeout 40s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+              --virtual-time-budget=3500 --window-size="390,960" --screenshot="$target" \
+              "http://127.0.0.1:8793/qa/g7-4-renderer-batch-qa-v1/qa-c-browser-comparison.html?focus=candidate&case=$item" \
+              >/tmp/g74-qac-shot-solo.log 2>&1 || echo "PENDING_SOLO_SCREENSHOT $target"
+          done
           find qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots -type f -name '*.png' -printf '%f %s bytes\n'
       - name: Keep QA-C browser and QA-E preflight artifacts
         if: always()
