@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "G7.4_RENDERER_BATCH_QA_B_CI_PERMANENT_RECEIPT",
+  "source": "GitHub Actions live job log",
+  "date": "2026-11-14",
+  "run": {
+    "id": 43565074617,
+    "jobId": 132357008552,
+    "headSha": "320e1616349103147bdc3baf99869c0d29e5abe4",
+    "status": "completed",
+    "conclusion": "failure",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43565074617",
+    "artifactId": 14101504324,
+    "artifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43565074617/artifacts/14101504324",
+    "artifactSha256Zip": "9e409a1497f865d2c435e794d22a4e1036d661e133b0f58f3e9f9e7ed401a7a5"
+  },
+  "summary": {
+    "passedTests": 23,
+    "failedTests": 1,
+    "nativeSuitesPass": 11,
+    "nativeSuitesFail": 1,
+    "crossChecksPass": 11,
+    "shaCheckPass": true,
+    "independentReplay": {
+      "status": "PASS",
+      "candidatePairs": 29086,
+      "validPairs": 14707,
+      "snapshots": 6
+    }
+  },
+  "tests": [
+    {
+      "lineTime": "2026-11-14T06:11:08.0137313Z",
+      "status": "PASS",
+      "id": "QAB-00",
+      "details": "SHA256 78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced; bytes 131767"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.0461415Z",
+      "status": "PASS",
+      "id": "SUITE_D1_structured-diagrams-v2",
+      "details": "PASS 307/307 assertions — 4 diagram families, answer isolation, 81 make-ten variants and negative gates"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.0789435Z",
+      "status": "FAIL",
+      "id": "SUITE_D2_column-calc-v1",
+      "details": "AssertionError [ERR_ASSERTION]: "
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.1554362Z",
+      "status": "PASS",
+      "id": "SUITE_D2_column-calc-v12",
+      "details": "PASS 11819/11819 assertions, 2312 valid dynamic ADD/SUB variations, original SHA and carry policy"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.1931662Z",
+      "status": "PASS",
+      "id": "SUITE_D3_matching",
+      "details": "PASS 109 deterministic assertions, 24 variant contracts, frozen original SHA intact"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.2288442Z",
+      "status": "PASS",
+      "id": "SUITE_D4_choice-tts-mock",
+      "details": "PASS 163 assertions; 120 variations; frozen original SHA unchanged"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.2654078Z",
+      "status": "PASS",
+      "id": "SUITE_D5_geometry-tangram",
+      "details": "PASS 140 assertions incl 100 shape variant contracts, two modes, SHA and safety"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.3015811Z",
+      "status": "PASS",
+      "id": "SUITE_D6_ordering-and-sorting",
+      "details": "PASS 248 assertions, 200 variation contracts; frozen original SHA retained"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.3418295Z",
+      "status": "PASS",
+      "id": "SUITE_D7_comparison",
+      "details": "PASS 493 assertions including 150 variations, draft isolation, frozen SHA"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.3754410Z",
+      "status": "PASS",
+      "id": "SUITE_D8_ruler-clock",
+      "details": "PASS 309 assertions, 240 variants, 12h/60m wrap, frozen original SHA"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.4138077Z",
+      "status": "PASS",
+      "id": "SUITE_D8A/D8B_liter-weight",
+      "details": "PASS 250 assertions, 200 variants, weight tilt reversal and immutable source SHA"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.4544436Z",
+      "status": "PASS",
+      "id": "SUITE_D9_pictograph",
+      "details": "PASS 593 assertions, 180 variants, tap order, draft, policy and SHA locked"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.4932484Z",
+      "status": "PASS",
+      "id": "SUITE_D10_word-problem-scaffold",
+      "details": "PASS 593 assertions incl 180 variants, G6 compatibility, no-key and locked-source SHA"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.4982499Z",
+      "status": "PASS",
+      "id": "QAB-D1-01",
+      "details": "36 valid make-ten variants + unit conversion; Type1 original fixed demo -> mapping PENDING"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5033564Z",
+      "status": "PASS",
+      "id": "QAB-D2-01",
+      "details": "16 graded/negative PV100/PV1000 cases; exact 1000/four-column explicitly BLOCKED"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5056537Z",
+      "status": "PASS",
+      "id": "QAB-D3-01",
+      "details": "one-to-one matching, atomic draft, answer-key rejection"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5069184Z",
+      "status": "PASS",
+      "id": "QAB-D4-01",
+      "details": "multi-choice draft + answer-key guard; real voice QA-D PENDING"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5089953Z",
+      "status": "PASS",
+      "id": "QAB-D5-01",
+      "details": "SHAPE_SELECT/TANGRAM, no client target key; drag implementation QA-C PENDING"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5104535Z",
+      "status": "PASS",
+      "id": "QAB-D6-01",
+      "details": "ORDER and SORT state, no client ordering key"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5117173Z",
+      "status": "PASS",
+      "id": "QAB-D7-01",
+      "details": "OPTIONAL versus HIDDEN hints; keys denied"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5128306Z",
+      "status": "PASS",
+      "id": "QAB-D8-01",
+      "details": "RULER/CLOCK contracts; clock minute increment subject to approved step"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5144127Z",
+      "status": "PASS",
+      "id": "QAB-D8A-D8B-01",
+      "details": "two modes; opposite weight tilts, no-key, asset mapping still PENDING"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5158259Z",
+      "status": "PASS",
+      "id": "QAB-D9-01",
+      "details": "touch count state and forbidden assessment demo; real touch QA-C PENDING"
+    },
+    {
+      "lineTime": "2026-11-14T06:11:08.5171284Z",
+      "status": "PASS",
+      "id": "QAB-D10-01",
+      "details": "new scaffold strips key; legacy B20 answer is still client-visible -> P0 BLOCKED, NOT FIXED"
+    }
+  ],
+  "legacyFailure": {
+    "id": "SUITE_D2_column-calc-v1",
+    "sourceTest": "qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs",
+    "line": 6,
+    "actual": true,
+    "expected": false,
+    "note": "This is a stale metadata expectation. Source-lock current value is true. The full legacy test aborts before arithmetic loops; independently rechecked separately."
+  },
+  "writeScope": "REPORT_ONLY_NO_APP_G6_MAIN_STUDENT_WRITES",
+  "immutableHistory": "Do not erase this FAIL after any future patch; append new CI run evidence."
+}
