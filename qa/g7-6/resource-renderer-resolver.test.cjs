@@ -29,10 +29,17 @@ eq(asset.assets.filter(a=>a.label_status==='LABEL_APPROVED').length,288);
 eq(asset.assets.filter(a=>a.content_qa==='PENDING_UNLESS_EXPLICITLY_VERIFIED').length,288);
 const fluent=JSON.parse(fs.readFileSync(path.join(root,manifest.assets.fluentEmojiFlat.path),'utf8'));
 eq(fluent.total,46);eq(fluent.productionActivation,false);
+eq(manifest.assets.repoSnapshotAtBaseCommit.webpFiles,13);
+eq(manifest.assets.repoSnapshotAtBaseCommit.pngFiles,9);
+eq(manifest.assets.repoSnapshotAtBaseCommit.svgFiles,46);
+eq(manifest.assets.countComposition.status,'TEST_ONLY_COUNT_SAFE_GATED');
+eq(manifest.legacyReference.frozenDemoHtml.sha256,'78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced');
 const allPaths=[
  ...manifest.rendererRegistry.flatMap(x=>x.source.files),
  manifest.assets.registry288,manifest.assets.semanticPolicy,manifest.assets.visualIntentSchema,
- manifest.assets.visualModePolicy,manifest.assets.structuredDiagramPolicy,manifest.assets.fluentEmojiFlat
+ manifest.assets.visualModePolicy,manifest.assets.structuredDiagramPolicy,manifest.assets.fluentEmojiFlat,
+ ...manifest.assets.countComposition.sources,...manifest.assets.pilotCharacters.files,
+ manifest.legacyReference.frozenDemoHtml,...manifest.legacyReference.legacyG6Files
 ];
 eq(allPaths.length>30,true);
 for(const file of allPaths){
