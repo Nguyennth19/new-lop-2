@@ -1,9 +1,9 @@
 'use strict';
 /**
  * Independent QA-B replay of column-calc V1 arithmetic.
- * The original V1 unit file is intentionally NOT edited.
- * Its line-6 expectation ("originalAdvancedHTMLLocated=false") is stale;
- * this separate test validates CURRENT source-lock metadata and original V1 logic.
+ * The original QA-B CI FAIL is archived and never deleted.
+ * QA-B.1 patched only the obsolete line-6 EXPECTATION in the TEST V1 suite.
+ * This independent replay separately verifies current source-lock metadata and arithmetic.
  */
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
@@ -16,7 +16,7 @@ const lock=JSON.parse(fs.readFileSync(resolve('qa/g7-4-column-calc-reference-v1/
 const original=fs.readFileSync(resolve('qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html'));
 const EXPECTED='78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced';
 const report={schemaVersion:'g74-qab-v1-legacy-independent-recheck',time:new Date().toISOString(),
-  legacyTestStatus:'FAIL_STALE_EXPECTATION_LINE_6_UNCHANGED',
+  legacyTestStatus:'HISTORICAL_QA_B_FAIL_ARCHIVED_CURRENT_QA_B1_V1_SUITE_PATCHED',
   sourceLockCurrentAdvancedHtmlLocated:lock.visualReference.originalAdvancedHTMLLocated,
   sourceHash:null,sourceByteCount:original.length,snapshotCount:lock.sourceFiles.length,
   variations:0,correctValidations:0,status:'PENDING'};
@@ -59,7 +59,7 @@ try{
   assert.equal(C.chooseRenderer(primary,{}).ok,false);
   assert.equal(C.chooseRenderer(primary,{explicitDegradedConsent:true,fallbackQaApproved:true}).fallback,true);
   report.status='PASS_INDEPENDENT_V1_ARITHMETIC_AND_SOURCE_INTEGRITY';
-  console.log('PASS V1 independent recheck '+report.variations+' candidate pairs, '+report.correctValidations+' valid cases, 6 exact G6 snapshots, immutable HTML. Original V1 test remains FAIL due stale expected metadata.');
+  console.log('PASS V1 independent recheck '+report.variations+' candidate pairs, '+report.correctValidations+' valid cases, 6 exact G6 snapshots, immutable HTML. Historical QA-B V1 FAIL is archived; current QA-B.1 patched V1 suite passes independently.');
 }catch(e){report.status='FAIL';report.error=String(e.stack||e);console.error(report.error);process.exitCode=1;}
 fs.mkdirSync(resolve('qa/g7-4-renderer-batch-qa-v1/artifacts'),{recursive:true});
 fs.writeFileSync(resolve('qa/g7-4-renderer-batch-qa-v1/artifacts/qa-b-v1-recheck.json'),JSON.stringify(report,null,2)+'\n');
