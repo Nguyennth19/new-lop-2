@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "g74-renderer-batch-qa-c1-recovery.v1",
+  "date": "2026-11-14",
+  "stage": "G7.4-QA-C.1",
+  "status": "TYPE1_PUBLIC_VARIANT_DOM_PROBE_BROWSER_PASS_OWNER_VISUAL_AND_RUNTIME_INTEGRATION_PENDING",
+  "baseline": {
+    "branch": "test/g7-4-renderer-batch-qa-c-v1-20261114",
+    "headSha": "de5f340d0870c8492b2a3f6e46b3b92b841f6a58",
+    "originalDemoSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "previousCI": 43568238575,
+    "previousScenarios": "PASS_72_72",
+    "previousChecks": "PASS_414_414"
+  },
+  "current": {
+    "branch": "test/g7-4-renderer-qa-c1-recovery-20261114",
+    "files": [
+      "qa/g7-4-renderer-batch-qa-v1/qa-c1-type1-public-fixtures.cjs",
+      "qa/g7-4-renderer-batch-qa-v1/qa-c1-type1-public-fixtures.test.cjs",
+      "qa/g7-4-renderer-batch-qa-v1/qa-c1-type1-dynamic-dom-preview.html",
+      "docs/kiem-dinh/G7.4_RENDERER_BATCH_QA_C1_RECOVERY_20261114.md"
+    ],
+    "ci": {
+      "runId": 43598674258,
+      "conclusion": "success",
+      "sourceHeadSha": "6ccc0358778932d374b7f3d689477ca371c28a5c",
+      "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43598674258",
+      "artifactId": 14115296730,
+      "artifactName": "G74-QAC1-Type1-DOM-Probe",
+      "artifactRetentionDays": 30
+    },
+    "qa": {
+      "sourceAndPublicPlanAssertions": 29,
+      "qaB1RegressionAssertions": 308,
+      "realBrowserWidths": [
+        390,
+        1440
+      ],
+      "variantsPerWidth": 3,
+      "checksPerWidth": 24,
+      "totalBrowserChecks": 48,
+      "failed": 0,
+      "ownerVisualApproval": "PENDING",
+      "dynamicProductionRenderer": "NOT_IMPLEMENTED",
+      "serverGrading": "NOT_INTEGRATED"
+    }
+  },
+  "open": {
+    "D1": "BROWSER_DOM_PREVIEW_PASS_NOT_PRODUCTION_RENDERER",
+    "D2": "NATIVE_INPUT_VS_ORIGINAL_KEYPAD_AND_EXACT_1000_BLOCKED",
+    "D8A": "ASSET_ID_MAPPING_PENDING",
+    "D8B": "BALANCE_PROOF_PASS_ASSET_ID_OWNER_VISUAL_PENDING",
+    "D10": "P0_LEGACY_CLIENT_ANSWER_KEY_LEAK_BLOCKED",
+    "QAD": "REAL_TOUCH_IMAGE_AND_GAS_TTS_PENDING",
+    "QAE": "OFFLINE_TRUSTED_ONLY_NO_GAS",
+    "QAF": "DEFERRED"
+  },
+  "g75VoiceNote": "G7.5 V1.2 and V2 owner-auditory approved standalone, V2 default proposal; appsScript real device integration not tested",
+  "protection": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "oldDemoChanged": false,
+    "g6Changed": false,
+    "gasVersion6Changed": false,
+    "studentDataWrites": false,
+    "releaseReady": false
+  },
+  "next": "QA-C1 OWNER VISUAL REVIEW from saved 3-variant Type1 demo-layout preview, then PROPER public-data Type1 runtime adapter; concurrently D2 keypad parity, D8 asset QA and separate QA-E D10 trusted grading. No GAS deployment."
+}
