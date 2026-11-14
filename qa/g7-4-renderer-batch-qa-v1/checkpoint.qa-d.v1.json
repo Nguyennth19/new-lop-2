@@ -94,5 +94,11 @@
     "studentDataWrites": false,
     "releaseReady": false
   },
-  "next": "Owner opens standalone QA-D HTML in Windows/Android Chrome, tests touch/voice, marks 13 manual QA rows and exports JSON; consolidate into QA-D.1 without redoing old CI."
+  "next": "Owner opens standalone QA-D HTML in Windows/Android Chrome, tests touch/voice, marks 13 manual QA rows and exports JSON; consolidate into QA-D.1 without redoing old CI.",
+  "drive": {
+    "documentId": "1N2SB67Atqd2Dkm-AovHGaLt1UAPXCnmYIrBvfL21A5A",
+    "url": "https://docs.google.com/document/d/1N2SB67Atqd2Dkm-AovHGaLt1UAPXCnmYIrBvfL21A5A/edit",
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "status": "SAVED_IN_PROJECT_FOLDER"
+  }
 }
