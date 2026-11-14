@@ -7,7 +7,7 @@ import re
 import sys
 html_path=sys.argv[1] if len(sys.argv)>1 else '/tmp/g74-qac-browser-dom.html'
 profile=sys.argv[2] if len(sys.argv)>2 else 'desktop'
-assert profile in ('desktop','mobile')
+assert profile in ('desktop','mobile','width320','width360','width768','width1024')
 s=pathlib.Path(html_path).read_text()
 m=re.search(r'<pre id="qaCResult"[^>]*>(.*?)</pre>',s,re.S)
 if not m:
