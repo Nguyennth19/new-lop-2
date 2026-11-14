@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "g74.qa-d.checkpoint.v1",
+  "date": "2026-11-14",
+  "phase": "G7.4-QA-D-REAL_DEVICE_VISUAL_TOUCH_TTS",
+  "status": "TEST_KIT_READY_STATIC_BROWSER_AND_INTERACTION_PASS_HUMAN_REAL_DEVICE_PENDING",
+  "branch": "test/g7-4-renderer-qa-d-device-20261114",
+  "parent": {
+    "branch": "test/g7-4-renderer-qa-c3-parity-assets-20261114",
+    "head": "289320da58c4bf50809988a8da3133138cf002f0"
+  },
+  "source": {
+    "standalone": "qa/g7-4-renderer-batch-qa-v1/G74_QAD_Standalone_RealDevice_Visual_Touch_TTS.html",
+    "d1RendererPatchedForQA": "qa/g7-4-renderer-batch-qa-v1/qa-c2-type1-variant-renderer.js",
+    "workflow": ".github/workflows/g7-4-renderer-qa-d.yml",
+    "report": "docs/kiem-dinh/G7.4_RENDERER_QA_D_REAL_DEVICE_VISUAL_TOUCH_TTS_20261114.md",
+    "originalDemoSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced"
+  },
+  "ci": {
+    "verifiedRunId": 43605389664,
+    "runUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43605389664",
+    "result": "success",
+    "sourceHead": "98b3e9a34bf47672134cd4d8cb4b466f1933f0fc",
+    "embeddedScriptSyntax": "PASS_7_SCRIPTS",
+    "viewports": [
+      390,
+      1440
+    ],
+    "staticChecksPerViewport": 6,
+    "interactionChecksPerViewport": 5,
+    "browserStatus": "PASS_BOTH_VIEWPORTS",
+    "assetLegacyBoundaryChecks": "PASS_50_PLUS_29",
+    "artifactId": 14118455589,
+    "artifactRetentionDays": 30,
+    "history": [
+      {
+        "runId": 43604883855,
+        "result": "failure",
+        "reason": "TYPE1_DUPLICATE_INPUT_FIELDS_REAL_RENDERER_DEFECT",
+        "resolution": "single input + mirrored positions on QA-D branch"
+      },
+      {
+        "runId": 43605029012,
+        "result": "success",
+        "reason": "D1 fixed; pre-interaction baseline"
+      },
+      {
+        "runId": 43605163675,
+        "result": "failure",
+        "reason": "AUTOMATED_TEST_ATTEMPTED_TO_FOCUS_INPUT_IN_HIDDEN_D2_IFRAME",
+        "resolution": "show D2 pane before focus probe"
+      },
+      {
+        "runId": 43605389664,
+        "result": "success",
+        "reason": "static and 5 interaction probes green"
+      }
+    ]
+  },
+  "manualAcceptance": {
+    "checklistItems": 13,
+    "windowsChrome": "PENDING",
+    "androidChrome": "PENDING",
+    "ownerVisualParityD1D2": "PENDING",
+    "touchRealDevice": "PENDING",
+    "ttsRealDevice": "PENDING",
+    "reportFilenamePrefix": "G74_QAD_RealDevice_VisualTouchTTS_",
+    "autoSignoff": false
+  },
+  "voice": {
+    "approvedV12AndV2Source": "test/g7-5-approved-voice-profiles-20261114",
+    "defaultProposal": "vi_math_v2_dynamic",
+    "testedInThisRun": "STATIC_NORMALIZATION_ONLY_NOT_AUDIBLE"
+  },
+  "assets": {
+    "D8A": "SVG_DYNAMIC_PRIMARY",
+    "D8B": "SVG_DYNAMIC_PRIMARY",
+    "staticAsset8A": "KL_M05_009_NOT_RENDERER_BOUND",
+    "staticAsset8B": "KL_M04_001_NOT_RENDERER_BOUND"
+  },
+  "grading": {
+    "D10": "EXISTING_G6_NOT_CHANGED",
+    "variantClientAnswerLeak": "P0_BLOCKED",
+    "offlineTrustedServerPrototype": "PREVIOUSLY_PASS_ONLY",
+    "GASIntegrated": false
+  },
+  "protected": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "oldC2BranchChanged": false,
+    "originalDemoChanged": false,
+    "g6Changed": false,
+    "p06Changed": false,
+    "gasTestVersion6Changed": false,
+    "studentDataWrites": false,
+    "releaseReady": false
+  },
+  "next": "Owner opens standalone QA-D HTML in Windows/Android Chrome, tests touch/voice, marks 13 manual QA rows and exports JSON; consolidate into QA-D.1 without redoing old CI."
+}
