@@ -45,7 +45,8 @@ const C=[
 ['2:30','2:30'],
 ['36 (kg)','36 ki lô gam'],
 ['7 (cm)','7 xăng ti mét'],
-['Em hãy giải bài toán nhé!','Em hãy giải bài toán nhé!']
+['Em hãy giải bài toán nhé!','Em hãy giải bài toán nhé!'],
+ ['20 : 5 = 4. Đồng hồ chỉ 7:15.','20 chia 5 bằng 4. Đồng hồ chỉ 7:15.']
 ];
 let failed=[];
 for(let i=0;i<C.length;i++){const [a,b]=C[i],got=normalize(a);if(got!==b)failed.push({case:i+1,input:a,expected:b,actual:got});}
