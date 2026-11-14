@@ -1,0 +1,48 @@
+name: G7.5 V2 Vietnamese TTS Normalization (static regression only)
+on:
+  push:
+    branches:
+      - test/g7-5-v2-prosody-20261114
+    paths:
+      - '.github/workflows/g7-5-v2-math-speech.yml'
+      - 'thu-nghiem/g7-5-vietnamese-tts/compat-v2/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  no-deploy-static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: JavaScript syntax and 45 input-output cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd thu-nghiem/g7-5-vietnamese-tts/compat-v2
+          node --check G75_MathSpeechNormalizer_V2.js
+          node --check G75_MathSpeechNormalizer_V2.test.cjs
+          node G75_MathSpeechNormalizer_V2.test.cjs
+      - name: Standalone V2 integrity / embedded-script syntax
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_V2_DocToan_Lop2_NguDieu_DocLap.html')
+          html=p.read_text(encoding='utf-8')
+          assert '<script src=' not in html
+          assert '<script>' in html and '</script>' in html
+          assert 'G75V2.normalize' in html and 'G75_V2_KetQua_NgheThu.json' in html
+          Path('/tmp/g75_v2_embedded.js').write_text(html.split('<script>',1)[1].split('</script>',1)[0])
+          print('HTML_SINGLE_FILE_STATIC_PASS, GAS_DEPLOYED=false, HUMAN_AUDIBLE=false')
+          PY
+          node --check /tmp/g75_v2_embedded.js
+      - name: Upload offline QA kit
+        uses: actions/upload-artifact@v4
+        with:
+          name: G75-V2-VIETNAMESE-MATH-SPEECH-STANDALONE
+          path: thu-nghiem/g7-5-vietnamese-tts/compat-v2/
+          retention-days: 14
