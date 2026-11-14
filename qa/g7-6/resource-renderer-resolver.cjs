@@ -95,8 +95,8 @@ function resolvePublicEnvelope(manifest,packet){
  const valid=validateEnvelope(packet);if(!valid.ok)return valid;
  const entry=manifest.rendererRegistry.find(x=>x.id===packet.typeId);
  if(!entry)return err('UNREGISTERED_RENDERER');
- if(!STRATEGY[entry.id].has(packet.visualIntent.renderStrategy))return err('RENDER_STRATEGY_FORBIDDEN_FOR_TYPE');
  if(entry.id==='D10')return err('D10_EXISTING_G6_ONLY_NEW_VARIANT_ROUTE_DENIED');
+ if(!STRATEGY[entry.id].has(packet.visualIntent.renderStrategy))return err('RENDER_STRATEGY_FORBIDDEN_FOR_TYPE');
  if(entry.id==='D2'&&packet.display.publicParameters.fourColumnRequired===true)return err('COLUMN_1000_BOUNDARY_PENDING');
  const profile=packet.speech.profileId||manifest.speechProfiles.defaultProfileId;
  if(!manifest.speechProfiles.profiles.some(x=>x.id===profile))return err('VOICE_PROFILE_NOT_APPROVED');
