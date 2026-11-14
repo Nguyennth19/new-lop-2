@@ -20,11 +20,14 @@ jobs:
           node-version: '22'
       - name: Verify locked source and run 12 native suites plus cross-renderer contract probes
         run: node qa/g7-4-renderer-batch-qa-v1/qa-b-batch-runner.cjs
+      - name: Independent column-calc V1 arithmetic recheck (historical test remains untouched)
+        if: always()
+        run: node qa/g7-4-renderer-batch-qa-v1/qa-b-v1-independent-recheck.cjs
       - name: Preserve machine-readable QA-B evidence for recovery, even if a gate fails
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: g74-renderer-batch-qab-evidence
-          path: qa/g7-4-renderer-batch-qa-v1/artifacts/qa-b-execution.json
+          path: qa/g7-4-renderer-batch-qa-v1/artifacts/*.json
           if-no-files-found: warn
           retention-days: 30
