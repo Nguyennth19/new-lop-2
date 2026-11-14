@@ -1,8 +1,8 @@
 {
   "schemaVersion": "g75.compat-state.v1",
   "date": "2026-11-14",
-  "phase": "G7.5-COMPATIBILITY_TEST_V1",
-  "status": "TEST_HARNESS_READY_REAL_DEVICE_GAS_QA_PENDING",
+  "phase": "G7.5-V1.2-VIETNAMESE_MATH_SPEECH_NORMALIZATION",
+  "status": "V12_STANDALONE_AND_SOURCE_ARCHIVED_STATIC_QA_PASS_AUDIO_QA_PENDING",
   "branch": "test/g7-5-vi-tts-compat-v1-20261114",
   "baselineRef": "test/g7-5-vietnamese-tts-reference-20261114",
   "baselineCommit": "9d952154d606f95c5ba3aa703bea07a0462a28a9",
@@ -31,10 +31,34 @@
     "androidAudible": "PENDING_REAL_DEVICE",
     "iosAudible": "PENDING_REAL_DEVICE",
     "gasHtmlService": "PENDING_ISOLATED_DEPLOYMENT_AND_REAL_HUMAN_AUDIO",
-    "mathSpeechFormatter": "PENDING"
+    "mathSpeechFormatter": "STATIC_UNIT_CASES_PASS_AUDIO_PENDING"
   },
   "releaseReady": false,
   "appVersion6Changed": false,
   "productionDeployed": false,
-  "nextAction": "Use GitHub Actions artifact to run actual standalone listening tests and a separately authorized isolated Apps Script TEST project. Collect manual JSON QA, do not mark QA-01..06 PASS without direct evidence."
+  "nextAction": "Run V1.2 standalone on Windows/Android; compare raw vs normalized vs paced, listen to 36 − 12 = 24 (kg), then export JSON. No application integration.",
+  "v12": {
+    "file": "thu-nghiem/g7-5-vietnamese-tts/compat-v1/G75_V12_Test_DocPhepToan_Kg_DauToan_DocLap.html",
+    "sha256": "960e04234cb17ccde1ee6dd38bdfed451b3e15fdee01acb8ddedde1fb2fbae90",
+    "gitCommit": "6b4c60587871073158a2ac073925a7565c1789f1",
+    "driveFileId": "1KMHix06TX6BYT3xv8c_weAw5cS_3YlQy",
+    "driveUrl": "https://drive.google.com/file/d/1KMHix06TX6BYT3xv8c_weAw5cS_3YlQy/view?usp=drivesdk",
+    "voiceModes": [
+      "A_AUTO",
+      "B_EXPLICIT_VI",
+      "C_CUSTOM",
+      "E_ENGLISH"
+    ],
+    "speechModes": [
+      "raw",
+      "normalized",
+      "paced"
+    ],
+    "tests": {
+      "scriptSyntax": "PASS",
+      "mathCases": "PASS_8_OF_8",
+      "listening": "PENDING",
+      "gasHtmlService": "PENDING"
+    }
+  }
 }
