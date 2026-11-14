@@ -1,0 +1,823 @@
+{
+  "schemaVersion": "G7.4_RENDERER_BATCH_QA_C_V1_CI_RECEIPT",
+  "recordedOn": "2026-11-14",
+  "scope": "REAL_CHROME_HEADLESS_LOCAL_HTTP_12_RENDERER_CASES_6_VIEWPORTS_PLUS_OFFLINE_QAE",
+  "repo": "Nguyennth19/new-lop-2",
+  "branch": "test/g7-4-renderer-batch-qa-c-v1-20261114",
+  "sourceFrozen": {
+    "path": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "bytes": 131767,
+    "gitBlobSha": "373f497a98edbf5a0ae57eb1561b7e6d72d0a7b1"
+  },
+  "ci": {
+    "runId": 43568238575,
+    "jobId": 132366710184,
+    "headSha": "930dd3d767fe5c76841f93599269d4db6d43851a",
+    "conclusion": "success",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43568238575",
+    "artifactId": 14102189819,
+    "artifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43568238575/artifacts/14102189819",
+    "artifactRetentionDays": 30
+  },
+  "historicalRunsPreserved": [
+    {
+      "id": 43567460051,
+      "conclusion": "success",
+      "scope": "desktop 1440/390 baseline, 12/12"
+    },
+    {
+      "id": 43568114246,
+      "conclusion": "failure",
+      "scope": "768px two-iframe half-width created harness-only overflow, original demo and candidate identical source"
+    },
+    {
+      "id": 43568238575,
+      "conclusion": "success",
+      "scope": "harness breakpoint corrected, 12 forms x 6 actual Chrome viewports"
+    }
+  ],
+  "execution": {
+    "viewportsPx": [
+      320,
+      360,
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "actualBrowserScenarios": 72,
+    "checksPassed": 414,
+    "checksFailed": 0,
+    "positiveStylesheetsForAll": true,
+    "overflowCases": 0,
+    "physicalTouchDeviceValidated": false,
+    "pixelEqualityAsserted": false,
+    "qaEServerPreflightAssertions": 28,
+    "baselineQA_B1Assertions": 308
+  },
+  "viewportMatrix": [
+    {
+      "profile": "width320",
+      "ciResult": "PASS_BROWSER_STRUCTURAL_ONLY",
+      "results": [
+        {
+          "id": "D1",
+          "browserUnitStatus": "PASS",
+          "checkCount": 4,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D2",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D3",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D4",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D5",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D6",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D7",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8A",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8B",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D9",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D10",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        }
+      ]
+    },
+    {
+      "profile": "width360",
+      "ciResult": "PASS_BROWSER_STRUCTURAL_ONLY",
+      "results": [
+        {
+          "id": "D1",
+          "browserUnitStatus": "PASS",
+          "checkCount": 4,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D2",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D3",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D4",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D5",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D6",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D7",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8A",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8B",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D9",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D10",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "ciResult": "PASS_BROWSER_STRUCTURAL_ONLY",
+      "results": [
+        {
+          "id": "D1",
+          "browserUnitStatus": "PASS",
+          "checkCount": 4,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D2",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D3",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D4",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D5",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D6",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D7",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8A",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8B",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D9",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D10",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        }
+      ]
+    },
+    {
+      "profile": "width768",
+      "ciResult": "PASS_BROWSER_STRUCTURAL_ONLY",
+      "results": [
+        {
+          "id": "D1",
+          "browserUnitStatus": "PASS",
+          "checkCount": 4,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D2",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D3",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D4",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D5",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D6",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D7",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8A",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8B",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D9",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D10",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        }
+      ]
+    },
+    {
+      "profile": "width1024",
+      "ciResult": "PASS_BROWSER_STRUCTURAL_ONLY",
+      "results": [
+        {
+          "id": "D1",
+          "browserUnitStatus": "PASS",
+          "checkCount": 4,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D2",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D3",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D4",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D5",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D6",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D7",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8A",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8B",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D9",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D10",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        }
+      ]
+    },
+    {
+      "profile": "desktop",
+      "ciResult": "PASS_BROWSER_STRUCTURAL_ONLY",
+      "results": [
+        {
+          "id": "D1",
+          "browserUnitStatus": "PASS",
+          "checkCount": 4,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D2",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D3",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D4",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D5",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D6",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D7",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8A",
+          "browserUnitStatus": "PASS",
+          "checkCount": 5,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D8B",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D9",
+          "browserUnitStatus": "PASS",
+          "checkCount": 6,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        },
+        {
+          "id": "D10",
+          "browserUnitStatus": "PASS",
+          "checkCount": 7,
+          "reportedErrors": "",
+          "originalOverflow": false,
+          "candidateOverflow": false
+        }
+      ]
+    }
+  ],
+  "screenshotFiles": {
+    "desktop-D2.png": 308238,
+    "mobile-solo-D3.png": 52058,
+    "mobile-D2.png": 110629,
+    "mobile-solo-D8.png": 67850,
+    "desktop-D6.png": 288459,
+    "mobile-D10.png": 109414,
+    "desktop-D10.png": 300371,
+    "desktop-D3.png": 270563,
+    "mobile-solo-D1.png": 127769,
+    "mobile-solo-D9.png": 64091,
+    "desktop-D8.png": 297732,
+    "desktop-D7.png": 284290,
+    "desktop-D5.png": 303233,
+    "mobile-solo-D6.png": 68404,
+    "desktop-D1.png": 243678,
+    "desktop-D8B.png": 293261,
+    "mobile-solo-D2.png": 86638,
+    "mobile-D8B.png": 109477,
+    "desktop-D4.png": 270306,
+    "mobile-solo-D8A.png": 59857,
+    "mobile-solo-D10.png": 72018,
+    "mobile-D9.png": 109065,
+    "mobile-solo-D4.png": 58169,
+    "desktop-D9.png": 289061,
+    "mobile-solo-D5.png": 74136,
+    "mobile-solo-D8B.png": 55778,
+    "desktop-D8A.png": 284771,
+    "mobile-D1.png": 110200,
+    "mobile-solo-D7.png": 67958
+  },
+  "screenshotCount": 29,
+  "observations": {
+    "demoOwnerReported": "USER_DIRECT_TEST_REPORTED_GOOD_NO_VISIBLE_ERRORS",
+    "type1": "FROZEN_DEMO_STATIC_RENDERER_SAME_SOURCE_NOT_VARIANT_DOM",
+    "type2": "V12_CONTRACT_AND_INPUT_ORDER_PASS_BUT_FIXED_DEMO_NUMPAD_NOT_PRESENT_IN_ISOLATED_STANDALONE",
+    "weight": "3KG_LEFT_PAN_HIGHER_THAN_5KG_RIGHT_PAN_VERIFIED_SVG_AND_DESKTOP_MOBILE_SCREENSHOT",
+    "word": "G6_SCAFFOLD_BROWSER_PASS_BUT_TRUSTED_GAS_GRADING_NOT_ENABLED",
+    "photoReview": "12_DESKTOP_CONTACT_SHEET_AND_SAMPLES_REVIEWED_OWNER_FINAL_VISUAL_APPROVAL_PENDING",
+    "extensions": "D8A_D8B_NOT_PRESENT_AS_SEPARATE_FORMS_IN_ORIGINAL_10_FORM_DEMO"
+  },
+  "QA_A_findingsUnchanged": [
+    {
+      "id": "QA-A-001",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No dedicated standalone Type 1 renderer V1.1 bundle; original Type1 plus Structured Diagram V2 only"
+    },
+    {
+      "id": "QA-A-002",
+      "priority": "P1",
+      "state": "BLOCKED",
+      "subject": "D2 v14 E2E project/deployment/rollback unverified; no CI run for v14 branch"
+    },
+    {
+      "id": "QA-A-003",
+      "priority": "P0",
+      "state": "BLOCKED",
+      "subject": "G6/B20 legacy answer,n1,n2,op fields in client; D10 scaffold filtering does not remove legacy payload leak"
+    },
+    {
+      "id": "QA-A-004",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No trusted statement-choice grading contract in server for D10"
+    },
+    {
+      "id": "QA-A-005",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8A/D8B asset inventory has 0 approved mapped Asset IDs; filenames only verified"
+    },
+    {
+      "id": "QA-A-006",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8B tilt visual regression 3kg vs 5kg has unit CI success but no actual browser screenshot in batch"
+    },
+    {
+      "id": "QA-A-007",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Vietnamese TTS G7.5 CI is mock/static only; device voice and Apps Script TEST not verified"
+    },
+    {
+      "id": "QA-A-008",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Generator/Lesson Composer/server grading and GAS E2E across 12 items not verified"
+    }
+  ],
+  "newQA_CFindings": [
+    {
+      "id": "QA-C-001",
+      "priority": "P1",
+      "state": "RESOLVED_HARNESS_ONLY",
+      "detail": "768px original-and-candidate side-by-side comparison halved tablet width, causing false overflow. Changed comparison canvas to stack at <=1100px. Original demo and renderers untouched.",
+      "badRun": 43568114246,
+      "goodRun": 43568238575
+    },
+    {
+      "id": "QA-C-002",
+      "priority": "P1",
+      "state": "PENDING",
+      "detail": "D1 Type1 DOM under dynamic variant data not mounted; test reuses frozen demo as both frames. See QA-A-001."
+    },
+    {
+      "id": "QA-C-003",
+      "priority": "P1",
+      "state": "PENDING",
+      "detail": "D2 isolated standalone uses native text inputs rather than original fixed math numpad. Do not replace original UX without owner approval; GAS adapter parity unverified."
+    },
+    {
+      "id": "QA-C-004",
+      "priority": "P1",
+      "state": "PENDING",
+      "detail": "12 screenshot types captured; no pixel-perfect same-renderer assertion or owner signed visual parity; 8A/8B are new extension and not direct original Type8."
+    },
+    {
+      "id": "QA-C-005",
+      "priority": "P1",
+      "state": "PENDING",
+      "detail": "Headless Chrome responsive/JS test not physical touchscreen, audio voice nor actual GAS WEBAPP E2E; QA-D and F open."
+    }
+  ],
+  "QA_E_d10_preflight": {
+    "status": "PASS_OFFLINE_ONLY",
+    "assertions": 28,
+    "keylessExistingG6WordRendererTest": "PASS",
+    "legacyB20ClientAnswerLeak": "QA-A-003_P0_BLOCKED",
+    "legacyLocalGraderDependsOnQAnswer": true,
+    "realGASServerWired": false,
+    "studentWrites": false
+  },
+  "releaseGates": {
+    "qaC": "PASS_CHROME_STRUCTURAL_AND_INTERACTION_ONLY_VISUAL_OWNER_REVIEW_PENDING",
+    "qaD": "PENDING_ASSETS_TTS_DEVICE",
+    "qaE": "BLOCKED_D10_LEGACY_CLIENT_ANSWER_AND_TRUSTED_GAS",
+    "qaF": "DEFERRED",
+    "main": "UNCHANGED"
+  },
+  "changesSafety": {
+    "mainUnchanged": true,
+    "g6Unchanged": true,
+    "lockedDemoUnchanged": true,
+    "sourceLockUnchanged": true,
+    "noStudentDataWrites": true,
+    "noGASDeploy": true
+  },
+  "nextAction": "Owner review screenshots and original demo UX; QA-D asset/voice QA; stage isolated TEST server-proof D10 routing only after blocking client q.answer leakage; no GAS or main promotion before separate gate."
+}
