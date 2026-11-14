@@ -68,5 +68,11 @@
     "studentDataChanged": false,
     "releaseReady": false
   },
-  "next": "Owner visually compares V1.1 and V1.2 HTML, tests 1L increments and 8/5 and 12/4 variation on mobile; provide exported QA JSON. Integration only after signoff."
+  "next": "Owner visually compares V1.1 and V1.2 HTML, tests 1L increments and 8/5 and 12/4 variation on mobile; provide exported QA JSON. Integration only after signoff.",
+  "drive": {
+    "documentId": "1tzifnsuCPtV6Z_Bj_vGNbl2fzX2si-0kP_LO2Up_6Ss",
+    "url": "https://docs.google.com/document/d/1tzifnsuCPtV6Z_Bj_vGNbl2fzX2si-0kP_LO2Up_6Ss/edit",
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "status": "SAVED"
+  }
 }
