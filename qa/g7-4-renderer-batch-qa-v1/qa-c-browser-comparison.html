@@ -1,0 +1,190 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.4 QA-C — demo gốc đối chiếu 12 renderer — OFFLINE TEST</title>
+<style>
+:root{font-family:system-ui,"Segoe UI",sans-serif;color:#26374f;background:#eef7fc}
+*{box-sizing:border-box}body{margin:0;min-width:0}header{padding:13px;background:#fff;border-bottom:3px solid #9bc8e9}
+header h1{font-size:clamp(17px,3vw,25px);margin:0 0 8px}
+header p{margin:4px 0;color:#53667e;font-size:12px;line-height:1.5}
+nav{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+nav button{font:700 11px system-ui;padding:7px 9px;border-radius:9px;border:1px solid #7bb3dc;background:#f9fcff;color:#225477;cursor:pointer}
+nav button.active{background:#305fbe;color:#fff}
+#comparison{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;padding:10px;min-width:0}
+.panel{min-width:0;overflow:hidden;background:white;border:2px solid #b3d9ed;border-radius:14px}
+.panel h2{padding:8px 10px;margin:0;background:#dff3ff;font-size:12px;white-space:normal}
+iframe{width:100%;height:640px;border:0;display:block;background:white}
+#status{font-size:12px;padding:10px;white-space:pre-wrap;overflow-wrap:anywhere}
+#qaCResult{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;font:12px/1.5 ui-monospace,monospace;max-height:300px;overflow:auto}
+@media(max-width:700px){#comparison{grid-template-columns:minmax(0,1fr)}iframe{height:530px}}
+</style></head><body>
+<header><h1>G7.4 QA-C · Đối chiếu với demo gốc (không thay giao diện)</h1>
+<p>Bên trái: file demo 10 dạng đã khóa SHA. Bên phải: renderer TEST hiện có. Dạng 8-A/8-B là phần mở rộng nên chỉ có đối chiếu chức năng theo phạm vi mới, không nhận là pixel-parity với Type 8.</p>
+<p id="status">Đang tải bản demo chuẩn…</p><nav id="tabs"></nav></header>
+<div id="comparison">
+ <section class="panel"><h2>THAM CHIẾU · ORIGINAL 10-FORM DEMO (READ-ONLY SOURCE)</h2><iframe id="original" title="Demo gốc"></iframe></section>
+ <section class="panel"><h2 id="candidateTitle">RENDERER TEST · CÙNG DẠNG</h2><iframe id="candidate" title="Renderer TEST"></iframe></section>
+</div><pre id="qaCResult" hidden></pre>
+<script>
+(function(){
+'use strict';
+const demo='../g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html';
+const c=[
+{id:'D1',type:0,label:'1 · Điền/Tách gộp',src:demo,sourceRelation:'EXACT_SAME_FROZEN_DEMO_SOURCE_STATIC_ONLY'},
+{id:'D2',type:1,label:'2 · Đặt tính',src:'../g7-4-column-calc-reference-v12/G7_Column_Calc_V12_Interactive_TEST.html',sourceRelation:'ORIGINAL_TYPE2_V12_VARIANT'},
+{id:'D3',type:2,label:'3 · Nối cặp',src:'qa-c-two-forms-standalone.html?mode=matching',sourceRelation:'ORIGINAL_TYPE3_V11_VIEW'},
+{id:'D4',type:3,label:'4 · Trắc nghiệm',src:'qa-c-two-forms-standalone.html?mode=choice',sourceRelation:'ORIGINAL_TYPE4_V11_VIEW'},
+{id:'D5',type:4,label:'5 · Hình/Tangram',src:'../g7-4-geometry-tangram-reference-v11/Geometry_Tangram_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE5_V11_VIEW'},
+{id:'D6',type:5,label:'6 · Kéo phân loại',src:'../g7-4-drag-sort-reference-v11/Drag_Sort_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE6_V11_VIEW'},
+{id:'D7',type:6,label:'7 · So sánh',src:'../g7-4-comparison-reference-v11/Comparison_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE7_V11_VIEW'},
+{id:'D8',type:7,label:'8 · Thước/Đồng hồ',src:'../g7-4-measurement-reference-v11/Measurement_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE8_V11_VIEW'},
+{id:'D8A',type:7,label:'8-A · Lít',src:'../g7-4-capacity-weight-reference-v11/Capacity_Weight_V11_Standalone_TEST.html',sourceRelation:'EXTENSION_NO_DIRECT_ORIGINAL_DEMO_PARITY'},
+{id:'D8B',type:7,label:'8-B · Kg',src:'../g7-4-capacity-weight-reference-v11/Capacity_Weight_V11_Standalone_TEST.html',sourceRelation:'EXTENSION_NO_DIRECT_ORIGINAL_DEMO_PARITY'},
+{id:'D9',type:8,label:'9 · Biểu đồ',src:'../g7-4-pictograph-reference-v11/Pictograph_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE9_V11_VIEW'},
+{id:'D10',type:9,label:'10 · Lời văn',src:'../g7-4-word-problem-unification-v11/Word_Unification_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE10_G6_SCAFFOLD'}];
+const params=new URLSearchParams(location.search),auto=params.has('qaAuto');
+const ref=document.getElementById('original'),candidate=document.getElementById('candidate'),status=document.getElementById('status'),pre=document.getElementById('qaCResult');
+const nav=document.getElementById('tabs');
+for(const one of c){const b=document.createElement('button');b.textContent=one.label;b.dataset.case=one.id;
+b.onclick=()=>select(one).catch(e=>status.textContent='Lỗi: '+e.message);nav.append(b);}
+const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function srcLoad(frame,url){
+ return new Promise((resolve,reject)=>{
+  const timer=setTimeout(()=>reject(Error('IFRAME_TIMEOUT '+url)),7500);
+  frame.onload=()=>{clearTimeout(timer);resolve();};frame.onerror=()=>{clearTimeout(timer);reject(Error('IFRAME_LOAD_FAIL '+url));};
+  frame.src=url;
+ });
+}
+function check(ok,msg,record){record.checks.push({name:msg,ok:Boolean(ok)});if(!ok)record.errors.push(msg);}
+function overflow(w){
+ try{return w.document.documentElement.scrollWidth>w.document.documentElement.clientWidth+3}catch(e){return null}
+}
+function candidateTest(one,d,record){
+ const doc=d.document,sel=s=>doc.querySelector(s),all=s=>Array.from(doc.querySelectorAll(s));
+ const ok=(truth,msg)=>check(truth,msg,record);
+ if(one.id==='D1'){
+  ok(['t1_split1','t1_split2','t1_ten','t1_ans','t1_dm','t1_m'].every(id=>!!sel('#slot_'+id)),'TYPE1_ALL_6_FROZEN_SLOTS');
+  record.dynamicVariantDom='PENDING_NOT_PRESENT_IN_ORIGINAL';
+ }
+ if(one.id==='D2'){
+  const cards=all('.kl-col-v12-card'),two=cards.find(x=>x.dataset.columns==='2'),three=cards.find(x=>x.dataset.columns==='3');
+  ok(!!two&&!!three,'2_AND_3_COLUMN_RENDERING');
+  if(three){const ones=three.querySelector('[data-answer="result_ones"]'),tens=three.querySelector('[data-answer="result_tens"]');
+    ok(!!ones&&!!tens,'RTL_FIELDS_PRESENT');
+    if(ones){ones.focus();ones.value='5';ones.dispatchEvent(new Event('input',{bubbles:true}));
+      ok(tens?.classList.contains('active')||doc.activeElement===tens,'RTL_AUTO_NEXT_TENS');
+      three.querySelector('.kl-col-v12-reset')?.click();}
+  }
+ }
+ if(one.id==='D3'){
+  ok(!!sel('.g74-match-v11'),'MATCH_VIEW_MOUNTED');
+  const l=sel('.g74-match-card.left'),r=sel('.g74-match-card.right');
+  if(l&&r){l.click();r.click();ok(!!sel('.g74-match-line')||l.classList.contains('paired'),'MATCH_CLICK_CONNECT');}
+  else ok(false,'MATCH_BUTTONS_VISIBLE');
+ }
+ if(one.id==='D4'){
+  const opts=all('.g74-choice-answer');ok(opts.length>=2,'CHOICE_OPTIONS_MOUNTED');
+  if(opts.length){opts[0].click();ok(opts[0].getAttribute('aria-pressed')==='true','CHOICE_CLICK_PRESSED');}
+ }
+ if(one.id==='D5'){
+  const shapes=all('.g74-geo-shape');ok(shapes.length>=2,'GEOMETRY_SHAPES_VISIBLE');
+  if(shapes.length){shapes[0].click();ok(!!sel('.g74-geo-shape.selected'),'GEOMETRY_SELECT');}
+  sel('#tangram')?.click();
+  ok(!!sel('.g74-tangram-layout'),'TANGRAM_VIEW_SWITCH');
+  const piece=sel('.g74-tangram-piece');if(piece){piece.click();ok(piece.getAttribute('aria-pressed')==='true'||!!sel('.g74-tangram-piece.selected'),'TANGRAM_SELECT_PIECE');}
+ }
+ if(one.id==='D6'){
+  ok(!!sel('.g74-ds-v11'),'ORDER_VIEW_MOUNTED');
+  const card=sel('.g74-ds-card'),slot=sel('.g74-ds-target');
+  if(card&&slot){card.click();slot.click();ok(!!sel('.g74-ds-placed'),'ORDER_PLACE_CLICK');}
+  else ok(false,'ORDER_CLICK_CONTROLS_MISSING');
+  sel('#sort')?.click();ok(!!sel('.g74-ds-v11'),'SORT_VIEW_SWITCH');
+ }
+ if(one.id==='D7'){
+  const sign=sel('.g74-cmp-sign');ok(!!sign,'COMPARISON_SIGN_VISIBLE');
+  if(sign){sign.click();ok(!!sel('.g74-cmp-row.answered'),'COMPARISON_SIGN_APPLIED');}
+  sel('#assessment')?.click();ok(!sel('.g74-cmp-hints')||sel('.g74-cmp-hints').hidden||sel('.g74-cmp-hints').disabled,'ASSESSMENT_HINT_OFF');
+ }
+ if(one.id==='D8'){
+  ok(!!sel('.g74-ruler-panel'),'RULER_VIEW_MOUNTED');
+  sel('#clock')?.click();ok(!!sel('.g74-clock-panel'),'CLOCK_VIEW_SWITCH');
+  const b=sel('.g74-measure-btn');if(b){b.click();ok(!!sel('.g74-clock-svg'),'CLOCK_BUTTON_INTERACTION');}
+ }
+ if(one.id==='D8A'){
+  ok(!!sel('.g74-cw-two'),'LITER_TWO_CONTAINERS');
+  const b=sel('.g74-cw-btn');if(b){b.click();ok(!!sel('.g74-cw-two'),'LITER_BUTTON_INTERACTION');}
+ }
+ if(one.id==='D8B'){
+  sel('#weight')?.click();
+  const balance=sel('.g74-cw-balance'),svg=sel('.g74-cw-scale svg');
+  ok(!!balance&&!!svg,'WEIGHT_SVG_VISIBLE');
+  ok((balance?.textContent||'').includes('trái nhẹ hơn'),'3KG_LEFT_LIGHTER_TEXT');
+  if(svg){const beam=all('.g74-cw-scale svg line').find(x=>x.getAttribute('stroke-width')==='8');
+    ok(!!beam&&Number(beam.getAttribute('y1'))<Number(beam.getAttribute('y2')),'3KG_HIGHER_THAN_5KG_SVG');
+  }
+ }
+ if(one.id==='D9'){
+  const item=sel('.g74-picto-item');ok(!!item,'PICTOGRAPH_ITEMS_VISIBLE');
+  if(item){item.click();ok(item.getAttribute('aria-pressed')==='true','TAP_TO_COUNT');}
+  sel('#assessment')?.click();ok(!sel('.g74-picto-demo'),'ASSESSMENT_HAS_NO_DEMO_BUTTON');
+ }
+ if(one.id==='D10'){
+  ok(!!sel('.g74-word-scaffold'),'WORD_G6_SCAFFOLD_MOUNTED');
+  const opts=all('.g74-word-option-select');ok(opts.length>=2,'WORD_STATEMENTS_VISIBLE');
+  if(opts.length){opts[1].click();ok(opts[1].getAttribute('aria-pressed')==='true','WORD_SELECT_STATEMENT');}
+  ok(all('[data-ml-field]').length===5,'WORD_G6_FIVE_FIELDS_PRESERVED');
+  record.serverGrading='OFFLINE_NOT_ATTACHED_LEGACY_LEAK_OPEN';
+ }
+}
+async function select(one){
+ status.textContent='Đang kiểm '+one.id+'…';Array.from(nav.querySelectorAll('button')).forEach(n=>n.classList.toggle('active',n.dataset.case===one.id));
+ if(!ref.contentWindow?.loadExerciseType)throw Error('FROZEN_DEMO_NOT_INITIALIZED');
+ ref.contentWindow.loadExerciseType(one.type);
+ const target=new URL(one.src,location.href).href;
+ await srcLoad(candidate,target);await sleep(130);
+ const a=ref.contentDocument,b=candidate.contentDocument;
+ if(!a||!b)throw Error('SAME_ORIGIN_FRAME_NOT_READY');
+ const record={id:one.id,referenceType:one.type+1,relation:one.sourceRelation,
+ checks:[],errors:[],viewport:{width:window.innerWidth,height:window.innerHeight}};
+ check(a.querySelectorAll('#typeTabsContainer button').length===10,'ORIGINAL_10_TABS',record);
+ check((a.getElementById('interactiveStage')?.children.length||0)>0,'ORIGINAL_STAGE_RENDERED',record);
+ check((a.getElementById('exercisePrompt')?.textContent||'').trim().length>5,'ORIGINAL_PROMPT_VISIBLE',record);
+ candidateTest(one,candidate.contentWindow,record);
+ record.originalOverflow=overflow(ref.contentWindow);
+ record.candidateOverflow=overflow(candidate.contentWindow);
+ record.referenceStylesheetLoaded=a.styleSheets.length>1;
+ record.candidateStylesheetLoaded=b.styleSheets.length>0;
+ record.browserUnitStatus=record.errors.length?'FAIL':'PASS';
+ record.visualPixelParity='NOT_ASSERTED_DIFFERENT_RENDERING_OR_STATIC_DEMO';
+ status.textContent=one.id+' · '+record.browserUnitStatus+' · '+record.checks.length+' kiểm tra; ảnh chụp cần duyệt thủ công.';
+ return record;
+}
+const expected=params.get('case')||'D2',initial=c.find(x=>x.id===expected)||c[1];
+async function main(){
+ try{
+  await srcLoad(ref,new URL(demo,location.href).href);
+  await sleep(130);
+  if(auto){
+   const results=[];
+   for(const one of c){
+    try{results.push(await select(one));}catch(e){results.push({id:one.id,browserUnitStatus:'FAIL',errors:[String(e)],checks:[]});}
+   }
+   const pass=results.filter(r=>r.browserUnitStatus==='PASS').length;
+   document.body.dataset.qaCtotal=String(results.length);
+   document.body.dataset.qaCpassed=String(pass);
+   document.body.dataset.qaCfailed=String(results.length-pass);
+   document.body.dataset.qaCfinished='true';
+   document.body.dataset.qaCvisualHumanReview='PENDING';
+   pre.hidden=false;pre.textContent=JSON.stringify({schemaVersion:'qa-c-browser-run-v1',
+     status:pass===12?'PASS_BROWSER_STRUCTURAL_ONLY':'FAIL_BROWSER_STRUCTURAL',
+     originalDemo:'FROZEN_SOURCE_USER_REPORTED_PASS',
+     pixelParity:'PENDING_MANUAL_REVIEW',
+     screenshots:'CAPTURED_BY_CI_SEPARATELY',results},null,2);
+   status.textContent='Chrome đã kiểm: '+pass+'/12 · đánh giá tương đồng hình ảnh cần duyệt screenshot; GAS chưa chạy.';
+  }else{const r=await select(initial);pre.hidden=false;pre.textContent=JSON.stringify(r,null,2);}
+ }catch(e){
+  document.body.dataset.qaCfinished='error';
+  pre.hidden=false;pre.textContent=String(e.stack||e);status.textContent='Lỗi harness: '+e.message;
+ }
+}
+main();
+})();
+</script></body></html>
