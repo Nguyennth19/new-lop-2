@@ -4,7 +4,7 @@ on:
     branches:
       - test/g7-4-renderer-batch-qa-b-v1-20261114
     paths:
-      - 'qa/g7-4-renderer-batch-qa-v1/**'
+      - 'qa/g7-4-renderer-batch-qa-v1/*.cjs'
       - '.github/workflows/g7-4-renderer-batch-qa-b-v1.yml'
   workflow_dispatch:
 permissions:
