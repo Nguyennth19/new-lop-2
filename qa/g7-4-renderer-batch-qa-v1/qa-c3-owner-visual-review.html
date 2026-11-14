@@ -1,0 +1,33 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.4 QA-C.3 – Owner Visual Parity Review</title><style>
+:root{font-family:system-ui;color:#20344d;background:#eef7fc}*{box-sizing:border-box}body{margin:0}header{padding:14px;background:#fff;border-bottom:3px solid #9ad0ea}h1{font-size:20px;margin:0 0 6px}p{line-height:1.5;margin:6px 0;font-size:13px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}button{background:white;border:1px solid #6fb5dd;border-radius:9px;padding:10px;min-height:44px;cursor:pointer;font:inherit}button[aria-pressed="true"]{background:#226fb1;color:white}main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px;padding:10px}.panel{min-width:0;background:white;border:2px solid #9cd0e9;border-radius:14px;overflow:hidden}.panel h2{font-size:13px;background:#e3f3fe;padding:10px;margin:0}iframe{width:100%;height:790px;border:0}.review{margin:10px;background:white;padding:12px;border-radius:12px}label{display:block;padding:6px}pre{white-space:pre-wrap;overflow-wrap:anywhere} @media(max-width:1100px){main{grid-template-columns:minmax(0,1fr)}iframe{height:680px}}</style></head><body>
+<header><h1>G7.4 QA-C.3 – So sánh với demo gốc</h1>
+<p>Khung trái là demo HTML nguyên bản, bên phải là phòng thử QA-C.2. Đây là màn nghiệm thu trực quan, không chứng minh pixel-perfect hoặc đồng nhất mọi thao tác.</p>
+<div class="actions"><button id="b1" aria-pressed="true">Dạng 1 · Tách/gộp</button><button id="b2" aria-pressed="false">Dạng 2 · Đặt tính</button><button id="report">Xuất nhận xét JSON</button></div>
+<p id="status" role="status"></p></header><main>
+<section class="panel"><h2>THAM CHIẾU · Demo nguồn đã khóa</h2><iframe id="original" title="Bản demo nguyên gốc"></iframe></section>
+<section class="panel"><h2>ỨNG VIÊN · Renderer D1 / keypad D2 thuộc QA-C.2</h2><iframe id="candidate" title="Renderer TEST QA-C.2"></iframe></section>
+</main><section class="review"><h3>Biên bản đánh giá thủ công (chưa ký duyệt tự động)</h3>
+<label><input type="checkbox" id="layout"> Bố cục hai phần và kích thước các ô phù hợp với demo</label>
+<label><input type="checkbox" id="keypad"> Bàn phím số nhập/xóa/chọn ô đúng trên thiết bị đang dùng</label>
+<label><input type="checkbox" id="mobile"> Không tràn ngang và thao tác chạm dễ dùng</label>
+<label><input type="checkbox" id="semantics"> Dữ liệu và phép tính biến thể hiển thị đúng</label>
+<label>Nhận xét <textarea id="notes" rows="3" style="width:100%" placeholder="Khác biệt bố cục, kích thước, bàn phím, thao tác..."></textarea></label>
+<p><strong>Chỉ xuất báo cáo tham khảo; việc chọn checkbox không tự thay đổi trạng thái nghiệm thu trên GitHub.</strong></p></section>
+<script>
+'use strict';const $=id=>document.getElementById(id);
+const original='../g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html';
+const candidate='qa-c2-renderer-parity-lab.html';let mode=1;
+function frameLoad(frame,url){return new Promise((ok,err)=>{let t=setTimeout(()=>err(Error('IFRAME_TIMEOUT')),12000);frame.onload=()=>{clearTimeout(t);ok()};frame.onerror=()=>{clearTimeout(t);err(Error('IFRAME_ERROR'))};frame.src=url})}
+async function switchTo(m){
+ mode=m;$('b1').setAttribute('aria-pressed',String(m===1));$('b2').setAttribute('aria-pressed',String(m===2));
+ try{await Promise.all([frameLoad($('original'),original),frameLoad($('candidate'),candidate)]);
+ $('original').contentWindow.loadExerciseType(m-1);
+ if(m===2)await $('candidate').contentWindow.show2();
+ $('status').textContent='Đang xem Dạng '+m+' – cần so sánh trực tiếp, không tự phê duyệt.';
+ }catch(e){$('status').textContent='Lỗi tải: '+e.message}
+}
+$('b1').onclick=()=>switchTo(1);$('b2').onclick=()=>switchTo(2);
+$('report').onclick=()=>{const content={version:'G7.4-QAC3',scope:'OWNER_VISUAL_REVIEW_ONLY',type:mode,checks:Object.fromEntries(['layout','keypad','mobile','semantics'].map(x=>[x,$(x).checked])),notes:$('notes').value.trim(),ownerSigned:false};const blob=new Blob([JSON.stringify(content,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='G74_QAC3_Visual_Review_Notes.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)};
+switchTo(1);
+</script></body></html>
