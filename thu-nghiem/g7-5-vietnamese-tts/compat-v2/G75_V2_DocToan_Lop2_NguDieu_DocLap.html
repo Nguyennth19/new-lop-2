@@ -79,12 +79,19 @@ function normalize(source, opts={}) {
   t=t.replace(/\(\s*([=><+−–])\s*\)/g,(_s,op)=>'dấu '+SIGNS[op]);
   t=t.replace(/\bSGK\b/g,'sách giáo khoa').replace(/\bPV\s+(\d+)/g,'phạm vi $1');
   const mathContext=opts.context||'auto';
-  const mathDiv=mathContext==='math' || /(?:phép chia|chia|tính|kết quả|\s:\s|:\s*\d+\s*=)/iu.test(source);
+  // Division is decided PER colon occurrence, never per entire paragraph.
+  // Spaced '20 : 5' or compact '20:5=4' is math; '7:15' remains a clock.
+  const mathDiv=mathContext==='math';
   // Operator must follow a letter/number and precede a number, variable or unknown.
   // A word hyphen ('tách - gộp') fails the right-operand test and is preserved.
   t=t.replace(/(?<=[\p{L}\p{N}])\s*([+−–*×÷=><-])\s*(?=\d|[xX]\b|\?)/gu,(_s,op)=>' '+SIGNS[op]+' ');
   // ':' only in an arithmetic expression; 7:15 remains time in auto mode.
-  if(mathDiv)t=t.replace(/(?<=\d)\s*:\s*(?=\d)/g,' chia ');
+  t=t.replace(/(\d)(\s*:\s*)(?=\d)/g,(whole,left,colon,offset,all)=>{
+    const rest=all.slice(offset+whole.length);
+    const spaced=/\s/.test(colon);
+    const followedByEquality=/^\d+(?:[.,]\d+)?\s*=/.test(rest);
+    return (mathDiv||spaced||followedByEquality)?left+' chia ':whole;
+  });
   // x is a variable unless explicitly identified as multiplication in metadata.
   if(mathContext==='math' && opts.xAsMultiplication===true)
     t=t.replace(/(\d+)\s+[xX]\s+(?=\d+)/g,'$1 nhân ');
