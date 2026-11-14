@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "g76.resource-renderer.checkpoint.v1",
+  "createdDate": "2026-11-14",
+  "stage": "G7.6-A",
+  "status": "PINNED_MANIFEST_PURE_RESOLVER_CI_PASS_NOT_INTEGRATED",
+  "branch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+  "sourceBaseline": {
+    "branch": "test/g7-4-qa-d2-capacity-scale-v12-20261114",
+    "commit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+    "sourceManifestGitBlob": "27c6db04ce514c83d2b72f4068f20df8917e45ff"
+  },
+  "artifacts": {
+    "manifest": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+    "publicEnvelopeSchema": "du-lieu/g7-6/variant-public-envelope.schema.json",
+    "resolver": "qa/g7-6/resource-renderer-resolver.cjs",
+    "tests": "qa/g7-6/resource-renderer-resolver.test.cjs",
+    "report": "docs/kiem-dinh/G7.6_RESOURCE_RENDERER_CONSOLIDATION_V1_20261114.md",
+    "workflow": ".github/workflows/g7-6-resource-renderer-consolidation.yml"
+  },
+  "counts": {
+    "rendererEntries": 12,
+    "mainForms": 10,
+    "extensions": 2,
+    "assetRegistry": 288,
+    "assetCategories": 24,
+    "fluentSvgStaging": 46,
+    "repoWebp": 13,
+    "repoPng": 9,
+    "repoSvg": 46,
+    "voiceProfiles": 2
+  },
+  "qa": {
+    "ciRunId": 43612506524,
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43612506524",
+    "conclusion": "success",
+    "sourceCommit": "c066eb1f06c7df646279faa8a9ca84e79b869656",
+    "assertions": 296,
+    "artifactId": 14120856502,
+    "artifactName": "G76-Pinned-Registry-Resolver-Evidence",
+    "priorFailedRun": {
+      "runId": 43612271945,
+      "cause": "D10 generic strategy error was raised before explicit D10 security route denial",
+      "fix": "D10 guard now takes precedence",
+      "preserved": true
+    }
+  },
+  "gates": {
+    "G76A": "PASS_REFERENCE_PIN_AND_FAIL_CLOSED_RESOLVER",
+    "G76B": "NOT_STARTED_PER_TYPE_GENERATOR_ADAPTERS",
+    "G76C": "BLOCKED_GAS_TEST_E2E_MISSING",
+    "assetLibrary": "288_LABELS_APPROVED_CONTENT_QA_PER_ASSET_PENDING",
+    "fluentAutoFallback": "DENIED_STAGING_ONLY",
+    "D8A": "OWNER_ACCEPTED_IN_CHAT_WINDOWS;_UPLOADED_JSON_MANUAL_VISUAL_TOUCH_NOT_TESTED",
+    "D2_1000": "DENIED_PENDING_FOUR_COLUMN_POLICY",
+    "D10_NEW_GRADED_VARIANT": "BLOCKED_P0_LEGACY_CLIENT_ANSWER_FIELD_TRUSTED_GAS_NOT_READY",
+    "voice": "V12_V2_OWNER_ACCEPTED_STANDALONE_NOT_INTEGRATED"
+  },
+  "protected": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "G6Changed": false,
+    "P06Changed": false,
+    "gasTestVersion6Changed": false,
+    "studentDataWrites": false,
+    "starsOrScoresModified": false,
+    "releaseReady": false
+  },
+  "next": "G7.6-B – Map generator public payload per renderer with typed per-type adapters and evidence; do not activate G6/B20 D10 grader. Then separate explicit authorization for GAS TEST."
+}
