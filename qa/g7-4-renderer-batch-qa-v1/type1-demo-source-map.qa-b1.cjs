@@ -60,17 +60,20 @@ function compileComposite(data){
  if(ids.size!==3)return refuse('DUPLICATE_VARIANT_ID');
  const plans=examples.map(s=>core.compilePublic(s));
  const invalid=plans.find(x=>!x.ok);if(invalid)return refuse(invalid.reason);
+ const matchesFrozenSample=data.bond.parameters.a===8&&data.bond.parameters.b===5&&
+   data.dm.parameters.amount===1&&data.m.parameters.amount===1;
  const bindings=[];
  for(const s of SLOTS){
   const index=s.family==='MAKE_TEN_NUMBER_BOND'?0:s.variant==='dm'?1:2;
   const field=plans[index].fields.find(f=>f.id===s.fieldId);
   if(!field||field.role!=='INPUT'||field.value!==null)return refuse('SLOT_NOT_HIDDEN_INPUT_'+s.slotId);
   bindings.push({slotId:s.slotId,variantId:plans[index].variantId,fieldId:s.fieldId,
-    role:'ANSWER_INPUT',value:null,demoPlaceholder:s.demoPlaceholder});
+    role:'ANSWER_INPUT',value:null,
+    demoPlaceholder:matchesFrozenSample?s.demoPlaceholder:'?'});
  }
  return {ok:true,schemaVersion:'g74-qab1-type1-public-binding-plan',
   renderStrategy:'STRUCTURED_DIAGRAM',visualMode:'REPRESENTATIVE',sourceMode:'DEMO_REFERENCE_ONLY',
-  demoOriginalHtmlSha256:SOURCE_SHA256,
+  demoOriginalHtmlSha256:SOURCE_SHA256,matchedFrozenSample:matchesFrozenSample,
   plans:plans.map(p=>({schemaVersion:p.schemaVersion,variantId:p.variantId,
      diagramFamily:p.diagramFamily,fields:p.fields,layout:p.layout,
      renderStrategy:p.renderStrategy,rendererRole:p.rendererRole})),
