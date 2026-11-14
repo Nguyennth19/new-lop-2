@@ -64,5 +64,11 @@
     "studentDataWrites": false,
     "releaseReady": false
   },
-  "next": "QA-C1 OWNER VISUAL REVIEW from saved 3-variant Type1 demo-layout preview, then PROPER public-data Type1 runtime adapter; concurrently D2 keypad parity, D8 asset QA and separate QA-E D10 trusted grading. No GAS deployment."
+  "next": "QA-C1 OWNER VISUAL REVIEW from saved 3-variant Type1 demo-layout preview, then PROPER public-data Type1 runtime adapter; concurrently D2 keypad parity, D8 asset QA and separate QA-E D10 trusted grading. No GAS deployment.",
+  "drive": {
+    "documentId": "13M7GCUweqU6TUVTMiM-E0kBw-OpZJf_y2DTpSpUraig",
+    "url": "https://docs.google.com/document/d/13M7GCUweqU6TUVTMiM-E0kBw-OpZJf_y2DTpSpUraig/edit",
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "status": "DOCUMENT_CREATED_POPULATED_MOVED_VERIFIED"
+  }
 }
