@@ -1,0 +1,94 @@
+name: G7.4 QA-D2 V1.2 Liter Proportional SVG regression
+on:
+  push:
+    branches:
+      - test/g7-4-qa-d2-capacity-scale-v12-20261114
+    paths:
+      - '.github/workflows/g7-4-qa-d2-capacity-v12.yml'
+      - 'qa/g7-4-capacity-weight-reference-v12/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Geometry pure Node regression, source freeze, V1.1 weight function unmodified
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          node --check qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-view.js
+          node qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-geometry.test.cjs
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          old=Path('qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-view.js').read_text()
+          new=Path('qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-view.js').read_text()
+          a=lambda s:s[s.index('  function renderWeight(){'):s.index('  function render(){')]
+          assert a(old)==a(new),'Weight SVG must remain 100% unchanged'
+          html=Path('qa/g7-4-capacity-weight-reference-v12/G74_QAD2_Capacity_V12_Standalone_AB.html').read_text()
+          assert '<script src=' not in html
+          scripts=re.findall(r'<script>(.*?)</script>',html,re.S)
+          assert len(scripts)==5,len(scripts)
+          for i,code in enumerate(scripts):Path('/tmp/g74-d2-script-%d.js'%i).write_text(code)
+          print('QA_D2_WEIGHT_UNCHANGED_AND_5_EMBEDDED_SCRIPTS_PASS')
+          PY
+          for i in 0 1 2 3 4; do node --check "/tmp/g74-d2-script-$i.js"; done
+      - name: Start localhost server
+        run: |
+          python3 -m http.server 8799 --bind 127.0.0.1 >/tmp/g74-d2-http.log 2>&1 &
+          sleep 2
+      - name: Headless Chromium 5 variants on 390px and 1440px
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 115s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+              --virtual-time-budget=30000 --window-size="$size" --dump-dom \
+              'http://127.0.0.1:8799/qa/g7-4-capacity-weight-reference-v12/G74_QAD2_Capacity_V12_Standalone_AB.html?qaAuto=1' \
+              >"/tmp/g74-d2-$width.html" 2>"/tmp/g74-d2-$width.log"
+            python3 - "/tmp/g74-d2-$width.html" <<'PY'
+          import json,sys
+          from html.parser import HTMLParser
+          class P(HTMLParser):
+            def __init__(self):super().__init__();self.reading=False;self.content='';self.attrs={}
+            def handle_starttag(self,tag,attrs):
+              a=dict(attrs)
+              if tag=='pre' and a.get('id')=='result':self.reading=True;self.attrs=a
+            def handle_endtag(self,tag):
+              if tag=='pre':self.reading=False
+            def handle_data(self,data):
+              if self.reading:self.content+=data
+          p=P();p.feed(open(sys.argv[1],encoding='utf-8').read())
+          assert p.attrs.get('data-qa-done')=='true',p.attrs
+          assert p.attrs.get('data-qa-pass')=='true',(p.attrs,p.content[:700])
+          result=json.loads(p.content);assert result['status']=='PASS'
+          assert len(result['samples'])==5
+          assert all(len(sample['checks'])==8 and sample['status']=='PASS' for sample in result['samples'])
+          print('QA_D2_5_VARIANTS_40_CHECKS_PASS',sys.argv[1])
+          PY
+          done
+      - name: Visual screenshots for owner
+        if: always()
+        run: |
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g74-d2-screenshots
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 50s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+              --virtual-time-budget=4000 --window-size="$size" --screenshot="/tmp/g74-d2-screenshots/v12-$width.png" \
+              'http://127.0.0.1:8799/qa/g7-4-capacity-weight-reference-v12/G74_QAD2_Capacity_V12_Standalone_AB.html' >/tmp/g74-d2-screenshot.log 2>&1 || true
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: G74-QAD2-Liter-V11-V12-Visual-Comparison
+          path: /tmp/g74-d2-screenshots/
+          retention-days: 30
