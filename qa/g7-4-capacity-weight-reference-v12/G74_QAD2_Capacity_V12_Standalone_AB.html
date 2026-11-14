@@ -310,7 +310,7 @@
     const picture=svg('svg',{viewBox:'0 0 160 226',class:'g74-cw-v12-vessel',
       role:'img','aria-label':item.label+': đang có '+now+' lít, sức chứa '+item.capacityLiters+' lít, thang chia mỗi vạch 1 lít',
       'data-capacity-liters':item.capacityLiters,'data-current-liters':now,
-      'data-liter-step':g.step.toFixed(4)});
+      'data-liter-step':g.step.toFixed(8)});
     // Constant width and common bottom line model equal cross-sections; only capacity changes physical height.
     const vessel=svg('rect',{x:33,y:g.vesselTop,width:94,height:g.vesselHeight,
       fill:'#e4f4ff',stroke:'#4a81ac','stroke-width':3,
