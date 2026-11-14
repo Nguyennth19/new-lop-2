@@ -4,6 +4,17 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightViewV12=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
  'use strict';
  const NS='http://www.w3.org/2000/svg';
+  function literGeometry(capacity,current,largestCapacity){
+   if(!Number.isInteger(capacity)||capacity<1||capacity>100||
+      !Number.isInteger(current)||current<0||current>capacity||
+      !Number.isInteger(largestCapacity)||largestCapacity<capacity||largestCapacity>100)
+     throw Error('INVALID_LITER_GEOMETRY');
+   const step=Math.min(19,158/largestCapacity),bottom=204;
+   const vesselTop=bottom-capacity*step,waterTop=bottom-current*step;
+   return Object.freeze({capacity,current,bottom,step,vesselTop,waterTop,
+     vesselHeight:capacity*step,waterHeight:current*step,
+     labelEvery:largestCapacity<=12?1:Math.ceil(largestCapacity/10)});
+  }
  function mount(host,plan,opts={}){
   if(!host||!host.ownerDocument||!plan||plan.schemaVersion!=='g74-capacity-weight-v11'||
      typeof KLCapacityWeightV11==='undefined')return {ok:false,reason:'INVALID_HOST_OR_CORE'};
@@ -33,17 +44,6 @@
   }
   // One consistent visual liter unit across both containers. No changes to engine quantities.
   // For large generated capacities, all unit marks remain; alternate labels are thinned.
-  function literGeometry(capacity,current,largestCapacity){
-   if(!Number.isInteger(capacity)||capacity<1||capacity>100||
-      !Number.isInteger(current)||current<0||current>capacity||
-      !Number.isInteger(largestCapacity)||largestCapacity<capacity||largestCapacity>100)
-     throw Error('INVALID_LITER_GEOMETRY');
-   const step=Math.min(19,158/largestCapacity),bottom=204;
-   const vesselTop=bottom-capacity*step,waterTop=bottom-current*step;
-   return Object.freeze({capacity,current,bottom,step,vesselTop,waterTop,
-     vesselHeight:capacity*step,waterHeight:current*step,
-     labelEvery:largestCapacity<=12?1:Math.ceil(largestCapacity/10)});
-  }
   function renderLiter(){
    const state=engine.snapshot(),grid=doc.createElement('div');
    grid.className='g74-cw-two';
