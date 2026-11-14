@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "g7.4.qa-c3.d8ab.asset-policy.v1",
+  "date": "2026-11-14",
+  "scope": "TYPE_8A_LITER_8B_WEIGHT_VISUALS",
+  "decision": "SVG_DYNAMIC_MATH_IS_AUTHORITATIVE_STATIC_ASSETS_OPTIONAL_UNTIL_APPROVED",
+  "renderer8A": {
+    "mandatory": "SVG_LITER_FILL_SCALE",
+    "source": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-view.js",
+    "dynamicValuesFrom": "quantity/capacity plan",
+    "neverDeriveVolumeFromImage": true,
+    "approvedStaticAssetId": null,
+    "optionalCandidate": {
+      "assetId": "KL_M05_009",
+      "label": "ca đong có vạch",
+      "sourcePngDriveId": "15cwvMibrCmTTbL2mYCdyoSQvMVE3pyJ7",
+      "qa": "SOURCE_IMAGE_VISUALLY_SEEN_AS_MEASURING_CUP",
+      "usage": "STATIC_REFERENCE_ONLY_NOT_FILL_LEVEL_NOT_SCALE",
+      "canActivate": false,
+      "blockers": [
+        "WebP matching source bytes and dimensions not verified",
+        "specific semantic presentation/illustration policy owner signoff not recorded"
+      ]
+    }
+  },
+  "renderer8B": {
+    "mandatory": "SVG_BALANCE_TILT",
+    "source": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-view.js",
+    "orientation": "if LEFT 3 kg < RIGHT 5 kg, LEFT pan higher (smaller SVG Y)",
+    "approvedStaticAssetId": null,
+    "optionalCandidate": {
+      "assetId": "KL_M04_001",
+      "label": "cân hai đĩa",
+      "sourcePngDriveId": "1Tq481TgyU2mYFR7g8t3xZs0uQGQjgXI-",
+      "qa": "SOURCE_IMAGE_VISUALLY_SEEN_AS_EVEN_PAN_BALANCE_WITH_EMPTY_PANS",
+      "usage": "STATIC_OBJECT_ILLUSTRATION_ONLY_NOT_AS_3KG_5KG_TILTED_SCALE",
+      "canActivate": false,
+      "blockers": [
+        "Static source depicts near-equal height and cannot represent changing quantities",
+        "WebP identity/dimensions not independently verified",
+        "owner specific illustration binding permission pending"
+      ]
+    }
+  },
+  "registry": {
+    "path": "du-lieu/asset-selector/asset-registry-288.v1.json",
+    "assetIdsExist": true,
+    "labelsApproved": true,
+    "contentQA": "PENDING_UNLESS_EXPLICITLY_VERIFIED",
+    "sourceAssetInventory": "qa/g7-4-capacity-weight-reference-v11/asset-inventory.v11.json",
+    "existingSourceInventoryApprovedAssetIdCount": 0,
+    "doNotConfuseExistingRegistryIDWithRendererBindingApproval": true
+  },
+  "noWrites": [
+    "sourceRegistry",
+    "sourceAssets",
+    "originalDemo",
+    "G6",
+    "MAIN",
+    "GAS_TEST"
+  ],
+  "gate": "PASS_SVG_PRIMARY_POLICY_STATIC_ASSET_BINDING_PENDING"
+}
