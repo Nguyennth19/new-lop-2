@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "g74.qa-c3.checkpoint.v1",
+  "date": "2026-11-14",
+  "stage": "G7.4-QA-C.3",
+  "status": "TECHNICAL_AND_BROWSER_PASS_OWNER_VISUAL_PENDING_STATIC_ASSETS_NOT_BOUND_D10_VARIANT_P0_BLOCKED",
+  "branch": "test/g7-4-renderer-qa-c3-parity-assets-20261114",
+  "parent": {
+    "branch": "test/g7-4-renderer-qa-c2-variant-integration-20261114",
+    "head": "a67662974d9869deb650cd547af13f7ac426c0c7"
+  },
+  "originalDemoSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+  "files": {
+    "visualReview": "qa/g7-4-renderer-batch-qa-v1/qa-c3-owner-visual-review.html",
+    "assetPolicy": "qa/g7-4-renderer-batch-qa-v1/qa-c3-d8ab-asset-policy.v1.json",
+    "test": "qa/g7-4-renderer-batch-qa-v1/qa-c3-asset-and-d10-boundary.test.cjs",
+    "report": "docs/kiem-dinh/G7.4_RENDERER_QA_C3_VISUAL_ASSETS_TRUST_20261114.md",
+    "workflow": ".github/workflows/g7-4-renderer-qa-c3.yml"
+  },
+  "ci": {
+    "id": 43604028201,
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43604028201",
+    "conclusion": "success",
+    "head": "bda242040fa92a18eba15cde1404e7b0e8c5896d",
+    "c3Assertions": 29,
+    "c2Regressions": 50,
+    "qaEOfflineAssertions": 28,
+    "chromeViewportWidths": [
+      390,
+      1440
+    ],
+    "twoFramesLoaded": true,
+    "artifactId": 14118005195,
+    "artifactRetentionDays": 30
+  },
+  "ownerVisualSignoff": "PENDING_NOT_AUTO_SIGNED",
+  "assetDecisions": {
+    "renderer8A": "SVG_PRIMARY",
+    "renderer8B": "SVG_PRIMARY",
+    "candidateM05": "KL_M05_009_SOURCE_PNG_VISUALLY_INSPECTED_NO_RENDERER_BINDING",
+    "candidateM04": "KL_M04_001_SOURCE_PNG_VISUALLY_INSPECTED_NO_RENDERER_BINDING",
+    "approvedRendererAssetId8A": null,
+    "approvedRendererAssetId8B": null,
+    "reason": "static source cannot encode changing volumes/masses; WebP/source match and specific owner binding approval pending"
+  },
+  "d10": {
+    "currentG6UI": "UNMODIFIED_PER_OWNER_REQUEST",
+    "variantServerTrust": "P0_BLOCKED_LEGACY_CLIENT_ANSWER_KEY",
+    "offlineProof": "PASS_28_ASSERTIONS",
+    "gasIntegrated": false,
+    "skipFullRebuild": true
+  },
+  "protected": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "g6Changed": false,
+    "p06Changed": false,
+    "gasTestV6Changed": false,
+    "studentDataWrites": false,
+    "releaseReady": false
+  },
+  "next": "QA-C.3a owner manual visual review Type1/Type2; QA-D real touch and dynamic SVG; D10 variant grading only after isolated trusted server route and legacy leak containment."
+}
