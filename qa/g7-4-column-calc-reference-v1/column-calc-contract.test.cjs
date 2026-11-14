@@ -3,7 +3,11 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require(
 const {validate,publicPlan,computeServerOnly,checkAnswers,chooseRenderer}=require('./column-calc-contract.cjs');
 let checks=0;const eq=(a,b,m)=>{assert.deepEqual(a,b,m);checks++};const ok=(a,m)=>{assert.ok(a,m);checks++};
 const manifest=JSON.parse(fs.readFileSync('qa/g7-4-column-calc-reference-v1/source-lock.v1.json','utf8'));
-eq(manifest.sourceFiles.length,6);eq(manifest.visualReference.originalAdvancedHTMLLocated,false);
+// QA-B.1 test-only expectation correction: HTML source was later located and SHA-locked.
+// Do not downgrade the actual source-lock metadata to satisfy the historical test.
+eq(manifest.sourceFiles.length,6);eq(manifest.visualReference.originalAdvancedHTMLLocated,true);
+eq(manifest.visualReference.advancedSourceSha256,'78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced');
+eq(manifest.visualReference.sourceByteLength,131767);
 for(const f of manifest.sourceFiles){
  const src=fs.readFileSync(f.path),snap=fs.readFileSync(f.snapshot);
  eq(src.equals(snap),true,'byte exact '+f.path);
