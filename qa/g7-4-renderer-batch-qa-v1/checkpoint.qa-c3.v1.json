@@ -58,5 +58,10 @@
     "studentDataWrites": false,
     "releaseReady": false
   },
-  "next": "QA-C.3a owner manual visual review Type1/Type2; QA-D real touch and dynamic SVG; D10 variant grading only after isolated trusted server route and legacy leak containment."
+  "next": "QA-C.3a owner manual visual review Type1/Type2; QA-D real touch and dynamic SVG; D10 variant grading only after isolated trusted server route and legacy leak containment.",
+  "drive": {
+    "documentId": "1JHa05h8Fu1hTN4RR04inO6A04Nq5HReH0oHdCxmufoM",
+    "url": "https://docs.google.com/document/d/1JHa05h8Fu1hTN4RR04inO6A04Nq5HReH0oHdCxmufoM/edit",
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8"
+  }
 }
