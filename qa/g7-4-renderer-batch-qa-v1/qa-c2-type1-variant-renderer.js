@@ -26,8 +26,13 @@
   const svg=d.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 260 70');svg.setAttribute('aria-hidden','true');
   const path=d.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d','M180 2L100 65M180 2L230 65');path.setAttribute('fill','none');path.setAttribute('stroke','#16a085');path.setAttribute('stroke-width','4');svg.append(path);picture.append(svg);
   const children=node('div','g74t1-bond-children');picture.append(children);
-  const slots=new Map();
+  const slots=new Map(),mirrors=new Map();
   function slot(id,max=3){
+    if(slots.has(id)){
+      const mirror=node('button','g74t1-slot g74t1-mirror','?');mirror.type='button';mirror.dataset.mirror=id;
+      mirror.setAttribute('aria-label','Chọn ô '+id+' trong phép tính');mirror.onclick=()=>select(id);
+      if(!mirrors.has(id))mirrors.set(id,[]);mirrors.get(id).push(mirror);return mirror;
+    }
     const b=node('button','g74t1-slot','?');b.type='button';b.id='slot_'+id;b.dataset.slot=id;b.dataset.maxlength=String(max);
     b.setAttribute('aria-label','Ô trả lời '+id);b.setAttribute('aria-pressed','false');b.onclick=()=>select(id);slots.set(id,b);return b;
   }
@@ -42,10 +47,13 @@
   right.append(node('p','g74t1-tip','Chạm vào ô trống, sau đó dùng bàn phím Toán phía dưới.'));
   const pad=node('section','g74t1-numpad');pad.setAttribute('aria-label','Bàn phím số Toán lớp 2');const indicator=node('div','g74t1-status','Ô đang chọn: '+active);pad.append(indicator);
   const grid=node('div','g74t1-pad-grid');pad.append(grid);
-  function select(id){if(!slots.has(id))return;active=id;for(const [key,button] of slots){const on=key===id;button.classList.toggle('active',on);button.setAttribute('aria-pressed',String(on))}indicator.textContent='Ô đang chọn: '+id;}
+  function select(id){if(!slots.has(id))return;active=id;for(const [key,button] of slots){const on=key===id;button.classList.toggle('active',on);button.setAttribute('aria-pressed',String(on))}
+    for(const [key,list] of mirrors)for(const b of list){b.classList.toggle('active',key===id);b.setAttribute('aria-pressed',String(key===id))}
+    indicator.textContent='Ô đang chọn: '+id;}
   function input(c){if(!slots.has(active))return;const button=slots.get(active),max=Number(button.dataset.maxlength);let val=values[active]||'';
     if(c==='BACK')val=val.slice(0,-1);else if(c==='CLR')val='';else if(/^\d$/.test(c))val=val.length>=max?c:val+c;else return;
     values[active]=val;button.textContent=val||'?';button.dataset.empty=String(val==='');
+    for(const mirror of mirrors.get(active)||[])mirror.textContent=val||'?';
     if(typeof opts.onChange==='function')opts.onChange({variantId:plan.caseId,values:{...values},active});
   }
   for(const c of ['1','2','3','4','5','6','7','8','9','CLR','0','BACK']){
@@ -54,7 +62,8 @@
    btn.addEventListener('click',()=>input(c));grid.append(btn);
   }
   const controls=node('div','g74t1-controls');const reset=node('button','','↺ Làm lại');reset.type='button';
-  reset.onclick=()=>{for(const [id,b] of slots){delete values[id];b.textContent='?';b.dataset.empty='true';}select(ids[0]);if(typeof opts.onChange==='function')opts.onChange({variantId:plan.caseId,values:{},reset:true})};controls.append(reset);
+  reset.onclick=()=>{for(const [id,b] of slots){delete values[id];b.textContent='?';b.dataset.empty='true';}
+    for(const list of mirrors.values())for(const b of list)b.textContent='?';select(ids[0]);if(typeof opts.onChange==='function')opts.onChange({variantId:plan.caseId,values:{},reset:true})};controls.append(reset);
   const note=node('p','g74t1-warning','TEST: chỉ thu ô nhập, không chấm, không đọc đáp án, không cộng sao.');controls.append(note);
   host.replaceChildren(stage,pad,controls);select(active);
   return {ok:true,collect:()=>({variantId:plan.caseId,fields:{...values}}),reset:()=>reset.click(),select,input,slots};
