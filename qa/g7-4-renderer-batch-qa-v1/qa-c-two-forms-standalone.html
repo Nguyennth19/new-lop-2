@@ -1,0 +1,53 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.4 QA-C · Dạng 3/4 renderer TEST (tái sử dụng view gốc)</title>
+<link rel="stylesheet" href="../g7-4-matching-reference-v11/matching-v11.css">
+<link rel="stylesheet" href="../g7-4-choice-reference-v11/choice-v11.css">
+<style>
+*{box-sizing:border-box}body{margin:0;padding:12px;font:700 14px/1.5 system-ui;background:#f1f8fd;color:#243c57}
+header,main{max-width:850px;margin:10px auto;padding:14px;background:white;border-radius:18px;border:2px solid #c9dce9;min-width:0}
+h1{font-size:20px;margin:0 0 8px}header button{border:2px solid #a8c8ef;border-radius:10px;background:#fff;padding:9px;cursor:pointer;font:inherit}
+header button.active{background:#4d53c9;color:white}
+</style></head><body>
+<header><h1>QA-C · Dạng 3 Nối cặp / Dạng 4 Trắc nghiệm</h1>
+<p>Mount renderer hiện có với dữ liệu TEST. Không dựng lại giao diện, không chấm hay ghi điểm.</p>
+<button id="matching" class="active">Dạng 3 · Nối</button><button id="choice">Dạng 4 · Chọn</button><button id="reset">Làm lại</button></header>
+<main id="qa-c-host"></main>
+<script src="../g7-4-matching-reference-v11/matching-v11-core.js"></script>
+<script src="../g7-4-matching-reference-v11/matching-v11-view.js"></script>
+<script src="../g7-4-choice-reference-v11/choice-v11-core.js"></script>
+<script src="../g7-4-choice-reference-v11/choice-v11-view.js"></script>
+<script>
+(function(){
+ 'use strict';
+ const M={exerciseId:'MATCH_QAC_BROWSER',relationMode:'SINGLE_RELATION',
+ leftItems:[{id:'l1',content:{type:'MATH',text:'2 + 2 + 2'}},
+            {id:'l2',content:{type:'TEXT',text:'Một tá bút chì'}},
+            {id:'l3',content:{type:'MATH',text:'5 + 5'}}],
+ rightItems:[{id:'r1',content:{type:'TEXT',text:'6'}},
+             {id:'r2',content:{type:'TEXT',text:'12'}},
+             {id:'r3',content:{type:'TEXT',text:'10'}}]};
+ const C={questionId:'CHOICE_QAC_BROWSER',selectionMode:'SINGLE',
+  prompt:{type:'TEXT',text:'Trong hộp chỉ có bóng đỏ. Lấy được bóng xanh là điều gì?'},
+  options:[{id:'A',content:{type:'TEXT',text:'Chắc chắn'}},
+           {id:'B',content:{type:'TEXT',text:'Có thể'}},
+           {id:'C',content:{type:'TEXT',text:'Không thể'}}]};
+ const host=document.getElementById('qa-c-host'),tabs={matching:document.getElementById('matching'),
+ choice:document.getElementById('choice')};
+ let current=null,controller=null;const draft={};
+ function switchTo(next){
+  if(controller){draft[current]=controller.snapshot();controller.destroy();controller=null;}
+  host.replaceChildren();current=next;const core=next==='matching'?KLMatchingV11:KLChoiceV11;
+  const view=next==='matching'?KLMatchingViewV11:KLChoiceViewV11;
+  const result=core.compile(next==='matching'?M:C);
+  if(!result.ok){host.textContent='INVALID '+result.reason;throw Error(result.reason)}
+  controller=view.mount(host,result.plan,{onChange:s=>{draft[current]=s;}});
+  if(!controller.ok)throw Error(controller.reason);
+  if(draft[next])controller.restore(draft[next]);
+  for(const [id,btn] of Object.entries(tabs))btn.classList.toggle('active',id===next);
+ }
+ tabs.matching.onclick=()=>switchTo('matching');tabs.choice.onclick=()=>switchTo('choice');
+ document.getElementById('reset').onclick=()=>{controller.clear();draft[current]=controller.snapshot();};
+ window.QACTwoForms=Object.freeze({switchTo,get snapshot(){return controller?.snapshot();},get current(){return current;}});
+ switchTo(new URLSearchParams(location.search).get('mode')==='choice'?'choice':'matching');
+})();
+</script></body></html>
