@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "g7.4.qa-d2.capacity.v1",
+  "date": "2026-11-14",
+  "stage": "G7.4-QA-D.2-CAPACITY_SVG_PROPORTIONAL_SCALE_V1.2",
+  "status": "TECHNICAL_QA_PASS_OWNER_VISUAL_SIGNOFF_PENDING",
+  "branch": "test/g7-4-qa-d2-capacity-scale-v12-20261114",
+  "base": {
+    "branch": "test/g7-4-renderer-qa-d-device-20261114",
+    "head": "16ee7ce4df250d1f1b9fe071546374768c0cbfe0",
+    "originalRendererV11": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-view.js"
+  },
+  "source": {
+    "renderer": "qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-view.js",
+    "standalone": "qa/g7-4-capacity-weight-reference-v12/G74_QAD2_Capacity_V12_Standalone_AB.html",
+    "tests": "qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-geometry.test.cjs",
+    "report": "docs/kiem-dinh/G7.4_QA_D2_CAPACITY_SVG_PROPORTIONAL_SCALE_V12_20261114.md"
+  },
+  "qa": {
+    "ciRunId": 43607001671,
+    "conclusion": "success",
+    "sourceCommit": "f42cc818da6f1d07d54cb76a7c232e290bf343a7",
+    "pureGeometryAssertions": 97,
+    "chromeVariantCount": 5,
+    "viewports": [
+      390,
+      1440
+    ],
+    "checksPerVariant": 8,
+    "checksTotal": 80,
+    "failures": 0,
+    "weightViewSourceUnchanged": true,
+    "manualVisualApproval": "PENDING",
+    "androidTouch": "PENDING",
+    "ownerPreviouslyApprovedQA_D_V11": "PASS_WINDOWS_CHROME_157"
+  },
+  "bugs": [
+    {
+      "runs": [
+        43606803291,
+        43606886907,
+        43606984623
+      ],
+      "cause": "diagnostic data-liter-step rounded 4 decimals at 12L variation",
+      "fix": "serialize step at 8 decimal places, not geometry change"
+    }
+  ],
+  "design": {
+    "equalCrossSection": true,
+    "unitStep": "min(19,158/maxCapacity)",
+    "sameBaseline": true,
+    "ticksEveryLiter": true,
+    "largeCapacityTextLabelThinning": true,
+    "capacityScaleProportional": true,
+    "waterHeightProportionalToAbsoluteLiters": true
+  },
+  "gates": {
+    "D8A": "V12_STATIC_PASS_MANUAL_PENDING",
+    "D8B": "V11_UNCHANGED",
+    "others": "NOT_MODIFIED",
+    "GAS": "NOT_DEPLOYED",
+    "D10": "EXISTING_G6_UNCHANGED_VARIANT_SECURITY_P0_BLOCKED"
+  },
+  "protected": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "G6Changed": false,
+    "AppsScriptTestVersion6Changed": false,
+    "studentDataChanged": false,
+    "releaseReady": false
+  },
+  "next": "Owner visually compares V1.1 and V1.2 HTML, tests 1L increments and 8/5 and 12/4 variation on mobile; provide exported QA JSON. Integration only after signoff."
+}
