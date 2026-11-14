@@ -19,10 +19,11 @@ function mutatePreview(w,v){
  walkText(stage,t=>swap.reduce((out,[re,x])=>out.replace(re,x),t));
  const top=stage.querySelector('.bg-sky-500');const second=stage.querySelector('.bg-orange-500');
  if(top)top.textContent=String(v.a);if(second)second.textContent=String(v.b);
+ if(v.id!=='FROZEN_8_5'){const oldPrompt=d.querySelector('#slot_t1_split1 span.text-slate-300');if(oldPrompt)oldPrompt.textContent='?';}
  const prompt=d.getElementById('exercisePrompt');if(prompt)prompt.textContent='Điền ô trống: '+v.a+' + '+v.b+'; '+v.dm+' dm và '+v.m+' m đổi sang cm.';
  // Hard-coded source voice prompts and grading MUST NEVER be used on variant data.
  d.querySelectorAll('button[onclick]').forEach(b=>{const act=b.getAttribute('onclick')||'';
-  if(/speakVietnamese|checkCurrentExercise|nextExerciseType|resetCurrentExercise/.test(act)){
+  if(/speakVietnamese|speakCurrentPrompt|checkCurrentExercise|nextExerciseType|resetCurrentExercise/.test(act)){
    b.disabled=true;b.title='Không sử dụng chức năng nguồn cố định trong bản thử biến thể';
    b.style.opacity='.40';b.style.pointerEvents='none';
   }
@@ -42,7 +43,7 @@ async function run(){
  test('DYNAMIC_CONVERSIONS',stage.textContent.includes(v.dm+' dm =')&&stage.textContent.includes(v.m+' m ='));
  test('ORIGINAL_UNMODIFIED', $('original').contentDocument.getElementById('interactiveStage').textContent.includes('8 + 5'));
  test('FIXED_GRADER_DISABLED',Array.from(d.querySelectorAll('button[onclick*="checkCurrentExercise"]')).every(b=>b.disabled));
- test('FIXED_TTS_DISABLED',Array.from(stage.querySelectorAll('button[onclick*="speakVietnamese"]')).every(b=>b.disabled));
+ test('FIXED_TTS_DISABLED',Array.from(d.querySelectorAll('button[onclick*="speakVietnamese"],button[onclick*="speakCurrentPrompt"]')).every(b=>b.disabled));
  test('ORIGINAL_NUMPAD_PRESERVED',!!d.getElementById('numpadKeysGrid'));
  report.status=report.checks.every(c=>c.pass)?'PASS_DYNAMIC_DOM_PREVIEW_ONLY':'FAIL';
  }catch(e){report.status='FAIL';report.error=String(e);}
