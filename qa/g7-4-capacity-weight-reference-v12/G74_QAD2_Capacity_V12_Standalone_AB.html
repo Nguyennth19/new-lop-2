@@ -1,0 +1,452 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.4 QA-D.2 – Đối chiếu bình lít V1.1 / V1.2</title>
+<style>/* Scoped 8-A / 8-B styles, isolated from G6 and Measurement V1.1. */
+.g74-cw-v11{max-width:850px;margin:0 auto;font:700 15px/1.45 system-ui,sans-serif;color:#243954}
+.g74-cw-v11 h3{font-size:17px;padding:12px 15px;border-radius:14px;border:2px solid #a6d2ee;background:#f0faff}
+.g74-cw-status{color:#5e7089;font-size:12px}
+.g74-cw-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:12px 0}
+.g74-cw-panel{border:2px solid #b8d9ed;background:#fff;border-radius:17px;padding:12px;display:flex;flex-direction:column;align-items:center;min-width:0;gap:7px}
+.g74-cw-panel svg{height:215px;max-width:100%}
+.g74-cw-panel p{font-size:12px;text-align:center;margin:3px}
+.g74-cw-controls{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:9px 0}
+.g74-cw-btn{border:2px solid #80b5df;border-radius:11px;cursor:pointer;background:#e8f6ff;color:#1b5688;min-height:44px;padding:9px 12px;font:800 13px system-ui}
+.g74-cw-btn:disabled{opacity:.5;cursor:not-allowed}
+.g74-cw-btn:focus-visible{outline:3px solid #265ee7;outline-offset:2px}
+.g74-cw-scale{border:2px solid #ecd6a1;background:#fff8e9;border-radius:18px;padding:12px;text-align:center}
+.g74-cw-scale>svg{width:100%;height:auto;max-width:530px}
+.g74-cw-balance{font-weight:800;color:#855b29}
+.g74-cw-asset{max-height:65px;max-width:120px;object-fit:contain}
+.g74-cw-asset-fallback{font-size:11px;color:#6a7c8d}
+@media(max-width:480px){.g74-cw-two{grid-template-columns:1fr}.g74-cw-panel svg{height:165px}}
+
+*{box-sizing:border-box}body{margin:0;background:#eef7ff;color:#243954;font:15px/1.5 system-ui}header{background:white;padding:16px;border-bottom:3px solid #91c9e7}h1{font-size:22px;margin:0 0 6px}h2{font-size:17px}p{margin:8px 0}main{max-width:1250px;margin:auto;padding:14px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}.compare{background:#fff;border:2px solid #b8d9ed;border-radius:15px;padding:12px;min-width:0}.compare>h2{margin:0 0 10px}.qa-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.qa-buttons button,.qa-buttons select{padding:9px;border:2px solid #82bcdf;border-radius:10px;background:white;font:inherit;min-height:44px;cursor:pointer}.qa-result{white-space:pre-wrap;overflow-wrap:anywhere;background:#102b47;color:#ebf6ff;border-radius:12px;padding:12px;max-height:330px;overflow:auto;font:12px/1.4 ui-monospace,monospace}.qa-info{background:#fff7df;border-left:4px solid #dcaa41;padding:10px}.g74-cw-v12-vessel{display:block;width:100%;max-width:200px;max-height:none;height:226px!important;margin:auto}.g74-cw-v12-liter-panel{align-items:center}.g74-cw-two{grid-template-columns:repeat(2,minmax(0,1fr))}.g74-cw-panel svg:not(.g74-cw-v12-vessel){height:215px;max-width:100%} @media(max-width:900px){.columns{grid-template-columns:1fr}}@media(max-width:480px){.g74-cw-two{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.g74-cw-panel{padding:5px;gap:5px}.g74-cw-v12-vessel{height:190px!important}.g74-cw-panel p{font-size:11px}.g74-cw-btn{padding:8px;min-width:40px}}
+</style></head><body><header><h1>G7.4 QA-D.2 – Dạng 8A: bình theo dung tích và vạch 1 L</h1>
+<p>So sánh nguồn V1.1 đã nghiệm thu với V1.2 ứng viên. <strong>8 L phải cao hơn 5 L; mỗi vạch cách nhau 1 L; 3 L có cùng độ cao ở các bình cùng tiết diện.</strong></p>
+<p class="qa-info">Đây là bản thử TEST độc lập. Không chấm bài, không ghi điểm, không sửa Dạng 8B, TTS hoặc dữ liệu học sinh. Bên trái là bản cũ để rollback.</p></header>
+<main><div class="qa-buttons"><label>Cấu hình: <select id="fixture">
+<option value="8,3,5,1">A: 8 L (3 L nước) · B: 5 L (1 L nước)</option>
+<option value="8,0,5,0">Hai bình rỗng: 8 L và 5 L</option>
+<option value="8,8,5,5">Hai bình đầy: 8/8 và 5/5 L</option>
+<option value="8,3,5,3">Cùng 3 L nước, hai sức chứa khác nhau</option>
+<option value="12,9,4,2">Biến thể: 12 L và 4 L</option>
+</select></label><button id="reload">Dựng lại cả hai</button><button id="qa">Kiểm tra V1.2</button><button id="export">Xuất JSON nghiệm thu</button></div>
+<div class="columns"><section class="compare"><h2>V1.1 – Bình cùng kích cỡ (chuẩn rollback)</h2><div id="old"></div></section>
+<section class="compare"><h2>V1.2 – Kích thước theo sức chứa + vạch 1 L</h2><div id="new"></div></section></div>
+<h2>Biên bản thử nghiệm</h2><div class="qa-buttons"><label>Hình đúng và dễ hiểu: <select id="human"><option value="NOT_TESTED">Chưa đánh giá</option><option value="PASS">PASS</option><option value="FAIL">FAIL</option></select></label><label>Trên thiết bị: <select id="touch"><option value="NOT_TESTED">Chưa thử chạm</option><option value="PASS">PASS</option><option value="FAIL">FAIL</option></select></label></div>
+<textarea id="notes" rows="3" style="width:100%;padding:10px" placeholder="Nhận xét: kích thước bình, vạch 1 L, nút thao tác, hiển thị trên điện thoại…"></textarea>
+<pre id="result" class="qa-result">Chưa kiểm tra.</pre></main>
+<script>/* G7.4 CAPACITY_WEIGHT_REFERENCE_V1.1 – pure independent TEST engines.
+ * No model answers, server calls, scores, awards or progress writes.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightV11=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ const MODES=Object.freeze({LITER:'LITER',WEIGHT:'WEIGHT'});
+ const fail=reason=>({ok:false,reason});
+ const id=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{1,80}$/.test(x);
+ const value=x=>Number.isInteger(x)&&x>=0&&x<=100;
+ const deny=['answer','answerKey','correct','isCorrect','correctAnswer','gradingKey','solution','expectedValue'];
+ function safe(x){return x&&typeof x==='object'&&!deny.some(k=>Object.prototype.hasOwnProperty.call(x,k));}
+ function compile(raw){
+  if(!safe(raw)||!id(raw.exerciseId)||!Object.values(MODES).includes(raw.mode))return fail('INVALID_META');
+  const isL=raw.mode===MODES.LITER,entries=isL?raw.containers:raw.pans;
+  if(!Array.isArray(entries)||entries.length!==2)return fail('TWO_ENTRIES_REQUIRED');
+  const seen=new Set(),items=[];
+  for(const item of entries){
+   if(!safe(item)||!id(item.id)||seen.has(item.id))return fail('INVALID_ENTRY_ID');
+   const label=typeof item.label==='string'?item.label.trim():'';
+   const assetId=typeof item.assetId==='string'?item.assetId.trim():'';
+   if(!label||label.length>120||(assetId&&!/^[A-Za-z0-9_.:-]{1,120}$/.test(assetId)))return fail('INVALID_LABEL_ASSET');
+   const cur=isL?item.currentLiters:item.massKg;
+   if(!value(cur))return fail('INVALID_QUANTITY');
+   const v={id:item.id,label,assetId,alt:typeof item.alt==='string'?item.alt.slice(0,160):''};
+   if(isL){
+    if(!value(item.capacityLiters)||item.capacityLiters===0||cur>item.capacityLiters)return fail('INVALID_CAPACITY');
+    v.capacityLiters=item.capacityLiters;v.initialLiters=cur;
+   }else v.initialKg=cur;
+   seen.add(item.id);items.push(Object.freeze(v));
+  }
+  return {ok:true,plan:Object.freeze({schemaVersion:'g74-capacity-weight-v11',exerciseId:raw.exerciseId,
+   mode:raw.mode,prompt:typeof raw.prompt==='string'?raw.prompt.slice(0,500):'',
+   items:Object.freeze(items),step:1})};
+ }
+ function session(plan){
+  if(!plan||plan.schemaVersion!=='g74-capacity-weight-v11')throw Error('INVALID_PLAN');
+  const liter=plan.mode===MODES.LITER;
+  const start=()=>Object.fromEntries(plan.items.map(i=>[i.id,liter?i.initialLiters:i.initialKg]));
+  let amounts=start();
+  const snapshot=()=>({exerciseId:plan.exerciseId,mode:plan.mode,quantities:{...amounts}});
+  function adjust(key,delta){
+   const item=plan.items.find(x=>x.id===key);
+   if(!item)return fail('UNKNOWN_ENTRY');
+   if(!Number.isInteger(delta)||Math.abs(delta)>100)return fail('INVALID_DELTA');
+   const next=amounts[key]+delta,cap=liter?item.capacityLiters:100;
+   if(next<0||next>cap)return fail('OUT_OF_BOUNDS');
+   amounts[key]=next;return {ok:true,state:snapshot()};
+  }
+  return Object.freeze({
+   snapshot,adjust,
+   transfer(from,to,liters){
+    if(!liter)return fail('WRONG_MODE');
+    if(from===to||!Object.prototype.hasOwnProperty.call(amounts,from)||
+      !Object.prototype.hasOwnProperty.call(amounts,to))return fail('UNKNOWN_ENTRY');
+    if(!Number.isInteger(liters)||liters<=0)return fail('INVALID_TRANSFER');
+    const target=plan.items.find(x=>x.id===to);
+    if(amounts[from]<liters||amounts[to]+liters>target.capacityLiters)return fail('OUT_OF_BOUNDS');
+    amounts[from]-=liters;amounts[to]+=liters;return {ok:true,state:snapshot()};
+   },
+   clear(){amounts=start();return {ok:true,state:snapshot()};},
+   restore(d){
+    if(!d||d.exerciseId!==plan.exerciseId||d.mode!==plan.mode||
+      !d.quantities||typeof d.quantities!=='object'||Array.isArray(d.quantities)||
+      Object.keys(d.quantities).length!==plan.items.length)return fail('INVALID_DRAFT');
+    const copy={};
+    for(const item of plan.items){
+     const v=d.quantities[item.id];
+     if(!value(v)||(liter&&v>item.capacityLiters))return fail('INVALID_DRAFT_QUANTITY');
+     copy[item.id]=v;
+    }
+    amounts=copy;return {ok:true,state:snapshot()};
+   }
+  });
+ }
+ function balanceTilt(leftKg,rightKg){
+  if(!value(leftKg)||!value(rightKg))throw Error('INVALID_MASS');
+  // SVG screen Y increases downward. +angle clockwise => left arm rises, right lowers.
+  // left lighter => positive angle; left heavier => negative angle.
+  const angle=Math.max(-15,Math.min(15,(rightKg-leftKg)*3));
+  const rad=angle*Math.PI/180;
+  return Object.freeze({degrees:angle,leftY:58-105*Math.sin(rad),rightY:58+105*Math.sin(rad),
+   relation:leftKg===rightKg?'BALANCED':leftKg<rightKg?'LEFT_LIGHTER':'RIGHT_LIGHTER'});
+ }
+ return Object.freeze({MODES,compile,session,balanceTilt});
+});
+</script>
+<script>/* G7.4 8-A / 8-B fixture defaults. Assets are candidate IDs, not approved mappings. */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightFixturesV11=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ return Object.freeze({
+  liter:{exerciseId:'CAPACITY_LITER_DEMO',mode:'LITER',
+   prompt:'Quan sát, thêm/bớt và rót nước giữa hai bình.',
+   containers:[
+    {id:'bottleA',label:'Bình A',capacityLiters:8,currentLiters:3},
+    {id:'bottleB',label:'Bình B',capacityLiters:5,currentLiters:1}
+   ]},
+  weight:{exerciseId:'WEIGHT_BALANCE_DEMO',mode:'WEIGHT',
+   prompt:'Thêm/bớt quả cân; quan sát bên nặng hạ xuống, bên nhẹ nâng lên.',
+   pans:[
+    {id:'left',label:'Đĩa trái',massKg:3},
+    {id:'right',label:'Đĩa phải',massKg:5}
+   ]}
+ });
+});
+</script>
+<script>/* G7.4 8-A / 8-B standalone TEST view. SVG is mathematical visualization.
+ * Scaled measurements, not real physical liters/kg. Uses trusted engine-only state.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightViewV11=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ const NS='http://www.w3.org/2000/svg';
+ function mount(host,plan,opts={}){
+  if(!host||!host.ownerDocument||!plan||plan.schemaVersion!=='g74-capacity-weight-v11'||
+     typeof KLCapacityWeightV11==='undefined')return {ok:false,reason:'INVALID_HOST_OR_CORE'};
+  const doc=host.ownerDocument,engine=KLCapacityWeightV11.session(plan);
+  const root=doc.createElement('section');root.className='g74-cw-v11';root.dataset.g74CwV11=plan.exerciseId;
+  const heading=doc.createElement('h3');heading.textContent=plan.prompt;const status=doc.createElement('p');
+  status.className='g74-cw-status';status.setAttribute('aria-live','polite');
+  const board=doc.createElement('div');board.className='g74-cw-board';root.append(heading,status,board);host.append(root);
+  let disposed=false;
+  const svg=(tag,attrs={},text)=>{
+   const e=doc.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));
+   if(text!==undefined)e.textContent=String(text);return e;
+  };
+  const button=(label,fn)=>{const b=doc.createElement('button');b.type='button';b.className='g74-cw-btn';b.textContent=label;
+   b.addEventListener('click',()=>{const r=fn();if(r.ok)notify();});return b;};
+  const notify=()=>{render();if(typeof opts.onChange==='function')opts.onChange(engine.snapshot());};
+  function asset(parent,item){
+   if(!item.assetId)return;
+   let a=null;try{a=typeof opts.resolveAsset==='function'?opts.resolveAsset(item.assetId):null}catch(_){}
+   if(a&&typeof a.url==='string'&&/^https:\/\//.test(a.url)){
+    const image=doc.createElement('img');image.className='g74-cw-asset';image.src=a.url;
+    image.alt=item.alt||item.label;parent.append(image);
+   }else{
+    const f=doc.createElement('small');f.className='g74-cw-asset-fallback';
+    f.textContent=item.alt||'Hình tham chiếu chưa được duyệt';parent.append(f);
+   }
+  }
+  function renderLiter(){
+   const state=engine.snapshot(),grid=doc.createElement('div');grid.className='g74-cw-two';
+   for(const item of plan.items){
+    const now=state.quantities[item.id],panel=doc.createElement('div');panel.className='g74-cw-panel';
+    const label=doc.createElement('strong');label.textContent=item.label;panel.append(label);
+    const picture=svg('svg',{viewBox:'0 0 160 220',role:'img','aria-label':item.label+': '+now+' trong '+item.capacityLiters+' lít'});
+    const defs=svg('defs'),clip=svg('clipPath',{id:'g74cw_'+plan.exerciseId+'_'+item.id});
+    clip.append(svg('path',{d:'M46 19 H114 V42 C125 53 135 58 135 85 V191 Q135 206 118 206 H42 Q25 206 25 191 V85 C25 58 35 53 46 42 Z'}));
+    defs.append(clip);picture.append(defs);
+    picture.append(svg('path',{d:'M46 19 H114 V42 C125 53 135 58 135 85 V191 Q135 206 118 206 H42 Q25 206 25 191 V85 C25 58 35 53 46 42 Z',fill:'#e4f4ff',stroke:'#4a81ac','stroke-width':3}));
+    const top=205-now/item.capacityLiters*145;
+    picture.append(svg('rect',{x:23,y:top,width:114,height:205-top,fill:'#5ab5e9','clip-path':'url(#g74cw_'+plan.exerciseId+'_'+item.id+')'}));
+    picture.append(svg('rect',{x:52,y:10,width:56,height:10,rx:3,fill:'#87accc'}));
+    picture.append(svg('text',{x:80,y:136,'text-anchor':'middle','font-size':25,'font-weight':800,fill:'#164e78'},now+' L'));
+    panel.append(picture);
+    const detail=doc.createElement('p');detail.textContent='Đang có '+now+' L · Sức chứa '+item.capacityLiters+' L';panel.append(detail);
+    const controls=doc.createElement('div');controls.className='g74-cw-controls';
+    const minus=button('− 1 L',()=>engine.adjust(item.id,-1));
+    const plus=button('+ 1 L',()=>engine.adjust(item.id,1));
+    minus.disabled=now===0;plus.disabled=now===item.capacityLiters;
+    controls.append(minus,plus);panel.append(controls);asset(panel,item);grid.append(panel);
+   }
+   board.append(grid);
+   const transfer=doc.createElement('div');transfer.className='g74-cw-controls';
+   for(const [from,to] of [[plan.items[0],plan.items[1]],[plan.items[1],plan.items[0]]]){
+    const b=button('Rót 1 L: '+from.label+' → '+to.label,()=>engine.transfer(from.id,to.id,1));
+    b.disabled=state.quantities[from.id]===0||state.quantities[to.id]>=to.capacityLiters;
+    transfer.append(b);
+   }
+   board.append(transfer);
+   status.textContent='Thao tác dung tích mô phỏng; không chấm đúng/sai.';
+  }
+  function renderWeight(){
+   const s=engine.snapshot(),left=plan.items[0],right=plan.items[1];
+   const l=s.quantities[left.id],r=s.quantities[right.id],tilt=KLCapacityWeightV11.balanceTilt(l,r);
+   const frame=doc.createElement('div');frame.className='g74-cw-scale';
+   const picture=svg('svg',{viewBox:'0 0 360 210',role:'img','aria-label':'Cân đĩa: bên trái '+l+' kg, bên phải '+r+' kg'});
+   picture.append(svg('path',{d:'M152 196 H208 L218 205 H142 Z',fill:'#9db0c4'}));
+   picture.append(svg('rect',{x:174,y:50,width:12,height:147,rx:5,fill:'#8eabc6'}));
+   const rad=tilt.degrees*Math.PI/180;
+   // The beam slopes, but the pans themselves remain horizontal and their payloads upright.
+   const xleft=180-105*Math.cos(rad),xright=180+105*Math.cos(rad);
+   const yl=tilt.leftY,yr=tilt.rightY;
+   picture.append(svg('line',{x1:xleft,y1:yl,x2:xright,y2:yr,stroke:'#678ba9','stroke-width':8,'stroke-linecap':'round'}));
+   picture.append(svg('circle',{cx:180,cy:58,r:9,fill:'#395f84'}));
+   for(const pan of [{x:xleft,y:yl,value:l,label:'Trái'},{x:xright,y:yr,value:r,label:'Phải'}]){
+    const py=pan.y+72;
+    picture.append(svg('line',{x1:pan.x,y1:pan.y,x2:pan.x-36,y2:py,stroke:'#8299b2','stroke-width':2}));
+    picture.append(svg('line',{x1:pan.x,y1:pan.y,x2:pan.x+36,y2:py,stroke:'#8299b2','stroke-width':2}));
+    picture.append(svg('path',{d:'M'+(pan.x-40)+' '+py+' Q'+pan.x+' '+(py+24)+' '+(pan.x+40)+' '+py,fill:'none',stroke:'#468bb7','stroke-width':5,'stroke-linecap':'round'}));
+    picture.append(svg('rect',{x:pan.x-25,y:py-26,width:50,height:25,rx:6,fill:'#e8bf6c',stroke:'#a47c31'}));
+    picture.append(svg('text',{x:pan.x,y:py-9,'text-anchor':'middle','font-size':15,'font-weight':800,fill:'#4b3519'},pan.value+' kg'));
+   }
+   frame.append(picture);
+   const sentence=doc.createElement('p');sentence.className='g74-cw-balance';
+   sentence.textContent=tilt.relation==='BALANCED'?'Hai bên cân bằng':tilt.relation==='LEFT_LIGHTER'?'Đĩa trái nhẹ hơn, nằm cao hơn':'Đĩa phải nhẹ hơn, nằm cao hơn';
+   frame.append(sentence);
+   const grid=doc.createElement('div');grid.className='g74-cw-two';
+   for(const item of plan.items){
+    const amount=s.quantities[item.id],panel=doc.createElement('div');panel.className='g74-cw-panel';
+    const name=doc.createElement('strong');name.textContent=item.label+' · '+amount+' kg';panel.append(name);
+    const controls=doc.createElement('div');controls.className='g74-cw-controls';
+    const minus=button('− 1 kg',()=>engine.adjust(item.id,-1)),plus=button('+ 1 kg',()=>engine.adjust(item.id,1));
+    minus.disabled=amount===0;plus.disabled=amount===100;
+    controls.append(minus,plus);panel.append(controls);asset(panel,item);grid.append(panel);
+   }
+   frame.append(grid);board.append(frame);
+   status.textContent='Độ chênh: '+Math.abs(l-r)+' kg. Đây là mô phỏng cân đĩa – chưa chấm.';
+  }
+  function render(){if(disposed)return;board.replaceChildren();if(plan.mode==='LITER')renderLiter();else renderWeight();}
+  render();
+  return Object.freeze({ok:true,snapshot:()=>engine.snapshot(),
+   restore(d){const r=engine.restore(d);if(r.ok)notify();return r;},
+   clear(){const r=engine.clear();notify();return r;},
+   destroy(){if(disposed)return;disposed=true;root.remove();}
+  });
+ }
+ return Object.freeze({mount});
+});
+</script>
+<script>/* G7.4 8-A proportional liter SVG V1.2 TEST view; 8-B unchanged. SVG is mathematical visualization.
+ * Scaled measurements, not real physical liters/kg. Uses trusted engine-only state.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightViewV12=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ const NS='http://www.w3.org/2000/svg';
+  function literGeometry(capacity,current,largestCapacity){
+   if(!Number.isInteger(capacity)||capacity<1||capacity>100||
+      !Number.isInteger(current)||current<0||current>capacity||
+      !Number.isInteger(largestCapacity)||largestCapacity<capacity||largestCapacity>100)
+     throw Error('INVALID_LITER_GEOMETRY');
+   const step=Math.min(19,158/largestCapacity),bottom=204;
+   const vesselTop=bottom-capacity*step,waterTop=bottom-current*step;
+   return Object.freeze({capacity,current,bottom,step,vesselTop,waterTop,
+     vesselHeight:capacity*step,waterHeight:current*step,
+     labelEvery:largestCapacity<=12?1:Math.ceil(largestCapacity/10)});
+  }
+ function mount(host,plan,opts={}){
+  if(!host||!host.ownerDocument||!plan||plan.schemaVersion!=='g74-capacity-weight-v11'||
+     typeof KLCapacityWeightV11==='undefined')return {ok:false,reason:'INVALID_HOST_OR_CORE'};
+  const doc=host.ownerDocument,engine=KLCapacityWeightV11.session(plan);
+  const root=doc.createElement('section');root.className='g74-cw-v11';root.dataset.g74CwV11=plan.exerciseId;
+  const heading=doc.createElement('h3');heading.textContent=plan.prompt;const status=doc.createElement('p');
+  status.className='g74-cw-status';status.setAttribute('aria-live','polite');
+  const board=doc.createElement('div');board.className='g74-cw-board';root.append(heading,status,board);host.append(root);
+  let disposed=false;
+  const svg=(tag,attrs={},text)=>{
+   const e=doc.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));
+   if(text!==undefined)e.textContent=String(text);return e;
+  };
+  const button=(label,fn)=>{const b=doc.createElement('button');b.type='button';b.className='g74-cw-btn';b.textContent=label;
+   b.addEventListener('click',()=>{const r=fn();if(r.ok)notify();});return b;};
+  const notify=()=>{render();if(typeof opts.onChange==='function')opts.onChange(engine.snapshot());};
+  function asset(parent,item){
+   if(!item.assetId)return;
+   let a=null;try{a=typeof opts.resolveAsset==='function'?opts.resolveAsset(item.assetId):null}catch(_){}
+   if(a&&typeof a.url==='string'&&/^https:\/\//.test(a.url)){
+    const image=doc.createElement('img');image.className='g74-cw-asset';image.src=a.url;
+    image.alt=item.alt||item.label;parent.append(image);
+   }else{
+    const f=doc.createElement('small');f.className='g74-cw-asset-fallback';
+    f.textContent=item.alt||'Hình tham chiếu chưa được duyệt';parent.append(f);
+   }
+  }
+  // One consistent visual liter unit across both containers. No changes to engine quantities.
+  // For large generated capacities, all unit marks remain; alternate labels are thinned.
+  function renderLiter(){
+   const state=engine.snapshot(),grid=doc.createElement('div');
+   grid.className='g74-cw-two';
+   const maxCapacity=Math.max(...plan.items.map(item=>item.capacityLiters));
+   for(const item of plan.items){
+    const now=state.quantities[item.id],g=literGeometry(item.capacityLiters,now,maxCapacity);
+    const panel=doc.createElement('div');panel.className='g74-cw-panel g74-cw-v12-liter-panel';
+    const label=doc.createElement('strong');label.textContent=item.label;panel.append(label);
+    const picture=svg('svg',{viewBox:'0 0 160 226',class:'g74-cw-v12-vessel',
+      role:'img','aria-label':item.label+': đang có '+now+' lít, sức chứa '+item.capacityLiters+' lít, thang chia mỗi vạch 1 lít',
+      'data-capacity-liters':item.capacityLiters,'data-current-liters':now,
+      'data-liter-step':g.step.toFixed(4)});
+    // Constant width and common bottom line model equal cross-sections; only capacity changes physical height.
+    const vessel=svg('rect',{x:33,y:g.vesselTop,width:94,height:g.vesselHeight,
+      fill:'#e4f4ff',stroke:'#4a81ac','stroke-width':3,
+      'data-part':'vessel','data-height':g.vesselHeight.toFixed(4)});
+    picture.append(vessel);
+    if(now>0){
+     const water=svg('rect',{x:35,y:g.waterTop,width:90,height:g.waterHeight,fill:'#5ab5e9',
+       'data-part':'water','data-height':g.waterHeight.toFixed(4)});
+     picture.append(water);
+     picture.append(svg('line',{x1:35,y1:g.waterTop,x2:125,y2:g.waterTop,stroke:'#1879bc','stroke-width':2,
+       'data-part':'waterline'}));
+    }
+    // 1 liter equals exactly one common step in both vessels; never infer volume from static PNG art.
+    for(let i=0;i<=item.capacityLiters;i++){
+     const y=g.bottom-i*g.step;
+     picture.append(svg('line',{x1:36,y1:y,x2:i%5===0?56:49,y2:y,stroke:'#255f88',
+       'stroke-width':i===0||i===item.capacityLiters?2:1.25,'data-part':'liter-tick','data-liter':i}));
+     if(i===0||i===item.capacityLiters||i%g.labelEvery===0){
+      picture.append(svg('text',{x:61,y:y+3.5,'font-size':maxCapacity>20?8:10,
+       'font-weight':700,fill:'#143e62','data-part':'liter-label','data-liter':i},String(i)));
+     }
+    }
+    picture.append(svg('text',{x:80,y:219,'text-anchor':'middle','font-size':10,
+      'font-weight':700,fill:'#27577a'},item.capacityLiters+' L tối đa'));
+    panel.append(picture);
+    const detail=doc.createElement('p');detail.textContent='Đang có '+now+' L · Sức chứa '+item.capacityLiters+' L';panel.append(detail);
+    const controls=doc.createElement('div');controls.className='g74-cw-controls';
+    const minus=button('− 1 L',()=>engine.adjust(item.id,-1));
+    const plus=button('+ 1 L',()=>engine.adjust(item.id,1));
+    minus.disabled=now===0;plus.disabled=now===item.capacityLiters;
+    controls.append(minus,plus);panel.append(controls);asset(panel,item);grid.append(panel);
+   }
+   board.append(grid);
+   const transfer=doc.createElement('div');transfer.className='g74-cw-controls';
+   for(const [from,to] of [[plan.items[0],plan.items[1]],[plan.items[1],plan.items[0]]]){
+    const b=button('Rót 1 L: '+from.label+' → '+to.label,()=>engine.transfer(from.id,to.id,1));
+    b.disabled=state.quantities[from.id]===0||state.quantities[to.id]>=to.capacityLiters;
+    transfer.append(b);
+   }
+   board.append(transfer);
+   status.textContent='Thao tác dung tích mô phỏng; không chấm đúng/sai.';
+  }
+  function renderWeight(){
+   const s=engine.snapshot(),left=plan.items[0],right=plan.items[1];
+   const l=s.quantities[left.id],r=s.quantities[right.id],tilt=KLCapacityWeightV11.balanceTilt(l,r);
+   const frame=doc.createElement('div');frame.className='g74-cw-scale';
+   const picture=svg('svg',{viewBox:'0 0 360 210',role:'img','aria-label':'Cân đĩa: bên trái '+l+' kg, bên phải '+r+' kg'});
+   picture.append(svg('path',{d:'M152 196 H208 L218 205 H142 Z',fill:'#9db0c4'}));
+   picture.append(svg('rect',{x:174,y:50,width:12,height:147,rx:5,fill:'#8eabc6'}));
+   const rad=tilt.degrees*Math.PI/180;
+   // The beam slopes, but the pans themselves remain horizontal and their payloads upright.
+   const xleft=180-105*Math.cos(rad),xright=180+105*Math.cos(rad);
+   const yl=tilt.leftY,yr=tilt.rightY;
+   picture.append(svg('line',{x1:xleft,y1:yl,x2:xright,y2:yr,stroke:'#678ba9','stroke-width':8,'stroke-linecap':'round'}));
+   picture.append(svg('circle',{cx:180,cy:58,r:9,fill:'#395f84'}));
+   for(const pan of [{x:xleft,y:yl,value:l,label:'Trái'},{x:xright,y:yr,value:r,label:'Phải'}]){
+    const py=pan.y+72;
+    picture.append(svg('line',{x1:pan.x,y1:pan.y,x2:pan.x-36,y2:py,stroke:'#8299b2','stroke-width':2}));
+    picture.append(svg('line',{x1:pan.x,y1:pan.y,x2:pan.x+36,y2:py,stroke:'#8299b2','stroke-width':2}));
+    picture.append(svg('path',{d:'M'+(pan.x-40)+' '+py+' Q'+pan.x+' '+(py+24)+' '+(pan.x+40)+' '+py,fill:'none',stroke:'#468bb7','stroke-width':5,'stroke-linecap':'round'}));
+    picture.append(svg('rect',{x:pan.x-25,y:py-26,width:50,height:25,rx:6,fill:'#e8bf6c',stroke:'#a47c31'}));
+    picture.append(svg('text',{x:pan.x,y:py-9,'text-anchor':'middle','font-size':15,'font-weight':800,fill:'#4b3519'},pan.value+' kg'));
+   }
+   frame.append(picture);
+   const sentence=doc.createElement('p');sentence.className='g74-cw-balance';
+   sentence.textContent=tilt.relation==='BALANCED'?'Hai bên cân bằng':tilt.relation==='LEFT_LIGHTER'?'Đĩa trái nhẹ hơn, nằm cao hơn':'Đĩa phải nhẹ hơn, nằm cao hơn';
+   frame.append(sentence);
+   const grid=doc.createElement('div');grid.className='g74-cw-two';
+   for(const item of plan.items){
+    const amount=s.quantities[item.id],panel=doc.createElement('div');panel.className='g74-cw-panel';
+    const name=doc.createElement('strong');name.textContent=item.label+' · '+amount+' kg';panel.append(name);
+    const controls=doc.createElement('div');controls.className='g74-cw-controls';
+    const minus=button('− 1 kg',()=>engine.adjust(item.id,-1)),plus=button('+ 1 kg',()=>engine.adjust(item.id,1));
+    minus.disabled=amount===0;plus.disabled=amount===100;
+    controls.append(minus,plus);panel.append(controls);asset(panel,item);grid.append(panel);
+   }
+   frame.append(grid);board.append(frame);
+   status.textContent='Độ chênh: '+Math.abs(l-r)+' kg. Đây là mô phỏng cân đĩa – chưa chấm.';
+  }
+  function render(){if(disposed)return;board.replaceChildren();if(plan.mode==='LITER')renderLiter();else renderWeight();}
+  render();
+  return Object.freeze({ok:true,snapshot:()=>engine.snapshot(),
+   restore(d){const r=engine.restore(d);if(r.ok)notify();return r;},
+   clear(){const r=engine.clear();notify();return r;},
+   destroy(){if(disposed)return;disposed=true;root.remove();}
+  });
+ }
+ return Object.freeze({mount,literGeometry});
+});
+</script>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+let oldCtrl=null,newCtrl=null,caseId=0;
+const samples=[];
+function raw(){
+ const [ca,wa,cb,wb]=$('fixture').value.split(',').map(Number);
+ return {exerciseId:'QAD2_LITER_'+caseId,mode:'LITER',
+ prompt:'Bình A và Bình B: quan sát mực nước theo từng vạch 1 lít.',
+ containers:[{id:'A',label:'Bình A',capacityLiters:ca,currentLiters:wa},{id:'B',label:'Bình B',capacityLiters:cb,currentLiters:wb}]};
+}
+function mount(){
+ oldCtrl?.destroy();newCtrl?.destroy();$('old').replaceChildren();$('new').replaceChildren();caseId++;
+ const compiled=KLCapacityWeightV11.compile(raw());if(!compiled.ok)throw Error(compiled.reason);
+ oldCtrl=KLCapacityWeightViewV11.mount($('old'),compiled.plan);
+ newCtrl=KLCapacityWeightViewV12.mount($('new'),compiled.plan);
+ if(!oldCtrl?.ok||!newCtrl?.ok)throw Error('MOUNT_FAILED');
+}
+function inspect(){
+ const dom=$('new'),vessels=[...dom.querySelectorAll('.g74-cw-v12-vessel')],rawData=raw();
+ const original=oldCtrl.snapshot(),candidate=newCtrl.snapshot(),data=rawData.containers,parts=vessels.map((svg,i)=>{
+  const ticks=[...svg.querySelectorAll('[data-part="liter-tick"]')],water=svg.querySelector('[data-part="water"]'),vessel=svg.querySelector('[data-part="vessel"]');
+  return {capacity:Number(svg.dataset.capacityLiters),now:Number(svg.dataset.currentLiters),unit:Number(svg.dataset.literStep),
+   tickCount:ticks.length,waterHeight:Number(water?.dataset.height||0),vesselHeight:Number(vessel?.dataset.height||0),
+   expected:data[i]};
+ });
+ const eps=(a,b)=>Math.abs(a-b)<.0002;
+ const checks=[
+ ['TWO_VESSELS',vessels.length===2],
+ ['DATA_EXACT',parts.every(p=>p.capacity===p.expected.capacityLiters&&p.now===candidate.quantities[p.expected.id])],
+ ['LITER_TICKS',parts.every(p=>p.tickCount===p.capacity+1)],
+ ['SHARED_UNIT_SCALE',parts.length===2&&eps(parts[0].unit,parts[1].unit)],
+ ['PROPORTIONAL_CAPACITIES',parts.length===2&&eps(parts[0].vesselHeight/parts[1].vesselHeight,parts[0].capacity/parts[1].capacity)],
+ ['FILL_ABSOLUTE_LITERS',parts.every(p=>eps(p.waterHeight,p.now*p.unit))],
+ ['EXISTING_ENGINE_STATE',JSON.stringify(original.quantities)===JSON.stringify(candidate.quantities)],
+ ['NO_UNAPPROVED_STATIC_ASSET',dom.querySelectorAll('img.g74-cw-asset').length===0]
+ ];
+ const report={status:checks.every(x=>x[1])?'PASS':'FAIL',fixture:$('fixture').value,parts,checks,device:{userAgent:navigator.userAgent,width:innerWidth},time:new Date().toISOString()};
+ $('result').textContent=JSON.stringify(report,null,2);$('result').dataset.qaDone='true';$('result').dataset.qaPass=String(report.status==='PASS');samples.push(report);return report;
+}
+$('fixture').onchange=()=>{mount();inspect()};
+$('reload').onclick=()=>{mount();inspect()};$('qa').onclick=inspect;
+$('export').onclick=()=>{
+ const data={format:'G7.4-QA-D2',status:'OWNER_VISUAL_NOT_AUTO_APPROVED',device:navigator.userAgent,fixtures:samples,manual:{visual:$('human').value,touch:$('touch').value,notes:$('notes').value},timestamp:new Date().toISOString()};
+ const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download='G74_QAD2_Capacity_Visual_Review.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)};
+mount();
+if(new URLSearchParams(location.search).has('qaAuto')){let reports=[];for(const option of $('fixture').options){$('fixture').value=option.value;mount();reports.push(inspect())}const passed=reports.every(r=>r.status==='PASS');$('result').textContent=JSON.stringify({status:passed?'PASS':'FAIL',samples:reports},null,2);$('result').dataset.qaDone='true';$('result').dataset.qaPass=String(passed);}
+else inspect();
+</script></body></html>
