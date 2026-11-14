@@ -1,0 +1,42 @@
+name: G7.4 Renderer Batch QA-B.1 (demo parity and trusted boundary)
+on:
+  push:
+    branches:
+      - test/g7-4-renderer-batch-qa-b1-v1-20261114
+    paths:
+      - 'qa/g7-4-renderer-batch-qa-v1/*.cjs'
+      - 'qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs'
+      - '.github/workflows/g7-4-renderer-batch-qa-b1-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa-b1-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify demo SHA-256 before tests
+        run: |
+          echo "Locked demo: original HTML 131767 bytes"
+          test "$(wc -c < qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html)" = "131767"
+          echo "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html" | sha256sum --check
+      - name: Full QA-B original 12 suites and 11 cross-checks
+        run: node qa/g7-4-renderer-batch-qa-v1/qa-b-batch-runner.cjs
+      - name: Independent V1 arithmetic replay (retain historical first FAIL in record)
+        run: node qa/g7-4-renderer-batch-qa-v1/qa-b-v1-independent-recheck.cjs
+      - name: Type1 demo slot mapping, 1000 boundary and trusted D10 security probes
+        run: node qa/g7-4-renderer-batch-qa-v1/qa-b1.test.cjs
+      - name: Ensure protected demo, G6, and source-lock were not modified during CI
+        run: git diff --exit-code -- qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html qa/g7-4-column-calc-reference-v1/source-lock.v1.json 42_AdapterBienTheB20.html 41_HienThiCauHoiToan.html
+      - name: Keep QA-B.1 machine-readable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g74-renderer-batch-qab1-evidence
+          path: qa/g7-4-renderer-batch-qa-v1/artifacts/*.json
+          if-no-files-found: warn
+          retention-days: 30
