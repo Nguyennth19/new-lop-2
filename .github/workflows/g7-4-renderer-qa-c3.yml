@@ -1,0 +1,72 @@
+name: G7.4 QA-C3 parity review and safe visual policy
+on:
+  push:
+    branches:
+      - test/g7-4-renderer-qa-c3-parity-assets-20261114
+    paths:
+      - 'qa/g7-4-renderer-batch-qa-v1/qa-c3-*'
+      - '.github/workflows/g7-4-renderer-qa-c3.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visual-boundary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Recheck source freeze and 8A/B asset IDs without unsafe activation
+        run: |
+          set -euo pipefail
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          node qa/g7-4-renderer-batch-qa-v1/qa-c3-asset-and-d10-boundary.test.cjs
+          node qa/g7-4-renderer-batch-qa-v1/qa-c2-security-asset-boundary.test.cjs
+          node qa/g7-4-renderer-batch-qa-v1/qa-e-d10-offline-handoff.test.cjs
+      - name: Start local visual review server
+        run: |
+          python3 -m http.server 8797 --bind 127.0.0.1 >/tmp/g74-c3-server.log 2>&1 &
+          sleep 2
+      - name: Verify both embedded reference frames in browser
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 115s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+              --virtual-time-budget=30000 --window-size="$size" --dump-dom \
+              'http://127.0.0.1:8797/qa/g7-4-renderer-batch-qa-v1/qa-c3-owner-visual-review.html' \
+              >"/tmp/g74-c3-$width.html" 2>"/tmp/g74-c3-$width.log"
+            python3 - "/tmp/g74-c3-$width.html" <<'PY'
+          import sys
+          from html.parser import HTMLParser
+          class QA(HTMLParser):
+            def __init__(self):super().__init__();self.frames={};self.status=False
+            def handle_starttag(self,tag,attrs):
+              a=dict(attrs)
+              if tag=='iframe' and a.get('id') in ('original','candidate'):self.frames[a['id']]=a.get('src')
+              if tag=='p' and a.get('id')=='status':self.status=True
+          qa=QA();qa.feed(open(sys.argv[1],encoding='utf-8').read())
+          assert 'original' in qa.frames and 'candidate' in qa.frames,qa.frames
+          assert qa.frames['original'] and qa.frames['candidate'],qa.frames
+          print('QA_C3_REVIEW_BROWSER_FRAMES_PASS',sys.argv[1],qa.frames)
+          PY
+          done
+      - name: Capture manual parity evidence (not owner approval)
+        if: always()
+        run: |
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g74-c3-parity
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 60s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --virtual-time-budget=6000 \
+              --window-size="$size" --screenshot="/tmp/g74-c3-parity/qa-c3-$width.png" \
+              'http://127.0.0.1:8797/qa/g7-4-renderer-batch-qa-v1/qa-c3-owner-visual-review.html' >/tmp/g74-c3-shot.log 2>&1 || true
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: G74-QAC3-Visual-Owner-Review
+          path: /tmp/g74-c3-parity/
+          retention-days: 30
