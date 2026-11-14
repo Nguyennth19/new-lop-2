@@ -87,7 +87,73 @@
       "Do not replace 8A liter levels or 8B tilt with static PNG",
       "Keep numeric data and answer keys separate",
       "No SVG image auto-promotion to production"
-    ]
+    ],
+    "countComposition": {
+      "status": "TEST_ONLY_COUNT_SAFE_GATED",
+      "sources": [
+        {
+          "path": "qa/g7-4-b5-13/count-renderer-core.cjs",
+          "gitBlobSha": "b1b3974865932ed2ce7de22809ac3337a46dbcc0"
+        },
+        {
+          "path": "qa/g7-4-b5-8/G7_B58_Count_Composition_Standalone.html",
+          "gitBlobSha": "93a9c75b95327f5a89296f093e7699346c12e717"
+        },
+        {
+          "path": "qa/g7-4-gates/count-expansion-gates.cjs",
+          "gitBlobSha": "e1558f4b6c9c91de5742c97a798ac5b30bb02ad7"
+        }
+      ],
+      "rule": "Only approved repeat-single-object counts with evidence; never infer quantity from decorative Fluent SVG"
+    },
+    "repoSnapshotAtBaseCommit": {
+      "webpFiles": 13,
+      "pngFiles": 9,
+      "svgFiles": 46,
+      "scope": "ONLY_GIT_REPOSITORY_NOT_DRIVE_288_LIBRARY",
+      "note": "Repo file count is not the conversion success count of original 288 image assets"
+    },
+    "pilotCharacters": {
+      "role": "DECORATION_REFERENCE_TEST",
+      "files": [
+        {
+          "path": "hinh-anh/pilot-g3/robot_avatar_full.webp",
+          "gitBlobSha": "8d0bec5ed834dd94c232425f29a6d84e2c8eea76"
+        },
+        {
+          "path": "hinh-anh/pilot-g3/robot_avatar_head_96.webp",
+          "gitBlobSha": "7b2573aa1364b17f69b70c746ecc43adf3dbc22c"
+        },
+        {
+          "path": "hinh-anh/pilot-g3/robot_hero_wave.webp",
+          "gitBlobSha": "398106aa4e08b042d40417180ae7561ce8618c46"
+        },
+        {
+          "path": "hinh-anh/pilot-g3/robot_praise.webp",
+          "gitBlobSha": "7ccb3d9fb91fb8dd47411fa0849983c6096897dd"
+        },
+        {
+          "path": "hinh-anh/Toan-2.png",
+          "gitBlobSha": "b24af3715c7b1ffc060b3b6a43042e969b794cb8"
+        },
+        {
+          "path": "hinh-anh/Tieng-Anh-2.png",
+          "gitBlobSha": "a7dc52866ed853e81841f8d47ae59eba25963e80"
+        },
+        {
+          "path": "hinh-anh/Tieng-Viet-2.png",
+          "gitBlobSha": "d92ddc39bd159e792171dcdf430ad983554ebfed"
+        }
+      ]
+    },
+    "driveFolderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "formatPolicy": {
+      "SOURCE_PNG": "archive/master where present",
+      "RUNTIME_WEBP": "prefer validated converted assets, do not assume 288 physically present in repo",
+      "FLUENT_SVG": "staging decorative-only unless per-icon trust and count rules pass",
+      "PARAMETRIC_SVG": "math semantics primary",
+      "EMOJI": "only if pedagogic visual intent and count/semantic evidence permit"
+    }
   },
   "speechProfiles": {
     "defaultProfileId": "vi_math_v2_dynamic",
@@ -979,5 +1045,31 @@
     "gasDeployAllowed": false,
     "signoff": "G7.6 REGISTRY ONLY; GAS E2E and trusted grading gate pending",
     "rollbackStrategy": "Pin blob SHAs; never overwrite reference sources"
+  },
+  "legacyReference": {
+    "frozenDemoHtml": {
+      "path": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+      "gitBlobSha": "373f497a98edbf5a0ae57eb1561b7e6d72d0a7b1",
+      "sha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced"
+    },
+    "legacyG6Files": [
+      {
+        "path": "41_HienThiCauHoiToan.html",
+        "gitBlobSha": "50501ccc3cb5e7801fd563807e21b76d2a51c8f9"
+      },
+      {
+        "path": "42_AdapterBienTheB20.html",
+        "gitBlobSha": "e14a0c831837a91125a59dd5ce2d65288d056038"
+      },
+      {
+        "path": "26_ChamCauHoiToan.html",
+        "gitBlobSha": "d2c9e0dbf745366eabeadfefe0686b60cf5d9a47"
+      },
+      {
+        "path": "43_CSS_ThanhPhanBaiToan.html",
+        "gitBlobSha": "ce7f279fc9185901d8f638bc87628b9c20bfda65"
+      }
+    ],
+    "policy": "READ_ONLY_LEGACY_CROSS_REFERENCE_NOT_IMPORTED_INTO_G76"
   }
 }
