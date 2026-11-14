@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "G7.4_RENDERER_BATCH_QA_B1_CHECKPOINT_V1",
+  "date": "2026-11-14",
+  "branch": "test/g7-4-renderer-batch-qa-b1-v1-20261114",
+  "phase": "QA-B.1",
+  "status": "SOURCE_AND_UNIT_CI_PASS_INTEGRATION_GATES_STILL_OPEN",
+  "parentQA_B": {
+    "branch": "test/g7-4-renderer-batch-qa-b-v1-20261114",
+    "headAtStart": "d046fae83b9ed1881958bde956db64ae66cc02eb",
+    "earlierCI": "43565074617_FAILURE_STALE_TEST"
+  },
+  "files": {
+    "report": "docs/kiem-dinh/G7.4_RENDERER_BATCH_QA_V1_QA_B1_20261114.md",
+    "sourceMap": "qa/g7-4-renderer-batch-qa-v1/type1-demo-source-map.qa-b1.cjs",
+    "type1AndD10Tests": "qa/g7-4-renderer-batch-qa-v1/qa-b1.test.cjs",
+    "d10TrustedOffline": "qa/g7-4-renderer-batch-qa-v1/d10-trusted-boundary.qa-b1.cjs",
+    "pv1000Policy": "qa/g7-4-renderer-batch-qa-v1/column-pv1000-boundary-policy.qa-b1.json",
+    "ciReceipt": "qa/g7-4-renderer-batch-qa-v1/qa-b1-evidence-receipt.v1.json",
+    "workflow": ".github/workflows/g7-4-renderer-batch-qa-b1-v1.yml"
+  },
+  "ci": {
+    "id": 43566398015,
+    "headSha": "b2f0f45153d8f8f82559eddc602f0ef5cccd8ba3",
+    "jobId": 132361092911,
+    "conclusion": "success",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43566398015",
+    "artifactId": 14102945540,
+    "artifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43566398015/artifacts/14102945540",
+    "artifactZipSha256": "ed82213842ac332fbfb60c55afd4714fe5940a857a83271c05818ee7cf2b530d",
+    "artifactRetentionDays": 30
+  },
+  "unitResults": {
+    "nativeSuite": {
+      "pass": 12,
+      "total": 12
+    },
+    "crossCheck": {
+      "pass": 11,
+      "total": 11
+    },
+    "newQab1Assertions": 308,
+    "v1ColumnAssertions": 73396,
+    "v1ColumnValidPairs": 14707,
+    "v1IndependentRecheckCandidatePairs": 29086,
+    "v12ColumnAssertions": 11819,
+    "v12ColumnVariants": 2312,
+    "type1DemoSlotsMapped": 6,
+    "type1DemoSlotTotal": 6,
+    "type1MakeTenVariants": 36
+  },
+  "demo": {
+    "ownerSelfTest": "REPORTED_PASS_INTERACTIVE_DEMO",
+    "verifiedInGithub": "HTML_EXACT_SOURCE_SHA_131767_BYTES",
+    "independentDeviceEvidence": "NOT_EXECUTED_THIS_TURN",
+    "keptAsReference": true,
+    "rewritten": false,
+    "type1": "6_of_6_static_slots_mapped"
+  },
+  "gateMatrix": {
+    "D1": "SOURCE_MAP_PASS_DYNAMIC_DOM_PENDING",
+    "D2": "UNIT_PASS_PV1000_EXACT_1000_BLOCKED_PENDING_OWNER",
+    "D3": "UNIT_PASS",
+    "D4": "UNIT_PASS_REAL_VI_TTS_DEVICE_PENDING",
+    "D5": "UNIT_PASS_REAL_UI_PENDING",
+    "D6": "UNIT_PASS_REAL_UI_PENDING",
+    "D7": "UNIT_PASS_REAL_UI_PENDING",
+    "D8": "UNIT_PASS_REAL_UI_PENDING",
+    "D8A": "UNIT_PASS_ASSET_ID_MAPPING_PENDING",
+    "D8B": "UNIT_PASS_REAL_3KG_5KG_SCREENSHOT_PENDING",
+    "D9": "UNIT_PASS_REAL_TOUCH_PENDING",
+    "D10": "OFFLINE_TRUSTED_SERVICE_TEST_PASS_LEGACY_KEY_LEAK_BLOCKED"
+  },
+  "qaB1Findings": [
+    {
+      "id": "QA-B-001",
+      "status": "RESOLVED_TEST_PATCH_VERIFIED_CI",
+      "scope": "Expected metadata in historical V1 unit test only; old CI failure remains archived"
+    },
+    {
+      "id": "QA-B-002",
+      "status": "CONTAINED_NOT_CLOSED",
+      "scope": "Three-column max 999; exactly 1000 blocked until four-column and policy approval"
+    },
+    {
+      "id": "QA-B-003",
+      "status": "PENDING",
+      "scope": "12-family integration with P0.6 Composer not proven"
+    },
+    {
+      "id": "QA-B-004",
+      "status": "PASS_OFFLINE_POLICY_DENY_ONLY",
+      "scope": "GUIDED assessment denied in offline service; not mounted to trusted GAS"
+    }
+  ],
+  "qaAOriginalFindingsUnchanged": [
+    {
+      "id": "QA-A-001",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No dedicated standalone Type 1 renderer V1.1 bundle; original Type1 plus Structured Diagram V2 only"
+    },
+    {
+      "id": "QA-A-002",
+      "priority": "P1",
+      "state": "BLOCKED",
+      "subject": "D2 v14 E2E project/deployment/rollback unverified; no CI run for v14 branch"
+    },
+    {
+      "id": "QA-A-003",
+      "priority": "P0",
+      "state": "BLOCKED",
+      "subject": "G6/B20 legacy answer,n1,n2,op fields in client; D10 scaffold filtering does not remove legacy payload leak"
+    },
+    {
+      "id": "QA-A-004",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No trusted statement-choice grading contract in server for D10"
+    },
+    {
+      "id": "QA-A-005",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8A/D8B asset inventory has 0 approved mapped Asset IDs; filenames only verified"
+    },
+    {
+      "id": "QA-A-006",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8B tilt visual regression 3kg vs 5kg has unit CI success but no actual browser screenshot in batch"
+    },
+    {
+      "id": "QA-A-007",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Vietnamese TTS G7.5 CI is mock/static only; device voice and Apps Script TEST not verified"
+    },
+    {
+      "id": "QA-A-008",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Generator/Lesson Composer/server grading and GAS E2E across 12 items not verified"
+    }
+  ],
+  "qaAStateIntegrity": {
+    "qaAArtifactBlobSha": "d20b62993fe07a6b757b20b56805c530c1a8856c",
+    "originalFindingCount": 8,
+    "allIdsPreserved": [
+      "QA-A-001",
+      "QA-A-002",
+      "QA-A-003",
+      "QA-A-004",
+      "QA-A-005",
+      "QA-A-006",
+      "QA-A-007",
+      "QA-A-008"
+    ],
+    "noClosedQaAFindings": true
+  },
+  "gates": {
+    "QA_A": "OPEN_D1_DYNAMIC_D2_E2E",
+    "QA_B": "NOT_ACCEPTED_OVERALL_OPEN_D1_D10",
+    "QA_B1": "PASS_SOURCE_AND_UNIT",
+    "QA_C": "PENDING_NEW_REAL_BROWSER",
+    "QA_D": "PENDING_IMAGE_TTS_REAL",
+    "QA_E": "BLOCKED_D10_LEGACY_CLIENT_ANSWER",
+    "QA_F": "DEFERRED_NO_GAS"
+  },
+  "locked": {
+    "mainNotModified": true,
+    "G6NotModified": true,
+    "originalHtmlNotModified": true,
+    "sourceLockNotModified": true,
+    "productionNotModified": true,
+    "noStudentWrites": true
+  },
+  "trustedTestWarnings": [
+    "Offline teacher approval fixture is NOT real owner/teacher signoff",
+    "Server-only prototype is not wired into GAS",
+    "Original standalone demo uses client-side static answer checks by design",
+    "Do not deploy/merge to MAIN or activate any GAS TEST without separate gates"
+  ],
+  "nextActions": [
+    "QA-C side-by-side real browser comparison using locked demo, preserve UI; collect evidence for interactive variant DOM",
+    "QA-E plan isolate existing G6 client answer field and trusted GAS grading without touching MAIN",
+    "Decide exact 1000 lesson curriculum requirement; implement four-column separately only if approved"
+  ],
+  "rollback": {
+    "baselineRef": "test/g7-4-renderer-batch-qa-b-v1-20261114",
+    "baselineSha": "d046fae83b9ed1881958bde956db64ae66cc02eb",
+    "noGasRollbackNeeded": true,
+    "preservePriorFailedAndPassedCI": true
+  },
+  "sourceSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced"
+}
