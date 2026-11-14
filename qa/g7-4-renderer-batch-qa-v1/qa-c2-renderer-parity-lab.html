@@ -1,0 +1,37 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.4 QA-C.2 – Dạng 1 biến thể + Dạng 2 bàn phím</title><style>
+:root{font:15px system-ui;color:#18324d;background:#edf7fd}*{box-sizing:border-box}body{margin:0}header{background:#fff;padding:14px;border-bottom:3px solid #91c8e8}h1{font-size:21px;margin:0 0 6px}h2{font-size:17px}button,select{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #f5aa27}header p{font-size:13px}nav{display:flex;gap:8px;flex-wrap:wrap;padding:10px 0}nav button{border:1px solid #5ea6d9;border-radius:9px;padding:8px;background:white}nav button.active{background:#246db7;color:white}main{padding:12px;max-width:1200px;margin:auto}.panel{border-radius:16px;border:1px solid #a9d2ef;background:#fff;padding:13px;margin-bottom:12px}.g74t1-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}.g74t1-card{min-width:0;padding:15px;border-radius:20px;border:2px solid #f3cf62;background:#fff7db}.g74t1-card.units{background:#e8f6ff;border-color:#8dcafa}.g74t1-card h3{font-size:16px;margin:0 0 16px}.g74t1-bond{display:grid;justify-items:center}.g74t1-bond-top{display:flex;align-items:center;gap:20px;font-size:24px;font-weight:800}.g74t1-a,.g74t1-b{border-radius:13px;color:#fff;padding:12px 19px;background:#2994d4}.g74t1-b{background:#ed8f39}.g74t1-bond svg{width:210px;height:55px}.g74t1-bond-children{display:flex;gap:65px}.g74t1-slot{min-width:53px;min-height:52px;border:3px solid #51aae2;border-radius:12px;background:#fff;color:#184e84;font-size:20px;font-weight:800}.g74t1-slot.active{outline:3px solid #efb534;background:#fff8d5}.g74t1-steps{display:grid;gap:8px;margin-top:15px}.g74t1-equation{display:flex;justify-content:center;gap:8px;align-items:center;background:white;border:1px solid #eed99a;padding:9px;border-radius:12px;font-size:18px;font-weight:800}.g74t1-unit{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#fff;padding:12px;margin:12px 0;border-radius:12px}.g74t1-tip{font-size:13px;color:#4d6683}.g74t1-numpad{background:white;border:2px solid #92c4ee;border-radius:15px;margin-top:15px;padding:13px}.g74t1-pad-grid,.g74-c2-keys{display:grid;grid-template-columns:repeat(3,1fr);max-width:390px;gap:6px;margin:8px auto}.g74t1-pad-key,.g74-c2-key{background:#dff1ff;border:1px solid #78bbeb;border-radius:9px;min-height:46px;font-size:19px;font-weight:800}.g74t1-status{text-align:center}.g74t1-controls{display:flex;gap:12px;align-items:center;margin-top:10px}.g74t1-warning{font-size:12px}.g74-c2-keypad{background:#fff;border:2px solid #92c4ee;border-radius:15px;padding:10px}.g74-c2-pad-label{text-align:center}.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}iframe{width:100%;height:740px;border:0}pre{background:#12263c;color:#e7f3ff;border-radius:12px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px} @media(max-width:700px){.g74t1-columns,.split{grid-template-columns:1fr}iframe{height:620px}.g74t1-unit{flex-wrap:wrap}}
+</style></head><body>
+<header><h1>G7.4 QA-C.2 · Renderer Parity & Variant Integration</h1><p>TEST độc lập. D1 xây DOM từ public plans; D2 chỉ thêm bàn phím Toán vào V1.2 hiện có. Không chấm, không GAS, không đổi demo khóa nguồn.</p>
+<nav><button id="show1" class="active">Dạng 1 – Dữ liệu biến thể</button><button id="show2">Dạng 2 – Bàn phím số</button><button id="run">Chạy kiểm tra DOM</button></nav></header>
+<main><section class="panel" id="panel1"><h2>Dạng 1 – 3 biến thể theo cùng layout, 6 ô nhập trống</h2><label>Biến thể <select id="variant"><option value="0">8 + 5; 1 dm, 1 m</option><option value="1">7 + 6; 2 dm, 2 m</option><option value="2">9 + 4; 3 dm, 3 m</option></select></label><div id="type1"></div></section>
+<section class="panel" id="panel2" hidden><h2>Dạng 2 – Dùng renderer V1.2 + bàn phím số tùy chọn (không sửa V1.2)</h2>
+<div class="split"><div><h3>V1.2 gốc</h3><iframe id="col-original" title="V1.2 original"></iframe></div><div><h3>V1.2 + bàn phím Toán</h3><iframe id="col-candidate" title="V1.2 plus keypad"></iframe><div id="col-pad"></div></div></div></section>
+<pre id="qa" aria-live="polite">Đang sẵn sàng…</pre></main>
+<script src="qa-c2-type1-variant-renderer.js"></script><script src="qa-c2-column-keypad-adapter.js"></script>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),ids=['t1_split1','t1_split2','t1_ten','t1_ans','t1_dm','t1_m'];
+const fixtures=[{id:'C2_BOND_8_5',a:8,b:5,dm:1,m:1},{id:'C2_BOND_7_6',a:7,b:6,dm:2,m:2},{id:'C2_BOND_9_4',a:9,b:4,dm:3,m:3}];
+const toPublic=v=>({ok:true,caseId:v.id,data:{a:v.a,b:v.b,dm:v.dm,m:v.m},slots:ids.map(id=>({id,value:null,role:'ANSWER_INPUT'}))});
+let instance=null,attached=null;
+function render1(){instance=G74Type1C2.mount($('type1'),toPublic(fixtures[+$('variant').value]));}
+$('variant').onchange=render1;render1();
+function load(frame,url){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('timeout '+url)),12000);frame.onload=()=>{clearTimeout(timer);resolve()};frame.onerror=()=>{clearTimeout(timer);reject(Error('load failed'))};frame.src=url;});}
+async function show2(){ $('panel1').hidden=true;$('panel2').hidden=false;$('show1').classList.remove('active');$('show2').classList.add('active');
+ if(!attached){const url='../g7-4-column-calc-reference-v12/G7_Column_Calc_V12_Interactive_TEST.html';await Promise.all([load($('col-original'),url),load($('col-candidate'),url)]);
+ const target=$('col-candidate').contentDocument;attached=G74ColumnKeypadC2.mount($('col-pad'),target.body);}}
+$('show1').onclick=()=>{$('panel1').hidden=false;$('panel2').hidden=true;$('show1').classList.add('active');$('show2').classList.remove('active');};
+$('show2').onclick=()=>show2().catch(e=>$('qa').textContent=String(e));
+async function verify(){const reports=[];
+ for(let i=0;i<3;i++){ $('variant').value=String(i);render1();const v=fixtures[i],host=$('type1');
+ const checks=[['sixSlots',ids.every(id=>!!host.querySelector('#slot_'+id))],['allBlank',ids.every(id=>host.querySelector('#slot_'+id).textContent==='?')],['numbers',host.querySelector('.g74t1-a').textContent===String(v.a)&&host.querySelector('.g74t1-b').textContent===String(v.b)],['units',host.textContent.includes(v.dm+' dm')&&host.textContent.includes(v.m+' m')],['keypad',host.querySelectorAll('.g74t1-pad-key').length===12],['noGrader',!host.querySelector('[data-grade],.grade-button')]];
+ reports.push({id:v.id,checks,pass:checks.every(x=>x[1])});}
+ await show2();const d=$('col-candidate').contentDocument,inputs=d.querySelectorAll('.kl-col-v12-answer');
+ const p=attached,first=d.querySelector('.kl-col-v12-answer[data-answer="result_ones"]');
+ if(first){first.focus();p.type('2');}
+ reports.push({id:'D2_KEYPAD',pass:!!first&&first.value==='2'&&inputs.length>0,checks:[['inputEventAndValue',first?.value==='2'],['baseRendererIntact',!!d.querySelector('.kl-col-v12-card')],['pad12',document.querySelectorAll('.g74-c2-key').length===12]]});
+ const result={pass:reports.every(r=>r.pass),reports,scope:'TEST_ONLY_NOT_GAS_NOT_GRADING'};$('qa').textContent=JSON.stringify(result,null,2);$('qa').dataset.done='true';$('qa').dataset.pass=String(result.pass);return result;}
+$('run').onclick=()=>verify().catch(e=>$('qa').textContent=String(e));
+if(new URLSearchParams(location.search).has('qaAuto'))verify().catch(e=>{$('qa').dataset.done='true';$('qa').dataset.pass='false';$('qa').textContent=String(e)});
+</script></body></html>
