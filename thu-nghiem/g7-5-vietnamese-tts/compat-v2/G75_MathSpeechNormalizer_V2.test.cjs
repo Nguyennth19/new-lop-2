@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict');
-const {normalize,segments,profileOf}=require('./math_speech_v2.js');
+const {normalize,segments,profileOf}=require('./G75_MathSpeechNormalizer_V2.js');
 const C=[
 ['36 − 12 = 24 (kg)','36 trừ 12 bằng 24 ki lô gam'],
 ['8 + 5 = ?','8 cộng 5 bằng mấy?'],
