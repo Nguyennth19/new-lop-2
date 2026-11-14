@@ -37,7 +37,7 @@ async function run(){
  $('original').contentWindow.loadExerciseType(0);$('candidate').contentWindow.loadExerciseType(0);
  mutatePreview($('candidate').contentWindow,v);const d=$('candidate').contentDocument,stage=d.getElementById('interactiveStage');
  test('SIX_INPUT_SLOTS',ids.every(i=>!!d.getElementById('slot_'+i)));
- test('SIX_EMPTY_SLOTS',ids.every(i=>!d.getElementById('slot_'+i).textContent.trim().match(/^\d+$/)));
+ test('SIX_EMPTY_SLOTS',ids.every(i=>!!d.getElementById('slot_'+i).querySelector('span.text-slate-300')));
  test('DYNAMIC_TOP_OPERANDS',stage.querySelector('.bg-sky-500')?.textContent===String(v.a)&&stage.querySelector('.bg-orange-500')?.textContent===String(v.b));
  test('DYNAMIC_CONVERSIONS',stage.textContent.includes(v.dm+' dm =')&&stage.textContent.includes(v.m+' m ='));
  test('ORIGINAL_UNMODIFIED', $('original').contentDocument.getElementById('interactiveStage').textContent.includes('8 + 5'));
@@ -46,9 +46,10 @@ async function run(){
  test('ORIGINAL_NUMPAD_PRESERVED',!!d.getElementById('numpadKeysGrid'));
  report.status=report.checks.every(c=>c.pass)?'PASS_DYNAMIC_DOM_PREVIEW_ONLY':'FAIL';
  }catch(e){report.status='FAIL';report.error=String(e);}
- $('result').textContent=JSON.stringify(report,null,2);
+ $('result').textContent=JSON.stringify(report,null,2);return report;
 }
 $('run').onclick=run;$('variant').onchange=run;
 $('export').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));a.download='G74_QAC1_Type1_DOM_Preview_Manual_Report.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);};
-run();
+const auto=new URLSearchParams(location.search).has('qaAuto');
+if(auto){(async()=>{let runs=[];for(let i=0;i<3;i++){$('variant').value=String(i);runs.push(await run());}const passed=runs.every(r=>r.status==='PASS_DYNAMIC_DOM_PREVIEW_ONLY');const summary={status:passed?'PASS':'FAIL',runs};$('result').textContent=JSON.stringify(summary,null,2);$('result').dataset.complete='true';$('result').dataset.pass=String(passed);})();}else run();
 </script></body></html>
