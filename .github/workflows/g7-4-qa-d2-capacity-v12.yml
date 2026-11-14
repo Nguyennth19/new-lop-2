@@ -69,7 +69,9 @@ jobs:
           p=P();p.feed(open(sys.argv[1],encoding='utf-8').read())
           assert p.attrs.get('data-qa-done')=='true',p.attrs
           assert p.attrs.get('data-qa-pass')=='true',(p.attrs,p.content[:700])
-          result=json.loads(p.content);assert result['status']=='PASS'
+          result=json.loads(p.content)
+          print('QA_D2_CASE_DIAGNOSTICS',[(sample['fixture'],sample['status'],[c for c in sample['checks'] if not c[1]]) for sample in result.get('samples',[])])
+          assert result['status']=='PASS'
           assert len(result['samples'])==5
           assert all(len(sample['checks'])==8 and sample['status']=='PASS' for sample in result['samples'])
           print('QA_D2_5_VARIANTS_40_CHECKS_PASS',sys.argv[1])
