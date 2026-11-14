@@ -1,0 +1,62 @@
+name: G7.6 Resource Renderer Manifest Consolidation QA (TEST only)
+on:
+  push:
+    branches:
+      - test/g7-6-resource-renderer-consolidation-v1-20261114
+    paths:
+      - 'du-lieu/g7-6/**'
+      - 'qa/g7-6/**'
+      - '.github/workflows/g7-6-resource-renderer-consolidation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  registry-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Lock original 10-form demo and prohibit accidental rewrite
+        run: |
+          set -euo pipefail
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+      - name: Validate pinned 12-mode resource registry, asset counts and safe variants
+        run: |
+          set -euo pipefail
+          node --check qa/g7-6/resource-renderer-resolver.cjs
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+      - name: Produce non-sensitive descriptor handoff evidence
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g76-evidence
+          node <<'NODE' >/tmp/g76-evidence/resolver-samples.json
+          const {loadManifest,resolvePublicEnvelope}=require('./qa/g7-6/resource-renderer-resolver.cjs');
+          const m=loadManifest();
+          const mk=(id,strategy,visualMode='REPRESENTATIVE')=>({
+           schemaVersion:'g76.public-envelope.v1',lessonId:'TOAN_B20',questionId:'QA_DEMO',
+           variantId:'V_001',typeId:id,mode:'PRACTICE',
+           display:{prompt:'Quan sát rồi thực hiện yêu cầu.',publicParameters:{a:8,b:5}},
+           visualIntent:{visualMode,renderStrategy:strategy},speech:{enabled:true,visiblePromptOnly:true}
+          });
+          const cases=[
+           ['D1',mk('D1','STRUCTURED_DIAGRAM')],
+           ['D2',mk('D2','HTML_FIELDS')],
+           ['D8A',mk('D8A','PARAMETRIC_SVG')],
+           ['D8B',mk('D8B','PARAMETRIC_SVG')],
+           ['D9',mk('D9','NO_VISUAL','EXACT_COUNT')],
+           ['D10_BLOCKED',mk('D10','HTML_FIELDS')],
+           ['D1_LEAK_BLOCKED',{...mk('D1','STRUCTURED_DIAGRAM'),display:{prompt:'?',publicParameters:{answer:13}}}]
+          ].map(([id,p])=>({id,result:resolvePublicEnvelope(m,p)}));
+          if(cases.some(x=>x.result.releaseReady!==false)||
+             cases.find(x=>x.id==='D10_BLOCKED').result.ok!==false||
+             cases.find(x=>x.id==='D1_LEAK_BLOCKED').result.ok!==false)
+            throw Error('FAIL_CLOSED_GUARD');
+          console.log(JSON.stringify({status:'TEST_DESCRIPTOR_ONLY_NO_GAS_NO_GRADING',typeCount:m.rendererRegistry.length,cases},null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: G76-Pinned-Registry-Resolver-Evidence
+          path: /tmp/g76-evidence/resolver-samples.json
+          retention-days: 30
