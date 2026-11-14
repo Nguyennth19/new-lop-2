@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "G7.4_RENDERER_BATCH_QA_V1_QA_B_CHECKPOINT",
+  "date": "2026-11-14",
+  "branch": "test/g7-4-renderer-batch-qa-b-v1-20261114",
+  "previousStage": "QA-A",
+  "currentStage": "QA-B",
+  "status": "QA_B_NOT_ACCEPTED_CI_FAILURE_AND_P0_BLOCKER",
+  "baseline": {
+    "qaACommit": "4d0950589e2fba88e735959e71cc75c531a121ff",
+    "mainHeadBefore": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+    "frozenSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced"
+  },
+  "sourceAudit": {
+    "rootPath": "qa/g7-4-renderer-batch-qa-v1",
+    "report": "docs/kiem-dinh/G7.4_RENDERER_BATCH_QA_V1_QA_B_20261114.md",
+    "matrix": "qa/g7-4-renderer-batch-qa-v1/qa-b-matrix.v1.json",
+    "unitRunner": "qa/g7-4-renderer-batch-qa-v1/qa-b-batch-runner.cjs",
+    "independentReplay": "qa/g7-4-renderer-batch-qa-v1/qa-b-v1-independent-recheck.cjs",
+    "workflow": ".github/workflows/g7-4-renderer-batch-qa-b-v1.yml",
+    "githubRuntime": "Node.js 22 on Ubuntu GitHub Actions"
+  },
+  "ci": {
+    "latestVerifiedRun": 43565074617,
+    "runSha": "320e1616349103147bdc3baf99869c0d29e5abe4",
+    "conclusion": "failure",
+    "jobId": 132357008552,
+    "evidenceArtifactId": 14101504324,
+    "evidenceArtifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43565074617/artifacts/14101504324",
+    "originalSuitesPass": 11,
+    "originalSuitesFail": 1,
+    "crossChecksPass": 11,
+    "independentLegacyV1Recheck": "PASS_29086_PAIRS_14707_VALID_G6_SNAPSHOTS_6"
+  },
+  "qaBMatrix": {
+    "D1": "PENDING",
+    "D2": "FAIL",
+    "D3": "PASS",
+    "D4": "PASS",
+    "D5": "PASS",
+    "D6": "PASS",
+    "D7": "PASS",
+    "D8": "PASS",
+    "D8A": "PASS",
+    "D8B": "PASS",
+    "D9": "PASS",
+    "D10": "BLOCKED"
+  },
+  "qaAFindingsCarriedUnchanged": [
+    {
+      "id": "QA-A-001",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No dedicated standalone Type 1 renderer V1.1 bundle; original Type1 plus Structured Diagram V2 only"
+    },
+    {
+      "id": "QA-A-002",
+      "priority": "P1",
+      "state": "BLOCKED",
+      "subject": "D2 v14 E2E project/deployment/rollback unverified; no CI run for v14 branch"
+    },
+    {
+      "id": "QA-A-003",
+      "priority": "P0",
+      "state": "BLOCKED",
+      "subject": "G6/B20 legacy answer,n1,n2,op fields in client; D10 scaffold filtering does not remove legacy payload leak"
+    },
+    {
+      "id": "QA-A-004",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No trusted statement-choice grading contract in server for D10"
+    },
+    {
+      "id": "QA-A-005",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8A/D8B asset inventory has 0 approved mapped Asset IDs; filenames only verified"
+    },
+    {
+      "id": "QA-A-006",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8B tilt visual regression 3kg vs 5kg has unit CI success but no actual browser screenshot in batch"
+    },
+    {
+      "id": "QA-A-007",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Vietnamese TTS G7.5 CI is mock/static only; device voice and Apps Script TEST not verified"
+    },
+    {
+      "id": "QA-A-008",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Generator/Lesson Composer/server grading and GAS E2E across 12 items not verified"
+    }
+  ],
+  "newQaBFindings": [
+    {
+      "id": "QA-B-001",
+      "priority": "P1",
+      "status": "FAIL",
+      "summary": "Historical Column V1 test requires source-lock.visualReference.originalAdvancedHTMLLocated=false, but current source-lock is true",
+      "evidence": {
+        "file": "qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs",
+        "line": 6,
+        "actual": true,
+        "expected": false,
+        "runId": 43565074617
+      },
+      "remediation": "Propose minimal test-only expectation update in a separately reviewed TEST patch. Do not modify source-lock, HTML or G6. Keep first failed run."
+    },
+    {
+      "id": "QA-B-002",
+      "priority": "P1",
+      "status": "BLOCKED",
+      "summary": "Column V1.2 PV1000 accepts operands/results only <=999; actual result 1000, four columns and PV1000_BOUNDARY unsupported",
+      "evidence": {
+        "core": "qa/g7-4-column-calc-reference-v12/column-v12-core.js",
+        "guard": "RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN",
+        "negativeCase": "900+100"
+      },
+      "remediation": "Clarify curriculum scope inclusive 1000; if required, create approved four-column variant behind QA and policy; do not silently extend PV1000."
+    },
+    {
+      "id": "QA-B-003",
+      "priority": "P1",
+      "status": "PENDING",
+      "summary": "P0.6 multi-family composer on isolated test branch currently accepts ADD and rendererKind math.mental/math.vertical only, not all 12 G7.4 families",
+      "evidence": {
+        "branch": "test/p0-6-fc-audit-20261114",
+        "file": "thu-nghiem/p0-6/math-lesson-composer-v1.cjs"
+      },
+      "remediation": "Plan versioned renderer/data registry mapping and private/public payload separation at QA-E; preserve P0.6 technical TEST closure without treating it as G7.4 integration approval."
+    },
+    {
+      "id": "QA-B-004",
+      "priority": "P1",
+      "status": "PENDING",
+      "summary": "D10 GUIDED may show G6 prefilled solution sentence and selection mode is not tied to trusted lesson assessment policy",
+      "evidence": {
+        "core": "qa/g7-4-word-problem-unification-v11/word-unification-v11-core.js",
+        "adapter": "qa/g7-4-word-problem-unification-v11/word-unification-v11-adapter.js"
+      },
+      "remediation": "Restrict GUIDED to explicitly approved practice/instruction contexts; exclude during assessment; add lesson policy test without changing G6."
+    }
+  ],
+  "controls": {
+    "mainModified": false,
+    "g6Modified": false,
+    "lockedOriginalModified": false,
+    "gasDeployed": false,
+    "studentWrites": false,
+    "progressWrites": false,
+    "starsChanged": false,
+    "gitHubOnlyTestDocsCi": true
+  },
+  "knownGaps": [
+    "Type1 UI parameter binding not proven",
+    "PV1000 exact 1000/four-column not supported",
+    "Legacy V1 unit assertion line 6 out of date; original test remains FAIL",
+    "D10 legacy client answer leakage unresolved P0",
+    "D10 server statement-grade contract missing",
+    "GUIDED mode assessment policy missing",
+    "P0.6 Composer multi-family does not natively cover 12 G7.4 families",
+    "Browser and GAS TEST E2E not executed"
+  ],
+  "nextAction": "QA-B.1 controlled TEST-only legacy expectation patch, Type1 mapping proof, exact-1000 policy, D10 trusted payload and grading contract",
+  "rollback": "No app deployment or G6 mutation. Restore audit baseline test/g7-4-renderer-batch-qa-v1-20261114 @ 4d0950589e2fba88e735959e71cc75c531a121ff. Leave failed CI run and evidence immutable.",
+  "releaseGate": "DO_NOT_DEPLOY_GAS_TEST_OR_MAIN"
+}
