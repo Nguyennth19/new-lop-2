@@ -60,7 +60,7 @@ const safe=packet('D1');eq(validateEnvelope(safe).ok,true);
 const unsafe={...safe,display:{...safe.display,publicParameters:{...safe.display.publicParameters,answerKey:13}}};
 eq(resolvePublicEnvelope(manifest,unsafe).code,'FORBIDDEN_OR_CYCLIC_PUBLIC_FIELD');
 eq(resolvePublicEnvelope(manifest,{...safe,display:{...safe.display,publicParameters:{details:{solution:'13'}}}}).code,'FORBIDDEN_OR_CYCLIC_PUBLIC_FIELD');
-eq(resolvePublicEnvelope(manifest,{...safe,display:{...safe.display,publicParameters:{result:13}}}).code,'INVALID_PUBLIC_PARAMETER'); // nested contracts reject opaque fields; explicit result property is not a secret alias here
+eq(resolvePublicEnvelope(manifest,{...safe,display:{...safe.display,publicParameters:{result:13}}}).code,'FORBIDDEN_OR_CYCLIC_PUBLIC_FIELD');
 eq(resolvePublicEnvelope(manifest,{...safe,visualIntent:{...safe.visualIntent,assetId:'KL_M04_001'}}).code,'STATIC_ASSET_BINDING_NOT_AUTHORIZED');
 eq(resolvePublicEnvelope(manifest,{...safe,visualIntent:{...safe.visualIntent,visualMode:'EXACT_COUNT',renderStrategy:'REPEAT_APPROVED_ASSET'}}).code,'COUNT_SAFE_RESOLUTION_REQUIRES_TRUSTED_APPROVAL');
 eq(resolvePublicEnvelope(manifest,{...safe,visualIntent:{...safe.visualIntent,countEvidenceRef:'untrusted'}}).code,'UNVERIFIED_CLIENT_COUNT_EVIDENCE');
