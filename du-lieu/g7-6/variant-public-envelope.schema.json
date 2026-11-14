@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Nguyennth19/new-lop-2/du-lieu/g7-6/variant-public-envelope.schema.json",
+  "title": "Lớp 2 G7.6 – Public Renderable Variant Envelope TEST",
+  "description": "Public display-only projection. Must be created on trusted server; never include grading secrets. Not an authentication or grading API.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "lessonId",
+    "questionId",
+    "variantId",
+    "typeId",
+    "mode",
+    "display",
+    "visualIntent",
+    "speech"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "g76.public-envelope.v1"
+    },
+    "lessonId": {
+      "$ref": "#/$defs/identifier"
+    },
+    "questionId": {
+      "$ref": "#/$defs/identifier"
+    },
+    "variantId": {
+      "$ref": "#/$defs/identifier"
+    },
+    "typeId": {
+      "enum": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D8A",
+        "D8B",
+        "D9",
+        "D10"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "PRACTICE",
+        "ASSESSMENT"
+      ]
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prompt",
+        "publicParameters"
+      ],
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "publicParameters": {
+          "type": "object",
+          "maxProperties": 40,
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 250
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "visibleChoices": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "text"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/identifier"
+              },
+              "text": {
+                "type": "string",
+                "maxLength": 300
+              }
+            }
+          }
+        }
+      }
+    },
+    "visualIntent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visualMode",
+        "renderStrategy"
+      ],
+      "properties": {
+        "visualMode": {
+          "enum": [
+            "EXACT_COUNT",
+            "REPRESENTATIVE",
+            "DECORATIVE"
+          ]
+        },
+        "renderStrategy": {
+          "enum": [
+            "STRUCTURED_DIAGRAM",
+            "PARAMETRIC_SVG",
+            "REPEAT_APPROVED_ASSET",
+            "STATIC_APPROVED_ASSET",
+            "HTML_FIELDS",
+            "NO_VISUAL"
+          ]
+        },
+        "assetId": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "countEvidenceRef": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        }
+      }
+    },
+    "speech": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "profileId": {
+          "enum": [
+            "vi_math_v2_dynamic",
+            "vi_math_v12_stable"
+          ]
+        },
+        "visiblePromptOnly": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,100}$"
+    }
+  }
+}
