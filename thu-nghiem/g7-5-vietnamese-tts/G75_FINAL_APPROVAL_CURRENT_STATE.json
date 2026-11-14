@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "g75.voice-signoff-state.v1",
+  "date": "2026-11-14",
+  "status": "OFFICIAL_V12_V2_STANDALONE_VOICE_APPROVED_ARCHIVED_NOT_INTEGRATED",
+  "phase": "G7.5-PROFILE_SIGNOFF",
+  "approval": {
+    "actor": "project owner",
+    "method": "explicit visual/auditory acceptance in project conversation",
+    "decision": "Keep both V1.2 and V2; V2 preferred rhythm; parent-selectable later",
+    "approvedProfiles": [
+      "vi_math_v12_stable",
+      "vi_math_v2_dynamic"
+    ],
+    "defaultFuture": "vi_math_v2_dynamic",
+    "audioAcceptanceV2": "PASS_OWNER_STANDALONE",
+    "audioAcceptanceV12": "PASS_OWNER_STANDALONE"
+  },
+  "branch": "test/g7-5-approved-voice-profiles-20261114",
+  "sourceV2Commit": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+  "registryPath": "thu-nghiem/g7-5-vietnamese-tts/G75_APPROVED_VOICE_PROFILE_REGISTRY_V1.json",
+  "signoffPath": "thu-nghiem/g7-5-vietnamese-tts/G75_OFFICIAL_V12_V2_SIGNOFF_20261114.md",
+  "files": {
+    "v12": {
+      "branch": "test/g7-5-vi-tts-compat-v1-20261114",
+      "blob": "f67c87ddd4633d937248de3f75273eb1d7940e40",
+      "driveId": "1KMHix06TX6BYT3xv8c_weAw5cS_3YlQy"
+    },
+    "v2": {
+      "branch": "test/g7-5-v2-prosody-20261114",
+      "blob": "2c11e1b6e99f63665a05d4b4f875d9984b2741f4",
+      "driveId": "1M7i9Yk6Gn9W9mj-4Jd4z1hFc6dDwnNKr"
+    }
+  },
+  "qa": {
+    "v2Static": "PASS_46_PLUS_4",
+    "v2CI": "PASS_43590646311",
+    "realDeviceOwnerListening": "PASS_FOR_OWNER_TESTED_SURFACE_ONLY",
+    "appsScriptIframe": "NOT_TESTED",
+    "parentAuthAndPersistence": "NOT_IMPLEMENTED",
+    "crossDevice": "PENDING"
+  },
+  "p06Baseline": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "releaseReady": false,
+  "version6Changed": false,
+  "mainChanged": false,
+  "testTheoMainChanged": false,
+  "gradingChanged": false,
+  "next": "Integrate authorized parental voice profile settings only in separate P1/parent-feature scope after dedicated compatibility, security, and rollback QA."
+}
