@@ -572,10 +572,37 @@ function selfcheck(){const checks=[
  {name:'G75_V2_NORMALIZE',pass:G75V2.normalize('36 − 12 = 24 (kg)',{lang:'vi-VN'}).includes('trừ')},
  {name:'D2_FRAME_READY',pass:$('d2-frame').dataset.ready==='yes'}
 ];session.automated.push({at:new Date().toISOString(),checks});const out={status:checks.every(x=>x.pass)?'STATIC_BROWSER_PROBE_PASS':'PARTIAL_OR_FAIL',checks};$('qa-out').textContent=JSON.stringify(out,null,2);return out}
+function interactionProbes(){
+ const checks=[],record=(name,pass)=>checks.push({name,pass:Boolean(pass)});
+ try{
+   const slot=$('d1-mount').querySelector('[data-slot="t1_split1"]'),mirror=$('d1-mount').querySelector('[data-mirror="t1_split1"]');
+   lastD1.select('t1_split1');lastD1.input('2');
+   record('D1_MIRRORED_SINGLE_INPUT',!!slot&&!!mirror&&slot.textContent==='2'&&mirror.textContent==='2'&&$('d1-mount').querySelectorAll('[data-slot]').length===6);
+   lastD1.reset();record('D1_RESET_VALUES',slot?.textContent==='?'&&mirror?.textContent==='?');
+ }catch(e){record('D1_INPUT_EXCEPTION_'+e.message,false)}
+ try{
+  const f=$('d2-frame').contentDocument,ones=f.querySelector('[data-answer="result_ones"]'),tens=f.querySelector('[data-answer="result_tens"]');
+  ones?.focus();const rv=d2Pad?.type('6');
+  record('D2_NUMPAD_INPUT_AND_FOCUS',!!rv?.ok&&ones?.value==='6'&&f.activeElement===tens);
+  f.querySelector('.kl-col-v12-reset')?.click();
+ }catch(e){record('D2_INPUT_EXCEPTION_'+e.message,false)}
+ try{
+  const old=ctlA.snapshot().quantities,plus=[...$('d8a-mount').querySelectorAll('.g74-cw-btn')].find(b=>b.textContent.includes('+ 1 L'));
+  plus?.click();const now=ctlA.snapshot().quantities;record('D8A_ADD_ONE_LITER',!!plus&&now.bottleA===old.bottleA+1);
+  openA();
+ }catch(e){record('D8A_ACTION_EXCEPTION_'+e.message,false)}
+ try{
+  const old=ctlB.snapshot().quantities,plus=[...$('d8b-mount').querySelectorAll('.g74-cw-btn')].find(b=>b.textContent.includes('+ 1 kg'));
+  plus?.click();const now=ctlB.snapshot().quantities;record('D8B_ADD_ONE_KG',!!plus&&now.left===old.left+1);
+  openB(3,5);
+ }catch(e){record('D8B_ACTION_EXCEPTION_'+e.message,false)}
+ session.automated.push({at:new Date().toISOString(),interactionChecks:checks});
+ return checks;
+}
 $('qa-selfcheck').onclick=selfcheck;
 $('qa-export').onclick=()=>{session.human=Object.fromEntries([...document.querySelectorAll('[data-qa]')].map(el=>[el.dataset.qa,el.value]));session.endedAt=new Date().toISOString();session.note=$('qa-note').value;session.device.lastWidth=innerWidth;session.device.lastHeight=innerHeight;
  const b=new Blob([JSON.stringify(session,null,2)],{type:'application/json'}),url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='G74_QAD_RealDevice_VisualTouchTTS_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)};
 window.addEventListener('error',e=>log('JS_ERROR',{message:e.message}));window.addEventListener('pagehide',()=>{try{window.speechSynthesis?.cancel()}catch(e){}});
 mountD1();openA();openB(3,5);updatePreview();log('INIT','STANDALONE_READY');
-if(new URLSearchParams(location.search).has('qaAuto')){startD2();setTimeout(()=>{const x=selfcheck();$('qa-out').dataset.autoDone='true';$('qa-out').dataset.autoPass=String(x.status==='STATIC_BROWSER_PROBE_PASS')},1200)}
+if(new URLSearchParams(location.search).has('qaAuto')){startD2();setTimeout(()=>{const x=selfcheck(),interactions=interactionProbes(),ok=x.status==='STATIC_BROWSER_PROBE_PASS'&&interactions.every(z=>z.pass);$('qa-out').textContent=JSON.stringify({status:ok?'STATIC_BROWSER_PROBE_PASS':'PARTIAL_OR_FAIL',checks:x.checks,interactions},null,2);$('qa-out').dataset.autoDone='true';$('qa-out').dataset.autoPass=String(ok)},1200)}
 </script></body></html>
