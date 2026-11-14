@@ -14,6 +14,11 @@ nav button.active{background:#305fbe;color:#fff}
 iframe{width:100%;height:640px;border:0;display:block;background:white}
 #status{font-size:12px;padding:10px;white-space:pre-wrap;overflow-wrap:anywhere}
 #qaCResult{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;font:12px/1.5 ui-monospace,monospace;max-height:300px;overflow:auto}
+/* Screenshot-only focus mode: original source and view remain unchanged. */
+body.focus-candidate header p,body.focus-candidate nav{display:none}
+body.focus-candidate #comparison{display:block}
+body.focus-candidate #comparison>.panel:first-child{display:none}
+body.focus-candidate iframe{height:780px}
 @media(max-width:700px){#comparison{grid-template-columns:minmax(0,1fr)}iframe{height:530px}}
 </style></head><body>
 <header><h1>G7.4 QA-C · Đối chiếu với demo gốc (không thay giao diện)</h1>
@@ -41,6 +46,7 @@ const c=[
 {id:'D9',type:8,label:'9 · Biểu đồ',src:'../g7-4-pictograph-reference-v11/Pictograph_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE9_V11_VIEW'},
 {id:'D10',type:9,label:'10 · Lời văn',src:'../g7-4-word-problem-unification-v11/Word_Unification_V11_Standalone_TEST.html',sourceRelation:'ORIGINAL_TYPE10_G6_SCAFFOLD'}];
 const params=new URLSearchParams(location.search),auto=params.has('qaAuto');
+if(params.get('focus')==='candidate')document.body.classList.add('focus-candidate');
 const ref=document.getElementById('original'),candidate=document.getElementById('candidate'),status=document.getElementById('status'),pre=document.getElementById('qaCResult');
 const nav=document.getElementById('tabs');
 for(const one of c){const b=document.createElement('button');b.textContent=one.label;b.dataset.case=one.id;
@@ -154,6 +160,11 @@ async function select(one){
  record.candidateStylesheetLoaded=b.styleSheets.length>0;
  record.browserUnitStatus=record.errors.length?'FAIL':'PASS';
  record.visualPixelParity='NOT_ASSERTED_DIFFERENT_RENDERING_OR_STATIC_DEMO';
+ // Browser probing must not displace the screenshots or mimic a visual regression.
+ try{b.activeElement?.blur();}catch(_){ }
+ try{ref.contentWindow.scrollTo(0,0);}catch(_){ }
+ try{candidate.contentWindow.scrollTo(0,params.get('focus')==='candidate'&&one.id==='D8B'?180:0);}catch(_){ }
+ window.scrollTo(0,0);
  status.textContent=one.id+' · '+record.browserUnitStatus+' · '+record.checks.length+' kiểm tra; ảnh chụp cần duyệt thủ công.';
  return record;
 }
@@ -179,7 +190,8 @@ async function main(){
      pixelParity:'PENDING_MANUAL_REVIEW',
      screenshots:'CAPTURED_BY_CI_SEPARATELY',results},null,2);
    status.textContent='Chrome đã kiểm: '+pass+'/12 · đánh giá tương đồng hình ảnh cần duyệt screenshot; GAS chưa chạy.';
-  }else{const r=await select(initial);pre.hidden=false;pre.textContent=JSON.stringify(r,null,2);}
+  }else{const r=await select(initial);pre.hidden=false;pre.textContent=JSON.stringify(r,null,2);
+   setTimeout(()=>window.scrollTo(0,0),130);}
  }catch(e){
   document.body.dataset.qaCfinished='error';
   pre.hidden=false;pre.textContent=String(e.stack||e);status.textContent='Lỗi harness: '+e.message;
