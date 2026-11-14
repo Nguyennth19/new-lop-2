@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.4 QA-D – Visual · Touch · TTS Device Test</title>
+<style>
+:root{font:15px system-ui;color:#18324d;background:#edf7fd}*{box-sizing:border-box}body{margin:0}header{background:#fff;padding:14px;border-bottom:3px solid #91c8e8}h1{font-size:21px;margin:0 0 6px}h2{font-size:17px}button,select{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #f5aa27}header p{font-size:13px}nav{display:flex;gap:8px;flex-wrap:wrap;padding:10px 0}nav button{border:1px solid #5ea6d9;border-radius:9px;padding:8px;background:white}nav button.active{background:#246db7;color:white}main{padding:12px;max-width:1200px;margin:auto}.panel{border-radius:16px;border:1px solid #a9d2ef;background:#fff;padding:13px;margin-bottom:12px}.g74t1-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}.g74t1-card{min-width:0;padding:15px;border-radius:20px;border:2px solid #f3cf62;background:#fff7db}.g74t1-card.units{background:#e8f6ff;border-color:#8dcafa}.g74t1-card h3{font-size:16px;margin:0 0 16px}.g74t1-bond{display:grid;justify-items:center}.g74t1-bond-top{display:flex;align-items:center;gap:20px;font-size:24px;font-weight:800}.g74t1-a,.g74t1-b{border-radius:13px;color:#fff;padding:12px 19px;background:#2994d4}.g74t1-b{background:#ed8f39}.g74t1-bond svg{width:210px;height:55px}.g74t1-bond-children{display:flex;gap:65px}.g74t1-slot{min-width:53px;min-height:52px;border:3px solid #51aae2;border-radius:12px;background:#fff;color:#184e84;font-size:20px;font-weight:800}.g74t1-slot.active{outline:3px solid #efb534;background:#fff8d5}.g74t1-steps{display:grid;gap:8px;margin-top:15px}.g74t1-equation{display:flex;justify-content:center;gap:8px;align-items:center;background:white;border:1px solid #eed99a;padding:9px;border-radius:12px;font-size:18px;font-weight:800}.g74t1-unit{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#fff;padding:12px;margin:12px 0;border-radius:12px}.g74t1-tip{font-size:13px;color:#4d6683}.g74t1-numpad{background:white;border:2px solid #92c4ee;border-radius:15px;margin-top:15px;padding:13px}.g74t1-pad-grid,.g74-c2-keys{display:grid;grid-template-columns:repeat(3,1fr);max-width:390px;gap:6px;margin:8px auto}.g74t1-pad-key,.g74-c2-key{background:#dff1ff;border:1px solid #78bbeb;border-radius:9px;min-height:46px;font-size:19px;font-weight:800}.g74t1-status{text-align:center}.g74t1-controls{display:flex;gap:12px;align-items:center;margin-top:10px}.g74t1-warning{font-size:12px}.g74-c2-keypad{background:#fff;border:2px solid #92c4ee;border-radius:15px;padding:10px}.g74-c2-pad-label{text-align:center}.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}iframe{width:100%;height:740px;border:0}pre{background:#12263c;color:#e7f3ff;border-radius:12px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px} @media(max-width:700px){.g74t1-columns,.split{grid-template-columns:1fr}iframe{height:620px}.g74t1-unit{flex-wrap:wrap}}
+
+/* Scoped 8-A / 8-B styles, isolated from G6 and Measurement V1.1. */
+.g74-cw-v11{max-width:850px;margin:0 auto;font:700 15px/1.45 system-ui,sans-serif;color:#243954}
+.g74-cw-v11 h3{font-size:17px;padding:12px 15px;border-radius:14px;border:2px solid #a6d2ee;background:#f0faff}
+.g74-cw-status{color:#5e7089;font-size:12px}
+.g74-cw-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:12px 0}
+.g74-cw-panel{border:2px solid #b8d9ed;background:#fff;border-radius:17px;padding:12px;display:flex;flex-direction:column;align-items:center;min-width:0;gap:7px}
+.g74-cw-panel svg{height:215px;max-width:100%}
+.g74-cw-panel p{font-size:12px;text-align:center;margin:3px}
+.g74-cw-controls{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:9px 0}
+.g74-cw-btn{border:2px solid #80b5df;border-radius:11px;cursor:pointer;background:#e8f6ff;color:#1b5688;min-height:44px;padding:9px 12px;font:800 13px system-ui}
+.g74-cw-btn:disabled{opacity:.5;cursor:not-allowed}
+.g74-cw-btn:focus-visible{outline:3px solid #265ee7;outline-offset:2px}
+.g74-cw-scale{border:2px solid #ecd6a1;background:#fff8e9;border-radius:18px;padding:12px;text-align:center}
+.g74-cw-scale>svg{width:100%;height:auto;max-width:530px}
+.g74-cw-balance{font-weight:800;color:#855b29}
+.g74-cw-asset{max-height:65px;max-width:120px;object-fit:contain}
+.g74-cw-asset-fallback{font-size:11px;color:#6a7c8d}
+@media(max-width:480px){.g74-cw-two{grid-template-columns:1fr}.g74-cw-panel svg{height:165px}}
+
+:root{color-scheme:light}body{background:#eef7ff;color:#20354c}header{padding:15px;border-bottom:3px solid #9bd4f0;background:white;position:static}.qa-shell{max-width:1080px;margin:auto;padding:12px}.qa-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:9px 0}.qa-tabs button{border:2px solid #9fcbe8;padding:10px 13px;border-radius:11px;background:white;min-height:46px;color:#214c70}.qa-tabs button[aria-selected=true]{background:#2569a9;color:#fff}.qa-pane[hidden]{display:none!important}.qa-frame{width:100%;border:1px solid #a9d0e9;border-radius:12px;min-height:530px}.qa-candidate{padding:12px;border-radius:14px;border:1px solid #c9e1f5;background:white}.qa-meta{font-size:12px;line-height:1.6;color:#48637b}.qa-status{padding:11px;border-radius:10px;background:#eaf5ff;font-size:13px}.qa-actions{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0}.qa-actions button,.qa-actions select,.qa-actions input{font:inherit;border:1px solid #78b9da;border-radius:9px;padding:9px;min-height:44px;background:#fff;color:#234866}.qa-speak{background:#d6f5e5!important}.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.qa-form{background:#fff;border-radius:14px;border:1px solid #b6d6e9;padding:14px}.qa-case{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,200px);gap:12px;margin:10px 0;border-bottom:1px solid #e1e9ef;padding:10px 0}.qa-case select,.qa-case textarea{width:100%;padding:9px}.qa-case select{min-height:44px}.qa-report{white-space:pre-wrap;word-break:break-word;border-radius:10px;background:#10233a;color:#eef8ff;padding:10px;font-size:12px;max-height:220px;overflow:auto}.qa-warn{border-left:4px solid #dc9a39;padding:10px;background:#fffae8}.qa-touchzone{touch-action:manipulation}.qa-svg svg{max-width:100%;height:auto} @media(max-width:720px){.qa-grid{grid-template-columns:1fr}.qa-case{grid-template-columns:1fr}.qa-frame{min-height:430px}.qa-shell{padding:8px}}
+</style>
+</head><body>
+<header><h1>G7.4 – QA-D · Kiểm thử trực quan, cảm ứng & giọng đọc</h1>
+<p>HTML độc lập, dùng các module TEST G7.4 đã lưu và bộ chuẩn hóa G7.5 V2. Không có kết nối GAS, không chấm điểm, không gửi dữ liệu, không lưu lên máy chủ.</p>
+<p class="qa-warn"><strong>Nguyên tắc nghiệm thu:</strong> PASS cú pháp/logic không có nghĩa đã nghe thật hoặc chạm thật. Sau mỗi bài thử, chọn kết quả theo trải nghiệm trên thiết bị và xuất báo cáo JSON.</p>
+<div class="qa-tabs" role="tablist" aria-label="Chọn nhóm bài thử">
+<button id="tab-d1" data-mode="d1" role="tab" aria-selected="true">Dạng 1 · Tách/gộp</button>
+<button id="tab-d2" data-mode="d2" role="tab" aria-selected="false">Dạng 2 · Đặt tính</button>
+<button id="tab-d8a" data-mode="d8a" role="tab" aria-selected="false">Dạng 8A · Lít</button>
+<button id="tab-d8b" data-mode="d8b" role="tab" aria-selected="false">Dạng 8B · Kg</button>
+<button id="tab-tts" data-mode="tts" role="tab" aria-selected="false">G7.5 V2 · Giọng đọc</button></div>
+</header>
+<div class="qa-shell">
+<section id="pane-d1" class="qa-pane"><div class="qa-form"><h2>Dạng 1 · Dữ liệu biến thể và bàn phím cảm ứng</h2>
+<p>Chọn 3 bộ số, chạm sáu ô nhập, dùng bàn phím Toán, xóa và làm lại. Đối chiếu bố cục với demo gốc đã khóa.</p>
+<div class="qa-actions"><label>Biến thể <select id="d1-variant"><option value="0">8 + 5; 1 dm; 1 m</option><option value="1">7 + 6; 2 dm; 2 m</option><option value="2">9 + 4; 3 dm; 3 m</option></select></label><button id="d1-reset">Làm lại D1</button><button id="d1-probe">Tự kiểm tra DOM D1</button></div>
+<div id="d1-mount" class="qa-candidate qa-touchzone"></div><div id="d1-status" class="qa-status" role="status">Chưa kiểm tra.</div></div></section>
+<section id="pane-d2" class="qa-pane" hidden><div class="qa-form"><h2>Dạng 2 · Renderer V1.2 và bàn phím số</h2>
+<p>Chạm ô đơn vị rồi dùng bàn phím bên dưới. Kiểm tra tự chuyển sang hàng chục/trăm, xóa, đặt tính có nhớ và không tràn ngang. Dữ liệu phép tính vẫn do renderer V1.2 quản lý.</p>
+<iframe id="d2-frame" class="qa-frame" title="Cột tính V1.2 nguồn nguyên vẹn" sandbox="allow-scripts allow-same-origin"></iframe>
+<div id="d2-pad"></div><div id="d2-status" class="qa-status" role="status">Chưa tải renderer D2.</div></div></section>
+<section id="pane-d8a" class="qa-pane" hidden><div class="qa-form"><h2>Dạng 8A · Bình nước SVG động</h2>
+<p>Thêm/bớt 1 L, rót 1 L và quan sát mức nước; mức tối đa không được vượt sức chứa. Không dùng ảnh ca đong tĩnh để diễn giải số lít động.</p>
+<div class="qa-actions"><button id="d8a-reset">Làm lại 8A</button><button id="d8a-probe">Kiểm tra mô hình 8A</button></div>
+<div id="d8a-mount" class="qa-svg qa-candidate qa-touchzone"></div><div id="d8a-status" class="qa-status" role="status"></div></div></section>
+<section id="pane-d8b" class="qa-pane" hidden><div class="qa-form"><h2>Dạng 8B · Cân đúng chiều SVG động</h2>
+<p>Cân bên nhẹ phải ở cao hơn bên nặng. Thử ba trạng thái dưới đây, sau đó thử tăng/giảm 1 kg bằng cảm ứng trên điện thoại.</p>
+<div class="qa-actions"><button id="balance-35">Trái 3 kg – Phải 5 kg</button><button id="balance-53">Trái 5 kg – Phải 3 kg</button><button id="balance-55">Bằng nhau 5 kg – 5 kg</button><button id="d8b-probe">Kiểm tra chiều cân</button></div>
+<div id="d8b-mount" class="qa-svg qa-candidate qa-touchzone"></div><div id="d8b-status" class="qa-status" role="status"></div></div></section>
+<section id="pane-tts" class="qa-pane" hidden><div class="qa-form"><h2>G7.5 V2 · Giọng đọc dùng thử trong renderer</h2>
+<p>Đọc bằng giọng tiếng Việt hiện có trên máy. V2 chia các đoạn với nhịp sư phạm; lựa chọn V1.2 để đối chứng. Nội dung chỉ là câu hỏi/hướng dẫn công khai, không chứa khóa đáp án hoặc lời giải bị khóa.</p>
+<div class="qa-actions">
+<label>Chế độ <select id="voice-profile"><option value="v2">V2 – Ngữ điệu động (đề xuất)</option><option value="v12">V1.2 – Nhịp cố định</option></select></label>
+<label>Đoạn đọc <select id="tts-sample"><option value="d1">D1 – Tách/gộp</option><option value="d2">D2 – Đặt tính</option><option value="d8a">D8A – Lít</option><option value="d8b">D8B – Kg</option></select></label>
+<button id="tts-start" class="qa-speak">🔊 Đọc thử</button><button id="tts-stop">Dừng</button></div>
+<p id="tts-preview" class="qa-status"></p><p id="tts-status" role="status" class="qa-status">Chưa nghe.</p><p class="qa-meta">Nút đọc chỉ ghi sự kiện onstart/onend để chẩn đoán; âm thanh có tự nhiên hay không do người nghe xác nhận trong biểu mẫu.</p></div></section>
+<section class="qa-form"><h2>Biên bản nghiệm thu trên thiết bị này</h2>
+<div id="qa-device" class="qa-meta"></div><p>Chọn PASS/FAIL/NOT TESTED cho từng hạng mục, dựa trên thao tác thực tế.</p>
+<div id="qa-checklist"></div><label>Nhận xét thiết bị / lỗi cụ thể <textarea id="qa-note" rows="4" style="width:100%;padding:10px" placeholder="Ví dụ: Chrome Android, nhấn ô đơn vị không tự chuyển..."></textarea></label>
+<div class="qa-actions"><button id="qa-export">Tải báo cáo QA JSON</button><button id="qa-selfcheck">Chạy chẩn đoán kỹ thuật</button></div>
+<pre id="qa-out" class="qa-report">Chưa chạy chẩn đoán.</pre></section>
+<p class="qa-meta">QA-D · Test độc lập. Không tự động ký duyệt chủ dự án, không sửa MAIN, G6, Apps Script TEST Version 6 hoặc dữ liệu học sinh.</p></div>
+<script>'use strict';
+/* G7.4 QA-C.2 TEST-only Type1 variant renderer.
+   Renders original-inspired two-panel layout from a public plan; never grades.
+   Does not mutate/parse/hijack original demo HTML or bundle answer keys.
+*/
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else if(root)root.G74Type1C2=api;})(typeof window!=='undefined'?window:null,function(){
+ const ids=['t1_split1','t1_split2','t1_ten','t1_ans','t1_dm','t1_m'];
+ const validPublic=(v)=>!!v&&v.ok===true&&v.data&&
+   ['a','b','dm','m'].every(k=>Number.isSafeInteger(v.data[k]))&&
+   Array.isArray(v.slots)&&v.slots.length===6&&
+   ids.every(id=>v.slots.some(s=>s.id===id&&s.value===null&&s.role==='ANSWER_INPUT'))&&
+   !['answer','answerKey','correctValue','expectedAnswer','solution'].some(k=>Object.hasOwn(v,k));
+ function mount(host,plan,opts={}){
+  if(!host||typeof host.replaceChildren!=='function'||!validPublic(plan))return {ok:false,reason:'INVALID_PUBLIC_PLAN'};
+  if(!host.ownerDocument)return {ok:false,reason:'INVALID_HOST'};
+  const d=host.ownerDocument,values=Object.create(null),a=plan.data.a,b=plan.data.b,dm=plan.data.dm,m=plan.data.m;
+  let active='t1_split1';const node=(tag,cls,txt)=>{let e=d.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e};
+  const stage=node('section','g74t1-stage');
+  stage.dataset.variantId=plan.caseId;
+  const title=node('h2','g74t1-title','Điền số: '+a+' + '+b+' và đổi đơn vị độ dài');stage.append(title);
+  const columns=node('div','g74t1-columns');stage.append(columns);
+  const left=node('section','g74t1-card bond'),right=node('section','g74t1-card units');columns.append(left,right);
+  left.append(node('h3','','✨ Phần A: Tách số cho đủ chục ('+a+' + '+b+')'));
+  const picture=node('div','g74t1-bond');
+  const top=node('div','g74t1-bond-top');top.append(node('span','g74t1-a',a),node('span','', '+'),node('span','g74t1-b',b));picture.append(top);
+  const svg=d.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 260 70');svg.setAttribute('aria-hidden','true');
+  const path=d.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d','M180 2L100 65M180 2L230 65');path.setAttribute('fill','none');path.setAttribute('stroke','#16a085');path.setAttribute('stroke-width','4');svg.append(path);picture.append(svg);
+  const children=node('div','g74t1-bond-children');picture.append(children);
+  const slots=new Map();
+  function slot(id,max=3){
+    const b=node('button','g74t1-slot','?');b.type='button';b.id='slot_'+id;b.dataset.slot=id;b.dataset.maxlength=String(max);
+    b.setAttribute('aria-label','Ô trả lời '+id);b.setAttribute('aria-pressed','false');b.onclick=()=>select(id);slots.set(id,b);return b;
+  }
+  children.append(slot('t1_split1',1),slot('t1_split2',1));left.append(picture);
+  const steps=node('div','g74t1-steps');
+  function eq(parts){const row=node('div','g74t1-equation');for(const p of parts)row.append(typeof p==='string'?node('span','',p):slot(p.id,p.max));steps.append(row)}
+  eq([a+' + ',{id:'t1_split1',max:1},' = ',{id:'t1_ten',max:2}]);
+  eq(['10 + ',{id:'t1_split2',max:1},' = ',{id:'t1_ans',max:2}]);left.append(steps);
+  right.append(node('h3','','📏 Phần B: Quy đổi đơn vị đo độ dài'));
+  function unit(amount,u,id){const row=node('div','g74t1-unit');row.append(node('strong','',amount+' '+u+' = '),slot(id,4),node('strong','','cm'));right.append(row)}
+  unit(dm,'dm','t1_dm');unit(m,'m','t1_m');
+  right.append(node('p','g74t1-tip','Chạm vào ô trống, sau đó dùng bàn phím Toán phía dưới.'));
+  const pad=node('section','g74t1-numpad');pad.setAttribute('aria-label','Bàn phím số Toán lớp 2');const indicator=node('div','g74t1-status','Ô đang chọn: '+active);pad.append(indicator);
+  const grid=node('div','g74t1-pad-grid');pad.append(grid);
+  function select(id){if(!slots.has(id))return;active=id;for(const [key,button] of slots){const on=key===id;button.classList.toggle('active',on);button.setAttribute('aria-pressed',String(on))}indicator.textContent='Ô đang chọn: '+id;}
+  function input(c){if(!slots.has(active))return;const button=slots.get(active),max=Number(button.dataset.maxlength);let val=values[active]||'';
+    if(c==='BACK')val=val.slice(0,-1);else if(c==='CLR')val='';else if(/^\d$/.test(c))val=val.length>=max?c:val+c;else return;
+    values[active]=val;button.textContent=val||'?';button.dataset.empty=String(val==='');
+    if(typeof opts.onChange==='function')opts.onChange({variantId:plan.caseId,values:{...values},active});
+  }
+  for(const c of ['1','2','3','4','5','6','7','8','9','CLR','0','BACK']){
+   const label=c==='CLR'?'Xóa':c==='BACK'?'⌫':c;const btn=node('button','g74t1-pad-key',label);btn.type='button';btn.dataset.key=c;
+   btn.setAttribute('aria-label',c==='CLR'?'Xóa ô hiện tại':c==='BACK'?'Xóa chữ số cuối':label);
+   btn.addEventListener('click',()=>input(c));grid.append(btn);
+  }
+  const controls=node('div','g74t1-controls');const reset=node('button','','↺ Làm lại');reset.type='button';
+  reset.onclick=()=>{for(const [id,b] of slots){delete values[id];b.textContent='?';b.dataset.empty='true';}select(ids[0]);if(typeof opts.onChange==='function')opts.onChange({variantId:plan.caseId,values:{},reset:true})};controls.append(reset);
+  const note=node('p','g74t1-warning','TEST: chỉ thu ô nhập, không chấm, không đọc đáp án, không cộng sao.');controls.append(note);
+  host.replaceChildren(stage,pad,controls);select(active);
+  return {ok:true,collect:()=>({variantId:plan.caseId,fields:{...values}}),reset:()=>reset.click(),select,input,slots};
+ }
+ return Object.freeze({validPublic,mount});
+});
+</script>
+<script>'use strict';
+/* QA-C2 native-input compatibility keypad: use existing V1.2 inputs, never replace arithmetic view.
+   Key events trigger the original renderer's input/focus transitions; no grader. */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else if(root)root.G74ColumnKeypadC2=api;})(typeof window!=='undefined'?window:null,function(){
+ function mount(container,root,callbacks={}){
+  if(!container?.ownerDocument||!root?.querySelectorAll)return {ok:false,reason:'INVALID_MOUNT'};
+  const d=container.ownerDocument,keys=['1','2','3','4','5','6','7','8','9','BACK','0','CLEAR'];
+  const pad=d.createElement('section');pad.className='g74-c2-keypad';pad.setAttribute('aria-label','Bàn phím Toán cho phép đặt tính');
+  const label=d.createElement('div');label.className='g74-c2-pad-label';label.textContent='Bàn phím Toán: chọn ô, rồi bấm số';pad.append(label);
+  const grid=d.createElement('div');grid.className='g74-c2-keys';pad.append(grid);
+  let last=null;
+  const select=(e)=>{if(e.target.matches?.('.kl-col-v12-answer')&&root.contains(e.target))last=e.target};
+  root.addEventListener('focusin',select);
+  function type(value){
+   let input=d.activeElement;
+   if(!input?.matches?.('.kl-col-v12-answer')||!root.contains(input))input=last&&root.contains(last)?last:root.querySelector('.kl-col-v12-answer.active')||root.querySelector('.kl-col-v12-answer');
+   if(!input)return {ok:false,reason:'NO_ACTIVE_COLUMN_FIELD'};
+   input.focus();last=input;
+   const before=input.value||'';
+   input.value=value==='CLEAR'?'':value==='BACK'?before.slice(0,-1):String(value);
+   input.dispatchEvent(new (d.defaultView?.Event||Event)('input',{bubbles:true}));
+   callbacks.onKey?.({key:value,previous:before,current:input.value});
+   return {ok:true};
+  }
+  keys.forEach(k=>{const b=d.createElement('button');b.type='button';b.className='g74-c2-key';b.dataset.key=k;
+   b.textContent=k==='BACK'?'⌫':k==='CLEAR'?'Xóa':k;
+   b.setAttribute('aria-label',k==='BACK'?'Xóa chữ số cuối':k==='CLEAR'?'Xóa ô':k);
+   b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>type(k));grid.append(b);
+  });
+  container.replaceChildren(pad);
+  return {ok:true,type,destroy:()=>{root.removeEventListener('focusin',select);pad.remove()}};
+ }
+ return Object.freeze({mount});
+});
+</script>
+<script>/* G7.4 CAPACITY_WEIGHT_REFERENCE_V1.1 – pure independent TEST engines.
+ * No model answers, server calls, scores, awards or progress writes.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightV11=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ const MODES=Object.freeze({LITER:'LITER',WEIGHT:'WEIGHT'});
+ const fail=reason=>({ok:false,reason});
+ const id=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{1,80}$/.test(x);
+ const value=x=>Number.isInteger(x)&&x>=0&&x<=100;
+ const deny=['answer','answerKey','correct','isCorrect','correctAnswer','gradingKey','solution','expectedValue'];
+ function safe(x){return x&&typeof x==='object'&&!deny.some(k=>Object.prototype.hasOwnProperty.call(x,k));}
+ function compile(raw){
+  if(!safe(raw)||!id(raw.exerciseId)||!Object.values(MODES).includes(raw.mode))return fail('INVALID_META');
+  const isL=raw.mode===MODES.LITER,entries=isL?raw.containers:raw.pans;
+  if(!Array.isArray(entries)||entries.length!==2)return fail('TWO_ENTRIES_REQUIRED');
+  const seen=new Set(),items=[];
+  for(const item of entries){
+   if(!safe(item)||!id(item.id)||seen.has(item.id))return fail('INVALID_ENTRY_ID');
+   const label=typeof item.label==='string'?item.label.trim():'';
+   const assetId=typeof item.assetId==='string'?item.assetId.trim():'';
+   if(!label||label.length>120||(assetId&&!/^[A-Za-z0-9_.:-]{1,120}$/.test(assetId)))return fail('INVALID_LABEL_ASSET');
+   const cur=isL?item.currentLiters:item.massKg;
+   if(!value(cur))return fail('INVALID_QUANTITY');
+   const v={id:item.id,label,assetId,alt:typeof item.alt==='string'?item.alt.slice(0,160):''};
+   if(isL){
+    if(!value(item.capacityLiters)||item.capacityLiters===0||cur>item.capacityLiters)return fail('INVALID_CAPACITY');
+    v.capacityLiters=item.capacityLiters;v.initialLiters=cur;
+   }else v.initialKg=cur;
+   seen.add(item.id);items.push(Object.freeze(v));
+  }
+  return {ok:true,plan:Object.freeze({schemaVersion:'g74-capacity-weight-v11',exerciseId:raw.exerciseId,
+   mode:raw.mode,prompt:typeof raw.prompt==='string'?raw.prompt.slice(0,500):'',
+   items:Object.freeze(items),step:1})};
+ }
+ function session(plan){
+  if(!plan||plan.schemaVersion!=='g74-capacity-weight-v11')throw Error('INVALID_PLAN');
+  const liter=plan.mode===MODES.LITER;
+  const start=()=>Object.fromEntries(plan.items.map(i=>[i.id,liter?i.initialLiters:i.initialKg]));
+  let amounts=start();
+  const snapshot=()=>({exerciseId:plan.exerciseId,mode:plan.mode,quantities:{...amounts}});
+  function adjust(key,delta){
+   const item=plan.items.find(x=>x.id===key);
+   if(!item)return fail('UNKNOWN_ENTRY');
+   if(!Number.isInteger(delta)||Math.abs(delta)>100)return fail('INVALID_DELTA');
+   const next=amounts[key]+delta,cap=liter?item.capacityLiters:100;
+   if(next<0||next>cap)return fail('OUT_OF_BOUNDS');
+   amounts[key]=next;return {ok:true,state:snapshot()};
+  }
+  return Object.freeze({
+   snapshot,adjust,
+   transfer(from,to,liters){
+    if(!liter)return fail('WRONG_MODE');
+    if(from===to||!Object.prototype.hasOwnProperty.call(amounts,from)||
+      !Object.prototype.hasOwnProperty.call(amounts,to))return fail('UNKNOWN_ENTRY');
+    if(!Number.isInteger(liters)||liters<=0)return fail('INVALID_TRANSFER');
+    const target=plan.items.find(x=>x.id===to);
+    if(amounts[from]<liters||amounts[to]+liters>target.capacityLiters)return fail('OUT_OF_BOUNDS');
+    amounts[from]-=liters;amounts[to]+=liters;return {ok:true,state:snapshot()};
+   },
+   clear(){amounts=start();return {ok:true,state:snapshot()};},
+   restore(d){
+    if(!d||d.exerciseId!==plan.exerciseId||d.mode!==plan.mode||
+      !d.quantities||typeof d.quantities!=='object'||Array.isArray(d.quantities)||
+      Object.keys(d.quantities).length!==plan.items.length)return fail('INVALID_DRAFT');
+    const copy={};
+    for(const item of plan.items){
+     const v=d.quantities[item.id];
+     if(!value(v)||(liter&&v>item.capacityLiters))return fail('INVALID_DRAFT_QUANTITY');
+     copy[item.id]=v;
+    }
+    amounts=copy;return {ok:true,state:snapshot()};
+   }
+  });
+ }
+ function balanceTilt(leftKg,rightKg){
+  if(!value(leftKg)||!value(rightKg))throw Error('INVALID_MASS');
+  // SVG screen Y increases downward. +angle clockwise => left arm rises, right lowers.
+  // left lighter => positive angle; left heavier => negative angle.
+  const angle=Math.max(-15,Math.min(15,(rightKg-leftKg)*3));
+  const rad=angle*Math.PI/180;
+  return Object.freeze({degrees:angle,leftY:58-105*Math.sin(rad),rightY:58+105*Math.sin(rad),
+   relation:leftKg===rightKg?'BALANCED':leftKg<rightKg?'LEFT_LIGHTER':'RIGHT_LIGHTER'});
+ }
+ return Object.freeze({MODES,compile,session,balanceTilt});
+});
+</script>
+<script>/* G7.4 8-A / 8-B fixture defaults. Assets are candidate IDs, not approved mappings. */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightFixturesV11=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ return Object.freeze({
+  liter:{exerciseId:'CAPACITY_LITER_DEMO',mode:'LITER',
+   prompt:'Quan sát, thêm/bớt và rót nước giữa hai bình.',
+   containers:[
+    {id:'bottleA',label:'Bình A',capacityLiters:8,currentLiters:3},
+    {id:'bottleB',label:'Bình B',capacityLiters:5,currentLiters:1}
+   ]},
+  weight:{exerciseId:'WEIGHT_BALANCE_DEMO',mode:'WEIGHT',
+   prompt:'Thêm/bớt quả cân; quan sát bên nặng hạ xuống, bên nhẹ nâng lên.',
+   pans:[
+    {id:'left',label:'Đĩa trái',massKg:3},
+    {id:'right',label:'Đĩa phải',massKg:5}
+   ]}
+ });
+});
+</script>
+<script>/* G7.4 8-A / 8-B standalone TEST view. SVG is mathematical visualization.
+ * Scaled measurements, not real physical liters/kg. Uses trusted engine-only state.
+ */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.KLCapacityWeightViewV11=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ const NS='http://www.w3.org/2000/svg';
+ function mount(host,plan,opts={}){
+  if(!host||!host.ownerDocument||!plan||plan.schemaVersion!=='g74-capacity-weight-v11'||
+     typeof KLCapacityWeightV11==='undefined')return {ok:false,reason:'INVALID_HOST_OR_CORE'};
+  const doc=host.ownerDocument,engine=KLCapacityWeightV11.session(plan);
+  const root=doc.createElement('section');root.className='g74-cw-v11';root.dataset.g74CwV11=plan.exerciseId;
+  const heading=doc.createElement('h3');heading.textContent=plan.prompt;const status=doc.createElement('p');
+  status.className='g74-cw-status';status.setAttribute('aria-live','polite');
+  const board=doc.createElement('div');board.className='g74-cw-board';root.append(heading,status,board);host.append(root);
+  let disposed=false;
+  const svg=(tag,attrs={},text)=>{
+   const e=doc.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));
+   if(text!==undefined)e.textContent=String(text);return e;
+  };
+  const button=(label,fn)=>{const b=doc.createElement('button');b.type='button';b.className='g74-cw-btn';b.textContent=label;
+   b.addEventListener('click',()=>{const r=fn();if(r.ok)notify();});return b;};
+  const notify=()=>{render();if(typeof opts.onChange==='function')opts.onChange(engine.snapshot());};
+  function asset(parent,item){
+   if(!item.assetId)return;
+   let a=null;try{a=typeof opts.resolveAsset==='function'?opts.resolveAsset(item.assetId):null}catch(_){}
+   if(a&&typeof a.url==='string'&&/^https:\/\//.test(a.url)){
+    const image=doc.createElement('img');image.className='g74-cw-asset';image.src=a.url;
+    image.alt=item.alt||item.label;parent.append(image);
+   }else{
+    const f=doc.createElement('small');f.className='g74-cw-asset-fallback';
+    f.textContent=item.alt||'Hình tham chiếu chưa được duyệt';parent.append(f);
+   }
+  }
+  function renderLiter(){
+   const state=engine.snapshot(),grid=doc.createElement('div');grid.className='g74-cw-two';
+   for(const item of plan.items){
+    const now=state.quantities[item.id],panel=doc.createElement('div');panel.className='g74-cw-panel';
+    const label=doc.createElement('strong');label.textContent=item.label;panel.append(label);
+    const picture=svg('svg',{viewBox:'0 0 160 220',role:'img','aria-label':item.label+': '+now+' trong '+item.capacityLiters+' lít'});
+    const defs=svg('defs'),clip=svg('clipPath',{id:'g74cw_'+plan.exerciseId+'_'+item.id});
+    clip.append(svg('path',{d:'M46 19 H114 V42 C125 53 135 58 135 85 V191 Q135 206 118 206 H42 Q25 206 25 191 V85 C25 58 35 53 46 42 Z'}));
+    defs.append(clip);picture.append(defs);
+    picture.append(svg('path',{d:'M46 19 H114 V42 C125 53 135 58 135 85 V191 Q135 206 118 206 H42 Q25 206 25 191 V85 C25 58 35 53 46 42 Z',fill:'#e4f4ff',stroke:'#4a81ac','stroke-width':3}));
+    const top=205-now/item.capacityLiters*145;
+    picture.append(svg('rect',{x:23,y:top,width:114,height:205-top,fill:'#5ab5e9','clip-path':'url(#g74cw_'+plan.exerciseId+'_'+item.id+')'}));
+    picture.append(svg('rect',{x:52,y:10,width:56,height:10,rx:3,fill:'#87accc'}));
+    picture.append(svg('text',{x:80,y:136,'text-anchor':'middle','font-size':25,'font-weight':800,fill:'#164e78'},now+' L'));
+    panel.append(picture);
+    const detail=doc.createElement('p');detail.textContent='Đang có '+now+' L · Sức chứa '+item.capacityLiters+' L';panel.append(detail);
+    const controls=doc.createElement('div');controls.className='g74-cw-controls';
+    const minus=button('− 1 L',()=>engine.adjust(item.id,-1));
+    const plus=button('+ 1 L',()=>engine.adjust(item.id,1));
+    minus.disabled=now===0;plus.disabled=now===item.capacityLiters;
+    controls.append(minus,plus);panel.append(controls);asset(panel,item);grid.append(panel);
+   }
+   board.append(grid);
+   const transfer=doc.createElement('div');transfer.className='g74-cw-controls';
+   for(const [from,to] of [[plan.items[0],plan.items[1]],[plan.items[1],plan.items[0]]]){
+    const b=button('Rót 1 L: '+from.label+' → '+to.label,()=>engine.transfer(from.id,to.id,1));
+    b.disabled=state.quantities[from.id]===0||state.quantities[to.id]>=to.capacityLiters;
+    transfer.append(b);
+   }
+   board.append(transfer);
+   status.textContent='Thao tác dung tích mô phỏng; không chấm đúng/sai.';
+  }
+  function renderWeight(){
+   const s=engine.snapshot(),left=plan.items[0],right=plan.items[1];
+   const l=s.quantities[left.id],r=s.quantities[right.id],tilt=KLCapacityWeightV11.balanceTilt(l,r);
+   const frame=doc.createElement('div');frame.className='g74-cw-scale';
+   const picture=svg('svg',{viewBox:'0 0 360 210',role:'img','aria-label':'Cân đĩa: bên trái '+l+' kg, bên phải '+r+' kg'});
+   picture.append(svg('path',{d:'M152 196 H208 L218 205 H142 Z',fill:'#9db0c4'}));
+   picture.append(svg('rect',{x:174,y:50,width:12,height:147,rx:5,fill:'#8eabc6'}));
+   const rad=tilt.degrees*Math.PI/180;
+   // The beam slopes, but the pans themselves remain horizontal and their payloads upright.
+   const xleft=180-105*Math.cos(rad),xright=180+105*Math.cos(rad);
+   const yl=tilt.leftY,yr=tilt.rightY;
+   picture.append(svg('line',{x1:xleft,y1:yl,x2:xright,y2:yr,stroke:'#678ba9','stroke-width':8,'stroke-linecap':'round'}));
+   picture.append(svg('circle',{cx:180,cy:58,r:9,fill:'#395f84'}));
+   for(const pan of [{x:xleft,y:yl,value:l,label:'Trái'},{x:xright,y:yr,value:r,label:'Phải'}]){
+    const py=pan.y+72;
+    picture.append(svg('line',{x1:pan.x,y1:pan.y,x2:pan.x-36,y2:py,stroke:'#8299b2','stroke-width':2}));
+    picture.append(svg('line',{x1:pan.x,y1:pan.y,x2:pan.x+36,y2:py,stroke:'#8299b2','stroke-width':2}));
+    picture.append(svg('path',{d:'M'+(pan.x-40)+' '+py+' Q'+pan.x+' '+(py+24)+' '+(pan.x+40)+' '+py,fill:'none',stroke:'#468bb7','stroke-width':5,'stroke-linecap':'round'}));
+    picture.append(svg('rect',{x:pan.x-25,y:py-26,width:50,height:25,rx:6,fill:'#e8bf6c',stroke:'#a47c31'}));
+    picture.append(svg('text',{x:pan.x,y:py-9,'text-anchor':'middle','font-size':15,'font-weight':800,fill:'#4b3519'},pan.value+' kg'));
+   }
+   frame.append(picture);
+   const sentence=doc.createElement('p');sentence.className='g74-cw-balance';
+   sentence.textContent=tilt.relation==='BALANCED'?'Hai bên cân bằng':tilt.relation==='LEFT_LIGHTER'?'Đĩa trái nhẹ hơn, nằm cao hơn':'Đĩa phải nhẹ hơn, nằm cao hơn';
+   frame.append(sentence);
+   const grid=doc.createElement('div');grid.className='g74-cw-two';
+   for(const item of plan.items){
+    const amount=s.quantities[item.id],panel=doc.createElement('div');panel.className='g74-cw-panel';
+    const name=doc.createElement('strong');name.textContent=item.label+' · '+amount+' kg';panel.append(name);
+    const controls=doc.createElement('div');controls.className='g74-cw-controls';
+    const minus=button('− 1 kg',()=>engine.adjust(item.id,-1)),plus=button('+ 1 kg',()=>engine.adjust(item.id,1));
+    minus.disabled=amount===0;plus.disabled=amount===100;
+    controls.append(minus,plus);panel.append(controls);asset(panel,item);grid.append(panel);
+   }
+   frame.append(grid);board.append(frame);
+   status.textContent='Độ chênh: '+Math.abs(l-r)+' kg. Đây là mô phỏng cân đĩa – chưa chấm.';
+  }
+  function render(){if(disposed)return;board.replaceChildren();if(plan.mode==='LITER')renderLiter();else renderWeight();}
+  render();
+  return Object.freeze({ok:true,snapshot:()=>engine.snapshot(),
+   restore(d){const r=engine.restore(d);if(r.ok)notify();return r;},
+   clear(){const r=engine.clear();notify();return r;},
+   destroy(){if(disposed)return;disposed=true;root.remove();}
+  });
+ }
+ return Object.freeze({mount});
+});
+</script>
+<script>/* G7.5 V2 – pure text planning helpers. No DOM, network, grading or student data. */
+(function (root, maker) {
+  const api = maker();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  if (root) root.G75V2 = api;
+})(typeof window !== 'undefined' ? window : null, function () {
+'use strict';
+const UNIT_VARIANTS = [
+  {symbol:'kg', read:'ki lô gam', word:/\b(?:ki|ky|kí|ký)[\s-]*lô[\s-]*gam\b/giu},
+  {symbol:'km', read:'ki lô mét', word:/\b(?:ki|ky|kí|ký)[\s-]*lô[\s-]*mét\b/giu},
+  {symbol:'mm', read:'mi li mét', word:/\bmi[\s-]*li[\s-]*mét\b/giu},
+  {symbol:'cm', read:'xăng ti mét', word:/\bxăng[\s-]*ti[\s-]*mét\b/giu},
+  {symbol:'dm', read:'đề xi mét', word:/\bđề[\s-]*xi[\s-]*mét\b/giu},
+  {symbol:'ml', read:'mi li lít', word:/\bmi[\s-]*li[\s-]*lít\b/giu},
+  {symbol:'l', read:'lít'}, {symbol:'m', read:'mét'}, {symbol:'đ', read:'đồng'}
+];
+const SIGNS = {'+':'cộng','-':'trừ','−':'trừ','–':'trừ','×':'nhân','*':'nhân','÷':'chia',':':'chia','=':'bằng','>':'lớn hơn','<':'bé hơn'};
+const OPERAND = '(?:\\d+(?:[.,]\\d+)?|[xX])';
+const LETTER='\\p{L}\\p{N}';
+function normalize(source, opts={}) {
+  if (typeof source !== 'string') return '';
+  if (opts.lang && !/^vi(?:-|$)/i.test(opts.lang)) return source;
+  let t=source.normalize('NFC');
+  // Decorative emoji without suppressing words; semantic pictures must be authored in speechText.
+  t=t.replace(/\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*/gu,' ');
+  t=t.replace(/→/g,' sang ').replace(/↔/g,' hai chiều ');
+  // Normalize known unit word spellings first; preserve agreed V1.2 acoustics.
+  for(const u of UNIT_VARIANTS) if(u.word) t=t.replace(u.word,u.read);
+  // Parenthesized unit labels only; parenthesized numbers and explanations remain.
+  for(const u of UNIT_VARIANTS){
+    const sym=u.symbol.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const paren=new RegExp('\\(\\s*'+sym+'\\s*\\)','giu');
+    const sep=new RegExp('(?<!\\p{L})'+sym+'(?![\\p{L}\\p{N}])','giu');
+    t=t.replace(paren,' '+u.read+' ');
+    t=t.replace(sep,(_match,at,whole)=> (at>0 && /\d/.test(whole[at-1]) ? " " : "")+u.read);
+  }
+  // Handle display-only sign lists and signs following the word 'dấu'.
+  t=t.replace(/\b[dD]ấu\s*>\s*,\s*<\s*,\s*=/gu,'dấu lớn hơn, dấu bé hơn, dấu bằng');
+  t=t.replace(/\(\s*\+\s*,\s*[−–-]\s*\)/g,'dấu cộng hoặc dấu trừ');
+  t=t.replace(/\bdấu\s*([+−–×*÷=><:-])/giu,(whole,op)=> (whole[0]==='D'?'Dấu ':'dấu ')+SIGNS[op]);
+  t=t.replace(/\(\s*([=><+−–])\s*\)/g,(_s,op)=>'dấu '+SIGNS[op]);
+  t=t.replace(/\bSGK\b/g,'sách giáo khoa').replace(/\bPV\s+(\d+)/g,'phạm vi $1');
+  const mathContext=opts.context||'auto';
+  // Division is decided PER colon occurrence, never per entire paragraph.
+  // Spaced '20 : 5' or compact '20:5=4' is math; '7:15' remains a clock.
+  const mathDiv=mathContext==='math';
+  // Operator must follow a letter/number and precede a number, variable or unknown.
+  // A word hyphen ('tách - gộp') fails the right-operand test and is preserved.
+  t=t.replace(/(?<=[\p{L}\p{N}])\s*([+−–*×÷=><-])\s*(?=\d|[xX]\b|\?)/gu,(_s,op)=>' '+SIGNS[op]+' ');
+  // ':' only in an arithmetic expression; 7:15 remains time in auto mode.
+  t=t.replace(/(\d)(\s*:\s*)(?=\d)/g,(whole,left,colon,offset,all)=>{
+    const rest=all.slice(offset+whole.length);
+    const spaced=/\s/.test(colon);
+    const followedByEquality=/^\d+(?:[.,]\d+)?\s*=/.test(rest);
+    return (mathDiv||spaced||followedByEquality)?left+' chia ':whole;
+  });
+  // x is a variable unless explicitly identified as multiplication in metadata.
+  if(mathContext==='math' && opts.xAsMultiplication===true)
+    t=t.replace(/(\d+)\s+[xX]\s+(?=\d+)/g,'$1 nhân ');
+  t=t.replace(/\bbằng\s*\?/giu,'bằng mấy?');
+  // Preserve newlines for pedagogical segmentation and sentence rhythm.
+  return t.replace(/[ \t]{2,}/g,' ').replace(/ *\n */g,'\n').trim();
+}
+const PROFILES=Object.freeze({
+  default:{rate:.92,pitch:1.10,pause:280,label:'Đọc đề / kể chuyện'},
+  question:{rate:.90,pitch:1.12,pause:400,label:'Đặt câu hỏi'},
+  encouragement:{rate:.90,pitch:1.06,pause:350,label:'Hướng dẫn / động viên'},
+  solution_math:{rate:.86,pitch:1.05,pause:420,label:'Bài giải / phép tính'},
+  praise:{rate:.96,pitch:1.18,pause:320,label:'Khen ngợi'}
+});
+function profileOf(text, hint='auto') {
+  if(hint && hint!=='auto' && PROFILES[hint])return hint;
+  const s=text.trim();
+  if(/^(Chính xác|Giỏi lắm|Tuyệt vời|Xuất sắc|Hoàn hảo|Đúng rồi)/iu.test(s))return 'praise';
+  if(/^(Gợi ý|Em hãy|Em kiểm tra|Hãy thử|Nhớ|Muốn tìm)/iu.test(s))return 'encouragement';
+  if(/^(Bài giải|Đáp số|Số .* là:|\d+\s+(cộng|trừ|nhân|chia|bằng))/iu.test(s))return 'solution_math';
+  if(/[?]\s*$/.test(s))return 'question';
+  return 'default';
+}
+function segments(source, options={}) {
+ const lang=options.lang||'vi-VN';
+ const text=options.normalized===true?source:normalize(source,{lang,context:options.context||'auto',xAsMultiplication:options.xAsMultiplication});
+ const lines=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+ const parts=[];
+ for(const line of lines) {
+   // punctuation is only split when followed by a space; 1.5 and 7:15 stay intact.
+   for(const sentence of line.split(/(?<=[.!?;])\s+(?=\S)/u)) {
+     if(sentence.trim())parts.push(sentence.trim());
+   }
+ }
+ return parts.map((text,index)=>({index,text,profile:profileOf(text,options.profile),...(PROFILES[profileOf(text,options.profile)])}));
+}
+return {normalize,segments,profileOf,PROFILES};
+});
+</script>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),files={d1:'C2_PUBLIC_RENDERER',d2:'COLUMN_V12_UNMODIFIED',d8:'CAPACITY_WEIGHT_V11',speech:'G75_V2'};
+const cols="\u003c!doctype html>\u003chtml lang=\"vi\">\u003chead>\u003cmeta charset=\"utf-8\">\u003cmeta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\u003ctitle>G7.4 COLUMN_CALC_REFERENCE_V1.2 – TEST\u003c/title>\u003cstyle>\n:root{font-family:Quicksand,\"Segoe UI\",system-ui,sans-serif;background:linear-gradient(120deg,#eff8f8,#fbf3c9);color:#2d3950}\n*{box-sizing:border-box}body{margin:0;min-width:0}button,input{font:inherit}#qaReport{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px}\nbutton{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #f4aa12;outline-offset:2px}\n.shell{max-width:1120px;margin:0 auto;padding:16px 12px;min-width:0}.hero{padding:16px;background:#e1f2ff;border:2px solid #a4dbff;border-radius:18px;margin-bottom:12px}\n.hero h1{font-size:clamp(20px,3vw,27px);margin:2px 0 8px}.hero p{margin:0;line-height:1.65;font-size:14px}\n.pill{max-width:100%;white-space:normal;overflow-wrap:anywhere;display:inline-flex;gap:5px;background:#fff8d3;border:1px solid #ffdf80;padding:5px 10px;border-radius:18px;color:#8a6200;font-size:11px;font-weight:750}\n.kl-col-v12-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,410px),1fr));gap:16px;align-items:stretch}\n.kl-col-v12-card{min-width:0;border:2px solid #9ed4ff;border-radius:22px;background:#f0f9ff;padding:clamp(12px,2vw,22px);display:flex;flex-direction:column;align-items:center;box-shadow:0 3px 10px #4a769a12}\n.kl-col-v12-card.indigo{border-color:#ada7ff;background:#f3f2ff}\n.kl-col-v12-head{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap}\n.kl-col-v12-cap{display:inline-flex;border-radius:16px;background:#cfebff;color:#285e89;padding:5px 10px;font-size:11px;font-weight:800}\n.indigo .kl-col-v12-cap{background:#ddd8ff;color:#4e468e}\n.kl-col-v12-read{border:0;border-radius:8px;background:#d7ebfc;color:#386d98;font-size:12px;padding:7px 10px;font-weight:750}\n.kl-col-v12-number-grid{width:max-content;max-width:100%;display:grid;grid-template-columns:32px repeat(calc(var(--math-cols) - 1),minmax(46px,56px));gap:clamp(5px,1.5vw,12px);align-items:center;justify-items:center}\n.kl-col-v12-col-title{font-size:11px;color:#7c94af;font-weight:800}\n.kl-col-v12-carry-title{font-size:11px;color:#bb7918;font-weight:800}\n.kl-col-v12-transition{font-size:12px;font-weight:850;color:#e8ae28;background:#fffdf1;border:2px dashed #f6bd48;border-radius:10px;min-width:34px;min-height:36px;padding:2px 4px}\n.kl-col-v12-transition.selected{color:#744a00;background:#fbc853;border:2px solid #e2a013;transform:scale(1.04)}\n.kl-col-v12-digit{font-weight:850;font-size:clamp(27px,3vw,33px);color:#28364d;font-variant-numeric:tabular-nums}\n.kl-col-v12-sign{color:#624bfa;font-size:25px;font-weight:850}\n.kl-col-v12-rule{grid-column:1/-1;width:100%;border-bottom:3px solid #38465b;height:2px;margin:2px 0 4px}\n.kl-col-v12-answer{font-size:22px;font-weight:850;text-align:center;border:3px solid #5fc0fc;background:white;color:#2469aa;border-radius:12px;width:clamp(41px,12vw,52px);height:53px;padding:0;min-width:0}\n.kl-col-v12-answer.active{border-color:#f2ad11;box-shadow:0 0 0 4px #fdf0bb;background:#fffaf0}\n.kl-col-v12-answer::placeholder{font-size:12px;color:#a1b7c9;font-weight:650}\n.kl-col-v12-note{margin-top:12px;font-size:12px;color:#536c85;line-height:1.45;min-height:34px;text-align:center}\n.kl-col-v12-controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:auto;padding-top:12px}\n.kl-col-v12-controls button{padding:9px 12px;border-radius:9px;min-height:43px;border:1.5px solid #8ebee4;background:white;color:#2c6691;font-size:12px;font-weight:800}\n.kl-col-v12-controls .kl-col-v12-send{background:#3d9ddb;color:white;border-color:#3d9ddb}\n.kl-col-v12-status{font-size:12px;color:#46768d;min-height:22px;margin-top:8px;text-align:center}\n.notice{margin:12px 0;padding:12px;background:#fff;border:1px solid #d4e0eb;border-radius:13px;font-size:13px;line-height:1.6}\n.notice strong{color:#2f649a}.footer{font-size:12px;color:#57748d;overflow-wrap:anywhere;word-break:break-word}\n@media(max-width:430px){.shell{padding:8px}.kl-col-v12-card{padding:10px}.kl-col-v12-number-grid{grid-template-columns:27px repeat(calc(var(--math-cols) - 1),43px);gap:4px}.kl-col-v12-answer{width:41px}.kl-col-v12-digit{font-size:29px}}\n\u003c/style>\u003c/head>\u003cbody>\n\u003cdiv class=\"shell\">\u003csection class=\"hero\">\u003cspan class=\"pill\">G7.4 · COLUMN_CALC_REFERENCE_V1.2 · TEST\u003c/span>\u003ch1>Đặt tính rồi tính — bộ dữ liệu biến thể\u003c/h1>\u003cp>Giao diện kế thừa mẫu Type 2 đã nghiệm thu nguồn, hỗ trợ phạm vi 100 và 1000; cộng/trừ, có nhớ và mượn qua số 0. Đây là trang kiểm định độc lập, không ghi điểm hoặc thay Web App.\u003c/p>\u003c/section>\n\u003cdiv id=\"stage\">\u003c/div>\u003csection class=\"notice\">\u003cstrong>Chính sách ô nhớ:\u003c/strong> mặc định ô nhớ/mượn chỉ là bước hướng dẫn. Những bài có chính sách bài học phê duyệt mới bắt buộc chấm trạng thái nhớ/mượn. Bộ chấm chạy phía máy chủ, không đặt đáp án ẩn trong HTML.\u003cp id=\"note\">\u003c/p>\u003c/section>\u003cdiv class=\"footer\">Nguồn tham chiếu: nguyên bản 131.767 byte, SHA-256 78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced. Mẫu này là adapter V1.2, không ghi đè file gốc.\u003c/div>\u003c/div>\n\u003cscript>'use strict';\n/* G7.4 COLUMN_CALC_REFERENCE_V1.2 — parameterized adapter for the ORIGINAL 10-form Type 2.\n * Pure plan compiler. Never serializes answer/carry solution. No DOM, no write to GAS.\n * Deliberately retains the original left-to-right columns and right-to-left input UX.\n */\n(function(root,factory){\n  const api=factory();\n  if(typeof module==='object'&&module.exports)module.exports=api;\n  else root.KLColumnV12=api;\n})(typeof globalThis!=='undefined'?globalThis:this,function(){\n const PLACES=['ones','tens','hundreds','thousands'];\n const PROFILES={PV100:{max:99,columns:2},PV1000:{max:999,columns:3}};\n const fail=(reason)=>({ok:false,reason});\n const isInt=(v,a,b)=>Number.isSafeInteger(v)&&v>=a&&v\u003c=b;\n function validateSpec(q){\n   if(!q||typeof q!=='object'||typeof q.variantId!=='string'||!/^COL_[A-Za-z0-9_-]{4,70}$/.test(q.variantId))return fail('INVALID_ID');\n   if(!Object.hasOwn(PROFILES,q.profile))return fail('UNSUPPORTED_PROFILE');\n   if(!['ADD','SUBTRACT'].includes(q.operation))return fail('UNSUPPORTED_OPERATION');\n   if(!['LV1','LV2','LV3'].includes(q.level))return fail('INVALID_LEVEL');\n   if(!['OPTIONAL_HINT','REQUIRED_ASSESSED'].includes(q.carryPolicy))return fail('CARRY_POLICY_MISSING');\n   if(q.carryPolicy==='REQUIRED_ASSESSED'&&q.assessmentAuthority!=='LESSON_POLICY_APPROVED')return fail('CARRY_ASSESSMENT_NOT_APPROVED');\n   const p=PROFILES[q.profile];\n   if(!isInt(q.a,0,p.max)||!isInt(q.b,0,p.max))return fail('OPERAND_OUT_OF_SCOPE');\n   const result=q.operation==='ADD'?q.a+q.b:q.a-q.b;\n   if(result\u003c0||result>p.max)return fail('RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');\n   if(q.answer!==undefined||q.result!==undefined||q.expectedDigits!==undefined||\n      q.carryAnswers!==undefined||q.borrowAnswers!==undefined||q.correctValue!==undefined)return fail('ANSWER_IN_UNTRUSTED_SPEC');\n   if(q.assetId!==undefined&&q.assetId!==null)return fail('COLUMN_ASSET_NOT_ALLOWED');\n   return {ok:true,columns:p.columns};\n }\n function split(n,c){return Array.from({length:c},(_,i)=>Math.floor(n/Math.pow(10,i))%10)}\n function publicPlan(q){\n   const v=validateSpec(q);if(!v.ok)return v;\n   const places=PLACES.slice(0,v.columns),a=split(q.a,v.columns),b=split(q.b,v.columns);\n   return {ok:true,schemaVersion:'column-calc-reference-v12-public',variantId:q.variantId,\n     family:'COLUMN_CALC',profile:q.profile,operation:q.operation,level:q.level,\n     carryPolicy:q.carryPolicy,renderStrategy:'COLUMN_CALC_REFERENCE',visualMode:'REPRESENTATIVE',\n     assetId:null,usesImageLibrary:false,gradingEnabled:false,runtimeEnabled:false,\n     columns:v.columns,displayOrder:places.slice().reverse(),inputOrder:places.slice(),\n     a:places.map((place,i)=>({place,digit:a[i]})),b:places.map((place,i)=>({place,digit:b[i]})),\n     answerSlots:places.map(place=>({id:'result_'+place,place,role:'ANSWER_INPUT',value:null})),\n     transitionSlots:places.slice(1).map(place=>({id:(q.operation==='ADD'?'carry_':'borrow_')+place,\n       place,role:'LEARNER_TOGGLE',value:null})),\n     accessibility:{defaultFocus:'result_ones',nativeKeyboard:true,focusOutline:true,\n       guidance:q.operation==='ADD'?'Điền từ đơn vị sang chục, trăm.':'Trừ từ đơn vị sang chục, trăm. Các ô mượn nằm phía trên.'}};\n }\n function batch(qs){\n   if(!Array.isArray(qs)||qs.length\u003c1||qs.length>10)return fail('INVALID_BATCH_SIZE');\n   const ids=new Set(),plans=[];\n   for(const q of qs){\n     const p=publicPlan(q);if(!p.ok)return {ok:false,reason:p.reason,variantId:q?.variantId||null};\n     if(ids.has(p.variantId))return fail('DUPLICATE_VARIANT_ID');\n     ids.add(p.variantId);plans.push(p);\n   }\n   return {ok:true,plans,renderer:'COLUMN_CALC_REFERENCE_V12',sourceKind:'HTML_CSS_STRUCTURED',\n     noAssetImport:true,serverGradingRequired:true};\n }\n return Object.freeze({validateSpec,publicPlan,batch,PLACES});\n});\n\u003c/script>\u003cscript>'use strict';\n/* G7.4 V1.2: original Type 2-inspired layout adapted to variable operands.\n * Browser-only rendering, NOT a grader. Original archive left immutable.\n */\n(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.KLColumnViewV12=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){\n const PLACES={ones:'Đơn vị',tens:'Chục',hundreds:'Trăm',thousands:'Nghìn'};\n const el=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e};\n function mount(container,plans,callbacks={}){\n  if(!container||!Array.isArray(plans)||plans.length\u003c1||plans.some(p=>!p?.ok||p.schemaVersion!=='column-calc-reference-v12-public'))return {ok:false,reason:'INVALID_PUBLIC_PLANS'};\n  const state=plans.map(()=>({digits:{},transitions:{},active:'result_ones'}));\n  container.replaceChildren();const cards=el('div','kl-col-v12-grid');container.append(cards);\n  function collect(i){\n    const s=state[i],plan=plans[i],out={variantId:plan.variantId};\n    for(const v of plan.answerSlots)out[v.id]=s.digits[v.id]??'';\n    for(const v of plan.transitionSlots)out[v.id]=Boolean(s.transitions[v.id]);\n    return out;\n  }\n  function makeCard(plan,index){\n   const s=state[index],n=plan.columns,order=plan.displayOrder,accent=index%2===0?'sky':'indigo';\n   const outer=el('article','kl-col-v12-card '+accent);\n   outer.dataset.variantId=plan.variantId;outer.dataset.columns=String(n);outer.dataset.operation=plan.operation;\n   const head=el('div','kl-col-v12-head');\n   head.append(el('span','kl-col-v12-cap','Câu '+(index+1)+' • '+(plan.profile==='PV100'?'Phạm vi 100':'Phạm vi 1000')));\n   const read=el('button','kl-col-v12-read','🔊 Nghe');read.type='button';read.setAttribute('aria-label','Nghe hướng dẫn phép tính');\n   read.onclick=()=>{if(typeof callbacks.onSpeak==='function')callbacks.onSpeak(plan);else if(typeof speechSynthesis!=='undefined'){\n     const content=plan.a.slice().reverse().map(x=>x.digit).join('')+' '+(plan.operation==='ADD'?'cộng':'trừ')+' '+plan.b.slice().reverse().map(x=>x.digit).join('');\n     const u=new SpeechSynthesisUtterance(content);u.lang='vi-VN';speechSynthesis.speak(u);\n   }};\n   head.append(read);outer.append(head);\n   const grid=el('div','kl-col-v12-number-grid');grid.style.setProperty('--math-cols',String(n+1));\n   grid.setAttribute('role','group');grid.setAttribute('aria-label',plan.operation==='ADD'?'Đặt tính cộng':'Đặt tính trừ');\n   grid.append(el('span',''));for(const p of order)grid.append(el('span','kl-col-v12-col-title',PLACES[p]));\n   grid.append(el('span','kl-col-v12-carry-title',plan.operation==='ADD'?'Nhớ:':'Mượn:'));\n   for(const place of order){\n     const slot=plan.transitionSlots.find(x=>x.place===place);\n     if(!slot){grid.append(el('span','kl-col-v12-transition-blank',''));continue}\n     const btn=el('button','kl-col-v12-transition',plan.operation==='ADD'?'nhớ':'mượn');\n     btn.type='button';btn.dataset.transition=slot.id;btn.dataset.place=place;\n     btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',(plan.operation==='ADD'?'Bật hoặc tắt ô nhớ hàng ':'Bật hoặc tắt ô mượn hàng ')+PLACES[place].toLowerCase());\n     const show=()=>{const yes=Boolean(s.transitions[slot.id]);btn.textContent=yes?'+1':(plan.operation==='ADD'?'nhớ':'mượn');btn.setAttribute('aria-pressed',String(yes));btn.classList.toggle('selected',yes)};\n     btn.onclick=()=>{s.transitions[slot.id]=!s.transitions[slot.id];show();if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index))};\n     show();grid.append(btn);\n   }\n   for(const [marker,key] of [['','a'],[plan.operation==='ADD'?'+':'−','b']]){\n     grid.append(el('span','kl-col-v12-sign',marker));\n     const high=Math.max(0,...plan[key].filter(x=>x.digit!==0).map(x=>plan.inputOrder.indexOf(x.place)));\n     for(const place of order){const item=plan[key].find(x=>x.place===place);const index=plan.inputOrder.indexOf(place);\n       grid.append(el('span','kl-col-v12-digit',index>high?'':item.digit));}\n   }\n   grid.append(el('div','kl-col-v12-rule'),el('span',''));\n   const activate=field=>{s.active=field.dataset.answer;grid.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.classList.toggle('active',x===field))};\n   for(const place of order){\n     const id='result_'+place,inp=el('input','kl-col-v12-answer');\n     inp.type='text';inp.inputMode='numeric';inp.autocomplete='off';inp.maxLength=1;\n     inp.dataset.answer=id;inp.dataset.place=place;inp.placeholder=place==='hundreds'?'Trăm':place==='tens'?'Chục':'ĐV';\n     inp.setAttribute('aria-label','Chữ số hàng '+PLACES[place].toLowerCase());\n     inp.value=s.digits[id]??'';\n     inp.onfocus=()=>activate(inp);\n     inp.oninput=()=>{\n       const raw=inp.value.replace(/[^0-9]/g,'').slice(-1);inp.value=raw;s.digits[id]=raw;\n       if(raw){const idx=plan.inputOrder.indexOf(place),next=plan.inputOrder[idx+1];if(next){const target=grid.querySelector('[data-answer=\"result_'+next+'\"]');if(target){target.focus();activate(target)}}}\n       if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index));\n     };\n     inp.onkeydown=e=>{if(e.key==='ArrowLeft'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const next=plan.inputOrder[idx+1];if(next)grid.querySelector('[data-answer=\"result_'+next+'\"]')?.focus();}\n       if(e.key==='ArrowRight'){e.preventDefault();const idx=plan.inputOrder.indexOf(place);const prev=plan.inputOrder[idx-1];if(prev){const target=grid.querySelector('[data-answer=\"result_'+prev+'\"]');if(target){target.focus();activate(target)}}}};\n     grid.append(inp);\n   }\n   outer.append(grid);\n   outer.append(el('div','kl-col-v12-note',plan.carryPolicy==='REQUIRED_ASSESSED'?'Ô nhớ/mượn tham gia đánh giá theo chính sách bài học.':'Ô nhớ/mượn chỉ là gợi ý thao tác, không bắt buộc khi chấm.'));\n   const controls=el('div','kl-col-v12-controls');\n   const reset=el('button','kl-col-v12-reset','↺ Làm lại');reset.type='button';reset.onclick=()=>{\n     s.digits={};s.transitions={};outer.querySelectorAll('.kl-col-v12-answer').forEach(x=>x.value='');\n     outer.querySelectorAll('.kl-col-v12-transition').forEach(x=>{x.classList.remove('selected');x.textContent=plan.operation==='ADD'?'nhớ':'mượn';x.setAttribute('aria-pressed','false')});\n     outer.querySelector('[data-answer=\"result_ones\"]')?.focus();if(typeof callbacks.onChange==='function')callbacks.onChange(index,collect(index));\n   };controls.append(reset);\n   const send=el('button','kl-col-v12-send','Ghi nhận câu trả lời');send.type='button';send.onclick=()=>{\n     if(typeof callbacks.onSubmit==='function')callbacks.onSubmit(index,collect(index));\n     else outer.querySelector('.kl-col-v12-status').textContent='Đã ghi nhận trên TEST (không chấm hoặc gửi dữ liệu).';\n   };controls.append(send);outer.append(controls);\n   const status=el('div','kl-col-v12-status');status.setAttribute('role','status');outer.append(status);\n   cards.append(outer);\n  }\n  for(let i=0;i\u003cplans.length;i++)makeCard(plans[i],i);\n  cards.querySelector('[data-answer=\"result_ones\"]')?.focus();\n  return {ok:true,collect,cards,states:state,\n    focus:(i,place)=>cards.children[i]?.querySelector('[data-answer=\"result_'+place+'\"]')?.focus(),\n    reset:()=>{for(let i=0;i\u003cplans.length;i++)cards.children[i].querySelector('.kl-col-v12-reset').click();}};\n }\n return Object.freeze({mount});\n});\n\u003c/script>\u003cscript>\nconst DEMOS=[{\"variantId\":\"COL_V12_A100_4725\",\"profile\":\"PV100\",\"operation\":\"ADD\",\"level\":\"LV1\",\"a\":47,\"b\":25,\"carryPolicy\":\"OPTIONAL_HINT\",\"assetId\":null},{\"variantId\":\"COL_V12_A1000_356128\",\"profile\":\"PV1000\",\"operation\":\"ADD\",\"level\":\"LV2\",\"a\":356,\"b\":128,\"carryPolicy\":\"OPTIONAL_HINT\",\"assetId\":null},{\"variantId\":\"COL_V12_A1000_475428\",\"profile\":\"PV1000\",\"operation\":\"ADD\",\"level\":\"LV2\",\"a\":475,\"b\":428,\"carryPolicy\":\"REQUIRED_ASSESSED\",\"assessmentAuthority\":\"LESSON_POLICY_APPROVED\",\"assetId\":null},{\"variantId\":\"COL_V12_S1000_402187\",\"profile\":\"PV1000\",\"operation\":\"SUBTRACT\",\"level\":\"LV3\",\"a\":402,\"b\":187,\"carryPolicy\":\"REQUIRED_ASSESSED\",\"assessmentAuthority\":\"LESSON_POLICY_APPROVED\",\"assetId\":null},{\"variantId\":\"COL_V12_A100_2413\",\"profile\":\"PV100\",\"operation\":\"ADD\",\"level\":\"LV1\",\"a\":24,\"b\":13,\"carryPolicy\":\"OPTIONAL_HINT\",\"assetId\":null},{\"variantId\":\"COL_V12_S100_7328\",\"profile\":\"PV100\",\"operation\":\"SUBTRACT\",\"level\":\"LV2\",\"a\":73,\"b\":28,\"carryPolicy\":\"OPTIONAL_HINT\",\"assetId\":null},{\"variantId\":\"COL_V12_A1000_202307\",\"profile\":\"PV1000\",\"operation\":\"ADD\",\"level\":\"LV2\",\"a\":202,\"b\":307,\"carryPolicy\":\"OPTIONAL_HINT\",\"assetId\":null},{\"variantId\":\"COL_V12_S1000_100099\",\"profile\":\"PV1000\",\"operation\":\"SUBTRACT\",\"level\":\"LV3\",\"a\":100,\"b\":99,\"carryPolicy\":\"REQUIRED_ASSESSED\",\"assessmentAuthority\":\"LESSON_POLICY_APPROVED\",\"assetId\":null}];\nconst compiled=KLColumnV12.batch(DEMOS);\nif(!compiled.ok)throw Error('Invalid fixtures: '+compiled.reason);\nconst demo=KLColumnViewV12.mount(document.getElementById('stage'),compiled.plans,\n {onSubmit:(i,values)=>{document.querySelectorAll('.kl-col-v12-status')[i].textContent='Đã nhận trong bộ nhớ TEST: '+Object.keys(values).length+' trường; chưa chấm.';}});\nif(!demo.ok)throw Error('Mount failed '+demo.reason);\ndocument.body.dataset.qaCardCount=String(demo.cards.children.length);\nconst note=document.getElementById('note');\nnote.textContent='V1.2: HTML/CSS theo bố cục Type 2 gốc, hai/ba cột tự động; mỗi câu có visualMode REPRESENTATIVE và thao tác theo hàng. Đáp án không được nhúng vào HTML.';\nif(new URLSearchParams(location.search).has('qaAuto')){\n let passes=0;const issues=[],samples=[];\n for(let i=0;i\u003ccompiled.plans.length;i++){\n  const p=compiled.plans[i],c=demo.cards.children[i],s=DEMOsDummy(p);\n  try{\n   if(c.querySelectorAll('.kl-col-v12-answer').length!==p.columns)throw Error('wrong columns');\n   const ones=c.querySelector('[data-answer=\"result_ones\"]');ones.focus();ones.value='5';ones.dispatchEvent(new Event('input',{bubbles:true}));\n   const expected=p.columns>=2?'result_tens':null;\n   if(expected&&!c.querySelector('[data-answer=\"'+expected+'\"]').classList.contains('active'))throw Error('not RTL auto focused: actual='+String(document.activeElement?.dataset?.answer)+' target='+expected+' state='+String(demo.states[i].active));\n   const t=c.querySelector('.kl-col-v12-transition');\n   if(t){t.click();if(t.getAttribute('aria-pressed')!=='true')throw Error('toggle not active');}\n   const collected=demo.collect(i);\n   if(collected.result_ones!=='5'||(t&&collected[t.dataset.transition]!==true))throw Error('state corrupted');\n   c.querySelector('.kl-col-v12-reset').click();\n   if(demo.collect(i).result_ones!=='')throw Error('reset not empty');\n   if(t&&demo.collect(i)[t.dataset.transition]!==false)throw Error('reset carry not false');\n   passes++;samples.push({index:i,cols:p.columns,operation:p.operation,policy:p.carryPolicy,status:'PASS'});\n  }catch(e){issues.push({index:i,message:e.message})}\n }\n document.body.dataset.qaPassed=String(passes);\n document.body.dataset.qaFailed=String(issues.length);\n document.body.dataset.qaOverflow=String(document.documentElement.scrollWidth>document.documentElement.clientWidth+1);\n const result=document.createElement('pre');result.id='qaReport';result.textContent=JSON.stringify({passes,issues,samples});document.body.append(result);\n}\nfunction DEMOsDummy(plan){return plan.variantId;}\n\u003c/script>\u003c/body>\u003c/html>";
+const questionText={
+ d1:'Hãy tách 5 để 8 cộng với một phần được 10. Điền các ô trống, rồi đổi 1 dm và 1 m ra cm.',
+ d2:'Em hãy đặt tính rồi tính. Điền kết quả từ hàng đơn vị sang hàng chục và hàng trăm.',
+ d8a:'Bình A có 3 lít nước. Bình B có 1 lít nước. Em hãy quan sát và rót 1 lít từ bình A sang bình B.',
+ d8b:'Bên trái có 3 kg. Bên phải có 5 kg. Hãy quan sát: đĩa nào nặng hơn?'
+};
+const sourceVersion='G7.4-QA-D-20261114-TEST';
+const answers=['t1_split1','t1_split2','t1_ten','t1_ans','t1_dm','t1_m'];
+const fixtures=[
+ {id:'D1_8_5',data:{a:8,b:5,dm:1,m:1}},
+ {id:'D1_7_6',data:{a:7,b:6,dm:2,m:2}},
+ {id:'D1_9_4',data:{a:9,b:4,dm:3,m:3}}
+];
+const publicPlan=x=>({ok:true,caseId:x.id,data:{...x.data},slots:answers.map(id=>({id,value:null,role:'ANSWER_INPUT'}))});
+const results=[];let lastD1=null,ctlA=null,ctlB=null,d2Pad=null,ttsSession=0;
+const checklist=[
+ ['D1_LAYOUT','Dạng 1 – Bố cục, phông chữ, kích cỡ phù hợp'],
+ ['D1_TOUCH','Dạng 1 – Chạm ô và bàn phím số / xóa / làm lại'],
+ ['D1_VARIANT','Dạng 1 – 3 biến thể hiển thị đúng và không lộ đáp án'],
+ ['D2_LAYOUT','Dạng 2 – Đặt tính không tràn màn hình'],
+ ['D2_TOUCH','Dạng 2 – Chọn ô, nhập/xóa bằng bàn phím Toán'],
+ ['D2_FOCUS','Dạng 2 – Nhảy ô đơn vị → chục → trăm'],
+ ['D8A_VISUAL','Dạng 8A – Mức nước/đơn vị L trực quan và đúng'],
+ ['D8A_TOUCH','Dạng 8A – Thêm, bớt, rót và giới hạn'],
+ ['D8B_VISUAL','Dạng 8B – Cân 3/5, 5/3 và cân bằng đúng chiều'],
+ ['D8B_TOUCH','Dạng 8B – Chạm thêm/bớt kg và xem SVG cập nhật'],
+ ['TTS_V2','Giọng V2 – Rõ dấu toán/đơn vị, ngắt nhịp tự nhiên'],
+ ['TTS_NO_OVERLAP','Giọng đọc – Dừng/chuyển đoạn không chồng âm'],
+ ['MOBILE_FIT','Toàn bộ – Không tràn ngang, nút đủ lớn trên điện thoại']
+];
+const session={sourceVersion,startedAt:new Date().toISOString(),events:[],device:{userAgent:navigator.userAgent,width:innerWidth,height:innerHeight,pixelRatio:devicePixelRatio,language:navigator.language},automated:[],human:{},ownerSigned:false};
+function log(kind,details){session.events.push({at:new Date().toISOString(),kind,details});}
+function status(id,text){$(id).textContent=text;}
+function mountD1(){const variant=fixtures[Number($('d1-variant').value)];const r=G74Type1C2.mount($('d1-mount'),publicPlan(variant),{onChange:s=>log('D1_INPUT',{variantId:s.variantId,fieldCount:Object.keys(s.values||{}).length})});lastD1=r;status('d1-status',r.ok?'Đã dựng '+variant.id+' với 6 ô trống.':'Không thể dựng: '+r.reason);}
+function mountCW(mode,raw){const built=KLCapacityWeightV11.compile(raw),host=$(mode==='LITER'?'d8a-mount':'d8b-mount');
+ if(!built.ok){host.textContent=built.reason;return null;}
+ host.replaceChildren();const controller=KLCapacityWeightViewV11.mount(host,built.plan,{onChange:s=>log(mode+'_CHANGE',s)});
+ return controller;
+}
+function openA(){ctlA?.destroy();ctlA=mountCW('LITER',KLCapacityWeightFixturesV11.liter);status('d8a-status','Bắt đầu: Bình A 3/8 L, Bình B 1/5 L.');}
+function openB(left,right){ctlB?.destroy();const f=KLCapacityWeightFixturesV11.weight;ctlB=mountCW('WEIGHT',{...f,exerciseId:'QAD_B_'+left+'_'+right,pans:[{id:'left',label:'Đĩa trái',massKg:left},{id:'right',label:'Đĩa phải',massKg:right}]});status('d8b-status',left<right?'Trái nhẹ, đĩa trái phải cao hơn.':left>right?'Trái nặng, đĩa trái phải thấp hơn.':'Hai đĩa phải ngang nhau.');}
+function startD2(){const frame=$('d2-frame');if(frame.dataset.ready==='yes')return;
+ frame.addEventListener('load',()=>{if(frame.dataset.ready==='yes')return;frame.dataset.ready='yes';try{d2Pad=G74ColumnKeypadC2.mount($('d2-pad'),frame.contentDocument.body,{onKey:x=>log('D2_KEY',x)});status('d2-status',d2Pad.ok?'Đã gắn bàn phím số vào renderer V1.2, không thay mã nguồn.':'Bàn phím lỗi: '+d2Pad.reason)}catch(err){status('d2-status','Lỗi truy cập renderer D2: '+err.message)}},{once:true});
+ frame.srcdoc=cols;
+}
+function switchTab(key){for(const b of document.querySelectorAll('.qa-tabs button'))b.setAttribute('aria-selected',String(b.dataset.mode===key));for(const pane of document.querySelectorAll('.qa-pane'))pane.hidden=pane.id!=='pane-'+key;if(key==='d2')startD2();if(key==='tts')updatePreview();log('TAB',key);}
+document.querySelectorAll('.qa-tabs button').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.mode)));
+$('d1-variant').onchange=mountD1;$('d1-reset').onclick=()=>lastD1?.reset();
+$('d1-probe').onclick=()=>{const fields=$('d1-mount').querySelectorAll('[data-slot]');const ok=lastD1?.ok&&fields.length===6&&Array.from(fields).every(x=>x.textContent==='?');status('d1-status','Chẩn đoán D1 (sau khi làm lại): '+(ok?'PASS':'CHECK')+' · 6 ô, không chấm đáp án');log('D1_PROBE',ok);};
+$('d8a-reset').onclick=openA;$('d8a-probe').onclick=()=>{const p=ctlA?.snapshot();const ok=!!p&&p.quantities.bottleA<=8&&p.quantities.bottleB<=5;status('d8a-status','Giới hạn lít: '+(ok?'PASS':'FAIL')+' · '+JSON.stringify(p?.quantities));log('D8A_PROBE',ok)};
+for(const [id,l,r] of [['balance-35',3,5],['balance-53',5,3],['balance-55',5,5]])$(id).onclick=()=>openB(l,r);
+$('d8b-probe').onclick=()=>{const p=ctlB?.snapshot(),l=p?.quantities.left,r=p?.quantities.right,t=(l!=null&&r!=null)?KLCapacityWeightV11.balanceTilt(l,r):null;const ok=!!t&&((l<r&&t.leftY<t.rightY)||(l>r&&t.leftY>t.rightY)||(l===r&&t.leftY===t.rightY));status('d8b-status',(ok?'PASS':'FAIL')+' · '+JSON.stringify({left:l,right:r,relation:t?.relation}));log('D8B_PROBE',ok);};
+function updatePreview(){const s=questionText[$('tts-sample').value];status('tts-preview','Hiển thị: '+s+'\nChuỗi đọc V2: '+G75V2.normalize(s,{lang:'vi-VN'}));}
+$('tts-sample').onchange=updatePreview;
+function cancelSpeech(){ttsSession++;if('speechSynthesis'in window)window.speechSynthesis.cancel();status('tts-status','Đã yêu cầu dừng.');log('TTS_CANCEL',{})}
+$('tts-stop').onclick=cancelSpeech;
+$('tts-start').onclick=()=>{
+ if(!('speechSynthesis'in window)){status('tts-status','Thiết bị không hỗ trợ speechSynthesis.');log('TTS_UNSUPPORTED',{});return}
+ cancelSpeech();const current=ttsSession,pref=$('voice-profile').value,source=questionText[$('tts-sample').value];
+ const voices=window.speechSynthesis.getVoices(),vi=voices.find(v=>v.lang?.toLowerCase().startsWith('vi'))||null;
+ const chunks=pref==='v2'?G75V2.segments(source,{lang:'vi-VN'}):[{text:G75V2.normalize(source,{lang:'vi-VN'}),rate:.95,pitch:1.10,pause:0,profile:'v12'}];let idx=0;
+ const next=()=>{if(current!==ttsSession)return;if(idx>=chunks.length){status('tts-status','Đã kết thúc lượt phát TTS (chưa xác nhận chất lượng nghe).');log('TTS_QUEUE_END',{profile:pref});return}
+ const chunk=chunks[idx++],u=new SpeechSynthesisUtterance(chunk.text);u.lang='vi-VN';u.rate=chunk.rate;u.pitch=chunk.pitch;if(vi)u.voice=vi;
+ u.onstart=()=>{if(current===ttsSession){status('tts-status','Đang đọc đoạn '+idx+'/'+chunks.length+' – '+chunk.text);log('TTS_STARTED',{profile:pref,text:chunk.text,voice:vi?.name||'AUTO',rate:u.rate,pitch:u.pitch})}};
+ u.onend=()=>{if(current===ttsSession){log('TTS_ENDED',{index:idx});setTimeout(next,Math.max(0,chunk.pause||0))}};
+ u.onerror=e=>{if(current===ttsSession){status('tts-status','Lỗi tổng hợp: '+e.error);log('TTS_ERROR',{error:e.error})}};
+ window.speechSynthesis.speak(u)};
+ log('TTS_REQUESTED',{profile:pref,source,viVoice:vi?.name||null});next();
+};
+const allResults=document.createElement('div');
+for(const [id,label] of checklist){const row=document.createElement('div');row.className='qa-case';const title=document.createElement('strong');title.textContent=label;const select=document.createElement('select');select.dataset.qa=id;for(const [value,txt] of [['NOT_TESTED','Chưa thử'],['PASS','PASS – Đạt'],['FAIL','FAIL – Có lỗi']]){const opt=document.createElement('option');opt.value=value;opt.textContent=txt;select.append(opt)}select.onchange=()=>{session.human[id]=select.value};row.append(title,select);allResults.append(row)}
+$('qa-checklist').append(allResults);
+$('qa-device').textContent=JSON.stringify(session.device,null,2);
+function selfcheck(){const checks=[
+ {name:'D1_VALID_PUBLIC_RENDERER',pass:!!lastD1?.ok&&document.querySelectorAll('#d1-mount [data-slot]').length===6},
+ {name:'D8A_SVG',pass:document.querySelectorAll('#d8a-mount svg').length===2},
+ {name:'D8B_SVG',pass:document.querySelectorAll('#d8b-mount svg').length===1},
+ {name:'D8B_TILT_3_5',pass:KLCapacityWeightV11.balanceTilt(3,5).leftY<KLCapacityWeightV11.balanceTilt(3,5).rightY},
+ {name:'G75_V2_NORMALIZE',pass:G75V2.normalize('36 − 12 = 24 (kg)',{lang:'vi-VN'}).includes('trừ')},
+ {name:'D2_FRAME_READY',pass:$('d2-frame').dataset.ready==='yes'}
+];session.automated.push({at:new Date().toISOString(),checks});const out={status:checks.every(x=>x.pass)?'STATIC_BROWSER_PROBE_PASS':'PARTIAL_OR_FAIL',checks};$('qa-out').textContent=JSON.stringify(out,null,2);return out}
+$('qa-selfcheck').onclick=selfcheck;
+$('qa-export').onclick=()=>{session.human=Object.fromEntries([...document.querySelectorAll('[data-qa]')].map(el=>[el.dataset.qa,el.value]));session.endedAt=new Date().toISOString();session.note=$('qa-note').value;session.device.lastWidth=innerWidth;session.device.lastHeight=innerHeight;
+ const b=new Blob([JSON.stringify(session,null,2)],{type:'application/json'}),url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='G74_QAD_RealDevice_VisualTouchTTS_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)};
+window.addEventListener('error',e=>log('JS_ERROR',{message:e.message}));window.addEventListener('pagehide',()=>{try{window.speechSynthesis?.cancel()}catch(e){}});
+mountD1();openA();openB(3,5);updatePreview();log('INIT','STANDALONE_READY');
+if(new URLSearchParams(location.search).has('qaAuto')){startD2();setTimeout(()=>{const x=selfcheck();$('qa-out').dataset.autoDone='true';$('qa-out').dataset.autoPass=String(x.status==='STATIC_BROWSER_PROBE_PASS')},1200)}
+</script></body></html>
