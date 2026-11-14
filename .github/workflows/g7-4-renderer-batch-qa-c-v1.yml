@@ -48,7 +48,12 @@ jobs:
           mkdir -p qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots
           for mode in desktop mobile; do
             if [ "$mode" = desktop ]; then size="1440,960"; else size="390,960"; fi
-            for item in D1 D2 D8B D9 D10; do
+            if [ "$mode" = desktop ]; then
+              cases="D1 D2 D3 D4 D5 D6 D7 D8 D8A D8B D9 D10"
+            else
+              cases="D1 D2 D8B D9 D10"
+            fi
+            for item in $cases; do
               target="qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots/$mode-$item.png"
               timeout 40s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
                 --virtual-time-budget=3200 --window-size="$size" --screenshot="$target" \
@@ -57,7 +62,7 @@ jobs:
             done
           done
           # Additional screenshot frames only: show the candidate clearly on narrow devices.
-          for item in D1 D2 D8B D9 D10; do
+          for item in D1 D2 D3 D4 D5 D6 D7 D8 D8A D8B D9 D10; do
             target="qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots/mobile-solo-$item.png"
             timeout 40s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
               --virtual-time-budget=3500 --window-size="390,960" --screenshot="$target" \
