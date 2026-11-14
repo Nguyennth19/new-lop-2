@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "g75.voice-profiles.approved.v1",
+  "approvedDate": "2026-11-14",
+  "approvalSource": "Owner explicit visual/auditory signoff in Lớp 2 project conversation",
+  "scope": "Approved standalone voice quality profiles and future parent settings policy only",
+  "status": "APPROVED_AS_REUSABLE_VOICE_PROFILES_NOT_DEPLOYED",
+  "profiles": [
+    {
+      "id": "vi_math_v12_stable",
+      "version": "G7.5 V1.2",
+      "label": "Chuẩn – V1.2",
+      "description": "Vietnamese math pronunciation normalization, original single-utterance prosody",
+      "language": "vi-VN",
+      "availability": "APPROVED_SELECTABLE_FUTURE",
+      "source": {
+        "branch": "test/g7-5-vi-tts-compat-v1-20261114",
+        "path": "thu-nghiem/g7-5-vietnamese-tts/compat-v1/G75_V12_Test_DocPhepToan_Kg_DauToan_DocLap.html",
+        "blobSha": "f67c87ddd4633d937248de3f75273eb1d7940e40",
+        "driveId": "1KMHix06TX6BYT3xv8c_weAw5cS_3YlQy"
+      },
+      "qa": {
+        "ownerAuditorySignoff": "PASS_STANDALONE",
+        "sourceRegression": "STATIC_PASS",
+        "appsScriptIntegration": "NOT_TESTED"
+      }
+    },
+    {
+      "id": "vi_math_v2_dynamic",
+      "version": "G7.5 V2",
+      "label": "Tự nhiên – V2",
+      "description": "Context-aware Vietnamese math speech normalization plus dynamic prosody and chunked sequential reading",
+      "language": "vi-VN",
+      "availability": "APPROVED_SELECTABLE_FUTURE",
+      "preferredDefault": true,
+      "source": {
+        "branch": "test/g7-5-v2-prosody-20261114",
+        "path": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_V2_DocToan_Lop2_NguDieu_DocLap.html",
+        "blobSha": "2c11e1b6e99f63665a05d4b4f875d9984b2741f4",
+        "driveId": "1M7i9Yk6Gn9W9mj-4Jd4z1hFc6dDwnNKr"
+      },
+      "qa": {
+        "ownerAuditorySignoff": "PASS_STANDALONE_BEST_RHYTHM",
+        "normalizationRegression": "PASS_46_CASES",
+        "contextProsody": "PASS_4_CASES",
+        "appsScriptIntegration": "NOT_TESTED"
+      }
+    }
+  ],
+  "futurePreferenceContract": {
+    "uiLocation": "Parent Portal > Settings > Voice/Read-aloud (future feature, not currently implemented)",
+    "field": "voiceProfileId",
+    "allowedValues": [
+      "vi_math_v12_stable",
+      "vi_math_v2_dynamic"
+    ],
+    "defaultValue": "vi_math_v2_dynamic",
+    "scope": "parent-controlled child learning preference",
+    "persistence": "FUTURE_BACKEND_CONTRACT_ONLY; no data storage changes now",
+    "fallback": "If V2 unavailable or fails a compatibility gate, allow V1.2 profile fallback when viable; if no vi voice show explicit UNAVAILABLE",
+    "responsibility": "Parent-only change via existing parental authentication and authorization, not an unguarded student action",
+    "preview": "Offer sample preview before saving",
+    "applicationRead": "Apply chosen profile only to authorized visible speech content; never grading secrets or hidden word-problem answers",
+    "policy": "English TTS and subject-specific normalization remain independent; choices must not change lesson content, answers, score, stars, or UI outside future parental settings"
+  },
+  "release": {
+    "ready": false,
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "webAppTestVersion6Changed": false,
+    "merged": false,
+    "deployed": false
+  },
+  "pendingGates": [
+    "Parent settings UI/API integration and authorization QA",
+    "Standalone vs Apps Script HTMLService real-device compatibility",
+    "Android and iOS detailed device cross-check if relevant",
+    "SFX/TTS coordination on real app",
+    "Type 10 trusted solution gating",
+    "Separate approval to integrate P1/parent portal"
+  ],
+  "audit": {
+    "v2CIPassRun": "43590646311",
+    "v2CiUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43590646311",
+    "p06FrozenCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2"
+  }
+}
