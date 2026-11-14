@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "g75.v2.state.v1",
+  "date": "2026-11-14",
+  "phase": "G7.5-V2-CONTEXT-AWARE-NORMALIZATION-AND-PEDAGOGICAL-PROSODY",
+  "status": "V2_STATIC_QA_PASS_HUMAN_AUDIO_AND_GAS_PENDING",
+  "branch": "test/g7-5-v2-prosody-20261114",
+  "baselineV12Branch": "test/g7-5-vi-tts-compat-v1-20261114",
+  "baselineV12Commit": "59410efa288b5f84e1ae9079f82ccc4d3c4f3311",
+  "p06FrozenCheckpoint": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "sourceReport": "Tối Ưu Giọng Đọc TTS.pdf (user provided; 21 pages; third-party suggestions, not certified audio evidence)",
+  "implementation": {
+    "html": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_V2_DocToan_Lop2_NguDieu_DocLap.html",
+    "normalizer": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js",
+    "tests": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.test.cjs",
+    "qaLog": "thu-nghiem/g7-5-vietnamese-tts/G75_V2_IMPLEMENTATION_AND_QA_20261114.md",
+    "htmlSha256": "99075980a4ee821c70fd05887923d9e56ed123cebe3ee358305fbe195a258394",
+    "normalizerSha256": "3bcc66d52e4e5e801f2d267eb188b91d9e1eca2ef825390fccb22577f6ca5082",
+    "testSha256": "e9eafe760731e6435acbdf61f4438b007dc4a5bf3a6a2b7e6043c8d067fab46e",
+    "drive": {
+      "htmlId": "1M7i9Yk6Gn9W9mj-4Jd4z1hFc6dDwnNKr",
+      "normalizerId": "1b3qJW3RgAwEngVAwCcBE0Gt1gK5Oj_Fm",
+      "testsId": "19ierj6Hd3rE9wnX_0dgy9v6itzXsMrOQ",
+      "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8"
+    }
+  },
+  "qa": {
+    "normalizationRegression": "PASS_46_CASES",
+    "contextAndProsody": "PASS_4_CASES",
+    "jsSyntax": "PASS",
+    "standaloneChromiumDOM": "PASS_HEADLESS",
+    "chromiumHeadlessSpeech": "SYNTHESIS_FAILED_UNSUPPORTED_TEST_ENVIRONMENT",
+    "humanAudioWindows": "PENDING",
+    "humanAudioAndroid": "PENDING",
+    "gasHtmlService": "PENDING",
+    "englishAudiblePreservation": "PENDING",
+    "previousCiFailure": {
+      "runId": 43590230842,
+      "reason": "test required wrong module filename",
+      "resolved": true
+    },
+    "ciSuccess": {
+      "runId": 43590646311,
+      "headSha": "045e9e5d3394fcecd3c999605afb924906c93223",
+      "conclusion": "success"
+    }
+  },
+  "releaseReady": false,
+  "webAppTestVersion6Changed": false,
+  "protected": [
+    "main",
+    "test-theo-main",
+    "P0.6 closed evidence",
+    "student data",
+    "score and stars",
+    "trusted grading"
+  ],
+  "next": "Manual A/B/C audible QA using standalone HTML, export JSON; only after approval consider isolated Apps Script HTMLService and P1. Do not leak Type10 answers."
+}
