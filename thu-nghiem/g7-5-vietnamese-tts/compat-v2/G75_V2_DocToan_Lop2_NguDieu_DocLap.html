@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.5 V2 – Nghe đọc Toán lớp 2 | Phòng thử độc lập</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:#19283a;background:#f3f6fc;line-height:1.58}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(115deg,#153c75,#2367a1);color:#fff;padding:27px 20px}header .inner,main,footer{max-width:1120px;margin:auto}h1{font-size:clamp(1.35rem,3vw,2rem);margin:0 0 5px}header p{margin:0;opacity:.9}.pill{display:inline-block;font-weight:700;font-size:.76rem;padding:2px 10px;background:#dcfce7;border-radius:20px;color:#166534;margin-bottom:9px}.container{display:grid;grid-template-columns:1.15fr .85fr;gap:17px;padding:20px 12px}section{background:white;border:1px solid #dce5f2;border-radius:17px;padding:18px;box-shadow:0 4px 24px #19385e0b;margin-bottom:16px}section h2{font-size:1.08rem;margin:0 0 11px}label{font-weight:650;display:block;font-size:.88rem;margin-bottom:6px}select,input[type=range],textarea{width:100%;font:inherit}select,textarea{padding:9px 11px;border:1px solid #bac9da;border-radius:10px;background:#fff;color:inherit}textarea{resize:vertical;min-height:150px}.math{font-weight:800;font-size:1.7rem;letter-spacing:.035em;text-align:center;border:1px solid #d6e3f1;padding:15px;border-radius:14px;background:#f6faff;margin-bottom:10px}.btn{border:0;border-radius:11px;background:#225ca0;color:#fff;padding:11px 14px;font-weight:700;font-size:.9rem;cursor:pointer;margin:3px}.btn.alt{background:#e7f1fd;color:#1a4d83}.btn.stop{background:#b33043}.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #eaa61f;outline-offset:2px}.btn:hover{filter:brightness(1.07)}.actions{display:flex;flex-wrap:wrap;gap:5px}.controls{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:10px}.muted{font-size:.82rem;color:#62768f}.small{font-size:.81rem}output,pre{display:block;white-space:pre-wrap;overflow-wrap:anywhere;border-radius:11px;padding:12px;background:#f5f8fc;margin-top:9px;font-size:.83rem}pre{background:#142c45;color:#d6edff;max-height:260px;overflow:auto}.status{font-weight:750;color:#1b5492}.seg{border:1px solid #e1e8f0;padding:10px;border-radius:12px;margin-bottom:7px;cursor:pointer}.seg.active{border-color:#2d72b8;background:#f0f7ff}.seg small{display:block;color:#52647c}.row{display:flex;align-items:center;gap:9px}.row label{margin:0;font-weight:500}.help{border-left:4px solid #cdd8e8;padding-left:11px}.qa{border:1px solid #e1e8f0;padding:10px;border-radius:12px;margin:8px 0}.tag{display:inline-block;background:#edf5ff;color:#194f87;border-radius:7px;padding:1px 7px;font-size:.72rem;margin-right:6px}footer{font-size:.8rem;color:#67788b;padding:0 15px 30px}@media(max-width:780px){.container{grid-template-columns:1fr}.controls{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="inner"><span class="pill">G7.5 V2 · THỬ NGHIỆM ĐỘC LẬP</span><h1>Giọng đọc Toán lớp 2 — kiểm thử ngữ điệu và dấu toán</h1><p>Không kết nối dự án · Không cần Internet để tải thư viện · Không ghi dữ liệu học sinh</p></div></header>
+<main class="container"><div>
+<section><h2>1. Chọn nội dung kiểm thử</h2>
+<label for="sample">Bộ ví dụ</label><select id="sample">
+<option value="full">Bài toán có lời văn — giải trọn vẹn 36 − 12 = 24 (kg)</option>
+<option value="math">Phép tính, dấu so sánh, đơn vị và biến x</option>
+<option value="punct">Dấu câu, hướng dẫn và từ dễ đọc sai</option>
+<option value="english">Đọc tiếng Anh — giữ nguyên như V1.2</option>
+<option value="custom">Nhập văn bản riêng</option></select>
+<div class="math" id="mathCard" aria-label="Phép tính hiển thị">36 − 12 = 24 (kg)</div>
+<label for="sourceText">Nội dung hiển thị (giữ nguyên số và ký hiệu)</label><textarea id="sourceText" rows="10"></textarea>
+<p class="muted">Nội dung này chỉ là mẫu thử. Bộ đọc chuyển ký hiệu ở bản sao dành riêng cho âm thanh, không chỉnh câu hỏi gốc.</p></section>
+<section><h2>2. Chọn phương án A/B và điều khiển đọc</h2>
+<div class="actions"><button class="btn" id="readBaseline">A · Đọc kiểu V1.2</button><button class="btn" id="readDynamic">B · Đọc V2 theo nhịp</button><button class="btn alt" id="readFlat">C · V2 giữ nhịp đều</button><button class="btn stop" id="stopBtn">Dừng</button></div>
+<p class="muted">A phát một lượt với rate 0.95/pitch 1.10; B chia đoạn, dùng 5 hồ sơ sư phạm; C chia đoạn nhưng giữ rate/pitch cố định để so sánh ảnh hưởng của nhịp.</p>
+<div class="controls"><div><label for="voiceVi">Giọng tiếng Việt</label><select id="voiceVi"></select></div><div><label for="voiceEn">Giọng tiếng Anh</label><select id="voiceEn"></select></div></div>
+<div class="controls"><div><label for="rate">Hệ số tốc độ V2: <span id="rateVal">1.00</span></label><input type="range" id="rate" min="0.65" max="1.35" step="0.05" value="1"></div><div><label for="pitch">Hệ số cao độ V2: <span id="pitchVal">1.00</span></label><input type="range" id="pitch" min="0.75" max="1.25" step="0.05" value="1"></div></div>
+<div class="controls"><div><label for="context">Ngữ cảnh toán học</label><select id="context"><option value="auto">Tự nhận diện (an toàn)</option><option value="math">Biểu thức Toán (dấu : là phép chia)</option></select></div><div><label for="kgRead">Cách đọc kg</label><select id="kgRead"><option value="ki lô gam">ki lô gam (V1.2)</option><option value="ky lô gam">ky lô gam (đối chứng)</option></select></div></div>
+<div class="row" style="margin-top:10px"><input id="multiplyX" type="checkbox"><label for="multiplyX">Trong ngữ cảnh Toán, đọc ký hiệu x giữa hai số là “nhân” (không dùng cho ẩn số x)</label></div>
+<div class="row" style="margin-top:10px"><input id="sfx" type="checkbox"><label for="sfx">Phát âm hiệu ứng ngắn trước lời khen (đợi hiệu ứng kết thúc)</label></div>
+<p class="status" id="status" role="status" aria-live="polite">Đang tải danh sách giọng…</p><button class="btn alt" id="rescan">Quét lại danh sách giọng</button><p class="muted" id="capabilities"></p></section>
+<section><h2>3. Văn bản thực tế gửi đến bộ đọc</h2><output id="spokenPreview" aria-live="polite"></output><p class="muted">Khi chọn V2, danh sách đoạn và vai trò ngữ điệu được hiển thị bên phải. Dấu câu thay đổi nhịp nghỉ giữa các đoạn, không làm thay đổi phép tính.</p></section>
+</div><div>
+<section><h2>4. Các đoạn V2 và hồ sơ ngữ điệu</h2><div id="segments"></div></section>
+<section><h2>5. Đánh giá bằng tai và xuất báo cáo</h2>
+<div class="qa"><div class="row"><input type="radio" name="result" id="r0" value="UNTESTED" checked><label for="r0">Chưa đánh giá</label></div><div class="row"><input type="radio" name="result" id="r1" value="V2_BETTER"><label for="r1">V2 tự nhiên hơn V1.2</label></div><div class="row"><input type="radio" name="result" id="r2" value="SAME"><label for="r2">Tương đương V1.2</label></div><div class="row"><input type="radio" name="result" id="r3" value="V12_BETTER"><label for="r3">V1.2 tự nhiên hơn</label></div><div class="row"><input type="radio" name="result" id="r4" value="FAIL"><label for="r4">Có lỗi phát âm / thiếu dấu / giọng đứt đoạn</label></div></div>
+<label for="notes">Ghi chú kiểm thử (không chứa thông tin cá nhân)</label><textarea rows="3" id="notes" placeholder="VD: câu hỏi ngắt hơi hơi dài; phép trừ đọc rõ"></textarea>
+<div class="actions"><button class="btn" id="export">Tải báo cáo JSON</button><button class="btn alt" id="copy">Sao chép báo cáo</button></div><p class="muted">Báo cáo chứa văn bản mẫu, cấu hình, tình trạng giọng và nhật ký; người kiểm thử tự đánh giá chất lượng âm thanh. Không tự động chứng nhận QA PASS.</p></section>
+<section><h2>6. Nhật ký phát âm</h2><pre id="log">Chưa có yêu cầu phát âm.</pre></section>
+<section><h2>Phạm vi & bảo vệ dự án</h2><p class="help small">Thử nghiệm offline Web Speech API, không chấm bài, không ghi điểm, không cấp sao. Đọc toàn lời giải trong file kiểm thử chỉ phục vụ QA; khi tích hợp vào ứng dụng phải kiểm tra quyền xem lời giải trên máy chủ trước khi đọc. Browser có thể thiếu giọng vi-VN.</p></section>
+</div></main><footer>G7.5 V2 · Context-Aware Normalization & Pedagogical Prosody · Bản thử không phải phát hành sản phẩm</footer>
+<script>
+/* G7.5 V2 – pure text planning helpers. No DOM, network, grading or student data. */
+(function (root, maker) {
+  const api = maker();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  if (root) root.G75V2 = api;
+})(typeof window !== 'undefined' ? window : null, function () {
+'use strict';
+const UNIT_VARIANTS = [
+  {symbol:'kg', read:'ki lô gam', word:/\b(?:ki|ky|kí|ký)[\s-]*lô[\s-]*gam\b/giu},
+  {symbol:'km', read:'ki lô mét', word:/\b(?:ki|ky|kí|ký)[\s-]*lô[\s-]*mét\b/giu},
+  {symbol:'mm', read:'mi li mét', word:/\bmi[\s-]*li[\s-]*mét\b/giu},
+  {symbol:'cm', read:'xăng ti mét', word:/\bxăng[\s-]*ti[\s-]*mét\b/giu},
+  {symbol:'dm', read:'đề xi mét', word:/\bđề[\s-]*xi[\s-]*mét\b/giu},
+  {symbol:'ml', read:'mi li lít', word:/\bmi[\s-]*li[\s-]*lít\b/giu},
+  {symbol:'l', read:'lít'}, {symbol:'m', read:'mét'}, {symbol:'đ', read:'đồng'}
+];
+const SIGNS = {'+':'cộng','-':'trừ','−':'trừ','–':'trừ','×':'nhân','*':'nhân','÷':'chia',':':'chia','=':'bằng','>':'lớn hơn','<':'bé hơn'};
+const OPERAND = '(?:\\d+(?:[.,]\\d+)?|[xX])';
+const LETTER='\\p{L}\\p{N}';
+function normalize(source, opts={}) {
+  if (typeof source !== 'string') return '';
+  if (opts.lang && !/^vi(?:-|$)/i.test(opts.lang)) return source;
+  let t=source.normalize('NFC');
+  // Decorative emoji without suppressing words; semantic pictures must be authored in speechText.
+  t=t.replace(/\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*/gu,' ');
+  t=t.replace(/→/g,' sang ').replace(/↔/g,' hai chiều ');
+  // Normalize known unit word spellings first; preserve agreed V1.2 acoustics.
+  for(const u of UNIT_VARIANTS) if(u.word) t=t.replace(u.word,u.read);
+  // Parenthesized unit labels only; parenthesized numbers and explanations remain.
+  for(const u of UNIT_VARIANTS){
+    const sym=u.symbol.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const paren=new RegExp('\\(\\s*'+sym+'\\s*\\)','giu');
+    const sep=new RegExp('(?<!\\p{L})'+sym+'(?![\\p{L}\\p{N}])','giu');
+    t=t.replace(paren,' '+u.read+' ');
+    t=t.replace(sep,(_match,at,whole)=> (at>0 && /\d/.test(whole[at-1]) ? " " : "")+u.read);
+  }
+  // Handle display-only sign lists and signs following the word 'dấu'.
+  t=t.replace(/\b[dD]ấu\s*>\s*,\s*<\s*,\s*=/gu,'dấu lớn hơn, dấu bé hơn, dấu bằng');
+  t=t.replace(/\(\s*\+\s*,\s*[−–-]\s*\)/g,'dấu cộng hoặc dấu trừ');
+  t=t.replace(/\bdấu\s*([+−–×*÷=><:-])/giu,(whole,op)=> (whole[0]==='D'?'Dấu ':'dấu ')+SIGNS[op]);
+  t=t.replace(/\(\s*([=><+−–])\s*\)/g,(_s,op)=>'dấu '+SIGNS[op]);
+  t=t.replace(/\bSGK\b/g,'sách giáo khoa').replace(/\bPV\s+(\d+)/g,'phạm vi $1');
+  const mathContext=opts.context||'auto';
+  const mathDiv=mathContext==='math' || /(?:phép chia|chia|tính|kết quả|\s:\s|:\s*\d+\s*=)/iu.test(source);
+  // Operator must follow a letter/number and precede a number, variable or unknown.
+  // A word hyphen ('tách - gộp') fails the right-operand test and is preserved.
+  t=t.replace(/(?<=[\p{L}\p{N}])\s*([+−–*×÷=><-])\s*(?=\d|[xX]\b|\?)/gu,(_s,op)=>' '+SIGNS[op]+' ');
+  // ':' only in an arithmetic expression; 7:15 remains time in auto mode.
+  if(mathDiv)t=t.replace(/(?<=\d)\s*:\s*(?=\d)/g,' chia ');
+  // x is a variable unless explicitly identified as multiplication in metadata.
+  if(mathContext==='math' && opts.xAsMultiplication===true)
+    t=t.replace(/(\d+)\s+[xX]\s+(?=\d+)/g,'$1 nhân ');
+  t=t.replace(/\bbằng\s*\?/giu,'bằng mấy?');
+  // Preserve newlines for pedagogical segmentation and sentence rhythm.
+  return t.replace(/[ \t]{2,}/g,' ').replace(/ *\n */g,'\n').trim();
+}
+const PROFILES=Object.freeze({
+  default:{rate:.92,pitch:1.10,pause:280,label:'Đọc đề / kể chuyện'},
+  question:{rate:.90,pitch:1.12,pause:400,label:'Đặt câu hỏi'},
+  encouragement:{rate:.90,pitch:1.06,pause:350,label:'Hướng dẫn / động viên'},
+  solution_math:{rate:.86,pitch:1.05,pause:420,label:'Bài giải / phép tính'},
+  praise:{rate:.96,pitch:1.18,pause:320,label:'Khen ngợi'}
+});
+function profileOf(text, hint='auto') {
+  if(hint && hint!=='auto' && PROFILES[hint])return hint;
+  const s=text.trim();
+  if(/^(Chính xác|Giỏi lắm|Tuyệt vời|Xuất sắc|Hoàn hảo|Đúng rồi)/iu.test(s))return 'praise';
+  if(/^(Gợi ý|Em hãy|Em kiểm tra|Hãy thử|Nhớ|Muốn tìm)/iu.test(s))return 'encouragement';
+  if(/^(Bài giải|Đáp số|Số .* là:|\d+\s+(cộng|trừ|nhân|chia|bằng))/iu.test(s))return 'solution_math';
+  if(/[?]\s*$/.test(s))return 'question';
+  return 'default';
+}
+function segments(source, options={}) {
+ const lang=options.lang||'vi-VN';
+ const text=options.normalized===true?source:normalize(source,{lang,context:options.context||'auto',xAsMultiplication:options.xAsMultiplication});
+ const lines=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+ const parts=[];
+ for(const line of lines) {
+   // punctuation is only split when followed by a space; 1.5 and 7:15 stay intact.
+   for(const sentence of line.split(/(?<=[.!?;])\s+(?=\S)/u)) {
+     if(sentence.trim())parts.push(sentence.trim());
+   }
+ }
+ return parts.map((text,index)=>({index,text,profile:profileOf(text,options.profile),...(PROFILES[profileOf(text,options.profile)])}));
+}
+return {normalize,segments,profileOf,PROFILES};
+});
+
+const $=id=>document.getElementById(id);
+const EXAMPLES={
+full:`Đề bài: Bao gạo tẻ cân nặng 36 kg; bao gạo nếp nhẹ hơn bao gạo tẻ 12 kg.
+Hỏi bao gạo nếp cân nặng bao nhiêu kg?
+
+Em hãy đọc kĩ đề bài nhé! Ta biết bao gạo tẻ nặng 36 kg, bao gạo nếp nhẹ hơn 12 kg.
+Muốn tìm số kg bao gạo nếp, ta thực hiện phép trừ.
+
+Bài giải:
+Số kg bao gạo nếp cân nặng là:
+36 − 12 = 24 (kg).
+Đáp số: 24 kg.
+
+Chính xác! Em đã tìm đúng đáp số. Giỏi lắm!`,
+math:`8 + 5 = ?
+20 : 5 = 4
+1 dm = 10 cm
+1m > 90cm
+15l + 20l < 40l
+1000đ
+Tìm x: x + 5 = 12
+Chọn dấu >, <, = thích hợp.
+Sơ đồ tách - gộp. Đồng hồ chỉ 7:15.`,
+punct:`Chào em! Em hãy lắng nghe nhé.
+Chào, cháu, trừ, chục; kí-lô-gam, ký-lô-gam, ki-lô-gam.
+Em đã làm đúng chưa? Hãy xem lại từng bước!
+Gợi ý: Đọc đề, xác định phép tính; rồi hãy trả lời.
+Tuyệt vời! Em học rất tốt.`,
+english:`Hello! My name is Anna. I am 8 years old.
+Today, we learn about numbers: 8 plus 5 equals 13.
+Well done! You are doing a wonderful job.`,
+custom:''};
+let voices=[],run=null,sequence=0,timer=null,entries=[],modeNow='B',audioCtx=null;
+const syn=window.speechSynthesis;
+function log(status,detail={}){entries.push({time:new Date().toISOString(),status,...detail});if(entries.length>160)entries.shift();$('log').textContent=entries.slice(-25).map(x=>`${x.time.slice(11,19)} ${x.status} ${JSON.stringify(Object.fromEntries(Object.entries(x).filter(([k])=>k!=='time'&&k!=='status')))}`).join('\n');}
+function status(t){$('status').textContent=t;}
+function findVoices(){if(!syn||typeof SpeechSynthesisUtterance==='undefined'){status('UNSUPPORTED: trình duyệt thiếu Web Speech API');return;}
+ try{voices=syn.getVoices()||[]}catch(e){voices=[];log('VOICE_ERROR',{code:e.message})}
+ for(const [id,lang,re] of [['voiceVi','vi',/Microsoft An/i],['voiceEn','en',/Google UK English Female/i]]){
+ const select=$(id),old=select.value;select.replaceChildren();const list=voices.filter(v=>v.lang&&v.lang.toLowerCase().startsWith(lang));
+ select.add(new Option('AUTO — trình duyệt chọn','AUTO'));
+ list.forEach(v=>select.add(new Option(v.name+' ('+v.lang+')',v.voiceURI||v.name)));
+ if([...select.options].some(o=>o.value===old))select.value=old;
+ else{const pref=list.find(v=>re.test(v.name));if(pref)select.value=pref.voiceURI||pref.name;}
+ }
+ $('capabilities').textContent=`Có ${voices.length} giọng · Tiếng Việt: ${voices.filter(v=>/^vi[-_]/i.test(v.lang||'')).length} · Tiếng Anh: ${voices.filter(v=>/^en[-_]/i.test(v.lang||'')).length}`;
+ log('VOICE_REFRESH',{count:voices.length});status('Sẵn sàng — bấm nút nghe để bắt đầu');
+}
+function chooseVoice(lang){const id=lang==='en-GB'?'voiceEn':'voiceVi',value=$(id).value;return voices.find(v=>(v.voiceURI||v.name)===value)||null}
+function stop(reason='USER_STOP'){sequence++;if(timer)clearTimeout(timer);timer=null;if(run){log('CANCELLED',{reason,mode:run.mode,chunkIndex:run.idx});run=null;}if(syn){try{syn.cancel()}catch(e){log('CANCEL_ERROR',{error:String(e)})}}status('Đã dừng — '+reason)}
+function isEnglish(){return $('sample').value==='english'}
+function transformed(){const src=$('sourceText').value.trim();if(isEnglish())return src;return G75V2.normalize(src,{lang:'vi-VN',context:$('context').value,xAsMultiplication:$('multiplyX').checked}).replace(/ki lô gam/g,$('kgRead').value)}
+function plan(){const text=transformed();const lang=isEnglish()?'en-GB':'vi-VN';if(isEnglish())return [{index:0,text,profile:'default',rate:.95,pitch:1,pause:0,label:'English baseline'}];
+ return G75V2.segments(text,{normalized:true,lang});}
+function render(){const t=transformed();$('spokenPreview').textContent=t||'(Trống)';const items=plan();const area=$('segments');area.replaceChildren();items.forEach(item=>{const div=document.createElement('div');div.className='seg'+(run&&run.idx===item.index&&modeNow!=='A'?' active':'');const span=document.createElement('span');span.className='tag';span.textContent=(item.index+1)+'. '+item.profile;const p=document.createElement('div');p.textContent=item.text;const sub=document.createElement('small');sub.textContent=`Rate ${item.rate.toFixed(2)} · Pitch ${item.pitch.toFixed(2)} · Nghỉ ${item.pause} ms`;div.append(span,p,sub);area.append(div)});}
+function playSfx(){if(!$('sfx').checked)return Promise.resolve();return new Promise(resolve=>{try{const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx){resolve();return;}audioCtx=audioCtx||new Ctx();const start=audioCtx.currentTime,tones=[587.33,783.99];tones.forEach((frequency,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=frequency;g.gain.setValueAtTime(.0001,start+i*.13);g.gain.exponentialRampToValueAtTime(.055,start+i*.13+.035);g.gain.exponentialRampToValueAtTime(.0001,start+i*.13+.2);o.connect(g).connect(audioCtx.destination);o.start(start+i*.13);o.stop(start+i*.13+.21);});setTimeout(resolve,450);}catch(e){log('SFX_ERROR',{error:String(e)});resolve()}})}
+function speak(mode){stop('NEW_REQUEST');if(!syn||typeof SpeechSynthesisUtterance==='undefined'){status('Không hỗ trợ Web Speech API');return;}
+ const id=sequence,original=$('sourceText').value.trim(),processed=transformed(),lang=isEnglish()?'en-GB':'vi-VN',voice=chooseVoice(lang);
+ if(!original){status('Văn bản trống');return;}
+ modeNow=mode;
+ const chunks=mode==='A'?[{text:processed,profile:'baseline',rate:.95,pitch:1.10,pause:0}]:plan();
+ let idx=0;run={id,mode,idx:-1};status('Đang chuẩn bị đọc…');
+ function next(){if(!run||run.id!==id)return;if(idx>=chunks.length){log('COMPLETE',{mode,chunks:idx});run=null;status('ENDED — Hoàn thành '+mode);render();return;}
+ const n=idx++,c=chunks[n];run.idx=n;render();const scaleR=Number($('rate').value),scaleP=Number($('pitch').value);
+ const rate=mode==='A'?.95:mode==='C'?.95*scaleR:c.rate*scaleR;
+ const pitch=mode==='A'?(isEnglish()?1.00:1.10):mode==='C'?(isEnglish()?1.00:1.10*scaleP):c.pitch*scaleP;
+ const utter=new SpeechSynthesisUtterance(c.text);utter.lang=lang;if(voice)utter.voice=voice;
+ utter.rate=Math.max(.5,Math.min(1.5,rate));utter.pitch=Math.max(.5,Math.min(1.6,pitch));
+ utter.onstart=()=>{if(!run||run.id!==id||run.idx!==n)return;log('STARTED',{mode,n,profile:c.profile,rate:utter.rate,pitch:utter.pitch});status('Đang đọc đoạn '+(n+1)+'/'+chunks.length+' · '+c.profile)};
+ utter.onend=()=>{if(!run||run.id!==id||run.idx!==n)return;log('ENDED',{mode,n});timer=setTimeout(next,mode==='A'?0:mode==='C'?260:c.pause)};
+ utter.onerror=e=>{if(!run||run.id!==id||run.idx!==n)return;log('ERROR',{mode,n,error:e.error||'unknown'});run=null;status('Lỗi giọng đọc: '+(e.error||'unknown'))};
+ async function dispatch(){if(!run||run.id!==id||run.idx!==n)return;if(n>0&&c.profile==='praise'&&$('sfx').checked)await playSfx();if(!run||run.id!==id||run.idx!==n)return;try{syn.speak(utter);log('REQUESTED',{mode,n,text:c.text,voice:voice?voice.name:'AUTO_BY_BROWSER',rate:utter.rate,pitch:utter.pitch});}catch(e){log('ERROR',{mode,n,error:String(e)});run=null;status('Lỗi: '+e.message)}}dispatch();
+ }
+ next();
+}
+function getReport(){const result=document.querySelector('input[name=result]:checked')?.value||'UNTESTED';return {schema:'G7.5-V2-audible-qa.v1',generatedAt:new Date().toISOString(),userAgent:navigator.userAgent,surface:'standalone-file',sample:$('sample').value,notes:$('notes').value,manualResult:result,capabilities:{voices:voices.length,vietnamese:voices.filter(v=>/^vi[-_]/i.test(v.lang||'')).map(v=>v.name),english:voices.filter(v=>/^en[-_]/i.test(v.lang||'')).map(v=>v.name)},config:{voiceVi:$('voiceVi').selectedOptions[0]?.textContent,voiceEn:$('voiceEn').selectedOptions[0]?.textContent,rateScale:$('rate').value,pitchScale:$('pitch').value,context:$('context').value,xAsMultiplication:$('multiplyX').checked,kgSpelling:$('kgRead').value,sfx:$('sfx').checked},raw:$('sourceText').value,spoken:transformed(),segments:plan(),events:entries.slice(-80),warning:'STARTED/ENDED not audible proof; only a real tester can attest. No student data.'}}
+function download(content,name,type){const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+$('sample').onchange=()=>{stop('SAMPLE_CHANGE');$('sourceText').value=EXAMPLES[$('sample').value];$('mathCard').hidden=$('sample').value!=='full';render()};
+$('sourceText').oninput=render;['context','kgRead','multiplyX'].forEach(id=>$(id).onchange=render);
+['rate','pitch'].forEach(id=>$(id).oninput=()=>{$(id+'Val').textContent=Number($(id).value).toFixed(2)});
+$('readBaseline').onclick=()=>speak('A');$('readDynamic').onclick=()=>speak('B');$('readFlat').onclick=()=>speak('C');$('stopBtn').onclick=()=>stop();$('rescan').onclick=findVoices;
+$('export').onclick=()=>download(JSON.stringify(getReport(),null,2),'G75_V2_KetQua_NgheThu.json','application/json');
+$('copy').onclick=()=>{const x=JSON.stringify(getReport(),null,2);if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(x).then(()=>status('Đã sao chép báo cáo QA')).catch(()=>prompt('Sao chép thủ công',x));else prompt('Sao chép thủ công',x)};
+window.addEventListener('pagehide',()=>stop('PAGE_HIDE'));if(syn&&syn.addEventListener)syn.addEventListener('voiceschanged',findVoices);
+$('sourceText').value=EXAMPLES.full;findVoices();render();
+</script></body></html>
