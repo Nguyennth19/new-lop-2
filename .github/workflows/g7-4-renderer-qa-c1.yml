@@ -1,0 +1,73 @@
+name: G7.4 QA-C.1 Type1 dynamic DOM recovery (TEST only)
+on:
+  push:
+    branches:
+      - test/g7-4-renderer-qa-c1-recovery-20261114
+    paths:
+      - '.github/workflows/g7-4-renderer-qa-c1.yml'
+      - 'qa/g7-4-renderer-batch-qa-v1/qa-c1-*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  type1-dynamic-public-preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Verify immutable demo and Type1 public mapping
+        run: |
+          set -eu
+          node qa/g7-4-renderer-batch-qa-v1/qa-c1-type1-public-fixtures.test.cjs
+          node qa/g7-4-renderer-batch-qa-v1/qa-b1.test.cjs
+      - name: Start local server for same-origin QA frames
+        run: |
+          python3 -m http.server 8794 --bind 127.0.0.1 >/tmp/g74-c1-http.log 2>&1 &
+          sleep 2
+      - name: Chrome real DOM proof for three Type1 variants (not trusted grading)
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          for size in 390,960 1440,960; do
+            timeout 100s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+              --virtual-time-budget=30000 --window-size="$size" --dump-dom \
+              'http://127.0.0.1:8794/qa/g7-4-renderer-batch-qa-v1/qa-c1-type1-dynamic-dom-preview.html?qaAuto=1' \
+              >"/tmp/g74-c1-${size%,*}.html" 2>"/tmp/g74-c1-${size%,*}.log"
+            python3 - "/tmp/g74-c1-${size%,*}.html" <<'PY'
+          import json,sys
+          from html.parser import HTMLParser
+          class Extract(HTMLParser):
+            def __init__(self):super().__init__();self.capture=False;self.body='';self.attrs={}
+            def handle_starttag(self,tag,attrs):
+              a=dict(attrs)
+              if tag=='pre' and a.get('id')=='result':self.capture=True;self.attrs=a
+            def handle_endtag(self,tag):
+              if tag=='pre':self.capture=False
+            def handle_data(self,data):
+              if self.capture:self.body+=data
+          p=Extract();p.feed(open(sys.argv[1],encoding='utf-8').read())
+          assert p.attrs.get('data-complete')=='true',p.attrs
+          d=json.loads(p.body)
+          assert p.attrs.get('data-pass')=='true',d
+          assert d['status']=='PASS' and len(d['runs'])==3,d
+          assert sum(len(r['checks']) for r in d['runs'])==24,d
+          print('QA_C1_REAL_BROWSER_PASS',sys.argv[1],len(d['runs']),'variants',24,'checks; no server grading')
+          PY
+          done
+      - name: Screenshot visual preview to request human signoff
+        if: always()
+        run: |
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g74-c1-shots
+          for size in 390,960 1440,960; do
+            timeout 50s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+              --virtual-time-budget=5000 --window-size="$size" --screenshot="/tmp/g74-c1-shots/type1-${size%,*}.png" \
+              'http://127.0.0.1:8794/qa/g7-4-renderer-batch-qa-v1/qa-c1-type1-dynamic-dom-preview.html?qaAuto=1' >/tmp/g74-c1-shot.log 2>&1 || true
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: G74-QAC1-Type1-DOM-Probe
+          path: /tmp/g74-c1-shots/
+          retention-days: 30
