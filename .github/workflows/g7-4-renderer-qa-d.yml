@@ -1,0 +1,93 @@
+name: G7.4 QA-D Standalone Device Harness Static Browser Acceptance
+on:
+  push:
+    branches:
+      - test/g7-4-renderer-qa-d-device-20261114
+    paths:
+      - '.github/workflows/g7-4-renderer-qa-d.yml'
+      - 'qa/g7-4-renderer-batch-qa-v1/G74_QAD_Standalone_RealDevice_Visual_Touch_TTS.html'
+      - 'qa/g7-4-renderer-batch-qa-v1/qa-d-*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Frozen source check and JS syntax for embedded modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html=Path('qa/g7-4-renderer-batch-qa-v1/G74_QAD_Standalone_RealDevice_Visual_Touch_TTS.html').read_text(encoding='utf8')
+          assert '<script src=' not in html
+          scripts=re.findall(r'<script>(.*?)</script>',html,re.S)
+          assert len(scripts)==7,(len(scripts),[len(i) for i in scripts])
+          for i,code in enumerate(scripts):
+            Path('/tmp/g74-qad-script-%d.js'%i).write_text(code,encoding='utf8')
+          assert 'G75V2.normalize' in scripts[-1] and 'G74ColumnKeypadC2.mount' in scripts[-1]
+          assert 'allow-same-origin' in html and 'allow-scripts' in html
+          print('QA_D_SINGLE_HTML_EMBEDDED_MODULES_PASS',len(scripts),'modules')
+          PY
+          for i in 0 1 2 3 4 5 6; do node --check "/tmp/g74-qad-script-$i.js"; done
+          node qa/g7-4-renderer-batch-qa-v1/qa-c2-security-asset-boundary.test.cjs
+          node qa/g7-4-renderer-batch-qa-v1/qa-c3-asset-and-d10-boundary.test.cjs
+      - name: Start localhost server
+        run: |
+          python3 -m http.server 8798 --bind 127.0.0.1 >/tmp/g74-qad-server.log 2>&1 &
+          sleep 2
+      - name: Chrome static acceptance on mobile and desktop viewports
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 100s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+              --virtual-time-budget=35000 --window-size="$size" --dump-dom \
+              'http://127.0.0.1:8798/qa/g7-4-renderer-batch-qa-v1/G74_QAD_Standalone_RealDevice_Visual_Touch_TTS.html?qaAuto=1' \
+              >"/tmp/g74-qad-$width.html" 2>"/tmp/g74-qad-$width.log"
+            python3 - "/tmp/g74-qad-$width.html" <<'PY'
+          import json,sys
+          from html.parser import HTMLParser
+          class P(HTMLParser):
+            def __init__(self):super().__init__();self.active=False;self.content='';self.attrs={}
+            def handle_starttag(self,tag,attrs):
+              a=dict(attrs)
+              if tag=='pre' and a.get('id')=='qa-out':self.active=True;self.attrs=a
+            def handle_endtag(self,tag):
+              if tag=='pre':self.active=False
+            def handle_data(self,s):
+              if self.active:self.content+=s
+          p=P();p.feed(open(sys.argv[1],encoding='utf8').read())
+          assert p.attrs.get('data-auto-done')=='true',(p.attrs,p.content[:700])
+          assert p.attrs.get('data-auto-pass')=='true',(p.attrs,p.content[:700])
+          val=json.loads(p.content);assert val['status']=='STATIC_BROWSER_PROBE_PASS',val
+          assert len(val['checks'])==6,val
+          print('QA_D_CHROME_STATIC_PASS',sys.argv[1],val['status'],len(val['checks']))
+          PY
+          done
+      - name: Capture viewport screenshot for review
+        if: always()
+        run: |
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g74-qad-screenshots
+          for size in 390,960 1440,960; do
+            width="${size%,*}"
+            timeout 55s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --virtual-time-budget=8000 \
+              --window-size="$size" --screenshot="/tmp/g74-qad-screenshots/qad-$width.png" \
+              'http://127.0.0.1:8798/qa/g7-4-renderer-batch-qa-v1/G74_QAD_Standalone_RealDevice_Visual_Touch_TTS.html?qaAuto=1' >/tmp/g74-qad-shot.log 2>&1 || true
+          done
+      - name: Archive technical evidence (not physical device signoff)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G74-QAD-Static-Browser-Evidence
+          path: /tmp/g74-qad-screenshots/
+          retention-days: 30
