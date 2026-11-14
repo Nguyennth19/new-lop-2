@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "g74-qab1-column-boundary-policy-v1",
+  "date": "2026-11-14",
+  "status": "TEST_POLICY_DECISION_NOT_OWNER_SIGNOFF",
+  "scope": "REFERENCE_THREE_COLUMN_ONLY",
+  "decision": "PRESERVE_APPROVED_DEMO_AND_V12_BEHAVIOR_NO_SILENT_FOURTH_COLUMN",
+  "definitions": [
+    {
+      "id": "PV100",
+      "digits": 2,
+      "operandsMin": 0,
+      "operandsMax": 99,
+      "resultMin": 0,
+      "resultMax": 99,
+      "status": "TEST_PURE_CORE_VERIFIED"
+    },
+    {
+      "id": "PV1000",
+      "digits": 3,
+      "operandsMin": 0,
+      "operandsMax": 999,
+      "resultMin": 0,
+      "resultMax": 999,
+      "status": "TEST_PURE_CORE_VERIFIED",
+      "note": "Label refers to three-column exercise scope; value exactly 1000 is not renderable within this profile."
+    },
+    {
+      "id": "PV1000_BOUNDARY",
+      "digits": 4,
+      "operandsMin": 0,
+      "operandsMax": 1000,
+      "resultMin": 0,
+      "resultMax": 1000,
+      "status": "BLOCKED_UNTIL_OWNER_LESSON_POLICY_AND_FOUR_COLUMN_QA"
+    }
+  ],
+  "mustReject": [
+    {
+      "operation": "ADD",
+      "a": 900,
+      "b": 100,
+      "reason": "RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN"
+    },
+    {
+      "operation": "ADD",
+      "a": 999,
+      "b": 1,
+      "reason": "RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN"
+    },
+    {
+      "operation": "ADD",
+      "a": 1000,
+      "b": 0,
+      "reason": "OPERAND_OUT_OF_SCOPE"
+    }
+  ],
+  "demoReferences": [
+    {
+      "a": 47,
+      "b": 25,
+      "profile": "PV100",
+      "result": 72
+    },
+    {
+      "a": 356,
+      "b": 128,
+      "profile": "PV1000",
+      "result": 484
+    }
+  ],
+  "boundaryDecisionReason": "Four-column layout differs materially from original demo; not introduced during QA-B.1 because it would change UI beyond verified reference.",
+  "curriculumQuestion": "Whether exactly 1000 must be assessable in column calculation is reserved for lesson policy owner approval.",
+  "requiredBeforeBoundaryActivation": [
+    "ownerSignedLessonScope",
+    "fourColumnRendererWithRTLAndCarryOrBorrow",
+    "regressionAndBrowserQA",
+    "serverGraderPolicyApproval",
+    "GAS_TEST_isolated_E2E"
+  ],
+  "noChange": [
+    "MAIN",
+    "G6",
+    "originalFrozenDemo",
+    "V12_publicPlan_current_semantics"
+  ],
+  "source": "qa/g7-4-column-calc-reference-v12/column-v12-core.js"
+}
