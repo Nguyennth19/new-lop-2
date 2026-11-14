@@ -1,0 +1,67 @@
+name: G7.4 Renderer Batch QA-C Chrome and QA-E D10
+on:
+  push:
+    branches: [test/g7-4-renderer-batch-qa-c-v1-20261114]
+    paths:
+      - 'qa/g7-4-renderer-batch-qa-v1/*.html'
+      - 'qa/g7-4-renderer-batch-qa-v1/*.cjs'
+      - 'qa/g7-4-renderer-batch-qa-v1/*.py'
+      - '.github/workflows/g7-4-renderer-batch-qa-c-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-and-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Confirm frozen demo and run QA-B1 and QA-E preflight
+        run: |
+          echo "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html" | sha256sum --check
+          node qa/g7-4-renderer-batch-qa-v1/qa-b1.test.cjs
+          node qa/g7-4-renderer-batch-qa-v1/qa-e-d10-offline-handoff.test.cjs
+      - name: Start local HTTP server for same-origin frames
+        run: |
+          python3 -m http.server 8793 --bind 127.0.0.1 >/tmp/g74-qac-http.log 2>&1 &
+          echo $! >/tmp/g74-qac-http.pid
+          sleep 2
+          curl --fail --silent --head http://127.0.0.1:8793/qa/g7-4-renderer-batch-qa-v1/qa-c-browser-comparison.html
+      - name: Real Chrome 12-form browser interaction regression
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          timeout 105s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --virtual-time-budget=30000 --window-size=1440,960 --dump-dom \
+            'http://127.0.0.1:8793/qa/g7-4-renderer-batch-qa-v1/qa-c-browser-comparison.html?qaAuto=1' \
+            >/tmp/g74-qac-browser-dom.html 2>/tmp/g74-qac-browser-stderr.log
+          python3 qa/g7-4-renderer-batch-qa-v1/qa-c-verify-browser.py
+      - name: Capture frozen-demo versus TEST screenshots desktop/mobile
+        if: always()
+        run: |
+          set -eu
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots
+          for mode in desktop mobile; do
+            if [ "$mode" = desktop ]; then size="1440,960"; else size="390,960"; fi
+            for item in D1 D2 D8B D9 D10; do
+              target="qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots/$mode-$item.png"
+              timeout 40s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run \
+                --virtual-time-budget=3200 --window-size="$size" --screenshot="$target" \
+                "http://127.0.0.1:8793/qa/g7-4-renderer-batch-qa-v1/qa-c-browser-comparison.html?case=$item" \
+                >/tmp/g74-qac-shot.log 2>&1 || echo "PENDING_SCREENSHOT $target"
+            done
+          done
+          find qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots -type f -name '*.png' -printf '%f %s bytes\n'
+      - name: Keep QA-C browser and QA-E preflight artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g74-renderer-batch-qac-browser-evidence
+          path: |
+            qa/g7-4-renderer-batch-qa-v1/artifacts/qa-c-chrome-browser-results.json
+            qa/g7-4-renderer-batch-qa-v1/artifacts/qa-b1-execution.json
+            qa/g7-4-renderer-batch-qa-v1/artifacts/screenshots/*.png
+          if-no-files-found: warn
+          retention-days: 30
