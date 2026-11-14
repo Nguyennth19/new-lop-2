@@ -1,0 +1,981 @@
+{
+  "schemaVersion": "lop2.g76.resource-renderer-manifest.v1",
+  "manifestId": "G76_MASTER_RESOURCE_RENDERER_V1",
+  "date": "2026-11-14",
+  "status": "PINNED_TEST_REGISTRY_NOT_A_RUNTIME_DEPLOYMENT",
+  "source": {
+    "repository": "Nguyennth19/new-lop-2",
+    "baseBranch": "test/g7-4-qa-d2-capacity-scale-v12-20261114",
+    "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+  },
+  "design": {
+    "separation": [
+      "assets",
+      "visual intent",
+      "renderers",
+      "speech",
+      "public question projection",
+      "trusted grading"
+    ],
+    "defaultLocale": "vi-VN",
+    "all10FormsPlusExtensions": true,
+    "typeIds": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7",
+      "D8",
+      "D8A",
+      "D8B",
+      "D9",
+      "D10"
+    ],
+    "noBundleCopying": true,
+    "failClosed": true
+  },
+  "assets": {
+    "registry288": {
+      "path": "du-lieu/asset-selector/asset-registry-288.v1.json",
+      "gitBlobSha": "544377bf3cbc0d7b19a4a6f76efd9ae84845b123",
+      "count": 288,
+      "categories": 24,
+      "labelsApproved": 288,
+      "contentAndSemanticQa": "PER_ASSET_PENDING_UNLESS_EXPLICITLY_VERIFIED",
+      "storage": "GOOGLE_DRIVE_SOURCE_IMAGES",
+      "doNotAssume288InRepo": true
+    },
+    "semanticPolicy": {
+      "path": "du-lieu/asset-selector/semantic-rules.v1.json",
+      "gitBlobSha": "313a65789e308ff67a19a197684b7172fab0c3e6"
+    },
+    "visualIntentSchema": {
+      "path": "du-lieu/asset-selector/shared-visual-intent.schema.json",
+      "gitBlobSha": "749ae57431e1ec436fde18643132c019218981a1"
+    },
+    "visualModePolicy": {
+      "path": "qa/g7-4-b5-14a/visual-mode-policy.v1.json",
+      "gitBlobSha": "5c01cdd78bb6eb354d2419a0295eccdceefc560e"
+    },
+    "structuredDiagramPolicy": {
+      "path": "qa/g7-4-structured-diagrams-v2/policy.v2.json",
+      "gitBlobSha": "1afc587b27e255fcdd412b6b609999a762852f1a"
+    },
+    "fluentEmojiFlat": {
+      "path": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json",
+      "gitBlobSha": "c59b370bf739fee0e79d19e8011649b86b07807f",
+      "count": 46,
+      "source": "Microsoft Fluent UI Emoji Flat",
+      "license": "MIT",
+      "scope": "STAGING_TEST_ONLY",
+      "enabled": false,
+      "allowAutoFallback": false,
+      "allowCountInference": false
+    },
+    "renderOrder": [
+      "SCENE_VALIDATED_STRUCTURED_SVG",
+      "APPROVED_ASSET_REGISTRY_MAPPING",
+      "APPROVED_COUNT_SAFE_SVG_EMOJI",
+      "SEMANTIC_TEXT_FALLBACK"
+    ],
+    "strictRules": [
+      "Asset ID existence is not renderer binding permission",
+      "Do not infer quantity from decorative image",
+      "Dynamic mathematics state rendered by parameterized SVG",
+      "Do not replace 8A liter levels or 8B tilt with static PNG",
+      "Keep numeric data and answer keys separate",
+      "No SVG image auto-promotion to production"
+    ]
+  },
+  "speechProfiles": {
+    "defaultProfileId": "vi_math_v2_dynamic",
+    "selectableByParentInFuture": true,
+    "parentUiLocation": "Góc của ba mẹ → Cài đặt → Giọng đọc",
+    "featureAvailableNow": false,
+    "profiles": [
+      {
+        "id": "vi_math_v2_dynamic",
+        "label": "Tự nhiên V2",
+        "sourceBranch": "test/g7-5-v2-prosody-20261114",
+        "sourceCommit": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+        "sourcePath": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js",
+        "status": "APPROVED_STANDALONE_NOT_GAS_INTEGRATED"
+      },
+      {
+        "id": "vi_math_v12_stable",
+        "label": "Chuẩn V1.2",
+        "sourceBranch": "test/g7-5-vi-tts-compat-v1-20261114",
+        "sourcePath": "thu-nghiem/g7-5-vietnamese-tts/compat-v1/G75_V12_Test_DocPhepToan_Kg_DauToan_DocLap.html",
+        "status": "APPROVED_STANDALONE_NOT_GAS_INTEGRATED"
+      }
+    ],
+    "safety": [
+      "No hidden answer/solution speech before authorized grading",
+      "Vietnamese normalizer does not modify English TTS",
+      "Do not claim browser speech success without actual device QA"
+    ]
+  },
+  "dataIntegration": {
+    "contractPath": "du-lieu/g7-6/variant-public-envelope.schema.json",
+    "prototypeResolverPath": "qa/g7-6/resource-renderer-resolver.cjs",
+    "sourceSystem": "P0.6_OWN_VARIANT_COMPOSER_AND_LESSON_REGISTRY",
+    "sourceCheckpoint": "test/p0-6-fc-audit-20261114:FC_CURRENT_STATE.json",
+    "scope": "ISOLATED_TEST_ONLY",
+    "gradingBoundary": "SERVER_ONLY_NO_TRUSTED_GAS_ADAPTER_CONNECTED",
+    "forbiddenPublicFields": [
+      "answerKey",
+      "correctAnswer",
+      "expectedAnswer",
+      "solution",
+      "correctStatementId",
+      "gradingKey",
+      "isCorrect",
+      "teacherSolution",
+      "prefilledSolution"
+    ],
+    "conditions": [
+      "Versioned lesson+variant ID",
+      "Use type ID from allowlist",
+      "Public projection contains only renderable visible fields",
+      "Server retains answer keys private",
+      "D10 graded variants blocked until trusted grade endpoint approved",
+      "No scoring or stars in client prototype"
+    ]
+  },
+  "qaEvidence": {
+    "rendererBatchRun": 43568238575,
+    "chromeChecks": "72/72 scenarios, 414/414 checks, 0 overflow",
+    "qaDRun": 43605389664,
+    "qaD2Run": 43607001671,
+    "qaD2Details": "97 geometry + 80 DOM",
+    "voiceV2Run": 43590646311,
+    "ownerApproval": "Chat acceptance G7.4 QA-D and QA-D.2 with Windows Chrome, not cross-platform",
+    "protected": [
+      "main",
+      "test-theo-main",
+      "G6",
+      "P0.6 checkpoint",
+      "Web App TEST Version 6",
+      "student records/scores/stars"
+    ],
+    "releaseReady": false
+  },
+  "rendererRegistry": [
+    {
+      "id": "D1",
+      "kind": "D1",
+      "displayName": "Tách/gộp số và đổi đơn vị",
+      "version": "QA-D Type1 C2 patched",
+      "modes": [
+        "MAKE_TEN_NUMBER_BOND",
+        "UNIT_CONVERSION_LENGTH"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-renderer-batch-qa-v1/qa-c2-type1-variant-renderer.js",
+            "gitBlobSha": "03836c970c299cfd222d180be7f6dde6d216c674"
+          },
+          {
+            "path": "qa/g7-4-renderer-batch-qa-v1/type1-demo-source-map.qa-b1.cjs",
+            "gitBlobSha": "86754d4055aa09211215a8851932ef9561e3834b"
+          },
+          {
+            "path": "qa/g7-4-structured-diagrams-v2/structured-diagram-core.cjs",
+            "gitBlobSha": "b6a1712cd2051ba417f011b653ff8184ce9f6f9e"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "structured_math",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "STRUCTURED_DIAGRAM_AND_HTML_FIELDS",
+        "dynamicSvgAuthoritative": false,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "PUBLIC_PLAN_STANDALONE_TEST_PASS",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_BROWSER_C2_D",
+        "owner": "PASS_OWNER_WINDOWS_QAD",
+        "risks": [
+          "not deployed to GAS"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-renderer-batch-qa-v1/qa-c2-type1-variant-renderer.js",
+          "qa/g7-4-renderer-batch-qa-v1/type1-demo-source-map.qa-b1.cjs",
+          "qa/g7-4-structured-diagrams-v2/structured-diagram-core.cjs"
+        ]
+      }
+    },
+    {
+      "id": "D2",
+      "kind": "D2",
+      "displayName": "Đặt tính cộng/trừ",
+      "version": "Column V1.2 + keypad C2",
+      "modes": [
+        "COLUMN_ADD",
+        "COLUMN_SUBTRACT"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-column-calc-reference-v12/column-v12-core.js",
+            "gitBlobSha": "16ae440618bcb3cf90706cdad2ccd11cbadc222a"
+          },
+          {
+            "path": "qa/g7-4-column-calc-reference-v12/column-v12-view.js",
+            "gitBlobSha": "214b615d0c595dfd76695c75e5443cefc36a921d"
+          },
+          {
+            "path": "qa/g7-4-renderer-batch-qa-v1/qa-c2-column-keypad-adapter.js",
+            "gitBlobSha": "5bc271933e4e6f76c797fd99b928c5dc0a76a244"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "structured_math",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "PLACE_VALUE_GRID_HTML",
+        "dynamicSvgAuthoritative": false,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "CORE_VARIANTS_STANDALONE_TEST_PASS",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_BROWSER_C2_D",
+        "owner": "PASS_OWNER_WINDOWS_QAD",
+        "risks": [
+          "result exactly 1000 requires explicit four-column policy",
+          "no GAS end-to-end"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-column-calc-reference-v12/column-v12-core.js",
+          "qa/g7-4-column-calc-reference-v12/column-v12-view.js",
+          "qa/g7-4-renderer-batch-qa-v1/qa-c2-column-keypad-adapter.js"
+        ]
+      }
+    },
+    {
+      "id": "D3",
+      "kind": "D3",
+      "displayName": "Nối cặp",
+      "version": "V1.1",
+      "modes": [
+        "MATCH_PAIRS"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-matching-reference-v11/matching-v11-core.js",
+            "gitBlobSha": "6963a1ab95b3ed8d33c11904f90636e320fcaa3e"
+          },
+          {
+            "path": "qa/g7-4-matching-reference-v11/matching-v11-view.js",
+            "gitBlobSha": "eb28950c36af46a244f3edb16c35e5fcf23bd60c"
+          },
+          {
+            "path": "qa/g7-4-matching-reference-v11/matching-v11.css",
+            "gitBlobSha": "6bf6755f12cd076b510af72d6bee29c9ffc2368c"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "asset_selector_conditional",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "CARD_MATCH_LINES",
+        "dynamicSvgAuthoritative": false,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+        "owner": "NOT_TYPE_SPECIFIC_SIGNOFF",
+        "risks": [
+          "real-device touch/generator adapter untested"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-matching-reference-v11/matching-v11-core.js",
+          "qa/g7-4-matching-reference-v11/matching-v11-view.js",
+          "qa/g7-4-matching-reference-v11/matching-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D4",
+      "kind": "D4",
+      "displayName": "Trắc nghiệm lựa chọn",
+      "version": "V1.1",
+      "modes": [
+        "SINGLE_CHOICE"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-choice-reference-v11/choice-v11-core.js",
+            "gitBlobSha": "70bd5d4fb42551d9fe7f02b935b66b4b24513060"
+          },
+          {
+            "path": "qa/g7-4-choice-reference-v11/choice-v11-view.js",
+            "gitBlobSha": "6a1e21ae413a31bbea9619937c64a4c5cb5e142c"
+          },
+          {
+            "path": "qa/g7-4-choice-reference-v11/choice-v11-speech.js",
+            "gitBlobSha": "3a26514323b8c1077dcf424f86812f0fb66d57d9"
+          },
+          {
+            "path": "qa/g7-4-choice-reference-v11/choice-v11.css",
+            "gitBlobSha": "f685eeb88224d71dd1fd590e392f6536d9823631"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "decoration_opt_in",
+        "visualMode": "DECORATIVE",
+        "renderStrategy": "HTML_CHOICES",
+        "dynamicSvgAuthoritative": false,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+        "owner": "NOT_TYPE_SPECIFIC_SIGNOFF",
+        "risks": [
+          "choice speech in real app untested"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-choice-reference-v11/choice-v11-core.js",
+          "qa/g7-4-choice-reference-v11/choice-v11-view.js",
+          "qa/g7-4-choice-reference-v11/choice-v11-speech.js",
+          "qa/g7-4-choice-reference-v11/choice-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D5",
+      "kind": "D5",
+      "displayName": "Hình học và Tangram",
+      "version": "V1.1",
+      "modes": [
+        "GEOMETRY_SHAPES",
+        "TANGRAM"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-geometry-tangram-reference-v11/geometry-v11-core.js",
+            "gitBlobSha": "fb920f24f506895a560829cb44b963536d249c48"
+          },
+          {
+            "path": "qa/g7-4-geometry-tangram-reference-v11/geometry-v11-view.js",
+            "gitBlobSha": "bb920d3b2841911a9ac4ec65470823df92be3e39"
+          },
+          {
+            "path": "qa/g7-4-geometry-tangram-reference-v11/geometry-v11.css",
+            "gitBlobSha": "f46f96a26e5251f06f0fb5f05d97ffa1ab3d3cd9"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "structured_math",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "PARAMETRIC_GEOMETRY_SVG",
+        "dynamicSvgAuthoritative": true,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+        "owner": "NOT_TYPE_SPECIFIC_SIGNOFF",
+        "risks": [
+          "tangram direct drag remains outside verified scope"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-geometry-tangram-reference-v11/geometry-v11-core.js",
+          "qa/g7-4-geometry-tangram-reference-v11/geometry-v11-view.js",
+          "qa/g7-4-geometry-tangram-reference-v11/geometry-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D6",
+      "kind": "D6",
+      "displayName": "Kéo thả / phân loại",
+      "version": "V1.1",
+      "modes": [
+        "ORDER",
+        "SORT"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-drag-sort-reference-v11/drag-sort-v11-core.js",
+            "gitBlobSha": "28723e6dfa82895d5fa96ae60e9b11a968c59024"
+          },
+          {
+            "path": "qa/g7-4-drag-sort-reference-v11/drag-sort-v11-view.js",
+            "gitBlobSha": "30b70a75eef82f2ed245c9840c296f7b3450a808"
+          },
+          {
+            "path": "qa/g7-4-drag-sort-reference-v11/drag-sort-v11.css",
+            "gitBlobSha": "b783bac3e97eab13418f8300f1c82cc1b33f115e"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "count_safe_conditional",
+        "visualMode": "EXACT_COUNT_IF_APPROVED",
+        "renderStrategy": "CARD_ORDER_SORT",
+        "dynamicSvgAuthoritative": false,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": true,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+        "owner": "NOT_TYPE_SPECIFIC_SIGNOFF",
+        "risks": [
+          "data counts and values at sorting boundary need validation"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-drag-sort-reference-v11/drag-sort-v11-core.js",
+          "qa/g7-4-drag-sort-reference-v11/drag-sort-v11-view.js",
+          "qa/g7-4-drag-sort-reference-v11/drag-sort-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D7",
+      "kind": "D7",
+      "displayName": "So sánh số",
+      "version": "V1.1",
+      "modes": [
+        "COMPARE_VALUES"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-comparison-reference-v11/comparison-v11-core.js",
+            "gitBlobSha": "38dd76d89636c8b43f1d8aa5215b2e4dbce86ab0"
+          },
+          {
+            "path": "qa/g7-4-comparison-reference-v11/comparison-v11-view.js",
+            "gitBlobSha": "6efc4f681130aef3c456dbfa64f4f1f1573eaed4"
+          },
+          {
+            "path": "qa/g7-4-comparison-reference-v11/comparison-v11.css",
+            "gitBlobSha": "6955bc45c718012b0a65aa9c292cad12b57a8dbe"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "structured_math",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "COMPARISON_SYMBOL_SVG",
+        "dynamicSvgAuthoritative": true,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+        "owner": "NOT_TYPE_SPECIFIC_SIGNOFF",
+        "risks": [
+          "hints prohibited in assessment"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-comparison-reference-v11/comparison-v11-core.js",
+          "qa/g7-4-comparison-reference-v11/comparison-v11-view.js",
+          "qa/g7-4-comparison-reference-v11/comparison-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D8",
+      "kind": "D8",
+      "displayName": "Thước kẻ / đồng hồ",
+      "version": "V1.1",
+      "modes": [
+        "RULER",
+        "CLOCK"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-measurement-reference-v11/measurement-v11-core.js",
+            "gitBlobSha": "fccf4e3522e59f7f23029875445e4b9fa016fcea"
+          },
+          {
+            "path": "qa/g7-4-measurement-reference-v11/measurement-v11-view.js",
+            "gitBlobSha": "bcdb4a94ccfc15fb81093b4c13fbad105751b7c3"
+          },
+          {
+            "path": "qa/g7-4-measurement-reference-v11/measurement-v11.css",
+            "gitBlobSha": "0236f8203368726a34564dd447f7a3955ce1c1c6"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "structured_math",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "RULER_CLOCK_PARAMETRIC_SVG",
+        "dynamicSvgAuthoritative": true,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+        "owner": "NOT_TYPE_SPECIFIC_SIGNOFF",
+        "risks": [
+          "physical ruler pixels are not real centimeters"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-measurement-reference-v11/measurement-v11-core.js",
+          "qa/g7-4-measurement-reference-v11/measurement-v11-view.js",
+          "qa/g7-4-measurement-reference-v11/measurement-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D8A",
+      "kind": "D8A",
+      "displayName": "Dung tích lít",
+      "version": "Capacity SVG V1.2",
+      "modes": [
+        "LITER"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-core.js",
+            "gitBlobSha": "719a481b2ec40c6a28b55e0334a4e6ae630cc901"
+          },
+          {
+            "path": "qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-view.js",
+            "gitBlobSha": "865dcf673fdfea61bd731e3d487b49a2669ccae9"
+          },
+          {
+            "path": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11.css",
+            "gitBlobSha": "5b2b111c476cdc6fa3ac6e16c0f60f0719f68f44"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "structured_math",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "DYNAMIC_LITER_SVG_1L_TICKS",
+        "dynamicSvgAuthoritative": true,
+        "assetBindingStatus": "UNBOUND_STATIC_ASSETS",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_D2_97_GEOMETRY_80_BROWSER",
+        "owner": "PASS_OWNER_CHAT_2026_11_14_WINDOWS_ONLY",
+        "risks": [
+          "uploaded JSON has manual.visual=NOT_TESTED and manual.touch=NOT_TESTED; owner chat later explicitly accepted",
+          "Android/iOS untested"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-core.js",
+          "qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-view.js",
+          "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D8B",
+      "kind": "D8B",
+      "displayName": "Cân khối lượng",
+      "version": "Capacity/Weight SVG V1.1",
+      "modes": [
+        "WEIGHT"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-core.js",
+            "gitBlobSha": "719a481b2ec40c6a28b55e0334a4e6ae630cc901"
+          },
+          {
+            "path": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-view.js",
+            "gitBlobSha": "ea97fa92ea3e35a1be8de9c304a8a58e093e5c43"
+          },
+          {
+            "path": "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11.css",
+            "gitBlobSha": "5b2b111c476cdc6fa3ac6e16c0f60f0719f68f44"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "structured_math",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "DYNAMIC_BALANCE_SVG_TILT",
+        "dynamicSvgAuthoritative": true,
+        "assetBindingStatus": "UNBOUND_STATIC_ASSETS",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_C3_AND_QAD_BROWSER",
+        "owner": "PASS_OWNER_WINDOWS_QAD",
+        "risks": [
+          "no static scale image bound"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-core.js",
+          "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11-view.js",
+          "qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D9",
+      "kind": "D9",
+      "displayName": "Biểu đồ tranh, chạm đếm",
+      "version": "V1.1",
+      "modes": [
+        "COUNT",
+        "COMPARE_DIFFERENCE"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-pictograph-reference-v11/pictograph-v11-core.js",
+            "gitBlobSha": "722e286d6253d4d959336298a6a2e5af73b2a0e8"
+          },
+          {
+            "path": "qa/g7-4-pictograph-reference-v11/pictograph-v11-view.js",
+            "gitBlobSha": "9dca5884eb05d3010b823daf1fdd71bf9e287148"
+          },
+          {
+            "path": "qa/g7-4-pictograph-reference-v11/pictograph-v11.css",
+            "gitBlobSha": "cfe548de1a3cbd77e325e87a79b646be8fce3d78"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "count_safe_required",
+        "visualMode": "EXACT_COUNT",
+        "renderStrategy": "COUNT_SAFE_PICTOGRAPH",
+        "dynamicSvgAuthoritative": false,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": true,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "REFERENCE_CONTRACT_PENDING",
+        "mappingRequired": true,
+        "gradeRoute": "NOT_CONNECTED_TO_GAS"
+      },
+      "qa": {
+        "technical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+        "owner": "NOT_TYPE_SPECIFIC_SIGNOFF",
+        "risks": [
+          "exact count assets require count evidence"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-pictograph-reference-v11/pictograph-v11-core.js",
+          "qa/g7-4-pictograph-reference-v11/pictograph-v11-view.js",
+          "qa/g7-4-pictograph-reference-v11/pictograph-v11.css"
+        ]
+      }
+    },
+    {
+      "id": "D10",
+      "kind": "D10",
+      "displayName": "Giải toán có lời văn",
+      "version": "G6 existing + V1.1 unification reference",
+      "modes": [
+        "GUIDED_PRACTICE",
+        "ASSESSMENT"
+      ],
+      "source": {
+        "repository": "Nguyennth19/new-lop-2",
+        "baseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "files": [
+          {
+            "path": "qa/g7-4-word-problem-unification-v11/word-unification-v11-core.js",
+            "gitBlobSha": "0e82f85f608a27dfda4c46a0246e05f707114967"
+          },
+          {
+            "path": "qa/g7-4-word-problem-unification-v11/word-unification-v11-adapter.js",
+            "gitBlobSha": "dcbc9a7981aa75b44c9b2035e59f1bc41651003a"
+          },
+          {
+            "path": "qa/g7-4-word-problem-unification-v11/word-unification-v11.css",
+            "gitBlobSha": "ba0807155e67d70f79caa051315098ddbee087f2"
+          }
+        ],
+        "baseline": "IMMUTABLE_REF_TEST_ONLY"
+      },
+      "visual": {
+        "policyId": "illustrative_only",
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "G6_NATIVE_WORD_PROBLEM_SCAFFOLD",
+        "dynamicSvgAuthoritative": false,
+        "assetBindingStatus": "POLICY_CONSTRAINED",
+        "requiresCountProof": false,
+        "forbidAutoFluentFallback": true
+      },
+      "speech": {
+        "profileId": "vi_math_v2_dynamic",
+        "fallbackProfileId": "vi_math_v12_stable",
+        "contentRestriction": "VISIBLE_AUTHORIZED_PROMPT_ONLY",
+        "integratedInGas": false
+      },
+      "data": {
+        "variantAdapterStatus": "PRIVATE_PUBLIC_SPLIT_OFFLINE_ONLY",
+        "mappingRequired": true,
+        "gradeRoute": "DENY_NEW_GRADED_VARIANTS_UNTIL_TRUSTED_SERVER"
+      },
+      "qa": {
+        "technical": "PASS_OFFLINE_REFERENCE_ONLY",
+        "owner": "EXISTING_G6_SUPPORTED_NOT_NEW_VARIANT",
+        "risks": [
+          "legacy answer leakage from B20 adapter and client grader",
+          "trusted GAS grading for variant assessment not connected"
+        ],
+        "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+        "batchCiRunId": 43568238575,
+        "batchChromeScenarios": 72
+      },
+      "rollback": {
+        "restoreSourceCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+        "restorePaths": [
+          "qa/g7-4-word-problem-unification-v11/word-unification-v11-core.js",
+          "qa/g7-4-word-problem-unification-v11/word-unification-v11-adapter.js",
+          "qa/g7-4-word-problem-unification-v11/word-unification-v11.css"
+        ]
+      }
+    }
+  ],
+  "release": {
+    "ready": false,
+    "mergeAllowed": false,
+    "gasDeployAllowed": false,
+    "signoff": "G7.6 REGISTRY ONLY; GAS E2E and trusted grading gate pending",
+    "rollbackStrategy": "Pin blob SHAs; never overwrite reference sources"
+  }
+}
