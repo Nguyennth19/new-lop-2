@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "g7.4-qa-c2-checkpoint.v1",
+  "recordedOn": "2026-11-14",
+  "stage": "G7.4-QA-C.2",
+  "status": "TYPE1_DATA_DRIVEN_RENDERER_AND_D2_KEYPAD_BROWSER_PASS_OWNER_VISUAL_PENDING_QAE_P0_BLOCKED",
+  "branch": "test/g7-4-renderer-qa-c2-variant-integration-20261114",
+  "parent": {
+    "branch": "test/g7-4-renderer-qa-c1-recovery-20261114",
+    "head": "dcdbd1802cb6ded16dfd28d1af28978a29d846bf"
+  },
+  "baselineOriginalSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+  "files": {
+    "report": "docs/kiem-dinh/G7.4_RENDERER_BATCH_QA_C2_20261114.md",
+    "d1Renderer": "qa/g7-4-renderer-batch-qa-v1/qa-c2-type1-variant-renderer.js",
+    "d2Keypad": "qa/g7-4-renderer-batch-qa-v1/qa-c2-column-keypad-adapter.js",
+    "browserLab": "qa/g7-4-renderer-batch-qa-v1/qa-c2-renderer-parity-lab.html",
+    "securityTest": "qa/g7-4-renderer-batch-qa-v1/qa-c2-security-asset-boundary.test.cjs",
+    "workflow": ".github/workflows/g7-4-renderer-qa-c2.yml"
+  },
+  "ci": {
+    "runId": 43601086471,
+    "headAtVerifiedRun": "b5e45f7fdf59bc6bf19e692e686912b46052295c",
+    "conclusion": "success",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43601086471",
+    "artifactId": 14116393452,
+    "retentionDays": 30,
+    "tests": {
+      "d1PublicPlan": 29,
+      "d8AssetAndD10Boundary": 50,
+      "d10Offline": 28,
+      "browserCases": 8,
+      "browserWidths": [
+        390,
+        1440
+      ],
+      "failed": 0
+    }
+  },
+  "gates": {
+    "D1": "PUBLIC_PLAN_REAL_DOM_TEST_PASS_OWNER_PARITY_AND_GAS_PENDING",
+    "D2": "OPTIONAL_KEYPAD_INTERACTION_BROWSER_PASS_EXACT_1000_BLOCKED",
+    "D3_D9_exceptD8AB": "PRIOR_SOURCE_UNIT_AND_BROWSER_STRUCTURAL_PASS_NO_MUTATION",
+    "D8A": "SVG_LOGIC_PASS_ASSET_IDS_UNMAPPED",
+    "D8B": "TILT_LOGIC_PASS_ASSET_IDS_UNMAPPED_OWNER_VISUAL_PENDING",
+    "D10": "P0_LEGACY_CLIENT_ANSWER_LEAK_BLOCKED_TRUSTED_GRADING_OFFLINE_ONLY",
+    "QA_C": "PARTIAL_NOT_OWNER_SIGNED",
+    "QA_D": "REAL_TOUCH_VOICE_AND_ASSETS_PENDING",
+    "QA_E": "OFFLINE_PASS_GAS_NOT_INTEGRATED",
+    "QA_F": "NOT_AUTHORIZED"
+  },
+  "protection": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "g6Changed": false,
+    "demoChanged": false,
+    "gasTestVersion6Changed": false,
+    "studentDataWrites": false,
+    "releaseReady": false
+  },
+  "next": "Owner visual parity signoff for D1/D2; asset mapping for D8A/B; trusted server D10 route after legacy client leak isolation; no GAS deployment."
+}
