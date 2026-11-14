@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "G7.4_RENDERER_BATCH_QA_B_V1_Matrix",
+  "date": "2026-11-14",
+  "scope": "GITHUB_TEST_NODE22_ONLY",
+  "repository": "Nguyennth19/new-lop-2",
+  "branch": "test/g7-4-renderer-batch-qa-b-v1-20261114",
+  "baselineQaA": "4d0950589e2fba88e735959e71cc75c531a121ff",
+  "sourceLockedSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+  "run": {
+    "id": 43565074617,
+    "headSha": "320e1616349103147bdc3baf99869c0d29e5abe4",
+    "conclusion": "failure",
+    "jobId": 132357008552,
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43565074617",
+    "artifactId": 14101504324,
+    "artifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43565074617/artifacts/14101504324"
+  },
+  "execution": {
+    "nativeSuites": {
+      "passed": 11,
+      "failed": 1,
+      "total": 12,
+      "failedSuite": "qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs"
+    },
+    "newCrossChecks": {
+      "passed": 11,
+      "failed": 0,
+      "total": 11
+    },
+    "independentColumnV1": {
+      "status": "PASS",
+      "candidatePairs": 29086,
+      "validPairs": 14707,
+      "snapshotCount": 6,
+      "originalSourceSha256Matched": true
+    },
+    "columnV12": {
+      "assertions": 11819,
+      "validVariants": 2312
+    },
+    "dryRunOnly": true
+  },
+  "statusPolicy": "PASS describes PURE DATA/STATE/UNIT scope only. No browser, asset resolver, TTS device, composer, server-live or GAS E2E claim.",
+  "items": [
+    {
+      "id": "D1",
+      "qaA": "PENDING",
+      "qaB": "PENDING",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "Structured Diagram V2 pure data PASS; Type1 frozen 8+5/units hardcoded; no parameterized UI mapping",
+      "native": "SUITE_D1_structured-diagrams-v2",
+      "probe": "QAB-D1-01"
+    },
+    {
+      "id": "D2",
+      "qaA": "PENDING",
+      "qaB": "FAIL",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "Legacy V1 historical metadata assertion fails; V1 independent arithmetic+V1.2 unit PASS; PV1000 max 999",
+      "native": "SUITE_D2_column-calc-v1;SUITE_D2_column-calc-v12",
+      "probe": "QAB-D2-01"
+    },
+    {
+      "id": "D3",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "MATCH state one-to-one, atomic restore, answer key forbidden",
+      "native": "SUITE_D3_matching",
+      "probe": "QAB-D3-01"
+    },
+    {
+      "id": "D4",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "CHOICE single/multiple state & key rejected; device TTS outside QA-B",
+      "native": "SUITE_D4_choice-tts-mock",
+      "probe": "QAB-D4-01"
+    },
+    {
+      "id": "D5",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "Shape select & Tangram state/geometry/rotation unit; no direct piece drag in version",
+      "native": "SUITE_D5_geometry-tangram",
+      "probe": "QAB-D5-01"
+    },
+    {
+      "id": "D6",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "ORDER/SORT placement, swap, draft and no-key",
+      "native": "SUITE_D6_ordering-and-sorting",
+      "probe": "QAB-D6-01"
+    },
+    {
+      "id": "D7",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "Comparison signs and hint policy, draft/answer isolation",
+      "native": "SUITE_D7_comparison",
+      "probe": "QAB-D7-01"
+    },
+    {
+      "id": "D8",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "RULER/CLOCK unit state, validation, minute wrap and draft",
+      "native": "SUITE_D8_ruler-clock",
+      "probe": "QAB-D8-01"
+    },
+    {
+      "id": "D8A",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "LITER 2 containers, capacity, transfer and draft in unit",
+      "native": "SUITE_D8A/D8B_liter-weight",
+      "probe": "QAB-D8A-D8B-01"
+    },
+    {
+      "id": "D8B",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "WEIGHT pan state, equal/left-lighter/right-lighter tilt in unit; visual still pending",
+      "native": "SUITE_D8A/D8B_liter-weight",
+      "probe": "QAB-D8A-D8B-01"
+    },
+    {
+      "id": "D9",
+      "qaA": "PASS",
+      "qaB": "PASS",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "PENDING",
+      "qaF": "DEFERRED",
+      "evidence": "PRACTICE/ASSESSMENT touch ordinal, reverse, draft, demo blocked in assessment",
+      "native": "SUITE_D9_pictograph",
+      "probe": "QAB-D9-01"
+    },
+    {
+      "id": "D10",
+      "qaA": "PASS",
+      "qaB": "BLOCKED",
+      "qaB_scope": "PURE_CONTRACT_UNIT_ONLY",
+      "qaC": "PENDING",
+      "qaD": "PENDING",
+      "qaE": "BLOCKED",
+      "qaF": "DEFERRED",
+      "evidence": "Scaffold key filtering unit PASS; legacy G6/B20 client answer leaked and no server statement grader",
+      "native": "SUITE_D10_word-problem-scaffold",
+      "probe": "QAB-D10-01"
+    }
+  ],
+  "existingFindingsFromQaA": [
+    {
+      "id": "QA-A-001",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No dedicated standalone Type 1 renderer V1.1 bundle; original Type1 plus Structured Diagram V2 only"
+    },
+    {
+      "id": "QA-A-002",
+      "priority": "P1",
+      "state": "BLOCKED",
+      "subject": "D2 v14 E2E project/deployment/rollback unverified; no CI run for v14 branch"
+    },
+    {
+      "id": "QA-A-003",
+      "priority": "P0",
+      "state": "BLOCKED",
+      "subject": "G6/B20 legacy answer,n1,n2,op fields in client; D10 scaffold filtering does not remove legacy payload leak"
+    },
+    {
+      "id": "QA-A-004",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "No trusted statement-choice grading contract in server for D10"
+    },
+    {
+      "id": "QA-A-005",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8A/D8B asset inventory has 0 approved mapped Asset IDs; filenames only verified"
+    },
+    {
+      "id": "QA-A-006",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "D8B tilt visual regression 3kg vs 5kg has unit CI success but no actual browser screenshot in batch"
+    },
+    {
+      "id": "QA-A-007",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Vietnamese TTS G7.5 CI is mock/static only; device voice and Apps Script TEST not verified"
+    },
+    {
+      "id": "QA-A-008",
+      "priority": "P1",
+      "state": "PENDING",
+      "subject": "Generator/Lesson Composer/server grading and GAS E2E across 12 items not verified"
+    }
+  ],
+  "newFindings": [
+    {
+      "id": "QA-B-001",
+      "priority": "P1",
+      "status": "FAIL",
+      "summary": "Historical Column V1 test requires source-lock.visualReference.originalAdvancedHTMLLocated=false, but current source-lock is true",
+      "evidence": {
+        "file": "qa/g7-4-column-calc-reference-v1/column-calc-contract.test.cjs",
+        "line": 6,
+        "actual": true,
+        "expected": false,
+        "runId": 43565074617
+      },
+      "remediation": "Propose minimal test-only expectation update in a separately reviewed TEST patch. Do not modify source-lock, HTML or G6. Keep first failed run."
+    },
+    {
+      "id": "QA-B-002",
+      "priority": "P1",
+      "status": "BLOCKED",
+      "summary": "Column V1.2 PV1000 accepts operands/results only <=999; actual result 1000, four columns and PV1000_BOUNDARY unsupported",
+      "evidence": {
+        "core": "qa/g7-4-column-calc-reference-v12/column-v12-core.js",
+        "guard": "RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN",
+        "negativeCase": "900+100"
+      },
+      "remediation": "Clarify curriculum scope inclusive 1000; if required, create approved four-column variant behind QA and policy; do not silently extend PV1000."
+    },
+    {
+      "id": "QA-B-003",
+      "priority": "P1",
+      "status": "PENDING",
+      "summary": "P0.6 multi-family composer on isolated test branch currently accepts ADD and rendererKind math.mental/math.vertical only, not all 12 G7.4 families",
+      "evidence": {
+        "branch": "test/p0-6-fc-audit-20261114",
+        "file": "thu-nghiem/p0-6/math-lesson-composer-v1.cjs"
+      },
+      "remediation": "Plan versioned renderer/data registry mapping and private/public payload separation at QA-E; preserve P0.6 technical TEST closure without treating it as G7.4 integration approval."
+    },
+    {
+      "id": "QA-B-004",
+      "priority": "P1",
+      "status": "PENDING",
+      "summary": "D10 GUIDED may show G6 prefilled solution sentence and selection mode is not tied to trusted lesson assessment policy",
+      "evidence": {
+        "core": "qa/g7-4-word-problem-unification-v11/word-unification-v11-core.js",
+        "adapter": "qa/g7-4-word-problem-unification-v11/word-unification-v11-adapter.js"
+      },
+      "remediation": "Restrict GUIDED to explicitly approved practice/instruction contexts; exclude during assessment; add lesson policy test without changing G6."
+    }
+  ],
+  "holdDecision": "QA-B_NOT_ACCEPTED",
+  "next": "Remediate QA-B-001 in controlled TEST test-only patch, decide exact 1000 boundary policy, close D1 Type1 mapping, D10 trusted data/server split before QA-E or GAS TEST.",
+  "mainUnchangedExpected": true,
+  "gasTestRan": false
+}
