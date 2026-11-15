@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "g76b3.p06-e04-extension-policy.v1",
+  "policyId": "G76B3-TECHNICAL-ONLY-TANGRAM-PICTOGRAPH",
+  "status": "DRAFT_TECHNICAL_ONLY_OWNER_SIGNOFF_PENDING",
+  "lessonId": "toan_b999",
+  "subject": "toan",
+  "curriculumRef": null,
+  "educationalStatus": "NO_CURRICULUM_OR_PEDAGOGY_APPROVAL",
+  "sourceP06Commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "producerKind": "B3_SEPARATE_EXPERIMENTAL_SIDECAR_NOT_NATIVE_P06_E02_OR_E03",
+  "allowedModes": [
+    "D5_TANGRAM",
+    "D9_COMPARE_DIFFERENCE"
+  ],
+  "geometry": {
+    "minPieces": 3,
+    "maxPieces": 3,
+    "allowedRotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "allowedCoordinatesMin": -1000,
+    "allowedCoordinatesMax": 1000,
+    "assetBindingAllowed": false
+  },
+  "pictograph": {
+    "maxRows": 2,
+    "minRows": 2,
+    "minCount": 1,
+    "maxCount": 12,
+    "allowedSymbols": [
+      "🍎",
+      "🍌",
+      "⭐",
+      "🐟"
+    ],
+    "allowedRelations": [
+      "MORE_THAN",
+      "LESS_THAN"
+    ],
+    "unitMeaning": "ONE_EMOJI_EQUALS_ONE_ITEM"
+  },
+  "release": {
+    "allowed": false,
+    "gasAllowed": false,
+    "mergeAllowed": false,
+    "d10GradingAllowed": false,
+    "studentWritesAllowed": false,
+    "ownerSignoffRef": null
+  }
+}
