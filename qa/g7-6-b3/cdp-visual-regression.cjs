@@ -10,12 +10,39 @@ const mobile=w<=414,screenHeight=900;
 assert.ok([360,390,414,1440].includes(w),'WIDTH_ALLOWLIST');
 assert.ok(['all','mental','column','choice','tangram','chart'].includes(panel),'PANEL_ALLOWLIST');
 const browser=process.env.BROWSER||'google-chrome';
-const profile='/tmp/g76b3-cdp-'+process.pid;
 const out='/tmp/g76b3-evidence/chrome';
-fs.mkdirSync(profile,{recursive:true});fs.mkdirSync(out,{recursive:true});
-const proc=cp.spawn(browser,['--headless','--no-sandbox','--disable-gpu','--disable-dev-shm-usage',
- '--no-first-run','--remote-debugging-port=0','--remote-allow-origins=*',
- '--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
+fs.mkdirSync(out,{recursive:true});
+let proc=null;
+async function launchChrome(){
+ const logs=[];
+ for(let attempt=0;attempt<2;attempt++){
+  const profile='/tmp/g76b3-cdp-'+process.pid+'-'+attempt;
+  const errPath=path.join(out,'chrome-launch-'+w+'-'+panel+'-'+attempt+'.log');
+  fs.mkdirSync(profile,{recursive:true});
+  const fd=fs.openSync(errPath,'a');
+  proc=cp.spawn(browser,['--headless','--no-sandbox','--disable-gpu',
+   '--disable-dev-shm-usage','--disable-background-networking','--no-first-run',
+   '--remote-debugging-port=0','--remote-allow-origins=*',
+   '--user-data-dir='+profile,'about:blank'],{stdio:['ignore','ignore',fd]});
+  fs.closeSync(fd);
+  let port=0;
+  for(let n=0;n<250;n++){
+   try{
+    const lines=fs.readFileSync(path.join(profile,'DevToolsActivePort'),'utf8').trim().split('\\n');
+    port=Number(lines[0]);if(Number.isInteger(port)&&port>0)break;
+   }catch(_){}
+   if(proc.exitCode!==null)break;
+   await sleep(100);
+  }
+  if(port>0){console.log('G76B3_CHROME_CDP_STARTED',w,panel,'attempt',attempt+1);return port;}
+  const excerpt=fs.existsSync(errPath)?fs.readFileSync(errPath,'utf8').slice(-450):'';
+  logs.push({attempt:attempt+1,exitCode:proc.exitCode,stderrTail:excerpt});
+  console.error('G76B3_CHROME_START_RETRY',JSON.stringify(logs[logs.length-1]));
+  try{proc.kill('SIGTERM')}catch(_){}
+  await sleep(300);
+ }
+ throw Error('CDP_PORT_NOT_READY_AFTER_RETRIES '+JSON.stringify(logs));
+}
 let socket,seq=0;const pending=new Map();
 async function send(method,params={}){
  const id=++seq;
@@ -43,15 +70,7 @@ async function connect(url){
  });
 }
 async function main(){
- let port=0;
- for(let n=0;n<150;n++){
-  try{
-   const content=fs.readFileSync(path.join(profile,'DevToolsActivePort'),'utf8').trim().split('\n');
-   port=Number(content[0]);if(Number.isInteger(port)&&port>0)break;
-  }catch(_){}
-  await sleep(100);
- }
- assert.ok(port>0,'CDP_PORT_NOT_READY');
+ const port=await launchChrome();
  const list=await (await fetch('http://127.0.0.1:'+port+'/json/list')).json();
  const page=list.find(x=>x.type==='page'&&x.webSocketDebuggerUrl);
  assert.ok(page,'CDP_PAGE_NOT_FOUND');
@@ -106,4 +125,4 @@ async function main(){
   'scrollWidth',read.scrollWidth,'screenshot',pngWidth+'x'+pngHeight,buffer.length,'bytes');
 }
 main().catch(err=>{console.error('G76B3_CDP_VISUAL_FAIL',err.stack||err);process.exitCode=1})
-.finally(()=>{try{socket?.close()}catch(_){}proc.kill('SIGTERM')});
+.finally(()=>{try{socket?.close()}catch(_){}proc?.kill('SIGTERM')});
