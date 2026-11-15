@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "g76b5c.integration-readiness-checkpoint.v1",
+  "stage": "G7.6-B.5-C",
+  "date": "2026-11-16",
+  "branch": "test/g7-6-b5c-integration-readiness-gates-20261116",
+  "status": "PASS_READ_ONLY_READINESS_AUDIT_NO_GO_APP_AND_RELEASE",
+  "baseline": {
+    "b5bHead": "98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae",
+    "ciB5bRun": 43734323444,
+    "ciB5bSuccess": true,
+    "p06Source": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "g75V2Source": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+    "g75V2Blob": "605a8ed9b335526af82c8870dca4753bd511b913",
+    "frozenDemoSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced"
+  },
+  "owner": {
+    "tangram": "USER_CONFIRMED_PASS_15_OF_15",
+    "submittedJsonSha256": "91b1fb439db708e0d909e59bec5a311341618631e0ce61a664f476bd3fdf1fb0",
+    "sizeBytes": 2017,
+    "sourceSigned": false,
+    "sourceDevice": "Windows Chrome 157 viewport 1536x791",
+    "perAndroidIphoneEvidence": false,
+    "tts": "USER_CONFIRMED_AUDIO_OK_IN_CHAT",
+    "ttsSourceDevice": "NOT_SPECIFIED",
+    "ttsTechnicalCIHeardAudio": false,
+    "ownerCurriculumApproval": false,
+    "ownerOfficialMentalRendererApproval": false
+  },
+  "qa": {
+    "inheritedB5bAssertions": 1602,
+    "b5cNewAssertions": 108,
+    "combinedNodeAssertions": 1710,
+    "firstSuccessfulB5cRun": {
+      "id": 43740040417,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43740040417"
+    },
+    "scope": "PINNED_SOURCE_QA_AND_GATE_POLICY_READ_ONLY_NO_NEW_BROWSER_REVIEW"
+  },
+  "coverage": {
+    "baseRendererRegistryCount": 12,
+    "p06RealE03": 8,
+    "p06RealE02": 2,
+    "e04LabCandidates": 4,
+    "verifiedTotalPublicCases": 14,
+    "all10FormsE2ETested": false,
+    "webpMetadataCount": 288,
+    "webpRuntimeContentApproved": false,
+    "fluentStaging": 46,
+    "fluentEnabled": false,
+    "voiceLocale": "vi-VN",
+    "voiceOwnerAudibleAccepted": true,
+    "voiceActualCIHeard": false
+  },
+  "decision": {
+    "goTechnicalPreparation": {
+      "result": "GO",
+      "scope": "ISOLATED_READ_ONLY_AUDIT_AND_CONTRACT_DRY_RUN_ONLY"
+    },
+    "goTestTheoMainIntegration": {
+      "result": "NO_GO",
+      "reason": "USER_PROHIBITED_AND_PENDING_HOST_CONTRACT_MENTAL_MANIFEST_E04"
+    },
+    "goGAS": {
+      "result": "NO_GO",
+      "reason": "NO_DEPLOY_AUTHORIZATION"
+    },
+    "goMain": {
+      "result": "NO_GO",
+      "reason": "NO_MERGE_AUTHORIZATION"
+    },
+    "goD10TrustedGrading": {
+      "result": "NO_GO",
+      "reason": "NO_SERVER_GRADER_SIGNOFF"
+    },
+    "goStudentData": {
+      "result": "NO_GO",
+      "reason": "NO_DATA_ACCESS_OR_WRITES"
+    },
+    "goFullRelease": {
+      "result": "NO_GO",
+      "reason": "BLOCKED_POLICY_ASSETS_SECURITY_AND_RELEASER_APPROVAL"
+    }
+  },
+  "matrix": {
+    "path": "qa/g7-6-b5c/integration-go-no-go.matrix.v1.json",
+    "totalGates": 19,
+    "criticalOpenIds": [
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18"
+    ],
+    "note": "C15 partially attested not a release blocker for read-only audit; C16-18 are explicitly prohibited not defect assertions"
+  },
+  "records": {
+    "report": "docs/kiem-dinh/G7.6-B5C_INTEGRATION_READINESS_GO_NOGO_20261116.md",
+    "sourceJson": "qa/g7-6-b5c/evidence/G76B5A_Manual_Device_Review_NOT_APPROVED.original.json",
+    "evaluator": "qa/g7-6-b5c/readiness-gate-evaluator.cjs",
+    "test": "qa/g7-6-b5c/integration-readiness.test.cjs",
+    "workflow": ".github/workflows/g7-6-b5c-readiness-no-deploy.yml",
+    "journal": "qa/g7-6-b5c/execution-log.g76b5c.md",
+    "b5cOutput": "qa/g7-6-b5c/generated/GO_NO_GO_READ_ONLY_RECEIPT.json"
+  },
+  "drive": {
+    "projectFolder": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "originalB5aJsonId": "1RDqkZ1LDl-DEQOEJ6ZTo6dddHtHjoBdH",
+    "originalB5aJsonUrl": "https://drive.google.com/file/d/1RDqkZ1LDl-DEQOEJ6ZTo6dddHtHjoBdH/view?usp=drivesdk",
+    "b5cAuditDocId": null,
+    "b5cArtifactId": null
+  },
+  "protected": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "gasDeployed": false,
+    "g74Changed": false,
+    "g75Changed": false,
+    "p06Changed": false,
+    "b5bChanged": false,
+    "assetAutoPromoted": false,
+    "formalPedagogyAutoApproved": false,
+    "mentalOfficialManifestChanged": false,
+    "d10TrustedGradingOpened": false,
+    "studentDataReadOrWritten": false,
+    "scoreStarWrites": false
+  },
+  "rollback": {
+    "rollbackCommit": "98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae",
+    "operation": "STOP_CONSUMING_B5C_DECISION_ARTIFACTS_AND_SWITCH_BACK_TO_B5B_BASE",
+    "revertApplication": false,
+    "gasRollbackRequired": false,
+    "studentDataRestorationRequired": false
+  },
+  "next": {
+    "immediate": "G7.6-B.5-C.1 owner reviewed per-gate closure package or integrate-readiness handoff",
+    "separateReviewRequired": [
+      "mental auxiliary manifest registration",
+      "E04 SGK evidence and teacher pedagogy",
+      "scope of host read-only app adapter",
+      "per-asset release permissions",
+      "future explicit merge/deploy approval",
+      "trusted D10 grading separate security gate"
+    ]
+  }
+}
