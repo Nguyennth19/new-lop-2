@@ -101,6 +101,8 @@ section.g76b3-panel{border:1px solid #d3def0;background:white;padding:clamp(9px,
   const ci=container('b3-column').querySelector('[data-answer="result_ones"]');
   ci.value='5';ci.dispatchEvent(new Event('input',{bubbles:true}));
   pass(cv.collect(0).result_ones==='5','column-field-draft');
+  cv.reset();
+  pass(cv.collect(0).result_ones==='','column-preview-draft-cleared');
   const choices=listed(data,'D4');
   pass(choices.length===2&&choices.every(x=>x.origin==='P06_E02_REAL'),'choice-real-source');
   for(let j=0;j<choices.length;j++){
@@ -109,6 +111,8 @@ section.g76b3-panel{border:1px solid #d3def0;background:white;padding:clamp(9px,
    pass(state.ok,'choice-native-'+j);
    slot.querySelector('.g74-choice-answer').click();
    pass(state.snapshot().selectedOptionIds.length===1,'choice-selected-'+j);
+   state.clear();
+   pass(state.snapshot().selectedOptionIds.length===0,'choice-preview-selection-cleared-'+j);
   }
   const tangram=data.cases.filter(x=>x.typeId==='D5');
   pass(tangram.length===2&&tangram.every(x=>x.origin==='B3_E04_SEPARATE_SEEDED_GENERATOR_PENDING_POLICY'),'tangram-generated-source');
@@ -121,6 +125,8 @@ section.g76b3-panel{border:1px solid #d3def0;background:white;padding:clamp(9px,
    slot.querySelector('.g74-tangram-tool').click();
    slot.querySelector('.g74-tangram-target-button').click();
    pass(Object.values(state.snapshot().pieces).some(x=>x.placedTargetId!==null),'tangram-rotate-and-place-'+j);
+   state.clear();
+   pass(Object.values(state.snapshot().pieces).every(x=>x.placedTargetId===null),'tangram-preview-clean-'+j);
   }
   const charts=data.cases.filter(x=>x.typeId==='D9');
   pass(charts.length===2&&charts.every(x=>x.origin==='B3_E04_SEPARATE_SEEDED_GENERATOR_PENDING_POLICY'),'chart-generated-source');
@@ -137,6 +143,8 @@ section.g76b3-panel{border:1px solid #d3def0;background:white;padding:clamp(9px,
    const field=slot.querySelector('.g74-picto-question input');
    field.value='2';field.dispatchEvent(new Event('input',{bubbles:true}));
    pass(state.snapshot().enteredAnswers.q_1==='2','chart-ungraded-draft-'+j);
+   state.clear();
+   pass(state.snapshot().enteredAnswers.q_1===undefined,'chart-preview-draft-cleared-'+j);
   }
   pass(!document.querySelector('[data-student-score],[data-student-stars]'),'no-score-or-star-io');
   pass(!document.querySelector('img[src^="http"]'),'no-unapproved-remote-image');
@@ -144,9 +152,11 @@ section.g76b3-panel{border:1px solid #d3def0;background:white;padding:clamp(9px,
   pass(['all','mental','column','choice','tangram','chart'].includes(selected),'review-panel-allowlist');
   const wrappers=[...document.querySelectorAll('section.g76b3-panel')];
   for(const panel of wrappers){
-   if(selected!=='all'&&panel.dataset.panel!==selected&&panel.dataset.panel!=='qa')panel.hidden=true;
+   if(selected!=='all'&&panel.dataset.panel!==selected)panel.hidden=true;
   }
   for(const a of document.querySelectorAll('[data-review]'))a.classList.toggle('active',a.dataset.review===selected);
+  document.activeElement?.blur();
+  window.scrollTo(0,0);
   await new Promise(ok=>requestAnimationFrame(()=>requestAnimationFrame(ok)));
   pass(document.documentElement.scrollWidth<=innerWidth+3,'document-no-horizontal-overflow');
   for(const panel of wrappers.filter(x=>!x.hidden)){
