@@ -1,0 +1,171 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.6-B.3 – Actual P0.6 E03 Coverage and Experimental E04 Visual Chrome TEST</title>
+<link rel="stylesheet" href="../g7-6-b2/generated/column-v12-pinned.css">
+<link rel="stylesheet" href="../g7-4-choice-reference-v11/choice-v11.css">
+<link rel="stylesheet" href="../g7-4-geometry-tangram-reference-v11/geometry-v11.css">
+<link rel="stylesheet" href="../g7-4-pictograph-reference-v11/pictograph-v11.css">
+<style>
+:root{font-family:system-ui,"Segoe UI",sans-serif;color:#28394e;background:#f5f7ff}
+*{box-sizing:border-box}html,body{margin:0;min-width:0}
+main{max-width:1180px;margin:auto;padding:12px 10px}
+h1{font-size:clamp(19px,4vw,27px);margin:7px 0}h2{font-size:18px;margin:4px 0 11px}
+p{line-height:1.5}button,input{font:inherit}
+.preview-status{font-size:12px;line-height:1.5;color:#596b80}
+section.g76b3-panel{border:1px solid #d3def0;background:white;padding:clamp(9px,2vw,16px);border-radius:18px;margin:14px 0;min-width:0;overflow-wrap:anywhere}
+.g76b3-mental-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,265px),1fr));gap:12px;min-width:0}
+.g76b3-mental-card{background:#f0f9ff;border:2px solid #98cdfa;border-radius:16px;padding:14px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.g76b3-mental-cap{font-size:12px;font-weight:750;color:#366e9a}
+.g76b3-mental-equation{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;font-size:clamp(20px,5vw,26px);font-weight:850}
+.g76b3-mental-equation input{width:78px;height:52px;border:2px solid #64b2fc;border-radius:10px;background:white;text-align:center;font-size:23px;font-weight:850}
+.g76b3-mental-state{font-size:12px;color:#4f637c;min-height:2.6em}
+.g76b3-mental-clear{align-self:flex-start;border:1px solid #90bad9;border-radius:9px;background:white;padding:10px 12px;min-height:44px;color:#245982;font-weight:700}
+.g76b3-mental-equation input:focus-visible,.g76b3-mental-clear:focus-visible{outline:3px solid #e8ac36;outline-offset:2px}
+.g76b3-mount-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:12px;min-width:0}
+.g76b3-mount-list>*{min-width:0;max-width:100%}
+.g76b3-quiz-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,315px),1fr));gap:10px;min-width:0}
+.g76b3-quiz-list>*{min-width:0}
+#qa-b3-result{font-size:11px;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}
+.review-controls{display:flex;gap:8px;flex-wrap:wrap}
+.review-controls a{border-radius:10px;padding:8px 10px;background:#edf3fa;color:#344f78;font-size:12px;font-weight:750}
+.review-controls a.active{background:#314c92;color:white}
+@media(max-width:430px){.g76b3-mental-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head><body><main>
+<header><h1>G7.6-B.3 – Producer &amp; Visual Acceptance · TEST</h1>
+<p class="preview-status">8/8 câu E03 P0.6 thật: 6 tính nhẩm nhập số và 2 đặt tính. E02: 2 trắc nghiệm thật. Tangram và biểu đồ: mô-đun E04 mới ở sandbox, <strong>chưa phê duyệt chính sách</strong>. Không chấm, không điểm, không sao, không GAS.</p>
+<nav class="review-controls" aria-label="Chọn màn hình để chụp hình">
+<a href="?panel=all" data-review="all">Tất cả</a>
+<a href="?panel=mental" data-review="mental">Tính nhẩm</a>
+<a href="?panel=column" data-review="column">Đặt tính</a>
+<a href="?panel=choice" data-review="choice">Trắc nghiệm</a>
+<a href="?panel=tangram" data-review="tangram">Tangram</a>
+<a href="?panel=chart" data-review="chart">Biểu đồ</a>
+</nav></header>
+<section class="g76b3-panel" data-panel="mental"><h2>Tính nhẩm – 6 câu P0.6 E03 thật · NUMBER_INPUT</h2>
+<p class="preview-status">Mặt hiển thị TEST bổ sung, không thay thế D1 hoặc D4, chưa đăng ký vào manifest chính thức.</p>
+<div id="b3-mental"></div></section>
+<section class="g76b3-panel" data-panel="column"><h2>Đặt tính – 2 câu P0.6 E03 thật · D2</h2><div id="b3-column"></div></section>
+<section class="g76b3-panel" data-panel="choice"><h2>Trắc nghiệm – 2 câu P0.6 E02 thật · D4</h2><div class="g76b3-quiz-list" id="b3-choice"></div></section>
+<section class="g76b3-panel" data-panel="tangram"><h2>Tangram – 2 đề do sidecar E04 sinh theo seed</h2>
+<p class="preview-status">Dữ liệu tạo bằng mã generator mới, native renderer G7.4 V1.1. Chưa phải producer P0.6 E02/E03 và chưa có duyệt SGK.</p>
+<div class="g76b3-mount-list" id="b3-tangram"></div></section>
+<section class="g76b3-panel" data-panel="chart"><h2>Biểu đồ so sánh – 2 đề do sidecar E04 sinh theo seed</h2>
+<p class="preview-status">Emoji hiển thị đúng số lượng ở chế độ TEST. Không tự kích hoạt Asset Registry hay chấm đáp án.</p>
+<div class="g76b3-mount-list" id="b3-chart"></div></section>
+<section class="g76b3-panel" data-panel="qa"><h2>Biên nhận Chrome</h2><pre id="qa-b3-result" data-done="false" data-pass="false">Đang chạy kiểm tra TEST…</pre></section>
+</main>
+<script src="../g7-4-column-calc-reference-v12/column-v12-core.js"></script>
+<script src="../g7-4-column-calc-reference-v12/column-v12-view.js"></script>
+<script src="../g7-4-choice-reference-v11/choice-v11-core.js"></script>
+<script src="../g7-4-choice-reference-v11/choice-v11-view.js"></script>
+<script src="../g7-4-geometry-tangram-reference-v11/geometry-v11-core.js"></script>
+<script src="../g7-4-geometry-tangram-reference-v11/geometry-v11-view.js"></script>
+<script src="../g7-4-pictograph-reference-v11/pictograph-v11-core.js"></script>
+<script src="../g7-4-pictograph-reference-v11/pictograph-v11-view.js"></script>
+<script src="./mental-number-input-view.js"></script>
+<script>
+(async function(){
+ 'use strict';
+ const status=document.getElementById('qa-b3-result'),checks=[];
+ const pass=(truth,id)=>{checks.push({id,pass:Boolean(truth)});if(!truth)throw Error(id)};
+ const container=id=>document.getElementById(id);
+ const listed=(d,t)=>d.cases.filter(x=>x.typeId===t);
+ const views=new URLSearchParams(location.search);
+ const selected=views.get('panel')||'all';
+ try{
+  const r=await fetch('./generated/public-samples.json',{cache:'no-store'});
+  pass(r.ok,'public-only-data-http');
+  const data=await r.json();
+  pass(data.schemaVersion==='g76b3.chrome-producer-visual-test-public.v1','b3-schema');
+  pass(data.cases.length===14,'fourteen-test-cases');
+  pass(data.coverage.p06ComposerCount===8&&data.coverage.p06MentalNewTechnicalRenderer===6,'real-p06-composer-coverage');
+  pass(data.extensionStatus==='SEPARATE_E04_DRAFT_TECHNICAL_ONLY','e04-unsigned');
+  pass(data.releaseReady===false&&data.gradingEnabled===false&&data.d10TrustedGrading===false,'release-and-grading-locked');
+  const mental=listed(data,'MENTAL_INPUT_TEST_EXTENSION');
+  pass(mental.length===6&&mental.every(x=>x.origin==='P06_E03_REAL_WITH_NEW_TEST_RENDERER'),'mental-real-source');
+  let mentalChanges=0;
+  const v=G76B3MentalInputView.mount(container('b3-mental'),mental.map(x=>x.nativePlan),{onChange(){mentalChanges++}});
+  pass(v.ok,'mental-view-mount');
+  pass(container('b3-mental').querySelectorAll('input[data-mental-input]').length===6,'six-mental-inputs-visible');
+  const i=container('b3-mental').querySelector('input');
+  i.value='12A';i.dispatchEvent(new Event('input',{bubbles:true}));
+  pass(i.value==='12'&&mentalChanges>0,'mental-input-sanitized');
+  pass(v.snapshot()[mental[0].nativePlan.questionId]==='12','mental-draft-stored-only-in-page');
+  container('b3-mental').querySelector('.g76b3-mental-clear').click();
+  pass(i.value==='','mental-clear-interaction');
+  const columns=listed(data,'D2');
+  pass(columns.length===2&&columns.every(x=>x.origin==='P06_E03_REAL'),'vertical-real-source');
+  const cv=KLColumnViewV12.mount(container('b3-column'),columns.map(x=>x.nativePlan),{onSpeak(){}});
+  pass(cv.ok,'column-native-renderer-mount');
+  pass(container('b3-column').querySelectorAll('.kl-col-v12-card').length===2,'column-two-cards');
+  const ci=container('b3-column').querySelector('[data-answer="result_ones"]');
+  ci.value='5';ci.dispatchEvent(new Event('input',{bubbles:true}));
+  pass(cv.collect(0).result_ones==='5','column-field-draft');
+  const choices=listed(data,'D4');
+  pass(choices.length===2&&choices.every(x=>x.origin==='P06_E02_REAL'),'choice-real-source');
+  for(let j=0;j<choices.length;j++){
+   const slot=document.createElement('div');container('b3-choice').append(slot);
+   const state=KLChoiceViewV11.mount(slot,choices[j].nativePlan);
+   pass(state.ok,'choice-native-'+j);
+   slot.querySelector('.g74-choice-answer').click();
+   pass(state.snapshot().selectedOptionIds.length===1,'choice-selected-'+j);
+  }
+  const tangram=data.cases.filter(x=>x.typeId==='D5');
+  pass(tangram.length===2&&tangram.every(x=>x.origin==='B3_E04_SEPARATE_SEEDED_GENERATOR_PENDING_POLICY'),'tangram-generated-source');
+  for(let j=0;j<tangram.length;j++){
+   const slot=document.createElement('div');container('b3-tangram').append(slot);
+   const state=KLGeometryTangramViewV11.mount(slot,tangram[j].nativePlan);
+   pass(state.ok,'tangram-native-'+j);
+   pass(slot.querySelectorAll('.g74-tangram-target').length===3,'tangram-svg-targets-'+j);
+   slot.querySelector('.g74-tangram-piece').click();
+   slot.querySelector('.g74-tangram-tool').click();
+   slot.querySelector('.g74-tangram-target-button').click();
+   pass(Object.values(state.snapshot().pieces).some(x=>x.placedTargetId!==null),'tangram-rotate-and-place-'+j);
+  }
+  const charts=data.cases.filter(x=>x.typeId==='D9');
+  pass(charts.length===2&&charts.every(x=>x.origin==='B3_E04_SEPARATE_SEEDED_GENERATOR_PENDING_POLICY'),'chart-generated-source');
+  for(let j=0;j<charts.length;j++){
+   const slot=document.createElement('div');container('b3-chart').append(slot);
+   const state=KLPictographViewV11.mount(slot,charts[j].nativePlan);
+   pass(state.ok,'chart-native-'+j);
+   pass(charts[j].nativePlan.questions[0].type==='COMPARE_DIFFERENCE','chart-compare-'+j);
+   const taps=slot.querySelectorAll('.g74-picto-item');
+   const expected=charts[j].nativePlan.rows.reduce((acc,row)=>acc+row.itemCount,0);
+   pass(taps.length===expected,'chart-exact-emoji-count-'+j);
+   taps[0].click();
+   pass(taps[0].getAttribute('aria-pressed')==='true','chart-touch-count-'+j);
+   const field=slot.querySelector('.g74-picto-question input');
+   field.value='2';field.dispatchEvent(new Event('input',{bubbles:true}));
+   pass(state.snapshot().enteredAnswers.q_1==='2','chart-ungraded-draft-'+j);
+  }
+  pass(!document.querySelector('[data-student-score],[data-student-stars]'),'no-score-or-star-io');
+  pass(!document.querySelector('img[src^="http"]'),'no-unapproved-remote-image');
+  pass(mental.every(x=>!Object.hasOwn(x.nativePlan,'answerSpec')),'no-answer-spec-mental');
+  pass(['all','mental','column','choice','tangram','chart'].includes(selected),'review-panel-allowlist');
+  const wrappers=[...document.querySelectorAll('section.g76b3-panel')];
+  for(const panel of wrappers){
+   if(selected!=='all'&&panel.dataset.panel!==selected&&panel.dataset.panel!=='qa')panel.hidden=true;
+  }
+  for(const a of document.querySelectorAll('[data-review]'))a.classList.toggle('active',a.dataset.review===selected);
+  await new Promise(ok=>requestAnimationFrame(()=>requestAnimationFrame(ok)));
+  pass(document.documentElement.scrollWidth<=innerWidth+3,'document-no-horizontal-overflow');
+  for(const panel of wrappers.filter(x=>!x.hidden)){
+   const box=panel.getBoundingClientRect();
+   pass(box.width>0&&box.left>=-3&&box.right<=innerWidth+3,'panel-within-viewport-'+panel.dataset.panel);
+  }
+  const targets=[...document.querySelectorAll('.g76b3-mental-equation input:not(:disabled)')];
+  pass(targets.every(x=>x.getBoundingClientRect().height>=44),'mental-accessible-input-height');
+  const result={status:'PASS_B3_CHROME_PRODUCER_VISUAL_STRUCTURAL',
+   viewport:{width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth},
+   selected,checks,checkCount:checks.length,publicCases:data.cases.length,
+   actualP06E03Mapped:8,actualP06E02Choice:2,e04Generated:4,
+   ownerVisualSignoff:'PENDING',realPhysicalDevice:'NOT_TESTED',audibleTts:'NOT_TESTED',
+   rendererManifestApproval:'PENDING',gradingEnabled:false,gasDeployed:false};
+  status.dataset.done='true';status.dataset.pass='true';status.textContent=JSON.stringify(result);
+ }catch(e){
+  const result={status:'FAIL_B3_CHROME_PRODUCER_VISUAL_STRUCTURAL',error:String(e?.message||e),
+   viewport:{width:innerWidth,height:innerHeight},selected,checks};
+  status.dataset.done='true';status.dataset.pass='false';status.textContent=JSON.stringify(result);
+ }
+})();
+</script></body></html>
