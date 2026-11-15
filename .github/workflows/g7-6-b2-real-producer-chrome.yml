@@ -1,0 +1,88 @@
+name: G7.6-B.2 Real P0.6 Producer and Native Chrome TEST
+on:
+  push:
+    branches:
+      - test/g7-6-b2-real-producer-submode-chrome-20261115
+    paths:
+      - 'qa/g7-6-b2/**'
+      - 'docs/kiem-dinh/G7.6-B2*'
+      - '.github/workflows/g7-6-b2-real-producer-chrome.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-producer-chrome:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independent P0.6 exact pinned source
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06-source
+          persist-credentials: false
+      - name: Verify checkpoint B, P0.6 source, protected original and untouched inherited files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _external/p06-source rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          git merge-base --is-ancestor 0a8768ac5658f6396e76f68a3513a3c1e6843918 HEAD
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only 0a8768ac5658f6396e76f68a3513a3c1e6843918 HEAD | grep -Ev '^(qa/g7-6-b2/|docs/kiem-dinh/G7\.6-B2|\.github/workflows/g7-6-b2-real-producer-chrome\.yml)' ; then
+            echo 'PROTECTED_FILES_CHANGED'; exit 1
+          fi
+          echo B2_SOURCE_PROTECTION_PASS
+      - name: Actual P0.6 composer and choice generator with native G7.4 submode contracts
+        run: |
+          set -euo pipefail
+          node --check qa/g7-6-b2/real-producer-bridge.cjs
+          node --check qa/g7-6-b2/submode-bridge.cjs
+          node --check qa/g7-6-b2/real-producer-submode.test.cjs
+          mkdir -p qa/g7-6-b2/generated
+          G76B2_EVIDENCE_DIR=qa/g7-6-b2/generated node qa/g7-6-b2/real-producer-submode.test.cjs _external/p06-source | tee /tmp/g76b2-node.log
+          python3 qa/g7-6-b2/extract-pinned-css.py
+      - name: Inherited G7.6 A and B regression
+        run: |
+          set -euo pipefail
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs
+      - name: Start localhost browser host
+        run: |
+          python3 -m http.server 8799 --bind 127.0.0.1 >/tmp/g76b2-server.log 2>&1 &
+          sleep 2
+      - name: Real Chrome native DOM interactions, mobile and desktop
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g76b2-evidence/chrome
+          for width in 390 1440; do
+            timeout 95s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --window-size="$width,960" --virtual-time-budget=30000 --dump-dom 'http://127.0.0.1:8799/qa/g7-6-b2/Chrome_RealProducer_Submodes_TEST.html' >"/tmp/g76b2-evidence/chrome/dom-$width.html" 2>"/tmp/g76b2-evidence/chrome/stderr-$width.log"
+            python3 qa/g7-6-b2/verify-chrome.py "$width"
+          done
+      - name: Capture screenshots for OWNER visual review (not automated pixel parity)
+        if: always()
+        run: |
+          set +e
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g76b2-evidence/chrome
+          for width in 390 1440; do
+            timeout 45s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --window-size="$width,960" --virtual-time-budget=12000 --screenshot="/tmp/g76b2-evidence/chrome/screenshot-$width.png" 'http://127.0.0.1:8799/qa/g7-6-b2/Chrome_RealProducer_Submodes_TEST.html' >/dev/null 2>"/tmp/g76b2-evidence/chrome/screenshot-$width.log"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: G76B2-Real-P06-Producer-Submodes-Chrome-QA
+          path: |
+            qa/g7-6-b2/generated/public-samples.json
+            qa/g7-6-b2/generated/producer-receipt.json
+            /tmp/g76b2-evidence/chrome/
+            /tmp/g76b2-node.log
+          retention-days: 30
