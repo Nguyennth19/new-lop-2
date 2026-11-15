@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "g76b5b.resource-tts-e2e-checkpoint.v1",
+  "stage": "G7.6-B.5-B",
+  "date": "2026-11-15",
+  "branch": "test/g7-6-b5b-resource-tts-e2e-20261115",
+  "status": "PASS_TECHNICAL_14_CASE_PINNED_PRODUCER_RESOURCE_TTS_V2_E2E_OWNER_AUDIO_AND_CURRICULUM_PENDING",
+  "baseline": {
+    "b5aSha": "f3653d850864f75c7e3640585364d68f17f1428c",
+    "b41Sha": "0263175544bcfd03433a89b8515bdd9f11a00d26",
+    "p06Sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "g75V2Sha": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+    "g75V2Blob": "605a8ed9b335526af82c8870dca4753bd511b913",
+    "originalFrozenSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "protectedSourcesChanged": false
+  },
+  "coverage": {
+    "realP06E03": 8,
+    "realP06E02": 2,
+    "e04LabSidecar": 4,
+    "totalCases": 14,
+    "sourceFamilies": {
+      "D2": 2,
+      "D4": 2,
+      "MENTAL_INPUT_TEST_EXTENSION": 6,
+      "D5": 2,
+      "D9": 2
+    },
+    "notFull10FormTypes": true,
+    "actualGASIntegration": false
+  },
+  "resources": {
+    "pinnedRendererEntries": 12,
+    "assetMetadata": 288,
+    "fullSourceWebpContentRead": false,
+    "labelsApprovedNotContentApproval": true,
+    "fluentSvgStaging": 46,
+    "fluentAutoFallback": false,
+    "decorativeImageQuantityInference": false,
+    "D5": "PARAMETRIC_SVG",
+    "D9": "EMOJI_REPETITION_FROM_PUBLIC_ITEM_COUNT",
+    "assetAutoBound": false
+  },
+  "speech": {
+    "profile": "vi_math_v2_dynamic",
+    "sourceStatus": "ACTUAL_PINNED_G75_V2_NORMALIZER_EXECUTED_FROM_INDEPENDENT_CHECKOUT",
+    "locale": "vi-VN",
+    "sourceText": "PUBLIC_PROMPT_OR_PUBLIC_VISIBLE_D2_COLUMN_OPERANDS",
+    "v2NormalizeAndSegmentsExecutedOnAll14": true,
+    "sourceSpeechAdapter": "qa/g7-4-choice-reference-v11/choice-v11-speech.js",
+    "uiButtons": 14,
+    "stopButton": true,
+    "autoplay": false,
+    "mockSpeakRequestTested": true,
+    "realAudioPlaybackHeard": false,
+    "ownerAudibleSignoff": "PENDING",
+    "nativeClientSpeech": "BROWSER_USER_GESTURE_ONLY"
+  },
+  "bugResolved": {
+    "category": "NATIVE_RENDERER_PROMPT_SCHEMA_VARIATION",
+    "D2": "NO_PROMPT_PROPERTY; USE_VISIBLE_A_B_DIGIT_COLUMNS_AND_OPERATION",
+    "D4": "PROMPT_IS_STRUCTURED_OBJECT_TYPE_TEXT",
+    "mentalD5D9": "PUBLIC_PROMPT_STRING",
+    "privateAnswerDerived": false,
+    "originalRendererModified": false
+  },
+  "qa": {
+    "inherited": {
+      "a": 296,
+      "b": 221,
+      "b2": 123,
+      "b3": 259,
+      "b4": 106,
+      "b41": 86,
+      "b5a": 203,
+      "total": 1294
+    },
+    "b5bNew": 308,
+    "totalNodeAssertions": 1602,
+    "firstSuccessfulRun": {
+      "id": 43733914261,
+      "conclusion": "success",
+      "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43733914261"
+    },
+    "chrome": {
+      "viewportCss": [
+        360,
+        390,
+        1440
+      ],
+      "probePanels": [
+        "390_tangram",
+        "360_tangram",
+        "1440_tangram",
+        "390_all"
+      ],
+      "tangramSnapBboxPixelDelta": {
+        "dx": 0,
+        "dy": 0,
+        "dw": 0,
+        "dh": 0
+      },
+      "pointerDragAndUnplace": true,
+      "voiceControlsNoAutoplay": true,
+      "chromeScreenshotReviewed": true,
+      "physicalDeviceAudio": false
+    },
+    "singleHtml": {
+      "file": "G76B5B_Producer_Resources_TTS_Offline_TEST.html",
+      "sizeBytes": 116505,
+      "sha256": "c4aa0ae8adedbef7e81eac0e897eab215ea233fe3d32a6a614b762134086da73",
+      "requiresNetwork": false,
+      "privateData": false
+    }
+  },
+  "gates": {
+    "B5B_0_SOURCE_PINS": "PASS",
+    "B5B_1_INHERITED_1294": "PASS",
+    "B5B_2_E2E_308": "PASS",
+    "B5B_3_OFFLINE_V2_HTML": "PASS",
+    "B5B_4_CHROME_DEVICE_VIEWPORTS": "PASS",
+    "B5B_5_RELEASE_FAIL_CLOSED": "PASS",
+    "B5B_6_OWNER_REAL_AUDIBLE": "PENDING_REAL_DEVICE",
+    "B5B_7_PER_ASSET_WEBP_IMAGE_CONTENT": "NOT_APPROVED_FOR_AUTORUNTIME",
+    "B5B_8_E04_SGK_CURRICULUM": "BLOCKED_NO_LESSON_PAGE_SKILL_OWNER",
+    "B5B_9_MENTAL_OFFICIAL_MANIFEST": "BLOCKED_OWNER_DECISION",
+    "B5B_10_TEST_THEO_MAIN": "DENIED",
+    "B5B_11_GAS": "DENIED",
+    "B5B_12_D10_TRUSTED_GRADING": "DENIED",
+    "B5B_13_STUDENT_DATA": "DENIED"
+  },
+  "records": {
+    "report": "docs/kiem-dinh/G7.6-B5B_RESOURCE_TTS_E2E_QA_20261115.md",
+    "policy": "qa/g7-6-b5b/policy.resource-tts-e2e.v1.json",
+    "pipeline": "qa/g7-6-b5b/e2e-resource-tts-pipeline.cjs",
+    "tests": "qa/g7-6-b5b/resource-tts-e2e.test.cjs",
+    "demoBuilder": "qa/g7-6-b5b/build-tts-e2e-review.cjs",
+    "chrome": "qa/g7-6-b5b/cdp-resource-tts-smoke.cjs",
+    "workflow": ".github/workflows/g7-6-b5b-resource-tts-e2e.yml",
+    "journal": "qa/g7-6-b5b/execution-log.g76b5b.md"
+  },
+  "drive": {
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "zipId": "1HQ3MvGxFKs5xTCUMZrEKbPo_joX-NKWL",
+    "zipUrl": "https://drive.google.com/file/d/1HQ3MvGxFKs5xTCUMZrEKbPo_joX-NKWL/view?usp=drivesdk",
+    "zipBytes": 1692317,
+    "verifiedFolder": true
+  },
+  "guards": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "g74Changed": false,
+    "g6Changed": false,
+    "p06Changed": false,
+    "g75Changed": false,
+    "sourceAssetAutoEnabled": false,
+    "gasDeployed": false,
+    "d10TrustedGradingEnabled": false,
+    "scoresStarsWrites": false,
+    "studentIO": false,
+    "curriculumApprovalAutoGranted": false,
+    "audioQAClaimedWithoutHearing": false
+  },
+  "rollback": {
+    "returnToB5a": "f3653d850864f75c7e3640585364d68f17f1428c",
+    "scope": "DISABLE_B5B_TEST_ONLY",
+    "appRuntimeImpact": false
+  },
+  "next": "OWNER AUDIBLE TTS VALIDATION + G7.6-B.5-C INTEGRATION READINESS (NO MERGE/DEPLOY WITHOUT SEPARATE AUTHORIZATION)"
+}
