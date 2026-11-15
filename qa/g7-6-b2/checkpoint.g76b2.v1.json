@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "g76b2.real-producer-submode-chrome.checkpoint.v1",
+  "date": "2026-11-15",
+  "stage": "G7.6-B.2",
+  "branch": "test/g7-6-b2-real-producer-submode-chrome-20261115",
+  "status": "PASS_PINNED_P06_REAL_D2_D4_AND_NATIVE_D5_D9_SUBMODES_CHROME_WITH_OPEN_COVERAGE_GATES",
+  "baseline": {
+    "aCommit": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+    "bCommit": "0a8768ac5658f6396e76f68a3513a3c1e6843918",
+    "manifest": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+    "checkpointB": "qa/g7-6/checkpoint.g76b.v1.json",
+    "noPriorReapproval": true
+  },
+  "p06": {
+    "ref": "test/p0-6-fc-audit-20261114",
+    "commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "checkedOutIndependentlyInCI": true,
+    "sourceModulesCopied": false,
+    "composerFile": "thu-nghiem/p0-6/math-lesson-composer-v1.cjs",
+    "generatorFile": "thu-nghiem/p0-6/math-variant-generator-v1.cjs",
+    "policyState": "TEST_CANDIDATE_NOT_RELEASED",
+    "composerOutput": {
+      "total": 8,
+      "acceptedD2": 2,
+      "blockedMentalNumberInput": 6
+    },
+    "generatorChoiceOutput": {
+      "total": 2,
+      "acceptedD4": 2
+    }
+  },
+  "submodes": {
+    "D5_TANGRAM": "PASS_NATIVE_FIXTURE_NOT_P06_PRODUCER",
+    "D9_COMPARE_DIFFERENCE": "PASS_NATIVE_FIXTURE_NOT_P06_PRODUCER",
+    "assets": "ALL_UNVERIFIED_BINDINGS_DENIED",
+    "correctness": "SERVER_GRADING_NOT_CONNECTED"
+  },
+  "evidence": {
+    "ciRunId": 43687399139,
+    "ciHeadSha": "ffcd6d61cfc75bca1e43b9d690631d77046b2f04",
+    "ciConclusion": "success",
+    "artifactId": 14150833681,
+    "artifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43687399139/artifacts/14150833681",
+    "assertions": {
+      "inheritedA": 296,
+      "inheritedB": 221,
+      "newB2": 123
+    },
+    "chrome": {
+      "desktop": {
+        "viewport": 1440,
+        "checks": 33,
+        "status": "PASS"
+      },
+      "mobile": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "checks": 33,
+        "status": "PASS_REAL_CDP_CSS_VIEWPORT"
+      },
+      "rawHeadless390WindowActualViewport": 500,
+      "manualPixelReview": "PENDING",
+      "realDeviceTouch": "NOT_TESTED",
+      "audibleTts": "NOT_TESTED"
+    },
+    "artifactContains": [
+      "public-samples.json",
+      "producer-receipt.json",
+      "DOM result and stderr logs",
+      "mobile CDP screenshot",
+      "desktop screenshot"
+    ],
+    "liveGeneratorNotFaked": true
+  },
+  "gates": {
+    "B2_0": "PASS_PROTECTED_PIN",
+    "B2_1": "PASS_PARTIAL_REAL_PRODUCER_4_OF_10_GENERATED_OUTPUTS",
+    "B2_2": "PASS_NATIVE_TANGRAM_FIXTURE_ONLY",
+    "B2_3": "PASS_NATIVE_PICTOGRAPH_COMPARISON_FIXTURE_ONLY",
+    "B2_4": "PASS_OFFLINE_SECURITY_BOUNDARY",
+    "B2_5": "PASS_HEADLESS_CHROME_390_CDP_1440_DESKTOP",
+    "B2_6": "PASS_CI_BASELINE_517_PLUS_B2_123",
+    "B2_7": "BLOCKED_REAL_PRODUCER_ALL_TYPES_REAL_DEVICE_PIXEL_PARITY_ASSET_TRUSTED_GRADING_GAS"
+  },
+  "artifacts": {
+    "bridge": "qa/g7-6-b2/real-producer-bridge.cjs",
+    "submode": "qa/g7-6-b2/submode-bridge.cjs",
+    "tests": "qa/g7-6-b2/real-producer-submode.test.cjs",
+    "chrome": "qa/g7-6-b2/Chrome_RealProducer_Submodes_TEST.html",
+    "cdp": "qa/g7-6-b2/cdp-mobile-regression.cjs",
+    "workflow": ".github/workflows/g7-6-b2-real-producer-chrome.yml",
+    "report": "docs/kiem-dinh/G7.6-B2_REAL_PRODUCER_SUBMODE_CHROME_QA_20261115.md",
+    "journal": "qa/g7-6-b2/execution-log.g76b2.md"
+  },
+  "protected": {
+    "mainModified": false,
+    "testTheoMainModified": false,
+    "g6Modified": false,
+    "p06Modified": false,
+    "g74RendererModified": false,
+    "gasTestV6Modified": false,
+    "studentDataWrites": false,
+    "scoresOrStarsModified": false,
+    "mergeAllowed": false,
+    "gasDeployAllowed": false,
+    "releaseReady": false,
+    "gradingConnected": false
+  },
+  "futureAppBase": {
+    "preferred": "test-theo-main",
+    "integrationAllowedNow": false,
+    "reason": "B2-7 remains blocked"
+  },
+  "rollback": {
+    "strategy": "STOP_USING_B2_TEST_BRIDGE_AND_RESTORE_B_BASELINE",
+    "commit": "0a8768ac5658f6396e76f68a3513a3c1e6843918"
+  },
+  "next": "G7.6-B.3 – Decide/introduce proper public mental NUMBER_INPUT renderer mapping with source policy, producer Tangram/D9 contract, owner screenshot review, real device, then separate future integration approvals"
+}
