@@ -36,7 +36,13 @@
       "conclusion": "success",
       "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43740040417"
     },
-    "scope": "PINNED_SOURCE_QA_AND_GATE_POLICY_READ_ONLY_NO_NEW_BROWSER_REVIEW"
+    "scope": "PINNED_SOURCE_QA_AND_GATE_POLICY_READ_ONLY_NO_NEW_BROWSER_REVIEW",
+    "mostRecentFullyExecutedRunBeforeDocumentLinks": {
+      "id": 43740322001,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43740322001"
+    }
   },
   "coverage": {
     "baseRendererRegistryCount": 12,
@@ -115,8 +121,12 @@
     "projectFolder": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
     "originalB5aJsonId": "1RDqkZ1LDl-DEQOEJ6ZTo6dddHtHjoBdH",
     "originalB5aJsonUrl": "https://drive.google.com/file/d/1RDqkZ1LDl-DEQOEJ6ZTo6dddHtHjoBdH/view?usp=drivesdk",
-    "b5cAuditDocId": null,
-    "b5cArtifactId": null
+    "b5cAuditDocId": "1sR7cLDGGGm6qG5rRmk-Bm7a3I4G9XEzHVZmQgxbD9WI",
+    "b5cArtifactId": "1mNFPX5X5eDbpZHq2SX4_aLyP0XpU0Ua5",
+    "b5cAuditDocUrl": "https://docs.google.com/document/d/1sR7cLDGGGm6qG5rRmk-Bm7a3I4G9XEzHVZmQgxbD9WI/edit?usp=drivesdk",
+    "b5cArtifactUrl": "https://drive.google.com/file/d/1mNFPX5X5eDbpZHq2SX4_aLyP0XpU0Ua5/view?usp=drivesdk",
+    "b5cArtifactZipBytes": 8351,
+    "evidenceVerifiedInProjectFolder": true
   },
   "protected": {
     "mainChanged": false,
