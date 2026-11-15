@@ -40,7 +40,7 @@
     "sourceStatus": "PINNED_G75_V2_SOURCE_LOADED_VIA_IMMUTABLE_INDEPENDENT_CHECKOUT_CI_ONLY",
     "fallbackAdapter": "qa/g7-4-choice-reference-v11/choice-v11-speech.js",
     "locale": "vi-VN",
-    "allowedText": "VISIBLE_PUBLIC_PROMPT_ONLY",
+    "allowedText": "D2_VISIBLE_COLUMN_OPERANDS_DERIVED_OR_D4_STRUCTURED_TEXT_OR_NATIVE_VISIBLE_PROMPT_ONLY",
     "maxCharacters": 600,
     "defaultEnabled": false,
     "executeSpeechSynthesisInCI": false,
@@ -51,7 +51,8 @@
     "sourceBlobSha": "605a8ed9b335526af82c8870dca4753bd511b913",
     "sourcePath": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js",
     "textNormalizer": "G75V2.normalize({lang:vi-VN,context:math})",
-    "actualSoundOutput": "PENDING_DEVICE_AUDIBLE_REVIEW"
+    "actualSoundOutput": "PENDING_DEVICE_AUDIBLE_REVIEW",
+    "explanation": "D2 public native plan has no prompt string; derive spoken task only from displayed operand digits and operation. D4 prompt is object.type TEXT. Never copy answerSpec."
   },
   "producer": {
     "requirePinnedP06Source": true,
