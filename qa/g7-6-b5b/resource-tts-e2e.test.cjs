@@ -93,6 +93,27 @@ eq(audio.speak('Tính: 1 + 1 = ?').reason,'DISPOSED');
 const unavailable=create({});
 eq(unavailable.supported,false);
 eq(unavailable.speak('Xin chào').reason,'TTS_UNAVAILABLE');
+// Load the ACTUAL pinned V2 normalizer from the separately checked-out source.
+const speechRoot=process.argv[3];
+if(!speechRoot)throw Error('PINNED_G75_V2_SOURCE_CHECKOUT_REQUIRED');
+const externalSpeech=require(path.resolve(speechRoot,'thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js'));
+eq(typeof externalSpeech.normalize,'function');
+eq(typeof externalSpeech.segments,'function');
+eq(qa.policy.speech.sourceCommit,'c9880bfc56aec0cfc4ea7f788983bcc3761d7b48');
+for(const item of result.cases){
+ const normalized=externalSpeech.normalize(item.speech.requestedText,{lang:'vi-VN',context:'math'});
+ yes(typeof normalized==='string'&&normalized.length>0,'G75 V2 normalized public '+item.id);
+ yes(!/answerSpec|answerKey|gradingKey|teacherSolution/i.test(normalized),'no speech of hidden fields');
+ if(item.typeId==='MENTAL_INPUT_TEST_EXTENSION'){
+  yes(normalized.includes(' cộng '),'V2 must speak math plus word');
+  yes(normalized.includes('bằng mấy'),'V2 must articulate result question without answer');
+ }
+ const segments=externalSpeech.segments(item.speech.requestedText,{lang:'vi-VN',context:'math'});
+ yes(segments.length>=1,'V2 segments of real prompt');
+ yes(segments.every(x=>x.text&&x.profile&&typeof x.rate==='number'),'V2 prosody planned');
+}
+eq(externalSpeech.normalize('10 + 25 = ?',{lang:'vi-VN',context:'math'}),'10 cộng 25 bằng mấy?');
+eq(externalSpeech.normalize('10 + 25 = ?',{lang:'en-US',context:'math'}),'10 + 25 = ?');
 const dir=process.env.G76B5B_OUTPUT_DIR;
 if(dir){
  fs.mkdirSync(dir,{recursive:true});
