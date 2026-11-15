@@ -88,6 +88,13 @@ async function main(){
  assert.ok(buffer.length>7000,'VISUAL_SCREENSHOT_EMPTY_OR_TRUNCATED');
  const suffix=w+'-'+panel;
  fs.writeFileSync(path.join(out,'b3-'+suffix+'.png'),buffer);
+ if(w===390&&['mental','tangram','chart'].includes(panel)){
+  const jpeg=await send('Page.captureScreenshot',{format:'jpeg',quality:58,captureBeyondViewport:false});
+  const preview=Buffer.from(jpeg.data,'base64');
+  assert.ok(preview.length>3000&&preview[0]===0xff&&preview[1]===0xd8,'JPG_PREVIEW_INVALID');
+  fs.writeFileSync(path.join(out,'review-390-'+panel+'.jpg'),preview);
+  console.log('G76B3_JPEG_VISUAL_SAMPLE_CREATED',panel,preview.length,'bytes');
+ }
  const receipt={status:'PASS_B3_TRUE_CSS_CHROME_LAYOUT_AND_SCREENSHOT',
   viewportCssWidth:w,documentScrollWidth:read.scrollWidth,
   screenshotWidth:pngWidth,screenshotHeight:pngHeight,
