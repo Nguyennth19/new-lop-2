@@ -7,6 +7,7 @@ const publicData=JSON.parse(fs.readFileSync(path.join(base,'qa/g7-6-b3/generated
 assert.equal(publicData.cases.length,14);
 let html=fs.readFileSync(file,'utf8');
 const adapter=fs.readFileSync(path.join(base,'qa/g7-4-choice-reference-v11/choice-v11-speech.js'),'utf8');
+const speechSource=fs.readFileSync(path.join(base,'_external/g75-v2/thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js'),'utf8');
 const control='<details id="b5b-speech-kit" style="margin:16px auto;max-width:900px;padding:14px;border:2px solid #b5c5e1;border-radius:14px;background:#fff">'+
  '<summary style="font-weight:800;cursor:pointer">B5-B · Kiểm giọng đọc tiếng Việt · Chỉ phát khi nhấn nút</summary>'+
  '<p>Chỉ đọc câu hỏi công khai. “Đã yêu cầu đọc” không đồng nghĩa âm thanh phát ra đúng. Cần nghe trên thiết bị thật.</p>'+
@@ -22,18 +23,19 @@ const start='(function(){\n'+
 'button.style.cssText="min-height:44px;padding:10px;border:1px solid #bccbe8;border-radius:9px;background:#f4f7ff;color:#274979;font-weight:700";\n'+
 'button.addEventListener("click",()=>{const text=item.nativePlan?.prompt;\n'+
 'if(typeof text!=="string"||text.trim().length<3||text.length>600||/[<>]/.test(text)||/answerSpec|answerKey|gradingKey|teacherSolution|studentId/i.test(text)){status.textContent="Không đủ điều kiện để đọc.";return;}\n'+
-'const result=adapter.speak(text,"vi-VN");status.dataset.b5bSpeechResult=result.ok?result.status:result.reason;\n'+
+'const normalized=G75V2.normalize(text,{lang:"vi-VN",context:"math"});const result=adapter.speak(normalized,"vi-VN");status.dataset.b5bSpeechResult=result.ok?result.status:result.reason;\n'+
 'status.textContent=result.ok?"Đã yêu cầu đọc câu "+(i+1)+". Xin nghe và kiểm tra thực tế.":"Không thể phát: "+result.reason;});group.append(button);});\n'+
 'const stop=document.createElement("button");stop.type="button";stop.textContent="Dừng đọc";stop.style.cssText="min-height:44px;padding:10px";\n'+
 'stop.addEventListener("click",()=>{adapter.stop();status.textContent="Đã yêu cầu dừng đọc."});group.append(stop);\n'+
 '}\n'+
 'if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();\n'+
 '})();';
+const normalizeInline='<script data-b5b-g75-v2-normalizer>\n'+speechSource.replace(/<\/script/gi,'<\\/script')+'\n</script>\n';
 const inline='<script data-b5b-pinned-speech-adapter>\n'+adapter.replace(/<\/script/gi,'<\/script')+'\n</script>\n'+
 '<script data-b5b-tts-gesture-controls>\n'+start+'\n</script>';
 function once(oldText,newText){assert.equal(html.split(oldText).length-1,1,'source drift '+oldText);html=html.replace(oldText,newText)}
 once('</main>','</main>\n'+control);
-once('</body>',inline+'\n</body>');
+once('</body>',normalizeInline+inline+'\n</body>');
 once('<title>G7.6-B.5-A – Tangram chính xác: thử trên thiết bị · TEST</title>',
  '<title>G7.6-B.5-B – Kiểm thử producer, hình và giọng đọc · TEST</title>');
 once('<h1>G7.6-B.5-A – Thử Tangram căn khớp hình · TEST</h1>',
