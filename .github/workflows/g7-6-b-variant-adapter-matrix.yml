@@ -1,0 +1,67 @@
+name: G7.6-B Variant Adapter Matrix Contract QA (TEST only)
+on:
+  push:
+    branches:
+      - test/g7-6-b-variant-adapter-matrix-v1-20261115
+    paths:
+      - 'du-lieu/g7-6/**'
+      - 'qa/g7-6/**'
+      - 'docs/kiem-dinh/G7.6-B*'
+      - '.github/workflows/g7-6-b-variant-adapter-matrix.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  variant-matrix:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: G0 - enforce exact checkpoint parent and read-only source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor ee20a8b7394e22e6028d6760c49b77c54a2814cc HEAD
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only ee20a8b7394e22e6028d6760c49b77c54a2814cc HEAD | grep -Ev '^(du-lieu/g7-6/|qa/g7-6/|docs/kiem-dinh/G7\.6-B|\.github/workflows/g7-6-b-variant-adapter-matrix\.yml)' ; then
+            echo 'PROTECTED_FILES_CHANGED'; exit 1
+          fi
+      - name: G1 - inherited 296 assertion registry verification (not re-approving G7.6-A)
+        run: |
+          set -euo pipefail
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+      - name: G2-G5 - native adapters, P0.6 public projection and fail-closed security
+        run: |
+          set -euo pipefail
+          node --check qa/g7-6/variant-adapter-bridge.cjs
+          node --check qa/g7-6/variant-adapter-bridge.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs | tee /tmp/g76b-test.log
+      - name: G6 - export QA receipt without answer keys
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/g76b-evidence
+          node - <<'NODE'
+          const fs=require('fs'),{readMatrix}=require('./qa/g7-6/variant-adapter-bridge.cjs');
+          const m=readMatrix();
+          const receipt={
+           schemaVersion:'g76b.qa-ci-receipt.v1',scope:'ISOLATED_TEST_ONLY',commit:process.env.GITHUB_SHA,
+           typeIds:m.adapters.map(x=>x.typeId),typeCount:m.adapters.length,
+           directP06Native:['D2'],conditionalChoice:['D4'],g6WordProblemDenied:'D10',
+           fixtureOnly:['D1','D3','D5','D6','D7','D8','D8A','D8B','D9'],
+           nativeRendererCopied:false,graderConnected:false,assetRegistryAutoBinding:false,
+           fluentAutoFallback:false,gasDeployed:false,releaseReady:false,
+           testResult:fs.readFileSync('/tmp/g76b-test.log','utf8').trim()
+          };
+          fs.writeFileSync('/tmp/g76b-evidence/qa-receipt.json',JSON.stringify(receipt,null,2)+'\n');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: G76B-Variant-Adapter-Matrix-Contract-Evidence
+          path: /tmp/g76b-evidence/qa-receipt.json
+          retention-days: 30
