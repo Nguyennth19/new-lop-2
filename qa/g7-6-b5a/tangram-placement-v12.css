@@ -1,0 +1,18 @@
+/* B5-A Tangram precision TEST overlay; preserve pinned G7.4 styling elsewhere. */
+.g76b5a-tangram{width:100%;max-width:880px;margin:0 auto}
+.g76b5a-tangram .g76b5a-hint{font-size:13px;font-weight:650;color:#39536d;line-height:1.55;margin:8px 0 12px}
+.g76b5a-tangram .g74-tangram-layout{align-items:start}
+.g76b5a-tangram .g74-tangram-piece{min-height:44px;text-align:left}
+.g76b5a-tangram .g74-tangram-tool{min-height:44px}
+.g76b5a-tangram .g74-tangram-target-button{min-height:44px;touch-action:manipulation}
+.g76b5a-tangram .g76b5a-svg{touch-action:none;user-select:none;max-height:390px;overflow:visible}
+.g76b5a-tangram .g74-tangram-active-piece{cursor:grab;touch-action:none}
+.g76b5a-tangram .g74-tangram-active-piece:active{cursor:grabbing}
+.g76b5a-tangram .g76b5a-selected{stroke:#4b43c3;stroke-width:3.7}
+.g76b5a-tangram .g74-tangram-target{fill:#fff0cf;stroke:#d99735;stroke-dasharray:6 5;stroke-width:3;cursor:pointer}
+.g76b5a-tangram .g74-tangram-board{min-width:0;overflow:hidden}
+@media(max-width:540px){
+.g76b5a-tangram .g74-tangram-pieces{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr))}
+.g76b5a-tangram .g74-tangram-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.g76b5a-tangram .g74-tangram-tools button{min-width:0}
+}
