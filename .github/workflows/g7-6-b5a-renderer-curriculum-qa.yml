@@ -1,0 +1,117 @@
+name: G7.6-B.5-A Renderer & Curriculum Policy + Tangram Position QA (TEST only)
+on:
+  push:
+    branches:
+      - test/g7-6-b5a-renderer-curriculum-tangram-20261115
+    paths:
+      - 'qa/g7-6-b5a/**'
+      - 'docs/kiem-dinh/G7.6-B5A*'
+      - '.github/workflows/g7-6-b5a-renderer-curriculum-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  policy-and-tangram:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Checkout immutable P0.6 source in independent worktree
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06-source
+          persist-credentials: false
+      - name: Gate 0 – frozen demo, base SHA and protected diff scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _external/p06-source rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          git merge-base --is-ancestor 0263175544bcfd03433a89b8515bdd9f11a00d26 HEAD
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only 0263175544bcfd03433a89b8515bdd9f11a00d26 HEAD | grep -Ev '^(qa/g7-6-b5a/|docs/kiem-dinh/G7\.6-B5A|\.github/workflows/g7-6-b5a-renderer-curriculum-qa\.yml)' ; then
+            echo 'PROTECTED_DIFF_SCOPE_VIOLATION';exit 1
+          fi
+          echo G76B5A_FROZEN_BASE_AND_SOURCE_PASS
+      - name: Gate 1 – inherited actual producer and manifest regression (A–B.4.1)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa/g7-6-b3/generated
+          G76B3_OUTPUT_DIR=qa/g7-6-b3/generated node qa/g7-6-b3/producer-coverage.test.cjs _external/p06-source
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs
+          node qa/g7-6-b2/real-producer-submode.test.cjs _external/p06-source
+          node qa/g7-6-b4/owner-policy-gates.test.cjs
+          node qa/g7-6-b4-1/owner-evidence.test.cjs
+          python3 qa/g7-6-b2/extract-pinned-css.py
+      - name: Gate 2 – E04 producer constraints and Tangram center geometry
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check qa/g7-6-b5a/tangram-placement-v12.js
+          node --check qa/g7-6-b5a/e04-producer-contract.cjs
+          node --check qa/g7-6-b5a/build-tangram-review.cjs
+          node --check qa/g7-6-b5a/cdp-tangram-precision.cjs
+          node --check qa/g7-6-b5a/contract-and-tangram.test.cjs
+          node qa/g7-6-b5a/contract-and-tangram.test.cjs _external/p06-source
+      - name: Gate 3 – offline multi-panel HTML seeded producer actual public plans
+        shell: bash
+        run: |
+          set -euo pipefail
+          node qa/g7-6-b5a/build-tangram-review.cjs
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('qa/g7-6-b5a/generated/G76B5A_Tangram_Geometry_Fix_Standalone_TEST.html')
+          text=p.read_text()
+          assert len(text)>90000
+          assert '<script src=' not in text
+          assert '<link rel="stylesheet"' not in text
+          assert 'G76B5ATangramPlacement.mount(slot' in text
+          assert 'B5-A' in text and 'Ghép vào mẫu' in text
+          assert text.count('data-qa=')==13
+          print('G76B5A_OFFLINE_REVIEW_BUILT_PASS',len(text),'chars; no remote JS/CSS')
+          PY
+      - name: Gate 4 – real Chrome 390/360/1440 geometry outline alignment
+        shell: bash
+        run: |
+          set -euo pipefail
+          export BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g76b3-evidence/chrome
+          timeout 110s node qa/g7-6-b5a/cdp-tangram-precision.cjs 390 tangram
+          timeout 110s node qa/g7-6-b5a/cdp-tangram-precision.cjs 360 tangram
+          timeout 110s node qa/g7-6-b5a/cdp-tangram-precision.cjs 1440 tangram
+          timeout 110s node qa/g7-6-b5a/cdp-tangram-precision.cjs 390 all
+          echo 'G76B5A_CHROME_GEOMETRY_PASS_OWNER_RELEASE_PENDING'
+      - name: Gate 5 – enforce curriculum and release decisions are still fail-closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const m=require('./qa/g7-6-b5a/auxiliary-renderer-overlay.v1.json');
+          const e=require('./qa/g7-6-b5a/e04-curriculum-policy.draft.v1.json');
+          if(m.baseRegistryCount!==12||!m.doNotRewriteBase||m.auxiliaryRenderer.releaseReady)throw Error('BASE_MANIFEST_MUTATED');
+          if(m.e04Producer.curriculumRef!==null||e.curriculumRef!==null||e.skillId!==null||e.releaseReady)throw Error('SGK_POLICY_AUTO_APPROVAL_DENIED');
+          if(Object.values(m.guards).some(x=>x!==false)||Object.values(e.boundary).some(x=>x!==true))throw Error('RELEASE_LOCK_CHANGED');
+          console.log('G76B5A_SGK_SOURCE_AND_RELEASE_GATES_FAIL_CLOSED_PASS');
+          JS
+      - name: Archive new standalone Tangram geometry screenshot and contracts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B5A-Tangram-Precision-Renderer-Curriculum-TEST
+          path: |
+            qa/g7-6-b5a/generated/G76B5A_Tangram_Geometry_Fix_Standalone_TEST.html
+            qa/g7-6-b5a/auxiliary-renderer-overlay.v1.json
+            qa/g7-6-b5a/e04-curriculum-policy.draft.v1.json
+            /tmp/g76b3-evidence/chrome/b5a-*.png
+            /tmp/g76b3-evidence/chrome/b5a-*.json
+            /tmp/g76b3-evidence/chrome/b5a-review*.jpg
+          retention-days: 30
