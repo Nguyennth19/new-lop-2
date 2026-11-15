@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G7.6-B.2 — Real P0.6 Producer / Native Renderer Chrome TEST</title>
+<link rel="stylesheet" href="./generated/column-v12-pinned.css">
+<link rel="stylesheet" href="../g7-4-choice-reference-v11/choice-v11.css">
+<link rel="stylesheet" href="../g7-4-geometry-tangram-reference-v11/geometry-v11.css">
+<link rel="stylesheet" href="../g7-4-pictograph-reference-v11/pictograph-v11.css">
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-width:0}
+body{background:#f4f7ff;color:#273851;font:500 14px/1.5 system-ui,sans-serif}
+main{max-width:1100px;margin:auto;padding:12px;min-width:0}
+h1{font-size:clamp(18px,3.5vw,27px);margin:6px 0}
+h2{font-size:17px;margin:8px 0}p{margin:5px 0 12px}
+section.g76b2-panel{background:#fff;border:1px solid #d6deee;border-radius:17px;padding:12px;margin:12px 0;min-width:0}
+.qa-notice{font-size:12px;color:#526885}
+#qa-b2-results{font-size:11px;white-space:pre-wrap;overflow-wrap:anywhere}
+#g76b2-column,#g76b2-choice,#g76b2-tangram,#g76b2-picto{min-width:0;max-width:100%}
+#g76b2-choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:12px}
+</style></head><body><main>
+<header><h1>G7.6-B.2 – Kiểm thử Chrome với dữ liệu P0.6 thực</h1>
+<p class="qa-notice">D2 và D4: nguồn generator/composer P0.6 ở commit đã khóa. D5 Tangram và D9 so sánh: fixture hợp đồng. Không chấm điểm, không kết nối GAS, không bật Asset Registry.</p></header>
+<section class="g76b2-panel"><h2>D2 – Đặt tính từ composer P0.6</h2><div id="g76b2-column"></div></section>
+<section class="g76b2-panel"><h2>D4 – Trắc nghiệm từ generator P0.6</h2><div id="g76b2-choice"></div></section>
+<section class="g76b2-panel"><h2>D5 – Tangram (fixture, không phải generator P0.6)</h2><div id="g76b2-tangram"></div></section>
+<section class="g76b2-panel"><h2>D9 – Biểu đồ tranh: so sánh chênh lệch (fixture)</h2><div id="g76b2-picto"></div></section>
+<section class="g76b2-panel"><h2>Biên nhận trình duyệt</h2><pre id="qa-b2-results" data-done="false" data-pass="false">Đang nạp dữ liệu TEST…</pre></section>
+</main>
+<script src="../g7-4-column-calc-reference-v12/column-v12-core.js"></script>
+<script src="../g7-4-column-calc-reference-v12/column-v12-view.js"></script>
+<script src="../g7-4-choice-reference-v11/choice-v11-core.js"></script>
+<script src="../g7-4-choice-reference-v11/choice-v11-view.js"></script>
+<script src="../g7-4-geometry-tangram-reference-v11/geometry-v11-core.js"></script>
+<script src="../g7-4-geometry-tangram-reference-v11/geometry-v11-view.js"></script>
+<script src="../g7-4-pictograph-reference-v11/pictograph-v11-core.js"></script>
+<script src="../g7-4-pictograph-reference-v11/pictograph-v11-view.js"></script>
+<script>
+(async function(){
+ 'use strict';
+ const status=document.getElementById('qa-b2-results'),checks=[];
+ const assert=(ok,id)=>{checks.push({id,ok:!!ok});if(!ok)throw Error(id)};
+ const item=(data,id)=>data.cases.find(x=>x.id===id);
+ const host=id=>document.getElementById(id);
+ try{
+  const response=await fetch('./generated/public-samples.json',{cache:'no-store'});
+  assert(response.ok,'public-fixture-http');
+  const d=await response.json();
+  assert(d.schemaVersion==='g76b2.chrome-public-fixtures.v1','public-fixture-contract');
+  assert(d.cases.length===6,'six-browser-cases');
+  assert(d.sourceSha==='c0c5620f30edd92ab45d4ec87a8a07ffa38948e2','p06-pin');
+  assert(d.cases.every(x=>!x.nativePlan.gradingEnabled),'plans-not-client-grading');
+  const columns=d.cases.filter(x=>x.typeId==='D2');
+  assert(columns.length===2&&columns.every(x=>x.origin==='P06_E03_REAL'),'real-column-samples');
+  const c=KLColumnViewV12.mount(host('g76b2-column'),columns.map(x=>x.nativePlan),{
+   onSpeak(){},onChange(){},onSubmit(){}});
+  assert(c.ok&&host('g76b2-column').querySelectorAll('.kl-col-v12-card').length===2,'column-native-mount');
+  const digit=host('g76b2-column').querySelector('[data-answer="result_ones"]');
+  assert(!!digit&&digit.getAttribute('aria-label').includes('đơn vị'),'column-aria-input');
+  digit.value='7';digit.dispatchEvent(new Event('input',{bubbles:true}));
+  assert(c.collect(0).result_ones==='7','column-interaction');
+  const choices=d.cases.filter(x=>x.typeId==='D4');
+  assert(choices.length===2&&choices.every(x=>x.origin==='P06_E02_REAL'),'real-choice-samples');
+  let chosen=0;
+  for(const one of choices){
+   const slot=document.createElement('div');host('g76b2-choice').append(slot);
+   const inst=KLChoiceViewV11.mount(slot,one.nativePlan,{onChange(){chosen++}});
+   assert(inst.ok,'choice-native-mount');
+   const btn=slot.querySelector('.g74-choice-answer');
+   assert(!!btn,'choice-selectable-button');
+   btn.click();
+   assert(inst.snapshot().selectedOptionIds.length===1,'choice-interaction');
+  }
+  assert(chosen===2,'choice-events');
+  const tangram=item(d,'tangram_fixture');
+  assert(tangram?.origin==='B2_TYPED_FIXTURE_NOT_PRODUCER','tangram-source-labeled');
+  const g=KLGeometryTangramViewV11.mount(host('g76b2-tangram'),tangram.nativePlan);
+  assert(g.ok,'tangram-native-mount');
+  assert(host('g76b2-tangram').querySelectorAll('.g74-tangram-target').length===3,'tangram-svg-targets');
+  host('g76b2-tangram').querySelector('.g74-tangram-piece').click();
+  host('g76b2-tangram').querySelector('.g74-tangram-tool').click();
+  host('g76b2-tangram').querySelector('.g74-tangram-target-button').click();
+  assert(Object.values(g.snapshot().pieces).filter(x=>x.placedTargetId!==null).length===1,'tangram-native-touch-rotate-place');
+  const pict=item(d,'pictograph_compare_fixture');
+  assert(pict?.origin==='B2_TYPED_FIXTURE_NOT_PRODUCER','pictograph-source-labeled');
+  const p=KLPictographViewV11.mount(host('g76b2-picto'),pict.nativePlan,{});
+  assert(p.ok,'pictograph-native-mount');
+  assert(pict.nativePlan.questions[0].type==='COMPARE_DIFFERENCE','pictograph-difference-mode');
+  const picBtn=host('g76b2-picto').querySelector('[data-picto-row="r1"]');
+  picBtn.click();
+  assert(picBtn.getAttribute('aria-pressed')==='true','pictograph-native-tap');
+  const answerInput=host('g76b2-picto').querySelector('.g74-picto-question input');
+  answerInput.value='3';answerInput.dispatchEvent(new Event('input',{bubbles:true}));
+  assert(p.snapshot().enteredAnswers.q_1==='3','pictograph-native-draft-not-grade');
+  assert(!document.querySelector('.g76b2-score,.g76b2-stars'),'no-grading-or-stars');
+  assert(!document.querySelector('img[src^="http"]'),'no-asset-network-binding');
+  await new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)));
+  assert(document.documentElement.scrollWidth<=window.innerWidth+4,'viewport-no-horizontal-document-overflow');
+  for(const [name,elm] of [['column',host('g76b2-column')],['choice',host('g76b2-choice')],
+    ['tangram',host('g76b2-tangram')],['pictograph',host('g76b2-picto')]]){
+   const rect=elm.getBoundingClientRect();
+   assert(rect.width>0&&rect.left>=-3&&rect.right<=window.innerWidth+4,'visible-'+name);
+  }
+  const out={status:'PASS_CHROME_NATIVE_RENDERER_INTERACTION',
+   viewport:{width:window.innerWidth,height:window.innerHeight},
+   checks,checked:checks.length,caseCount:d.cases.length,
+   source:'D2_D4_REAL_P06_D5_D9_FIXTURE',clientGrading:false,ttsAudibleVerified:false,
+   pixelParity:'PENDING_OWNER_VISUAL_REVIEW',gasDeployed:false};
+  status.dataset.done='true';status.dataset.pass='true';status.textContent=JSON.stringify(out);
+ }catch(error){
+  const out={status:'FAIL_BROWSER_NATIVE_CHECK',error:String(error.message||error),checks,
+   viewport:{width:window.innerWidth,height:window.innerHeight}};
+  status.dataset.done='true';status.dataset.pass='false';status.textContent=JSON.stringify(out);
+ }
+})();
+</script></body></html>
