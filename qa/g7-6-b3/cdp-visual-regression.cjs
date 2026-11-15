@@ -28,7 +28,7 @@ async function launchChrome(){
   let port=0;
   for(let n=0;n<250;n++){
    try{
-    const lines=fs.readFileSync(path.join(profile,'DevToolsActivePort'),'utf8').trim().split('\\n');
+    const lines=fs.readFileSync(path.join(profile,'DevToolsActivePort'),'utf8').trim().split('\n');
     port=Number(lines[0]);if(Number.isInteger(port)&&port>0)break;
    }catch(_){}
    if(proc.exitCode!==null)break;
