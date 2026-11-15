@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "g76b5c.integration-readiness-gate-matrix.v1",
+  "stage": "G7.6-B.5-C",
+  "date": "2026-11-16",
+  "status": "REVIEW_CANDIDATE_FAIL_CLOSED",
+  "baseline": {
+    "branch": "test/g7-6-b5b-resource-tts-e2e-20261115",
+    "sha": "98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae",
+    "ciRun": 43734323444,
+    "ciConclusion": "success",
+    "inheritedNodeAssertions": 1602,
+    "sourceChecks": [
+      "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48"
+    ],
+    "frozenG74OriginalSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced"
+  },
+  "ownerEvidence": {
+    "tangram": {
+      "status": "USER_CONFIRMED_FUNCTIONAL_OK",
+      "checklist": "USER_SUBMITTED_15_15_CHECKS_TRUE",
+      "fileName": "G76B5A_Manual_Device_Review_NOT_APPROVED.json",
+      "sha256": "91b1fb439db708e0d909e59bec5a311341618631e0ce61a664f476bd3fdf1fb0",
+      "sizeBytes": 2017,
+      "sourceCreatedAt": "2026-11-15T17:06:15.431Z",
+      "observedUserAgent": "Windows NT 10.0 Chrome/157",
+      "cssViewport": "1536x791",
+      "deviceDescription": "NOT_PROVIDED",
+      "reportedChecks": 15,
+      "sourceReviewerApproved": false,
+      "sourceReviewerSignature": null,
+      "sourcePedagogicalApproval": false,
+      "otherOsDeviceIdsInReceipt": false,
+      "notes": "Owner also directly confirmed Tangram across conversation. Source JSON only captures one Windows Chrome session; cannot claim specific Android/iOS evidence."
+    },
+    "tts": {
+      "status": "OWNER_CHAT_AUDIBLE_ACCEPTANCE_RECORDED",
+      "source": "DIRECT_USER_CONFIRMATION_IN_CURRENT_CONVERSATION",
+      "statementMeaning": "TTS sound output was listened to and accepted by owner",
+      "deviceModel": "NOT_STATED",
+      "formalSignedRecording": false,
+      "doNotMutateB5bCheckpoint": true
+    }
+  },
+  "bundledArchitecture": {
+    "mode": "REFERENCE_ONLY_NO_RUNTIME_BUNDLE_BUILD",
+    "immutableBaseManifest": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+    "baseRendererCount": 12,
+    "producerP06": {
+      "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "realE03": 8,
+      "realE02": 2,
+      "lessonScope": "toan_b21"
+    },
+    "e04": {
+      "implementation": "B3_SIDE_CAR_SEEDED_TEST",
+      "labLesson": "toan_b999",
+      "candidateCount": 4,
+      "realCurriculumLessonId": null,
+      "approvedCurriculumRef": null,
+      "skillId": null,
+      "releaseAllowed": false
+    },
+    "mental": {
+      "rendererId": "MATH_MENTAL_NUMBER_INPUT_V1",
+      "planType": "MENTAL_INPUT_TEST_EXTENSION",
+      "status": "ISOLATED_B5A_OVERLAY_ONLY",
+      "officialManifestRegistered": false,
+      "isNewD13": false
+    },
+    "visual": {
+      "D2": "G74_COLUMN_V12_PUBLIC",
+      "D4": "G74_CHOICE_V11",
+      "D5": "B5A_TANGRAM_PRECISION_SVG",
+      "D9": "G74_PICTOGRAPH_V11_EXACT_PUBLIC_EMOJI",
+      "mental": "B3_NUMBER_INPUT_VIEW"
+    },
+    "assets": {
+      "registryMetadataCount": 288,
+      "contentApprovedForAutomatedRuntime": false,
+      "fluentStagingCount": 46,
+      "fluentProductionEnabled": false,
+      "svgMathParametric": true,
+      "pictographEmojiExactCount": true
+    },
+    "tts": {
+      "sourceSha": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+      "locale": "vi-VN",
+      "speechProfile": "vi_math_v2_dynamic",
+      "ownerAudio": "ACCEPTED_IN_CHAT",
+      "formalDeviceEvidence": "NOT_DOCUMENTED",
+      "autoplay": false,
+      "onlyPublicVisiblePrompt": true
+    },
+    "grading": {
+      "d10ServerOnlyRequired": true,
+      "implementationApproved": false,
+      "keysToClient": false,
+      "scoreStarWrites": false
+    }
+  },
+  "gates": [
+    {
+      "id": "C01",
+      "name": "Pinned baseline and source provenance",
+      "domain": "technical",
+      "status": "PASS",
+      "evidence": "B5B HEAD 98e4fe + CI 43734323444",
+      "blocks": [
+        "source drift"
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Producer to renderer compatibility for checked public samples",
+      "domain": "technical",
+      "status": "PASS_LIMITED_14_CASES",
+      "evidence": "8 E03, 2 E02, 4 lab E04 sidecar; 1602 inherited assertions",
+      "blocks": [
+        "outside checked family/lesson assumptions"
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "Regression of unchanged Tangram and interaction",
+      "domain": "technical",
+      "status": "PASS_CI_AND_USER_ACCEPTED",
+      "evidence": "B5A 0px snap, drag unplace + user 15/15 JSON",
+      "blocks": []
+    },
+    {
+      "id": "C04",
+      "name": "Vietnamese text-to-speech normalization and browser control",
+      "domain": "technical",
+      "status": "PASS_CI",
+      "evidence": "G7.5 V2 pin; user gesture; no autoplay or answers",
+      "blocks": []
+    },
+    {
+      "id": "C05",
+      "name": "Owner audible TTS feedback",
+      "domain": "human",
+      "status": "PASS_USER_ATTESTED",
+      "evidence": "User's direct statement confirming B5B audio OK",
+      "blocks": []
+    },
+    {
+      "id": "C06",
+      "name": "Visual assets count/semantic fallback safety",
+      "domain": "technical",
+      "status": "PASS_SAFE_FALLBACK_ONLY",
+      "evidence": "D5 parametric SVG; D9 emoji count 1:1; staged/metadata assets disabled",
+      "blocks": [
+        "cannot unlock WebP 288 / Fluent 46 content without per-asset QA"
+      ]
+    },
+    {
+      "id": "C07",
+      "name": "Complete official auxiliary mental renderer registration",
+      "domain": "policy",
+      "status": "BLOCKED_OWNER_MANIFEST_DECISION",
+      "evidence": "Only isolated overlay MATH_MENTAL_NUMBER_INPUT_V1, no official manifest diff",
+      "blocks": [
+        "registration owner decision",
+        "contract test",
+        "versioned rollback"
+      ]
+    },
+    {
+      "id": "C08",
+      "name": "E04 SGK-specific curriculum mapping and pedagogy signoff",
+      "domain": "policy",
+      "status": "BLOCKED_SOURCE_AND_OWNER",
+      "evidence": "Lab lesson toan_b999, missing verified SGK lesson/page/skillId/approval",
+      "blocks": [
+        "book series/edition, bài, trang, skillId",
+        "pedagogy owner decision"
+      ]
+    },
+    {
+      "id": "C09",
+      "name": "P0.6 official E04 producer integration",
+      "domain": "integration",
+      "status": "NOT_READY_SIDECAR_ONLY",
+      "evidence": "No signed real-lesson producer/lesson contract",
+      "blocks": [
+        "C08",
+        "approved E04 generator interface"
+      ]
+    },
+    {
+      "id": "C10",
+      "name": "Production asset runtime activation",
+      "domain": "policy",
+      "status": "BLOCKED_PER_ASSET_QA",
+      "evidence": "288 label metadata only; 46 Fluent SVG staged disabled",
+      "blocks": [
+        "content QA",
+        "license and security owner approval",
+        "asset-to-skill semantically safe routing"
+      ]
+    },
+    {
+      "id": "C11",
+      "name": "Full coverage all 10 math forms and lessons",
+      "domain": "technical",
+      "status": "NOT_EVIDENCED_BY_14_CASE_B5B",
+      "evidence": "B5B E2E covers five renderer families; frozen 12 registry tests are different evidence",
+      "blocks": [
+        "representative cross-lesson E2E matrix"
+      ]
+    },
+    {
+      "id": "C12",
+      "name": "Real app host contract / GAS boundary integration",
+      "domain": "integration",
+      "status": "NOT_STARTED_BY_DESIGN",
+      "evidence": "TEST standalone, no app host, no deployment",
+      "blocks": [
+        "approved app route",
+        "read-only host adapter contract",
+        "secret and error handling"
+      ]
+    },
+    {
+      "id": "C13",
+      "name": "Trusted D10 server grading",
+      "domain": "security",
+      "status": "BLOCKED_NO_TRUSTED_GRADER_SIGNOFF",
+      "evidence": "Original client answer exposure issue; B5B disabled trusted grading",
+      "blocks": [
+        "server-only answer contracts",
+        "key leak QA",
+        "security owner signoff"
+      ]
+    },
+    {
+      "id": "C14",
+      "name": "Student data access / progress / stars",
+      "domain": "security",
+      "status": "DENIED_USER_SCOPE",
+      "evidence": "Explicit user restriction; all reviewed demos no student IO",
+      "blocks": [
+        "separate authorization and privacy audit"
+      ]
+    },
+    {
+      "id": "C15",
+      "name": "Physical mobile cross-device audit metadata",
+      "domain": "human",
+      "status": "PARTIAL_SELF_ATTESTED",
+      "evidence": "User says multi-platform works; uploaded 15/15 receipt Windows Chrome CSS1536 only",
+      "blocks": [
+        "per-device signed matrix only if required for release"
+      ]
+    },
+    {
+      "id": "C16",
+      "name": "App test-theo-main merge",
+      "domain": "release",
+      "status": "PROHIBITED_THIS_STAGE",
+      "evidence": "Explicit no merge",
+      "blocks": [
+        "future explicit owner scope approval",
+        "C07/C08/C12 where relevant"
+      ]
+    },
+    {
+      "id": "C17",
+      "name": "GAS TEST or production deployment",
+      "domain": "release",
+      "status": "PROHIBITED_THIS_STAGE",
+      "evidence": "Explicit no deploy",
+      "blocks": [
+        "future explicit authorization and deploy/rollback plan"
+      ]
+    },
+    {
+      "id": "C18",
+      "name": "Protected main merge",
+      "domain": "release",
+      "status": "PROHIBITED_THIS_STAGE",
+      "evidence": "Explicit no merge",
+      "blocks": [
+        "formal release readiness and approval"
+      ]
+    },
+    {
+      "id": "C19",
+      "name": "Versioned checkpoint/rollback isolation",
+      "domain": "technical",
+      "status": "PASS_CANDIDATE_AFTER_CI",
+      "evidence": "B5C isolated branch, predecessor B5B SHA, no protected diff",
+      "blocks": []
+    }
+  ],
+  "decisions": {
+    "GO_TECHNICAL_PREPARATION": {
+      "result": "GO",
+      "scope": "audit, proposed contract, read-only dry-run design and QA harness only",
+      "mayMutateRuntime": false,
+      "requiresApprovalBeforeExecution": false
+    },
+    "GO_APP_TEST_INTEGRATION": {
+      "result": "NO_GO",
+      "scope": "app wiring, branch integration, GAS TEST",
+      "reason": [
+        "C07",
+        "C08",
+        "C09",
+        "C12",
+        "C16",
+        "C17"
+      ]
+    },
+    "GO_LIVE_RELEASE": {
+      "result": "NO_GO",
+      "scope": "students, grading, assets beyond approved subset, stars, main",
+      "reason": [
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C16",
+        "C17",
+        "C18"
+      ]
+    },
+    "GO_TRUSTED_D10": {
+      "result": "NO_GO",
+      "scope": "trusted grader and scoring",
+      "reason": [
+        "C13",
+        "C14"
+      ]
+    }
+  },
+  "executionRules": {
+    "allowOnlyIsolatedBranch": true,
+    "allowCIReadOnly": true,
+    "allowSourcePinChecks": true,
+    "allowRegistryDryRunAudit": true,
+    "allowNoOpRollbackPlan": true,
+    "disallowMergeMain": true,
+    "disallowMergeTestTheoMain": true,
+    "disallowGAS": true,
+    "disallowD10": true,
+    "disallowStudentIO": true,
+    "disallowAnyWriteToStudentScores": true,
+    "disallowAssetAutoPromotion": true,
+    "disallowE04CurriculumAutoSignoff": true,
+    "disallowMentalManifestAutoRegistration": true
+  },
+  "rollback": {
+    "baseB5bSha": "98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae",
+    "strategy": "STOP_USING_B5C_AUDIT_BRANCH_AND_RETURN_TO_IMMUTABLE_B5B",
+    "protectedRuntimeChanged": false,
+    "requiresGASRollback": false
+  },
+  "next": "B5-C DECISION HANDOFF: approve each scoped prerequisite separately, not a blanket release signoff"
+}
