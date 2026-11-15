@@ -88,7 +88,7 @@ for(const [mode,seed] of [
  eq(adapter.sourceEvidence,'B3_SEEDED_SIDECAR_GENERATED_NOT_NATIVE_P06_E02_E03');
  if(mode==='D5_TANGRAM'){
    const positions=candidate.source.question.publicParameters;
-   yes(positions.pieceStartY[1]-positions.pieceStartY[0]>=130,
+   yes(positions.pieceStartY[1]-positions.pieceStartY[0]>=145,
     'unrotated and rotated roof/wall start bounding boxes do not overlap');
    yes(positions.pieceStartX[2]-positions.pieceStartX[1]>=250,
     'tree start separated horizontally from wall/roof bounds');
