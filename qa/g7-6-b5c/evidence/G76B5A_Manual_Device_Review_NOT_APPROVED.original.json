@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "g76b5a.physical-device-manual-checklist.v1",
+  "source": "ACTUAL_USER_TEST_ONLY_NOT_CI",
+  "project": "lop2",
+  "component": "G7.6-B.5-A",
+  "evidenceStatus": "MANUAL_OBSERVATION_ONLY_NOT_OWNER_SIGNATURE",
+  "createdAt": "2026-11-15T17:06:15.431Z",
+  "deviceDescription": "NOT_PROVIDED",
+  "viewport": {
+    "cssWidth": 1536,
+    "cssHeight": 791
+  },
+  "browserSummary": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+  "checkedCount": 15,
+  "totalChecks": 15,
+  "checks": [
+    {
+      "key": "layout_no_overflow",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "text_clear",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "mental_keyboard",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "column_focus",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "choice_touch",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "tangram_labels",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "tangram_rotation",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "tangram_placement",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "chart_exact_count",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "chart_tap_count",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "chart_draft",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "no_answers",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "return_state",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "tangram_exact_snap",
+      "performedAndObservedPass": true
+    },
+    {
+      "key": "tangram_drag_unplace",
+      "performedAndObservedPass": true
+    }
+  ],
+  "notes": "",
+  "reviewerApproved": false,
+  "reviewerSignature": null,
+  "pedagogicalApproval": false,
+  "trustedGradingOpened": false,
+  "gasDeployed": false,
+  "studentDataCollected": false
+}
