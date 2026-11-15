@@ -115,7 +115,7 @@ async function main(){
     'TANGRAM_SNAP_BOUNDS_NOT_ALIGNED '+JSON.stringify(item.boxes));
  }
  console.log('G76B5B_TANGRAM_SNAP_BBOX_ALIGNMENT_PASS',w,panel,JSON.stringify(layout.values.map(x=>x.boxes)));
- const voiceStatus=await send('Runtime.evaluate',{expression:"(() => {const el=document.getElementById('b5b-speech-kit'),buttons=[...document.querySelectorAll('[data-b5b-speech-index]')],status=document.getElementById('b5b-speech-status');return {panelExists:!!el,buttonCount:buttons.length,defaultMessage:status?.textContent,neverAutoplayed:!status?.dataset.b5bSpeechResult,allButtonsAccessible:buttons.every(x=>x.getBoundingClientRect().height>=44)}})()",returnByValue:true});
+ const voiceStatus=await send('Runtime.evaluate',{expression:"(() => {const el=document.getElementById('b5b-speech-kit');if(el)el.open=true;const buttons=[...document.querySelectorAll('[data-b5b-speech-index]')],status=document.getElementById('b5b-speech-status');return {panelExists:!!el,buttonCount:buttons.length,defaultMessage:status?.textContent,neverAutoplayed:!status?.dataset.b5bSpeechResult,allButtonsAccessible:buttons.every(x=>x.getBoundingClientRect().height>=44)}})()",returnByValue:true});
  const voice=voiceStatus.result?.value;
  assert.ok(voice?.panelExists,'MISSING_VOICE_REVIEW_PANEL');
  assert.equal(voice.buttonCount,14,'REAL_PUBLIC_PRODUCER_VOICE_CONTROLS_COUNT_DRIFT');
