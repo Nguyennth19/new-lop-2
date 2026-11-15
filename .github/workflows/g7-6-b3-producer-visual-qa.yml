@@ -107,6 +107,17 @@ jobs:
             assert (root/('b3-'+suffix+'.png')).is_file()
           print('G76B3_EIGHT_SCREENSHOT_PNG_EVIDENCE_PASS',len(expected),'owner signoff pending')
           PY
+      - name: Attach compact 390px public TEST previews to QA logs for visual inspector
+        shell: bash
+        run: |
+          set -euo pipefail
+          for panel in mental tangram chart; do
+            file="/tmp/g76b3-evidence/chrome/review-390-$panel.jpg"
+            test -s "$file"
+            echo "G76B3_PREVIEW_START_$panel"
+            base64 -w0 "$file"; echo
+            echo "G76B3_PREVIEW_END_$panel"
+          done
       - name: Archive public-only browser and recovery receipts (no student/answer keys)
         if: always()
         uses: actions/upload-artifact@v4
