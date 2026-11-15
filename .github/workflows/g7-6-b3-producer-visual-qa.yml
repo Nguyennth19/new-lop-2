@@ -1,0 +1,117 @@
+name: G7.6-B.3 Producer Coverage E04 Sandbox and Chrome Visual QA
+on:
+  push:
+    branches:
+      - test/g7-6-b3-producer-coverage-visual-20261115
+    paths:
+      - 'qa/g7-6-b3/**'
+      - 'docs/kiem-dinh/G7.6-B3*'
+      - '.github/workflows/g7-6-b3-producer-visual-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  producer-coverage-visual-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 23
+    steps:
+      - name: Checkout B3 source only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independent immutable P0.6 core source checkout
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06-source
+          persist-credentials: false
+      - name: Gate B3-0 verify B2 baseline pin and protected branch source unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _external/p06-source rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          git merge-base --is-ancestor be426e6c10c6ae9636a9a8b28c59b407641222d4 HEAD
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only be426e6c10c6ae9636a9a8b28c59b407641222d4 HEAD | grep -Ev '^(qa/g7-6-b3/|docs/kiem-dinh/G7\.6-B3|\.github/workflows/g7-6-b3-producer-visual-qa\.yml)' ; then
+            echo B3_PROTECTED_FILES_CHANGED; exit 1
+          fi
+          echo G76B3_BASELINE_B2_PIN_SOURCE_PROTECTION_PASS
+      - name: Gate B3-1 actual P0.6 mental 8/8 and separated E04 seeded producer with negatives
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check qa/g7-6-b3/mental-number-input.cjs
+          node --check qa/g7-6-b3/mental-number-input-view.js
+          node --check qa/g7-6-b3/p06-e04-experimental-producer.cjs
+          node --check qa/g7-6-b3/producer-coverage.test.cjs
+          node --check qa/g7-6-b3/cdp-visual-regression.cjs
+          mkdir -p qa/g7-6-b3/generated
+          G76B3_OUTPUT_DIR=qa/g7-6-b3/generated node qa/g7-6-b3/producer-coverage.test.cjs _external/p06-source | tee /tmp/g76b3-node.log
+          python3 qa/g7-6-b2/extract-pinned-css.py
+      - name: Gate B3-2 inherited A, B, B2 640 assertions and source consistency
+        shell: bash
+        run: |
+          set -euo pipefail
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs
+          G76B2_EVIDENCE_DIR=/tmp/g76b3-inherited-b2 node qa/g7-6-b2/real-producer-submode.test.cjs _external/p06-source
+      - name: Start loopback-only Chrome QA host
+        run: |
+          python3 -m http.server 8799 --bind 127.0.0.1 >/tmp/g76b3-server.log 2>&1 &
+          sleep 2
+      - name: Gate B3-3 Chrome desktop real view + native interactions
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g76b3-evidence/chrome
+          timeout 120s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --window-size=1440,960 --virtual-time-budget=35000 --dump-dom 'http://127.0.0.1:8799/qa/g7-6-b3/Chrome_B3_Producer_Visual_Acceptance_TEST.html?panel=all' > /tmp/g76b3-evidence/chrome/desktop-1440.html 2>/tmp/g76b3-evidence/chrome/stderr-1440.log
+          python3 qa/g7-6-b3/verify-desktop-chrome.py 1440
+      - name: Gate B3-4 actual CSS mobile viewport + per-panel screenshots with no horizontal overflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          export BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          for panel in all mental column choice tangram chart; do
+            timeout 100s node qa/g7-6-b3/cdp-visual-regression.cjs 390 "$panel"
+          done
+          timeout 100s node qa/g7-6-b3/cdp-visual-regression.cjs 360 all
+          timeout 100s node qa/g7-6-b3/cdp-visual-regression.cjs 1440 all
+          echo G76B3_CDP_VISUAL_EVIDENCE_CAPTURED_OWNER_APPROVAL_PENDING
+      - name: Gate B3-5 verify PNG evidence exists for mobile and desktop and owner review remains open
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/g76b3-evidence/chrome')
+          expected=['390-all','390-mental','390-column','390-choice','390-tangram','390-chart','360-all','1440-all']
+          for suffix in expected:
+            d=json.loads((root/('b3-'+suffix+'.json')).read_text())
+            assert d['status']=='PASS_B3_TRUE_CSS_CHROME_LAYOUT_AND_SCREENSHOT'
+            assert d['viewportCssWidth']==int(suffix.split('-')[0])
+            assert d['viewportCssWidth']==d['documentScrollWidth']
+            assert d['ownerVisualSignoff']=='PENDING'
+            assert d['realPhysicalDevice'] is False
+            assert d['automaticPixelParity'] is False
+            assert d['pngBytes']>7000
+            assert (root/('b3-'+suffix+'.png')).is_file()
+          print('G76B3_EIGHT_SCREENSHOT_PNG_EVIDENCE_PASS',len(expected),'owner signoff pending')
+          PY
+      - name: Archive public-only browser and recovery receipts (no student/answer keys)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B3-RealProducer-Extension-Visual-Evidence
+          path: |
+            qa/g7-6-b3/generated/public-samples.json
+            qa/g7-6-b3/generated/receipt.json
+            /tmp/g76b3-evidence/chrome/
+            /tmp/g76b3-node.log
+          retention-days: 30
