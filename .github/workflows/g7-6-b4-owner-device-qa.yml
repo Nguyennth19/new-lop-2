@@ -1,0 +1,130 @@
+name: G7.6-B.4 Owner QA Kit & Policy Decision Gate (offline only)
+on:
+  push:
+    branches:
+      - test/g7-6-b4-owner-visual-policy-20261115
+    paths:
+      - 'qa/g7-6-b4/**'
+      - 'docs/kiem-dinh/G7.6-B4*'
+      - '.github/workflows/g7-6-b4-owner-device-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  standalone-device-and-policy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout B.4 at exact B.3 baseline
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Checkout independently pinned P0.6 source (read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06-source
+          persist-credentials: false
+      - name: Gate B4-0 – protected baseline, source pin, frozen demo and diff scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _external/p06-source rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          git merge-base --is-ancestor c3757227856f50e0e122407e0121c3e40e024728 HEAD
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only c3757227856f50e0e122407e0121c3e40e024728 HEAD | grep -Ev '^(qa/g7-6-b4/|docs/kiem-dinh/G7\.6-B4|\.github/workflows/g7-6-b4-owner-device-qa\.yml)' ; then
+            echo 'B4_PROTECTED_SOURCE_MODIFICATION_DENIED';exit 1
+          fi
+          echo 'G76B4_SOURCE_IMMUTABILITY_PASS'
+      - name: Gate B4-1 – real producer baseline and inherited QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa/g7-6-b3/generated
+          G76B3_OUTPUT_DIR=qa/g7-6-b3/generated node qa/g7-6-b3/producer-coverage.test.cjs _external/p06-source
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs
+          node qa/g7-6-b2/real-producer-submode.test.cjs _external/p06-source
+          python3 qa/g7-6-b2/extract-pinned-css.py
+      - name: Gate B4-2 – localized labels and unsigned policy decision boundary
+        run: |
+          set -euo pipefail
+          node --check qa/g7-6-b4/tangram-review-wrapper.js
+          node --check qa/g7-6-b4/manual-device-qa.js
+          node --check qa/g7-6-b4/build-offline-review.cjs
+          node --check qa/g7-6-b4/owner-policy-gates.test.cjs
+          node --check qa/g7-6-b4/cdp-offline-device-smoke.cjs
+          node qa/g7-6-b4/owner-policy-gates.test.cjs
+      - name: Gate B4-3 – self-contained offline phone review with public P0.6 data
+        run: |
+          set -euo pipefail
+          node qa/g7-6-b4/build-offline-review.cjs
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          p=Path('qa/g7-6-b4/generated/G76B4_Standalone_RealDevice_Review_TEST.html')
+          text=p.read_text(encoding='utf8')
+          class Audit(HTMLParser):
+            def __init__(self):super().__init__();self.externals=[];self.scripts=0;self.forms=0
+            def handle_starttag(self,tag,attrs):
+              a=dict(attrs)
+              if tag=='script':
+                self.scripts+=1
+                if a.get('src'):self.externals.append(('script',a['src']))
+              if tag=='link' and a.get('rel')=='stylesheet':self.externals.append(('css',a.get('href')))
+              if tag=='input' and a.get('type')=='checkbox' and a.get('data-qa'):self.forms+=1
+          audit=Audit();audit.feed(text)
+          assert not audit.externals,audit.externals
+          assert audit.forms==13,audit.forms
+          assert len(text)>90000,len(text)
+          assert 'id="b4-public-data"' in text
+          assert 'G76B4TangramReview.mount' in text
+          assert 'ownerSignature:null' in text
+          print('G76B4_OFFLINE_HTML_STATIC_PASS',len(text),'bytes;',audit.scripts,'inline script tags;',audit.forms,'manual QA checkpoints')
+          PY
+      - name: Gate B4-4 – actual Chrome offline HTML, mobile/desktop layout and touch-emulation
+        shell: bash
+        run: |
+          set -euo pipefail
+          export BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g76b3-evidence/chrome
+          timeout 105s node qa/g7-6-b4/cdp-offline-device-smoke.cjs 390 tangram
+          timeout 105s node qa/g7-6-b4/cdp-offline-device-smoke.cjs 390 mental
+          timeout 105s node qa/g7-6-b4/cdp-offline-device-smoke.cjs 360 all
+          timeout 105s node qa/g7-6-b4/cdp-offline-device-smoke.cjs 1440 all
+          echo 'G76B4_OFFLINE_DEVICE_EMULATION_PASS_OWNER_PHYSICAL_SIGNOFF_PENDING'
+      - name: Gate B4-5 – assert remaining approval gates do not auto-pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('qa/g7-6-b4/owner-decisions.candidate.json')
+          d=json.loads(p.read_text())
+          assert d['status']=='PREPARED_FOR_OWNER_SIGNOFF_NOT_APPROVED'
+          assert d['accountability']['reviewer'] is None
+          assert d['accountability']['signoffDocumentRef'] is None
+          assert not d['recommendations']['mentalInput']['manifestMutationAllowed']
+          assert d['recommendations']['e04']['actualCurriculumLessonId'] is None
+          assert all(v is False for v in d['guardrails'].values())
+          print('G76B4_OWNER_AND_POLICY_SIGNOFF_FAIL_CLOSED_PASS')
+          PY
+      - name: Archive offline standalone single HTML, public technical QA and owner template
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B4-Offline-RealDevice-OwnerReview-TEST
+          path: |
+            qa/g7-6-b4/generated/G76B4_Standalone_RealDevice_Review_TEST.html
+            qa/g7-6-b4/owner-decisions.candidate.json
+            /tmp/g76b3-evidence/chrome/b4-*.png
+            /tmp/g76b3-evidence/chrome/b4-*.json
+            /tmp/g76b3-evidence/chrome/b4-review*.jpg
+            /tmp/g76b3-evidence/chrome/chrome-launch-*
+          retention-days: 30
