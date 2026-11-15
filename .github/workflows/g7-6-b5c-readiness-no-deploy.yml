@@ -1,0 +1,108 @@
+name: G7.6-B.5-C Integration Readiness and NO-GO Release Gate (NO DEPLOY)
+on:
+  push:
+    branches:
+      - test/g7-6-b5c-integration-readiness-gates-20261116
+    paths:
+      - 'qa/g7-6-b5c/**'
+      - 'docs/kiem-dinh/G7.6-B5C*'
+      - '.github/workflows/g7-6-b5c-readiness-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - name: Checkout B.5-C at immutable B.5-B descendant
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Checkout pinned P0.6 producer (independent, read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06-source
+          persist-credentials: false
+      - name: Checkout pinned G7.5 V2 normalizer (independent, read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c9880bfc56aec0cfc4ea7f788983bcc3761d7b48
+          path: _external/g75-v2
+          persist-credentials: false
+      - name: C-0 Exact frozen source and protected diff scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae HEAD
+          test "$(git -C _external/p06-source rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          test "$(git -C _external/g75-v2 rev-parse HEAD)" = c9880bfc56aec0cfc4ea7f788983bcc3761d7b48
+          test "$(git hash-object _external/g75-v2/thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js)" = 605a8ed9b335526af82c8870dca4753bd511b913
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only 98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae HEAD | grep -Ev '^(qa/g7-6-b5c/|docs/kiem-dinh/G7\.6-B5C|\.github/workflows/g7-6-b5c-readiness-no-deploy\.yml)' ; then
+            echo 'PROTECTED_DIFF_DENIED'; exit 1
+          fi
+          echo G76B5C_PINNED_SOURCES_AND_DIFF_SCOPE_PASS
+      - name: C-1 Preserve and rerun inherited technical regressions (1,602)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa/g7-6-b3/generated qa/g7-6-b5b/generated
+          G76B3_OUTPUT_DIR=qa/g7-6-b3/generated node qa/g7-6-b3/producer-coverage.test.cjs _external/p06-source
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs
+          node qa/g7-6-b2/real-producer-submode.test.cjs _external/p06-source
+          node qa/g7-6-b4/owner-policy-gates.test.cjs
+          node qa/g7-6-b4-1/owner-evidence.test.cjs
+          node qa/g7-6-b5a/contract-and-tangram.test.cjs _external/p06-source
+          G76B5B_OUTPUT_DIR=qa/g7-6-b5b/generated node qa/g7-6-b5b/resource-tts-e2e.test.cjs _external/p06-source _external/g75-v2
+      - name: C-2 Verify exact source JSON, risk register and GO/NO-GO decisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '91b1fb439db708e0d909e59bec5a311341618631e0ce61a664f476bd3fdf1fb0  qa/g7-6-b5c/evidence/G76B5A_Manual_Device_Review_NOT_APPROVED.original.json' | sha256sum --check
+          node --check qa/g7-6-b5c/readiness-gate-evaluator.cjs
+          node --check qa/g7-6-b5c/integration-readiness.test.cjs
+          mkdir -p qa/g7-6-b5c/generated
+          G76B5C_OUTPUT_DIR=qa/g7-6-b5c/generated node qa/g7-6-b5c/integration-readiness.test.cjs
+      - name: C-3 Fail closed if any app, renderer manifest, grading or source has changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('qa/g7-6-b5c/integration-go-no-go.matrix.v1.json').read_text())
+          r=json.loads(Path('qa/g7-6-b5c/generated/GO_NO_GO_READ_ONLY_RECEIPT.json').read_text())
+          assert d['decisions']['GO_TECHNICAL_PREPARATION']['result']=='GO'
+          assert d['decisions']['GO_APP_TEST_INTEGRATION']['result']=='NO_GO'
+          assert d['decisions']['GO_LIVE_RELEASE']['result']=='NO_GO'
+          assert d['decisions']['GO_TRUSTED_D10']['result']=='NO_GO'
+          assert not r['outcome']['releaseAuthorized']
+          assert not r['outcome']['runtimeMutationAllowed']
+          assert d['ownerEvidence']['tts']['status']=='OWNER_CHAT_AUDIBLE_ACCEPTANCE_RECORDED'
+          assert d['ownerEvidence']['tangram']['sourceReviewerApproved'] is False
+          assert d['ownerEvidence']['tangram']['sourcePedagogicalApproval'] is False
+          assert d['bundledArchitecture']['e04']['realCurriculumLessonId'] is None
+          assert not d['bundledArchitecture']['mental']['officialManifestRegistered']
+          assert all(v is True for v in d['executionRules'].values())
+          print('G76B5C_GO_READ_ONLY_NO_GO_RELEASE_FAIL_CLOSED_PASS')
+          PY
+      - name: Archive only public decision receipts (NO DEPLOY, NO student data)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B5C-Integration-Readiness-GO-NOGO-TEST
+          path: |
+            qa/g7-6-b5c/integration-go-no-go.matrix.v1.json
+            qa/g7-6-b5c/evidence/G76B5A_Manual_Device_Review_NOT_APPROVED.original.json
+            qa/g7-6-b5c/generated/GO_NO_GO_READ_ONLY_RECEIPT.json
+            qa/g7-6-b5c/checkpoint.g76b5c.v1.json
+          retention-days: 30
