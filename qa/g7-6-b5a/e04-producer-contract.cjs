@@ -18,7 +18,7 @@ function resolvePublic(candidate,producer){
   return fail('CURRICULUM_RELEASE_BOUNDARY_DENIED');
  const mapped=producer.project(candidate);
  if(!mapped.ok)return fail('NATIVE_MAPPING_DENIED_'+mapped.code);
- const plan=mapped.nativePlan;
+ const plan=mapped.nativeRenderer?.plan;
  if(candidate.receipt.mode==='D5_TANGRAM'){
   if(plan.mode!=='TANGRAM'||!Array.isArray(plan.items)||!Array.isArray(plan.targets)||
      plan.items.length!==3||plan.targets.length!==3)return fail('D5_GEOMETRY_INVALID');
