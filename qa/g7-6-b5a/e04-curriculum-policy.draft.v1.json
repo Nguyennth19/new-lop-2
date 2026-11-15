@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "g76b5a.e04-curriculum-policy.v1",
+  "date": "2026-11-15",
+  "stage": "B5-A",
+  "status": "NORMATIVE_DRAFT_RULES_FINALIZED_CURRICULUM_MAPPING_PENDING",
+  "lessonId": "toan_b999",
+  "curriculumRef": null,
+  "skillId": null,
+  "releaseReady": false,
+  "materialRules": {
+    "sgk": "AUTHORITATIVE_FOR_LESSON_LV1",
+    "sbt": "LV2_AFTER_SGK_SKILL_MATCH",
+    "reference": "LV3_ONLY_AFTER_NEW_GENERATOR_AND_POLICY",
+    "teacherGuide": "PEDAGOGY_REFERENCE_NOT_PRIMARY_QUESTION_SOURCE",
+    "bookEvidenceNeeded": [
+      "textbookSeries",
+      "bookEdition",
+      "subject",
+      "grade",
+      "lessonId",
+      "lessonTitle",
+      "pageNumber",
+      "imageOrQuotedExerciseEvidence",
+      "objective",
+      "skillId",
+      "reviewerApprovalRef"
+    ]
+  },
+  "families": [
+    {
+      "mode": "D5_TANGRAM",
+      "typeId": "D5",
+      "intent": "Nhận diện mảnh hình, thao tác xoay và ghép theo mẫu",
+      "levels": {
+        "LV1": "Nhận dạng, chọn mảnh và đặt vào khung mẫu; gợi ý hình mẫu",
+        "LV2": "Tự thử xoay/kéo/đặt, so sánh hình mẫu bằng quan sát trực quan",
+        "LV3": "NOT_SUPPORTED"
+      },
+      "renderer": "G76B5A_TANGRAM_PLACEMENT_V12",
+      "publicGeometryRule": "PIECE_AND_TARGET_GEOMETRY_PUBLIC_NO_PRIVATE_MATCH_MAP",
+      "placement": "NO_CORRECTNESS_FEEDBACK_NO_SCORE",
+      "requiredReview": [
+        "grade2_objectives",
+        "shape_types_and_piece_count",
+        "target_public_outline_congruence",
+        "accessible_nontechnical_labels",
+        "pointer_and_keyboard_interactions",
+        "geometry_visual_parity"
+      ]
+    },
+    {
+      "mode": "D9_COMPARE_DIFFERENCE",
+      "typeId": "D9",
+      "intent": "Đọc và đếm biểu tượng 1:1, so sánh hơn/kém hai hàng",
+      "levels": {
+        "LV1": "Đếm số biểu tượng từng hàng",
+        "LV2": "Hơn/kém bao nhiêu; so sánh bằng số lượng trực quan",
+        "LV3": "NOT_SUPPORTED"
+      },
+      "renderer": "G7.4_PICTOGRAPH_V11",
+      "symbolUnit": "ONE_EMOJI_EQUALS_ONE_ITEM",
+      "allowedRelations": [
+        "MORE_THAN",
+        "LESS_THAN"
+      ],
+      "maxRows": 2,
+      "maxItemsPerRow": 12,
+      "requiredReview": [
+        "grade2_objectives",
+        "exact_quantity_correspondence",
+        "relation_matches_counts",
+        "no_ambiguous_unit",
+        "emoji_accessibility_and_mobile_rendering"
+      ]
+    }
+  ],
+  "activation": {
+    "requiresRealLessonId": true,
+    "requiresCurriculumRef": true,
+    "requiresReviewedSkillId": true,
+    "requiresOwnerPedagogyApproval": true,
+    "forbidsAutomaticAttachToB21": true,
+    "seedSidecarOnlyUntilSigned": true,
+    "forbidGeneratorWithUnverifiedSource": true
+  },
+  "boundary": {
+    "noLiveStudentUse": true,
+    "noPublicAnswers": true,
+    "noGrading": true,
+    "noGAS": true,
+    "noTestTheoMain": true,
+    "noD10Change": true,
+    "noAssetActivation": true,
+    "noAutoOwnerSignoff": true
+  }
+}
