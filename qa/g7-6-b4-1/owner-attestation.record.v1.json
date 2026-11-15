@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "g76b4.1.owner-evidence-admission.v1",
+  "stage": "G7.6-B.4.1",
+  "recordDate": "2026-11-15",
+  "branch": "test/g7-6-b4-1-owner-evidence-signoff-20261115",
+  "baselineB4": {
+    "ref": "test/g7-6-b4-owner-visual-policy-20261115",
+    "sha": "322015ee50d76fcbc067f9e4ee90ae471f3dd062",
+    "priorQa": "1005_ASSERTIONS_PASS"
+  },
+  "evidence": {
+    "source": "USER_UPLOADED_UNMODIFIED_CHECKLIST_AND_CHAT_ATTESTATION",
+    "uploadedFile": "G76B4_Manual_Device_Review_NOT_APPROVED.json",
+    "snapshotPath": "qa/g7-6-b4-1/evidence/owner-submitted-device-review.original.json",
+    "sha256": "d039fd3b4ef1aac636c4a57ded40e3a6fe11f29cb08169bde830fe8a13426527",
+    "bytes": 1838,
+    "createdAt": "2026-11-15T13:43:46.701Z",
+    "createdAtVietnam": "2026-11-15T20:43:46.701+07:00",
+    "submittedToDrive": {
+      "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+      "fileId": "16wGMStVH__nndQApRqEFPN_h5o69q4wR",
+      "url": "https://drive.google.com/file/d/16wGMStVH__nndQApRqEFPN_h5o69q4wR/view?usp=drivesdk"
+    },
+    "validator": {
+      "schema": "g76b4.physical-device-manual-checklist.v1",
+      "expectedCount": 13,
+      "observedCount": 13,
+      "allObservedTrue": true,
+      "notesEmpty": true,
+      "sourceScope": "MANUAL_OBSERVATION_ONLY_NOT_OWNER_SIGNATURE"
+    }
+  },
+  "observedDevice": {
+    "deviceDescription": "NOT_PROVIDED",
+    "platformFromUserAgent": "Windows 10",
+    "browserFromUserAgent": "Chrome 157",
+    "viewportCss": {
+      "width": 1536,
+      "height": 791
+    },
+    "physicalAndroidEvidenceInUploadedJson": false,
+    "physicalIPhoneEvidenceInUploadedJson": false,
+    "explicitDeviceListSupplied": false
+  },
+  "userChatConfirmation": {
+    "textMeaning": "User confirmed interactions, problem-solving and multi-device/multi-platform display of G76B4 demo and provided QA JSON",
+    "origin": "DIRECT_USER_STATEMENT_IN_THIS_CONVERSATION_2026-11-15",
+    "acceptedScope": [
+      "VISUAL_DISPLAY_USER_ATTESTED",
+      "INTERACTION_USER_ATTESTED",
+      "ANSWER_ENTRY_USER_ATTESTED",
+      "MULTIPLATFORM_USER_ATTESTED_UNITEMIZED"
+    ],
+    "deviceModelOrPerPlatformProof": "NOT_IN_JSON",
+    "evidenceIsFormalSignedDocument": false
+  },
+  "unchangedSourceFields": {
+    "reviewerApproved": false,
+    "reviewerSignature": null,
+    "pedagogicalApproval": false,
+    "deviceDescription": "NOT_PROVIDED",
+    "trustedGradingOpened": false,
+    "gasDeployed": false,
+    "studentDataCollected": false
+  },
+  "decisions": {
+    "technicalQA": "INHERITED_PASS",
+    "humanVisualInteractionAttestation": "RECORDED_OWNER_CONFIRMED_IN_CHAT_NOT_CRYPTOGRAPHIC_SIGNATURE",
+    "manualChecklist": "PASS_13_OF_13_BY_USER_REPORT",
+    "specificWindowsDesktopBrowserEvidence": "PRESENT",
+    "androidIOSPhysicalDeviceValidation": "ADDITIONAL_EVIDENCE_NOT_SUBMITTED",
+    "ttsAudible": "NOT_TESTED_IN_UPLOADED_JSON",
+    "mentalRendererRegistration": "STILL_PENDING_SEPARATE_OWNER_CONTRACT_APPROVAL",
+    "e04CurriculumPolicy": "STILL_BLOCKED_MISSING_SGK_LESSON_PAGE_AND_PEDAGOGICAL_SIGNOFF",
+    "productionUse": "NOT_APPROVED"
+  },
+  "releaseLocks": {
+    "mergeMain": false,
+    "mergeTestTheoMain": false,
+    "gasDeploy": false,
+    "d10TrustedGrading": false,
+    "studentDataWrite": false,
+    "scoreAndStars": false,
+    "changeB4Renderer": false,
+    "changeP06Core": false,
+    "changeG74Core": false,
+    "autoSignoff": false
+  },
+  "next": "G7.6-B.4.2 – itemized real-device proof if required, auxiliary mental renderer contract owner decision and SGK lesson/page review for E04, all separate"
+}
