@@ -8,7 +8,7 @@ const {resolvePublic,eligibleForActivation,policy,overlay}=require('./e04-produc
 const manifest=require('../g7-6/resource-renderer-resolver.cjs');
 let count=0;const eq=(a,b,m)=>{assert.deepEqual(a,b,m);count++},yes=(x,m)=>{assert.ok(x,m);count++};
 const p0=process.argv[2];if(!p0)throw Error('PINNED_P06_SOURCE_REQUIRED');
-const real=loadProducer(p0);yes(real.ok);const producer=createExperimentalProducer(real);
+const real=loadProducer(p0);yes(real.ok);const producer=createExperimentalProducer({sha:real.sha,registry:real.generator.policyRegistry});
 yes(producer.ok);
 const registry=manifest.loadManifest();
 eq(manifest.checkManifest(registry).count,12);
