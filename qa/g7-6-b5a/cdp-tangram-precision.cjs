@@ -139,6 +139,12 @@ async function main(){
   // This is native Chrome emulation only, not evidence of physical phone touch.
   emulatedTapPassed=true;
  }
+ const pointerProof=await send('Runtime.evaluate',{expression:"(() => {const host=document.querySelector('#b3-tangram .g76b5a-tangram');if(!host)return {error:'TANGRAM_HOST_MISSING'};const roof=host.querySelector('[data-piece-id=roof]'),svg=host.querySelector('svg.g76b5a-svg');if(!roof||!svg)return {error:'PIECE_OR_SVG_MISSING'};const original=roof.getBoundingClientRect();const x=original.left+original.width/2,y=original.top+original.height/2;roof.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,cancelable:true,button:0,pointerId:77,clientX:x,clientY:y}));svg.dispatchEvent(new PointerEvent('pointermove',{bubbles:true,pointerId:77,clientX:x+70,clientY:y+15}));svg.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerId:77,clientX:x+70,clientY:y+15}));const changed=host.querySelector('[data-piece-id=roof]'),next=changed.getBoundingClientRect();return {before:original.x,after:next.x,placed:host.querySelector('.g74-geo-status').textContent,delta:Math.abs(next.x-original.x),newTransform:changed.getAttribute('transform')}})()",returnByValue:true});
+ const pointer=pointerProof.result?.value;
+ assert.ok(pointer&&!pointer.error,'TANGRAM_POINTER_DRAG_NOT_AVAILABLE '+JSON.stringify(pointer));
+ assert.ok(pointer.delta>=35,'TANGRAM_DRAG_FAILED_TO_MOVE_PIECE '+JSON.stringify(pointer));
+ assert.ok(pointer.placed.includes('2 / 3'),'DRAG_MUST_UNPLACE_PREVIOUS_SNAP '+JSON.stringify(pointer));
+ console.log('G76B5A_POINTER_DRAG_AND_UNPLACE_PASS',w,panel,JSON.stringify(pointer));
  const receipt={status:'PASS_B5A_TANGRAM_SNAPPED_OUTLINE_ALIGNMENT',
   viewportCssWidth:w,documentScrollWidth:read.scrollWidth,
   screenshotWidth:pngWidth,screenshotHeight:pngHeight,
