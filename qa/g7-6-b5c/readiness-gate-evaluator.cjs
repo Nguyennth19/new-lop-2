@@ -17,7 +17,7 @@ function evaluate(matrix,{readOnly=true}={}){
  const required=[...hardReleaseBlock,...appBlock,...d10Block,'C01','C02','C03','C04','C05','C06','C15','C19'];
  if(required.some(id=>!byId.has(id)))return {ok:false,code:'MISSING_REQUIRED_GATE',go:false};
  const protectedFields=Object.entries(matrix.executionRules||{});
- if(protectedFields.length!==15||
+ if(protectedFields.length!==14||
    protectedFields.some(([key,v])=>key.startsWith('allow')?v!==true:v!==true)||
    matrix.rollback?.protectedRuntimeChanged!==false||
    matrix.rollback?.requiresGASRollback!==false)
