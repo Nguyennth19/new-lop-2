@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "g76b5b.resource-tts-e2e.test-policy.v1",
+  "status": "TEST_ONLY_FAIL_CLOSED",
+  "date": "2026-11-15",
+  "source": {
+    "baseB5A": "f3653d850864f75c7e3640585364d68f17f1428c",
+    "p06Pinned": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "originalRegistry": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+    "b5aTangram": "qa/g7-6-b5a/tangram-placement-v12.js"
+  },
+  "coverage": {
+    "p06E03": 8,
+    "p06E02": 2,
+    "e04Sidecar": 4,
+    "total": 14,
+    "requiredTypes": [
+      "D2",
+      "D4",
+      "D5",
+      "D9",
+      "MENTAL_INPUT_TEST_EXTENSION"
+    ],
+    "all10FormTypes": false
+  },
+  "asset": {
+    "registry288": "METADATA_ONLY_NOT_CONTENT_APPROVED",
+    "fluent46": "STAGING_DISABLED",
+    "allowWebpDownload": false,
+    "allowAutomaticSvgFallback": false,
+    "allowDecorativeCountInference": false,
+    "d5": "NATIVE_PUBLIC_PARAMETRIC_SVG",
+    "d9": "EMOJI_REPEAT_EXACT_FROM_PUBLIC_ITEM_COUNT",
+    "numberInput": "NO_ASSET",
+    "d2": "HTML_FIELDS",
+    "d4": "HTML_FIELDS",
+    "requireOwnerAssetApprovalForRealAsset": true
+  },
+  "speech": {
+    "profileId": "vi_math_v2_dynamic",
+    "sourceStatus": "PINNED_MANIFEST_REFERENCE_ONLY_NOT_LOADED_IN_THIS_BRANCH",
+    "fallbackAdapter": "qa/g7-4-choice-reference-v11/choice-v11-speech.js",
+    "locale": "vi-VN",
+    "allowedText": "VISIBLE_PUBLIC_PROMPT_ONLY",
+    "maxCharacters": 600,
+    "defaultEnabled": false,
+    "executeSpeechSynthesisInCI": false,
+    "audiblePlaybackValidated": false,
+    "noSolutionsOrAnswerSpeech": true,
+    "spokenTextCandidatesAreNotAudioEvidence": true
+  },
+  "producer": {
+    "requirePinnedP06Source": true,
+    "requirePublicWhitelistedProjection": true,
+    "e04LabOnly": true,
+    "requireE04CurriculumApprovalBeforeStudentUse": true,
+    "forbidCrossLessonAssetPromotion": true
+  },
+  "security": {
+    "noTestTheoMainMerge": true,
+    "noMainMerge": true,
+    "noGASDeploy": true,
+    "noD10TrustedGrading": true,
+    "noStudentIO": true,
+    "noScoresStars": true,
+    "noServerGrader": true,
+    "noManifestMutation": true,
+    "noRealAssetAutoload": true,
+    "noSpeechAutoPlayback": true
+  },
+  "gates": {
+    "resourceMetadata": "READY_FOR_QA",
+    "speechTextProjection": "READY_FOR_QA",
+    "browserSpeakRequest": "NOT_YET_TESTED",
+    "actualSoundOutput": "PENDING_REAL_DEVICE",
+    "fullGrade2CurriculumMapping": "BLOCKED_E04_SGK",
+    "realAppIntegration": "DENIED"
+  }
+}
