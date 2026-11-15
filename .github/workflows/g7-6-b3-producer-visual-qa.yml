@@ -64,14 +64,13 @@ jobs:
         run: |
           python3 -m http.server 8799 --bind 127.0.0.1 >/tmp/g76b3-server.log 2>&1 &
           sleep 2
-      - name: Gate B3-3 Chrome desktop real view + native interactions
+      - name: Gate B3-3 desktop CDP actual CSS 1440px, native interactions and screenshot
         shell: bash
         run: |
           set -euo pipefail
-          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          export BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
           mkdir -p /tmp/g76b3-evidence/chrome
-          timeout 120s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --window-size=1440,960 --virtual-time-budget=35000 --dump-dom 'http://127.0.0.1:8799/qa/g7-6-b3/Chrome_B3_Producer_Visual_Acceptance_TEST.html?panel=all' > /tmp/g76b3-evidence/chrome/desktop-1440.html 2>/tmp/g76b3-evidence/chrome/stderr-1440.log
-          python3 qa/g7-6-b3/verify-desktop-chrome.py 1440
+          timeout 100s node qa/g7-6-b3/cdp-visual-regression.cjs 1440 all
       - name: Gate B3-4 actual CSS mobile viewport + per-panel screenshots with no horizontal overflow
         shell: bash
         run: |
@@ -81,7 +80,6 @@ jobs:
             timeout 100s node qa/g7-6-b3/cdp-visual-regression.cjs 390 "$panel"
           done
           timeout 100s node qa/g7-6-b3/cdp-visual-regression.cjs 360 all
-          timeout 100s node qa/g7-6-b3/cdp-visual-regression.cjs 1440 all
           echo G76B3_CDP_VISUAL_EVIDENCE_CAPTURED_OWNER_APPROVAL_PENDING
       - name: Gate B3-5 verify PNG evidence exists for mobile and desktop and owner review remains open
         shell: bash
