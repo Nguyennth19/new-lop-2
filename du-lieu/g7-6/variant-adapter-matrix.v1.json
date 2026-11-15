@@ -1,0 +1,247 @@
+{
+  "schemaVersion": "g76.variant-adapter-matrix.v1",
+  "date": "2026-11-15",
+  "status": "ISOLATED_TEST_ONLY_NOT_GAS_CONNECTED",
+  "base": {
+    "branch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+    "commit": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+    "manifest": "du-lieu/g7-6/resource-renderer-manifest.v1.json"
+  },
+  "p06": {
+    "branch": "test/p0-6-fc-audit-20261114",
+    "observedHead": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "candidateFile": "thu-nghiem/p0-6/pilot/toan_b21.candidate.json",
+    "generator": "thu-nghiem/p0-6/math-variant-generator-v1.cjs",
+    "composer": "thu-nghiem/p0-6/math-lesson-composer-v1.cjs",
+    "copiedIntoG76": false
+  },
+  "sourcePolicy": "No implicit kind guessing; source.kind and renderer.component must match matrix; fixtures are not verified P0.6 generator output",
+  "visualPolicy": {
+    "assetBinding": "DENY_ALL_UNVERIFIED_ASSET_IDS",
+    "countSafe": "D9 trusted proof required; no automatic count image binding",
+    "fluentAutoFallback": false,
+    "mathSvg": "PINNED_PARAMETRIC_RENDERER_ONLY"
+  },
+  "speech": {
+    "allowed": [
+      "vi_math_v2_dynamic",
+      "vi_math_v12_stable"
+    ],
+    "default": "vi_math_v2_dynamic",
+    "text": "VISIBLE_PROMPT_ONLY",
+    "browserTtsVerified": false
+  },
+  "grader": {
+    "enabled": false,
+    "trustRoute": "SERVER_ONLY_NOT_CONNECTED",
+    "d10": "BLOCK_NEW_GRADED_VARIANTS_PRESERVE_G6"
+  },
+  "release": {
+    "ready": false,
+    "gasDeployAllowed": false,
+    "mergeAllowed": false
+  },
+  "adapters": [
+    {
+      "typeId": "D1",
+      "contract": "NUMBER_BOND_UNIT",
+      "sourceKind": "g76.fixture.d1",
+      "allowedPublicParameters": [
+        "a",
+        "b",
+        "dm",
+        "m"
+      ],
+      "visualStrategy": "STRUCTURED_DIAGRAM",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D2",
+      "contract": "COLUMN_ADD_SUB",
+      "sourceKind": "math.vertical",
+      "allowedPublicParameters": [
+        "a",
+        "b",
+        "operation",
+        "profile",
+        "level",
+        "carryPolicy"
+      ],
+      "visualStrategy": "HTML_FIELDS",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "P06_NATIVE_DIRECT",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D3",
+      "contract": "MATCH_PAIRS",
+      "sourceKind": "g76.fixture.d3",
+      "allowedPublicParameters": [
+        "leftIds",
+        "leftTexts",
+        "rightIds",
+        "rightTexts",
+        "relationMode"
+      ],
+      "visualStrategy": "HTML_FIELDS",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D4",
+      "contract": "SINGLE_CHOICE",
+      "sourceKind": "math.mental",
+      "allowedPublicParameters": [
+        "selectionMode"
+      ],
+      "visualStrategy": "HTML_FIELDS",
+      "visualMode": "DECORATIVE",
+      "evidenceStatus": "P06_CHOICE_CONDITIONAL",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D5",
+      "contract": "GEOMETRY_SHAPES",
+      "sourceKind": "g76.fixture.d5",
+      "allowedPublicParameters": [
+        "shapeIds",
+        "shapeLabels",
+        "shapeTypes",
+        "shapeX",
+        "shapeY",
+        "shapeW",
+        "shapeH"
+      ],
+      "visualStrategy": "PARAMETRIC_SVG",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D6",
+      "contract": "ORDER_SORT",
+      "sourceKind": "g76.fixture.d6",
+      "allowedPublicParameters": [
+        "sortMode",
+        "itemIds",
+        "itemLabels",
+        "groupIds",
+        "groupLabels"
+      ],
+      "visualStrategy": "HTML_FIELDS",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D7",
+      "contract": "COMPARE_VALUES",
+      "sourceKind": "g76.fixture.d7",
+      "allowedPublicParameters": [
+        "rowIds",
+        "leftTexts",
+        "rightTexts",
+        "hintPolicy"
+      ],
+      "visualStrategy": "PARAMETRIC_SVG",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D8",
+      "contract": "RULER_CLOCK",
+      "sourceKind": "g76.fixture.d8",
+      "allowedPublicParameters": [
+        "measureMode",
+        "segmentStart",
+        "segmentEnd",
+        "pixelsPerUnit",
+        "rulerUnits",
+        "initialZero",
+        "unit",
+        "initialHour",
+        "initialMinute",
+        "minuteStep"
+      ],
+      "visualStrategy": "PARAMETRIC_SVG",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D8A",
+      "contract": "LITER",
+      "sourceKind": "g76.fixture.d8a",
+      "allowedPublicParameters": [
+        "itemIds",
+        "itemLabels",
+        "capacityLiters",
+        "currentLiters"
+      ],
+      "visualStrategy": "PARAMETRIC_SVG",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D8B",
+      "contract": "WEIGHT",
+      "sourceKind": "g76.fixture.d8b",
+      "allowedPublicParameters": [
+        "itemIds",
+        "itemLabels",
+        "massKg"
+      ],
+      "visualStrategy": "PARAMETRIC_SVG",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "FIXTURE_ONLY",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D9",
+      "contract": "PICTOGRAPH_COUNT",
+      "sourceKind": "g76.fixture.d9",
+      "allowedPublicParameters": [
+        "rowIds",
+        "rowLabels",
+        "rowSymbols",
+        "itemCounts",
+        "questionRowId"
+      ],
+      "visualStrategy": "NO_VISUAL",
+      "visualMode": "EXACT_COUNT",
+      "evidenceStatus": "FIXTURE_ONLY_COUNT_PROOF_REQUIRED",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    },
+    {
+      "typeId": "D10",
+      "contract": "G6_WORD_PROBLEM",
+      "sourceKind": "math.word_problem",
+      "allowedPublicParameters": [
+        "summary",
+        "unit",
+        "calculationSteps"
+      ],
+      "visualStrategy": "HTML_FIELDS",
+      "visualMode": "REPRESENTATIVE",
+      "evidenceStatus": "P06_G6_READONLY_BLOCKED",
+      "rendererSource": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "sourceCopy": false
+    }
+  ]
+}
