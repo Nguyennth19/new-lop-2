@@ -37,7 +37,7 @@
   },
   "speech": {
     "profileId": "vi_math_v2_dynamic",
-    "sourceStatus": "PINNED_MANIFEST_REFERENCE_ONLY_NOT_LOADED_IN_THIS_BRANCH",
+    "sourceStatus": "PINNED_G75_V2_SOURCE_LOADED_VIA_IMMUTABLE_INDEPENDENT_CHECKOUT_CI_ONLY",
     "fallbackAdapter": "qa/g7-4-choice-reference-v11/choice-v11-speech.js",
     "locale": "vi-VN",
     "allowedText": "VISIBLE_PUBLIC_PROMPT_ONLY",
@@ -46,7 +46,12 @@
     "executeSpeechSynthesisInCI": false,
     "audiblePlaybackValidated": false,
     "noSolutionsOrAnswerSpeech": true,
-    "spokenTextCandidatesAreNotAudioEvidence": true
+    "spokenTextCandidatesAreNotAudioEvidence": true,
+    "sourceCommit": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+    "sourceBlobSha": "605a8ed9b335526af82c8870dca4753bd511b913",
+    "sourcePath": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js",
+    "textNormalizer": "G75V2.normalize({lang:vi-VN,context:math})",
+    "actualSoundOutput": "PENDING_DEVICE_AUDIBLE_REVIEW"
   },
   "producer": {
     "requirePinnedP06Source": true,
