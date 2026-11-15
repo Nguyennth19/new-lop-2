@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "g76b5a.renderer-curriculum-closure-checkpoint.v1",
+  "stage": "G7.6-B.5-A",
+  "date": "2026-11-15",
+  "branch": "test/g7-6-b5a-renderer-curriculum-tangram-20261115",
+  "status": "PASS_TECHNICAL_RENDERER_CONTRACT_E04_LAB_TANGRAM_CORRECT_SNAP_AND_DRAG_WITH_CURRICULUM_ACTIVATION_BLOCKED",
+  "baseline": {
+    "b41Sha": "0263175544bcfd03433a89b8515bdd9f11a00d26",
+    "b3Sha": "c3757227856f50e0e122407e0121c3e40e024728",
+    "p06Sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "frozenOriginalSha256": "78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced",
+    "noReapprovalPriorGates": true
+  },
+  "fourGates": {
+    "G1_MENTAL_RENDERER": {
+      "technical": "PASS_AUXILIARY_TEST_OVERLAY_DECLARED",
+      "id": "MATH_MENTAL_NUMBER_INPUT_V1",
+      "schema": "g76b3.mental-number-input.v1",
+      "existingOfficialManifestChanged": false,
+      "ownerRegistrationDecision": "PENDING",
+      "releaseReady": false
+    },
+    "G2_TANGRAM": {
+      "technical": "PASS_GEOMETRY_POLICY_AND_RENDERER_V1_2",
+      "lv1lv2": true,
+      "lv3": false,
+      "sgkSourceMapped": false,
+      "ownerPedagogy": "PENDING",
+      "labOnly": true
+    },
+    "G3_PICTOGRAPH": {
+      "technical": "PASS_COUNT_RELATION_POLICY",
+      "lv1lv2": true,
+      "lv3": false,
+      "sgkSourceMapped": false,
+      "ownerPedagogy": "PENDING",
+      "labOnly": true
+    },
+    "G4_E04_PRODUCER": {
+      "technical": "PASS_SEEDED_SIDECAR_OUTPUT_CONTRACT_WITH_PUBLIC_D5_D9",
+      "isNativeP06E02E03": false,
+      "actualCurriculumLessonId": null,
+      "technicalLabLessonId": "toan_b999",
+      "schoolLessonActivation": false,
+      "officialP06E04ProducerApproved": false
+    }
+  },
+  "tangramFix": {
+    "rootCause": "NATIVE_G74_VIEW_TRANSLATES_TO_TARGET_CENTER_WITHOUT_NEGATING_NONZERO_PIECE_LOCAL_CENTER",
+    "example": "WALL_LOCAL_BBOX_CENTER_0_MINUS25_PRODUCES_25_SVG_UNIT_OFFSET",
+    "comparison": "ORIGINAL_DEMO_SELECT_ROTATE_SNAP_AT_NATIVE_TARGET_WITH_ANGLE_ZERO",
+    "view": "qa/g7-6-b5a/tangram-placement-v12.js",
+    "style": "qa/g7-6-b5a/tangram-placement-v12.css",
+    "nativeG74SourceModified": false,
+    "algorithm": "TRANSLATE_TARGET_CENTER_ROTATE_TRANSLATE_NEGATIVE_PIECE_CENTER",
+    "modes": [
+      "TAP_PIECE_AND_GHEP_VAO_MAU_AUTO_FIT_PUBLIC_OUTLINE",
+      "TAP_TARGET_TO_TRY",
+      "POINTER_DRAG_TO_MOVE_UNPLACE",
+      "ROTATE_90_DEGREES",
+      "CLEAR_AND_RESTORE"
+    ],
+    "grading": false,
+    "answerKeyUsed": false
+  },
+  "contracts": {
+    "overlay": "qa/g7-6-b5a/auxiliary-renderer-overlay.v1.json",
+    "curriculumDraft": "qa/g7-6-b5a/e04-curriculum-policy.draft.v1.json",
+    "producer": "qa/g7-6-b5a/e04-producer-contract.cjs",
+    "labLessonId": "toan_b999",
+    "curriculumRef": null,
+    "skillId": null,
+    "sourceSGKLessonPageEvidence": "NOT_SUPPLIED",
+    "baseManifestRegistryCount": 12,
+    "baseManifestStillPinned": true
+  },
+  "qa": {
+    "inherited": {
+      "a": 296,
+      "b": 221,
+      "b2": 123,
+      "b3": 259,
+      "b4": 106,
+      "b41": 86,
+      "total": 1091
+    },
+    "b5aNew": 203,
+    "totalNodeAssertions": 1294,
+    "status": "PASS_OFFLINE_CI",
+    "firstSuccessfulRunId": 43730444122,
+    "latestCodeRunId": 43730905542,
+    "latestCodeRunConclusion": "success",
+    "chrome": {
+      "viewportsCss": [
+        360,
+        390,
+        1440
+      ],
+      "captures": [
+        "390_tangram",
+        "360_tangram",
+        "1440_tangram",
+        "390_all"
+      ],
+      "tangramVariants": 2,
+      "piecesPerVariant": 3,
+      "measuredTargetAlignment": {
+        "dx": 0,
+        "dy": 0,
+        "dWidth": 0,
+        "dHeight": 0,
+        "unit": "CSS_PIXELS"
+      },
+      "pointerDragObservedPixelsApprox": 70,
+      "dragUnplacesCorrectly": true,
+      "noMobileOverflow": true,
+      "realPhoneManualOwnerAcceptance": "PENDING_NEW_B5A_VIEW",
+      "oldB41OwnerAcceptanceAppliesToOldB4Only": true
+    },
+    "offlineHtml": {
+      "path": "qa/g7-6-b5a/generated/G76B5A_Tangram_Geometry_Fix_Standalone_TEST.html",
+      "generatedInCI": true,
+      "publicCases": 14,
+      "manualReviewItems": 15,
+      "networkFetch": false,
+      "gas": false,
+      "grading": false
+    }
+  },
+  "gates": {
+    "B5A_0_PROTECTED_IMMUTABILITY": "PASS",
+    "B5A_1_A_TO_B41_INHERITED": "PASS_1091",
+    "B5A_2_RENDERER_PRODUCER_POLICY": "PASS_203",
+    "B5A_3_OFFLINE_PHONE_REVIEW": "PASS_15_CHECKLIST",
+    "B5A_4_TRUE_CHROME_VISUAL_BBOX": "PASS_TWO_VARIANTS_THREE_PIECES_ZERO_DELTA",
+    "B5A_5_POINTER_DRAG": "PASS_70PX_UNPLACES",
+    "B5A_6_SGK_MAPPING": "BLOCKED_NO_SOURCE_EVIDENCE",
+    "B5A_7_REAL_E04_LESSON_POLICY": "BLOCKED_OWNER_PEDAGOGY",
+    "B5A_8_OFFICIAL_MENTAL_RENDERER_MANIFEST": "BLOCKED_OWNER_REGISTRATION_DECISION",
+    "B5A_9_PHYSICAL_NEW_VIEW_OWNER": "PENDING",
+    "B5A_10_P06_NATIVE_E04": "NOT_INTEGRATED",
+    "B5A_11_TEST_THEO_MAIN": "DENIED",
+    "B5A_12_GAS": "DENIED",
+    "B5A_13_D10_GRADING": "DENIED",
+    "B5A_14_STUDENT_DATA": "DENIED"
+  },
+  "files": {
+    "report": "docs/kiem-dinh/G7.6-B5A_RENDERER_CURRICULUM_TANGRAM_POSITION_QA_20261115.md",
+    "executionLog": "qa/g7-6-b5a/execution-log.g76b5a.md",
+    "workflow": ".github/workflows/g7-6-b5a-renderer-curriculum-qa.yml",
+    "tests": "qa/g7-6-b5a/contract-and-tangram.test.cjs"
+  },
+  "protect": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "p06Changed": false,
+    "g74Changed": false,
+    "g6Changed": false,
+    "gasDeployed": false,
+    "d10GradeEnabled": false,
+    "studentDataWrites": false,
+    "scoreStarWrites": false,
+    "sourceApprovalInvented": false,
+    "legacyManifestChanged": false
+  },
+  "rollback": {
+    "returnToB41Sha": "0263175544bcfd03433a89b8515bdd9f11a00d26",
+    "isolatedTestOnly": true,
+    "noAppRuntimeImpact": true
+  },
+  "next": "G7.6-B.5-B – owner confirms B5A placement/drag review, then resource/TTS/integration QA; E04 SGK mapping in separate source-validation gate"
+}
