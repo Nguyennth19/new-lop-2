@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "g76b3.producer-coverage-visual-checkpoint.v1",
+  "stage": "G7.6-B.3",
+  "date": "2026-11-15",
+  "branch": "test/g7-6-b3-producer-coverage-visual-20261115",
+  "status": "PASS_REAL_P06_E03_8_OF_8_OFFLINE_AND_NEW_E04_SIDECAR_CHROME_QA_OWNER_APPROVAL_PENDING",
+  "baseline": {
+    "aSha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+    "bSha": "0a8768ac5658f6396e76f68a3513a3c1e6843918",
+    "b2Sha": "be426e6c10c6ae9636a9a8b28c59b407641222d4",
+    "reapprovePreviouslyPassed": false
+  },
+  "actualP06": {
+    "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "branch": "test/p0-6-fc-audit-20261114",
+    "codeCopiedOrModified": false,
+    "loadedViaIndependentCheckout": true,
+    "e03": {
+      "actualGenerated": 8,
+      "mappedExistingD2": 2,
+      "mappedMentalNumberInputTestExtension": 6,
+      "technicalSurfaceCoverage": "8/8",
+      "studentReleaseReady": false
+    },
+    "e02": {
+      "actualGeneratedChoice": 2,
+      "mappedD4": 2
+    },
+    "policyStatus": "DRAFT_OWNER_SIGNOFF_PENDING"
+  },
+  "mentalSurface": {
+    "path": "qa/g7-6-b3/mental-number-input.cjs",
+    "view": "qa/g7-6-b3/mental-number-input-view.js",
+    "typeId": "MENTAL_INPUT_TEST_EXTENSION",
+    "originalD1OrD4Recast": false,
+    "manifestRegistered": false,
+    "gradingEnabled": false,
+    "answerSpecExposed": false
+  },
+  "e04": {
+    "producer": "qa/g7-6-b3/p06-e04-experimental-producer.cjs",
+    "policy": "qa/g7-6-b3/p06-e04-extension-policy.candidate.json",
+    "status": "DRAFT_TECHNICAL_ONLY_OWNER_SIGNOFF_PENDING",
+    "lessonId": "toan_b999",
+    "curriculumRef": null,
+    "isP06CoreE02OrE03": false,
+    "generatedTangramCount": 2,
+    "generatedPictographCompareCount": 2,
+    "seedDeterministic": true,
+    "teacherAnswerMapExposed": false,
+    "validatedNativeG74": true,
+    "assetRegistryEnabled": false,
+    "qaScope": "SANDBOX_TECHNICAL_ONLY"
+  },
+  "assertions": {
+    "a": 296,
+    "b": 221,
+    "b2": 123,
+    "b3": 259,
+    "total": 899,
+    "status": "PASS_OFFLINE_CI"
+  },
+  "chrome": {
+    "runId": 43690976255,
+    "runConclusion": "success",
+    "testCodeSha": "b13be47dcc041ebd50d46d1c08c7dfe72827bcfa",
+    "artifactId": 14151948077,
+    "artifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43690976255/artifacts/14151948077",
+    "actualCssViewport": [
+      360,
+      390,
+      1440
+    ],
+    "viewport360": {
+      "checks": 59,
+      "scrollWidth": 360
+    },
+    "viewport390": {
+      "allChecks": 59,
+      "perPanelChecks": 54,
+      "panels": [
+        "mental",
+        "column",
+        "choice",
+        "tangram",
+        "chart"
+      ],
+      "scrollWidth": 390
+    },
+    "viewport1440": {
+      "checks": 59,
+      "scrollWidth": 1425,
+      "scrollbarInset": 15
+    },
+    "screenshotsFullPNG": 8,
+    "previewJPEG": 3,
+    "cleanStateBeforeCapture": true,
+    "autoPixelParityClaim": false,
+    "ownerVisualSignoff": "PENDING",
+    "physicalDeviceTouch": "NOT_TESTED",
+    "audibleTTS": "NOT_TESTED"
+  },
+  "visualInspection": {
+    "performed": "ACTUAL_FINAL_CHROME_SCREENSHOT_VISUAL_INSPECTION_BY_ASSISTANT",
+    "source": "Chrome artifact PNG mobile 390 individual mental/column/choice/tangram/chart",
+    "layoutNoTruncationObserved": true,
+    "initialTangramOverlappingPieces": "FIXED_AND_REGRESSION_GUARDED",
+    "testAnswerInputsClearedBeforeCapture": true,
+    "openIssues": [
+      "G74_TANGRAM_TARGET_BUTTON_LABELS_SHOW_TECHNICAL_IDS_EG_KHUNG_TARGET_ROOF",
+      "OWNER_SIGNOFF_PENDING",
+      "REAL_DEVICE_TOUCH_NOT_TESTED",
+      "AUDIBLE_TTS_NOT_TESTED"
+    ]
+  },
+  "googleDrive": {
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "docId": "11q_-0X6NcodGr_5KADNnKikQSAMrEeBE6dV2nw2isrY",
+    "docUrl": "https://docs.google.com/document/d/11q_-0X6NcodGr_5KADNnKikQSAMrEeBE6dV2nw2isrY/edit?usp=drivesdk",
+    "zipId": "1BijI-0NOWulHsvMXutoHq2hZOEkPz850",
+    "zipUrl": "https://drive.google.com/file/d/1BijI-0NOWulHsvMXutoHq2hZOEkPz850/view?usp=drivesdk",
+    "zipBytes": 1924546,
+    "verifiedInProjectFolder": true
+  },
+  "gates": {
+    "B3_SOURCE": "PASS_PINNED",
+    "B3_P06_E03_COVERAGE": "PASS_8_OF_8_TEST_SURFACE",
+    "B3_P06_E02_CHOICE": "PASS_2_OF_2",
+    "B3_E04_SEEDED_CANDIDATE": "PASS_UNAPPROVED_TECHNICAL_SIDECAR",
+    "B3_NATIVE_SUBMODES": "PASS_OFFLINE",
+    "B3_SECURITY": "PASS_OFFLINE_FAIL_CLOSED",
+    "B3_CHROME": "PASS_HEADLESS_CDP",
+    "B3_ASSISTANT_SCREENSHOT_REVIEW": "PASS_LIMITED_SCOPE_WITH_OPEN_TARGET_LABEL_UX",
+    "B3_OWNER_VISUAL": "PENDING",
+    "B3_PHYSICAL_DEVICE": "NOT_TESTED",
+    "B3_TTS_AUDIO": "NOT_TESTED",
+    "B3_MENTAL_MANIFEST_APPROVAL": "BLOCKED",
+    "B3_E04_CURRICULUM_POLICY": "BLOCKED",
+    "B3_APP_MERGE": "DENIED",
+    "B3_GAS": "DENIED",
+    "B3_D10_TRUSTED_GRADING": "DENIED"
+  },
+  "protected": {
+    "main": false,
+    "testTheoMain": false,
+    "g6": false,
+    "g74Renderer": false,
+    "p06E02E03": false,
+    "gasApp": false,
+    "studentRecords": false,
+    "scoreStars": false,
+    "deployment": false,
+    "merge": false
+  },
+  "files": {
+    "report": "docs/kiem-dinh/G7.6-B3_PRODUCER_COVERAGE_VISUAL_ACCEPTANCE_20261115.md",
+    "ownerReview": "qa/g7-6-b3/OWNER_VISUAL_ACCEPTANCE_PENDING.md",
+    "journal": "qa/g7-6-b3/execution-log.g76b3.md",
+    "workflow": ".github/workflows/g7-6-b3-producer-visual-qa.yml",
+    "test": "qa/g7-6-b3/producer-coverage.test.cjs",
+    "chrome": "qa/g7-6-b3/Chrome_B3_Producer_Visual_Acceptance_TEST.html"
+  },
+  "rollback": {
+    "strategy": "STOP_B3_TEST_AND_USE_G76_B2_BASELINE_ONLY",
+    "sha": "be426e6c10c6ae9636a9a8b28c59b407641222d4",
+    "noAppChangesNecessary": true
+  },
+  "next": "G7.6-B.4 – Owner Visual & Curriculum/Renderer Policy Signoff (no GAS/test-theo-main/D10)"
+}
