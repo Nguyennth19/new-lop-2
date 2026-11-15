@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "g76b.variant-adapter-checkpoint.v1",
+  "recordedDate": "2026-11-15",
+  "stage": "G7.6-B",
+  "status": "PASS_OFFLINE_ADAPTER_MATRIX_AND_NATIVE_CORE_CI_NOT_E2E_NOT_RELEASE",
+  "branch": "test/g7-6-b-variant-adapter-matrix-v1-20261115",
+  "restoreBaseline": {
+    "branch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+    "commit": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+    "manifest": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+    "checkpoint": "qa/g7-6/checkpoint.g76.v1.json",
+    "priorAssertions": 296
+  },
+  "p06Provenance": {
+    "branch": "test/p0-6-fc-audit-20261114",
+    "headObserved": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "sourceModulesNotCopied": true,
+    "liveProducerE2E": false
+  },
+  "matrix": {
+    "path": "du-lieu/g7-6/variant-adapter-matrix.v1.json",
+    "typeCount": 12,
+    "positiveNativeTypes": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7",
+      "D8",
+      "D8A",
+      "D8B",
+      "D9"
+    ],
+    "d10": "FAIL_CLOSED_EXISTING_G6_ONLY",
+    "p06SchemaCompatibleKinds": [
+      "math.vertical",
+      "math.mental (CHOICE only)"
+    ],
+    "otherTypes": "TYPED_TEST_FIXTURE_ONLY"
+  },
+  "code": {
+    "bridge": "qa/g7-6/variant-adapter-bridge.cjs",
+    "tests": "qa/g7-6/variant-adapter-bridge.test.cjs",
+    "workflow": ".github/workflows/g7-6-b-variant-adapter-matrix.yml",
+    "report": "docs/kiem-dinh/G7.6-B_VARIANT_ADAPTER_MATRIX_CONTRACT_INTEGRATION_20261115.md",
+    "executionLog": "qa/g7-6/execution-log.g76b.md"
+  },
+  "qa": {
+    "baselineAssertions": 296,
+    "newAssertions": 221,
+    "ciRunId": 43682760355,
+    "ciHeadSha": "a83d8572c9b30c5d5a6b6d132e88078e71a27404",
+    "ciConclusion": "success",
+    "ciArtifactId": 14148614688,
+    "ciArtifactName": "G76B-Variant-Adapter-Matrix-Contract-Evidence",
+    "ciArtifactUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43682760355/artifacts/14148614688",
+    "nodeCoreOnly": true,
+    "testsOnActualP06Producer": false,
+    "testsOnActualBrowsers": false
+  },
+  "gates": {
+    "B0": "PASS_PINNED_BASELINE",
+    "B1": "PASS_MATRIX_12",
+    "B2": "PASS_STATIC_P06_KIND_MAPPING_WITH_SYNTHETIC_FIXTURE",
+    "B3": "PASS_NATIVE_CORE_11_D10_BLOCKED",
+    "B4": "PASS_SECURITY_NEGATIVE_TEST_OFFLINE",
+    "B5": "PASS_VISUAL_TTS_POLICY_NOT_RUNTIME",
+    "B6": "PASS_CI_221_PLUS_INHERITED_296",
+    "B7": "BLOCKED_LIVE_E2E_APPROVAL_REQUIRED"
+  },
+  "safeguards": {
+    "mainModified": false,
+    "testTheoMainModified": false,
+    "g6Modified": false,
+    "p06Modified": false,
+    "gasTestVersion6Modified": false,
+    "studentDataWrites": false,
+    "scoreOrStarsWrites": false,
+    "autoFluentSvg": false,
+    "autoAssetBinding": false,
+    "trustedD10GradingConnected": false,
+    "releaseReady": false
+  },
+  "futureIntegration": {
+    "preferredAppBase": "test-theo-main",
+    "noMergeBeforeE2E": true,
+    "noGASWithoutSeparateApproval": true
+  },
+  "next": "G7.6-B.2 real generator variants and per-submode mapping after signed source payload; then external E2E/Chrome/TTS/asset/grade gates in TEST with separate authorization",
+  "rollback": {
+    "noMerge": true,
+    "baselineCommit": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+    "strategy": "STOP_CONSUMING_G76B_ADAPTER_AND_RETURN_TO_PINNED_G76A"
+  }
+}
