@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "g76b5a.renderer-auxiliary-test-registry.v1",
+  "status": "TECHNICALLY_REGISTERED_IN_ISOLATED_TEST_OVERLAY_ONLY_NOT_OFFICIAL_MANIFEST",
+  "baseManifest": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+  "baseRegistryCount": 12,
+  "doNotRewriteBase": true,
+  "auxiliaryRenderer": {
+    "id": "MATH_MENTAL_NUMBER_INPUT_V1",
+    "typeId": "MENTAL_INPUT_TEST_EXTENSION",
+    "kind": "math.mental",
+    "inputKind": "NUMBER_INPUT",
+    "publicPlanSchema": "g76b3.mental-number-input.v1",
+    "projector": "qa/g7-6-b3/mental-number-input.cjs",
+    "view": "qa/g7-6-b3/mental-number-input-view.js",
+    "allowedLessonId": "toan_b21",
+    "policy": "EXACT_PINNED_P06_B21_ONLY_DRAFT",
+    "maxDigits": 3,
+    "acceptDigitsOnly": true,
+    "grading": false,
+    "answerSpecInPublic": false,
+    "gradesAndStars": false,
+    "tts": false,
+    "assetBinding": false,
+    "notAThirteenthMathForm": true,
+    "releaseReady": false
+  },
+  "tangramPlacement": {
+    "rendererId": "G76B5A_TANGRAM_PLACEMENT_V12",
+    "view": "qa/g7-6-b5a/tangram-placement-v12.js",
+    "nativeCore": "qa/g7-4-geometry-tangram-reference-v11/geometry-v11-core.js",
+    "replacesB4WrapperInThisTestOnly": true,
+    "geometryAnchor": "BBOX_CENTER_LOCAL_TO_TARGET_CENTER",
+    "fitPolicy": "ONLY_PUBLIC_OUTLINE_SHAPE_CONGRUENCE_AND_ZERO_GRADING",
+    "sourceFrozenDemo": "qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html",
+    "restoreDraftSupported": true,
+    "freePointerDragSupported": true
+  },
+  "e04Producer": {
+    "status": "SCOPED_DRAFT_CONTRACT_PREPARED_NOT_PEDAGOGICALLY_ACTIVATED",
+    "version": "g76b5a.e04-producer-contract.v1",
+    "families": [
+      "D5_TANGRAM",
+      "D9_COMPARE_DIFFERENCE"
+    ],
+    "labLessonId": "toan_b999",
+    "curriculumRef": null,
+    "ownerApprovalRef": null,
+    "p06CoreE02E03Modified": false
+  },
+  "guards": {
+    "mainMerge": false,
+    "testTheoMainMerge": false,
+    "gasDeploy": false,
+    "studentWrites": false,
+    "grading": false,
+    "d10TrustedGrading": false,
+    "officialManifestMutation": false,
+    "e04CurriculumApproved": false
+  }
+}
