@@ -154,7 +154,12 @@ section.g76b3-panel{border:1px solid #d3def0;background:white;padding:clamp(9px,
    pass(box.width>0&&box.left>=-3&&box.right<=innerWidth+3,'panel-within-viewport-'+panel.dataset.panel);
   }
   const targets=[...document.querySelectorAll('.g76b3-mental-equation input:not(:disabled)')];
-  pass(targets.every(x=>x.getBoundingClientRect().height>=44),'mental-accessible-input-height');
+  pass(targets.length===6,'all-mental-inputs-exist-in-document');
+  if(selected==='all'||selected==='mental'){
+   pass(targets.every(x=>x.getBoundingClientRect().height>=44),'mental-accessible-input-height');
+  }else{
+   pass(targets.every(x=>x.getBoundingClientRect().height===0),'non-selected-mental-panel-hidden');
+  }
   const result={status:'PASS_B3_CHROME_PRODUCER_VISUAL_STRUCTURAL',
    viewport:{width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth},
    selected,checks,checkCount:checks.length,publicCases:data.cases.length,
