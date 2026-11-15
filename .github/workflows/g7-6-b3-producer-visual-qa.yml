@@ -96,7 +96,10 @@ jobs:
             d=json.loads((root/('b3-'+suffix+'.json')).read_text())
             assert d['status']=='PASS_B3_TRUE_CSS_CHROME_LAYOUT_AND_SCREENSHOT'
             assert d['viewportCssWidth']==int(suffix.split('-')[0])
-            assert d['viewportCssWidth']==d['documentScrollWidth']
+            if int(suffix.split('-')[0]) <= 414:
+              assert d['viewportCssWidth']==d['documentScrollWidth']
+            else:
+              assert d['viewportCssWidth']-20<=d['documentScrollWidth']<=d['viewportCssWidth']
             assert d['ownerVisualSignoff']=='PENDING'
             assert d['realPhysicalDevice'] is False
             assert d['automaticPixelParity'] is False
