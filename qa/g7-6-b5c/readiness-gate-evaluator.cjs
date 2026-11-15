@@ -2,7 +2,7 @@
 /* B5-C release gates are a read-only decision procedure, NOT a deployment command.
  * A passing test MUST NOT convert an unsigned E04 lab lesson into school curriculum.
  */
-const known=new Set(['PASS','PASS_LIMITED_14_CASES','PASS_CI_AND_USER_ACCEPTED',
+const known=new Set(['PASS','PASS_CI','PASS_LIMITED_14_CASES','PASS_CI_AND_USER_ACCEPTED',
  'PASS_USER_ATTESTED','PASS_SAFE_FALLBACK_ONLY','PASS_CANDIDATE_AFTER_CI']);
 const hardReleaseBlock=new Set(['C07','C08','C09','C10','C11','C12','C13','C14','C16','C17','C18']);
 const appBlock=new Set(['C07','C08','C09','C12','C16','C17']);
