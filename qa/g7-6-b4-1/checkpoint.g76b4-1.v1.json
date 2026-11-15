@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "g76b4.1.owner-evidence-checkpoint.v1",
+  "stage": "G7.6-B.4.1",
+  "date": "2026-11-15",
+  "branch": "test/g7-6-b4-1-owner-evidence-signoff-20261115",
+  "status": "PASS_OWNER_UI_INTERACTION_ATTESTATION_ADMITTED_WITH_UNITEMIZED_MULTIPLATFORM_AND_BLOCKED_POLICY",
+  "baseline": {
+    "g76B4": "322015ee50d76fcbc067f9e4ee90ae471f3dd062",
+    "g76B3": "c3757227856f50e0e122407e0121c3e40e024728",
+    "p06": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "reapprovePreviousQa": false
+  },
+  "source": {
+    "path": "qa/g7-6-b4-1/evidence/owner-submitted-device-review.original.json",
+    "originalUserFilename": "G76B4_Manual_Device_Review_NOT_APPROVED.json",
+    "sha256": "d039fd3b4ef1aac636c4a57ded40e3a6fe11f29cb08169bde830fe8a13426527",
+    "byteLength": 1838,
+    "identity": "EXACT_SOURCE_BYTES_VERIFIED_CI",
+    "manualChecklist": {
+      "checkedCount": 13,
+      "totalChecks": 13,
+      "allTrue": true,
+      "source": "USER_REPORTED"
+    },
+    "device": {
+      "os": "Windows 10",
+      "browser": "Chrome 157",
+      "cssWidth": 1536,
+      "cssHeight": 791,
+      "deviceDescription": "NOT_PROVIDED"
+    },
+    "sourceApprovalFlags": {
+      "reviewerApproved": false,
+      "reviewerSignature": null,
+      "pedagogicalApproval": false,
+      "trustedGradingOpened": false,
+      "gasDeployed": false,
+      "studentDataCollected": false
+    }
+  },
+  "userAttestation": {
+    "capturedInChat": true,
+    "meaning": "User confirmed demo G76B4 interaction, problem solving, multi-device and multi-platform display",
+    "scope": "OWNER_UX_AND_INTERACTION_SELF_ATTESTATION_ACCEPTED",
+    "multiplatform": "USER_ATTESTED_BUT_SPECIFIC_MOBILE_DEVICE_METADATA_NOT_IN_JSON",
+    "electronicSignature": false,
+    "doNotOverwriteUnsignedSource": true
+  },
+  "gates": {
+    "B4_1_INPUT_SHA": "PASS_EXACT",
+    "B4_1_CHECKLIST": "PASS_13_OF_13_USER_REPORTED",
+    "B4_1_OWNER_UI_INTERACTION": "PASS_USER_ATTESTATION_RECORDED",
+    "B4_1_WINDOWS_DESKTOP_METADATA": "PRESENT",
+    "B4_1_MULTI_PLATFORM": "USER_ATTESTED_NO_DEVICE_MATRIX",
+    "B4_1_ANDROID_PHYSICAL_ITEMIZED": "NOT_DOCUMENTED_IN_UPLOADED_JSON",
+    "B4_1_IPHONE_PHYSICAL_ITEMIZED": "NOT_DOCUMENTED_IN_UPLOADED_JSON",
+    "B4_1_FORMAL_SIGNATURE": "NOT_IN_SOURCE",
+    "B4_1_MENTAL_MANIFEST_REGISTRATION": "BLOCKED_NEEDS_CONTRACT_OWNER_DECISION",
+    "B4_1_E04_CURRICULUM_PEDAGOGY": "BLOCKED_MISSING_SGK_LESSON_PAGE_APPROVAL",
+    "B4_1_MAIN_OR_TEST_THEO_MAIN_MERGE": "DENIED",
+    "B4_1_GAS": "DENIED",
+    "B4_1_D10_TRUSTED_GRADING": "DENIED",
+    "B4_1_STUDENT_DATA_WRITES": "DENIED"
+  },
+  "qa": {
+    "b4Prior": {
+      "a": 296,
+      "b": 221,
+      "b2": 123,
+      "b3": 259,
+      "b4": 106,
+      "total": 1005
+    },
+    "newEvidenceAssertions": 86,
+    "combinedNodeAssertions": 1091,
+    "runAtInitialAdmission": 43721619029,
+    "runConclusion": "success",
+    "initialRunUrl": "https://github.com/Nguyennth19/new-lop-2/actions/runs/43721619029",
+    "initialArtifactId": 14164628043,
+    "scope": "OFFLINE_QA_ONLY_NO_NEW_BROWSER_DEVICE_CLAIMS"
+  },
+  "records": {
+    "evidence": "qa/g7-6-b4-1/evidence/owner-submitted-device-review.original.json",
+    "attestation": "qa/g7-6-b4-1/owner-attestation.record.v1.json",
+    "validator": "qa/g7-6-b4-1/owner-evidence.test.cjs",
+    "report": "docs/kiem-dinh/G7.6-B4.1_OWNER_EVIDENCE_INTAKE_QA_20261115.md",
+    "journal": "qa/g7-6-b4-1/execution-log.g76b4-1.md",
+    "workflow": ".github/workflows/g7-6-b4-1-owner-evidence.yml"
+  },
+  "drive": {
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "originalFileId": "16wGMStVH__nndQApRqEFPN_h5o69q4wR",
+    "originalFileUrl": "https://drive.google.com/file/d/16wGMStVH__nndQApRqEFPN_h5o69q4wR/view?usp=drivesdk",
+    "originalFileBytes": 1838,
+    "documentId": "1X7Lu_WVpr8zuMC1Akaht7BrRtb72VSUaRogFz_wH9Ao",
+    "documentUrl": "https://docs.google.com/document/d/1X7Lu_WVpr8zuMC1Akaht7BrRtb72VSUaRogFz_wH9Ao/edit?usp=drivesdk",
+    "documentVerifiedParagraphs": 44,
+    "bothVerifiedInProjectFolder": true
+  },
+  "protection": {
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "g6Changed": false,
+    "g74Changed": false,
+    "p06Changed": false,
+    "gasDeployed": false,
+    "d10NewGrading": false,
+    "studentWrites": false,
+    "scoresStarsChanged": false,
+    "formalSignatureForged": false,
+    "manifestRegistrationApplied": false,
+    "e04Activated": false
+  },
+  "rollback": {
+    "strategy": "STOP_B4_1_OWNER_EVIDENCE_ADMISSION_AND_RETURN_TO_B4",
+    "sha": "322015ee50d76fcbc067f9e4ee90ae471f3dd062",
+    "protectedRuntimeUntouched": true
+  },
+  "next": "B4.2 – optional platform-specific evidence receipt plus separate decision on auxiliary math mental renderer registration, then E04 curriculum mapping; no app merge or GAS"
+}
