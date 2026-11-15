@@ -35,6 +35,10 @@ replaceOnce(
  'G76B5ATangramPlacement.mount(slot,tangram[j].nativePlan)',
  'TARGET_LABEL_WRAPPER');
 replaceOnce(
+ 'Dữ liệu tạo bằng mã generator mới, native renderer G7.4 V1.1. Chưa phải producer P0.6 E02/E03 và chưa có duyệt SGK.',
+ 'Nguồn E04 sidecar tạo theo seed; Tangram dùng renderer TEST B5-A đã sửa căn khung. Chưa phải producer P0.6 E02/E03 và chưa có duyệt SGK.',
+ 'E04_SOURCE_SCOPE');
+replaceOnce(
  "const r=await fetch('./generated/public-samples.json',{cache:'no-store'});",
  "const r={ok:true,json:async()=>JSON.parse(document.getElementById('b4-public-data').textContent)};",
  'EXTERNAL_DATA_FETCH');
