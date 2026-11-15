@@ -67,6 +67,10 @@ jobs:
             timeout 95s "$BROWSER" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --window-size="$width,960" --virtual-time-budget=30000 --dump-dom 'http://127.0.0.1:8799/qa/g7-6-b2/Chrome_RealProducer_Submodes_TEST.html' >"/tmp/g76b2-evidence/chrome/dom-$width.html" 2>"/tmp/g76b2-evidence/chrome/stderr-$width.log"
             python3 qa/g7-6-b2/verify-chrome.py "$width"
           done
+      - name: True mobile viewport 390px via Chrome DevTools protocol
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)" node qa/g7-6-b2/cdp-mobile-regression.cjs 390
       - name: Capture screenshots for OWNER visual review (not automated pixel parity)
         if: always()
         run: |
