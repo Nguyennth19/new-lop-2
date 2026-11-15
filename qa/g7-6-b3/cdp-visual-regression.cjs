@@ -82,7 +82,8 @@ async function main(){
  const buffer=Buffer.from(screen.data,'base64');
  assert.equal(buffer.toString('hex',0,8),'89504e470d0a1a0a','NOT_PNG_SCREENSHOT');
  const pngWidth=buffer.readUInt32BE(16),pngHeight=buffer.readUInt32BE(20);
- assert.equal(pngWidth,w,'SCREENSHOT_WIDTH_MISMATCH');
+ if(mobile)assert.equal(pngWidth,w,'MOBILE_SCREENSHOT_WIDTH_MISMATCH');
+ else assert.ok(pngWidth<=w&&pngWidth>=w-20,'DESKTOP_SCROLLBAR_SCREENSHOT_WIDTH_MISMATCH '+pngWidth);
  assert.ok(pngHeight>250&&pngHeight<30000,'SCREENSHOT_HEIGHT_INVALID');
  assert.ok(buffer.length>7000,'VISUAL_SCREENSHOT_EMPTY_OR_TRUNCATED');
  const suffix=w+'-'+panel;
