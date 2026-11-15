@@ -15,7 +15,7 @@ const sample=JSON.parse(fs.readFileSync(dataPath,'utf8'));
 const baseline=run(root);yes(baseline.ok);
 eq(baseline.composed.generated,8);eq(baseline.choice.generated,2);
 const result=qa.integratePublicData(sample);
-yes(result.ok,'real public samples assembled: '+result.code);
+if(!result.ok)console.error('B5B_PRODUCER_CASE_DIAGNOSTIC',sample.cases.map(x=>({id:x.id,typeId:x.typeId,prompt:x.nativePlan?.prompt,code:qa.assembleCase(x).code})));yes(result.ok,'real public samples assembled: '+result.code);
 eq(result.cases.length,14);
 eq(result.resources.registryCount,12);
 eq(result.resources.assetMetadataCount,288);
