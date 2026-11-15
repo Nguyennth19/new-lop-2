@@ -76,7 +76,7 @@ jobs:
           assert '<link rel="stylesheet"' not in text
           assert 'G76B5ATangramPlacement.mount(slot' in text
           assert 'B5-A' in text and 'Ghép vào mẫu' in text
-          assert text.count('data-qa=')==13
+          assert text.count('data-qa=')==15
           print('G76B5A_OFFLINE_REVIEW_BUILT_PASS',len(text),'chars; no remote JS/CSS')
           PY
       - name: Gate 4 – real Chrome 390/360/1440 geometry outline alignment
