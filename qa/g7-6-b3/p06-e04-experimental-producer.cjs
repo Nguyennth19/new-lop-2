@@ -15,7 +15,7 @@ const triangle=points=>({type:'polygon',points});
 const rect=(x,y,width,height)=>({type:'rect',x,y,width,height});
 const pieces=Object.freeze([
  {id:'roof',label:'Mái nhà',geometry:triangle([[0,-45],[60,25],[-60,25]]),target:triangle([[190,25],[250,95],[130,95]]),start:[65,70]},
- {id:'wall',label:'Thân nhà',geometry:rect(-45,-70,90,90),target:rect(145,95,90,90),start:[70,205]},
+ {id:'wall',label:'Thân nhà',geometry:rect(-45,-70,90,90),target:rect(145,95,90,90),start:[70,215]},
  {id:'tree',label:'Tán cây',geometry:triangle([[0,-50],[45,20],[-45,20]]),target:triangle([[330,95],[375,165],[285,165]]),start:[330,235]}
 ]);
 const styles=Object.freeze([
