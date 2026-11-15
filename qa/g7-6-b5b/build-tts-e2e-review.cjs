@@ -21,7 +21,7 @@ const start='(function(){\n'+
 'data.cases.forEach((item,i)=>{const button=document.createElement("button");button.type="button";\n'+
 'button.textContent="🔊 Đọc câu "+(i+1)+" · "+item.typeId;button.dataset.b5bSpeechIndex=String(i);\n'+
 'button.style.cssText="min-height:44px;padding:10px;border:1px solid #bccbe8;border-radius:9px;background:#f4f7ff;color:#274979;font-weight:700";\n'+
-'button.addEventListener("click",()=>{const text=item.nativePlan?.prompt;\n'+
+'button.addEventListener("click",()=>{const p=item.nativePlan;let text=p?.prompt;if(item.typeId==="D4")text=p?.prompt?.type==="TEXT"&&p.prompt.assetId===""?p.prompt.text:null;else if(item.typeId==="D2"){const digits=a=>Array.isArray(a)&&[2,3].includes(a.length)&&a.every((v,i)=>v.place===["ones","tens","hundreds"][i]&&Number.isInteger(v.digit)&&v.digit>=0&&v.digit<=9)?a.reduce((n,v,i)=>n+v.digit*Math.pow(10,i),0):null;const a=digits(p?.a),b=digits(p?.b);text=p?.schemaVersion==="column-calc-reference-v12-public"&&a!==null&&b!==null&&["ADD","SUBTRACT"].includes(p.operation)?"Đặt tính rồi tính: "+a+(p.operation==="ADD"?" + ":" − ")+b+" = ?":null;}\n'+
 'if(typeof text!=="string"||text.trim().length<3||text.length>600||/[<>]/.test(text)||/answerSpec|answerKey|gradingKey|teacherSolution|studentId/i.test(text)){status.textContent="Không đủ điều kiện để đọc.";return;}\n'+
 'const normalized=G75V2.normalize(text,{lang:"vi-VN",context:"math"});const result=adapter.speak(normalized,"vi-VN");status.dataset.b5bSpeechResult=result.ok?result.status:result.reason;\n'+
 'status.textContent=result.ok?"Đã yêu cầu đọc câu "+(i+1)+". Xin nghe và kiểm tra thực tế.":"Không thể phát: "+result.reason;});group.append(button);});\n'+
