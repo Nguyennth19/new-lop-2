@@ -1,0 +1,82 @@
+name: G7.6-B.4.1 Owner Checklist Evidence Admission (TEST only)
+on:
+  push:
+    branches:
+      - test/g7-6-b4-1-owner-evidence-signoff-20261115
+    paths:
+      - 'qa/g7-6-b4-1/**'
+      - 'docs/kiem-dinh/G7.6-B4.1*'
+      - '.github/workflows/g7-6-b4-1-owner-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owner-evidence-receipt-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - name: Checkout independent B4.1 branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Checkout source P0.6 at exact immutable commit for inherited tests
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06-source
+          persist-credentials: false
+      - name: Gate B4.1-0 – source pin, B4 ancestor, frozen HTML and no protected files touched
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _external/p06-source rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          git merge-base --is-ancestor 322015ee50d76fcbc067f9e4ee90ae471f3dd062 HEAD
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only 322015ee50d76fcbc067f9e4ee90ae471f3dd062 HEAD | grep -Ev '^(qa/g7-6-b4-1/|docs/kiem-dinh/G7\.6-B4\.1|\.github/workflows/g7-6-b4-1-owner-evidence\.yml)' ; then
+            echo 'B4_1_PROTECTED_SOURCE_DIFF_DENIED'; exit 1
+          fi
+          echo G76B4_1_B4_BASELINE_AND_SOURCE_PIN_PASS
+      - name: Gate B4.1-1 – exact uploaded source SHA / no forged signed approval
+        run: |
+          set -euo pipefail
+          echo 'd039fd3b4ef1aac636c4a57ded40e3a6fe11f29cb08169bde830fe8a13426527  qa/g7-6-b4-1/evidence/owner-submitted-device-review.original.json' | sha256sum --check
+          node --check qa/g7-6-b4-1/owner-evidence.test.cjs
+          node qa/g7-6-b4-1/owner-evidence.test.cjs | tee /tmp/g76b4-1-evidence.log
+      - name: Gate B4.1-2 – inherited 1005 source/renderer/policy regressions (no browser rerender)
+        run: |
+          set -euo pipefail
+          mkdir -p qa/g7-6-b3/generated
+          G76B3_OUTPUT_DIR=qa/g7-6-b3/generated node qa/g7-6-b3/producer-coverage.test.cjs _external/p06-source
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs
+          node qa/g7-6-b2/real-producer-submode.test.cjs _external/p06-source
+          node qa/g7-6-b4/owner-policy-gates.test.cjs
+      - name: Gate B4.1-3 – stop at exact verified human evidence scope; no mobile/GAS release
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const a=require('./qa/g7-6-b4-1/owner-attestation.record.v1.json');
+          const s=require('./qa/g7-6-b4-1/evidence/owner-submitted-device-review.original.json');
+          if(a.decisions.manualChecklist!=='PASS_13_OF_13_BY_USER_REPORT')throw Error('WRONG_CHECKLIST_SCOPE');
+          if(a.decisions.androidIOSPhysicalDeviceValidation!=='ADDITIONAL_EVIDENCE_NOT_SUBMITTED')throw Error('FAKE_MOBILE_EVIDENCE');
+          if(a.decisions.productionUse!=='NOT_APPROVED'||a.userChatConfirmation.evidenceIsFormalSignedDocument)throw Error('UNSIGNED_SOURCE_MUST_NOT_AUTO_APPROVE');
+          if(s.reviewerApproved||s.reviewerSignature||s.pedagogicalApproval||s.gasDeployed||s.trustedGradingOpened)throw Error('USER_SOURCE_GUARDS_CHANGED');
+          if(Object.values(a.releaseLocks).some(x=>x!==false))throw Error('RELEASE_LOCK_REMOVED');
+          console.log('G76B4_1_SCOPE_FAIL_CLOSED_PASS chat USER_ATTESTED, mobile itemized evidence absent, curricular signoff blocked');
+          JS
+      - name: Archive owner evidence and QA-only receipt (no student data)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B4-1-Owner-Uploaded-Evidence-Admission
+          path: |
+            qa/g7-6-b4-1/evidence/owner-submitted-device-review.original.json
+            qa/g7-6-b4-1/owner-attestation.record.v1.json
+            qa/g7-6-b4-1/checkpoint.g76b4-1.v1.json
+            /tmp/g76b4-1-evidence.log
+          retention-days: 30
