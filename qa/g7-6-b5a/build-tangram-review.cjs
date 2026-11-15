@@ -60,8 +60,17 @@ assert.equal(cssCount,4);
 assert.equal(jsCount,9);
 const labelModule=sanitize(fs.readFileSync(path.join(__dirname,'tangram-placement-v12.js'),'utf8'));
 const b5Css=fs.readFileSync(path.join(__dirname,'tangram-placement-v12.css'),'utf8');
-const manualModule=sanitize(fs.readFileSync(path.join(root,'qa/g7-6-b4/manual-device-qa.js'),'utf8'));
-const form=fs.readFileSync(path.join(root,'qa/g7-6-b4/manual-device-checklist.fragment.html'),'utf8');
+const manualModule=sanitize(fs.readFileSync(path.join(root,'qa/g7-6-b4/manual-device-qa.js'),'utf8')
+ .replace('g76b4.physical-device-manual-checklist.v1','g76b5a.physical-device-manual-checklist.v1')
+ .replace("component:'G7.6-B.4'","component:'G7.6-B.5-A'")
+ .replace('G76B4_Manual_Device_Review_NOT_APPROVED.json','G76B5A_Manual_Device_Review_NOT_APPROVED.json'));
+const form=fs.readFileSync(path.join(root,'qa/g7-6-b4/manual-device-checklist.fragment.html'),'utf8')
+ .replace('</div>\n<label>Ghi chú kiểm tra',[
+ '<label><input type="checkbox" data-qa="tangram_exact_snap"> Ghép vào mẫu: đủ 3/3 mảnh trùng đường viền, không bị lệch</label>',
+ '<label><input type="checkbox" data-qa="tangram_drag_unplace"> Kéo mảnh bằng ngón tay/chuột rồi thả; trạng thái đang đặt được cập nhật đúng</label>',
+ '</div>\n<label>Ghi chú kiểm tra'
+ ].join('\n'))
+ .replace('Phiếu kiểm thử thực tế · Chưa phê duyệt phát hành','Phiếu kiểm thử Tangram B5-A · Chưa phê duyệt phát hành');
 const publicScript='<script type="application/json" id="b4-public-data">'+json.replace(/</g,'\\u003c')+'</script>';
 const labelScript='<script data-b5a-geometry-placement="true">\n'+labelModule+'\n</script>';
 const manualScript='<script data-b4-manual-device-qa="true">\n'+manualModule+'\n</script>';
