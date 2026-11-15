@@ -93,5 +93,13 @@
     "noMerge": true,
     "baselineCommit": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
     "strategy": "STOP_CONSUMING_G76B_ADAPTER_AND_RETURN_TO_PINNED_G76A"
+  },
+  "drive": {
+    "status": "SAVED_AND_VERIFIED_IN_PROJECT_FOLDER",
+    "folderId": "16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "documentId": "1uNF3QDRxEyHg3ty4RDz62jtyhmDvH0epyMYe8263AMo",
+    "url": "https://docs.google.com/document/d/1uNF3QDRxEyHg3ty4RDz62jtyhmDvH0epyMYe8263AMo/edit?usp=drivesdk",
+    "verifiedParagraphs": 43,
+    "readback": true
   }
 }
