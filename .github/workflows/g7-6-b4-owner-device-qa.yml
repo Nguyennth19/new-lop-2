@@ -84,7 +84,7 @@ jobs:
           assert len(text)>90000,len(text)
           assert 'id="b4-public-data"' in text
           assert 'G76B4TangramReview.mount' in text
-          assert 'ownerSignature:null' in text
+          assert 'reviewerSignature:null' in text
           print('G76B4_OFFLINE_HTML_STATIC_PASS',len(text),'bytes;',audit.scripts,'inline script tags;',audit.forms,'manual QA checkpoints')
           PY
       - name: Gate B4-4 – actual Chrome offline HTML, mobile/desktop layout and touch-emulation
