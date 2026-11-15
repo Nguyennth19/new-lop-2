@@ -1,0 +1,35 @@
+<details class="b4-owner-kit" id="b4-owner-review" open>
+<summary>Phiếu kiểm thử thực tế · Chưa phê duyệt phát hành</summary>
+<p>Chỉ đánh dấu những mục đã thực hiện trên điện thoại thật. Không cần tài khoản, không gửi dữ liệu lên mạng. Xuất JSON để chủ dự án kiểm chứng riêng.</p>
+<label>Thiết bị và trình duyệt <input id="b4-device" maxlength="120" placeholder="Ví dụ: Android, Chrome, 390px"></label>
+<div class="b4-review-checks" id="b4-checks">
+<label><input type="checkbox" data-qa="layout_no_overflow"> Không bị tràn ngang trên điện thoại thật</label>
+<label><input type="checkbox" data-qa="text_clear"> Chữ, số và nhãn đủ lớn, không che khuất</label>
+<label><input type="checkbox" data-qa="mental_keyboard"> Ô tính nhẩm mở bàn phím số và nhập/xóa đúng</label>
+<label><input type="checkbox" data-qa="column_focus"> Ô đặt tính chạm, nhập và chuyển hàng đúng</label>
+<label><input type="checkbox" data-qa="choice_touch"> Trắc nghiệm chọn/bỏ chọn đúng</label>
+<label><input type="checkbox" data-qa="tangram_labels"> Khung Tangram hiện “Khung số 1/2/3”, không lộ mã</label>
+<label><input type="checkbox" data-qa="tangram_rotation"> Xoay mảnh Tangram trên thiết bị thật</label>
+<label><input type="checkbox" data-qa="tangram_placement"> Chạm chọn và đặt mảnh vào khung</label>
+<label><input type="checkbox" data-qa="chart_exact_count"> Biểu đồ hiển thị đúng số hình mỗi hàng</label>
+<label><input type="checkbox" data-qa="chart_tap_count"> Chạm đếm/tắt đếm hình chính xác</label>
+<label><input type="checkbox" data-qa="chart_draft"> Gõ/xóa kết quả biểu đồ, không có chấm đúng/sai</label>
+<label><input type="checkbox" data-qa="no_answers"> Không hiện đáp án hoặc gợi ý đúng/sai không phép</label>
+<label><input type="checkbox" data-qa="return_state"> Làm lại và quay lại không làm sai trạng thái</label>
+</div>
+<label>Ghi chú kiểm tra <textarea id="b4-note" rows="3" maxlength="1200" placeholder="Ghi lỗi và ảnh chụp để người duyệt đối chiếu"></textarea></label>
+<button id="b4-export" type="button">Xuất phiếu thử thiết bị (JSON, chưa ký duyệt)</button>
+<p class="b4-review-status" id="b4-export-status" aria-live="polite">Trạng thái: Chưa có kết quả từ điện thoại thật.</p>
+</details>
+<style>
+.b4-owner-kit{max-width:1180px;margin:12px auto 28px;padding:14px;border:2px solid #a7bddd;border-radius:16px;background:#fff;color:#27354d;font:14px/1.5 system-ui}
+.b4-owner-kit summary{font-weight:750;cursor:pointer;font-size:16px}
+.b4-owner-kit p{color:#52647b}
+.b4-owner-kit label{display:block;margin:8px 0;font-weight:600}
+.b4-owner-kit input:not([type]),.b4-owner-kit textarea{display:block;width:100%;max-width:100%;border:1px solid #b5c3d6;border-radius:7px;padding:10px;margin-top:4px}
+.b4-review-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:6px}
+.b4-review-checks label{border:1px solid #e1e9f5;border-radius:10px;padding:10px;min-height:44px}
+.b4-review-checks input{width:18px;height:18px;vertical-align:middle;margin-right:8px}
+#b4-export{min-height:46px;padding:11px 14px;border:0;border-radius:10px;background:#254b94;color:#fff;font-weight:800;cursor:pointer}
+[hidden]{display:none!important}
+</style>
