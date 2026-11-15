@@ -84,7 +84,7 @@ function Utterance(text){this.text=text}
 const audio=create({speechSynthesis:{speak:u=>spoken.push(u),cancel:()=>cancelled++},
  SpeechSynthesisUtterance:Utterance});
 eq(audio.supported,true);eq(spoken.length,0);
-const speak=qa.speechForPublicPrompt(sample.cases[0].nativePlan.prompt);
+const speak=qa.speechForPublicPrompt(result.cases[0].speech.requestedText);
 yes(speak.ok);
 const cmd=audio.speak(speak.requestedText,speak.locale);
 eq(cmd.ok,true);eq(cmd.status,'REQUESTED_NOT_PLAYBACK_CONFIRMED');
