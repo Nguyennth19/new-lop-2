@@ -54,6 +54,35 @@ function speechForPublicPrompt(prompt,{profileId=policy.speech.profileId}={}){
   enabledByDefault:false,audioPlayed:false,status:'PREPARED_TEXT_NO_TTS_PLAYBACK',
   releaseReady:false};
 }
+function visibleSpeechText(typeId,plan){
+ if(!plan||typeof plan!=='object')return fail('VISIBLE_PLAN_REQUIRED');
+ if(typeId==='D2'){
+  if(plan.schemaVersion!=='column-calc-reference-v12-public'||
+     !['PV100','PV1000'].includes(plan.profile)||
+     !['ADD','SUBTRACT'].includes(plan.operation)||
+     !Array.isArray(plan.a)||!Array.isArray(plan.b)||plan.a.length!==plan.b.length||
+     ![2,3].includes(plan.a.length))return fail('D2_VISIBLE_COLUMN_INVALID');
+  const positions=['ones','tens','hundreds'];
+  const amount=digits=>{
+   if(digits.some((v,i)=>v.place!==positions[i]||!Number.isInteger(v.digit)||
+      v.digit<0||v.digit>9))return null;
+   return digits.reduce((n,v,i)=>n+v.digit*Math.pow(10,i),0);
+  };
+  const a=amount(plan.a),b=amount(plan.b);
+  if(a===null||b===null||a>=(plan.profile==='PV100'?100:1000)||
+     b>=(plan.profile==='PV100'?100:1000))return fail('D2_VISIBLE_DIGITS_INVALID');
+  return {ok:true,text:'Đặt tính rồi tính: '+a+(plan.operation==='ADD'?' + ':' − ')+b+' = ?',
+   provenance:'EXACT_VISIBLE_COLUMN_OPERANDS_DERIVED_NO_ANSWER'};
+ }
+ if(typeId==='D4'){
+  if(plan.schemaVersion!=='g74-choice-v11'||plan.prompt?.type!=='TEXT'||
+     typeof plan.prompt.text!=='string'||plan.prompt.assetId!=='')
+    return fail('D4_VISIBLE_TEXT_PROMPT_INVALID');
+  return {ok:true,text:plan.prompt.text,provenance:'G74_TEXT_PROMPT'};
+ }
+ if(typeof plan.prompt==='string')return {ok:true,text:plan.prompt,provenance:'PUBLIC_PROMPT'};
+ return fail('VISIBLE_PROMPT_NOT_SUPPORTED');
+}
 function expectedRenderer(typeId){
  return ({
   D2:'G74_COLUMN_CALC_PINNED',
@@ -78,7 +107,8 @@ function assembleCase(record){
  if((generated&&!['D5','D9'].includes(typeId))||
     (real&&['D5','D9'].includes(typeId)))return fail('SOURCE_TYPE_PROVENANCE_DRIFT');
  if(STRICT_FORBIDDEN.test(JSON.stringify(record)))return fail('PRIVATE_FIELD_IN_PUBLIC_PLAN');
- if(typeof plan.prompt!=='string'||!validText(plan.prompt))return fail('INVALID_VISIBLE_PROMPT');
+ const extracted=visibleSpeechText(typeId,plan);
+ if(!extracted.ok||!validText(extracted.text))return fail('INVALID_VISIBLE_PROMPT');
  if(typeId==='MENTAL_INPUT_TEST_EXTENSION'){
   if(plan.schemaVersion!=='g76b3.mental-number-input.v1'||plan.lessonId!=='toan_b21'||
      plan.input?.kind!=='NUMBER_INPUT'||plan.input.maxLength!==3||
@@ -112,7 +142,7 @@ function assembleCase(record){
  if(typeId==='D2'||typeId==='D4'){
   if(!real)return fail('D2_D4_MUST_BE_REAL_P06');
  }
- const speech=speechForPublicPrompt(plan.prompt);
+ const speech=speechForPublicPrompt(extracted.text);
  if(!speech.ok)return speech;
  const visual=typeId==='D5'?'PARAMETRIC_SVG_FROM_PUBLIC_GEOMETRY':
   typeId==='D9'?'EXACT_COUNT_EMOJI_FROM_ROW_PUBLIC_COUNT':
@@ -120,7 +150,7 @@ function assembleCase(record){
  return {ok:true,id,typeId,origin,renderer,visual,
   asset:{imageAutoLoaded:false,registryLookupAllowed:false,fluentFallback:false,
    source:'EXISTING_PUBLIC_GEOMETRY_OR_TEXT',exactQuantity},
-  speech,gradingEnabled:false,studentWritesAllowed:false,
+  speech:{...speech,provenance:extracted.provenance},gradingEnabled:false,studentWritesAllowed:false,
   curriculumApproved:false,releaseReady:false};
 }
 function integratePublicData(payload){
@@ -145,4 +175,4 @@ function integratePublicData(payload){
   physicalDeviceB5AReview:'USER_CHAT_CONFIRMED_TESTED_TANGRAM_NOT_AUDIO',
   trustedGraderConnected:false,studentDataWritten:false};
 }
-module.exports={policy,auditBase,validateAssetRequest,speechForPublicPrompt,assembleCase,integratePublicData};
+module.exports={policy,auditBase,validateAssetRequest,speechForPublicPrompt,visibleSpeechText,assembleCase,integratePublicData};
