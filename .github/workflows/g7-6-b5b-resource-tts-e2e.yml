@@ -1,0 +1,137 @@
+name: G7.6-B.5-B Producer, Resources & Vietnamese TTS E2E (offline)
+on:
+  push:
+    branches:
+      - test/g7-6-b5b-resource-tts-e2e-20261115
+    paths:
+      - 'qa/g7-6-b5b/**'
+      - 'docs/kiem-dinh/G7.6-B5B*'
+      - '.github/workflows/g7-6-b5b-resource-tts-e2e.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  resource-tts-e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Checkout real P0.6 E02/E03 producer at pinned commit
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06-source
+          persist-credentials: false
+      - name: Checkout real G7.5 Vietnamese V2 speech normalizer at pinned commit
+        uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c9880bfc56aec0cfc4ea7f788983bcc3761d7b48
+          path: _external/g75-v2
+          persist-credentials: false
+      - name: Gate B5B-0 – immutable history, speech pin and permitted diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor f3653d850864f75c7e3640585364d68f17f1428c HEAD
+          test "$(git -C _external/p06-source rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          test "$(git -C _external/g75-v2 rev-parse HEAD)" = c9880bfc56aec0cfc4ea7f788983bcc3761d7b48
+          test "$(git hash-object _external/g75-v2/thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js)" = 605a8ed9b335526af82c8870dca4753bd511b913
+          echo '78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced  qa/g7-4-column-calc-reference-v1/advanced-source/Original_10Forms_Grade2_20261113.html' | sha256sum --check
+          if git diff --name-only f3653d850864f75c7e3640585364d68f17f1428c HEAD | grep -Ev '^(qa/g7-6-b5b/|docs/kiem-dinh/G7\.6-B5B|\.github/workflows/g7-6-b5b-resource-tts-e2e\.yml)' ; then
+            echo 'B5B_PROTECTED_DIFF_DENIED'; exit 1
+          fi
+          echo 'G76B5B_PROTECTED_P06_AND_G75_V2_SOURCE_PIN_PASS'
+      - name: Gate B5B-1 – inherited source/producers/renderer/owner receipt 1294 Node assertions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa/g7-6-b3/generated qa/g7-6-b5b/generated
+          G76B3_OUTPUT_DIR=qa/g7-6-b3/generated node qa/g7-6-b3/producer-coverage.test.cjs _external/p06-source
+          node qa/g7-6/resource-renderer-resolver.test.cjs
+          node qa/g7-6/variant-adapter-bridge.test.cjs
+          node qa/g7-6-b2/real-producer-submode.test.cjs _external/p06-source
+          node qa/g7-6-b4/owner-policy-gates.test.cjs
+          node qa/g7-6-b4-1/owner-evidence.test.cjs
+          node qa/g7-6-b5a/contract-and-tangram.test.cjs _external/p06-source
+          python3 qa/g7-6-b2/extract-pinned-css.py
+          node qa/g7-6-b5a/build-tangram-review.cjs
+      - name: Gate B5B-2 – end-to-end public plans, asset trust and REAL pinned G7.5 V2 text prosody
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check qa/g7-6-b5b/e2e-resource-tts-pipeline.cjs
+          node --check qa/g7-6-b5b/resource-tts-e2e.test.cjs
+          node --check qa/g7-6-b5b/build-tts-e2e-review.cjs
+          node --check qa/g7-6-b5b/cdp-resource-tts-smoke.cjs
+          G76B5B_OUTPUT_DIR=qa/g7-6-b5b/generated node qa/g7-6-b5b/resource-tts-e2e.test.cjs _external/p06-source _external/g75-v2
+          node qa/g7-6-b5b/build-tts-e2e-review.cjs
+      - name: Gate B5B-3 – standalone UI static safety and Voice V2 source inlining
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          t=Path('qa/g7-6-b5b/generated/G76B5B_Producer_Resources_TTS_Offline_TEST.html').read_text()
+          class HTMLAudit(HTMLParser):
+            def __init__(self):super().__init__();self.external=[];self.buttons=0
+            def handle_starttag(self,tag,attrs):
+              attrs=dict(attrs)
+              if tag=='script' and attrs.get('src'):self.external.append(attrs['src'])
+              if tag=='link' and attrs.get('rel')=='stylesheet':self.external.append(attrs.get('href'))
+          a=HTMLAudit();a.feed(t)
+          assert not a.external,a.external
+          assert len(t)>95000
+          assert 'data-b5b-g75-v2-normalizer' in t
+          assert 'data-b5b-tts-gesture-controls' in t
+          assert 'G75V2.normalize(text,' in t
+          assert 'Chưa yêu cầu đọc. Không phát tự động.' in t
+          assert 'G76B5ATangramPlacement.mount' in t
+          assert t.count('data-qa=')==15
+          print('G76B5B_OFFLINE_V2_SPEECH_HTML_NO_AUTOPLAY_PASS',len(t),'chars, 15 inherited B5A manual checks')
+          PY
+      - name: Gate B5B-4 – real Chrome 360,390,1440 layouts, 3/3 Tangram fit, drag and no TTS autoplay
+        shell: bash
+        run: |
+          set -euo pipefail
+          export BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          mkdir -p /tmp/g76b3-evidence/chrome
+          timeout 110s node qa/g7-6-b5b/cdp-resource-tts-smoke.cjs 390 tangram
+          timeout 110s node qa/g7-6-b5b/cdp-resource-tts-smoke.cjs 360 tangram
+          timeout 110s node qa/g7-6-b5b/cdp-resource-tts-smoke.cjs 1440 tangram
+          timeout 110s node qa/g7-6-b5b/cdp-resource-tts-smoke.cjs 390 all
+          echo 'G76B5B_OFFLINE_E2E_CHROME_PASS_AUDIBLE_TTS_NOT_CONFIRMED'
+      - name: Gate B5B-5 – release and scope stay locked
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const p=require('./qa/g7-6-b5b/policy.resource-tts-e2e.v1.json');
+          const r=require('./qa/g7-6-b5b/generated/e2e-receipt.json');
+          if(p.status!=='TEST_ONLY_FAIL_CLOSED'||p.speech.audiblePlaybackValidated!==false)throw Error('FAKE_VOICE_APPROVAL');
+          if(p.coverage.total!==14||r.caseSummaries.length!==14||r.releaseReady||r.gasDeploy||r.studentWrites)throw Error('FALSE_INTEGRATION_SCOPE');
+          if(Object.values(p.security).some(x=>x!==true))throw Error('RELEASE_GUARD_DISARMED');
+          if(p.asset.registry288!=='METADATA_ONLY_NOT_CONTENT_APPROVED'||p.asset.fluent46!=='STAGING_DISABLED')throw Error('AUTO_ASSET_PROMOTION');
+          console.log('G76B5B_FAIL_CLOSED_RESOURCE_TTS_CURRICULUM_RELEASE_GATES_PASS');
+          JS
+      - name: Archive test-only HTML, public receipts and actual Chrome screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B5B-Producer-Resources-G75V2-TTS-E2E-TEST
+          path: |
+            qa/g7-6-b5b/generated/G76B5B_Producer_Resources_TTS_Offline_TEST.html
+            qa/g7-6-b5b/generated/e2e-receipt.json
+            qa/g7-6-b5b/policy.resource-tts-e2e.v1.json
+            /tmp/g76b3-evidence/chrome/b5b-*.png
+            /tmp/g76b3-evidence/chrome/b5b-*.json
+            /tmp/g76b3-evidence/chrome/b5b-review*.jpg
+          retention-days: 30
