@@ -37,10 +37,11 @@
     "catalogSearchAll288": true,
     "autoEnable288": true,
     "automaticBinaryRemoteLoad": true,
-    "loadOnDemand": true,
+    "lazyLoad": true,
     "verifiedRepoWebP": 288,
+    "verifiedSourceCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+    "ownerLabelApproved288": true,
     "fluentSVGProduction": false,
-    "semanticsOnlyApproval": false,
     "exactCountRequirePerAssetEvidence": true
   },
   "D5": {
@@ -78,11 +79,14 @@
     "GASDeploy": "DENIED"
   },
   "qa": {
-    "status": "PASS_SCOPED_CI",
-    "runId": 43822494670,
-    "assertions": 88,
-    "chromiumDesktopMobile": "PASS_EMULATED",
-    "gasE2E": "NOT_PERFORMED"
+    "status": "PASS_BINARY_LIBRARY_AND_SCOPED_VISUAL",
+    "runIntegrity": 43824808895,
+    "integrityChecks": 2910,
+    "runVisual": 43824808882,
+    "contractAssertions": 43,
+    "chromiumAssertions": 58,
+    "gasE2E": "NOT_PERFORMED",
+    "physicalPhoneQA": "NOT_PERFORMED"
   },
   "assetsRestoration": {
     "binaryReleaseCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",

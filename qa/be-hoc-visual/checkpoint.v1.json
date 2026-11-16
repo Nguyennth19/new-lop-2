@@ -3,16 +3,21 @@
   "date": "2026-11-16",
   "branch": "be-hoc",
   "baseline": "18dd2409ee75feb36b07e594ab04a4cf130fc835",
-  "status": "RESTORED_BINARY_LIBRARY_PENDING_CI",
+  "status": "PASS_ALL_288_WEBP_BINARY_AND_OWNER_LABEL_SIGNOFF_RUNTIME_SOURCE_ACTIVE",
   "assets": {
     "catalog": 288,
-    "binariesRestored": 288,
-    "shaVerified": "PENDING_CI",
-    "labelsApproved288": true,
-    "autoLoadById": true,
-    "preloadAll288": false,
-    "b20CuratedMappingCount": 8,
-    "exactCountAutoUse": false
+    "webpBinariesInBeHoc": 288,
+    "releaseSourceCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+    "sourceTotalBytes": 12350644,
+    "labelsApproved": 288,
+    "exactBinaryIntegrityVerified": true,
+    "lazyLoad": true,
+    "pagedGallerySize": 12,
+    "automaticByAssetId": true,
+    "lessonCuratedB20Scenes": 8,
+    "automaticExactCount": false,
+    "compositeUnitPolicy": "ENFORCED_SEPARATELY",
+    "preview13Limit": "OBSOLETE"
   },
   "d5": {
     "previewEnabled": true,
@@ -35,13 +40,22 @@
   },
   "rollbackCommit": "18dd2409ee75feb36b07e594ab04a4cf130fc835",
   "ci": {
-    "status": "PENDING"
+    "status": "PASS",
+    "sourceCommit": "2760bd40ae670b9743eb2b863a987ff16087b7c6",
+    "shaAndRiffRun": 43824808895,
+    "integrityChecks": 2910,
+    "visualRun": 43824808882,
+    "contractAssertions": 43,
+    "chromiumAssertions": 58,
+    "review": "PASS",
+    "actualGasWebApp": false
   },
   "gates": {
-    "d5OfficialCurriculum": "PENDING_E04_OWNER",
-    "d9OfficialCurriculum": "PENDING_E04_OWNER",
-    "automatic288BinaryActivation": "DENIED_PER_ASSET_QA",
-    "GASDeploy": "PENDING_OWNER_AUTHORIZATION",
-    "starsAndStudentWrites": "DENIED"
+    "BINARY_PRESENCE": "PASS_288_OF_288",
+    "OWNER_LABEL_SIGNOFF": "PASS_288_OF_288",
+    "BROWSER_VISUAL_AUTOMATED": "PASS_CHROME_EMULATED",
+    "PER_QUESTION_COUNT_COMPOSITION": "SCOPED_QUALIFICATION_NOT_A_LIBRARY_BLOCKER",
+    "GAS_DEPLOY": "NOT_DONE",
+    "D5_D9_CURRICULUM": "NOT_AUTOMAPPED"
   }
 }
