@@ -4,7 +4,7 @@ const {verifyIndex,validateHandoff,gitBlob}=require('./orchestration-validator.c
 const idx=require('./PROJECT_STATE_INDEX.v1.json'),example=require('./HANDOFF_EXAMPLE.pending.v1.json'),contract=require('./HANDOFF_CONTRACT.v1.json');
 let n=0;const eq=(a,b)=>{assert.deepEqual(a,b);n++},ok=a=>{assert.ok(a);n++};
 eq(idx.modules.length,10);eq(contract.requiredFields.length,14);eq(idx.baseline.sha,'11d691aa9e5f82f27b8df664ee710b17009d5600');
-const p=verifyIndex();eq(p.ok,true);eq(p.permission,'READ_ONLY_DISCOVERY');eq(p.mayDeploy,false);
+const p=verifyIndex();console.log('SOURCE_INDEX_QA_DIAGNOSTIC',p.code);eq(p.ok,true);eq(p.permission,'READ_ONLY_DISCOVERY');eq(p.mayDeploy,false);
 const h=validateHandoff(example);eq(h.ok,true);eq(h.maySign,false);eq(h.permission,'REVIEW_ONLY');
 eq(validateHandoff({...example,sourceCommit:'0'.repeat(40)}).code,'INVALID_ID_TYPE_OR_SOURCE');
 eq(validateHandoff({...example,ownerStatus:'APPROVED'}).code,'OWNER_GRANT_IMPLIED');
