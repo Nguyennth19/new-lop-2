@@ -1,0 +1,28 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+let n=0;const eq=(a,b)=>{assert.deepEqual(a,b);n++},ok=(v,m)=>{assert.ok(v,m);n++};
+const ctx={window:{},document:{addEventListener(){}},console};ctx.globalThis=ctx.window;
+for(const name of ['47_D2V12_Core.html','48_D2V12_View.html','52_D2_ManualCarry.html','49_D2V12_BaiHoc.html'])
+ vm.runInNewContext(fs.readFileSync(name,'utf8'),ctx);
+const make=(operands,profile='PV100')=>ctx.window.BE_HOC_D2_MANUAL.makePlan({variantId:'COL_MANUAL_QA_20261116',profile,operation:'ADD',level:'LV1',operands});
+const a=make([36,17]);eq(a.ok,true);eq(a.contractId,'D2_MANUAL_CARRY_REQUIRED_V1');eq(a.carryPolicy,'REQUIRED_ASSESSED');
+eq(a.carryMode,'MANUAL_INPUT_REQUIRED');eq(a.gradingEnabled,false);eq(a.transitionSlots[0].value,null);
+eq(a.transitionSlots[0].role,'LEARNER_NUMERIC_INPUT');eq(a.manualCarryMaxDigits,2);eq(a.additionalRows.length,0);
+const b=make([18,27,39]);eq(b.ok,true);eq(b.operandCount,3);eq(b.additionalRows.length,1);
+eq(b.additionalRows[0].map(x=>x.digit).join(','),'3,9');
+const c=make([9,9,9,9]);eq(c.operandCount,4);eq(c.additionalRows.length,2);
+eq(make([356,128,215],'PV1000').columns,3);eq(make([98,1,1]).reason,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+eq(make([998,1,1],'PV1000').reason,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+eq(make([1]).reason,'OPERANDS_2_TO_4_ADD_ONLY');eq(make([1,2,3,4,5]).reason,'OPERANDS_2_TO_4_ADD_ONLY');
+const host=ctx.window.BE_HOC_D2_V12;
+eq(host.fromB20Three({id:'THREE_QA_001',type:'mental',variantType:'three',valid:true,level:'LV1',n1:18,n2:27,n3:39}).carryMode,'MANUAL_INPUT_REQUIRED');
+eq(host.fromB20({id:'VERT_QA_001',type:'vertical',op:'+',valid:true,level:'LV1',n1:36,n2:17}).carryMode,'MANUAL_INPUT_REQUIRED');
+const html=fs.readFileSync('GiaoDien.html','utf8'),src=fs.readFileSync('52_D2_ManualCarry.html','utf8');
+eq(html.split("napThanhPhan('52_D2_ManualCarry')").length-1,1);
+ok(!html.includes("napThanhPhan('51_D2_AutoCarry')"));
+ok(!/autoCarryByPlace|expectedCarry|correctValue|answerKey|q\.answer|gradeQuestion\(/.test(src+fs.readFileSync('49_D2V12_BaiHoc.html','utf8')));
+ok(src.includes("field.value=''"));
+ok(src.includes("field.dataset.carryInput"));
+eq(fs.readFileSync('47_D2V12_Core.html','utf8'),fs.readFileSync('qa/be-hoc-lop-a/refs/column-v12-core.js','utf8'));
+eq(fs.readFileSync('48_D2V12_View.html','utf8'),fs.readFileSync('qa/be-hoc-lop-a/refs/column-v12-view.js','utf8'));
+console.log('BE_HOC_D2_MANUAL_CONTRACT_PASS',n,'checks');
