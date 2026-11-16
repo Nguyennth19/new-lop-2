@@ -34,5 +34,6 @@ ok(!/answerKey|correctAnswer|expectedCarry|expectedAnswer|gradingKey|secretAnswe
 ok(!/\.appendRow\(|google\.script\.run|localStorage|sessionStorage/.test(fs.readFileSync('57_Visual_Lab_Host.html','utf8')));
 ok(fs.readFileSync('54_Tangram_V12.html','utf8').includes('G76B5ATangramPlacement'));
 const cg=JSON.parse(fs.readFileSync('qa/be-hoc-visual/manifest.v1.json','utf8'));
-eq(cg.gates.C08,'PENDING_PEDAGOGY');eq(cg.gates.C09,'PENDING_E04');eq(cg.assetRuntime.autoEnable288,false);
+eq(cg.gates.C08,'PENDING_PEDAGOGY');eq(cg.gates.C09,'PENDING_E04');eq(cg.assetRuntime.autoEnable288,true);
+eq(cg.assetRuntime.exactCountRequirePerAssetEvidence,true);
 console.log('BE_HOC_VISUAL_LAB_CORE_CONTRACT_PASS',n,'assertions');
