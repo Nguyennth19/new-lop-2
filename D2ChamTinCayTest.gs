@@ -3,7 +3,7 @@ const D2_TEST_POLICY='D2_MANUAL_CARRY_REQUIRED_V1';
 function d2Reject_(reason){return {ok:false,reason:reason};}
 function d2GradePure_(operands,submission,profile){
  const max=profile==='PV100'?99:profile==='PV1000'?999:-1;
- const cols=profile==='PV100'?2:profile==='PV1000'?3;
+ const cols=profile==='PV100'?2:profile==='PV1000'?3:0;
  if(!Array.isArray(operands)||operands.length<2||operands.length>4||operands.some(function(n){return !Number.isSafeInteger(n)||n<0||n>max;}))return d2Reject_('INVALID_TRUSTED_SOURCE');
  const sum=operands.reduce(function(a,b){return a+b;},0);
  if(sum>max)return d2Reject_('RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
