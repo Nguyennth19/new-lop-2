@@ -76,7 +76,7 @@
     {
       "id": "WORKFLOW_RULES_MATRIX",
       "path": "qa/g7-6-workflow-rules-consolidation-review/consolidation-decisions.v1.json",
-      "gitBlobSha": "c19f32c70ff4c303925ec7c19b3655f90dd1619",
+      "gitBlobSha": "c19f32c70ff4c303925ec7c19b3655f90dd1619f",
       "group": "GOVERNANCE",
       "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
       "mutable": false,
