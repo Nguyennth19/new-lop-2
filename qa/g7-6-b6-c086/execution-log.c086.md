@@ -6,3 +6,5 @@
 04 | Added pure per-packet decisions and partial handling; C09 ordered after C08; no registration rights regardless of simulated signoffs.
 05 | Created empty receipt inbox and pending resolution with 6 slots. No self-generated owner decisions or trust anchors.
 06 | CI test and checkpoint finalization pending.
+
+07 | CI run 43794387873 COMPLETED_SUCCESS at 4d0635308a2e453be97f89a8528022873dd80b09; artifact 14194295526. Protected-source guard, per-packet signature, negative tests passed. 0 actual owner decisions verified.

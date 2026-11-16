@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "branch": "test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
   "baseline": "300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584",
-  "status": "PENDING_OWNER_DECISIONS_TECHNICAL_SIGNATURE_REVIEW_READY",
+  "status": "PASS_SIGNED_EVIDENCE_RESOLUTION_CI_NO_OWNER_DECISIONS_NO_GO",
   "inheritedCi": {
     "runId": 43793487624,
     "conclusion": "success"
@@ -24,9 +24,13 @@
     "testRegistration": "NO_GO"
   },
   "ci": {
-    "runId": null,
-    "headSha": null,
-    "status": "NOT_RUN"
+    "runId": 43794387873,
+    "headSha": "4d0635308a2e453be97f89a8528022873dd80b09",
+    "status": "COMPLETED_SUCCESS",
+    "artifactId": 14194295526,
+    "sourceGuardPass": true,
+    "syntheticSignatureTestsOnly": true,
+    "baseline1710Rerun": false
   },
   "protected": {
     "main": false,
