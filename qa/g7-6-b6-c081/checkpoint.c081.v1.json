@@ -23,8 +23,12 @@
   "scoreStarWrites": false,
   "old1710TestsRerun": false,
   "ci": {
-    "runId": null,
-    "status": "PENDING"
+    "runId": 43788916180,
+    "headSha": "911350b7cafda00cf9fecc839fc2019161cc2cb4",
+    "status": "COMPLETED_SUCCESS",
+    "auditOnly": true,
+    "artifactId": 14190898744,
+    "old1710Rerun": false
   },
   "rollback": "c4f194043c515ee9b55040c3d6ce6fed76668cdc"
 }
