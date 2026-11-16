@@ -1,0 +1,408 @@
+{
+  "schemaVersion": "g76b6.c08.sgx-source-reconciliation.v1",
+  "date": "2026-11-16",
+  "status": "SOURCE_PDF_VISUALLY_VERIFIED_REPAIR_PROPOSALS_UNAPPLIED",
+  "stage": "G7.6-B.6-C08",
+  "sourceVolumes": {
+    "t1": {
+      "id": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+      "name": "SÁCH GIÁO KHOA TOÁN LỚP 2 TẬP 1.pdf",
+      "sha256": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+      "bytes": 39376828,
+      "pdfPages": 141,
+      "printedToPdfPageOffset": 1
+    },
+    "t2": {
+      "id": "1T8RaavitX03_f0VvxjO1zOiXjnMBhrrs",
+      "name": "SÁCH GIÁO KHOA TOÁN LỚP 2 TẬP 2.pdf",
+      "sha256": "044142f31fa94769a143dd029422ee74c49480ad9304e567cc8d97efa4c42f36",
+      "bytes": 20075728,
+      "pdfPages": 142,
+      "printedToPdfPageOffset": 1
+    }
+  },
+  "sheetSources": {
+    "B027": {
+      "id": "1mxIkQk0wmNcghUlP96j5y29RVEieCCK5Ie_OvRvfTHI",
+      "url": "https://docs.google.com/spreadsheets/d/1mxIkQk0wmNcghUlP96j5y29RVEieCCK5Ie_OvRvfTHI/edit"
+    },
+    "B065": {
+      "id": "1gPmmM7WRE2m1rBsLL9LHDwePA4JXSoyTC4zwKUyOac4",
+      "url": "https://docs.google.com/spreadsheets/d/1gPmmM7WRE2m1rBsLL9LHDwePA4JXSoyTC4zwKUyOac4/edit"
+    }
+  },
+  "directEvidence": {
+    "B027": {
+      "printed": [
+        106,
+        107,
+        108,
+        109
+      ],
+      "pdfPages": [
+        107,
+        108,
+        109,
+        110
+      ],
+      "physicalPageReviewed": true,
+      "observations": [
+        "Printed106 activity 1 rectangular sheet cut to square and rectangle",
+        "Printed106 activity 2 four triangles folded and arranged in four silhouettes",
+        "Printed107 activity 3 cut shape into two parts and assemble square",
+        "Printed107 activity 4 select left-hand pieces making target shapes",
+        "Printed108-109 ruler steps and draw line segments, NOT matchstick classification"
+      ],
+      "officialLessonTitle": "Thực hành gấp, cắt, ghép, xếp hình. Vẽ đoạn thẳng",
+      "sheetLessonId": "MATH_B027",
+      "sourceSkillId": "SKILL_PRACTICE_SHAPES_DRAWING"
+    },
+    "B065": {
+      "printed": [
+        102,
+        103,
+        104,
+        105
+      ],
+      "pdfPages": [
+        103,
+        104,
+        105,
+        106
+      ],
+      "physicalPageReviewed": true,
+      "observations": [
+        "Printed102 colored toy cars grouped into pictograph",
+        "Printed103 icon-based flowers and school item categories; questions count and compare",
+        "Printed104 pictograph practice with multiple categories",
+        "Printed105 picture chart of birds one symbol equals one bird",
+        "Printed105 matchstick bundle pictograph each symbol means TEN matchsticks"
+      ],
+      "officialLessonTitle": "Biểu đồ tranh",
+      "sheetLessonId": "MATH_B065",
+      "sourceSkillId": "SKILL_PICTOGRAPH"
+    }
+  },
+  "proposedSessionCorrections": [
+    {
+      "source": "SGK_B027_T01",
+      "sheet": "B027",
+      "row": 15,
+      "edition": "EDITION_KNTT_MATH_G2_V1_SGK",
+      "old": {
+        "printed": [
+          105,
+          106
+        ],
+        "pdf": [
+          107,
+          108
+        ],
+        "label": "Tiết 1: Hình ba cạnh, hình bốn cạnh",
+        "exerciseCount": 3
+      },
+      "proposed": {
+        "printed": [
+          106,
+          107
+        ],
+        "pdf": [
+          107,
+          108
+        ],
+        "label": "Thực hành gấp, cắt, ghép, xếp hình",
+        "exerciseNumbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "exerciseCount": 4
+      },
+      "reason": "PHOTOGRAPHIC_SGK_PAGE_AND_EXERCISE_STRUCTURE_MISMATCH"
+    },
+    {
+      "source": "SGK_B027_T02",
+      "sheet": "B027",
+      "row": 16,
+      "edition": "EDITION_KNTT_MATH_G2_V1_SGK",
+      "old": {
+        "printed": [
+          107,
+          108
+        ],
+        "pdf": [
+          109,
+          110
+        ],
+        "label": "Tiết 2: Luyện tập",
+        "exerciseCount": 3
+      },
+      "proposed": {
+        "printed": [
+          108,
+          109
+        ],
+        "pdf": [
+          109,
+          110
+        ],
+        "label": "Vẽ đoạn thẳng",
+        "exerciseNumbers": [
+          1,
+          2,
+          3
+        ],
+        "exerciseCount": 3
+      },
+      "reason": "SGK_T02_DRAW_SEGMENT_NOT_MATCHSTICK"
+    },
+    {
+      "source": "SGK_B065_T01",
+      "sheet": "B065",
+      "row": 167,
+      "edition": "EDITION_KNTT_MATH_G2_V2_SGK",
+      "old": {
+        "printed": [
+          113,
+          114
+        ],
+        "pdf": [
+          115,
+          116
+        ],
+        "label": "Tiết 1",
+        "exerciseCount": 3
+      },
+      "proposed": {
+        "printed": [
+          102,
+          103
+        ],
+        "pdf": [
+          103,
+          104
+        ],
+        "label": "Khám phá và hoạt động biểu đồ tranh",
+        "exerciseCount": null,
+        "exerciseNumbers": null
+      },
+      "reason": "PAGES_WRONG_AND_ACTIVITY_SPLIT_REQUIRES_OWNER_REVIEW"
+    },
+    {
+      "source": "SGK_B065_T02",
+      "sheet": "B065",
+      "row": 168,
+      "edition": "EDITION_KNTT_MATH_G2_V2_SGK",
+      "old": {
+        "printed": [
+          115,
+          116
+        ],
+        "pdf": [
+          117,
+          118
+        ],
+        "label": "Tiết 2",
+        "exerciseCount": 4
+      },
+      "proposed": {
+        "printed": [
+          104,
+          105
+        ],
+        "pdf": [
+          105,
+          106
+        ],
+        "label": "Luyện tập biểu đồ tranh",
+        "exerciseCount": null,
+        "exerciseNumbers": null
+      },
+      "reason": "PAGES_WRONG_AND_EXERCISE_ENUMERATION_REQUIRES_OWNER_REVIEW"
+    }
+  ],
+  "exerciseRecordsToQuarantine": [
+    {
+      "sheet": "B027",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 50,
+      "recordId": "SGK_B027_T01_E01",
+      "lessonId": "MATH_B027",
+      "currentEvidenceStatus": "DESCRIPTIONS_CONFLICT_WITH_SCANNED_SGK",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_ASSIGN_NEW_SOURCE_PAGE_EXERCISE_MAPPING",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B027",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 51,
+      "recordId": "SGK_B027_T01_E02",
+      "lessonId": "MATH_B027",
+      "currentEvidenceStatus": "DESCRIPTIONS_CONFLICT_WITH_SCANNED_SGK",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_ASSIGN_NEW_SOURCE_PAGE_EXERCISE_MAPPING",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B027",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 52,
+      "recordId": "SGK_B027_T01_E03",
+      "lessonId": "MATH_B027",
+      "currentEvidenceStatus": "DESCRIPTIONS_CONFLICT_WITH_SCANNED_SGK",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_ASSIGN_NEW_SOURCE_PAGE_EXERCISE_MAPPING",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B027",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 53,
+      "recordId": "SGK_B027_T02_E01",
+      "lessonId": "MATH_B027",
+      "currentEvidenceStatus": "DESCRIPTIONS_CONFLICT_WITH_SCANNED_SGK",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_ASSIGN_NEW_SOURCE_PAGE_EXERCISE_MAPPING",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B027",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 54,
+      "recordId": "SGK_B027_T02_E02",
+      "lessonId": "MATH_B027",
+      "currentEvidenceStatus": "DESCRIPTIONS_CONFLICT_WITH_SCANNED_SGK",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_ASSIGN_NEW_SOURCE_PAGE_EXERCISE_MAPPING",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B027",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 55,
+      "recordId": "SGK_B027_T02_E03",
+      "lessonId": "MATH_B027",
+      "currentEvidenceStatus": "DESCRIPTIONS_CONFLICT_WITH_SCANNED_SGK",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_ASSIGN_NEW_SOURCE_PAGE_EXERCISE_MAPPING",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B065",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 592,
+      "recordId": "SGK_B065_T01_E01",
+      "lessonId": "MATH_B065",
+      "currentEvidenceStatus": "CLOCK_CALENDAR_CONTAMINATION_NOT_PICTOGRAPH",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_REEXTRACT_FROM_SGK_PAGE_IMAGE",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B065",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 593,
+      "recordId": "SGK_B065_T01_E02",
+      "lessonId": "MATH_B065",
+      "currentEvidenceStatus": "CLOCK_CALENDAR_CONTAMINATION_NOT_PICTOGRAPH",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_REEXTRACT_FROM_SGK_PAGE_IMAGE",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B065",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 594,
+      "recordId": "SGK_B065_T01_E03",
+      "lessonId": "MATH_B065",
+      "currentEvidenceStatus": "CLOCK_CALENDAR_CONTAMINATION_NOT_PICTOGRAPH",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_REEXTRACT_FROM_SGK_PAGE_IMAGE",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B065",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 595,
+      "recordId": "SGK_B065_T02_E01",
+      "lessonId": "MATH_B065",
+      "currentEvidenceStatus": "CLOCK_CALENDAR_CONTAMINATION_NOT_PICTOGRAPH",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_REEXTRACT_FROM_SGK_PAGE_IMAGE",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B065",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 596,
+      "recordId": "SGK_B065_T02_E02",
+      "lessonId": "MATH_B065",
+      "currentEvidenceStatus": "CLOCK_CALENDAR_CONTAMINATION_NOT_PICTOGRAPH",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_REEXTRACT_FROM_SGK_PAGE_IMAGE",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B065",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 597,
+      "recordId": "SGK_B065_T02_E03",
+      "lessonId": "MATH_B065",
+      "currentEvidenceStatus": "CLOCK_CALENDAR_CONTAMINATION_NOT_PICTOGRAPH",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_REEXTRACT_FROM_SGK_PAGE_IMAGE",
+      "releaseAllowed": false
+    },
+    {
+      "sheet": "B065",
+      "tab": "03_EXERCISE_LEDGER_CANONICAL",
+      "row": 598,
+      "recordId": "SGK_B065_T02_E04",
+      "lessonId": "MATH_B065",
+      "currentEvidenceStatus": "CLOCK_CALENDAR_CONTAMINATION_NOT_PICTOGRAPH",
+      "action": "QUARANTINE_RECORD_KEEP_RAW_AND_REEXTRACT_FROM_SGK_PAGE_IMAGE",
+      "releaseAllowed": false
+    }
+  ],
+  "variantRuleSuspensions": [
+    {
+      "sheet": "B065",
+      "tab": "07_SKILL_VARIANT_RULES",
+      "row": 45,
+      "ruleId": "VR_SGK_B065_T01_E01",
+      "sourceSkillId": "SKILL_PICTOGRAPH",
+      "currentAllowedMutation": "change_hour_hand",
+      "currentForbiddenMutation": "invalid_hand_angles",
+      "action": "QUARANTINE_WRONG_DOMAIN_RULE_REPLACE_ONLY_AFTER_PER_EXERCISE_PROOF",
+      "reason": "CLOCK_MUTATION_IN_PICTOGRAPH_RULE"
+    },
+    {
+      "sheet": "B027",
+      "tab": "07_SKILL_VARIANT_RULES",
+      "row": 7,
+      "ruleId": "VR_SGK_B027_T01_E01",
+      "sourceSkillId": "SKILL_PRACTICE_SHAPES_DRAWING",
+      "action": "HOLD_FOR_SOURCE_PIECE_COUNT_AND_EXERCISE_BINDING",
+      "reason": "B5A_3_PIECES_NOT_EQUIVALENT_TO_SGK_4_TRIANGLES_WITHOUT_SIGNOFF"
+    }
+  ],
+  "observations": {
+    "originalEditionRegistryHashVerified": false,
+    "originalPdfHashVerifiedForTwoDriveFiles": true,
+    "sourceEditionRegisterDifferentDocumentIds": true,
+    "sourceEditionRegisterContainsUnverifiedHashLikeValues": true,
+    "noSheetMutation": true,
+    "noSourceIdReuseWithoutMapping": true,
+    "noAutoOwnerApproval": true,
+    "sgkLV1": true,
+    "vbtLV2RequiresSeparatePageProof": true,
+    "lv3Unsupported": true
+  },
+  "deterministicGate": {
+    "noAutomaticCorrectionOfExerciseText": true,
+    "noAutoReassignmentOfExistingQuestionIds": true,
+    "noRuntimeLessonIdFromSourceMATH_B027": true,
+    "noRuntimeLessonIdFromSourceMATH_B065": true,
+    "b27ThreePieceRendererRequiresPedagogyOwnerApproval": true,
+    "b65OneSymbolTenUnitsExcludedFromCurrentD9": true
+  },
+  "next": [
+    "Owner review proposed session ranges",
+    "Re-extract individual 13 source rows with source exercise image/part IDs",
+    "Verify official PDF edition hashes against source register",
+    "Review VBT source pages for LV2",
+    "Independent pedagogy signoff D5/D9",
+    "Only after approved source patches proceed to C08 closure"
+  ],
+  "decision": "C08_STILL_BLOCKED"
+}

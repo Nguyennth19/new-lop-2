@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "g76b6.c08.p06-runtime-id-crosswalk.v1",
+  "date": "2026-11-16",
+  "sourceP06Commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "catalogPath": "thu-nghiem/p0-6/fb/fb2-lesson-catalog.candidate.json",
+  "format": "SOURCE_ID_DIFFERENT_FROM_RUNTIME_ID",
+  "observedCatalog": [
+    {
+      "lessonId": "toan_b21",
+      "state": "INHERITED_ACCEPTED_TEST_ONLY",
+      "sourceRef": "E03_COMPOSER_B21"
+    },
+    {
+      "lessonId": "toan_b20",
+      "state": "INDEPENDENT_ACCEPTED_TEST_ONLY",
+      "sourceRef": "B20_H1_IMMUTABLE_JSON"
+    },
+    {
+      "lessonId": "toan_b24",
+      "state": "PENDING_INDEPENDENT_QA",
+      "sourceRef": null
+    },
+    {
+      "lessonId": "tieng_viet_doc_hieu",
+      "state": "PENDING_INDEPENDENT_QA",
+      "sourceRef": null
+    }
+  ],
+  "candidates": [
+    {
+      "subject": "toan",
+      "lessonNumber": 27,
+      "sourceId": "MATH_B027",
+      "sourceSkillId": "SKILL_PRACTICE_SHAPES_DRAWING",
+      "suggestedRuntimeLessonId": "toan_b27",
+      "suggestedRuntimeSkillId": null,
+      "registeredInPinnedP06": false,
+      "hasTrustedAdapter": false,
+      "lessonIdApproved": false,
+      "skillIdApproved": false,
+      "mayActivateE04": false
+    },
+    {
+      "subject": "toan",
+      "lessonNumber": 65,
+      "sourceId": "MATH_B065",
+      "sourceSkillId": "SKILL_PICTOGRAPH",
+      "suggestedRuntimeLessonId": "toan_b65",
+      "suggestedRuntimeSkillId": null,
+      "registeredInPinnedP06": false,
+      "hasTrustedAdapter": false,
+      "lessonIdApproved": false,
+      "skillIdApproved": false,
+      "mayActivateE04": false
+    }
+  ],
+  "schemaContract": {
+    "runtimeLessonIdPattern": "^[a-z0-9][a-z0-9_-]{2,95}$",
+    "variantPolicyRegistryPattern": "^toan_b[0-9]{2,3}$",
+    "sourceSkillIdsAreNotProvenToBeProducerSkillIds": true,
+    "noSkillIdAutoInvented": true,
+    "currentTestLesson": "toan_b999",
+    "forbidsB21Attachment": true
+  },
+  "decision": "FAIL_CLOSED_SOURCE_IDS_ONLY_NO_E04_ACTIVATION"
+}

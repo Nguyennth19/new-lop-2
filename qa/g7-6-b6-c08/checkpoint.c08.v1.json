@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "g76b6.c08.source-reconciliation-checkpoint.v1",
+  "stage": "G7.6-B.6-C08",
+  "date": "2026-11-16",
+  "branch": "test/g7-6-b6-c08-source-reconciliation-20261116",
+  "baselineCommit": "0a453101ab47567bdf3ff820f9b58a9d7c0c86d3",
+  "b5cBaseline": "2862a81908557212e6561c6372df435d9d236784",
+  "status": "SOURCE_CONFLICTS_VERIFIED_PATCH_PROPOSAL_TEST_ONLY_C08_NO_GO",
+  "sources": {
+    "pdfSha256T1": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+    "pdfSha256T2": "044142f31fa94769a143dd029422ee74c49480ad9304e567cc8d97efa4c42f36",
+    "p06Sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2"
+  },
+  "coverage": {
+    "sessionRowsProposed": 4,
+    "exerciseRowsQuarantined": 13,
+    "variantRulesFlagged": 2,
+    "sgkPrintPagesReviewed": 8,
+    "sourceStudentRecordsTouched": 0,
+    "old1710AssertionsRerun": false
+  },
+  "approvals": {
+    "C07": "PENDING_OWNER",
+    "C08": "BLOCKED_PENDING_RECONCILIATION_AND_PEDAGOGY",
+    "C09": "BLOCKED_C08"
+  },
+  "ci": {
+    "status": "NOT_YET_RECORDED",
+    "sourceOnlyNewTests": true,
+    "runId": null,
+    "runHeadSha": null,
+    "assertions": null
+  },
+  "changedScope": [
+    "qa/g7-6-b6-c08/",
+    "docs/kiem-dinh/G7.6-B6-C08_",
+    ".github/workflows/g7-6-b6-c08-source-reconciliation-no-deploy.yml"
+  ],
+  "protected": {
+    "officialManifestUntouched": true,
+    "googleSheetUntouched": true,
+    "sourceP06Untouched": true,
+    "b6C07OriginalUnchanged": true,
+    "mainUntouched": true,
+    "testTheoMainUntouched": true,
+    "gasUntouched": true,
+    "d10Untouched": true,
+    "studentIO": false,
+    "scoreStarWrites": false
+  },
+  "rollback": {
+    "parentCommit": "0a453101ab47567bdf3ff820f9b58a9d7c0c86d3",
+    "method": "STOP_CONSUMING_C08_PROPOSALS_AND_USE_PREVIOUS_B6_CHECKPOINT",
+    "appRollbackRequired": false,
+    "gasRollbackRequired": false
+  }
+}

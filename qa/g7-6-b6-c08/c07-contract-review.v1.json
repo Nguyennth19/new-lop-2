@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "g76b6.c07-independent-contract-review.v1",
+  "date": "2026-11-16",
+  "status": "TECHNICAL_CONTRACT_CHECK_PENDING_OWNER_APPROVAL",
+  "sourceCandidate": "qa/g7-6-b6/mental-renderer-registration.candidate.v1.json",
+  "sourceApproval": "qa/g7-6-b6/approvals/C07.approval.pending.v1.json",
+  "rendererId": "MATH_MENTAL_NUMBER_INPUT_V1",
+  "sourceLessonId": "toan_b21",
+  "independence": "C07_DOES_NOT_DEPEND_ON_C08_FOR_CONTRACT_TESTING",
+  "constraints": {
+    "noOfficialManifestMutation": true,
+    "notA13thForm": true,
+    "numberInputOnly": true,
+    "clientGrading": false,
+    "answersPublic": false,
+    "studentWrites": false,
+    "releaseReady": false
+  },
+  "ownerDecision": null,
+  "signature": null,
+  "registerInManifestTest": false,
+  "requiredNext": [
+    "Owner scope review C07 only",
+    "Separate future approved versioned auxiliary TEST registry after signer",
+    "No merge/GAS"
+  ]
+}
