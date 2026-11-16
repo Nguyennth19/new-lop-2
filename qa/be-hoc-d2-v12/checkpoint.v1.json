@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "be-hoc.d2.v12.host-connector.v1",
+  "date": "2026-11-16",
+  "baseline": "a69cb2153590645b1f9ee7119011cfbd7a324eae",
+  "branch": "be-hoc",
+  "status": "PENDING_CI",
+  "sourceCoreBlob": "16ae440618bcb3cf90706cdad2ccd11cbadc222a",
+  "sourceViewBlob": "214b615d0c595dfd76695c75e5443cefc36a921d",
+  "functionality": {
+    "realB20SheetQuestions": true,
+    "practiceSidecar": true,
+    "legacyGradePreserved": true,
+    "scoreFromD2": false,
+    "starsFromD2": false,
+    "keyboardHook": true,
+    "carryPolicy": "OPTIONAL_HINT",
+    "PV100": true,
+    "PV1000": "QA_ONLY_NOT_MAPPED_TO_B20",
+    "result1000": "REJECTED"
+  },
+  "security": {
+    "answerKeyInPublicPlan": false,
+    "hostReadsQAnswer": false,
+    "newStudentWrites": false,
+    "GASDeploy": false
+  },
+  "ci": {
+    "status": "PENDING",
+    "runs": []
+  },
+  "rollbackCommit": "a69cb2153590645b1f9ee7119011cfbd7a324eae"
+}

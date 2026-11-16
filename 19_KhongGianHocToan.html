@@ -91,6 +91,7 @@ function render(){
  target.innerHTML='<div class="ml-page">'+sections.map((s,i)=>section(s,i)).join('')+'</div>';
  restoreDrafts();
  installSvg();
+ if(window.BE_HOC_D2_V12)window.BE_HOC_D2_V12.mountB20(fullData,root,view);
  target.scrollTop=0;
  renderResults();
 }
@@ -203,6 +204,7 @@ function inputList(){return [...shell().querySelectorAll('#mlContent [data-ml-fi
 let selected=null;
 function pickInput(el){selected=el;}
 function press(k){
+ if(window.BE_HOC_D2_V12&&window.BE_HOC_D2_V12.handleKey(k))return;
  const all=inputList();if(!all.length)return;
  if(!selected||!all.includes(selected))selected=all.find(x=>!x.value)||all[0];
  const target=selected;

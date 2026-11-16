@@ -1,0 +1,63 @@
+/* BE-HOC D2 V1.2: B20 actual Sheet-question companion, separate no-grade practice.
+ * No answer fields, grade authority, student writes, or release gate changes.
+ */
+(function(root){
+'use strict';
+const API=root.KLColumnV12,View=root.KLColumnViewV12;
+let lastField=null;
+const validId=id=>typeof id==='string'&&/^[A-Za-z0-9_-]{2,65}$/.test(id);
+function fromB20(q){
+ if(!q||q.type!=='vertical'||q.valid!==true||!validId(q.id))return {ok:false,reason:'NOT_VERIFIED_B20_VERTICAL'};
+ if(q.op!=='+'||!['LV1','LV2','LV3'].includes(q.level))return {ok:false,reason:'UNSUPPORTED_OP_OR_LEVEL'};
+ const a=Number(q.n1),b=Number(q.n2);
+ if(!Number.isSafeInteger(a)||!Number.isSafeInteger(b)||a<10||b<10||a>99||b>99)return {ok:false,reason:'NOT_B20_TWO_DIGITS'};
+ const candidate={variantId:'COL_B20_'+q.id,profile:'PV100',operation:'ADD',level:q.level,
+  a,b,carryPolicy:'OPTIONAL_HINT',assetId:null};
+ // Do not inspect q.answer; never forward it into D2 public data.
+ return API.publicPlan(candidate);
+}
+function mountB20(data,screen,viewName){
+ if(!API||!View||!data||data.lesson?.id!=='toan_b20'||!Array.isArray(data.questions)||!screen||!screen.querySelector)return {ok:false,reason:'INVALID_LESSON'};
+ let count=0,skipped=0;
+ for(const q of data.questions){
+  if(q.level!==viewName||q.type!=='vertical')continue;
+  const plan=fromB20(q);
+  if(!plan.ok){skipped++;continue;}
+  const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(n=>n.dataset.mlQCard===q.id);
+  if(!card||card.querySelector('[data-d2-practice]'))continue;
+  const holder=document.createElement('details');holder.className='kl-d2-practice';holder.dataset.d2Practice=q.id;
+  const summary=document.createElement('summary');summary.textContent='🧮 Thử đặt tính D2 V1.2 (không tính điểm)';
+  const note=document.createElement('p');note.className='kl-d2-b20-note';note.textContent='Luyện điền từng chữ số từ đơn vị sang chục; ô nhớ chỉ là gợi ý. Khi nộp bài, em vẫn dùng ô trả lời chính ở phía trên.';
+  const mount=document.createElement('div');mount.className='kl-d2-mount';
+  holder.append(summary,note,mount);card.append(holder);
+  holder.addEventListener('toggle',()=>{
+   if(!holder.open||holder.dataset.d2Mounted==='1')return;
+   const result=View.mount(mount,[plan],{
+    onSpeak:p=>{const text=p.a.slice().reverse().map(x=>x.digit).join('')+' cộng '+p.b.slice().reverse().map(x=>x.digit).join('')+' bằng mấy?';
+     if(root.BE_HOC_GIONG_DOC_V2)root.BE_HOC_GIONG_DOC_V2.speak(text,null);},
+    onChange:()=>{const status=mount.querySelector('.kl-col-v12-status');if(status)status.textContent='Đang luyện tập; chưa gửi chấm điểm.';},
+    onSubmit:()=>{const status=mount.querySelector('.kl-col-v12-status');if(status)status.textContent='Đã ghi trong phiên luyện tập. Điền đáp án ở ô bài chính để nộp bài.';}
+   });
+   if(result.ok)holder.dataset.d2Mounted='1';
+   else{holder.dataset.d2Mounted='error';note.textContent='Bài này chưa hỗ trợ bảng D2; em làm bài bằng ô trả lời chính.';}
+  });
+  count++;
+ }
+ return {ok:true,lessonId:'toan_b20',practiceCards:count,excluded:skipped,gradingEnabled:false,studentWrites:false};
+}
+function handleKey(k){
+ const active=document.activeElement;
+ const curr=active?.matches?.('#mathFullScreen .kl-d2-practice[open] .kl-col-v12-answer')?active:lastField;
+ if(!curr||!curr.isConnected||!curr.closest('.kl-d2-practice[open]'))return false;
+ if(active?.matches?.('#mathFullScreen [data-ml-field]'))return false;
+ if(k==='⌫')curr.value=curr.value.slice(0,-1);
+ else if(/^[0-9]$/.test(k))curr.value=k;
+ else return true;
+ curr.dispatchEvent(new Event('input',{bubbles:true}));return true;
+}
+document.addEventListener('focusin',e=>{
+ if(e.target.matches?.('#mathFullScreen .kl-d2-practice .kl-col-v12-answer'))lastField=e.target;
+ else if(e.target.matches?.('#mathFullScreen [data-ml-field]'))lastField=null;
+});
+root.BE_HOC_D2_V12=Object.freeze({fromB20,mountB20,handleKey});
+})(window);

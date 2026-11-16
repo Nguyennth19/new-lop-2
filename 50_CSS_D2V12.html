@@ -1,0 +1,22 @@
+/* BE-HOC D2 V1.2 only in #mathFullScreen; no impact on parent app. */
+#mathFullScreen .kl-d2-practice{margin:14px 0 0;padding:10px;border:1px solid #a9c9e8;border-radius:13px;background:#f8fcff}
+#mathFullScreen .kl-d2-practice>summary{cursor:pointer;color:#135387;font-weight:750;min-height:40px;padding:9px 5px;touch-action:manipulation}
+#mathFullScreen .kl-d2-b20-note{font-size:12px;color:#425b72;margin:7px 0 11px;line-height:1.5}
+#mathFullScreen .kl-col-v12-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-width:0}
+#mathFullScreen .kl-col-v12-card{border:1px solid #b9d6ee;border-radius:15px;padding:12px;background:#fff;min-width:0}
+#mathFullScreen .kl-col-v12-head{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:8px}
+#mathFullScreen .kl-col-v12-cap{font-size:12px;font-weight:800;color:#22547c}
+#mathFullScreen .kl-col-v12-read,#mathFullScreen .kl-col-v12-reset,#mathFullScreen .kl-col-v12-send{border:1px solid #92bee0;border-radius:10px;background:#edf7ff;color:#17517d;min-height:40px;padding:7px 9px;font-weight:650;cursor:pointer}
+#mathFullScreen .kl-col-v12-number-grid{display:grid;grid-template-columns:repeat(var(--math-cols),minmax(0,1fr));align-items:center;gap:5px;min-width:0}
+#mathFullScreen .kl-col-v12-col-title{font-size:11px;text-align:center;font-weight:750}
+#mathFullScreen .kl-col-v12-digit,#mathFullScreen .kl-col-v12-sign{text-align:center;font-size:22px;font-weight:800;min-height:35px}
+#mathFullScreen .kl-col-v12-carry-title{text-align:left;font-size:11px;font-weight:700}
+#mathFullScreen .kl-col-v12-transition,#mathFullScreen .kl-col-v12-answer{width:100%;min-width:0;min-height:44px;border:1.5px solid #87b9e2;border-radius:9px;text-align:center;background:#f5faff;font-size:19px;font-weight:750;color:#183d68}
+#mathFullScreen .kl-col-v12-transition{font-size:12px;cursor:pointer}
+#mathFullScreen .kl-col-v12-transition.selected{background:#e0faee;border-color:#31a273}
+#mathFullScreen .kl-col-v12-answer:focus-visible,#mathFullScreen .kl-col-v12-transition:focus-visible{outline:3px solid #ffcc61;outline-offset:1px}
+#mathFullScreen .kl-col-v12-rule{grid-column:1/-1;height:2px;background:#253e54}
+#mathFullScreen .kl-col-v12-note,#mathFullScreen .kl-col-v12-status{margin:9px 0;font-size:12px;line-height:1.5;color:#4a5f72}
+#mathFullScreen .kl-col-v12-controls{display:flex;gap:8px;flex-wrap:wrap}
+#mathFullScreen .kl-col-v12-controls>button{flex:1 1 auto}
+@media(max-width:760px){#mathFullScreen .kl-d2-practice{padding:7px}#mathFullScreen .kl-col-v12-card{padding:8px}#mathFullScreen .kl-col-v12-number-grid{gap:4px}#mathFullScreen .kl-col-v12-digit{font-size:20px}#mathFullScreen .kl-col-v12-read,#mathFullScreen .kl-col-v12-reset,#mathFullScreen .kl-col-v12-send{min-height:44px}}

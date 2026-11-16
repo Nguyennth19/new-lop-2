@@ -1,0 +1,39 @@
+name: BE-HOC D2 V1.2 in-lesson no-deploy QA
+on:
+  push:
+    branches: [be-hoc]
+    paths:
+      - 'GiaoDien.html'
+      - '19_KhongGianHocToan.html'
+      - '47_D2V12_Core.html'
+      - '48_D2V12_View.html'
+      - '49_D2V12_BaiHoc.html'
+      - '50_CSS_D2V12.html'
+      - 'qa/be-hoc-d2-v12/**'
+      - '.github/workflows/be-hoc-d2-v12-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  d2-lesson-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Protect trusted grading and pin D2 V1.2 bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor a69cb2153590645b1f9ee7119011cfbd7a324eae HEAD
+          test "$(git hash-object 47_D2V12_Core.html)" = 16ae440618bcb3cf90706cdad2ccd11cbadc222a
+          test "$(git hash-object 48_D2V12_View.html)" = 214b615d0c595dfd76695c75e5443cefc36a921d
+          for f in MayChu.gs ThanhTichMayChu.gs 26_ChamCauHoiToan.html appsscript.json; do
+            test "$(git hash-object "$f")" = "$(git show a69cb2153590645b1f9ee7119011cfbd7a324eae:"$f" | git hash-object --stdin)"
+          done
+          node qa/be-hoc-d2-v12/d2-contract.test.cjs
