@@ -46,19 +46,25 @@ function safePublic(value,depth=0){
   const result=safePublic(v,depth+1);if(!result.ok)return result;out[k]=result.value;
  }return {ok:true,value:out};
 }
-function chooseAsset({assetId,visualIntent,exactQuantity,unitCountEvidence}={}){
+function chooseAsset({assetId,visualIntent,countUnit,exactQuantity}={}){
+ const role=visualIntent||'DECORATIVE';
+ if(typeof assetId==='string'&&assetId.startsWith('FLUENT:')){
+  const id=assetId.slice(7),assets=root.BE_HOC_FLUENT_46;
+  if(!assets)return {ok:false,reason:'FLUENT_NOT_LOADED'};
+  const result=assets.resolve(id,role,countUnit||'');
+  if(!result.ok)return result;
+  if(role==='EXACT_COUNT'&&(!Number.isSafeInteger(exactQuantity)||exactQuantity<1||exactQuantity>50))return {ok:false,reason:'BAD_COUNT'};
+  return {...result,semanticUse:role};
+ }
  const assets=root.BE_HOC_ASSETS_288;
  if(!assets)return {ok:false,reason:'ASSET_LIBRARY_NOT_LOADED'};
  const r=assets.resolve(assetId);
  if(!r.ok)return r;
- if(['DECORATIVE','CHOICE'].includes(visualIntent))return {...r,semanticUse:'APPROVED_DECORATIVE'};
- // Exact counting needs explicit per-asset evidence, not a count inferred from a bunch/stack.
- // Count evidence from lesson/client payload is not trusted approval.
- // Only a server-pinned approved unit registry may enable exact-count composition.
- // The current registry has no such signed per-asset certification.
- if(visualIntent==='EXACT_COUNT')return {ok:false,reason:'EXACT_COUNT_EVIDENCE_NOT_PINNED'};
- return {ok:false,reason:'EXACT_COUNT_EVIDENCE_MISSING'};
+ if(['DECORATIVE','CHOICE'].includes(role))return {...r,semanticUse:'APPROVED_DECORATIVE'};
+ if(role==='EXACT_COUNT')return {ok:false,reason:'WEBP_EXACT_COUNT_UNIT_NOT_PINNED'};
+ return {ok:false,reason:'UNSUPPORTED_VISUAL_INTENT'};
 }
+
 function resolve(e){
  if(!e||typeof e!=='object'||Array.isArray(e))return {ok:false,reason:'INVALID_ENVELOPE'};
  const id=e.rendererId,type=REGISTRY[id];
