@@ -11,3 +11,8 @@
 | 07 | C07–C12 | Lập sáu hồ sơ pending riêng; tất cả chữ ký/phạm vi duyệt NULL; no runtime changes. |
 | 08 | B6 workflow | Chạy NEW CONTRACT-ONLY TEST khi có CI; không rerun 1710 assertions B5C, không deploy. |
 | 09 | Rollback | Nếu contract-only regression fail, bỏ dùng B6; B5C SHA 2862a819 còn nguyên. |
+
+## 2026-11-16 – CI readback (append-only)
+- New B6-only run `43786472001` completed/success on source commit `0996d4a58d9d3b55a7309665fa64f6ed7ca6d1c6`.
+- All required audit-only job steps successful, artifact ID `14190795658` (11,506 bytes).
+- All 6 owner approvals still pending, no auto-elevation from technical PASS; protected base remains unchanged.
