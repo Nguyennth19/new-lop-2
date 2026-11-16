@@ -1,0 +1,72 @@
+/* BE-HOC / D2 carry auto and multi-operand extension of original V1.2 renderer.
+ * The original core/view remain pinned and unchanged. This module is NOT a grader.
+ * Only public, visible operands are used; never reads answer or student records.
+ */
+(function(root){
+'use strict';
+const Core=root.KLColumnV12,View=root.KLColumnViewV12;
+const names=['ones','tens','hundreds','thousands'];
+const fail=reason=>({ok:false,reason});
+const isNumber=x=>Number.isSafeInteger(x)&&x>=0;
+function makePlan(spec){
+ if(!spec||spec.operation!=='ADD'||!Array.isArray(spec.operands)||spec.operands.length<2||spec.operands.length>4)return fail('OPERANDS_2_TO_4_ADD_ONLY');
+ const max=spec.profile==='PV100'?99:spec.profile==='PV1000'?999:null;
+ if(max===null||spec.operands.some(n=>!isNumber(n)||n>max))return fail('OPERAND_OUT_OF_SCOPE');
+ const sum=spec.operands.reduce((a,b)=>a+b,0);
+ if(sum>max)return fail('RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+ const two={variantId:spec.variantId,profile:spec.profile,operation:'ADD',level:spec.level,a:spec.operands[0],b:spec.operands[1],carryPolicy:'OPTIONAL_HINT',assetId:null};
+ const base=Core.publicPlan(two);if(!base.ok)return base;
+ const columns=base.columns;
+ // Do not expose an answer or expected digits; the carry is a teaching hint
+ // mathematically derivable from displayed operands.
+ const carryByPlace={},rows=[];
+ let c=0;
+ for(let i=0;i<columns;i++){
+   const units=spec.operands.reduce((total,n)=>total+Math.floor(n/10**i)%10,0);
+   const next=Math.floor((units+c)/10);
+   if(i<columns-1)carryByPlace['carry_'+names[i+1]]=next;
+   c=next;
+ }
+ if(c>0)return fail('RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+ for(const num of spec.operands.slice(2))
+   rows.push(base.displayOrder.map(place=>({place,digit:Math.floor(num/10**names.indexOf(place))%10})));
+ return Object.freeze({...base,additionalRows:rows,operandCount:spec.operands.length,autoCarryByPlace:carryByPlace,carryMode:'AUTO_DISPLAY_UNGRADED',gradingEnabled:false,runtimeEnabled:false});
+}
+function decorate(card,plan){
+ const grid=card?.querySelector('.kl-col-v12-number-grid');
+ if(!grid)return fail('MISSING_V12_GRID');
+ const rule=grid.querySelector('.kl-col-v12-rule');if(!rule)return fail('MISSING_V12_RULE');
+ for(const operands of plan.additionalRows||[]){
+  const sign=document.createElement('span');sign.className='kl-col-v12-sign kl-d2-multi-row';sign.textContent='+';
+  grid.insertBefore(sign,rule);
+  for(const cell of operands){
+   const n=document.createElement('span');n.className='kl-col-v12-digit kl-d2-multi-row';n.textContent=String(cell.digit);
+   grid.insertBefore(n,rule);
+  }
+ }
+ function fillAutoCarry(){
+  for(const button of grid.querySelectorAll('.kl-col-v12-transition')){
+   const count=Number(plan.autoCarryByPlace?.[button.dataset.transition]||0);
+   button.disabled=true;button.dataset.autoCarry=String(count);
+   button.textContent=count>0?'+'+count:'—';
+   button.classList.toggle('selected',count>0);
+   button.setAttribute('aria-pressed',String(count>0));
+   button.setAttribute('aria-label','Ô nhớ tự điền hàng '+(button.dataset.place||'')+': '+count);
+   button.setAttribute('title','Ô nhớ tự động theo các số đang hiển thị; không tính điểm riêng');
+  }
+ }
+ fillAutoCarry();
+ card.querySelector('.kl-col-v12-reset')?.addEventListener('click',fillAutoCarry);
+ const note=card.querySelector('.kl-col-v12-note');
+ if(note)note.textContent='Ô nhớ đã tự tính. Em chỉ cần điền chữ số kết quả; ô nhớ không có điểm riêng.';
+ card.dataset.autoCarry='1';card.dataset.operandCount=String(plan.operandCount||2);
+ return {ok:true};
+}
+function mount(container,plans,callbacks={}){
+ if(!Array.isArray(plans)||plans.length===0||plans.some(p=>!p?.ok||p.operation!=='ADD'||p.carryMode!=='AUTO_DISPLAY_UNGRADED'))return fail('INVALID_AUTO_PLAN');
+ const result=View.mount(container,plans,callbacks);if(!result.ok)return result;
+ plans.forEach((p,i)=>decorate(result.cards.children[i],p));
+ return result;
+}
+root.BE_HOC_D2_AUTO=Object.freeze({makePlan,decorate,mount});
+})(window);

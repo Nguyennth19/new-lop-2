@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "be-hoc.d2.auto.v1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "baseline": "72d52c32aa81e37e989629c11c7f892b65d612a2",
+  "status": "PENDING_CI",
+  "policy": {
+    "numberOfOperands": [
+      2,
+      3,
+      4
+    ],
+    "additionOnly": true,
+    "carryAutofill": true,
+    "carryEditable": false,
+    "carryGraded": false,
+    "scoreOnlyOnFullResultDigits": "PROPOSAL_FOR_FUTURE_TRUSTED_SERVER",
+    "perQuestionMaxScore": 1,
+    "partialStars": false,
+    "serverGradingWired": false,
+    "scopePV100": "B20_VERIFIED_VERTICAL_AND_TYPED_THREE_ONLY",
+    "scopePV1000": "QA_ONLY",
+    "result1000": "NO_GO",
+    "doNotExpandLessonWithoutMapping": true
+  },
+  "immutable": [
+    "47_D2V12_Core.html",
+    "48_D2V12_View.html",
+    "26_ChamCauHoiToan.html",
+    "MayChu.gs",
+    "ThanhTichMayChu.gs"
+  ],
+  "noScoreWrite": true,
+  "gasDeployed": false,
+  "baselineReview": {
+    "testTheoMainCarry": "MANUAL_INPUT_IN_REPO_CODE",
+    "d2V12Carry": "TOGGLE_IN_ORIGINAL_VIEW"
+  },
+  "ci": {
+    "status": "PENDING"
+  },
+  "rollbackCommit": "72d52c32aa81e37e989629c11c7f892b65d612a2"
+}

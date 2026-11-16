@@ -20,3 +20,8 @@
 #mathFullScreen .kl-col-v12-controls{display:flex;gap:8px;flex-wrap:wrap}
 #mathFullScreen .kl-col-v12-controls>button{flex:1 1 auto}
 @media(max-width:760px){#mathFullScreen .kl-d2-practice{padding:7px}#mathFullScreen .kl-col-v12-card{padding:8px}#mathFullScreen .kl-col-v12-number-grid{gap:4px}#mathFullScreen .kl-col-v12-digit{font-size:20px}#mathFullScreen .kl-col-v12-read,#mathFullScreen .kl-col-v12-reset,#mathFullScreen .kl-col-v12-send{min-height:44px}}
+
+/* Extension: added operand rows and automatically filled carry: protected from manual edits. */
+#mathFullScreen .kl-d2-practice .kl-col-v12-transition:disabled{cursor:default;opacity:1;background:#e3f4eb;color:#136848;border-color:#8bcfb2;font-weight:800}
+#mathFullScreen .kl-d2-practice .kl-col-v12-transition[data-auto-carry="0"]{background:#f4f7fc;color:#5b6779;border-color:#d9e2ed}
+#mathFullScreen .kl-d2-practice .kl-d2-multi-row{border-bottom:0}

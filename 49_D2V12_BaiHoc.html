@@ -14,26 +14,35 @@ function fromB20(q){
  const candidate={variantId:'COL_B20_'+q.id,profile:'PV100',operation:'ADD',level:q.level,
   a,b,carryPolicy:'OPTIONAL_HINT',assetId:null};
  // Never inspect private solution fields; only forward visible operands.
- return API.publicPlan(candidate);
+ const base=API.publicPlan(candidate);
+ if(!base.ok)return base;
+ return root.BE_HOC_D2_AUTO?root.BE_HOC_D2_AUTO.makePlan({variantId:candidate.variantId,profile:'PV100',operation:'ADD',level:q.level,operands:[a,b]}):base;
+}
+function fromB20Three(q){
+ if(!q||q.type!=='mental'||q.variantType!=='three'||q.valid!==true||!validId(q.id))return {ok:false,reason:'NOT_VERIFIED_THREE_ADDENDS'};
+ if(!['LV1','LV2','LV3'].includes(q.level))return {ok:false,reason:'INVALID_LEVEL'};
+ const operands=[q.n1,q.n2,q.n3].map(Number);
+ if(operands.some(n=>!Number.isSafeInteger(n)||n<0||n>99))return {ok:false,reason:'OPERAND_OUT_OF_SCOPE'};
+ return root.BE_HOC_D2_AUTO.makePlan({variantId:'COL_B20_'+q.id,profile:'PV100',operation:'ADD',level:q.level,operands});
 }
 function mountB20(data,screen,viewName){
  if(!API||!View||!data||data.lesson?.id!=='toan_b20'||!Array.isArray(data.questions)||!screen||!screen.querySelector)return {ok:false,reason:'INVALID_LESSON'};
  let count=0,skipped=0;
  for(const q of data.questions){
-  if(q.level!==viewName||q.type!=='vertical')continue;
-  const plan=fromB20(q);
+  if(q.level!==viewName||!(q.type==='vertical'||(q.type==='mental'&&q.variantType==='three')))continue;
+  const plan=q.type==='vertical'?fromB20(q):fromB20Three(q);
   if(!plan.ok){skipped++;continue;}
   const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(n=>n.dataset.mlQCard===q.id);
   if(!card||card.querySelector('[data-d2-practice]'))continue;
   const holder=document.createElement('details');holder.className='kl-d2-practice';holder.dataset.d2Practice=q.id;
   const summary=document.createElement('summary');summary.textContent='🧮 Thử đặt tính D2 V1.2 (không tính điểm)';
-  const note=document.createElement('p');note.className='kl-d2-b20-note';note.textContent='Luyện điền từng chữ số từ đơn vị sang chục; ô nhớ chỉ là gợi ý. Khi nộp bài, em vẫn dùng ô trả lời chính ở phía trên.';
+  const note=document.createElement('p');note.className='kl-d2-b20-note';note.textContent='Ô nhớ tự điền từ các số đã cho. Em chỉ điền chữ số kết quả; khung này không chấm điểm và không cấp sao.';
   const mount=document.createElement('div');mount.className='kl-d2-mount';
   holder.append(summary,note,mount);card.append(holder);
   holder.addEventListener('toggle',()=>{
    if(!holder.open||holder.dataset.d2Mounted==='1')return;
-   const result=View.mount(mount,[plan],{
-    onSpeak:p=>{const text=p.a.slice().reverse().map(x=>x.digit).join('')+' cộng '+p.b.slice().reverse().map(x=>x.digit).join('')+' bằng mấy?';
+   const result=root.BE_HOC_D2_AUTO.mount(mount,[plan],{
+    onSpeak:p=>{const rows=[p.a,p.b,...(p.additionalRows||[])];const text=rows.map(row=>row.slice().reverse().map(x=>x.digit).join('')).join(' cộng ')+' bằng mấy?';
      if(root.BE_HOC_GIONG_DOC_V2)root.BE_HOC_GIONG_DOC_V2.speak(text,null);},
     onChange:()=>{const status=mount.querySelector('.kl-col-v12-status');if(status)status.textContent='Đang luyện tập; chưa gửi chấm điểm.';},
     onSubmit:()=>{const status=mount.querySelector('.kl-col-v12-status');if(status)status.textContent='Đã ghi trong phiên luyện tập. Điền đáp án ở ô bài chính để nộp bài.';}
@@ -59,5 +68,5 @@ document.addEventListener('focusin',e=>{
  if(e.target.matches?.('#mathFullScreen .kl-d2-practice .kl-col-v12-answer'))lastField=e.target;
  else if(e.target.matches?.('#mathFullScreen [data-ml-field]'))lastField=null;
 });
-root.BE_HOC_D2_V12=Object.freeze({fromB20,mountB20,handleKey});
+root.BE_HOC_D2_V12=Object.freeze({fromB20,fromB20Three,mountB20,handleKey});
 })(window);
