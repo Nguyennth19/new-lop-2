@@ -19,3 +19,8 @@ Use dedicated workflows and Chromium static app harness at desktop 1366 and mobi
 - CI run `43822494670` **SUCCESS** at `ca7f634ee7b92fbee8fd2b792107cdca99ec05f1`: 40 source and privacy assertions, 48 Chromium desktop 1366px/mobile emulation 390px interactions = 88 PASS.
 - Scenario: separate D5 Tangram lab and D9 pictograph lab, tap a symbol and type an answer without grading, search all 288 metadata IDs, preview 13 binary files in GitHub, return to lesson, show public SVG addend groups without hidden answer/carry.
 - Browser test uses artificial shell and fixtures. NOT a GAS deployment, not a real SGK-verified D5/D9 lesson, not evidence 288 source pictures are available via URL or approved for use.
+
+## Binary-release recovery addendum
+Historical G7.4-A.2 commit `653bfbc73002a188dcea0b714247b84cc28a4fed` contains **all 288 WebP**. Earlier be-hoc visual integration described only 13 G3/G5 WebP on the current branch and incorrectly treated the G7 binary release as missing. On 2026-11-16, exactly 288 existing Git objects were grafted into be-hoc from the immutable commit without changing bytes, and all 288 labels already had owner signoff from G7.4-B.5.7-PERF-A. The B.5.7 report records 288/288 user-reported image scan and visual acceptance. No new owner review is required for those labels.
+
+Image loader 59 now resolves 288 real pinned URLs and gallery 57 loads only the current 12-image page. Eight explicit B20 word-problem IDs are mapped to the semantic-match G7 WebP as decorative illustrations; image load sets `kl-image-ready` so the image actually displays. Image error restores prior G5/SVG fallback. This mapping is **not authorization to use composite objects as individual count symbols**; per-question quantity still needs proof.

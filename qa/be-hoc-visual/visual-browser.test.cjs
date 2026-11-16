@@ -46,6 +46,20 @@ for(const [name,params] of [['desktop',{viewport:{width:1366,height:768}}],['mob
  await summary.click();checks++;
  assert.equal(await page.locator('.kl-svg-b20-support svg').count(),1);checks++;
  assert.equal(await page.locator('.kl-svg-b20-support text').count(),2);checks++;
+ // Pinned real WebP bytes loaded by the browser from a local release fixture, no 404/opacity trap.
+ await page.route('**/hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-04.webp',route=>
+   route.fulfill({status:200,contentType:'image/webp',
+    body:fs.readFileSync('hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-04.webp')}));
+ await page.evaluate(()=>{
+  const el=document.createElement('div');el.className='ml-svg';el.id='g7-real-picture-fixture';
+  document.getElementById('mlContent').appendChild(el);
+  window.BE_HOC_ASSETS_288.mountMappedB20({
+   id:'toan_b20_lv1_ex3_01',type:'word_problem',valid:true
+  },el);
+ });
+ await page.locator('#g7-real-picture-fixture.kl-image-ready img').waitFor();
+ assert(await page.locator('#g7-real-picture-fixture img').evaluate(el=>el.naturalWidth)>0);checks++;
+ assert.equal(await page.locator('#g7-real-picture-fixture img').getAttribute('data-kl-g7-asset'),'KL_SH05_004');checks++;
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+1),false,name+' overflow');checks++;
  await ctx.close();
 }

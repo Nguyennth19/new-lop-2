@@ -45,7 +45,13 @@ function mount(target,id,opts={}){
  img.src=found.url;img.alt=opts.visualIntent==='DECORATIVE'?'':found.asset.label;
  img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';
  img.dataset.klG7Asset=id;img.className='kl-approved-image';
- img.addEventListener('error',()=>{img.remove();if(typeof opts.onError==='function')opts.onError();},{once:true});
+ img.addEventListener('load',()=>{
+  if(img.isConnected){target.classList.add('kl-image-ready');target.dataset.klBound='1';}
+ },{once:true});
+ img.addEventListener('error',()=>{
+  target.classList.remove('kl-image-ready');delete target.dataset.klBound;img.remove();
+  if(typeof opts.onError==='function')opts.onError();
+ },{once:true});
  target.appendChild(img);
  return {ok:true,assetId:id,img};
 }
