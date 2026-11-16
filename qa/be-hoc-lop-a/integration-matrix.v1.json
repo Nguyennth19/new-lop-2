@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "be-hoc.layer-a-integration.v1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "baseCommit": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+  "sourceCommit": "83bb8a1784fabead2cd31b497044a1274f8bf1a1",
+  "scope": "CONSERVATIVE_LAYER_A_INCREMENT_NO_GAS_DEPLOY",
+  "integration": [
+    {
+      "id": "UI_BASE",
+      "component": "Interface, keypad, attendance, progress and existing lessons",
+      "status": "INHERITED_UNCHANGED",
+      "sourcePath": "GiaoDien.html",
+      "baselineBlob": "321f32abc42b5cb21abb45820ddf895036287def",
+      "approval": "USER_ATTESTED_EXISTING_UI",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G74_RENDERER_CORE",
+      "component": "Four basic math displays: vertical, mental, puzzle, word",
+      "status": "ACTIVE_SOURCE_REPLACED_NEEDS_GAS_E2E",
+      "sourcePath": "41_HienThiCauHoiToan.html",
+      "sourceBlob": "50501ccc3cb5e7801fd563807e21b76d2a51c8f9",
+      "qaEvidence": "G7.4 B20 UI component in source tree; old rendering signatures retained",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G74_UI_COMPONENT_CSS",
+      "component": "Scoped column/word/puzzle math paper, mobile layout",
+      "status": "ACTIVE_CSS_SCOPED_NEEDS_VISUAL_QA",
+      "sourcePath": "43_CSS_ThanhPhanBaiToan.html",
+      "sourceBlob": "ce7f279fc9185901d8f638bc87628b9c20bfda65",
+      "qaEvidence": "UI20-02A component-only CSS; selectors scoped to #mathFullScreen",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G74_D2_V12",
+      "component": "D2 100/1000 column calculator",
+      "status": "STAGED_LIBRARY_NOT_WIRED",
+      "sourcePath": "qa/be-hoc-lop-a/refs/column-v12-core.js",
+      "sourceBlob": "16ae440618bcb3cf90706cdad2ccd11cbadc222a",
+      "qaEvidence": "Standalone G7.4 V1.2 source + previously checked; requires host adapter and trusted grading",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G74_MATH_SVG_V2",
+      "component": "Structured parametric math diagrams",
+      "status": "STAGED_LIBRARY_SERVER_KEY_SEPARATION_REQUIRED",
+      "sourcePath": "qa/be-hoc-lop-a/refs/structured-diagram-core.cjs",
+      "sourceBlob": "b6a1712cd2051ba417f011b653ff8184ce9f6f9e",
+      "qaEvidence": "G7.4 structured diagram V2; avoid shipping answerKey()",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G75_TTS_V2",
+      "component": "Vietnamese math speech normalization",
+      "status": "STAGED_NOT_CONNECTED",
+      "sourcePath": "qa/be-hoc-lop-a/refs/tts-math-normalizer-v2.js",
+      "sourceBlob": "605a8ed9b335526af82c8870dca4753bd511b913",
+      "qaEvidence": "G7.5 V2, standalone owner-audible confirmation, not GAS/browser E2E",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G74_B20_ADAPTER",
+      "component": "Bài 20 30-question variant adapter",
+      "status": "STAGED_NOT_CONNECTED_CLIENT_ANSWER_POLICY",
+      "sourcePath": "qa/be-hoc-lop-a/refs/b20-variant-adapter.html",
+      "sourceBlob": "e14a0c831837a91125a59dd5ce2d65288d056038",
+      "qaEvidence": "Prior B20 TEST only, unsafe to connect direct-answer payload as public",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G7_ASSET_SHARED",
+      "component": "Existing pilot WebP and asset lookup on baseline",
+      "status": "INHERITED_UNCHANGED",
+      "sourcePath": "42_TaiAnhTheoAssetID.html",
+      "baselineBlob": "a14635240b797c6438343c6415d8741e88395d6c",
+      "requiresDeviceQA": true
+    },
+    {
+      "id": "G76_REGISTRY",
+      "component": "12 renderer registry and 288-asset manifest metadata",
+      "status": "REFERENCE_ONLY_NOT_DEPLOYED",
+      "sourcePath": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "requiresDeviceQA": false
+    }
+  ],
+  "referenceFiles": [
+    {
+      "target": "qa/be-hoc-lop-a/refs/column-v12-core.js",
+      "original": "qa/g7-4-column-calc-reference-v12/column-v12-core.js",
+      "sha": "16ae440618bcb3cf90706cdad2ccd11cbadc222a",
+      "version": "COLUMN_V1.2",
+      "state": "STAGED_TEST_ONLY",
+      "note": "pure spec compiler; no trusted grade / host bridge"
+    },
+    {
+      "target": "qa/be-hoc-lop-a/refs/column-v12-view.js",
+      "original": "qa/g7-4-column-calc-reference-v12/column-v12-view.js",
+      "sha": "214b615d0c595dfd76695c75e5443cefc36a921d",
+      "version": "COLUMN_V1.2",
+      "state": "STAGED_TEST_ONLY",
+      "note": "browser view; no GAS host invocation"
+    },
+    {
+      "target": "qa/be-hoc-lop-a/refs/structured-diagram-core.cjs",
+      "original": "qa/g7-4-structured-diagrams-v2/structured-diagram-core.cjs",
+      "sha": "b6a1712cd2051ba417f011b653ff8184ce9f6f9e",
+      "version": "DIAGRAM_V2",
+      "state": "STAGED_TEST_ONLY",
+      "note": "public structured diagram + server-only answerKey() must not ship to student"
+    },
+    {
+      "target": "qa/be-hoc-lop-a/refs/tts-math-normalizer-v2.js",
+      "original": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js",
+      "sha": "605a8ed9b335526af82c8870dca4753bd511b913",
+      "sourceCommit": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+      "version": "G7.5_V2",
+      "state": "STAGED_TEST_ONLY",
+      "note": "text normalization only, not actual browser audio"
+    },
+    {
+      "target": "qa/be-hoc-lop-a/refs/b20-variant-adapter.html",
+      "original": "42_AdapterBienTheB20.html",
+      "sha": "e14a0c831837a91125a59dd5ce2d65288d056038",
+      "version": "B20_ADAPTER_R1.3.1",
+      "state": "STAGED_TEST_ONLY",
+      "note": "legacy variant adapter includes answers; not client-connectable until public/private split"
+    }
+  ],
+  "gates": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "C12": "HOST_INTEGRATION_NOT_APPROVED",
+    "b20VariantPublicAnswers": "BLOCKED_UNTIL_PRIVATE_GRADING",
+    "studentIO": "NO_NEW_WRITES",
+    "gasDeploy": "DENIED",
+    "mergeTestTheoMain": "NOT_REQUESTED",
+    "mergeMain": "DENIED"
+  },
+  "nonNegotiable": [
+    "NO_REAL_STUDENT_DATA",
+    "NO_NEW_SCORE_STAR_WRITES",
+    "NO_GAS_DEPLOY",
+    "NO_MERGE_PROTECTED_BRANCHES",
+    "NO_DISABLED_E04_ACTIVATION",
+    "NO_TTS_AUTOPLAY",
+    "NO_PRIVATE_KEY_IN_CLIENT",
+    "NO_CLAIM_1000_FOUR_COLUMN_READY_WITHOUT_POLICY"
+  ]
+}

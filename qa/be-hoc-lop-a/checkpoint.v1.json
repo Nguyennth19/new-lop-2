@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "be-hoc.layer-a.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "baseCommit": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+  "sourceCommit": "83bb8a1784fabead2cd31b497044a1274f8bf1a1",
+  "scope": "SCOPED_APP_UI_MATH_RENDERER_CSS_PLUS_ISOLATED_REUSABLE_REFERENCE_LIBRARIES",
+  "activated": [
+    "41_HienThiCauHoiToan.html",
+    "43_CSS_ThanhPhanBaiToan.html via GiaoDien include"
+  ],
+  "staged": [
+    "qa/be-hoc-lop-a/refs/column-v12-core.js",
+    "qa/be-hoc-lop-a/refs/column-v12-view.js",
+    "qa/be-hoc-lop-a/refs/structured-diagram-core.cjs",
+    "qa/be-hoc-lop-a/refs/tts-math-normalizer-v2.js",
+    "qa/be-hoc-lop-a/refs/b20-variant-adapter.html"
+  ],
+  "preserved": [
+    "MayChu.gs",
+    "19_KhongGianHocToan.html",
+    "26_ChamCauHoiToan.html",
+    "ThanhTichMayChu.gs",
+    "appsscript.json",
+    "test-theo-main",
+    "main"
+  ],
+  "approvedToDeploy": false,
+  "b20VariantRuntimeEnabled": false,
+  "d2V12RuntimeEnabled": false,
+  "ttsV2RuntimeEnabled": false,
+  "ci": {
+    "status": "PENDING",
+    "runId": null,
+    "sha": null
+  },
+  "rollback": {
+    "commit": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+    "method": "RESET_BE_HOC_TO_BASE_AFTER_SAVING_AUDIT_EVIDENCE_NO_GAS_RUNTIME_ROLLBACK"
+  }
+}

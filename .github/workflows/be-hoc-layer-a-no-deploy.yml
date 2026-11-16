@@ -1,0 +1,60 @@
+name: BE-HOC Layer A integration no deploy
+on:
+  push:
+    branches:
+      - be-hoc
+    paths:
+      - '41_HienThiCauHoiToan.html'
+      - '43_CSS_ThanhPhanBaiToan.html'
+      - 'GiaoDien.html'
+      - 'qa/be-hoc-lop-a/**'
+      - 'docs/kiem-dinh/BE_HOC_LAYER_A_*'
+      - '.github/workflows/be-hoc-layer-a-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scoped-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Diff guard baseline and staging references
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD
+          if git diff --name-only f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD | grep -Ev '^(GiaoDien.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_|\.github/workflows/be-hoc-layer-a-no-deploy.yml)$' | grep -vE '^(qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_)'; then echo UNAUTHORIZED_DIFF; exit 1; fi
+          for f in MayChu.gs 19_KhongGianHocToan.html 26_ChamCauHoiToan.html ThanhTichMayChu.gs appsscript.json; do
+            test "$(git hash-object "$f")" = "$(git show f51a12cc07b44f0f893c2e0de40e387cc17b5c3b:"$f" | git hash-object --stdin)"
+          done
+          test "$(git hash-object 41_HienThiCauHoiToan.html)" = 50501ccc3cb5e7801fd563807e21b76d2a51c8f9
+          test "$(git hash-object 43_CSS_ThanhPhanBaiToan.html)" = ce7f279fc9185901d8f638bc87628b9c20bfda65
+      - name: Assert exact imported source blob hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object qa/be-hoc-lop-a/refs/column-v12-core.js)" = 16ae440618bcb3cf90706cdad2ccd11cbadc222a
+          test "$(git hash-object qa/be-hoc-lop-a/refs/column-v12-view.js)" = 214b615d0c595dfd76695c75e5443cefc36a921d
+          test "$(git hash-object qa/be-hoc-lop-a/refs/structured-diagram-core.cjs)" = b6a1712cd2051ba417f011b653ff8184ce9f6f9e
+          test "$(git hash-object qa/be-hoc-lop-a/refs/tts-math-normalizer-v2.js)" = 605a8ed9b335526af82c8870dca4753bd511b913
+          test "$(git hash-object qa/be-hoc-lop-a/refs/b20-variant-adapter.html)" = e14a0c831837a91125a59dd5ce2d65288d056038
+      - name: Math display, scoped CSS, D2, SVG and TTS QA
+        run: |
+          node --check qa/be-hoc-lop-a/layer-a.test.cjs
+          node qa/be-hoc-lop-a/layer-a.test.cjs
+      - name: Archive no-deploy evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BE-HOC-LAYER-A-SCOPED-QA-NO-GAS-DEPLOY
+          path: |
+            qa/be-hoc-lop-a/*.json
+            docs/kiem-dinh/BE_HOC_LAYER_A_INTEGRATION_20261116.md
+          retention-days: 30
