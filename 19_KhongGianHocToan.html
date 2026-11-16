@@ -39,6 +39,7 @@ function refreshProgress(){
  shell().querySelector('#mlPct').textContent=p+'%';shell().querySelector('#mlBar').style.width=p+'%';
  const nav=shell().querySelector('#mlMenu');
  nav.innerHTML=[['THEORY','Lý thuyết'],['LV1',title.LV1],['LV2',title.LV2],['LV3',title.LV3]].map(([id,label])=>'<button type="button" data-ml-view="'+id+'" class="'+(view===id?'active':'')+'"><span class="ml-topic-icon">'+muiIcon(id==='THEORY'?'book-open':id==='LV1'?'book':id==='LV2'?'pencil':'award')+'</span><span class="ml-topic-text">'+E(label)+'</span>'+(id!=='THEORY'&&levelDone(id)?'<span class="ml-end-check">✓</span>':'')+'</button>').join('');
+ nav.insertAdjacentHTML('beforeend','<div class="ml-sidebar-title" style="margin-top:12px">PHÒNG HÌNH – TEST</div><button type="button" data-ml-visual-lab="D5">🧩 Tangram D5 (mẫu)</button><button type="button" data-ml-visual-lab="D9">📊 Biểu đồ D9 (mẫu)</button><button type="button" data-ml-visual-lab="ASSETS">🖼 Kho hình 288 ID</button>');
 }
 function start(index){
  level='LV'+(Math.max(0,Math.min(2,Number(index)||0))+1);view=level;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
@@ -62,6 +63,7 @@ function start(index){
  });
 }
 function exit(){
+ window.BE_HOC_VISUAL_LAB?.dispose();
  if(window.BE_HOC_GIONG_DOC_V2)window.BE_HOC_GIONG_DOC_V2.stop();
  const root=document.getElementById('mathFullScreen');if(root)root.hidden=true;
  document.body.classList.remove('math-learning');
@@ -75,6 +77,7 @@ function choose(id){
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
 function render(){
+ window.BE_HOC_VISUAL_LAB?.dispose();
  if(window.BE_HOC_GIONG_DOC_V2)window.BE_HOC_GIONG_DOC_V2.stop();
  if(!fullData)return;
  const root=shell();refreshProgress();root.classList.toggle('ml-theory-mode',view==='THEORY');
@@ -92,6 +95,7 @@ function render(){
  restoreDrafts();
  installSvg();
  if(window.BE_HOC_D2_V12)window.BE_HOC_D2_V12.mountB20(fullData,root,view);
+ if(window.BE_HOC_STRUCTURED_PUBLIC_V2)window.BE_HOC_STRUCTURED_PUBLIC_V2.mountB20(fullData,root,view);
  target.scrollTop=0;
  renderResults();
 }
@@ -227,6 +231,7 @@ document.addEventListener('click',e=>{
  if(e.target.closest('[data-ml-submit]')){gradeLevel();return;}
  if(e.target.closest('[data-ml-reset-level]')){resetLevel();return;}
  const nav=e.target.closest('[data-ml-view]');if(nav){choose(nav.dataset.mlView);return;}
+ const lab=e.target.closest('[data-ml-visual-lab]');if(lab){window.BE_HOC_VISUAL_LAB?.open(lab.dataset.mlVisualLab,root);return;}
 
  const toggle=e.target.closest('[data-ml-keyboard]');if(toggle){
   const dock=root.querySelector('#mlDock');dock.hidden=!dock.hidden;
@@ -251,6 +256,7 @@ document.addEventListener('keydown',e=>{
  if(e.key==='Enter'){e.preventDefault();const all=inputList(),i=all.indexOf(e.target);if(i>=0&&i<all.length-1)all[i+1].focus();}
 });
 document.addEventListener('lop2:progress',()=>{if(fullData&&document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden)refreshProgress();});
+window.moBaiToanQuayLaiVisual=()=>render();
 window.moBaiToanSheet=start;
 window.dongKhongGianToan=exit;
 })();

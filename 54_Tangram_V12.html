@@ -1,0 +1,267 @@
+/* G7.6-B.5-A TEST-only Tangram native-plan placement renderer V1.2.
+ * Fixes G7.4 absolute/local coordinate mismatch; reuses frozen G7.4 core
+ * as interaction state. Source geometry is PUBLIC (never private answer map).
+ * Based on original frozen demo: click/select + rotate + snap into visible
+ * geometric sample, with support for user-selected target and pointer drag.
+ * DOES NOT score, infer educational correctness, write to GAS or student data.
+ */
+(function(root,factory){
+ const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;
+ if(root)root.G76B5ATangramPlacement=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+ 'use strict';
+ const NS='http://www.w3.org/2000/svg';
+ const fail=code=>({ok:false,code});
+ const RAD=Math.PI/180;
+ const valid=v=>Number.isFinite(v)&&v>=-1000&&v<=1000;
+ function center(g){
+  if(!g)return null;
+  if(g.type==='rect'||g.type==='square')return {x:g.x+g.width/2,y:g.y+g.height/2};
+  if(g.type==='circle')return {x:g.cx,y:g.cy};
+  const pts=g.points;
+  if(!Array.isArray(pts)||pts.length<3)return null;
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+  return {x:(Math.min(...xs)+Math.max(...xs))/2,y:(Math.min(...ys)+Math.max(...ys))/2};
+ }
+ function polygonPoints(g){
+  if(g.type==='triangle'||g.type==='polygon')return g.points.map(p=>[...p]);
+  if(g.type==='rect'||g.type==='square')return [
+   [g.x,g.y],[g.x+g.width,g.y],[g.x+g.width,g.y+g.height],[g.x,g.y+g.height]];
+  return null;
+ }
+ function normalize(g){
+  const c=center(g),p=polygonPoints(g);if(!c||!p)return null;
+  return p.map(x=>[x[0]-c.x,x[1]-c.y]);
+ }
+ // Pure visual congruence: same outlines after 0/90/180/270° rotation and
+ // translation. This must never be treated as private pedagogical grading.
+ function congruentAngle(piece,target){
+  const a=normalize(piece),b=normalize(target);
+  if(!a||!b||a.length!==b.length)return null;
+  const tol=0.001;
+  for(const deg of [0,90,180,270]){
+   const r=deg*RAD;
+   const rotated=a.map(([x,y])=>[x*Math.cos(r)-y*Math.sin(r),x*Math.sin(r)+y*Math.cos(r)]);
+   const compare=(u,v)=>Math.abs(u[0]-v[0])<tol&&Math.abs(u[1]-v[1])<tol;
+   if(rotated.some(p=>!b.some(q=>compare(p,q))))continue;
+   if(b.some(q=>!rotated.some(p=>compare(p,q))))continue;
+   return deg;
+  }
+  return null;
+ }
+ function positionTransform(g,point,deg){
+  const c=center(g);if(!c||!valid(point.x)||!valid(point.y)||![0,90,180,270].includes(deg))
+    return null;
+  // Note local shape has its OWN bounding-center at (cx,cy), not (0,0).
+  // Native V1.1 erroneously used translate(target.center) alone.
+  return 'translate('+point.x+' '+point.y+') rotate('+deg+') translate('+(-c.x)+' '+(-c.y)+')';
+ }
+ function resolveTarget(plan,pieceId){
+  if(!plan||!Array.isArray(plan.items)||!Array.isArray(plan.targets))return fail('INVALID_PLAN');
+  const piece=plan.items.find(p=>p.id===pieceId);
+  if(!piece)return fail('UNKNOWN_PIECE');
+  const matches=plan.targets.map(t=>({id:t.id,rotation:congruentAngle(piece.geometry,t.geometry)}))
+   .filter(x=>x.rotation!==null);
+  if(matches.length!==1)return fail(matches.length?'AMBIGUOUS_MATCHING_VISIBLE_OUTLINES':'NO_CONGRUENT_VISIBLE_TARGET');
+  return {ok:true,...matches[0],from:'PUBLIC_OUTLINE_CONGRUENCE_NO_ANSWER_MAP'};
+ }
+ function draw(doc,g){
+  let tag=g.type==='triangle'?'polygon':g.type==='square'?'rect':g.type;
+  const el=doc.createElementNS(NS,tag);
+  if(tag==='polygon'||tag==='polyline')el.setAttribute('points',g.points.map(x=>x.join(',')).join(' '));
+  else if(tag==='rect')for(const key of ['x','y','width','height'])el.setAttribute(key,String(g[key]));
+  else if(tag==='circle')for(const key of ['cx','cy','r'])el.setAttribute(key,String(g[key]));
+  return el;
+ }
+ function mount(host,plan,options={}){
+  if(!host||!host.ownerDocument||typeof KLGeometryTangramV11==='undefined'||
+     !plan||plan.schemaVersion!=='g74-geometry-tangram-v11'||plan.mode!=='TANGRAM'||
+     !Array.isArray(plan.items)||!Array.isArray(plan.targets)||plan.items.length<2||
+     plan.items.length>12||plan.targets.length<1||plan.targets.length>12)
+   return fail('INVALID_TANGRAM_HOST_OR_NATIVE_PLAN');
+  const safe=KLGeometryTangramV11.compile({
+   exerciseId:plan.exerciseId,mode:'TANGRAM',prompt:plan.prompt,
+   pieces:plan.items.map(p=>({id:p.id,label:p.label,geometry:p.geometry,start:p.start,startRotation:p.startRotation})),
+   targets:plan.targets.map(t=>({id:t.id,geometry:t.geometry}))
+  });
+  if(!safe.ok)return fail('NATIVE_CORE_COMPILE_REJECTED_'+safe.reason);
+  const canonical=safe.plan,doc=host.ownerDocument,state=KLGeometryTangramV11.session(canonical);
+  const slots=new Map(),pieceElements=new Map();
+  let destroyed=false,drag=null;
+  const section=doc.createElement('section');section.className='g76b5a-tangram g74-geo-v11';
+  section.dataset.g76B5aTangram=canonical.exerciseId;
+  const p=doc.createElement('p');p.className='g74-geo-prompt';
+  p.textContent=canonical.prompt;
+  const status=doc.createElement('p');status.className='g74-geo-status';status.setAttribute('aria-live','polite');
+  const instructions=doc.createElement('p');instructions.className='g76b5a-hint';
+  instructions.textContent='Chọn mảnh, xoay hoặc kéo trên bảng. Chạm khung để thử đặt; dùng “Ghép vào mẫu” để căn theo hình mẫu. Chưa chấm đúng/sai.';
+  const area=doc.createElement('div');area.className='g74-tangram-layout';
+  const column=doc.createElement('div');column.className='g74-tangram-pieces';
+  const board=doc.createElement('div');board.className='g74-tangram-board';
+  const tools=doc.createElement('div');tools.className='g74-tangram-tools';
+  const svg=doc.createElementNS(NS,'svg');svg.classList.add('g74-tangram-svg','g76b5a-svg');
+  svg.setAttribute('viewBox','0 0 420 300');svg.setAttribute('role','group');
+  svg.setAttribute('aria-label','Bảng ghép hình: chọn mảnh rồi kéo hoặc chọn khung');
+  const targetButtons=doc.createElement('div');targetButtons.className='g74-tangram-target-buttons';
+  board.append(svg,targetButtons);area.append(column,board);
+  section.append(p,instructions,status,tools,area);host.append(section);
+  const mk=(text,cl,aria)=>{
+   const b=doc.createElement('button');b.type='button';b.className=cl;b.textContent=text;
+   if(aria)b.setAttribute('aria-label',aria);return b;
+  };
+  const note=t=>{status.textContent=t};
+  const change=()=>{
+   render();
+   if(typeof options.onChange==='function')options.onChange(state.snapshot());
+  };
+  function setRotation(id,deg){
+   const z=state.snapshot().pieces[id];
+   if(!z)return fail('UNKNOWN_PIECE');
+   while(state.snapshot().pieces[id].rotation!==deg){
+    const r=state.rotatePiece(id,90);if(!r.ok)return r;
+   }
+   return {ok:true};
+  }
+  function place(id,tid,{alignOutline=false}={}){
+   if(!id)return fail('SELECT_A_PIECE');
+   const target=canonical.targets.find(x=>x.id===tid),piece=canonical.items.find(x=>x.id===id);
+   if(!piece||!target)return fail('INVALID_PIECE_OR_TARGET');
+   if(alignOutline){
+    const angle=congruentAngle(piece.geometry,target.geometry);
+    if(angle===null)return fail('DIFFERENT_VISIBLE_OUTLINE');
+    const turned=setRotation(id,angle);if(!turned.ok)return turned;
+   }
+   const r=state.placePiece(id,tid);
+   if(r.ok)change();
+   return r;
+  }
+  function chooseFit(){
+   const id=state.snapshot().activePieceId;
+   if(!id){note('Em hãy chọn một mảnh hình trước.');return}
+   const resolved=resolveTarget(canonical,id);
+   if(!resolved.ok){note('Chưa tìm được khung mẫu duy nhất cho mảnh đang chọn.');return}
+   const r=place(id,resolved.id,{alignOutline:true});
+   if(!r.ok)note(r.reason==='TARGET_OCCUPIED'?'Khung mẫu đang có mảnh khác. Em hãy bỏ mảnh đó trước.':'Chưa đặt được mảnh này.');
+  }
+  for(const [text,operation] of [
+   ['↻ Xoay +90°',()=>{const id=state.snapshot().activePieceId;if(id){state.rotatePiece(id,90);change()}}],
+   ['↺ Xoay −90°',()=>{const id=state.snapshot().activePieceId;if(id){state.rotatePiece(id,-90);change()}}],
+   ['Ghép vào mẫu',chooseFit],
+   ['Bỏ vị trí đã đặt',()=>{const id=state.snapshot().activePieceId;if(id){state.unplacePiece(id);change()}}]
+  ]){
+   const b=mk(text,'g74-tangram-tool');b.addEventListener('click',operation);tools.append(b);
+  }
+  const buttons=[...tools.querySelectorAll('button')];
+  function render(){
+   if(destroyed)return;
+   const snapshot=state.snapshot();
+   const active=snapshot.activePieceId;
+   const placed=Object.values(snapshot.pieces).filter(x=>x.placedTargetId!==null).length;
+   note(placed+' / '+canonical.items.length+' mảnh đã đặt (chưa chấm đúng/sai)');
+   column.replaceChildren();svg.replaceChildren();targetButtons.replaceChildren();pieceElements.clear();
+   buttons.forEach(b=>{b.disabled=!active});
+   canonical.items.forEach(piece=>{
+    const z=snapshot.pieces[piece.id];
+    const b=mk(piece.label+' · '+z.rotation+'°'+(z.placedTargetId?' · đã đặt':''),
+      'g74-tangram-piece', 'Chọn mảnh '+piece.label);
+    b.classList.toggle('selected',active===piece.id);
+    b.setAttribute('aria-pressed',String(active===piece.id));
+    b.addEventListener('click',()=>{state.selectPiece(piece.id);change()});
+    column.append(b);
+   });
+   // Absolute target shapes are drawn in the board's fixed global coordinates.
+   canonical.targets.forEach((t,i)=>{
+    const g=doc.createElementNS(NS,'g');g.classList.add('g74-tangram-target');
+    g.append(draw(doc,t.geometry));g.dataset.targetId=t.id;
+    g.addEventListener('click',()=>{
+     const selected=state.snapshot().activePieceId;
+     if(!selected){note('Em hãy chọn mảnh hình trước.');return}
+     const r=place(selected,t.id,{alignOutline:false});
+     if(!r.ok)note('Khung này đã có mảnh khác.');
+    });
+    svg.append(g);
+   });
+   // Source geometry points are LOCAL, and may have a nonzero own center.
+   // ALWAYS offset by its local bounding center after applying rotation.
+   canonical.items.forEach(piece=>{
+    const z=snapshot.pieces[piece.id],target=canonical.targets.find(t=>t.id===z.placedTargetId);
+    const pt=target?center(target.geometry):{x:z.x,y:z.y};
+    const group=doc.createElementNS(NS,'g');group.classList.add('g74-tangram-active-piece');
+    group.dataset.pieceId=piece.id;
+    group.classList.toggle('g76b5a-selected',piece.id===active);
+    group.setAttribute('transform',positionTransform(piece.geometry,pt,z.rotation));
+    group.append(draw(doc,piece.geometry));
+    group.style.pointerEvents='all';
+    group.addEventListener('pointerdown',event=>{
+     if(event.button!==undefined&&event.button!==0)return;
+     event.preventDefault();
+     state.selectPiece(piece.id);
+     const rect=svg.getBoundingClientRect();
+     const sx=420/Math.max(1,rect.width),sy=300/Math.max(1,rect.height);
+     drag={id:piece.id,pointerId:event.pointerId,originX:event.clientX,originY:event.clientY,
+      boardX:pt.x,boardY:pt.y,sx,sy,svgRect:{left:rect.left,top:rect.top},
+      committed:false};
+     if(svg.setPointerCapture)try{svg.setPointerCapture(event.pointerId)}catch(_){}
+     change();
+    });
+    pieceElements.set(piece.id,group);svg.append(group);
+   });
+   canonical.targets.forEach((t,i)=>{
+    const b=mk('Khung số '+(i+1),'g74-tangram-target-button',
+     'Đặt mảnh đang chọn vào khung số '+(i+1));
+    b.disabled=!active;b.dataset.targetNumber=String(i+1);
+    b.addEventListener('click',()=>{
+     const r=place(state.snapshot().activePieceId,t.id);
+     if(!r.ok)note('Khung này đã có mảnh khác; em hãy thử lại.');
+    });
+    targetButtons.append(b);
+   });
+  }
+  function pointOnBoard(evt){
+   const r=svg.getBoundingClientRect();
+   return {x:(evt.clientX-r.left)*420/Math.max(r.width,1),
+    y:(evt.clientY-r.top)*300/Math.max(r.height,1)};
+  }
+  svg.addEventListener('pointermove',evt=>{
+   if(!drag||evt.pointerId!==drag.pointerId)return;
+   const dx=(evt.clientX-drag.originX)*drag.sx,dy=(evt.clientY-drag.originY)*drag.sy;
+   if(Math.hypot(dx,dy)<5)return;
+   const element=pieceElements.get(drag.id);
+   if(element){
+    const piece=canonical.items.find(x=>x.id===drag.id),z=state.snapshot().pieces[drag.id];
+    element.setAttribute('transform',positionTransform(piece.geometry,{
+      x:drag.boardX+dx,y:drag.boardY+dy
+    },z.rotation));
+   }
+   drag.committed=true;
+  });
+  function endDrag(evt){
+   if(!drag||evt.pointerId!==drag.pointerId)return;
+   const d=drag;drag=null;
+   if(d.committed){
+    const where=pointOnBoard(evt),near=canonical.targets
+     .map(t=>({target:t,dist:Math.hypot(where.x-center(t.geometry).x,where.y-center(t.geometry).y)}))
+     .sort((a,b)=>a.dist-b.dist)[0];
+    if(near&&near.dist<=32){
+     const r=place(d.id,near.target.id);
+     if(!r.ok){state.movePiece(d.id,Math.min(419,Math.max(1,where.x)),
+       Math.min(299,Math.max(1,where.y)));change()}
+    }else{state.movePiece(d.id,Math.min(419,Math.max(1,where.x)),
+      Math.min(299,Math.max(1,where.y)));change()}
+   }else{change()}
+  }
+  svg.addEventListener('pointerup',endDrag);
+  svg.addEventListener('pointercancel',()=>{drag=null;change()});
+  render();
+  return Object.freeze({
+   ok:true,reviewOnly:true,
+   snapshot:()=>state.snapshot(),
+   place:(pieceId,targetId,opts)=>place(pieceId,targetId,opts),
+   resolveTarget:pieceId=>resolveTarget(canonical,pieceId),
+   clear(){const r=state.clear();change();return r},
+   restore(d){const r=state.restore(d);if(r.ok)change();return r},
+   destroy(){destroyed=true;drag=null;section.remove()}
+  });
+ }
+ return Object.freeze({center,congruentAngle,positionTransform,resolveTarget,mount});
+});

@@ -1,0 +1,66 @@
+/* BE-HOC G7.4 visual lab — independent of official lessons; no grading. */
+(function(root){
+'use strict';
+let session=null,active='';const label={D5:'Tangram – thử nghiệm D5',D9:'Biểu đồ tranh – thử nghiệm D9',ASSETS:'Kho 288 Asset ID'};
+function dispose(){if(session?.destroy)session.destroy();session=null;active='';}
+function open(kind,screen){
+ if(!['D5','D9','ASSETS'].includes(kind)||!screen||screen.hidden)return {ok:false,reason:'INVALID_LAB'};
+ const target=screen.querySelector('#mlContent');if(!target)return {ok:false,reason:'MISSING_TARGET'};
+ dispose();
+ screen.querySelector('#mlResults').hidden=true;
+ screen.querySelector('#mlDock').hidden=true;
+ screen.querySelector('#mlShowKeyboard').hidden=true;
+ target.replaceChildren();
+ const main=document.createElement('section');main.className='kl-visual-lab';
+ const heading=document.createElement('h2');heading.textContent=label[kind]+' · TEST độc lập';
+ const note=document.createElement('p');note.className='kl-visual-warning';
+ note.textContent='Phòng luyện tập mẫu, KHÔNG thuộc Bài 20/21 và chưa có đối chiếu SGK cho bài D5/D9. Không chấm điểm, không ghi sao hay dữ liệu học sinh.';
+ const back=document.createElement('button');back.type='button';back.className='kl-visual-back';back.textContent='← Trở về bài học';
+ back.addEventListener('click',()=>{dispose();if(typeof root.moBaiToanQuayLaiVisual==='function')root.moBaiToanQuayLaiVisual();});
+ const mount=document.createElement('div');mount.className='kl-visual-mount';
+ main.append(back,heading,note,mount);target.append(main);
+ if(kind==='D5'){
+  const compiled=root.KLGeometryTangramV11?.compile(root.KLGeometryFixturesV11?.tangram);
+  if(!compiled?.ok)return {ok:false,reason:'BAD_TANGRAM_FIXTURE'};
+  session=root.G76B5ATangramPlacement?.mount(mount,compiled.plan);
+ }else if(kind==='D9'){
+  const compiled=root.KLPictographV11?.compile(root.KLPictographFixturesV11?.practice);
+  if(!compiled?.ok)return {ok:false,reason:'BAD_PICTO_FIXTURE'};
+  session=root.KLPictographViewV11?.mount(mount,compiled.plan,{
+   speechAdapter:{speak(text){root.BE_HOC_GIONG_DOC_V2?.speak(text,null);},
+    stop(){root.BE_HOC_GIONG_DOC_V2?.stop();}}
+  });
+ }else{
+  const total=document.createElement('p');total.textContent='Có 288 Asset ID và metadata; ảnh chưa xác minh chỉ hiển thị tên và tình trạng. 13 WebP tham chiếu trong GitHub có thể xem riêng.';
+  const input=document.createElement('input');input.type='search';input.placeholder='Tìm ID, tên hoặc nhóm hình';input.setAttribute('aria-label','Tìm trong kho 288 hình');
+  const list=document.createElement('div');list.className='kl-visual-asset-list';
+  const count=document.createElement('p');count.setAttribute('aria-live','polite');
+  function refresh(){
+   const found=root.BE_HOC_ASSETS_288.search(input.value,60);
+   list.replaceChildren();count.textContent='Hiện '+found.length+' mục đầu tiên phù hợp · '+root.BE_HOC_ASSETS_288.count+' trong registry';
+   for(const item of found){
+    const row=document.createElement('div');row.className='kl-visual-asset-row';
+    const name=document.createElement('b');name.textContent=item.id+' · '+item.label;
+    const desc=document.createElement('small');desc.textContent=item.category+' · CHỜ QA NỘI DUNG · chưa bật ảnh thật';
+    row.append(name,desc);list.append(row);
+   }
+  }
+  input.addEventListener('input',refresh);
+  const known=document.createElement('div');known.className='kl-visual-known-gallery';
+  const heading=document.createElement('h3');heading.textContent='WebP có file trong GitHub (xem thử)';
+  known.append(heading);
+  for(const path of root.BE_HOC_ASSETS_288.verifiedPaths){
+   const file=root.BE_HOC_ASSETS_288.verifiedRepoImage(path);
+   if(!file.ok)continue;
+   const figure=document.createElement('figure'),img=document.createElement('img');
+   img.loading='lazy';img.alt=path.split('/').pop();img.src=file.url;
+   const caption=document.createElement('figcaption');caption.textContent=path.split('/').pop();
+   figure.append(img,caption);known.append(figure);
+  }
+  mount.append(total,input,count,list,known);refresh();session={destroy(){}};
+ }
+ if(kind!=='ASSETS'&&!session?.ok)return {ok:false,reason:'VIEW_MOUNT_FAILED'};
+ active=kind;return {ok:true,kind,gradeEnabled:false,officialLessonMapped:false};
+}
+root.BE_HOC_VISUAL_LAB=Object.freeze({open,dispose,active:()=>active});
+})(window);

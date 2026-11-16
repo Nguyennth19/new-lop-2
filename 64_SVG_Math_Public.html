@@ -1,0 +1,46 @@
+/* BE-HOC public SVG/math visual only; derived from G7.4 Structured Diagram V2
+ * PLACE_VALUE_ADDITION = fallback/supporting visual. No answer/carry calculation.
+ */
+(function(root){
+'use strict';
+function addSVG(parent,tag,attrs){
+ const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+ for(const [k,v] of Object.entries(attrs||{}))el.setAttribute(k,String(v));
+ parent.appendChild(el);return el;
+}
+function publicOperands(q){
+ if(!q||q.valid!==true||q.type!=='vertical'||q.op!=='+')return null;
+ const a=Number(q.n1),b=Number(q.n2);
+ if(!Number.isSafeInteger(a)||!Number.isSafeInteger(b)||a<10||b<10||a>99||b>99||a+b>99)return null;
+ return {a,b};
+}
+function drawOperand(svg,num,x,y,label){
+ const tens=Math.floor(num/10),ones=num%10;
+ const text=addSVG(svg,'text',{x,y:y-11,'font-size':13,fill:'#184b77','font-weight':700});text.textContent=label+' '+num;
+ for(let i=0;i<tens;i++){
+  addSVG(svg,'rect',{x:x+i*14,y,width:11,height:50,rx:3,fill:'#84bdd9',stroke:'#265a80','stroke-width':1});
+  for(let dot=0;dot<10;dot++)addSVG(svg,'line',{x1:x+i*14+2,y1:y+3+dot*4.8,x2:x+i*14+9,y2:y+3+dot*4.8,stroke:'#265a80','stroke-width':0.4});
+ }
+ for(let i=0;i<ones;i++)addSVG(svg,'circle',{cx:x+59+(i%5)*13,cy:y+10+Math.floor(i/5)*15,r:4.5,fill:'#ffc86f',stroke:'#94541f','stroke-width':1});
+}
+function mountB20(full,screen,level){
+ if(!full||full.lesson?.id!=='toan_b20'||!screen||!screen.querySelector)return {ok:false,reason:'NO_LESSON'};
+ let count=0;
+ for(const q of full.questions||[]){
+  if(q.level!==level)continue;
+  const operands=publicOperands(q);if(!operands)continue;
+  const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(x=>x.dataset.mlQCard===q.id);
+  if(!card||card.querySelector('.kl-svg-b20-support'))continue;
+  const details=document.createElement('details');details.className='kl-svg-b20-support';
+  const summary=document.createElement('summary');summary.textContent='◻️ Xem minh họa chục – đơn vị (không hiện đáp số)';
+  const section=document.createElement('div');section.className='kl-svg-public-content';
+  const p=document.createElement('p');p.textContent='Quan sát từng số hạng. Em tự tính và tự điền ô nhớ; hình không gợi ý đáp số.';
+  const svg=addSVG(section,'svg',{viewBox:'0 0 400 186',role:'img','aria-label':'Số hạng thứ nhất '+operands.a+' và số hạng thứ hai '+operands.b+' được tách thành các thanh chục và chấm đơn vị'});
+  drawOperand(svg,operands.a,14,42,'Số hạng 1:');
+  drawOperand(svg,operands.b,212,42,'Số hạng 2:');
+  section.prepend(p);details.append(summary,section);card.append(details);count++;
+ }
+ return {ok:true,count,answerKeysRead:false,awarded:false};
+}
+root.BE_HOC_STRUCTURED_PUBLIC_V2=Object.freeze({publicOperands,mountB20});
+})(window);
