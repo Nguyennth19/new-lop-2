@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "baseline": "16960959f8fff9b2f1a444c69d6e9a0edda179e6",
   "branch": "be-hoc",
-  "status": "PENDING_CI",
+  "status": "PASS_SYNTHETIC_TRUSTED_GAS_AND_CHROMIUM_NO_DEPLOY",
   "endpoint": "d2ChamTinCayTest",
   "contract": "D2_MANUAL_CARRY_REQUIRED_V1",
   "noScoreWrites": true,
@@ -14,7 +14,24 @@
   "GASDeployed": false,
   "actualGASE2E": false,
   "ci": {
-    "status": "PENDING"
+    "status": "PASS",
+    "runId": 43820632513,
+    "headSha": "5b14a349700b31b6679bed0c0fe85dd4ce41f2fb",
+    "sourceUnitAssertions": 25,
+    "chromiumLessonAssertions": 25,
+    "total": 50,
+    "sourceConclusions": "SUCCESS",
+    "browser": "Chromium desktop 1366 and mobile emulation 390",
+    "actualGASRuntimeChecked": false
   },
-  "rollback": "16960959f8fff9b2f1a444c69d6e9a0edda179e6"
+  "rollback": "16960959f8fff9b2f1a444c69d6e9a0edda179e6",
+  "acceptance": {
+    "realLessonInWebApp": "PENDING",
+    "reason": "NO_APPS_SCRIPT_DEPLOYMENT_TOOL_OR_ISOLATED_TEST_PROJECT",
+    "manualDeploymentRequired": true,
+    "realStudentDataTouched": false,
+    "scoreStarWrites": false,
+    "legacyQuestionAnswerExposure": "PREEXISTING_P0_RELEASE_BLOCKER",
+    "rollbackCommit": "16960959f8fff9b2f1a444c69d6e9a0edda179e6"
+  }
 }
