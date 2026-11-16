@@ -21,4 +21,11 @@ eq(c07.registrationContract.ownerDecision,null);eq(c07.registrationContract.appr
 yes(!manifest.rendererRegistry.some(x=>x.id==='MATH_MENTAL_NUMBER_INPUT_V1'));
 eq(cp.c08.sourceRowsApproved,0);eq(cp.immutable.originalSheetEdited,false);eq(cp.immutable.p06CatalogEdited,false);eq(cp.immutable.manifestEdited,false);
 eq(cp.immutable.studentData,false);eq(cp.immutable.scoring,false);eq(cp.immutable.stars,false);
+if(process.argv[2]) {
+ const pinned=JSON.parse(f.readFileSync(p.resolve(__dirname,'../../',process.argv[2],'thu-nghiem/p0-6/fb/fb2-lesson-catalog.candidate.json'),'utf8'));
+ eq(pinned.schemaVersion,'p0.6.fb2.catalog.v1');
+ eq(pinned.lessons.length,4);
+ for(const item of ids.proposals)yes(!pinned.lessons.some(l=>l.lessonId===item.proposedLessonId));
+ for(const item of ids.registryKnownLessons)yes(pinned.lessons.some(l=>l.lessonId===item));
+}
 console.log('G76B6_C082_SOURCE_E04_SKILL_REVIEW_PASS',n,'assertions; review only; C07/C08/C09 unsigned');
