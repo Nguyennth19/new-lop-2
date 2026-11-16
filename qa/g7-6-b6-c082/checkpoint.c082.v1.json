@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "g76b6.c082.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "test/g7-6-b6-c082-source-item-skill-review-20261116",
+  "inheritedCommit": "ef73696db6380997fea6a2d1465e691b9a303739",
+  "inheritedC081CI": 43788985242,
+  "status": "TECHNICAL_SOURCE_ITEM_REVIEW_COMPLETE_NO_OWNER_APPROVAL_NO_GO",
+  "coverage": {
+    "oldSourceItemsReviewed": 13,
+    "sourceTaskCandidates": 13,
+    "vbtTasksReviewed": 13,
+    "runtimeLessonProposals": 2
+  },
+  "c07": {
+    "status": "INDEPENDENT_CONTRACT_PASS_OWNER_UNSIGNED",
+    "unchanged": true
+  },
+  "c08": {
+    "status": "BLOCKED_PEDAGOGY_AND_SOURCE_OWNER",
+    "sourceRowsApproved": 0
+  },
+  "c09": "BLOCKED_NOT_REGISTERED",
+  "immutable": {
+    "originalSheetEdited": false,
+    "c081WorkingOverlayEdited": false,
+    "manifestEdited": false,
+    "p06CatalogEdited": false,
+    "gas": false,
+    "main": false,
+    "testTheoMain": false,
+    "studentData": false,
+    "scoring": false,
+    "stars": false
+  },
+  "ci": {
+    "runId": null,
+    "headSha": null,
+    "status": "NOT_RUN_YET"
+  },
+  "rollback": {
+    "returnCommit": "ef73696db6380997fea6a2d1465e691b9a303739",
+    "steps": "DISCARD_C082_REVIEW_PACKETS_AND_CANDIDATE_PROPOSALS_NO_RUNTIME_CHANGE"
+  }
+}

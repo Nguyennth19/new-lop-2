@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "g76b6.c082.family-owner-approval-packet.v1",
+  "date": "2026-11-16",
+  "family": "D9",
+  "sourceLessonId": "MATH_B065",
+  "sourceSkillId": "SKILL_PICTOGRAPH",
+  "proposedLessonId": "toan_b65",
+  "proposedSkillId": "PICTOGRAPH_COUNT_COMPARE",
+  "status": "PENDING_OWNER_PEDAGOGY_AND_RUNTIME_CONTRACT_REVIEW",
+  "signedDecision": null,
+  "reviewerName": null,
+  "reviewerRole": null,
+  "reviewDate": null,
+  "signature": null,
+  "approvalRef": null,
+  "approvedCommit": null,
+  "acceptanceChecks": [
+    "Allow at most two categories, exactly one symbol means one item",
+    "Confirm subsetting preserves SGK/VBT learning intent; no auto-truncate",
+    "Exclude 1 bag/bundle equals 10 units",
+    "Review total-across-three-categories tasks separately",
+    "Check source labels, comparison wording and accessible count labels"
+  ],
+  "grantedForTestRegistration": false,
+  "grantedForApp": false,
+  "grantedForScoring": false,
+  "requires": "C08_C09_OWNER_APPROVAL"
+}

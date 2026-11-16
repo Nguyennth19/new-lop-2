@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "g76b6.c082.family-owner-approval-packet.v1",
+  "date": "2026-11-16",
+  "family": "D5",
+  "sourceLessonId": "MATH_B027",
+  "sourceSkillId": "SKILL_PRACTICE_SHAPES_DRAWING",
+  "proposedLessonId": "toan_b27",
+  "proposedSkillId": "SHAPE_COMPOSE_SELECT",
+  "status": "PENDING_OWNER_PEDAGOGY_AND_RUNTIME_CONTRACT_REVIEW",
+  "signedDecision": null,
+  "reviewerName": null,
+  "reviewerRole": null,
+  "reviewDate": null,
+  "signature": null,
+  "approvalRef": null,
+  "approvedCommit": null,
+  "acceptanceChecks": [
+    "Verify every piece geometry and fixed target fits original objective",
+    "Decide whether LAB 3-piece tangram is a separate original project variant rather than 4-piece textbook exercise",
+    "Separate drawing/ruler items from D5",
+    "Preserve LV1 SGK / LV2 VBT provenance and exact page",
+    "Independent teacher/owner pedagogic signoff and app skill registry review"
+  ],
+  "grantedForTestRegistration": false,
+  "grantedForApp": false,
+  "grantedForScoring": false,
+  "requires": "C08_C09_OWNER_APPROVAL"
+}

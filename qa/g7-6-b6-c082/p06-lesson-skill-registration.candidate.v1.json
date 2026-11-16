@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "g76b6.c082.p06-registration-proposals.v1",
+  "date": "2026-11-16",
+  "status": "UNREGISTERED_IDS_CANDIDATE_ONLY",
+  "pinnedP06Commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "expectedCatalogPath": "thu-nghiem/p0-6/fb/fb2-lesson-catalog.candidate.json",
+  "registriesUnmodified": true,
+  "registryKnownLessons": [
+    "toan_b21",
+    "toan_b20",
+    "toan_b24",
+    "tieng_viet_doc_hieu"
+  ],
+  "proposals": [
+    {
+      "subject": "toan",
+      "sourceLessonId": "MATH_B027",
+      "sourceSkillId": "SKILL_PRACTICE_SHAPES_DRAWING",
+      "proposedLessonId": "toan_b27",
+      "proposedSkillId": "SHAPE_COMPOSE_SELECT",
+      "proposedSkillFamily": "SHAPE_COMPOSITION",
+      "renderer": "D5",
+      "runtimeLessonIdVerifiedExisting": false,
+      "runtimeSkillIdVerifiedExisting": false,
+      "skillIdType": "NEW_PROPOSED_RUNTIME_NAME_NOT_AN_EXISTING_P06_SKILL_ID",
+      "allowedLevels": [
+        "LV1",
+        "LV2"
+      ],
+      "levelSources": {
+        "LV1": "SGK_PRINTED_106_107_ONLY_FOR_D5",
+        "LV2": "VBT_PRINTED_100_101_ONLY_IF_TASK_APPROVED"
+      },
+      "testPermission": false,
+      "requireTrustAdapter": true,
+      "qaEvidenceRef": "qa/g7-6-b6-c082/e04-lv1-lv2-review.v1.json",
+      "ownerApprovalRef": null,
+      "policyE04ApprovalRef": null
+    },
+    {
+      "subject": "toan",
+      "sourceLessonId": "MATH_B065",
+      "sourceSkillId": "SKILL_PICTOGRAPH",
+      "proposedLessonId": "toan_b65",
+      "proposedSkillId": "PICTOGRAPH_COUNT_COMPARE",
+      "proposedSkillFamily": "PICTOGRAPH",
+      "renderer": "D9",
+      "runtimeLessonIdVerifiedExisting": false,
+      "runtimeSkillIdVerifiedExisting": false,
+      "skillIdType": "NEW_PROPOSED_RUNTIME_NAME_NOT_AN_EXISTING_P06_SKILL_ID",
+      "allowedLevels": [
+        "LV1",
+        "LV2"
+      ],
+      "levelSources": {
+        "LV1": "SGK_PRINTED_102_105_TWO_ROW_ONE_TO_ONE_SUBSETS_ONLY",
+        "LV2": "VBT_PRINTED_93_95_TWO_ROW_ONE_TO_ONE_SUBSETS_ONLY"
+      },
+      "testPermission": false,
+      "requireTrustAdapter": true,
+      "qaEvidenceRef": "qa/g7-6-b6-c082/e04-lv1-lv2-review.v1.json",
+      "ownerApprovalRef": null,
+      "policyE04ApprovalRef": null
+    }
+  ],
+  "nextIfApproved": [
+    "Verify stable skill naming against future complete P0.6 catalog",
+    "Record source-to-runtime skill mapping and E04 policy version",
+    "Obtain C08 owner approval + C09 independent pedagogy signature",
+    "Create isolated TEST-only catalog candidate with policy hashes and trusted adapter",
+    "Retest without touching official manifests"
+  ],
+  "noAutoRegistration": true,
+  "existingToanB21MustNotBeModified": true,
+  "labLessonId": "toan_b999",
+  "mainDeployment": false,
+  "signature": null
+}
