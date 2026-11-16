@@ -45,7 +45,8 @@
       "kind": "mental",
       "count": 9,
       "skillIds": [
-        "B20-K03"
+        "B20-K03",
+        "B20-K04"
       ],
       "recommended": "MENTAL_INPUT_TEST_EXTENSION",
       "secondary": "D4",
@@ -59,7 +60,7 @@
       "kind": "word",
       "count": 2,
       "skillIds": [
-        "B20-K04"
+        "B20-K06"
       ],
       "recommended": "D10",
       "secondary": null,
@@ -73,7 +74,7 @@
       "kind": "three",
       "count": 6,
       "skillIds": [
-        "B20-K06"
+        "B20-K05"
       ],
       "recommended": "MENTAL_INPUT_TEST_EXTENSION",
       "secondary": "D2",
@@ -87,7 +88,6 @@
       "kind": "reverse",
       "count": 4,
       "skillIds": [
-        "B20-K05",
         "B20-K08"
       ],
       "recommended": "MENTAL_INPUT_TEST_EXTENSION",
