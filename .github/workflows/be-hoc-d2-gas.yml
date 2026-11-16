@@ -1,0 +1,32 @@
+name: BE-HOC D2 trusted GAS read-only no deploy
+on:
+  push:
+    branches: [be-hoc]
+    paths:
+      - 'D2ChamTinCayTest.gs'
+      - '49_D2V12_BaiHoc.html'
+      - 'qa/be-hoc-d2-gas/**'
+      - '.github/workflows/be-hoc-d2-gas.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  trusted:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing ledger and app boundary unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in ThanhTichMayChu.gs KhoBaiHoc.gs 26_ChamCauHoiToan.html MayChu.gs appsscript.json 47_D2V12_Core.html 48_D2V12_View.html; do
+            test "$(git hash-object "$f")" = "$(git show 16960959f8fff9b2f1a444c69d6e9a0edda179e6:"$f" | git hash-object --stdin)"
+          done
+          node qa/be-hoc-d2-gas/trusted-gas.test.cjs

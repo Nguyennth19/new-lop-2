@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "be-hoc.d2.gas.readonly.v1",
+  "date": "2026-11-16",
+  "baseline": "16960959f8fff9b2f1a444c69d6e9a0edda179e6",
+  "branch": "be-hoc",
+  "status": "PENDING_CI",
+  "endpoint": "d2ChamTinCayTest",
+  "contract": "D2_MANUAL_CARRY_REQUIRED_V1",
+  "noScoreWrites": true,
+  "noStarWrites": true,
+  "scope": "B20 selected vertical PV100 two addends",
+  "threeFour": "QA_ONLY",
+  "PV1000": "QA_ONLY",
+  "GASDeployed": false,
+  "actualGASE2E": false,
+  "ci": {
+    "status": "PENDING"
+  },
+  "rollback": "16960959f8fff9b2f1a444c69d6e9a0edda179e6"
+}

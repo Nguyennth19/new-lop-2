@@ -36,7 +36,7 @@ function mountB20(data,screen,viewName){
   if(!card||card.querySelector('[data-d2-practice]'))continue;
   const holder=document.createElement('details');holder.className='kl-d2-practice';holder.dataset.d2Practice=q.id;
   const summary=document.createElement('summary');summary.textContent='🧮 Đặt tính: tự điền ô nhớ (luyện tập)';
-  const note=document.createElement('p');note.className='kl-d2-b20-note';note.textContent='Em tự điền số nhớ và chữ số kết quả; không nhớ thì để trống. Khung này chưa chấm hay cấp sao.';
+  const note=document.createElement('p');note.className='kl-d2-b20-note';note.textContent='Em tự điền số nhớ và chữ số kết quả; không nhớ thì để trống. Em có thể kiểm tra trên GAS TEST; không ghi điểm hay sao.';
   const mount=document.createElement('div');mount.className='kl-d2-mount';
   holder.append(summary,note,mount);card.append(holder);
   holder.addEventListener('toggle',()=>{
@@ -45,9 +45,22 @@ function mountB20(data,screen,viewName){
     onSpeak:p=>{const rows=[p.a,p.b,...(p.additionalRows||[])];const text=rows.map(row=>row.slice().reverse().map(x=>x.digit).join('')).join(' cộng ')+' bằng mấy?';
      if(root.BE_HOC_GIONG_DOC_V2)root.BE_HOC_GIONG_DOC_V2.speak(text,null);},
     onChange:()=>{const status=mount.querySelector('.kl-col-v12-status');if(status)status.textContent='Đang luyện tập; chưa gửi chấm điểm.';},
-    onSubmit:()=>{const status=mount.querySelector('.kl-col-v12-status');if(status)status.textContent='Đã ghi trong phiên luyện tập. Điền đáp án ở ô bài chính để nộp bài.';}
+    onSubmit:(_index,values)=>{
+     const status=mount.querySelector('.kl-col-v12-status');if(!status)return;
+     if(q.type!=='vertical'){status.textContent='Dạng này chỉ luyện tập; chưa bật chấm GAS.';return;}
+     if(!root.google?.script?.run){status.textContent='Chưa kết nối GAS TEST; không chấm và không ghi sao.';return;}
+     const payload={contractId:'D2_MANUAL_CARRY_REQUIRED_V1',lessonId:'toan_b20',level:q.level,questionId:q.id,
+       submission:{digits:[values.result_ones??'',values.result_tens??''],carries:{carry_tens:values.carry_tens??''}}};
+     status.textContent='Đang kiểm tra trên GAS TEST…';
+     root.google.script.run.withSuccessHandler(response=>{
+       if(!response||!response.ok||response.policy!=='D2_MANUAL_CARRY_REQUIRED_V1'||response.awarded!==false){
+         status.textContent='Máy chủ chưa xác nhận. Không ghi điểm hoặc sao.';return;
+       }
+       status.textContent=response.correct?'✅ Đúng cả đáp số và ô nhớ (TEST, không cộng sao).':'❌ Chưa đúng đáp số hoặc ô nhớ. Em thử lại nhé (không cộng sao).';
+     }).withFailureHandler(()=>{status.textContent='Lỗi kết nối GAS TEST. Không ghi điểm hoặc sao.';}).d2ChamTinCayTest(payload);
+    }
    });
-   if(result.ok)holder.dataset.d2Mounted='1';
+   if(result.ok){holder.dataset.d2Mounted='1';const send=mount.querySelector('.kl-col-v12-send');if(send)send.textContent='Kiểm tra GAS TEST (không ghi sao)';}
    else{holder.dataset.d2Mounted='error';note.textContent='Bài này chưa hỗ trợ bảng D2; em làm bài bằng ô trả lời chính.';}
   });
   count++;
