@@ -30,3 +30,9 @@ jobs:
             test "$(git hash-object "$f")" = "$(git show 16960959f8fff9b2f1a444c69d6e9a0edda179e6:"$f" | git hash-object --stdin)"
           done
           node qa/be-hoc-d2-gas/trusted-gas.test.cjs
+      - name: Install isolated Playwright Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Simulate a full lesson with a trusted GAS source VM on desktop/mobile
+        run: node qa/be-hoc-d2-gas/browser-lesson.test.cjs
