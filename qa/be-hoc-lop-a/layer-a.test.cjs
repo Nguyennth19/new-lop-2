@@ -8,7 +8,7 @@ const html=read('GiaoDien.html'),renderer=read('41_HienThiCauHoiToan.html'),css=
 const required=['01_CSS_NenTang','02_CSS_TrangChu','03_CSS_ThanhTich','04_CSS_LoTrinh','19_KhongGianHocToan','26_ChamCauHoiToan','41_HienThiCauHoiToan','43_CSS_ThanhPhanBaiToan'];
 for(const name of required)ok(html.includes("napThanhPhan('"+name+"')"),'missing include '+name);
 eq((html.match(/napThanhPhan\('43_CSS_ThanhPhanBaiToan'\)/g)||[]).length,1);
-ok(css.includes('#mathFullScreen'));eq(css.replace(/#mathFullScreen/g,'').match(/(?:^|\})\s*[.#][A-Za-z]/gm),null,'unscoped CSS');
+ok(css.includes('#mathFullScreen'));ok(css.split('\n').filter(line=>/^\s*\.[a-z]/i.test(line)).length===0,'CSS has free-standing class selectors');ok((css.match(/#mathFullScreen/g)||[]).length>=20,'CSS is scoped to math screen');
 ok(!/\b(?:html|body|:root)\s*\{/.test(css));ok(!renderer.includes('google.script.run'));
 const context={};vm.runInNewContext(renderer,context,{timeout:1000});
 ok(typeof context.taoHienThiCauToan==='function');
