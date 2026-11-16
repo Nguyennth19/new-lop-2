@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "g76.workflow-rules-review.checkpoint.v1",
+  "date": "2026-11-16",
+  "base": "6d88daa3383956e8e43ca1a8a328914a86386138",
+  "branch": "audit/g7-6-workflow-rules-consolidation-review-20261116",
+  "status": "TECHNICAL_REVIEW_CLASSIFIED_10_RULES_OWNER_PENDING_NOT_OFFICIAL",
+  "counts": {
+    "reviewed": 10,
+    "mergeEdited": 5,
+    "referenceExisting": 5,
+    "ownerApprovals": 0,
+    "officialProjectRulesCreated": 0
+  },
+  "policyReferences": [
+    "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+    "qa/g7-6-external-workflow-reconciliation/module-crosswalk.v1.json",
+    "thu-nghiem/bai-20-bien-the/QUY_TRINH_DU_LIEU_RENDERER_QA_LOP2.md",
+    "qa/g7-6-b6-c086/resolution.pending.v1.json",
+    "qa/g7-6-b5c/integration-go-no-go.matrix.v1.json"
+  ],
+  "guard": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "p06Test": "NO_GO",
+    "runtime": "NO_GO",
+    "officialRulesWrite": false,
+    "officialManifestWrite": false,
+    "sourceSheetsWrite": false,
+    "mainWrite": false,
+    "testTheoMainWrite": false,
+    "gasWrite": false,
+    "studentDataWrite": false
+  },
+  "ci": {
+    "status": "NOT_YET_RUN",
+    "runId": null,
+    "headSha": null
+  },
+  "rollback": {
+    "returnTo": "6d88daa3383956e8e43ca1a8a328914a86386138",
+    "action": "DISCARD_ONLY_THIS_REVIEW_BRANCH_NO_RUNTIME_CHANGE"
+  }
+}

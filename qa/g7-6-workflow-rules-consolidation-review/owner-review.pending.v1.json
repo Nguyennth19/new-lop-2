@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "g76.workflow-rules.owner-review.pending.v1",
+  "date": "2026-11-16",
+  "sourceHead": "6d88daa3383956e8e43ca1a8a328914a86386138",
+  "status": "AWAITING_EXPLICIT_OWNER_DECISION",
+  "perRuleDecisions": [
+    {
+      "ruleId": "R01",
+      "technicalRecommendation": "MERGE_EDIT",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R02",
+      "technicalRecommendation": "MERGE_EDIT",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R03",
+      "technicalRecommendation": "MERGE_EDIT",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R04",
+      "technicalRecommendation": "REFERENCE_EXISTING",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R05",
+      "technicalRecommendation": "REFERENCE_EXISTING",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R06",
+      "technicalRecommendation": "REFERENCE_EXISTING",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R07",
+      "technicalRecommendation": "REFERENCE_EXISTING",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R08",
+      "technicalRecommendation": "MERGE_EDIT",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R09",
+      "technicalRecommendation": "REFERENCE_EXISTING",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    },
+    {
+      "ruleId": "R10",
+      "technicalRecommendation": "MERGE_EDIT",
+      "ownerDecision": null,
+      "ownerComment": null,
+      "ownerEvidenceRef": null,
+      "ownerIdentityVerified": false,
+      "ownerScopeVerified": false,
+      "ownerSignature": null,
+      "approved": false
+    }
+  ],
+  "approvalContract": {
+    "allowedDecisions": [
+      "ADOPT_EDITED_RULE",
+      "REFERENCE_EXISTING_ONLY",
+      "REVISE_AND_RECHECK",
+      "REJECT_FROM_CORE_RULES"
+    ],
+    "requiresPinnedEvidence": true,
+    "requiresIndependentScopeVerification": true,
+    "requiresRuleSpecificApproval": true,
+    "noAutoApprovalByCi": true,
+    "noImplicitOwnerConsentFromRequest": true
+  },
+  "publicationPrerequisites": [
+    "EXPLICIT_OWNER_DECISIONS_FOR_10_RULES",
+    "NO_UNRESOLVED_CONFLICT_WITH_CURRENT_C07_C08_C09_GATES",
+    "RECONCILE_ANY_REJECTED_OR_REVISED_RULES",
+    "PIN_REFERENCED_POLICIES_AND_BYTE_HASHES",
+    "SEPARATE_RELEASE_PERMISSION_TO_WRITE_OFFICIAL_ROOT_FILE",
+    "REVIEW_DIFF_AND_ROLLBACK",
+    "CI_PROTECTED_PATH_GUARDS_PASS"
+  ],
+  "projectRulesWritten": false,
+  "ownerApprovedCount": 0,
+  "officialManifestEdited": false
+}

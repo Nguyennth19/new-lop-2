@@ -1,0 +1,49 @@
+name: G7.6 Workflow Rules Consolidation Review (NO ADOPTION)
+on:
+  push:
+    branches:
+      - audit/g7-6-workflow-rules-consolidation-review-20261116
+    paths:
+      - 'qa/g7-6-workflow-rules-consolidation-review/**'
+      - 'docs/kiem-dinh/G7.6_WORKFLOW_RULES_CONSOLIDATION_*'
+      - '.github/workflows/g7-6-workflow-rules-review-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Protected scope and baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 6d88daa3383956e8e43ca1a8a328914a86386138 HEAD
+          if git diff --name-only 6d88daa3383956e8e43ca1a8a328914a86386138 HEAD | grep -Ev '^(qa/g7-6-workflow-rules-consolidation-review/|docs/kiem-dinh/G7\.6_WORKFLOW_RULES_CONSOLIDATION_|\.github/workflows/g7-6-workflow-rules-review-no-deploy.yml)' ; then echo PROTECTED_PATH_EDIT; exit 1; fi
+          test ! -e PROJECT_RULES.md
+          for f in qa/g7-6-external-workflow-reconciliation/module-crosswalk.v1.json docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md qa/g7-6-b6-c086/resolution.pending.v1.json du-lieu/g7-6/resource-renderer-manifest.v1.json qa/g7-6-b6/approvals/C08.approval.pending.v1.json qa/g7-6-b6/approvals/C09.approval.pending.v1.json appsscript.json; do
+            test "$(git hash-object "$f")" = "$(git show 6d88daa3383956e8e43ca1a8a328914a86386138:"$f" | git hash-object --stdin)"
+          done
+      - name: Validate exact 10 owner-pending rules and reuse-first candidate
+        run: |
+          node --check qa/g7-6-workflow-rules-consolidation-review/consolidation-review.test.cjs
+          node qa/g7-6-workflow-rules-consolidation-review/consolidation-review.test.cjs
+      - name: Archive audit-only unsigned records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76-WORKFLOW-RULES-REVIEW-PENDING-NO-DEPLOY
+          path: |
+            qa/g7-6-workflow-rules-consolidation-review/*.json
+            qa/g7-6-workflow-rules-consolidation-review/*.csv
+            qa/g7-6-workflow-rules-consolidation-review/*.md
+            docs/kiem-dinh/G7.6_WORKFLOW_RULES_CONSOLIDATION_REVIEW_20261116.md
+          retention-days: 30

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "g76.workflow-rules-consolidation-review.v1",
+  "date": "2026-11-16",
+  "purpose": "TECHNICAL_SELECTION_NOT_OWNER_APPROVAL",
+  "sourceBaseline": "6d88daa3383956e8e43ca1a8a328914a86386138",
+  "externalCrosswalkRevision": "qa/g7-6-external-workflow-reconciliation/module-crosswalk.v1.json",
+  "originalDelta": "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+  "candidateFilename": "qa/g7-6-workflow-rules-consolidation-review/PROJECT_RULES.review-candidate.v0.1.md",
+  "officialProjectRulesExistsInPinnedTrees": false,
+  "checks": {
+    "mainPinned": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+    "testTheoMainPinned": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+    "auditPinned": "6d88daa3383956e8e43ca1a8a328914a86386138"
+  },
+  "rules": [
+    {
+      "id": "R01",
+      "title": "Metadata nhiệm vụ và phiên bản",
+      "technicalDecision": "MERGE_EDIT",
+      "targetSection": "TASK_PROVENANCE",
+      "risk": "LOW",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        "qa/g7-6-b6-c086/execution-log.c086.md",
+        "qa/g7-6-b6-c085/approval-evidence-lock.v1.json"
+      ],
+      "crosswalkIds": [
+        "X01",
+        "X02",
+        "X50"
+      ],
+      "nonDuplicateDelta": "Chuẩn hóa hợp đồng bàn giao tối thiểu: taskId, branch, SHA, sourceRef, evidence, QA scope, blockers, owner, rollback; cho phép 'not-applicable' có lý do.",
+      "avoid": "Không sao chép toàn bộ nhật ký hoặc bắt buộc mọi trường liên quan dữ liệu học sinh.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R02",
+      "title": "Context index theo phân hệ",
+      "technicalDecision": "MERGE_EDIT",
+      "targetSection": "CONTEXT_INDEX",
+      "risk": "LOW",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        "qa/g7-6-external-workflow-reconciliation/module-crosswalk.v1.json",
+        "qa/g7-6-b6-c085/approval-evidence-lock.v1.json"
+      ],
+      "crosswalkIds": [
+        "X04",
+        "X05",
+        "X06"
+      ],
+      "nonDuplicateDelta": "Bản chỉ mục versioned chỉ gồm nguồn, hash, changed paths và tình trạng QA; đọc theo nhu cầu, không dump source hay keys.",
+      "avoid": "Không tự sync code đầy đủ sang Drive hoặc đưa SGK có bản quyền, secrets, dữ liệu học sinh vào summary công khai.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R03",
+      "title": "Handoff và peer review liên mô hình",
+      "technicalDecision": "MERGE_EDIT",
+      "targetSection": "MODEL_NEUTRAL_HANDOFF",
+      "risk": "LOW",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        "qa/g7-6-b6-c086/execution-log.c086.md",
+        "qa/g7-6-external-workflow-reconciliation/module-crosswalk.v1.json"
+      ],
+      "crosswalkIds": [
+        "X02",
+        "X03",
+        "X45"
+      ],
+      "nonDuplicateDelta": "Định nghĩa handoff record và quy trình review chéo không phụ thuộc Gemini/ChatGPT; đánh giá độc lập, không tự ký thay owner.",
+      "avoid": "Không cho hai AI tự động cấp quyền thay con người hoặc chuyển trạng thái APPROVED.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R04",
+      "title": "Tách CI chỉ đọc khỏi merge, GAS deploy",
+      "technicalDecision": "REFERENCE_EXISTING",
+      "targetSection": "REFERENCES_GOVERNANCE",
+      "risk": "HIGH",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        ".github/workflows/g7-6-b6-c086-no-deploy.yml",
+        "qa/g7-6-b5c/integration-go-no-go.matrix.v1.json"
+      ],
+      "crosswalkIds": [
+        "X10",
+        "X11",
+        "X12",
+        "X13"
+      ],
+      "nonDuplicateDelta": "Dẫn chiếu cổng phát hành và NO-DEPLOY đã tồn tại; không viết một release gate mới.",
+      "avoid": "Không chuyển post-commit thành clasp push --force hoặc coi README cũ là lệnh deploy tự động.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R05",
+      "title": "Append-only audit, PASS không bằng APPROVED",
+      "technicalDecision": "REFERENCE_EXISTING",
+      "targetSection": "REFERENCES_GOVERNANCE",
+      "risk": "HIGH",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        "qa/g7-6-b6-c086/execution-log.c086.md",
+        "qa/g7-6-b6-c085/approval-evidence-lock.v1.json",
+        "qa/g7-6-b6-c086/resolution.pending.v1.json"
+      ],
+      "crosswalkIds": [
+        "X06",
+        "X07",
+        "X50"
+      ],
+      "nonDuplicateDelta": "Dẫn chiếu checkpoint và approval evidence lock; không nhân đôi engine chứng thực hay bảng trạng thái.",
+      "avoid": "Không coi CI xanh, test giả lập chữ ký hay owner UX PASS là thông qua C08/C09.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R06",
+      "title": "Giữ độc lập C07, C08, C09/E04",
+      "technicalDecision": "REFERENCE_EXISTING",
+      "targetSection": "REFERENCES_GOVERNANCE",
+      "risk": "CRITICAL",
+      "sourceRefs": [
+        "qa/g7-6-b6-c086/resolution.pending.v1.json",
+        "qa/g7-6-b6/approvals/C08.approval.pending.v1.json",
+        "qa/g7-6-b6/approvals/C09.approval.pending.v1.json",
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md"
+      ],
+      "crosswalkIds": [
+        "X27",
+        "X51",
+        "X52"
+      ],
+      "nonDuplicateDelta": "Giữ nguyên cổng approval hiện hữu và dẫn chiếu; quy tắc tổng chỉ đọc trạng thái.",
+      "avoid": "Không cho phép text trong PROJECT_RULES mở đăng ký TEST hoặc gắn D5/D9 vào bài chưa được duyệt.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R07",
+      "title": "AI generated content chỉ là candidate cần provenance",
+      "technicalDecision": "REFERENCE_EXISTING",
+      "targetSection": "REFERENCES_EDUCATION",
+      "risk": "CRITICAL",
+      "sourceRefs": [
+        "thu-nghiem/bai-20-bien-the/QUY_TRINH_DU_LIEU_RENDERER_QA_LOP2.md",
+        "qa/g7-6-b6-c082/source-item-review.v1.json",
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md"
+      ],
+      "crosswalkIds": [
+        "X19",
+        "X20",
+        "X21"
+      ],
+      "nonDuplicateDelta": "Dẫn chiếu chính sách SGK LV1/VBT LV2, kiểm tra từng bài, và quyết định nguồn đã cách ly; không tạo policy sư phạm mới.",
+      "avoid": "Không copy câu mẫu tự động, tự sinh 50 câu rồi tự nâng vào canonical hoặc tự phán nguồn đúng.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R08",
+      "title": "Reuse-first trước khi dựng renderer/speech/asset",
+      "technicalDecision": "MERGE_EDIT",
+      "targetSection": "REUSE_FIRST",
+      "risk": "LOW",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+        "du-lieu/asset-selector/asset-registry-288.v1.json"
+      ],
+      "crosswalkIds": [
+        "X22",
+        "X28",
+        "X31",
+        "X32",
+        "X34"
+      ],
+      "nonDuplicateDelta": "Bổ sung cổng 'existing module ID/version/QA/compatibility' vào tài liệu thiết kế; nếu khác chỉ tạo delta có fixture và visual regression.",
+      "avoid": "Không coi renderer TEST hoặc metadata 288 hình là đã được chạy chính thức; không thay bộ đọc V1.2/V2.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R09",
+      "title": "Bảo vệ answerSpec, secrets, student state và sao",
+      "technicalDecision": "REFERENCE_EXISTING",
+      "targetSection": "REFERENCES_SECURITY",
+      "risk": "CRITICAL",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        "du-lieu/g7-6/variant-public-envelope.schema.json",
+        "qa/g7-6-b5c/integration-go-no-go.matrix.v1.json",
+        "ThanhTichMayChu.gs"
+      ],
+      "crosswalkIds": [
+        "X15",
+        "X26",
+        "X41",
+        "X42"
+      ],
+      "nonDuplicateDelta": "Dẫn chiếu public/private envelope và quyền máy chủ; không tạo tầng phân quyền mới ngoài review.",
+      "avoid": "Không cho static JS/Drive snapshot chứa đáp án, token hoặc sao tự tính phía client.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    },
+    {
+      "id": "R10",
+      "title": "Bảo toàn bằng chứng, rollback, không tự xóa backup",
+      "technicalDecision": "MERGE_EDIT",
+      "targetSection": "EVIDENCE_RETENTION",
+      "risk": "LOW",
+      "sourceRefs": [
+        "docs/kiem-dinh/G7.6_EXTERNAL_WORKFLOW_RULES_DELTA_PROPOSAL_20261116.md",
+        "qa/g7-6-b6-c085/approval-evidence-lock.v1.json",
+        "qa/g7-6-b6-c086/execution-log.c086.md"
+      ],
+      "crosswalkIds": [
+        "X07",
+        "X18",
+        "X50"
+      ],
+      "nonDuplicateDelta": "Bổ sung retention hold/không xóa số lượng tự động; checkpoint gắn source SHA và thay đổi được phép; rollback có thể truy lại bằng chứng.",
+      "avoid": "Không tạo backup mới tự ghi Drive, không xóa/ghi đè nguồn cũ, không hứa restore chưa kiểm chứng.",
+      "ownerDecision": "PENDING",
+      "ownerApproved": false,
+      "adopted": false
+    }
+  ],
+  "counts": {
+    "total": 10,
+    "technicalDecisionCounts": {
+      "MERGE_EDIT": 5,
+      "REFERENCE_EXISTING": 5
+    },
+    "adoptedRules": 0,
+    "ownerVerified": 0
+  },
+  "reviewGuard": {
+    "humanOwnerSignoffRequired": true,
+    "officialFileMayBeWritten": false,
+    "registeredRendererAllowed": false,
+    "C07": "PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "p06Test": "DENIED",
+    "gas": "DENIED",
+    "mainMerge": "DENIED",
+    "testTheoMainMerge": "DENIED"
+  },
+  "note": "REFERENCE_EXISTING means refer to a previously locked source. Some linked documents are drafts; this does not promote them to an approved policy.",
+  "decision": "GO_REVIEW_CANDIDATE_ONLY_NO_GO_OFFICIAL_RULES"
+}
