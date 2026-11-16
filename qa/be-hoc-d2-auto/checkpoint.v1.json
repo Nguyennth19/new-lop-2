@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "branch": "be-hoc",
   "baseline": "72d52c32aa81e37e989629c11c7f892b65d612a2",
-  "status": "PENDING_CI",
+  "status": "PASS_AUTO_CARRY_MULTIROW_AND_PRIVATE_SCORING_POLICY_QA_ONLY",
   "policy": {
     "numberOfOperands": [
       2,
@@ -41,7 +41,25 @@
     "d2V12Carry": "TOGGLE_IN_ORIGINAL_VIEW"
   },
   "ci": {
-    "status": "PENDING"
+    "status": "PASS",
+    "runId": 43811369732,
+    "headSha": "e6b30fa28edefb60b9641cbc6fe39712e0a80712",
+    "conclusion": "SUCCESS",
+    "contractAssertions": 39,
+    "privateGradingAssertions": 20,
+    "chromiumAssertions": 27,
+    "totalAssertions": 86,
+    "browser": "CHROMIUM_DESKTOP_AND_MOBILE_EMULATION",
+    "gasE2E": false,
+    "manualDeviceQA": false
   },
-  "rollbackCommit": "72d52c32aa81e37e989629c11c7f892b65d612a2"
+  "rollbackCommit": "72d52c32aa81e37e989629c11c7f892b65d612a2",
+  "release": {
+    "autoCarryAndRows": "GO_SOURCE_ONLY_NO_GAS",
+    "trustedScoring": "QA_PRIVATE_POLICY_NOT_CONNECTED",
+    "stars": "NO_GO_NEW_WRITES",
+    "hostDeploy": "NO_GO",
+    "result1000": "NO_GO",
+    "c07": "INDEPENDENT_PENDING"
+  }
 }

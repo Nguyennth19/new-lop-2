@@ -16,3 +16,9 @@ The exact `test-theo-main` SHA `f51a12cc` contains a **manual carry input** in `
 
 ## Test
 Contract 2–4 operands, carry 0/1/2/3, renderer extended rows, PV100/1000 overflow rejections, no browser-side grading, no state writes. Desktop Chromium 1366px/mobile emulation 390px. Device QA and GAS deployment remain pending.
+
+## Technical QA closure
+- GitHub Actions [43811369732](https://github.com/Nguyennth19/new-lop-2/actions/runs/43811369732): **SUCCESS** on `e6b30fa28edefb60b9641cbc6fe39712e0a80712`; **39 contract assertions + 20 private scoring-policy assertions + 27 Chromium desktop/mobile-emulation checks = 86 PASS**.
+- `qa/be-hoc-d2-auto/private-scoring-policy.qa-only.cjs`: deterministic offline evaluation of full result digits, private fixture only, one correct question gets questionCredit=1, any wrong digit gets 0, auto-carry and partial answers get 0 additional marks, starCredit=0 always. This is **not** a GAS endpoint and never imported into student HTML.
+- No changes to `26_ChamCauHoiToan.html`, `MayChu.gs`, protected branches, manifest, or official lesson mapping. No student-data write; no actual GAS test, no actual Android/iOS device QA.
+- Reproduction: `node qa/be-hoc-d2-auto/d2-auto.test.cjs`; `node qa/be-hoc-d2-auto/private-scoring-policy.test.cjs`; Playwright command in `.github/workflows/be-hoc-d2-auto-no-deploy.yml`.
