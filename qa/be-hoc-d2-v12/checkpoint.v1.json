@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "baseline": "a69cb2153590645b1f9ee7119011cfbd7a324eae",
   "branch": "be-hoc",
-  "status": "PENDING_CI",
+  "status": "PASS_D2_REAL_B20_COMPANION_QA_ONLY_NO_NEW_GRADING",
   "sourceCoreBlob": "16ae440618bcb3cf90706cdad2ccd11cbadc222a",
   "sourceViewBlob": "214b615d0c595dfd76695c75e5443cefc36a921d",
   "functionality": {
@@ -25,8 +25,34 @@
     "GASDeploy": false
   },
   "ci": {
-    "status": "PENDING",
-    "runs": []
+    "status": "PASS",
+    "contract": {
+      "runId": 43810064542,
+      "headSha": "f8bfafa26c22655ce8b0b9b1a9a033f02dc187d3",
+      "assertions": 41,
+      "conclusion": "SUCCESS"
+    },
+    "chromium": {
+      "runId": 43810064390,
+      "headSha": "f8bfafa26c22655ce8b0b9b1a9a033f02dc187d3",
+      "assertions": 35,
+      "conclusion": "SUCCESS",
+      "desktop": "1366x768",
+      "mobileEmulation": "390x844"
+    },
+    "actualGASTested": false
   },
-  "rollbackCommit": "a69cb2153590645b1f9ee7119011cfbd7a324eae"
+  "rollbackCommit": "a69cb2153590645b1f9ee7119011cfbd7a324eae",
+  "release": {
+    "GO": "B20_IN_LESSON_D2_OPTIONAL_PRACTICE_SOURCE",
+    "NO_GO": [
+      "GAS_DEPLOY",
+      "SCORED_D2_SUBMISSION",
+      "PV1000_CURRICULUM_ACTIVATION",
+      "RESULT_1000_FOUR_COLUMN",
+      "STUDENT_SCORE_WRITE"
+    ],
+    "requiresOwnerApprovalForDeploy": true,
+    "manualBrowserGASTestPending": true
+  }
 }

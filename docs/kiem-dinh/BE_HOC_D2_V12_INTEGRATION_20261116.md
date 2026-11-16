@@ -21,3 +21,9 @@ Node: bộ biên dịch D2 nguyên bản, nguồn thực được lọc đúng l
 
 ## Rollback
 Quay về commit `a69cb2153590645b1f9ee7119011cfbd7a324eae`; giữ nguyên toàn bộ máy chủ và phần chấm đã có.
+
+## Chốt CI
+- `43810064542`: **SUCCESS**, 41 assertions — core/view nguyên gốc, B20 Sheet adapter, cổng chặn ô nhớ, PV100/PV1000, hạn chế kết quả 100/1000, không truy cập khóa đáp án/điểm.
+- `43810064390`: **SUCCESS**, 35 assertions Chromium desktop 1366×768 và mobile giả lập 390×844 — mở bảng D2 trên câu B20, nhập theo cột, bật ô nhớ, phím số tích hợp, ghi nhận KHÔNG CHẤM, render 3 cột PV1000 QA và từ chối kết quả 1000.
+- Các ca test ban đầu đã phát hiện chính giả định sai trong fixtures (99+1 không có đủ hai toán hạng hai chữ số; trường metadata checkpoint dùng đường dẫn lồng nhau; bộ chọn Chromium trùng với fixture PV1000). Đã sửa bài test, không tự sửa H1/SGK hay renderer D2 lõi.
+- **Chưa thực hiện:** GAS TEST deployment, thử âm thanh/bàn phím thực trên thiết bị, kiểm nghiệm máy chủ chấm D2, nối PV1000 vào bài SGK thực tế.
