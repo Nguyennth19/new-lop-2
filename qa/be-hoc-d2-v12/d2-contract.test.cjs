@@ -16,7 +16,7 @@ const make=(a,b,id='VAR_20_X',level='LV1')=>({id,type:'vertical',valid:true,op:'
 const plan=api.fromB20(make(36,17));eq(plan.ok,true);eq(plan.profile,'PV100');eq(plan.columns,2);eq(plan.carryPolicy,'OPTIONAL_HINT');eq(plan.gradingEnabled,false);
 eq(plan.answerSlots.length,2);eq(plan.transitionSlots.length,1);check(!JSON.stringify(plan).includes('"answer"'));
 eq(api.fromB20(make(70,30)).reason,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
-eq(api.fromB20(make(99,1)).reason,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+eq(api.fromB20(make(99,11)).reason,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
 eq(api.fromB20(make(10,20,'BAD ID')).reason,'NOT_VERIFIED_B20_VERTICAL');
 eq(api.fromB20({...make(40,23),type:'mental'}).reason,'NOT_VERIFIED_B20_VERTICAL');
 const pv1000=(a,b,op='ADD')=>win.KLColumnV12.publicPlan({variantId:'COL_PV1000_QA',profile:'PV1000',operation:op,level:'LV2',a,b,carryPolicy:'OPTIONAL_HINT',assetId:null});
