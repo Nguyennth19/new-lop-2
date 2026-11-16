@@ -1,0 +1,54 @@
+name: G7.6 AI-3 B20 independent reuse evaluation (READ ONLY)
+on:
+  push:
+    branches:
+      - audit/g7-6-ai3-real-handoff-evaluation-b20-20261116
+    paths:
+      - 'qa/g7-6-ai3-b20/**'
+      - 'docs/kiem-dinh/G7.6_AI3_B20_*'
+      - '.github/workflows/g7-6-ai3-b20-readonly.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-resource-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06
+          persist-credentials: false
+      - name: Ensure source scope isolation and pinned P0.6 H1
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor a73a98a90dab2499c359aa48dde2cda85c3f823e HEAD
+          if git diff --name-only a73a98a90dab2499c359aa48dde2cda85c3f823e HEAD | grep -Ev '^(qa/g7-6-ai3-b20/|docs/kiem-dinh/G7\.6_AI3_B20_|\.github/workflows/g7-6-ai3-b20-readonly.yml)' ; then exit 1; fi
+          test "$(git -C _external/p06 rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          for f in qa/g7-6-b6-c086/resolution.pending.v1.json qa/g7-6-workflow-rules-consolidation-review/owner-review.pending.v1.json du-lieu/g7-6/resource-renderer-manifest.v1.json du-lieu/asset-selector/asset-registry-288.v1.json; do
+            test "$(git hash-object "$f")" = "$(git show a73a98a90dab2499c359aa48dde2cda85c3f823e:"$f" | git hash-object --stdin)"
+          done
+      - name: Source-backed 6-family resource reuse and negative gate QA
+        run: |
+          node --check qa/g7-6-ai3-b20/ai3-review-validator.cjs
+          node --check qa/g7-6-ai3-b20/ai3-review.test.cjs
+          node qa/g7-6-ai3-b20/ai3-review.test.cjs _external/p06
+      - name: Archive evidence without source answers or private records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76-AI3-B20-RESOURCE-REUSE-REAL-GEMINI-PENDING
+          path: |
+            qa/g7-6-ai3-b20/*.json
+            docs/kiem-dinh/G7.6_AI3_B20_EVALUATION_20261116.md
+          retention-days: 30

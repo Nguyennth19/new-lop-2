@@ -1,0 +1,220 @@
+{
+  "schemaVersion": "lop2.ai3.real-evaluation-evidence.v1",
+  "date": "2026-11-16",
+  "mode": "SOURCE_GROUNDED_CHATGPT_REVIEW_AND_DETERMINISTIC_TEST_WITHOUT_LIVE_GEMINI",
+  "sourceCommit": "a73a98a90dab2499c359aa48dde2cda85c3f823e",
+  "p06Commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "lessonId": "toan_b20",
+  "protocol": "Compare the same pinned 12 factual claims, six resource families, negative guard cases, and human timing under identical conditions.",
+  "subjects": {
+    "A": {
+      "name": "Single-AI ChatGPT",
+      "actualExecution": "SOURCE_GROUNDED_REVIEW_THIS_TURN",
+      "reviewer": "ChatGPT",
+      "claimJudgements": [
+        {
+          "id": "F01",
+          "claim": "B20 H1 has 30 questions and six sessions",
+          "expected": "SUPPORTED",
+          "sourceId": "H1_B20_30Q"
+        },
+        {
+          "id": "F02",
+          "claim": "B20 H1 six kinds carry/vertical/mental/word/three/reverse",
+          "expected": "SUPPORTED",
+          "sourceId": "H1_B20_30Q"
+        },
+        {
+          "id": "F03",
+          "claim": "B20 H1 is a full SGK/VBT 33-item verbatim transcription",
+          "expected": "REFUTED",
+          "sourceId": "B20_SOURCE_PAGE_VISUAL_SCOPE"
+        },
+        {
+          "id": "F04",
+          "claim": "The 45-subquestion UI blueprint is the current frozen H1",
+          "expected": "REFUTED",
+          "sourceId": "B20_45Q_BLUEPRINT"
+        },
+        {
+          "id": "F05",
+          "claim": "F-B.3 already has independent 30-question browser QA in an isolated TEST scope",
+          "expected": "SUPPORTED_PREVIOUS_SCOPE",
+          "sourceId": "P06_F_B_3_BROWSER"
+        },
+        {
+          "id": "F06",
+          "claim": "B20 is approved for unrestricted GAS / student use",
+          "expected": "REFUTED",
+          "sourceId": "P06_F_B_2_LESSONS"
+        },
+        {
+          "id": "F07",
+          "claim": "12 renderer reference entries are deployed in GAS",
+          "expected": "REFUTED",
+          "sourceId": "RESOURCE_MANIFEST"
+        },
+        {
+          "id": "F08",
+          "claim": "288 asset registry labels equal 288 assets approved for auto runtime binding",
+          "expected": "REFUTED",
+          "sourceId": "ASSET_REGISTRY"
+        },
+        {
+          "id": "F09",
+          "claim": "D4 multiple-choice can replace free numeric entry without policy",
+          "expected": "REFUTED",
+          "sourceId": "ADAPTER_MATRIX"
+        },
+        {
+          "id": "F10",
+          "claim": "D10 word-problem UI exists while trusted grading for new integration is blocked",
+          "expected": "SUPPORTED",
+          "sourceId": "RESOURCE_MANIFEST"
+        },
+        {
+          "id": "F11",
+          "claim": "G7.5 math TTS V2 exists as a standalone profile, not GAS integrated",
+          "expected": "SUPPORTED",
+          "sourceId": "RESOURCE_MANIFEST"
+        },
+        {
+          "id": "F12",
+          "claim": "C07, C08 and C09 have no fresh approvals from AI-3",
+          "expected": "SUPPORTED",
+          "sourceId": "AI2_SOURCE_LEDGER"
+        }
+      ]
+    },
+    "B": {
+      "name": "Gemini->ChatGPT handoff",
+      "actualExecution": "NOT_EXECUTED",
+      "geminiEvidenceUri": null,
+      "geminiOutputSha256": null,
+      "reviewEvidenceUri": null,
+      "reviewerProof": null
+    }
+  },
+  "accuracy": {
+    "factChecklist": [
+      {
+        "id": "F01",
+        "claim": "B20 H1 has 30 questions and six sessions",
+        "expected": "SUPPORTED",
+        "sourceId": "H1_B20_30Q"
+      },
+      {
+        "id": "F02",
+        "claim": "B20 H1 six kinds carry/vertical/mental/word/three/reverse",
+        "expected": "SUPPORTED",
+        "sourceId": "H1_B20_30Q"
+      },
+      {
+        "id": "F03",
+        "claim": "B20 H1 is a full SGK/VBT 33-item verbatim transcription",
+        "expected": "REFUTED",
+        "sourceId": "B20_SOURCE_PAGE_VISUAL_SCOPE"
+      },
+      {
+        "id": "F04",
+        "claim": "The 45-subquestion UI blueprint is the current frozen H1",
+        "expected": "REFUTED",
+        "sourceId": "B20_45Q_BLUEPRINT"
+      },
+      {
+        "id": "F05",
+        "claim": "F-B.3 already has independent 30-question browser QA in an isolated TEST scope",
+        "expected": "SUPPORTED_PREVIOUS_SCOPE",
+        "sourceId": "P06_F_B_3_BROWSER"
+      },
+      {
+        "id": "F06",
+        "claim": "B20 is approved for unrestricted GAS / student use",
+        "expected": "REFUTED",
+        "sourceId": "P06_F_B_2_LESSONS"
+      },
+      {
+        "id": "F07",
+        "claim": "12 renderer reference entries are deployed in GAS",
+        "expected": "REFUTED",
+        "sourceId": "RESOURCE_MANIFEST"
+      },
+      {
+        "id": "F08",
+        "claim": "288 asset registry labels equal 288 assets approved for auto runtime binding",
+        "expected": "REFUTED",
+        "sourceId": "ASSET_REGISTRY"
+      },
+      {
+        "id": "F09",
+        "claim": "D4 multiple-choice can replace free numeric entry without policy",
+        "expected": "REFUTED",
+        "sourceId": "ADAPTER_MATRIX"
+      },
+      {
+        "id": "F10",
+        "claim": "D10 word-problem UI exists while trusted grading for new integration is blocked",
+        "expected": "SUPPORTED",
+        "sourceId": "RESOURCE_MANIFEST"
+      },
+      {
+        "id": "F11",
+        "claim": "G7.5 math TTS V2 exists as a standalone profile, not GAS integrated",
+        "expected": "SUPPORTED",
+        "sourceId": "RESOURCE_MANIFEST"
+      },
+      {
+        "id": "F12",
+        "claim": "C07, C08 and C09 have no fresh approvals from AI-3",
+        "expected": "SUPPORTED",
+        "sourceId": "AI2_SOURCE_LEDGER"
+      }
+    ],
+    "scorePolicy": "Score only observed, independently grounded claims. Twelve expected outcomes constitute a reference rubric, NOT a blind-model score.",
+    "evaluatedChatGPTClaims": 12,
+    "independentBlindedScore": null,
+    "geminiClaimsScored": null,
+    "aiFabricationCountObservedForThisReferenceChecklist": 0,
+    "actualGeminiFabricationCount": null
+  },
+  "resourceReuse": {
+    "familiesReviewed": 6,
+    "existingRendererOrInputCandidates": 6,
+    "familiesAuthorizedForDirectRuntime": 0,
+    "newRendererProposals": 0,
+    "independentlyValidatedFamilyMappings": 0,
+    "hardwareQAThisTurn": false,
+    "sourceSchemaCheckedByCI": true
+  },
+  "efficiency": {
+    "singleAiElapsedSeconds": null,
+    "multiAiElapsedSeconds": null,
+    "singleAiToolCalls": null,
+    "multiAiToolCalls": null,
+    "singleAiCorrections": null,
+    "multiAiCorrections": null,
+    "singleAiTotalReviewedTokens": null,
+    "multiAiTotalReviewedTokens": null,
+    "comparable": false,
+    "conclusion": "NOT_MEASURABLE_UNTIL_GEMINI_EXECUTION_AND_PAIRED_TIME_LOGS"
+  },
+  "realGemini": {
+    "connected": false,
+    "providerAPIToolAvailable": false,
+    "attemptedCalls": 0,
+    "successfullyExecutedCalls": 0,
+    "note": "Plugin search yielded no connected Gemini model invocation tool. Gemini role is not simulated as a real execution."
+  },
+  "release": {
+    "projectRulesApproved": false,
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "p06RegistryMutated": false,
+    "clientGradeWrites": false,
+    "gasDeploy": false,
+    "mainMerge": false,
+    "testTheoMainMerge": false
+  },
+  "decision": "PARTIAL_GO_TECHNICAL_REFERENCE_AND_RESOURCE_REUSE_NO_GO_REAL_TWO_MODEL_EFFICIENCY_CLAIM"
+}

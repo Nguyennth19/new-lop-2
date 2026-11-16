@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "lop2.ai3.gemini-review-input.v1",
+  "date": "2026-11-16",
+  "status": "READY_FOR_EXTERNAL_GEMINI_EXECUTION_NOT_SENT",
+  "sourceCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "baselineCommit": "a73a98a90dab2499c359aa48dde2cda85c3f823e",
+  "lessonId": "toan_b20",
+  "informationClass": "METADATA_ONLY",
+  "instructions": [
+    "Using only provided source pointers and a permissioned read of exact GitHub SHAs, determine which statements F01-F12 are supported/refuted; cite source ID and exact field.",
+    "Map B20 question kinds to G7.6 12 renderer entries and B20 skill identifiers, mark candidate vs approved separately.",
+    "Do not invent lessonId, source exercise text, answer values, missing 15 questions, source pagination, or owner signatures.",
+    "State C07 and C08/C09 limitations explicitly and do not auto bind unverified assets/Fluent SVG.",
+    "Report duration, number of source fetches, correction count, token usage if measured, and SHA256 of complete Gemini response. No student data or private answers."
+  ],
+  "sourcePointers": [
+    "P06_H1_GIT_BLOB_b14d556c5deeb561106e0c81f275387bef538842",
+    "G76_RENDERER_MANIFEST_GIT_BLOB_27c6db04ce514c83d2b72f4068f20df8917e45ff",
+    "G76_ADAPTER_MATRIX_GIT_BLOB_87889421f45425333298f28ba59560f1795996ab",
+    "G76_ASSET_REGISTRY_GIT_BLOB_544377bf3cbc0d7b19a4a6f76efd9ae84845b123",
+    "G76_SPEECH_B5B_GIT_BLOB_12217ed2689b9d83a877faf453c21368d19bff6f"
+  ],
+  "rubricFactIds": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F10",
+    "F11",
+    "F12"
+  ],
+  "expectedResultStatus": "EXTERNAL_UNVERIFIED_UNTIL_REAL_RUN",
+  "sourceAnswerKeysIncluded": false,
+  "studentPIIIncluded": false,
+  "modelOutput": null,
+  "executionStartedAt": null,
+  "executionFinishedAt": null,
+  "modelName": null,
+  "independentReviewerSignature": null,
+  "canAuthorizeRelease": false
+}
