@@ -6,3 +6,5 @@
 04 | Synthetic signing tests generate ephemeral test Ed25519 keypairs; positive outcome SIMULATED DRY RUN ONLY with no write authority.
 05 | Only design of future TEST registry and trusted adapter; not created or registered. C07 independent.
 06 | CI and checkpoint result to be appended.
+
+07 | CI 43792894186 SUCCESS at 4c090ca84fff71d4dd33bc958875cf8933940eb5; artifact 14192914165. Synthetic test Ed25519 keys are ephemeral and not owner trust anchors. C08/C09 still blocked.

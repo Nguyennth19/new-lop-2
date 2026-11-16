@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "branch": "test/g7-6-b6-c084-owner-signoff-conditional-gate-20261116",
   "baseCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
-  "status": "CONDITIONAL_GATE_READY_UNSIGNED_NO_GO",
+  "status": "PASS_OWNER_SIGNOFF_VALIDATOR_CI_ONLY_C08_C09_UNSIGNED_NO_GO",
   "inheritedCiRun": 43791724873,
   "scope": {
     "ownerPackets": 6,
@@ -28,9 +28,12 @@
     "c07OriginalChanged": false
   },
   "ci": {
-    "runId": null,
-    "status": "AWAITING_CI",
-    "headSha": null
+    "runId": 43792894186,
+    "status": "COMPLETED_SUCCESS",
+    "headSha": "4c090ca84fff71d4dd33bc958875cf8933940eb5",
+    "artifactId": 14192914165,
+    "scope": "DRY_RUN_OWNER_SIGNATURE_SIMULATION_AND_NEGATIVE_TESTS_ONLY",
+    "old1710TestsRerun": false
   },
   "rollback": {
     "returnCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
