@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "g76b6.c086.resolution-policy.v1",
+  "date": "2026-11-16",
+  "status": "AUDIT_DRAFT_NOT_SIGNED_POLICY",
+  "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+  "require": {
+    "sourceEvidenceLock": "qa/g7-6-b6-c085/approval-evidence-lock.v1.json",
+    "ownerDecisionCatalog": "qa/g7-6-b6-c084/owner-signoff-gate.pending.v1.json",
+    "signedFields": [
+      "packetId",
+      "chosenOption",
+      "approverId",
+      "role",
+      "scope",
+      "documentHash",
+      "sourceCommit",
+      "approvalDate"
+    ],
+    "signingAlgorithm": "Ed25519",
+    "trustedKeysFrom": "INDEPENDENT_ADMIN_VERIFIED_EXTERNAL_AUTHORITY_REGISTRY_ONLY",
+    "documentHashMustEqual": "CRYPTO_SHA256_OF_EXACT_REVIEWED_DOCUMENT_BYTES",
+    "noSelfRegisteredKeys": true,
+    "noUnsignedRejection": true,
+    "C08Prerequisites": [
+      "C08-D5_SIGNED",
+      "C08-D9_SIGNED",
+      "C08-SOURCE-ITEMS_SIGNED_AND_13_ITEM_RECEIPTS",
+      "SIGNED_SOURCE_SCOPE_PER_FAMILY"
+    ],
+    "C09Prerequisites": [
+      "C08_PROVEN",
+      "P06_SKILL_ID_D5_D9_SIGNED_OR_EXPLICIT_REJECTION",
+      "NEW_PRODUCER_CONTRACT_QA",
+      "POLICY_HASH_AND_SOURCE_LINK"
+    ],
+    "runtimePrerequisites": [
+      "SEPARATE_REGISTRATION_APPROVAL",
+      "TRUSTED_TEST_ONLY_ADAPTER_AND_NEGATIVE_QA",
+      "NO_PUBLIC_ANSWER_KEY",
+      "NO_CLIENT_GRADING"
+    ]
+  },
+  "lock": {
+    "legacyQuarantined": 13,
+    "approvedD5SourceTasks": [],
+    "approvedD9SourceTasks": [],
+    "lv3": false,
+    "forbidB21": true,
+    "D5ThreePieceOnlyLab": true,
+    "D9TwoRowsOnly": true,
+    "D9OneSymbolOneUnit": true,
+    "D9MaxPerRow": 12,
+    "D9NoAutomaticSubset": true
+  },
+  "statuses": [
+    "PENDING",
+    "RECEIVED_UNVERIFIED",
+    "VERIFIED_ACCEPT",
+    "VERIFIED_REJECT",
+    "REVOKED_OR_EXPIRED"
+  ],
+  "transitions": {
+    "PENDING": [
+      "RECEIVED_UNVERIFIED"
+    ],
+    "RECEIVED_UNVERIFIED": [
+      "VERIFIED_ACCEPT",
+      "VERIFIED_REJECT",
+      "REVOKED_OR_EXPIRED"
+    ],
+    "VERIFIED_ACCEPT": [
+      "REVOKED_OR_EXPIRED"
+    ],
+    "VERIFIED_REJECT": [
+      "REVOKED_OR_EXPIRED"
+    ]
+  },
+  "noActivationGuarantee": true
+}

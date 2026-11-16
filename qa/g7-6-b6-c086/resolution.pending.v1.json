@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "g76b6.c086.resolution.v1",
+  "date": "2026-11-16",
+  "status": "PENDING_NO_AUTHORIZED_OWNER_EVIDENCE",
+  "baselineCommit": "300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584",
+  "records": [
+    {
+      "packetId": "C08-D5",
+      "decisionStatus": "PENDING",
+      "sourceEvidenceRef": null,
+      "verifiedEvidenceRef": null,
+      "approvedScope": [],
+      "ownerSignatureVerified": false,
+      "authorizedSignerVerified": false
+    },
+    {
+      "packetId": "C08-D9",
+      "decisionStatus": "PENDING",
+      "sourceEvidenceRef": null,
+      "verifiedEvidenceRef": null,
+      "approvedScope": [],
+      "ownerSignatureVerified": false,
+      "authorizedSignerVerified": false
+    },
+    {
+      "packetId": "C08-SOURCE-ITEMS",
+      "decisionStatus": "PENDING",
+      "sourceEvidenceRef": null,
+      "verifiedEvidenceRef": null,
+      "approvedScope": [],
+      "ownerSignatureVerified": false,
+      "authorizedSignerVerified": false
+    },
+    {
+      "packetId": "P06-SKILL-ID-D5",
+      "decisionStatus": "PENDING",
+      "sourceEvidenceRef": null,
+      "verifiedEvidenceRef": null,
+      "approvedScope": [],
+      "ownerSignatureVerified": false,
+      "authorizedSignerVerified": false
+    },
+    {
+      "packetId": "P06-SKILL-ID-D9",
+      "decisionStatus": "PENDING",
+      "sourceEvidenceRef": null,
+      "verifiedEvidenceRef": null,
+      "approvedScope": [],
+      "ownerSignatureVerified": false,
+      "authorizedSignerVerified": false
+    },
+    {
+      "packetId": "C09-PRODUCER",
+      "decisionStatus": "PENDING",
+      "sourceEvidenceRef": null,
+      "verifiedEvidenceRef": null,
+      "approvedScope": [],
+      "ownerSignatureVerified": false,
+      "authorizedSignerVerified": false
+    }
+  ],
+  "tally": {
+    "PENDING": 6,
+    "RECEIVED_UNVERIFIED": 0,
+    "VERIFIED_ACCEPT": 0,
+    "VERIFIED_REJECT": 0,
+    "REVOKED_OR_EXPIRED": 0
+  },
+  "gates": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "p06Test": "DENIED",
+    "testAdapter": "DENIED",
+    "release": "DENIED"
+  },
+  "ownerAuthorization": false,
+  "registryMutable": false,
+  "testOnlyActivation": false,
+  "developerMaySignForOwner": false
+}

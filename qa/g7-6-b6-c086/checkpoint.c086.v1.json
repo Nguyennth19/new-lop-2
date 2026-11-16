@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "g76b6.c086.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+  "baseline": "300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584",
+  "status": "PENDING_OWNER_DECISIONS_TECHNICAL_SIGNATURE_REVIEW_READY",
+  "inheritedCi": {
+    "runId": 43793487624,
+    "conclusion": "success"
+  },
+  "owner": {
+    "expectedPackets": 6,
+    "receivedPackets": 0,
+    "verifiedDecisions": 0,
+    "rejectedDecisions": 0,
+    "authorizedKeys": 0,
+    "sourceItemsApproved": 0
+  },
+  "gates": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "p06Test": "NO_GO",
+    "testRegistration": "NO_GO"
+  },
+  "ci": {
+    "runId": null,
+    "headSha": null,
+    "status": "NOT_RUN"
+  },
+  "protected": {
+    "main": false,
+    "testTheoMain": false,
+    "sourceSheets": false,
+    "officialManifest": false,
+    "p06Registry": false,
+    "gas": false,
+    "studentIO": false,
+    "grades": false,
+    "stars": false
+  },
+  "rollback": {
+    "baseCommit": "300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584",
+    "method": "REMOVE_C086_ONLY_C085_BASE_REMAINS_VALID",
+    "runtimeRevert": false
+  }
+}

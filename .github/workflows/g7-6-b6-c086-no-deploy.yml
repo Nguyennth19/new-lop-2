@@ -1,0 +1,54 @@
+name: G7.6 B6 C08.6 signed owner decision resolution (READ ONLY)
+on:
+  push:
+    branches:
+      - test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116
+    paths:
+      - 'qa/g7-6-b6-c086/**'
+      - 'docs/kiem-dinh/G7.6-B6-C086_*'
+      - '.github/workflows/g7-6-b6-c086-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06
+          persist-credentials: false
+      - name: Verify unchanged protected source and exact previous HEAD
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584 HEAD
+          if git diff --name-only 300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584 HEAD | grep -Ev '^(qa/g7-6-b6-c086/|docs/kiem-dinh/G7\.6-B6-C086_|\.github/workflows/g7-6-b6-c086-no-deploy.yml)' ; then echo OUT_OF_SCOPE_CHANGE; exit 1; fi
+          for f in qa/g7-6-b6-c085/owner-decision-intake.pending.v1.json qa/g7-6-b6-c085/approval-evidence-lock.v1.json qa/g7-6-b6-c084/owner-signoff-gate.pending.v1.json qa/g7-6-b6/approvals/C08.approval.pending.v1.json qa/g7-6-b6/approvals/C09.approval.pending.v1.json du-lieu/g7-6/resource-renderer-manifest.v1.json; do
+            test "$(git hash-object "$f")" = "$(git show 300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584:"$f" | git hash-object --stdin)"
+          done
+          test "$(git -C _external/p06 rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+      - name: Independent source evidence, partial and negative signature verification
+        run: |
+          node --check qa/g7-6-b6-c086/signed-evidence-resolver.cjs
+          node --check qa/g7-6-b6-c086/c086-resolution.test.cjs
+          node qa/g7-6-b6-c086/c086-resolution.test.cjs _external/p06
+      - name: Save unsigned public audit evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76-B6-C086-OWNER-RESOLUTION-PENDING-NO-DEPLOY
+          path: |
+            qa/g7-6-b6-c086/*.json
+            docs/kiem-dinh/G7.6-B6-C086_OWNER_DECISION_RESOLUTION_20261116.md
+          retention-days: 30

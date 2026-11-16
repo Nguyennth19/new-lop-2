@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "g76b6.c086.received-owner-evidence.v1",
+  "date": "2026-11-16",
+  "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+  "inheritedHead": "300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584",
+  "status": "NO_EXTERNAL_OWNER_DECISIONS_SUBMITTED",
+  "signedDecisionReceipts": [],
+  "trustRegistry": {
+    "authorityRef": null,
+    "verifiedByIndependentAdministrator": false,
+    "activeKeys": [],
+    "revocations": [],
+    "registrySha256": null
+  },
+  "verifiedSourceSelections": [],
+  "itemwiseDispositionReceipts": [],
+  "policyEvidence": {
+    "policyApprovedVersion": null,
+    "policySha256": null,
+    "sourceSelectionSha256": null
+  },
+  "producerContractEvidence": {
+    "contractSha256": null,
+    "independentQaRef": null
+  },
+  "externallyAuthenticatedOwnerApprovals": 0,
+  "comments": "No synthetic signature, user request, Git commit author, or ChatGPT text is a substitute for owner proof"
+}

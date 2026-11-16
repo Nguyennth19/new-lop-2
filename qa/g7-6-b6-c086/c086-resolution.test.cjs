@@ -1,0 +1,41 @@
+'use strict';
+const a=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path');
+const {resolve,verifyOne}=require('./signed-evidence-resolver.cjs'),{unsignedPayload,canonical}=require('../g7-6-b6-c084/conditional-signoff-validator.cjs');
+const src=require('./received-owner-evidence.pending.v1.json'),state=require('./resolution.pending.v1.json'),pol=require('./resolution-policy.v1.json');
+const c085=require('../g7-6-b6-c085/approval-evidence-lock.v1.json');
+let n=0;const eq=(x,y)=>{a.deepEqual(x,y);n++},ok=x=>{a.ok(x);n++};
+eq(src.signedDecisionReceipts.length,0);eq(src.trustRegistry.activeKeys.length,0);eq(src.externallyAuthenticatedOwnerApprovals,0);
+eq(state.records.length,6);eq(state.tally.PENDING,6);eq(state.registryMutable,false);eq(pol.lock.legacyQuarantined,13);
+const pending=resolve();eq(pending.code,'NO_SIGNED_DECISIONS');eq(pending.records.length,6);eq(pending.gates.p06Test,'DENIED');
+eq(pending.records.every(x=>x.status==='PENDING'),true);
+const when='2026-11-16T10:00:00+07:00', docs=new Map();const keys=[],packets=[],base=require('../g7-6-b6-c084/owner-signoff-gate.pending.v1.json');
+for(const item of base.requiredPackets){
+ const kp=crypto.generateKeyPairSync('ed25519'),text=Buffer.from('evidence/'+item.id),uri='qa://test/'+item.id;
+ docs.set(uri,text);
+ const choices={'C08-D5':'KEEP_THREE_PIECE_LAB_AS_PROJECT_VARIANT_NOT_SGK_REPLICA','C08-D9':'REVIEW_CASE_BY_CASE_TWO_ROW_SUBSET_ONLY','C08-SOURCE-ITEMS':'CONFIRM_QUARANTINE_13_WITH_INDIVIDUAL_DISPOSITIONS','P06-SKILL-ID-D5':'RESERVE_CANDIDATE_ONLY','P06-SKILL-ID-D9':'RESERVE_CANDIDATE_ONLY','C09-PRODUCER':'APPROVE_CONTRACT_EVIDENCE_FOR_LIMITED_TEST_PREPARATION'};
+ const payload={packetId:item.id,chosenOption:choices[item.id],approverId:'SYNTHETIC_'+item.id,role:item.role,scope:item.scope,documentHash:'sha256:'+crypto.createHash('sha256').update(text).digest('hex'),sourceCommit:base.sourceHeadPinned,approvalDate:item.id==='C09-PRODUCER'?'2026-11-16T09:10:00+07:00':'2026-11-16T09:00:00+07:00'};
+ const receipt={...payload,evidenceUri:uri,keyId:'SYNTHETIC_KEY_'+item.id,signature:crypto.sign(null,Buffer.from(canonical(unsignedPayload(payload))),kp.privateKey).toString('base64')};
+ packets.push(receipt);
+ keys.push({keyId:receipt.keyId,approverId:receipt.approverId,role:item.role,authorizedScopes:[item.scope],publicKeyPem:kp.publicKey.export({format:'pem',type:'spki'}),activeFrom:'2026-11-15T00:00:00+07:00',expiresAt:'2026-11-17T00:00:00+07:00'});
+}
+const registry={verifiedByIndependentAdministrator:true,registrySha256:'sha256:'+'f'.repeat(64),activeKeys:keys,revocations:[]};
+const ctx={registry,at:when,readEvidence:uri=>docs.get(uri),syntheticTest:true};
+const all=resolve(packets,ctx);eq(all.records.length,6);eq(all.signaturesVerified,6);eq(all.decisionReviewComplete,true);eq(all.realAuthorityProven,false);eq(all.canCreateTestRegistry,false);eq(all.gates.C09,'PENDING_C08');eq(all.gates.p06Test,'DENIED');
+eq(resolve(packets.slice(0,1),ctx).records.filter(x=>x.status==='PENDING').length,5);
+eq(resolve([packets[0],packets[0]],ctx).code,'DUPLICATE_RECEIPT_REJECTED');
+eq(resolve([{...packets[0],packetId:'UNKNOWN'}],ctx).code,'UNKNOWN_PACKET_REJECTED');
+eq(verifyOne({...packets[0],signature:packets[0].signature.slice(0,-4)+'AAAA'},ctx).reason,'SIGNATURE_INVALID');
+eq(verifyOne({...packets[0],scope:'OTHER'},ctx).reason,'ROLE_SCOPE_OR_CHOICE_INVALID');
+eq(verifyOne({...packets[0],documentHash:'sha256:'+'a'.repeat(64)},ctx).reason,'SIGNED_DOCUMENT_DIGEST_MISMATCH');
+eq(verifyOne({...packets[0],evidenceUri:'no-evidence'},ctx).reason,'INVALID_DOCUMENT_BYTES');
+eq(verifyOne(packets[0],{...ctx,registry:{...registry,verifiedByIndependentAdministrator:false}}).reason,'INDEPENDENT_AUTHORITY_REGISTRY_MISSING');
+eq(verifyOne(packets[0],{...ctx,registry:{...registry,activeKeys:[]}}).reason,'UNAUTHORIZED_OWNER_KEY');
+eq(verifyOne(packets[0],{...ctx,registry:{...registry,revocations:[{keyId:packets[0].keyId,effectiveAt:'2026-11-16T09:05:00+07:00'}]}}).status,'REVOKED_OR_EXPIRED');
+eq(verifyOne(packets[0],{...ctx,at:'2026-11-18T09:00:00+07:00'}).reason,'KEY_NOT_VALID_AT_DECISION_OR_CHECK');
+const alternative={...packets[0],chosenOption:'REJECT_D5_B027_MAPPING'};
+alternative.signature=crypto.sign(null,Buffer.from(canonical(unsignedPayload(alternative))),crypto.generateKeyPairSync('ed25519').privateKey).toString('base64');
+eq(verifyOne(alternative,ctx).reason,'SIGNATURE_INVALID');
+eq(c085.sourceItems.approvedForRuntime,0);eq(pol.lock.approvedD5SourceTasks.length,0);eq(pol.lock.approvedD9SourceTasks.length,0);
+for(const p of Object.values(state.gates))ok(p==='PENDING'||p==='PENDING_C08'||p==='DENIED'||p==='INDEPENDENT_PENDING');
+if(process.argv[2]){const cat=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../../',process.argv[2],'thu-nghiem/p0-6/fb/fb2-lesson-catalog.candidate.json'),'utf8'));eq(cat.schemaVersion,'p0.6.fb2.catalog.v1');for(const id of ['toan_b27','toan_b65'])ok(!cat.lessons.some(x=>x.lessonId===id));}
+console.log('G76B6_C086_SIGNED_EVIDENCE_RESOLUTION_FAIL_CLOSED_PASS',n,'assertions - keys in this test are synthetic only');
