@@ -6,3 +6,7 @@
 04 | Efficiency paired metric null; baseline model A and Gemini model B unexecuted as comparable trials.
 05 | Created external Gemini metadata-only evaluation packet, no answer fields, no original content, no keys.
 06 | Read-only CI and checkpoint finalization pending.
+
+07 | Initial CI 43803416170 detected inaccurate skill mapping in proposed resource matrix; source H1 is unchanged.
+08 | Diagnostic run 43803495905 identified SKILL_MAPPING_WRONG_mental; independently retrieved all 30 H1 records and corrected exact mappings: carry K01, vertical K02, mental K03+K04, word K06, three K05, reverse K08.
+09 | CI 43803577155 COMPLETED_SUCCESS at 65ab539450cf1f044c6e6d2186bd895d997e3eb7; 38 assertions, artifact 14196972743. No real Gemini run, no timing or independent blinded model score, no runtime state mutation.

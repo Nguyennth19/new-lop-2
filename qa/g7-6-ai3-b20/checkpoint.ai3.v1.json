@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "branch": "audit/g7-6-ai3-real-handoff-evaluation-b20-20261116",
   "baseline": "a73a98a90dab2499c359aa48dde2cda85c3f823e",
-  "status": "SOURCE_REUSE_REVIEW_READY_PENDING_LIVE_GEMINI_AND_COMPARATIVE_TIMING",
+  "status": "PASS_SOURCE_GROUNDED_CHATGPT_RESOURCE_REUSE_QA_MULTI_AI_EFFECTIVENESS_UNMEASURED",
   "outcome": {
     "referenceFacts": 12,
     "b20Families": 6,
@@ -26,9 +26,13 @@
     "RELEASE": "NO_GO"
   },
   "ci": {
-    "runId": null,
-    "status": "PENDING",
-    "headSha": null
+    "runId": 43803577155,
+    "status": "COMPLETED_SUCCESS",
+    "headSha": "65ab539450cf1f044c6e6d2186bd895d997e3eb7",
+    "artifactId": 14196972743,
+    "assertions": 38,
+    "actualGeminiCalls": 0,
+    "oldFB3BrowserRerun": false
   },
   "rollback": {
     "commit": "a73a98a90dab2499c359aa48dde2cda85c3f823e",
