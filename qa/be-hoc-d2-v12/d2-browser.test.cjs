@@ -45,7 +45,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),{chromium}=requ
   assert.equal(await page.locator('#pv1000-qa .kl-col-v12-answer').count(),3);total++;
   assert.equal(await page.locator('#pv1000-qa .kl-col-v12-transition').count(),2);total++;
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);assert.equal(overflow,false,label+' overflows');total++;
-  if(label==='mobile-emulation'){let h=await page.locator('.kl-col-v12-transition').evaluate(x=>x.getBoundingClientRect().height);assert(h>=44);total++;}
+  if(label==='mobile-emulation'){let h=await page.locator('.kl-d2-practice .kl-col-v12-transition').evaluate(x=>x.getBoundingClientRect().height);assert(h>=44);total++;}
   await ctx.close();
  }
  await browser.close();console.log('BE_HOC_D2_V12_CHROMIUM_DESKTOP_MOBILE_PASS',total,'assertions; standalone UI integration harness not GAS deployment');
