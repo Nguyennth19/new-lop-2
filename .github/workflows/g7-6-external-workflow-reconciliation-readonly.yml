@@ -27,7 +27,7 @@ jobs:
         run: |
           set -euo pipefail
           git merge-base --is-ancestor 733422f11ddb415b2f898e2e38c009f6594401f1 HEAD
-          if git diff --name-only 733422f11ddb415b2f898e2e38c009f6594401f1 HEAD | grep -Ev '^(qa/g7-6-external-workflow-reconciliation/|docs/kiem-dinh/G7\.6_EXTERNAL_WORKFLOW_RECONCILIATION_|\.github/workflows/g7-6-external-workflow-reconciliation-readonly.yml)' ; then echo OUT_OF_SCOPE; exit 1; fi
+          if git diff --name-only 733422f11ddb415b2f898e2e38c009f6594401f1 HEAD | grep -Ev '^(qa/g7-6-external-workflow-reconciliation/|docs/kiem-dinh/G7\.6_EXTERNAL_WORKFLOW_(RECONCILIATION|RULES_DELTA_PROPOSAL)_|\.github/workflows/g7-6-external-workflow-reconciliation-readonly.yml)' ; then echo OUT_OF_SCOPE; exit 1; fi
           for f in qa/g7-6-b6-c086/resolution.pending.v1.json qa/g7-6-b6/approvals/C08.approval.pending.v1.json qa/g7-6-b6/approvals/C09.approval.pending.v1.json du-lieu/g7-6/resource-renderer-manifest.v1.json appsscript.json; do
              test "$(git hash-object "$f")" = "$(git show 733422f11ddb415b2f898e2e38c009f6594401f1:"$f" | git hash-object --stdin)"
           done
