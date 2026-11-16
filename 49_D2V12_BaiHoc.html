@@ -13,7 +13,7 @@ function fromB20(q){
  if(!Number.isSafeInteger(a)||!Number.isSafeInteger(b)||a<10||b<10||a>99||b>99)return {ok:false,reason:'NOT_B20_TWO_DIGITS'};
  const candidate={variantId:'COL_B20_'+q.id,profile:'PV100',operation:'ADD',level:q.level,
   a,b,carryPolicy:'OPTIONAL_HINT',assetId:null};
- // Do not inspect q.answer; never forward it into D2 public data.
+ // Never inspect private solution fields; only forward visible operands.
  return API.publicPlan(candidate);
 }
 function mountB20(data,screen,viewName){
