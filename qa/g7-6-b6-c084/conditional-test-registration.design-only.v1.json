@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "g76b6.c084.conditional-test-preparation.v1",
+  "date": "2026-11-16",
+  "status": "DESIGN_ONLY_NOT_A_REGISTRY_ENTRY",
+  "candidateTargets": [
+    {
+      "family": "D5",
+      "sourceLessonId": "MATH_B027",
+      "candidateLessonId": "toan_b27",
+      "candidateSkillId": "SHAPE_COMPOSE_SELECT",
+      "familyApproved": false,
+      "registrationEligible": false,
+      "restriction": "3_PIECE_LAB_ONLY_FOUR_PIECE_SOURCE_REQUIRES_NEW_QA"
+    },
+    {
+      "family": "D9",
+      "sourceLessonId": "MATH_B065",
+      "candidateLessonId": "toan_b65",
+      "candidateSkillId": "PICTOGRAPH_COUNT_COMPARE",
+      "familyApproved": false,
+      "registrationEligible": false,
+      "restriction": "TWO_ROWS_ONE_UNIT_APPROVED_SOURCE_SUBSET_ONLY"
+    }
+  ],
+  "sourceRevisionPin": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+  "p06CatalogPin": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "proposedTrustBoundary": {
+    "adapterType": "VERSIONED_TEST_ONLY_TRUST_ADAPTER_TO_BE_AUTHORED_AFTER_C08_C09",
+    "fileCreated": false,
+    "gradeOnServer": false,
+    "answerSpecPublic": false,
+    "studentWrites": false,
+    "gradeWrites": false,
+    "starWrites": false
+  },
+  "proposedManifestBoundary": {
+    "kind": "SEPARATE_AUXILIARY_TEST_REGISTRY_CANDIDATE_AFTER_OWNER_APPROVAL",
+    "fileCreated": false,
+    "officialManifestUnchanged": true,
+    "notAdditional13thForm": true
+  },
+  "prerequisites": [
+    "Six decision packets signed and verified",
+    "D5 and D9 separate source selection with source book SHA",
+    "C08 approved and chained into independently signed C09",
+    "Approved lesson+skill names checked against pinned P0.6 and freshest base",
+    "Versioned E04 policy with hash and owner scope",
+    "Security review of trusted grading and no-leak",
+    "Explicit later owner permission to write TEST-only registry and adapter"
+  ],
+  "grantNow": false,
+  "createRegistryNow": false,
+  "createTrustAdapterNow": false
+}

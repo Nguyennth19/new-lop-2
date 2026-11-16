@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "g76b6.c084.owner-signoff-gate.v1",
+  "date": "2026-11-16",
+  "stage": "B6_C08_4_OWNER_SIGNOFF_TEST_GATE",
+  "sourceHeadPinned": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+  "sourceCatalogCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "roleBoundSignature": "ED25519_VERIFY_CANONICAL_JSON_EXACT_DOCUMENT_AND_SCOPE",
+  "gateStatus": "NO_GO_PENDING_SIX_OWNER_DECISIONS_AND_TRUST_ANCHORS",
+  "requiredPackets": [
+    {
+      "id": "C08-D5",
+      "role": "PEDAGOGICAL_OWNER",
+      "scope": "D5_TANGRAM_B027",
+      "choices": [
+        "KEEP_THREE_PIECE_LAB_AS_PROJECT_VARIANT_NOT_SGK_REPLICA",
+        "DEVELOP_SEPARATE_FOUR_PIECE_SGK_CONTRACT_AFTER_QA",
+        "REJECT_D5_B027_MAPPING"
+      ]
+    },
+    {
+      "id": "C08-D9",
+      "role": "PEDAGOGICAL_OWNER",
+      "scope": "D9_COMPARE_B065",
+      "choices": [
+        "REVIEW_CASE_BY_CASE_TWO_ROW_SUBSET_ONLY",
+        "KEEP_FULL_THREE_PLUS_CATEGORY_SOURCES_OUTSIDE_CURRENT_D9",
+        "REQUEST_D9_SCALED_OR_MULTIROW_V2"
+      ]
+    },
+    {
+      "id": "C08-SOURCE-ITEMS",
+      "role": "SOURCE_QA_OWNER",
+      "scope": "B027_B065_SOURCE_ITEMS",
+      "choices": [
+        "CONFIRM_QUARANTINE_13_WITH_INDIVIDUAL_DISPOSITIONS",
+        "REJECT_SOURCE_DATA_AND_REOPEN_QA"
+      ]
+    },
+    {
+      "id": "P06-SKILL-ID-D5",
+      "role": "P06_SKILL_REGISTRY_OWNER",
+      "scope": "TOAN_B27_SHAPE_COMPOSE_SELECT",
+      "choices": [
+        "RESERVE_CANDIDATE_ONLY",
+        "RENAME_CANDIDATE",
+        "REJECT_MAPPING"
+      ]
+    },
+    {
+      "id": "P06-SKILL-ID-D9",
+      "role": "P06_SKILL_REGISTRY_OWNER",
+      "scope": "TOAN_B65_PICTOGRAPH_COUNT_COMPARE",
+      "choices": [
+        "RESERVE_CANDIDATE_ONLY",
+        "RENAME_CANDIDATE",
+        "REJECT_MAPPING"
+      ]
+    },
+    {
+      "id": "C09-PRODUCER",
+      "role": "PRODUCER_OWNER",
+      "scope": "E04_D5_D9_INDEPENDENT_TEST_CONTRACT",
+      "choices": [
+        "APPROVE_CONTRACT_EVIDENCE_FOR_LIMITED_TEST_PREPARATION",
+        "REJECT_PRODUCER_AND_REOPEN_QA"
+      ]
+    }
+  ],
+  "approvedTrustAnchors": [],
+  "approvalRecords": [
+    {
+      "packetId": "C08-D5",
+      "chosenOption": null,
+      "approverId": null,
+      "role": "PEDAGOGICAL_OWNER",
+      "scope": "D5_TANGRAM_B027",
+      "documentHash": null,
+      "sourceCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+      "approvalDate": null,
+      "signature": null,
+      "keyId": null,
+      "ownerAttested": false
+    },
+    {
+      "packetId": "C08-D9",
+      "chosenOption": null,
+      "approverId": null,
+      "role": "PEDAGOGICAL_OWNER",
+      "scope": "D9_COMPARE_B065",
+      "documentHash": null,
+      "sourceCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+      "approvalDate": null,
+      "signature": null,
+      "keyId": null,
+      "ownerAttested": false
+    },
+    {
+      "packetId": "C08-SOURCE-ITEMS",
+      "chosenOption": null,
+      "approverId": null,
+      "role": "SOURCE_QA_OWNER",
+      "scope": "B027_B065_SOURCE_ITEMS",
+      "documentHash": null,
+      "sourceCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+      "approvalDate": null,
+      "signature": null,
+      "keyId": null,
+      "ownerAttested": false
+    },
+    {
+      "packetId": "P06-SKILL-ID-D5",
+      "chosenOption": null,
+      "approverId": null,
+      "role": "P06_SKILL_REGISTRY_OWNER",
+      "scope": "TOAN_B27_SHAPE_COMPOSE_SELECT",
+      "documentHash": null,
+      "sourceCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+      "approvalDate": null,
+      "signature": null,
+      "keyId": null,
+      "ownerAttested": false
+    },
+    {
+      "packetId": "P06-SKILL-ID-D9",
+      "chosenOption": null,
+      "approverId": null,
+      "role": "P06_SKILL_REGISTRY_OWNER",
+      "scope": "TOAN_B65_PICTOGRAPH_COUNT_COMPARE",
+      "documentHash": null,
+      "sourceCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+      "approvalDate": null,
+      "signature": null,
+      "keyId": null,
+      "ownerAttested": false
+    },
+    {
+      "packetId": "C09-PRODUCER",
+      "chosenOption": null,
+      "approverId": null,
+      "role": "PRODUCER_OWNER",
+      "scope": "E04_D5_D9_INDEPENDENT_TEST_CONTRACT",
+      "documentHash": null,
+      "sourceCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+      "approvalDate": null,
+      "signature": null,
+      "keyId": null,
+      "ownerAttested": false
+    }
+  ],
+  "authorization": {
+    "C08": false,
+    "C09": false,
+    "p06TestRegistration": false,
+    "testTrustAdapter": false,
+    "manifestTestRegistration": false
+  },
+  "conditions": [
+    "Require independently verified authorized signers and exact packet role/scope",
+    "Require all 13 legacy items quarantine disposition individually",
+    "Require D5 3-piece vs 4-piece explicit decision; no automatic 4-piece mapping",
+    "Require D9 selected 2-row / symbol unit 1 / <=12 counts source activity and wording",
+    "Require C09 signed only after C08 source+pedagogy decisions",
+    "Require P0.6 source skillId vs runtime skillId uniqueness and owner approval",
+    "Require separate later authorization to write TEST registration candidate"
+  ],
+  "immutable": [
+    "main",
+    "test-theo-main",
+    "GAS",
+    "official-12-renderer-manifest",
+    "P06-FB2-catalog",
+    "GoogleSheet-sources",
+    "C08.3-packets",
+    "student-scores-stars"
+  ],
+  "signedApprovalCount": 0,
+  "ownerApproved": false,
+  "registered": false,
+  "runtimeConnected": false
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "g76b6.c084.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "test/g7-6-b6-c084-owner-signoff-conditional-gate-20261116",
+  "baseCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+  "status": "CONDITIONAL_GATE_READY_UNSIGNED_NO_GO",
+  "inheritedCiRun": 43791724873,
+  "scope": {
+    "ownerPackets": 6,
+    "originalSourceItems": 13,
+    "signaturesReceived": 0,
+    "approvedP06SkillIds": 0,
+    "registeredLessons": 0
+  },
+  "c07": "INDEPENDENT_UNCHANGED_OWNER_PENDING",
+  "c08": "BLOCKED_MISSING_SIGNED_SOURCE_AND_D5_D9_DECISIONS",
+  "c09": "BLOCKED_DEPENDS_ON_SIGNED_C08",
+  "p06Test": "BLOCKED_NOT_REGISTERED",
+  "protected": {
+    "sourceSheetsChanged": false,
+    "officialManifestChanged": false,
+    "p06RegistryChanged": false,
+    "mainChanged": false,
+    "testTheoMainChanged": false,
+    "gasChanged": false,
+    "studentDataChanged": false,
+    "scoreStarChanged": false,
+    "c07OriginalChanged": false
+  },
+  "ci": {
+    "runId": null,
+    "status": "AWAITING_CI",
+    "headSha": null
+  },
+  "rollback": {
+    "returnCommit": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+    "action": "DISCARD_C084_UNSIGNED_GATE_FILES_AND_RETAIN_C083_CHECKPOINT",
+    "runtimeRevertNeeded": false
+  }
+}
