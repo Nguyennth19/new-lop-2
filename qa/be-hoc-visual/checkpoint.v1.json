@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "branch": "be-hoc",
   "baseline": "18dd2409ee75feb36b07e594ab04a4cf130fc835",
-  "status": "PENDING_VISUAL_QA",
+  "status": "PASS_SCOPED_VISUAL_LAB_AND_PUBLIC_SVG_NO_GAS",
   "assets": {
     "catalog": 288,
     "loadedBinaryPaths": 13,
@@ -31,6 +31,22 @@
   },
   "rollbackCommit": "18dd2409ee75feb36b07e594ab04a4cf130fc835",
   "ci": {
-    "status": "PENDING"
+    "status": "PASS",
+    "runId": 43822494670,
+    "headSha": "ca7f634ee7b92fbee8fd2b792107cdca99ec05f1",
+    "contractAssertions": 40,
+    "browserAssertions": 48,
+    "totalAssertions": 88,
+    "conclusion": "SUCCESS",
+    "mobileViewport": "390x844 emulated",
+    "desktopViewport": "1366x768",
+    "actualGASTested": false
+  },
+  "gates": {
+    "d5OfficialCurriculum": "PENDING_E04_OWNER",
+    "d9OfficialCurriculum": "PENDING_E04_OWNER",
+    "automatic288BinaryActivation": "DENIED_PER_ASSET_QA",
+    "GASDeploy": "PENDING_OWNER_AUTHORIZATION",
+    "starsAndStudentWrites": "DENIED"
   }
 }

@@ -14,3 +14,8 @@ D5 source MATH_B027 to candidate toan_b27, D9 MATH_B065 to candidate toan_b65; o
 
 ## QA and rollback
 Use dedicated workflows and Chromium static app harness at desktop 1366 and mobile 390; this does not prove any real GAS deployment or phone hardware. Roll back branch to 0c576042d1c47b6f8b55e05a0f3616576629cb38 if necessary. Main and test-theo-main protected.
+
+## QA receipt / 2026-11-16
+- CI run `43822494670` **SUCCESS** at `ca7f634ee7b92fbee8fd2b792107cdca99ec05f1`: 40 source and privacy assertions, 48 Chromium desktop 1366px/mobile emulation 390px interactions = 88 PASS.
+- Scenario: separate D5 Tangram lab and D9 pictograph lab, tap a symbol and type an answer without grading, search all 288 metadata IDs, preview 13 binary files in GitHub, return to lesson, show public SVG addend groups without hidden answer/carry.
+- Browser test uses artificial shell and fixtures. NOT a GAS deployment, not a real SGK-verified D5/D9 lesson, not evidence 288 source pictures are available via URL or approved for use.

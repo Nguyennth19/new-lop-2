@@ -76,9 +76,10 @@
     "GASDeploy": "DENIED"
   },
   "qa": {
-    "status": "PENDING_DEDICATED_VISUAL_CI",
-    "pinnedG76Sources": true,
-    "chromiumDesktopMobile": "PENDING",
+    "status": "PASS_SCOPED_CI",
+    "runId": 43822494670,
+    "assertions": 88,
+    "chromiumDesktopMobile": "PASS_EMULATED",
     "gasE2E": "NOT_PERFORMED"
   }
 }
