@@ -4,7 +4,7 @@ const {validate,gitBlob}=require('./ai3-review-validator.cjs');
 const cross=require('./resource-reuse-crosswalk.v1.json'),evaln=require('./evaluation-evidence.v1.json'),packet=require('./gemini-evaluation-packet.pending.v1.json');
 const root=process.argv[2];if(!root)throw Error('PINNED_P06_CHECKOUT_MISSING');
 let n=0;const eq=(a,b)=>{assert.deepStrictEqual(a,b);n++};const ok=x=>{assert.ok(x);n++};
-const v=validate({sourceRoot:root});eq(v.ok,true);eq(v.facts,12);eq(v.families,6);eq(v.questions,30);
+const v=validate({sourceRoot:root});console.log('REUSE_DIAG',v.code);eq(v.ok,true);eq(v.facts,12);eq(v.families,6);eq(v.questions,30);
 eq(v.actualMultiAi,false);eq(v.efficiencyComparison,'NOT_MEASURED');
 eq(validate({sourceRoot:root,mutated:{C08:'APPROVED'}}).code,'GATE_ELEVATION');
 eq(cross.families.reduce((s,x)=>s+x.count,0),30);
