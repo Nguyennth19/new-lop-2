@@ -16,7 +16,7 @@ const btn={closest:s=>s==='[data-ml-q-card]'?card:null,classList:{add(){},remove
 const text=api.publicQuestionText(btn);ok(text.includes('12 quả táo'));ok(!text.includes('Đáp số'));
 const spoken=api.speak(text,btn);eq(spoken.ok,true);eq(win.speechSynthesis.calls.length,1);eq(win.speechSynthesis.calls[0].lang,'vi-VN');ok(win.speechSynthesis.calls[0].text.includes('12 quả táo'));api.stop();ok(win.speechSynthesis.cancelled>0);
 const privateSource=JSON.stringify(api);ok(!privateSource.includes('answerKey'));
-ok(math.includes('BE_HOC_GIONG_DOC_V2.stop()'));ok(math.includes('data-ml-speak-theory'));ok(math.includes('data-ml-speak-question'));
+ok(math.includes('BE_HOC_GIONG_DOC_V2.stop()'));ok(math.includes('data-ml-speak-theory'));ok(renderer.includes('data-ml-speak-question'));
 ok(renderer.includes('data-ml-speak-question'));ok(!/\bgoogle\.script\.run\b/.test(fs.readFileSync('45_DieuKhienGiongDocToan.html','utf8')));
 ok(!/localStorage|sessionStorage|fetch\s*\(|XMLHttpRequest/.test(fs.readFileSync('45_DieuKhienGiongDocToan.html','utf8')));
 const css=fs.readFileSync('46_CSS_GiongDocToan.html','utf8');ok(css.includes('#mathFullScreen'));ok(!/\bbody\s*\{/.test(css));

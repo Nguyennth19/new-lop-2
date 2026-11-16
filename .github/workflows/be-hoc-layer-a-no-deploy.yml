@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           git merge-base --is-ancestor f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD
-          if git diff --name-only f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD | grep -Ev '^(GiaoDien.html|19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|44_G75_NormalizerToanV2.html|45_DieuKhienGiongDocToan.html|46_CSS_GiongDocToan.html|qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_|\.github/workflows/be-hoc-layer-a-no-deploy.yml)$' | grep -vE '^(qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_)'; then echo UNAUTHORIZED_DIFF; exit 1; fi
+          if git diff --name-only f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD | grep -Ev '^(GiaoDien.html|19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|44_G75_NormalizerToanV2.html|45_DieuKhienGiongDocToan.html|46_CSS_GiongDocToan.html|.github/workflows/be-hoc-tts-v2-no-deploy.yml|qa/be-hoc-tts-v2/|docs/kiem-dinh/BE_HOC_G75_V2_|qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_|\.github/workflows/be-hoc-layer-a-no-deploy.yml)$' | grep -vE '^(qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_)'; then echo UNAUTHORIZED_DIFF; exit 1; fi
           for f in MayChu.gs 26_ChamCauHoiToan.html ThanhTichMayChu.gs appsscript.json; do
             test "$(git hash-object "$f")" = "$(git show f51a12cc07b44f0f893c2e0de40e387cc17b5c3b:"$f" | git hash-object --stdin)"
           done
