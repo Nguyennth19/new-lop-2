@@ -14,3 +14,8 @@
 - Source-only workflow `43787725339` completed SUCCESS at HEAD `8f5a1712b15d98039331cee3d3389c776225c281`; separate C07 preserved and no protected diff.
 - GitHub artifact `14190524593` size 9224 bytes contains only public audit JSON/report, not SGK scans or student data.
 - No source Google Sheet edits; 4 session corrections and 13 quarantine records remain proposed only. C08 remains BLOCKED.
+
+## CI regression correction (append-only)
+- Run `43787801861` on closure commit `e3874f26fdbde55d4b945ec8a3b6c0e5fa244ffb` **FAILED** at B6-C08-only test: a test asserted the older C08 blocked label although the checkpoint had updated it to `BLOCKED_SOURCE_PATCHES_UNAPPLIED_AND_PEDAGOGY_NOT_APPROVED`.
+- The protected-diff/source PIN step **PASSED**. No SGK sheet, P0.6, C07, app, manifest, GAS or students were changed.
+- Fix commit `8a24116762a3b050a54d26337053ff70fe2214d5` updates only the expected BLOCKED label; does not convert it to PASS or remove any gate. CI must re-run on the final commit.
