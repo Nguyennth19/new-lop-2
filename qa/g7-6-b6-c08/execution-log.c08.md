@@ -9,3 +9,8 @@
 | 05 | P0.6 pin `c0c5620f` | FB2 catalog contains only B20/B21 accepted; B24 and Vietnamese pending; B27/B65 absent. |
 | 06 | Separate C08 TEST branch | Create isolated candidate correction pack, no source sheet/manifest modification. |
 | 07 | New CI only | Diff guard + P0.6 pin + B6-C08 contract test; no legacy rerun, no deployment. |
+
+## CI readback — appended 2026-11-16
+- Source-only workflow `43787725339` completed SUCCESS at HEAD `8f5a1712b15d98039331cee3d3389c776225c281`; separate C07 preserved and no protected diff.
+- GitHub artifact `14190524593` size 9224 bytes contains only public audit JSON/report, not SGK scans or student data.
+- No source Google Sheet edits; 4 session corrections and 13 quarantine records remain proposed only. C08 remains BLOCKED.

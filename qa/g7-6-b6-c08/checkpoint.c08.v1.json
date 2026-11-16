@@ -5,7 +5,7 @@
   "branch": "test/g7-6-b6-c08-source-reconciliation-20261116",
   "baselineCommit": "0a453101ab47567bdf3ff820f9b58a9d7c0c86d3",
   "b5cBaseline": "2862a81908557212e6561c6372df435d9d236784",
-  "status": "SOURCE_CONFLICTS_VERIFIED_PATCH_PROPOSAL_TEST_ONLY_C08_NO_GO",
+  "status": "PASS_SOURCE_RECONCILIATION_CI_ONLY_C08_STILL_BLOCKED",
   "sources": {
     "pdfSha256T1": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
     "pdfSha256T2": "044142f31fa94769a143dd029422ee74c49480ad9304e567cc8d97efa4c42f36",
@@ -20,16 +20,18 @@
     "old1710AssertionsRerun": false
   },
   "approvals": {
-    "C07": "PENDING_OWNER",
-    "C08": "BLOCKED_PENDING_RECONCILIATION_AND_PEDAGOGY",
+    "C07": "INDEPENDENT_PENDING_OWNER",
+    "C08": "BLOCKED_SOURCE_PATCHES_UNAPPLIED_AND_PEDAGOGY_NOT_APPROVED",
     "C09": "BLOCKED_C08"
   },
   "ci": {
-    "status": "NOT_YET_RECORDED",
+    "status": "COMPLETED_SUCCESS_SOURCE_ONLY",
     "sourceOnlyNewTests": true,
-    "runId": null,
-    "runHeadSha": null,
-    "assertions": null
+    "runId": 43787725339,
+    "runHeadSha": "8f5a1712b15d98039331cee3d3389c776225c281",
+    "artifactId": 14190524593,
+    "assertions": "B6_C08_ONLY_OUTPUT_LOG_NOT_IN_API_RESPONSE",
+    "previous1710AssertionsRerun": false
   },
   "changedScope": [
     "qa/g7-6-b6-c08/",
