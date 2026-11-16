@@ -66,7 +66,32 @@ function open(kind,screen){
   input.addEventListener('input',()=>{page=0;refresh();});
   prev.addEventListener('click',()=>{page--;refresh();});
   next.addEventListener('click',()=>{page++;refresh();});
-  mount.append(total,input,count,list,pager);refresh();
+  mount.append(total,input,count,list,pager);
+  // The 46 owner-approved Fluent Flat icons are a distinct library; show all,
+  // never claim the composite books image is a single counted book.
+  if(root.BE_HOC_FLUENT_46){
+   const details=document.createElement('details');details.className='kl-visual-fluent-library';
+   const summary=document.createElement('summary');
+   summary.textContent='🎨 Fluent Flat SVG · 46 hình (45 hình đếm theo đơn vị ở TEST)';
+   const grid=document.createElement('div');grid.className='kl-visual-asset-list';
+   details.addEventListener('toggle',()=>{
+    if(!details.open||details.dataset.loaded==='1')return;
+    for(const icon of root.BE_HOC_FLUENT_46.list()){
+     const asset=root.BE_HOC_FLUENT_46.resolve(icon.id,'DECORATIVE');
+     if(!asset.ok)continue;
+     const figure=document.createElement('figure');figure.className='kl-visual-asset-row';
+     const image=document.createElement('img');image.src=asset.url;image.alt=icon.id;
+     image.loading='lazy';image.decoding='async';image.referrerPolicy='no-referrer';
+     const cap=document.createElement('figcaption');cap.textContent=icon.id;
+     const note=document.createElement('small');
+     note.textContent=icon.countSafe?'Đếm: '+icon.countUnit+' (TEST)':'Chỉ minh họa, không tự đếm';
+     figure.append(image,cap,note);grid.appendChild(figure);
+    }
+    details.dataset.loaded='1';
+   });
+   details.append(summary,grid);mount.append(details);
+  }
+  refresh();
   session={destroy(){}};
 
  }

@@ -113,6 +113,21 @@ function mountLesson(data,screen,level){
   const c=q.visualContract;
   const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(el=>el.dataset.mlQCard===q.id);
   if(!card){denied++;continue;}
+  // Resources can be attached independently of renderer when source has
+  // explicit public visual intent and approved item ID; never guess by text.
+  if(typeof c.assetId==='string'&&['DECORATIVE','CHOICE','EXACT_COUNT'].includes(c.visualIntent)){
+   const selected=chooseAsset({assetId:c.assetId,visualIntent:c.visualIntent,
+     countUnit:c.countUnit,exactQuantity:c.exactQuantity});
+   if(selected.ok){
+    const zone=card.querySelector('.ml-svg')||card;
+    const grant=c.assetId.startsWith('FLUENT:')
+     ?root.BE_HOC_FLUENT_46.mount(zone,c.assetId.slice(7),{
+       visualIntent:c.visualIntent,countUnit:c.countUnit,count:c.exactQuantity})
+     :root.BE_HOC_ASSETS_288.mount(zone,c.assetId,{visualIntent:c.visualIntent});
+    if(grant?.ok)mapped++;else denied++;
+   }else denied++;
+  }
+  if(!c.rendererId)continue;
   const result=mountEnvelope(card,{lessonId:data.lesson.id,questionId:q.id,questionType:q.type,skillId:c.skillId,
    rendererId:c.rendererId,publicVariant:c.publicVariant});
   if(result.ok)mapped++;else denied++;
