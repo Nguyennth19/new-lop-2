@@ -30,12 +30,18 @@
   "d2V12RuntimeEnabled": false,
   "ttsV2RuntimeEnabled": false,
   "ci": {
-    "status": "PENDING",
-    "runId": null,
-    "sha": null
+    "status": "COMPLETED_SUCCESS",
+    "runId": 43806346380,
+    "headSha": "538cee45a72d965038b382a93aacdd87f3e21c04",
+    "assertions": 50,
+    "protectedAppFilesUnchanged": true,
+    "importedSourceBlobsVerified": 5,
+    "gasDeployed": false,
+    "browserDeviceQaPerformed": false
   },
   "rollback": {
     "commit": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
     "method": "RESET_BE_HOC_TO_BASE_AFTER_SAVING_AUDIT_EVIDENCE_NO_GAS_RUNTIME_ROLLBACK"
-  }
+  },
+  "scopeStatus": "PASS_NODE_CONTRACT_AND_SOURCE_PIN_NO_GAS_BROWSER_QA"
 }
