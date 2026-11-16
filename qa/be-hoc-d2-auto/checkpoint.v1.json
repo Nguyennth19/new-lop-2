@@ -21,7 +21,11 @@
     "scopePV100": "B20_VERIFIED_VERTICAL_AND_TYPED_THREE_ONLY",
     "scopePV1000": "QA_ONLY",
     "result1000": "NO_GO",
-    "doNotExpandLessonWithoutMapping": true
+    "doNotExpandLessonWithoutMapping": true,
+    "privateScoringFixtureImplemented": true,
+    "privateScoringFixturePath": "qa/be-hoc-d2-auto/private-scoring-policy.qa-only.cjs",
+    "runtimeScoringIntegration": false,
+    "answerIndependentAutoCarry": true
   },
   "immutable": [
     "47_D2V12_Core.html",
