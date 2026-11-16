@@ -6,3 +6,5 @@
 04 | Created version-pinned audit evidence lock and six separate PENDING intake records; approvedTaskIds remain [] and E04 policy stays DRAFT.
 05 | Added byte integrity and deny-by-default intake validator plus synthetic negative unit tests; C08.4 real signing still required.
 06 | Isolated no-deploy CI then checkpoint update pending.
+
+07 | CI 43793406354 COMPLETED_SUCCESS at 6ad86c97fb1f65789c149c3d58393f73c82efc4a; artifact 14192544079; lock validation and independent pinned P0.6 check PASS. 0 signatures; C08/C09 PENDING.
