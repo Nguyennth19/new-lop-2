@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "lop2.ai-workflow-orchestration.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "audit/g7-6-ai-workflow-orchestration-v1-20261116",
+  "baseCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+  "status": "AI1_READONLY_ORCHESTRATION_CANDIDATE_NO_OWNER_POLICY_APPROVAL",
+  "scope": "VERSIONED_CONTEXT_INDEX_PLUS_HANDOFF_CONTRACT_AND_FAIL_CLOSED_VALIDATION",
+  "outcome": {
+    "projectStatePointers": 10,
+    "driveReferencePointers": 3,
+    "handoffRecords": 1,
+    "liveGeminiApiCalls": 0,
+    "liveModelToModelMessages": 0,
+    "productionChanges": 0,
+    "protectedScopeChanges": 0,
+    "ownerRulesApproved": 0,
+    "ownerE04Approved": 0,
+    "testRegistrations": 0,
+    "studentWrites": 0
+  },
+  "gates": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "workflowRules": "TEN_PENDING",
+    "P06TEST": "DENIED",
+    "GAS": "DENIED",
+    "main": "DENIED",
+    "testTheoMain": "DENIED"
+  },
+  "ci": {
+    "status": "PENDING",
+    "headSha": null,
+    "runId": null
+  },
+  "rollback": {
+    "commit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+    "method": "DISCARD_ONLY_AUDIT_AI1_DIRECTORY_AND_WORKFLOW_NO_RUNTIME_REVERT"
+  }
+}

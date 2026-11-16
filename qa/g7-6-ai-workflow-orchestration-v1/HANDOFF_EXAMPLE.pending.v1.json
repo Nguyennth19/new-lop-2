@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "lop2.ai-orchestration.handoff-contract.v1",
+  "taskId": "AI1-CONTEXT-HANDOFF-QA-20261116",
+  "taskKind": "AUDIT",
+  "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+  "sourceRefs": [
+    {
+      "id": "WORKFLOW_RULES_MATRIX",
+      "path": "qa/g7-6-workflow-rules-consolidation-review/consolidation-decisions.v1.json",
+      "gitBlobSha": "c19f32c70ff4c303925ec7c19b3655f90dd1619"
+    },
+    {
+      "id": "C086_OWNER_DECISIONS",
+      "path": "qa/g7-6-b6-c086/resolution.pending.v1.json",
+      "gitBlobSha": "fab1f15765ba743c33e5adbc20dbfe9e2f41134d"
+    }
+  ],
+  "objective": "Validate pinned context index and minimal model-neutral task packet without changing any owner gate or application.",
+  "acceptanceChecks": [
+    "VERIFY_10_PINNED_GIT_BLOBS",
+    "VALIDATE_HANDOFF_FIELDS_AND_UNIQUE_TASK_ID",
+    "CHECK_ALL_C07_C08_C09_UNCHANGED",
+    "PROVE_NO_CLIENT_PRIVATE_DATA",
+    "READONLY_CI_SUCCESS"
+  ],
+  "expectedTouchedPaths": [
+    "qa/g7-6-ai-workflow-orchestration-v1/**",
+    "docs/kiem-dinh/G7.6_AI_WORKFLOW_ORCHESTRATION_*",
+    ".github/workflows/g7-6-ai-workflow-orchestration-v1-readonly.yml"
+  ],
+  "gateRequirements": [
+    "C08_OWNER_SIGNOFF_NOT_GRANTED",
+    "C09_OWNER_SIGNOFF_NOT_GRANTED",
+    "WORKFLOW_RULES_OWNER_APPROVAL_NOT_GRANTED"
+  ],
+  "blockers": [
+    "NO_OFFICIAL_PROJECT_RULES",
+    "NO_AI_MODEL_RUNTIME_CONNECTOR_OR_AUTONOMOUS_EXECUTION",
+    "NO_TEST_REGISTRATION_PERMISSION"
+  ],
+  "ownerStatus": "PENDING_NOT_REQUESTED_FOR_THIS_QA",
+  "rollbackCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+  "handoffStatus": "READY_FOR_PEER_REVIEW",
+  "peerReview": {
+    "reviewerIdentity": null,
+    "reviewerEvidenceRef": null,
+    "reviewerAuthorized": false,
+    "conclusion": "NOT_REVIEWED"
+  },
+  "artifactRefs": [
+    "qa/g7-6-ai-workflow-orchestration-v1/PROJECT_STATE_INDEX.v1.json"
+  ],
+  "permissions": {
+    "registerTEST": false,
+    "gitMerge": false,
+    "deployGAS": false,
+    "writeSheets": false,
+    "scoreStars": false
+  }
+}

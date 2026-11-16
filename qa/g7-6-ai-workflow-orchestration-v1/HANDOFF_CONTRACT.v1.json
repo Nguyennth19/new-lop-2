@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "lop2.ai-orchestration.handoff-contract.v1",
+  "contractType": "AUDIT_METADATA_AND_TASK_PACKET_ONLY",
+  "requiredFields": [
+    "schemaVersion",
+    "taskId",
+    "taskKind",
+    "sourceCommit",
+    "sourceRefs",
+    "objective",
+    "acceptanceChecks",
+    "expectedTouchedPaths",
+    "gateRequirements",
+    "blockers",
+    "ownerStatus",
+    "rollbackCommit",
+    "handoffStatus",
+    "artifactRefs"
+  ],
+  "allowedTaskKind": [
+    "AUDIT",
+    "CONTEXT_REFRESH",
+    "SOURCE_REVIEW",
+    "RENDERER_QA",
+    "SPEECH_QA",
+    "ASSET_QA",
+    "RULES_REVIEW"
+  ],
+  "allowedHandoffStatus": [
+    "DRAFT",
+    "READY_FOR_PEER_REVIEW",
+    "PEER_REVIEWED_TECHNICAL_ONLY",
+    "BLOCKED"
+  ],
+  "readOnly": true,
+  "mayWriteProduction": false,
+  "mayApproveOnBehalfOfOwner": false,
+  "semanticRules": {
+    "idempotencyKey": "taskId + sourceCommit + normalized objective hash",
+    "neverTreatExistingRunAsAuthorization": true,
+    "sourceRefsArePointersNotFullSource": true,
+    "ownerStatusMustNotBePromoted": true,
+    "expectedTouchedPathsOnlyWithinIsolatedAuditNamespace": true,
+    "qaPassIsNotRelease": true,
+    "independentReviewRequiresSeparateEvidence": true,
+    "noFullRepoSnapshot": true,
+    "noSecretOrStudentCopy": true,
+    "noAutoModelTrigger": "This is an exchange contract, not autonomous model-to-model execution."
+  }
+}

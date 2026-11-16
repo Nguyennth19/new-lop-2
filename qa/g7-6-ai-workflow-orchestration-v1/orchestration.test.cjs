@@ -1,0 +1,25 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {verifyIndex,validateHandoff,gitBlob}=require('./orchestration-validator.cjs');
+const idx=require('./PROJECT_STATE_INDEX.v1.json'),example=require('./HANDOFF_EXAMPLE.pending.v1.json'),contract=require('./HANDOFF_CONTRACT.v1.json');
+let n=0;const eq=(a,b)=>{assert.deepEqual(a,b);n++},ok=a=>{assert.ok(a);n++};
+eq(idx.modules.length,10);eq(contract.requiredFields.length,13);eq(idx.baseline.sha,'11d691aa9e5f82f27b8df664ee710b17009d5600');
+const p=verifyIndex();eq(p.ok,true);eq(p.permission,'READ_ONLY_DISCOVERY');eq(p.mayDeploy,false);
+const h=validateHandoff(example);eq(h.ok,true);eq(h.maySign,false);eq(h.permission,'REVIEW_ONLY');
+eq(validateHandoff({...example,sourceCommit:'0'.repeat(40)}).code,'INVALID_ID_TYPE_OR_SOURCE');
+eq(validateHandoff({...example,ownerStatus:'APPROVED'}).code,'OWNER_GRANT_IMPLIED');
+eq(validateHandoff({...example,permissions:{...example.permissions,deployGAS:true}}).code,'UNAUTHORIZED_WRITE_REQUEST');
+eq(validateHandoff({...example,expectedTouchedPaths:['MayChu.gs']}).code,'PROTECTED_PATH_REQUEST');
+eq(validateHandoff({...example,sourceRefs:[{...example.sourceRefs[0],gitBlobSha:'0'.repeat(40)}]}).code,'UNPINNED_SOURCE_REF');
+eq(validateHandoff({...example,peerReview:{reviewerAuthorized:true,conclusion:'APPROVED'}}).code,'PEER_REVIEW_NOT_PROVEN');
+eq(validateHandoff({...example,rollbackCommit:'0'.repeat(40)}).code,'NO_ROLLBACK_OR_BLOCKERS');
+eq(validateHandoff({...example,artifactRefs:[]}).ok,true); // permits empty artifact list before CI
+const mis=verifyIndex(p=>Buffer.concat([fs.readFileSync(path.resolve(__dirname,'../../',p)),Buffer.from('!')]));eq(mis.code.startsWith('CHANGED_SOURCE_'),true);
+eq(idx.gateSnapshot.C08,'PENDING');eq(idx.gateSnapshot.C09,'PENDING_C08');eq(idx.gateSnapshot.C07,'INDEPENDENT_PENDING');
+const approvals=require('../g7-6-workflow-rules-consolidation-review/owner-review.pending.v1.json');
+eq(approvals.ownerApprovedCount,0);eq(approvals.perRuleDecisions.filter(r=>r.approved).length,0);
+const curr=require('../g7-6-b6-c086/resolution.pending.v1.json');eq(curr.tally.PENDING,6);eq(curr.gates.C08,'PENDING');eq(curr.gates.C09,'PENDING_C08');
+const manifest=require('../../du-lieu/g7-6/resource-renderer-manifest.v1.json');
+eq(manifest.rendererRegistry.length,12);eq(manifest.status,'PINNED_TEST_REGISTRY_NOT_A_RUNTIME_DEPLOYMENT');
+const cp=require('./checkpoint.ai1.v1.json');eq(cp.outcome.productionChanges,0);eq(cp.outcome.protectedScopeChanges,0);eq(cp.outcome.ownerRulesApproved,0);
+console.log('LOP2_AI_WORKFLOW_ORCHESTRATION_V1_READONLY_QA_PASS',n,'checks; C07 C08 C09 unchanged');

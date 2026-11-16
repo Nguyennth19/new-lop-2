@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "lop2.ai-orchestration.context-index.v1",
+  "date": "2026-11-16",
+  "mode": "READ_ONLY_DISCOVERY_AND_HANDOFF_TEST_NOT_PRODUCTION",
+  "baseline": {
+    "sha": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+    "branch": "audit/g7-6-workflow-rules-consolidation-review-20261116",
+    "mainPinned": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+    "testTheoMainPinned": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+    "note": "Source pinned to inherited checkpoint. Branch HEAD and CI status must be independently revalidated on reuse."
+  },
+  "modules": [
+    {
+      "id": "C086_CHECKPOINT",
+      "path": "qa/g7-6-b6-c086/checkpoint.c086.v1.json",
+      "gitBlobSha": "5a0fd80cd19b4e5de96e3919db41883b9e461f76",
+      "group": "GATES",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/qa/g7-6-b6-c086/checkpoint.c086.v1.json"
+    },
+    {
+      "id": "C086_OWNER_DECISIONS",
+      "path": "qa/g7-6-b6-c086/resolution.pending.v1.json",
+      "gitBlobSha": "fab1f15765ba743c33e5adbc20dbfe9e2f41134d",
+      "group": "GATES",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/qa/g7-6-b6-c086/resolution.pending.v1.json"
+    },
+    {
+      "id": "RESOURCE_RENDERER_MANIFEST",
+      "path": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "gitBlobSha": "27c6db04ce514c83d2b72f4068f20df8917e45ff",
+      "group": "RENDERERS",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/du-lieu/g7-6/resource-renderer-manifest.v1.json"
+    },
+    {
+      "id": "VARIANT_ADAPTER_MATRIX",
+      "path": "du-lieu/g7-6/variant-adapter-matrix.v1.json",
+      "gitBlobSha": "87889421f45425333298f28ba59560f1795996ab",
+      "group": "RENDERERS",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/du-lieu/g7-6/variant-adapter-matrix.v1.json"
+    },
+    {
+      "id": "ASSET_288_REGISTRY",
+      "path": "du-lieu/asset-selector/asset-registry-288.v1.json",
+      "gitBlobSha": "544377bf3cbc0d7b19a4a6f76efd9ae84845b123",
+      "group": "ASSETS",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/du-lieu/asset-selector/asset-registry-288.v1.json"
+    },
+    {
+      "id": "RESOURCE_TTS_POLICY",
+      "path": "qa/g7-6-b5b/policy.resource-tts-e2e.v1.json",
+      "gitBlobSha": "12217ed2689b9d83a877faf453c21368d19bff6f",
+      "group": "SPEECH",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/qa/g7-6-b5b/policy.resource-tts-e2e.v1.json"
+    },
+    {
+      "id": "WORKFLOW_OWNER_REVIEW",
+      "path": "qa/g7-6-workflow-rules-consolidation-review/owner-review.pending.v1.json",
+      "gitBlobSha": "5b2e665ec8999bf5c9d60b187027f3e6649ffd1f",
+      "group": "GOVERNANCE",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/qa/g7-6-workflow-rules-consolidation-review/owner-review.pending.v1.json"
+    },
+    {
+      "id": "WORKFLOW_RULES_MATRIX",
+      "path": "qa/g7-6-workflow-rules-consolidation-review/consolidation-decisions.v1.json",
+      "gitBlobSha": "c19f32c70ff4c303925ec7c19b3655f90dd1619",
+      "group": "GOVERNANCE",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/qa/g7-6-workflow-rules-consolidation-review/consolidation-decisions.v1.json"
+    },
+    {
+      "id": "MENTAL_INPUT_CANDIDATE",
+      "path": "qa/g7-6-b6/mental-renderer-registration.candidate.v1.json",
+      "gitBlobSha": "36d8d029424ca2eea1d88724d671bdf210593ed9",
+      "group": "GATES",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/qa/g7-6-b6/mental-renderer-registration.candidate.v1.json"
+    },
+    {
+      "id": "B5C_RELEASE_GATES",
+      "path": "qa/g7-6-b5c/integration-go-no-go.matrix.v1.json",
+      "gitBlobSha": "497899cbe62136c487364f4c5f3416c37f2f783b",
+      "group": "GATES",
+      "sourceCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "mutable": false,
+      "githubUrl": "https://github.com/Nguyennth19/new-lop-2/blob/11d691aa9e5f82f27b8df664ee710b17009d5600/qa/g7-6-b5c/integration-go-no-go.matrix.v1.json"
+    }
+  ],
+  "drivePointers": [
+    {
+      "id": "DRIVE_LOP2_CHECKPOINTS",
+      "kind": "REFERENCE_METADATA_ONLY",
+      "url": "https://drive.google.com/drive/folders/16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8"
+    },
+    {
+      "id": "DRIVE_ASSET_REGISTRY",
+      "kind": "REFERENCE_METADATA_ONLY",
+      "url": "https://drive.google.com/drive/folders/1uYFzG6snotp2uIebcIJFjGf9spHeWvC7"
+    },
+    {
+      "id": "DRIVE_HISTORICAL_SOURCE",
+      "kind": "REFERENCE_DO_NOT_AUTO_IMPORT",
+      "url": "https://drive.google.com/drive/folders/1V5bkKthzMx5erKCQx9NJdz-rfvFappir"
+    }
+  ],
+  "gateSnapshot": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "C10": "BLOCKED",
+    "C11": "LIMITED_COVERAGE",
+    "C12": "NOT_AUTHORIZED",
+    "ownerWorkflowRules": "TEN_UNDECIDED",
+    "ownerE04": "SIX_PENDING",
+    "p06TestRegistry": "DENIED",
+    "mainMerge": "DENIED",
+    "testTheoMainMerge": "DENIED",
+    "gas": "DENIED",
+    "studentIO": "DENIED",
+    "scoring": "DENIED",
+    "stars": "DENIED"
+  },
+  "runtime": {
+    "registeredNewSkills": 0,
+    "activatedD5D9": false,
+    "officialManifestChanged": false,
+    "applicationChanged": false
+  },
+  "reviewedSources": [
+    "G76_EXTERNAL_WORKFLOW_52_MODULE_CROSSWALK",
+    "G76_WORKFLOW_RULES_10_OWNER_PENDING"
+  ],
+  "safety": {
+    "containsPrivateAnswers": false,
+    "containsStudentPII": false,
+    "containsKeys": false,
+    "containsOriginalTextbookContent": false,
+    "driveAutoWrite": false,
+    "codeAutoExecute": false,
+    "gatesAreSnapshotNotGrant": true
+  },
+  "nextAction": "Run scoped handoff QA in this isolated branch; obtain separate owner policy approval before any official root PROJECT_RULES.md"
+}
