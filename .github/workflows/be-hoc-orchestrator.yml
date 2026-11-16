@@ -1,0 +1,26 @@
+name: BE-HOC VISUAL ORCHESTRATOR V1 no deploy
+on:
+  push:
+    branches: [be-hoc]
+    paths:
+      - 'GiaoDien.html'
+      - '19_KhongGianHocToan.html'
+      - '8?_*.html'
+      - 'qa/be-hoc-orchestrator/**'
+      - '.github/workflows/be-hoc-orchestrator.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  no-grade-renderer-registry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pinned modules loaded and public-only contract
+        run: node qa/be-hoc-orchestrator/orchestrator-contract.test.cjs

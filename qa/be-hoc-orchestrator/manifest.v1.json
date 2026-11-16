@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "BE-HOC-VISUAL-ORCHESTRATOR-V1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "sourceCommit": "a608a4cf263e7af5d3a1458f8d5fea44654dc0b2",
+  "releaseMode": "SOURCE_TEST_ONLY_NO_AUTOMATIC_PRODUCTION_DEPLOY",
+  "renderers": {
+    "registered": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D6",
+      "D7",
+      "D8",
+      "D8A",
+      "D8B",
+      "D9",
+      "D10"
+    ],
+    "count": 12,
+    "source": "G7.6_MASTER_RESOURCE_RENDERER_V1",
+    "fullyLoadable": true,
+    "binding": "only verified lessonId/questionType/skillId + publicVariant; no guessing"
+  },
+  "assets": {
+    "webp288": "PASS_288_BINARY_AND_LABELS",
+    "urlResolver": true,
+    "globallyAvailable": true,
+    "automaticByAssetId": true,
+    "exactCount": "PER_SCENE_UNIT_EVIDENCE_REQUIRED",
+    "fluent46": "STAGED_NOT_PROMOTED_FOR_NUMERIC_SCENES"
+  },
+  "lessonBindings": {
+    "toan_b20": {
+      "D2": "manual carry existing host",
+      "D10": "existing word problem base; progressive enhancement only if public visualContract provided"
+    },
+    "others": "WAIT_FOR_TRUSTED_LESSON_CONTRACT_NOT_QA_RETEST"
+  },
+  "safety": {
+    "privateFieldsDenied": true,
+    "clientGrading": false,
+    "studentWrites": false,
+    "stars": false,
+    "D5D9NoUnauthorizedSGKAttach": true,
+    "D2Result1000Blocked": true
+  },
+  "proofs": {
+    "assetIntegrity": 2910,
+    "visualChrome": 101,
+    "legacyTts": true,
+    "legacyManualD2": true
+  },
+  "remaining": [
+    "actual source lesson mappings for forms beyond B20",
+    "server-side public/private question payload separation",
+    "actual GAS TEST and phone validation",
+    "curriculum E04 for D5 D9"
+  ],
+  "rollbackCommit": "00747d23ec598d5bb40dd1be30c99e9e1472e816"
+}
