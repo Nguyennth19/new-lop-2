@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "lop2.ai2.b20.technical-pilot-result.v1",
+  "date": "2026-11-16",
+  "sourceCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "auditBaselineCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+  "status": "PENDING_CI_READONLY_HANDOFF_QA",
+  "checks": {
+    "sourcePinValidation": "CI_PENDING",
+    "questionIdAndSessionAudit": "CI_PENDING",
+    "privateFieldExclusion": "CI_PENDING",
+    "crossLessonIsolation": "CI_PENDING",
+    "gateInvariance": "CI_PENDING"
+  },
+  "metrics": {
+    "frozenQuestions": 30,
+    "frozenSessions": 6,
+    "frozenKinds": 6,
+    "generatedQuestions": 0,
+    "externalGeminiCalls": 0,
+    "independentLiveGeminiReviews": 0,
+    "newOwnerDecisions": 0,
+    "registrations": 0,
+    "runtimeChanges": 0
+  },
+  "findings": [
+    {
+      "code": "H1_LOCK_ONLY",
+      "status": "EXPECTED",
+      "notes": "Existing B20 candidate, not newly generated; no source answer keys copied into handoff"
+    },
+    {
+      "code": "B20_45_BLUEPRINT_SEPARATE",
+      "status": "EXPECTED",
+      "notes": "Do not claim 45-question implementation from 30-question H1"
+    },
+    {
+      "code": "P05_FORM_UNSIGNED_VS_F_B_3_CHAT_APPROVAL",
+      "status": "NEEDS_EXPLICIT_SCOPE",
+      "notes": "Technical TEST acceptance does not alter frozen source label or constitute independent textbook transcription QA"
+    }
+  ],
+  "releaseReady": false,
+  "ownerApproved": false,
+  "mayCreateTestRegistry": false,
+  "mayDeploy": false,
+  "mayReadOrWriteStudentData": false
+}

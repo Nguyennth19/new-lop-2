@@ -1,0 +1,55 @@
+name: G7.6 AI-2 B20 Controlled Multi-AI Pilot – READ ONLY
+on:
+  push:
+    branches:
+      - audit/g7-6-ai2-controlled-multi-ai-b20-pilot-20261116
+    paths:
+      - 'qa/g7-6-ai2-controlled-multi-ai-b20/**'
+      - 'docs/kiem-dinh/G7.6_AI2_CONTROLLED_B20_*'
+      - '.github/workflows/g7-6-ai2-controlled-b20-readonly.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-b20-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06
+          persist-credentials: false
+      - name: Verify no files outside AI2 isolated audit namespace
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 9a981929437285e2bc2a79e809cae422f27f3c03 HEAD
+          if git diff --name-only 9a981929437285e2bc2a79e809cae422f27f3c03 HEAD | grep -Ev '^(qa/g7-6-ai2-controlled-multi-ai-b20/|docs/kiem-dinh/G7\.6_AI2_CONTROLLED_B20_|\.github/workflows/g7-6-ai2-controlled-b20-readonly.yml)' ; then exit 1; fi
+          test "$(git -C _external/p06 rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          test ! -e PROJECT_RULES.md
+          for f in qa/g7-6-b6-c086/resolution.pending.v1.json qa/g7-6-workflow-rules-consolidation-review/owner-review.pending.v1.json du-lieu/g7-6/resource-renderer-manifest.v1.json qa/g7-6-ai-workflow-orchestration-v1/PROJECT_STATE_INDEX.v1.json; do
+            test "$(git hash-object "$f")" = "$(git show 9a981929437285e2bc2a79e809cae422f27f3c03:"$f" | git hash-object --stdin)"
+          done
+      - name: Validate 11 immutable source refs and B20 readonly handoff
+        run: |
+          node --check qa/g7-6-ai2-controlled-multi-ai-b20/pilot-validator.cjs
+          node --check qa/g7-6-ai2-controlled-multi-ai-b20/pilot.test.cjs
+          node qa/g7-6-ai2-controlled-multi-ai-b20/pilot.test.cjs _external/p06
+      - name: Archive SAFE metadata only – never raw source answers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76-AI2-B20-30Q-METADATA-HANDOFF-READONLY
+          path: |
+            qa/g7-6-ai2-controlled-multi-ai-b20/*.json
+            docs/kiem-dinh/G7.6_AI2_CONTROLLED_B20_PILOT_20261116.md
+          retention-days: 30

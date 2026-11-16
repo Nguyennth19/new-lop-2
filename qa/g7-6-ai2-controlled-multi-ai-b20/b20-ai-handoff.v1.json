@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "lop2.ai2.lesson-handoff.v1",
+  "taskId": "AI2-B20-REUSE-30Q-SOURCE-LOCK-20261116",
+  "status": "PILOT_PACKET_TECHNICALLY_REVIEWABLE_NOT_SENT_TO_GEMINI",
+  "baselineCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+  "sourceCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "lessonId": "toan_b20",
+  "objective": "Rehearse two independent AI roles on an existing 30-question B20 TEST candidate, without creating a lesson or disclosing private answer fields.",
+  "sourceRefs": [
+    {
+      "id": "H1_B20_30Q",
+      "path": "thu-nghiem/bai-20-bien-the/runtime.json",
+      "gitBlobSha": "b14d556c5deeb561106e0c81f275387bef538842",
+      "commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "bytesNotEmbedded": true
+    },
+    {
+      "id": "P06_F_B_3_B20_QA",
+      "path": "thu-nghiem/p0-6/fb/FB3_SECOND_LESSON_B20_20261113.md",
+      "gitBlobSha": "8f00fd7bc09352af9040cc16f13ba56563b18ef0",
+      "commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "bytesNotEmbedded": true
+    },
+    {
+      "id": "P06_F_B_3_BROWSER",
+      "path": "thu-nghiem/p0-6/fb/FB3_B20_BROWSER_QA_20261113.md",
+      "gitBlobSha": "0ef70a5edc07edbd407fc5b8fa80c4e5d870170f",
+      "commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "bytesNotEmbedded": true
+    },
+    {
+      "id": "P06_F_B_2_LESSONS",
+      "path": "thu-nghiem/p0-6/fb/fb2-lesson-catalog.candidate.json",
+      "gitBlobSha": "ea3ec7707dc6dfed70a32ce6a42bfe4d55d60afc",
+      "commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "bytesNotEmbedded": true
+    },
+    {
+      "id": "B20_SOURCE_PAGE_VISUAL_SCOPE",
+      "path": "thu-nghiem/bai-20-bien-the/B20_KIEM_CHUNG_SGK_VBT_THEO_TRANG_20261112.md",
+      "gitBlobSha": "5d262170a0a0172f5616631720c314be55313d18",
+      "commit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+      "bytesNotEmbedded": true
+    },
+    {
+      "id": "B20_45Q_BLUEPRINT",
+      "path": "thu-nghiem/bai-20-bien-the/B20_BIEN_BAN_CHOT_VA_LOI_PHONG_NGUA.md",
+      "gitBlobSha": "d5a74392474e9ad7d6f4fb1cbe311c3d8d5bab2d",
+      "commit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+      "bytesNotEmbedded": true
+    },
+    {
+      "id": "AI1_HANDOFF_CONTRACT",
+      "path": "qa/g7-6-ai-workflow-orchestration-v1/HANDOFF_CONTRACT.v1.json",
+      "gitBlobSha": "64dea1065f13123b7c3fdba770c8c4dea7523c6f",
+      "commit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+      "bytesNotEmbedded": true
+    }
+  ],
+  "producerRole": {
+    "label": "Gemini candidate source analyst",
+    "actor": "ROLE_SPECIFICATION_ONLY_NOT_ACTUALLY_INVOKED",
+    "inputClass": "METADATA_ONLY",
+    "expectedDeliverables": [
+      "IDENTIFY_B20_SOURCE_AND_WORKBOOK_SCOPE",
+      "DISTINGUISH_30Q_H1_FROM_45Q_BLUEPRINT",
+      "CITE_PINNED_SOURCE_FILES",
+      "FLAG_UNKNOWN_SGK_EXACT_MATCHES"
+    ],
+    "approvalAllowed": false
+  },
+  "reviewerRole": {
+    "label": "ChatGPT independent QA reviewer",
+    "actor": "LOCAL_DETERMINISTIC_VALIDATOR_PLUS_TECHNICAL_REVIEW_NOT_A_LIVE_SECOND_MODEL",
+    "expectedDeliverables": [
+      "CROSS_CHECK_30_IDS_6_SESSIONS_6_TYPES",
+      "VERIFY_SOURCE_HASHES",
+      "CHECK_ANSWER_PRIVACY_EXCLUSIONS",
+      "VERIFY_NO_GATE_ESCALATION"
+    ],
+    "approvalAllowed": false
+  },
+  "frozenCounters": {
+    "questions": 30,
+    "sessions": 6,
+    "types": 6,
+    "sourceLargeExerciseRecords": 33,
+    "blueprintTargetSubquestions": 45
+  },
+  "expectedQA": [
+    "P06_H1_BLOB_EXACT",
+    "B20_30_UNIQUE_QUESTION_IDS",
+    "SIX_SESSIONS_WITH_NO_UNKNOWN_QUESTION_ID",
+    "SIX_TYPES_EXISTING",
+    "SAMPLE_SOURCE_NOT_SGK_EXACT",
+    "NO_ANSWER_IN_HANDOFF",
+    "C07_C08_C09_UNCHANGED",
+    "NO_WRITE_SCOPE"
+  ],
+  "blockers": [
+    "NO_LIVE_GEMINI_EXECUTION",
+    "NO_SEPARATE_HUMAN_PEDAGOGICAL_SIGNOFF_FOR_THIS_PILOT",
+    "B20_SOURCE_33_NOT_READY_FOR_DIRECT_RUNTIME",
+    "UI20_45_BLUEPRINT_NOT_THIS_FROZEN_H1"
+  ],
+  "ownerStatus": "PENDING_NO_AI2_APPROVAL",
+  "peerReviewStatus": "TECHNICAL_VALIDATOR_NOT_OWNER_SIGNOFF",
+  "rollbackCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+  "artifacts": [
+    "qa/g7-6-ai2-controlled-multi-ai-b20/technical-pilot-result.pending.v1.json"
+  ],
+  "permissions": {
+    "modelToModelAutoRun": false,
+    "createNewQuestions": false,
+    "officialRegistryWrite": false,
+    "gasDeploy": false,
+    "mergeMain": false,
+    "mergeTestTheoMain": false,
+    "writeStudentData": false,
+    "scoreStars": false
+  },
+  "metadataOnly": true,
+  "containsAnswerKey": false,
+  "containsStudentPII": false
+}

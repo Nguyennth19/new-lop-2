@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "lop2.ai2.b20.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "audit/g7-6-ai2-controlled-multi-ai-b20-pilot-20261116",
+  "baseCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+  "sourceCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "status": "AI2_TECHNICAL_PILOT_PENDING_CI_NO_REAL_MODEL_EXECUTION",
+  "outcome": {
+    "sourceFilesPinned": 11,
+    "lessonIds": 1,
+    "referenceQuestions": 30,
+    "referenceSessions": 6,
+    "sourceExerciseRecords": 33,
+    "blueprintNewTargetCount": 45,
+    "newQuestions": 0,
+    "liveGeminiApiCalls": 0,
+    "ownerApprovalCount": 0,
+    "newRegistrations": 0,
+    "gasWrites": 0,
+    "studentWrites": 0,
+    "protectedChanges": 0
+  },
+  "gates": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING_C08",
+    "ownerRules": "TEN_PENDING",
+    "P06TEST": "NO_NEW_REGISTRATION",
+    "APP": "NO_CHANGE",
+    "RELEASE": "NO_GO"
+  },
+  "ci": {
+    "runId": null,
+    "status": "PENDING",
+    "headSha": null
+  },
+  "rollback": {
+    "returnCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",
+    "action": "DROP_AI2_ONLY_BRANCH_FILES_WITHOUT_RUNTIME_ROLLBACK"
+  }
+}
