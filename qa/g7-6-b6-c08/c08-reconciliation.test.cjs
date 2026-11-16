@@ -49,7 +49,7 @@ eq(cp.approvals.C08,'BLOCKED_PENDING_RECONCILIATION_AND_PEDAGOGY');
 eq(cp.rollback.appRollbackRequired,false);eq(cp.rollback.gasRollbackRequired,false);
 const source=process.argv[2];
 if(source){
- const real=get(path.relative(root,path.join(source,'thu-nghiem/p0-6/fb/fb2-lesson-catalog.candidate.json')));
+ const real=JSON.parse(fs.readFileSync(path.resolve(root,source,'thu-nghiem/p0-6/fb/fb2-lesson-catalog.candidate.json'),'utf8'));
  eq(real.schemaVersion,'p0.6.fb2.catalog.v1');eq(real.lessons.length,4);
  for(const l of m.observedCatalog){const r=real.lessons.find(x=>x.lessonId===l.lessonId);yes(r);eq(r.state,l.state);}
  no(real.lessons.some(l=>['toan_b27','toan_b65'].includes(l.lessonId)));
