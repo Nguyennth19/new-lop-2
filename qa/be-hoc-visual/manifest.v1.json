@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "be-hoc.visual-lab.public.v1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "baseCommit": "18dd2409ee75feb36b07e594ab04a4cf130fc835",
+  "status": "SCOPED_INTERACTIVE_TEST_LAB_AND_PUBLIC_B20_VISUAL",
+  "sources": {
+    "registry288": {
+      "path": "du-lieu/asset-selector/asset-registry-288.v1.json",
+      "blob": "544377bf3cbc0d7b19a4a6f76efd9ae84845b123",
+      "count": 288
+    },
+    "geometryCore": {
+      "blob": "fb920f24f506895a560829cb44b963536d249c48"
+    },
+    "tangramB5A": {
+      "blob": "2c768bbe3b1f271cbf7a9dcb799994e5995ceb5e",
+      "ownerFunctionalQA": "15/15_WINDOWS_CHROME"
+    },
+    "pictographCore": {
+      "blob": "722e286d6253d4d959336298a6a2e5af73b2a0e8"
+    },
+    "pictographView": {
+      "blob": "9dca5884eb05d3010b823daf1fdd71bf9e287148"
+    },
+    "structuredV2": {
+      "blob": "b6a1712cd2051ba417f011b653ff8184ce9f6f9e"
+    }
+  },
+  "drive": {
+    "sourceRoot": "https://drive.google.com/drive/folders/16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8",
+    "assetFolder": "https://drive.google.com/drive/folders/1IEIvmL_DmV9M1YxuWuBtvNeahilByl0x",
+    "sharedFolder": "https://drive.google.com/drive/folders/1ZrIFtsoPfR2LKD1h0Oay83r2u8dRW3v8",
+    "mathFolder": "https://drive.google.com/drive/folders/1pMOndJrUKyVRWVYQ85uK2WR5hA0fuigw"
+  },
+  "assetRuntime": {
+    "catalogSearchAll288": true,
+    "autoEnable288": false,
+    "automaticBinaryRemoteLoad": false,
+    "verifiedRepoWebP": 13,
+    "fluentSVGProduction": false,
+    "semanticsOnlyApproval": false
+  },
+  "D5": {
+    "mode": "INTERACTIVE_LAB_ONLY",
+    "renderer": "G76B5ATangramPlacement",
+    "curriculum": "PENDING",
+    "skill": "SHAPE_COMPOSE_SELECT_PROPOSED",
+    "proposedLessonId": "toan_b27",
+    "official": false,
+    "score": false
+  },
+  "D9": {
+    "mode": "INTERACTIVE_LAB_ONLY",
+    "renderer": "KLPictographV11",
+    "curriculum": "PENDING",
+    "skill": "PICTOGRAPH_COUNT_COMPARE_PROPOSED",
+    "proposedLessonId": "toan_b65",
+    "official": false,
+    "score": false
+  },
+  "structured": {
+    "mode": "B20_ADDEND_PLACE_VALUE_SUPPORT_ONLY",
+    "noAnswer": true,
+    "noCarryHint": true,
+    "primaryD2Unchanged": true,
+    "autoCurriculumMapping": false
+  },
+  "gates": {
+    "C08": "PENDING_PEDAGOGY",
+    "C09": "PENDING_E04",
+    "C10": "PER_ASSET_QA_PENDING",
+    "C12": "ACTUAL_GAS_E2E_PENDING",
+    "scoreStar": "DENIED",
+    "mainMerge": "DENIED",
+    "GASDeploy": "DENIED"
+  }
+}

@@ -11,6 +11,8 @@ on:
       - '46_CSS_GiongDocToan.html'
       - '43_CSS_ThanhPhanBaiToan.html'
       - 'GiaoDien.html'
+      - '57_Visual_Lab_Host.html'
+      - '64_SVG_Math_Public.html'
       - '47_D2V12_Core.html'
       - '48_D2V12_View.html'
       - '49_D2V12_BaiHoc.html'
@@ -41,7 +43,7 @@ jobs:
         run: |
           set -euo pipefail
           git merge-base --is-ancestor f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD
-          if git diff --name-only f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD | grep -vE '^(qa/be-hoc-tts-v2/|docs/kiem-dinh/BE_HOC_G75_V2_|qa/be-hoc-d2-v12/|docs/kiem-dinh/BE_HOC_D2_V12_|qa/be-hoc-d2-auto/|docs/kiem-dinh/BE_HOC_D2_AUTO_|qa/be-hoc-d2-manual/|docs/kiem-dinh/BE_HOC_D2_MANUAL_)' | grep -Ev '^(GiaoDien.html|19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|47_D2V12_Core.html|48_D2V12_View.html|49_D2V12_BaiHoc.html|50_CSS_D2V12.html|52_D2_ManualCarry.html|.github/workflows/be-hoc-d2-auto-no-deploy.yml|51_D2_AutoCarry.html|.github/workflows/be-hoc-d2-v12-no-deploy.yml|.github/workflows/be-hoc-d2-v12-chromium.yml|44_G75_NormalizerToanV2.html|45_DieuKhienGiongDocToan.html|46_CSS_GiongDocToan.html|.github/workflows/be-hoc-tts-v2-no-deploy.yml|.github/workflows/be-hoc-tts-v2-chromium.yml|qa/be-hoc-tts-v2/|docs/kiem-dinh/BE_HOC_G75_V2_|qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_|\.github/workflows/be-hoc-layer-a-no-deploy.yml)$' | grep -vE '^(qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_)'; then echo UNAUTHORIZED_DIFF; exit 1; fi
+          if git diff --name-only f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD | grep -vE '^(qa/be-hoc-visual/|docs/kiem-dinh/BE_HOC_VISUAL_|qa/be-hoc-tts-v2/|docs/kiem-dinh/BE_HOC_G75_V2_|qa/be-hoc-d2-v12/|docs/kiem-dinh/BE_HOC_D2_V12_|qa/be-hoc-d2-auto/|docs/kiem-dinh/BE_HOC_D2_AUTO_|qa/be-hoc-d2-manual/|docs/kiem-dinh/BE_HOC_D2_MANUAL_)' | grep -Ev '^(GiaoDien.html|19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|47_D2V12_Core.html|48_D2V12_View.html|49_D2V12_BaiHoc.html|50_CSS_D2V12.html|52_D2_ManualCarry.html|53_Geometry_Core.html|54_Tangram_V12.html|55_Pictograph_Core.html|56_Pictograph_View.html|57_Visual_Lab_Host.html|58_CSS_Visual_Lab.html|59_Visual_Public_Assets.html|60_Geometry_Fixtures.html|61_Pictograph_Fixtures.html|62_CSS_Geometry.html|63_CSS_Pictograph.html|64_SVG_Math_Public.html|.github/workflows/be-hoc-visual-no-deploy.yml|.github/workflows/be-hoc-d2-auto-no-deploy.yml|51_D2_AutoCarry.html|.github/workflows/be-hoc-d2-v12-no-deploy.yml|.github/workflows/be-hoc-d2-v12-chromium.yml|44_G75_NormalizerToanV2.html|45_DieuKhienGiongDocToan.html|46_CSS_GiongDocToan.html|.github/workflows/be-hoc-tts-v2-no-deploy.yml|.github/workflows/be-hoc-tts-v2-chromium.yml|qa/be-hoc-tts-v2/|docs/kiem-dinh/BE_HOC_G75_V2_|qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_|\.github/workflows/be-hoc-layer-a-no-deploy.yml)$' | grep -vE '^(qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_)'; then echo UNAUTHORIZED_DIFF; exit 1; fi
           for f in MayChu.gs 26_ChamCauHoiToan.html ThanhTichMayChu.gs appsscript.json; do
             test "$(git hash-object "$f")" = "$(git show f51a12cc07b44f0f893c2e0de40e387cc17b5c3b:"$f" | git hash-object --stdin)"
           done

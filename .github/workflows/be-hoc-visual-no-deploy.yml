@@ -1,0 +1,43 @@
+name: BE-HOC SVG public / D5 D9 / 288 asset TEST lab no-deploy
+on:
+  push:
+    branches: [be-hoc]
+    paths:
+      - 'GiaoDien.html'
+      - '19_KhongGianHocToan.html'
+      - '5?_*.html'
+      - '6?_*.html'
+      - 'qa/be-hoc-visual/**'
+      - '.github/workflows/be-hoc-visual-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visual-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Preserve core app, trusted grader and lesson sources
+        run: |
+          set -euo pipefail
+          for f in MayChu.gs KhoBaiHoc.gs ThanhTichMayChu.gs 26_ChamCauHoiToan.html appsscript.json D2ChamTinCayTest.gs; do
+            test "$(git hash-object "$f")" = "$(git show 0c576042d1c47b6f8b55e05a0f3616576629cb38:"$f" | git hash-object --stdin)"
+          done
+          test "$(git hash-object 53_Geometry_Core.html)" = fb920f24f506895a560829cb44b963536d249c48
+          test "$(git hash-object 54_Tangram_V12.html)" = 2c768bbe3b1f271cbf7a9dcb799994e5995ceb5e
+          test "$(git hash-object 55_Pictograph_Core.html)" = 722e286d6253d4d959336298a6a2e5af73b2a0e8
+          test "$(git hash-object 56_Pictograph_View.html)" = 9dca5884eb05d3010b823daf1fdd71bf9e287148
+          node qa/be-hoc-visual/visual-contract.test.cjs
+      - name: Install isolated Playwright Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Desktop and mobile lab interaction regression
+        run: node qa/be-hoc-visual/visual-browser.test.cjs
