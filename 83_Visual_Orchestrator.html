@@ -53,11 +53,10 @@ function chooseAsset({assetId,visualIntent,exactQuantity,unitCountEvidence}={}){
  if(!r.ok)return r;
  if(['DECORATIVE','CHOICE'].includes(visualIntent))return {...r,semanticUse:'APPROVED_DECORATIVE'};
  // Exact counting needs explicit per-asset evidence, not a count inferred from a bunch/stack.
- if(visualIntent==='EXACT_COUNT'&&Number.isSafeInteger(exactQuantity)&&exactQuantity>=0&&
-   unitCountEvidence?.approved===true&&unitCountEvidence.assetId===assetId&&
-   unitCountEvidence.objectsPerAsset===1&&unitCountEvidence.unit==='single-object'){
-  return {...r,semanticUse:'COMPOSITION_ELIGIBLE',quantity:exactQuantity};
- }
+ // Count evidence from lesson/client payload is not trusted approval.
+ // Only a server-pinned approved unit registry may enable exact-count composition.
+ // The current registry has no such signed per-asset certification.
+ if(visualIntent==='EXACT_COUNT')return {ok:false,reason:'EXACT_COUNT_EVIDENCE_NOT_PINNED'};
  return {ok:false,reason:'EXACT_COUNT_EVIDENCE_MISSING'};
 }
 function resolve(e){
