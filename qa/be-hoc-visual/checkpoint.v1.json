@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "be-hoc.visual.lab.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "baseline": "18dd2409ee75feb36b07e594ab04a4cf130fc835",
+  "status": "PENDING_VISUAL_QA",
+  "assets": {
+    "catalog": 288,
+    "loadedBinaryPaths": 13,
+    "qaApproved288": false,
+    "autoPromote": false
+  },
+  "d5": {
+    "previewEnabled": true,
+    "officialLessonMapped": false,
+    "graded": false
+  },
+  "d9": {
+    "previewEnabled": true,
+    "officialLessonMapped": false,
+    "graded": false
+  },
+  "diagram": {
+    "B20Support": true,
+    "privateAnswerKeyIncluded": false
+  },
+  "release": {
+    "gasDeploy": false,
+    "mainMerge": false,
+    "scoreStarWrites": false
+  },
+  "rollbackCommit": "18dd2409ee75feb36b07e594ab04a4cf130fc835",
+  "ci": {
+    "status": "PENDING"
+  }
+}

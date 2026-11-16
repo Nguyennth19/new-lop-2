@@ -74,5 +74,11 @@
     "scoreStar": "DENIED",
     "mainMerge": "DENIED",
     "GASDeploy": "DENIED"
+  },
+  "qa": {
+    "status": "PENDING_DEDICATED_VISUAL_CI",
+    "pinnedG76Sources": true,
+    "chromiumDesktopMobile": "PENDING",
+    "gasE2E": "NOT_PERFORMED"
   }
 }
