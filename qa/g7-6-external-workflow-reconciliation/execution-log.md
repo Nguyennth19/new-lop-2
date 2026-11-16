@@ -7,3 +7,8 @@
 05 | Classified 52 external functional modules by actual file evidence, state, risk and owner approval; never infer runtime deployment from TEST-only repo files.
 06 | Created proposed PROJECT_RULES delta in separate unapproved appendix; retained C07/C08/C09 status and manifest immutable.
 07 | CI result pending.
+
+08 | Initial CI 43797772287 failed only protected-path regex because it excluded the rules DELTA PROPOSAL appendix; no content validators run. Corrected allowlist without changing protected runtime.
+09 | Audit CI 43797932344 SUCCESS after path guard fix, scope audit-only.
+10 | Verified every one of 52 Github evidence paths against real pinned commit trees; fixed misreferenced X09.
+11 | CI 43798081470 SUCCESS at 29b3adac8e7f3895bcd3567212c689a0a87a139d including each of 52 Git blob path checks, counts, source guards, C08/C09 pending, no deploy. Artifact 14195670418. Policy delta remains unsigned and unadopted.

@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "branch": "audit/g7-6-external-workflow-reconciliation-20261116",
   "baseCommit": "733422f11ddb415b2f898e2e38c009f6594401f1",
-  "status": "TECHNICAL_CROSSWALK_COMPLETE_APPROVAL_NOT_REQUESTED",
+  "status": "PASS_READONLY_MATRIX_QA_WITH_ZERO_RUNTIME_MUTATIONS_NO_RULES_ADOPTED",
   "modulesReviewed": 52,
   "classificationCounts": {
     "PARTIAL_EXISTS": 17,
@@ -32,9 +32,17 @@
     "stars": true
   },
   "ci": {
-    "runId": null,
-    "status": "NOT_RUN_YET",
-    "headSha": null
+    "runId": 43798081470,
+    "status": "COMPLETED_SUCCESS",
+    "headSha": "29b3adac8e7f3895bcd3567212c689a0a87a139d",
+    "artifactId": 14195670418,
+    "guards": {
+      "all52PinnedGitHubFiles": true,
+      "protectedPathsUnchanged": true,
+      "countsValidated": true,
+      "c07c08c09Unchanged": true
+    },
+    "old1710ReRun": false
   },
   "rollback": {
     "baseCommit": "733422f11ddb415b2f898e2e38c009f6594401f1",
