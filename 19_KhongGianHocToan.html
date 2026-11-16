@@ -201,7 +201,11 @@ function installSvg(){
   }
   // Ảnh kho dùng chung vẫn được gắn nếu SVG trống hoặc không đọc được.
   // Nếu URL ảnh lỗi, DOM SVG dự phòng đã có sẽ giữ nguyên.
-  if(typeof HINH_ANH_APP!=='undefined')HINH_ANH_APP.word(q,el);
+  // Real G7 288-library WebP preferred only for explicit B20 curated word scenes.
+  // Existing G5/SVG fallback stays available; never infer the number of objects.
+  const fallback=()=>{if(typeof HINH_ANH_APP!=='undefined')HINH_ANH_APP.word(q,el);};
+  const bound=window.BE_HOC_ASSETS_288?.mountMappedB20(q,el,{onError:fallback});
+  if(!bound?.ok)fallback();
  });
 }
 function inputList(){return [...shell().querySelectorAll('#mlContent [data-ml-field]')];}

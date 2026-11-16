@@ -35,11 +35,13 @@
   },
   "assetRuntime": {
     "catalogSearchAll288": true,
-    "autoEnable288": false,
-    "automaticBinaryRemoteLoad": false,
-    "verifiedRepoWebP": 13,
+    "autoEnable288": true,
+    "automaticBinaryRemoteLoad": true,
+    "loadOnDemand": true,
+    "verifiedRepoWebP": 288,
     "fluentSVGProduction": false,
-    "semanticsOnlyApproval": false
+    "semanticsOnlyApproval": false,
+    "exactCountRequirePerAssetEvidence": true
   },
   "D5": {
     "mode": "INTERACTIVE_LAB_ONLY",
@@ -69,7 +71,7 @@
   "gates": {
     "C08": "PENDING_PEDAGOGY",
     "C09": "PENDING_E04",
-    "C10": "PER_ASSET_QA_PENDING",
+    "C10": "BINARY_AND_LABEL_PASS_COUNT_SCOPED",
     "C12": "ACTUAL_GAS_E2E_PENDING",
     "scoreStar": "DENIED",
     "mainMerge": "DENIED",
@@ -81,5 +83,18 @@
     "assertions": 88,
     "chromiumDesktopMobile": "PASS_EMULATED",
     "gasE2E": "NOT_PERFORMED"
+  },
+  "assetsRestoration": {
+    "binaryReleaseCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+    "binaryCount": 288,
+    "labelsApproved": 288,
+    "sourceTotalBytes": 12350644,
+    "registryCount": 288,
+    "restoredIntoBeHoc": true,
+    "automaticPerIdWebPLoading": true,
+    "automaticAllAtOnce": false,
+    "pageSize": 12,
+    "mapping": "B20_STATIC_APPROVED_8_QUESTION_IDS_DECORATIVE_ONLY",
+    "exactCountAllowed": false
   }
 }

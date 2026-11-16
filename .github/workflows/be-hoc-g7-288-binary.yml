@@ -1,0 +1,28 @@
+name: BE-HOC restore 288 G7 WebP exact SHA/labels and app mapping
+on:
+  push:
+    branches: [be-hoc]
+    paths:
+      - 'hinh-anh/webp-g7/v1/**'
+      - '59_Visual_Public_Assets.html'
+      - '57_Visual_Lab_Host.html'
+      - '19_KhongGianHocToan.html'
+      - 'qa/be-hoc-visual/**'
+      - '.github/workflows/be-hoc-g7-288-binary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deep-binary-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all 288 byte-identical WebP/Git blobs and 288 URL/ID maps
+        run: node qa/be-hoc-visual/binary-integrity.test.cjs

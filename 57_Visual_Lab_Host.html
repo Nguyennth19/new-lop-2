@@ -31,33 +31,44 @@ function open(kind,screen){
     stop(){root.BE_HOC_GIONG_DOC_V2?.stop();}}
   });
  }else{
-  const total=document.createElement('p');total.textContent='Có 288 Asset ID và metadata; ảnh chưa xác minh chỉ hiển thị tên và tình trạng. 13 WebP tham chiếu trong GitHub có thể xem riêng.';
+  const total=document.createElement('p');
+  total.textContent='288/288 WebP đã có file trên GitHub, nhãn đã được duyệt 288/288. Hình được tải theo trang khi cần; dùng ảnh để đếm chính xác phải tuân thủ đơn vị và quy tắc sư phạm.';
   const input=document.createElement('input');input.type='search';input.placeholder='Tìm ID, tên hoặc nhóm hình';input.setAttribute('aria-label','Tìm trong kho 288 hình');
   const list=document.createElement('div');list.className='kl-visual-asset-list';
   const count=document.createElement('p');count.setAttribute('aria-live','polite');
+  const pager=document.createElement('div');pager.className='kl-visual-page';
+  const prev=document.createElement('button');prev.textContent='← Trang trước';prev.type='button';
+  const next=document.createElement('button');next.textContent='Trang sau →';next.type='button';
+  const pageInfo=document.createElement('span');pager.append(prev,pageInfo,next);
+  let page=0;const pageSize=12;
   function refresh(){
-   const found=root.BE_HOC_ASSETS_288.search(input.value,60);
-   list.replaceChildren();count.textContent='Hiện '+found.length+' mục đầu tiên phù hợp · '+root.BE_HOC_ASSETS_288.count+' trong registry';
-   for(const item of found){
-    const row=document.createElement('div');row.className='kl-visual-asset-row';
-    const name=document.createElement('b');name.textContent=item.id+' · '+item.label;
-    const desc=document.createElement('small');desc.textContent=item.category+' · CHỜ QA NỘI DUNG · chưa bật ảnh thật';
-    row.append(name,desc);list.append(row);
+   const all=root.BE_HOC_ASSETS_288.search(input.value,288);
+   const pages=Math.max(1,Math.ceil(all.length/pageSize));
+   page=Math.min(Math.max(0,page),pages-1);list.replaceChildren();
+   count.textContent='Tìm thấy '+all.length+' / '+root.BE_HOC_ASSETS_288.count+' ảnh';
+   pageInfo.textContent='Trang '+(page+1)+' / '+pages;
+   prev.disabled=page===0;next.disabled=page===pages-1;
+   for(const item of all.slice(page*pageSize,(page+1)*pageSize)){
+    const row=document.createElement('figure');row.className='kl-visual-asset-row';
+    const caption=document.createElement('figcaption');caption.textContent=item.id+' · '+item.label;
+    const asset=root.BE_HOC_ASSETS_288.resolve(item.id);
+    if(asset.ok){
+     const img=document.createElement('img');img.src=asset.url;img.loading='lazy';img.decoding='async';
+     img.referrerPolicy='no-referrer';img.alt=item.label;img.width=120;img.height=120;
+     img.addEventListener('error',()=>{img.remove();const fail=document.createElement('small');fail.textContent='Không tải được ảnh · có thể thử lại';row.prepend(fail);},{once:true});
+     row.append(img);
+    }
+    const desc=document.createElement('small');
+    desc.textContent=item.category+' · NHÃN ĐÃ DUYỆT · ĐẾM CHÍNH XÁC: theo bài';
+    row.append(caption,desc);list.append(row);
    }
   }
-  input.addEventListener('input',refresh);
-  const known=document.createElement('div');known.className='kl-visual-known-gallery';
-  const heading=document.createElement('h3');heading.textContent='WebP có file trong GitHub (xem thử)';
-  known.append(heading);
-  for(const path of root.BE_HOC_ASSETS_288.verifiedPaths){
-   const file=root.BE_HOC_ASSETS_288.verifiedRepoImage(path);
-   if(!file.ok)continue;
-   const figure=document.createElement('figure'),img=document.createElement('img');
-   img.loading='lazy';img.alt=path.split('/').pop();img.src=file.url;
-   const caption=document.createElement('figcaption');caption.textContent=path.split('/').pop();
-   figure.append(img,caption);known.append(figure);
-  }
-  mount.append(total,input,count,list,known);refresh();session={destroy(){}};
+  input.addEventListener('input',()=>{page=0;refresh();});
+  prev.addEventListener('click',()=>{page--;refresh();});
+  next.addEventListener('click',()=>{page++;refresh();});
+  mount.append(total,input,count,list,pager);refresh();
+  session={destroy(){}};
+
  }
  if(kind!=='ASSETS'&&!session?.ok)return {ok:false,reason:'VIEW_MOUNT_FAILED'};
  active=kind;return {ok:true,kind,gradeEnabled:false,officialLessonMapped:false};

@@ -1,5 +1,5 @@
 /* BE-HOC Image Catalog: all 288 metadata records from pinned 2026-11 G7.6 V1 source.
- * Catalog/search enabled; binary loading denied unless independently verified.
+ * Catalog/search + on-demand binary loading available for 288 pinned WebP files.
  * Do NOT infer quantities from illustration metadata.
  */
 (function(root){
@@ -15,17 +15,52 @@ const allowKnownWebp=Object.freeze([
 'hinh-anh/webp-g5/math_hen_160.webp','hinh-anh/webp-g5/math_ribbon_160.webp',
 'hinh-anh/webp-g5/math_wrapped_candy_160.webp'
 ]);
-const verifiedRepoCommit='18dd2409ee75feb36b07e594ab04a4cf130fc835';
+const verifiedRepoCommit='653bfbc73002a188dcea0b714247b84cc28a4fed'; // confirmed G7.4-A.2 288/288 published binaries
+const base288='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/'+verifiedRepoCommit+'/hinh-anh/webp-g7/v1/';
+const safePath=/^WEBP\/(?:SH|M)\d{2}\/KL-(?:SH|M)\d{2}-\d{2}\.webp$/;
+const previewMapping=Object.freeze({
+ toan_b20_lv1_ex3_01:'KL_SH05_004',toan_b20_lv1_ex3_02:'KL_SH02_010',
+ toan_b20_lv2_problems_01:'KL_SH02_010',toan_b20_lv2_problems_02:'KL_SH05_004',
+ toan_b20_lv2_problems_03:'KL_SH03_006',toan_b20_lv2_problems_04:'KL_SH01_001',
+ toan_b20_lv2_problems_05:'KL_M08_007',toan_b20_lv2_problems_06:'KL_SH02_009'
+});
 function search(query,limit=40){
  const term=String(query||'').trim().toLocaleLowerCase('vi');
- return catalog.filter(a=>!term||[a.id,a.label,a.category,a.scope].join(' ').toLocaleLowerCase('vi').includes(term)).slice(0,Math.max(1,Math.min(80,limit)));
+ return catalog.filter(a=>!term||[a.id,a.label,a.category,a.scope].join(' ').toLocaleLowerCase('vi').includes(term)).slice(0,Math.max(1,Math.min(288,limit)));
 }
 function lookup(id){return map.get(String(id||''))||null;}
-function resolve(id){const a=lookup(id);if(!a)return {ok:false,reason:'UNKNOWN_ASSET'};
- return {ok:false,reason:'BINARY_NOT_VERIFIED_IN_APP',asset:a};
+function resolve(id){
+ const asset=lookup(id);if(!asset)return {ok:false,reason:'UNKNOWN_ASSET'};
+ if(!safePath.test(asset.path))return {ok:false,reason:'INVALID_PINNED_ASSET_PATH'};
+ const bits=asset.id.match(/^KL_(SH\d\d|M\d\d)_(\d{3})$/);
+ if(!bits||asset.path!=='WEBP/'+bits[1]+'/KL-'+bits[1]+'-'+String(Number(bits[2])).padStart(2,'0')+'.webp')
+  return {ok:false,reason:'ID_PATH_CONFLICT'};
+ return {ok:true,url:base288+asset.path,asset,labelApproved:true,binarySourceCommit:verifiedRepoCommit,quantityApproved:false};
 }
-function verifiedRepoImage(path){if(!allowKnownWebp.includes(path))return {ok:false,reason:'UNAPPROVED_BINARY_PATH'};
- return {ok:true,url:'https://raw.githubusercontent.com/Nguyennth19/new-lop-2/'+verifiedRepoCommit+'/'+path};
+function mount(target,id,opts={}){
+ const found=resolve(id);
+ if(!found.ok||!target?.appendChild||!root.document)return found.ok?{ok:false,reason:'INVALID_MOUNT_TARGET'}:found;
+ if(opts.visualIntent!=='DECORATIVE'&&opts.visualIntent!=='CHOICE')return {ok:false,reason:'EXACT_COUNT_NOT_APPROVED'};
+ const img=root.document.createElement('img');
+ img.src=found.url;img.alt=opts.visualIntent==='DECORATIVE'?'':found.asset.label;
+ img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';
+ img.dataset.klG7Asset=id;img.className='kl-approved-image';
+ img.addEventListener('error',()=>{img.remove();if(typeof opts.onError==='function')opts.onError();},{once:true});
+ target.appendChild(img);
+ return {ok:true,assetId:id,img};
 }
-root.BE_HOC_ASSETS_288=Object.freeze({count:catalog.length,search,lookup,resolve,verifiedRepoImage,verifiedPaths:allowKnownWebp,releaseReady:false});
+function mountMappedB20(q,target,opts={}){
+ if(!q||q.type!=='word_problem'||!q.valid||!Object.prototype.hasOwnProperty.call(previewMapping,q.id))return {ok:false,reason:'NO_APPROVED_B20_MAPPING'};
+ return mount(target,previewMapping[q.id],{visualIntent:'DECORATIVE',onError:opts.onError});
+}
+function verifiedRepoImage(path){
+ if(!allowKnownWebp.includes(path))return {ok:false,reason:'UNAPPROVED_LEGACY_BINARY_PATH'};
+ return {ok:true,url:'https://raw.githubusercontent.com/Nguyennth19/new-lop-2/18dd2409ee75feb36b07e594ab04a4cf130fc835/'+path};
+}
+root.BE_HOC_ASSETS_288=Object.freeze({
+ count:catalog.length,search,lookup,resolve,mount,mountMappedB20,
+ verifiedRepoImage,verifiedPaths:allowKnownWebp,
+ labelApprovedCount:288,binaryVerifiedCount:288,releaseReady:true,
+ quantityCompositionEnabled:false,releaseCommit:verifiedRepoCommit
+});
 })(window);

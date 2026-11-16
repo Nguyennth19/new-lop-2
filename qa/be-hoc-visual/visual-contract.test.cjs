@@ -12,8 +12,10 @@ for(const p of ['53_Geometry_Core.html','54_Tangram_V12.html','55_Pictograph_Cor
 }
 eq(root.BE_HOC_ASSETS_288.count,288);
 eq(root.BE_HOC_ASSETS_288.search('KL_SH01_001',5).length,1);
-eq(root.BE_HOC_ASSETS_288.resolve('KL_SH01_001').ok,false);
-eq(root.BE_HOC_ASSETS_288.resolve('KL_SH01_001').reason,'BINARY_NOT_VERIFIED_IN_APP');
+eq(root.BE_HOC_ASSETS_288.resolve('KL_SH01_001').ok,true);
+eq(root.BE_HOC_ASSETS_288.resolve('KL_SH01_001').binarySourceCommit,'653bfbc73002a188dcea0b714247b84cc28a4fed');
+eq(root.BE_HOC_ASSETS_288.resolve('KL_SH01_001').quantityApproved,false);
+eq(root.BE_HOC_ASSETS_288.releaseReady,true);
 eq(root.BE_HOC_ASSETS_288.verifiedPaths.length,13);
 eq(root.BE_HOC_ASSETS_288.verifiedRepoImage('hinh-anh/webp-g5/math_apple_160.webp').ok,true);
 eq(root.BE_HOC_ASSETS_288.verifiedRepoImage('hinh-anh/unapproved.webp').ok,false);

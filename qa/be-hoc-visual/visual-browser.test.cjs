@@ -26,10 +26,13 @@ for(const [name,params] of [['desktop',{viewport:{width:1366,height:768}}],['mob
  assert.equal(await page.evaluate(()=>window.BE_HOC_VISUAL_LAB.active()),'D9');checks++;
  const assets=await page.evaluate(()=>window.BE_HOC_VISUAL_LAB.open('ASSETS',document.getElementById('mathFullScreen')));
  assert.equal(assets.ok,true);checks++;
- assert.equal(await page.locator('.kl-visual-known-gallery img').count(),13);checks++;
+ assert.equal(await page.locator('.kl-visual-asset-row img').count(),12);checks++;
+ assert.equal(await page.locator('.kl-visual-asset-row').count(),12);checks++;
+ await page.locator('.kl-visual-page button').last().click();checks++;
+ assert.equal(await page.locator('.kl-visual-asset-row img').count(),12);checks++;
  await page.locator('.kl-visual-lab input[type=search]').fill('KL_SH01_001');checks++;
  assert.equal(await page.locator('.kl-visual-asset-row').count(),1);checks++;
- assert.match(await page.locator('.kl-visual-asset-row').textContent(),/CHỜ QA/);checks++;
+ assert.match(await page.locator('.kl-visual-asset-row').textContent(),/NHÃN ĐÃ DUYỆT/);checks++;
  await page.locator('.kl-visual-back').click();
  assert.equal(await page.evaluate(()=>window.__didBack),true);checks++;
  const sv=await page.evaluate(()=>{

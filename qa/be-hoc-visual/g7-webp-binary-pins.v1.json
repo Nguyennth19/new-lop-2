@@ -1,0 +1,1737 @@
+{
+  "schemaVersion": "be-hoc.g7-pinned-webp-288.v1",
+  "releaseCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+  "assets": [
+    {
+      "assetId": "KL_SH01_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-01.webp",
+      "gitBlobSha": "e9e2679555d3799e589c6d0d1f882f490ee7e251",
+      "bytes": 25280
+    },
+    {
+      "assetId": "KL_SH01_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-02.webp",
+      "gitBlobSha": "7970b114eff8394e56680f4991bb90fb383b9387",
+      "bytes": 30242
+    },
+    {
+      "assetId": "KL_SH01_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-03.webp",
+      "gitBlobSha": "14d378245969711028d9074b2d5e668cf351f18a",
+      "bytes": 27390
+    },
+    {
+      "assetId": "KL_SH01_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-04.webp",
+      "gitBlobSha": "6c05180c6d6a1393c14f418823bdeccf744d6487",
+      "bytes": 27250
+    },
+    {
+      "assetId": "KL_SH01_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-05.webp",
+      "gitBlobSha": "3a127ec397608cb61f41c86d0942596e19900ea9",
+      "bytes": 42746
+    },
+    {
+      "assetId": "KL_SH01_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-06.webp",
+      "gitBlobSha": "371d5db2677009ff196ae4c6268bd3d6428f7d90",
+      "bytes": 32254
+    },
+    {
+      "assetId": "KL_SH01_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-07.webp",
+      "gitBlobSha": "d40911749ec29337710c4c206f30002d41905b99",
+      "bytes": 33868
+    },
+    {
+      "assetId": "KL_SH01_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-08.webp",
+      "gitBlobSha": "ba3e10e93a5bb818c62d9716512fb964fd932db1",
+      "bytes": 29162
+    },
+    {
+      "assetId": "KL_SH01_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-09.webp",
+      "gitBlobSha": "9c000a700d79f370b1ddc32112dac6173275173a",
+      "bytes": 42626
+    },
+    {
+      "assetId": "KL_SH01_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-10.webp",
+      "gitBlobSha": "6ce0ba64631ab39e2e24ab5fb78b112e859c9cd3",
+      "bytes": 38386
+    },
+    {
+      "assetId": "KL_SH01_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-11.webp",
+      "gitBlobSha": "6d1841c1897047f7b37d919e5190fd7580620a95",
+      "bytes": 31824
+    },
+    {
+      "assetId": "KL_SH01_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-12.webp",
+      "gitBlobSha": "75f007101b86058a6ae4b0b3cf2c72d0b8bbd427",
+      "bytes": 31644
+    },
+    {
+      "assetId": "KL_SH02_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-01.webp",
+      "gitBlobSha": "af70e5e4bcbddfcfbc27b47603c1aeb7cc893264",
+      "bytes": 29608
+    },
+    {
+      "assetId": "KL_SH02_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-02.webp",
+      "gitBlobSha": "48f54f17e404424184afd3e6dbf1d1d3eedccb96",
+      "bytes": 29994
+    },
+    {
+      "assetId": "KL_SH02_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-03.webp",
+      "gitBlobSha": "f37f752461ace7f9c3ef157e6017396f4b153b82",
+      "bytes": 28712
+    },
+    {
+      "assetId": "KL_SH02_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-04.webp",
+      "gitBlobSha": "6461bcfca1f0e520f18c4c188f47623c354de86c",
+      "bytes": 38096
+    },
+    {
+      "assetId": "KL_SH02_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-05.webp",
+      "gitBlobSha": "2e37c461f79f2bc1919d8fff72a5379aa5765ad4",
+      "bytes": 38176
+    },
+    {
+      "assetId": "KL_SH02_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-06.webp",
+      "gitBlobSha": "13b8e5e4d735c36f5aef800ed1c82045369b3c77",
+      "bytes": 39244
+    },
+    {
+      "assetId": "KL_SH02_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-07.webp",
+      "gitBlobSha": "f4e0bc8ed7ee3e8d1e724e30946e0b5cdb6ac9b0",
+      "bytes": 24130
+    },
+    {
+      "assetId": "KL_SH02_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-08.webp",
+      "gitBlobSha": "1c6c71e5d27eec89a92aae2cad1c60dd689f81f3",
+      "bytes": 27696
+    },
+    {
+      "assetId": "KL_SH02_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-09.webp",
+      "gitBlobSha": "77a94693d81f7415508c83a8aa3391894f0dac41",
+      "bytes": 34532
+    },
+    {
+      "assetId": "KL_SH02_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-10.webp",
+      "gitBlobSha": "eb9df4d5523d313622d2251377089238e10653a5",
+      "bytes": 26874
+    },
+    {
+      "assetId": "KL_SH02_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-11.webp",
+      "gitBlobSha": "e4455d9418698fa979a2ba6c6dd2bb3eea1e2c4e",
+      "bytes": 33236
+    },
+    {
+      "assetId": "KL_SH02_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH02/KL-SH02-12.webp",
+      "gitBlobSha": "72bc879d07687a4bdf00e6aa0aa3738fec7ae13d",
+      "bytes": 26574
+    },
+    {
+      "assetId": "KL_SH03_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-01.webp",
+      "gitBlobSha": "6d5d8f4502dd902b3206cbe371f31d4e9f9b0f0a",
+      "bytes": 28544
+    },
+    {
+      "assetId": "KL_SH03_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-02.webp",
+      "gitBlobSha": "2d12dce532969e8d07975b3d240ab3722feaaae2",
+      "bytes": 78880
+    },
+    {
+      "assetId": "KL_SH03_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-03.webp",
+      "gitBlobSha": "f8580bc5bfda22d6c7134750ecc64838d110339c",
+      "bytes": 24170
+    },
+    {
+      "assetId": "KL_SH03_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-04.webp",
+      "gitBlobSha": "fd7d6dfa279b2c0c87b0513cbfa5025eaf8b22c1",
+      "bytes": 30174
+    },
+    {
+      "assetId": "KL_SH03_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-05.webp",
+      "gitBlobSha": "f4c9b7a3fc245e93f33b9c15dbef93e8c8ed981f",
+      "bytes": 42046
+    },
+    {
+      "assetId": "KL_SH03_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-06.webp",
+      "gitBlobSha": "c48a940f24b7d5ce43958928b1c8176f714848e0",
+      "bytes": 36722
+    },
+    {
+      "assetId": "KL_SH03_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-07.webp",
+      "gitBlobSha": "7b5c3c7cf99934c2c79fb9b7ef64d910f1e279fb",
+      "bytes": 43390
+    },
+    {
+      "assetId": "KL_SH03_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-08.webp",
+      "gitBlobSha": "b60d2b49f9164957a4230a3023e839c4e38e394c",
+      "bytes": 28648
+    },
+    {
+      "assetId": "KL_SH03_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-09.webp",
+      "gitBlobSha": "b2ac9c20e19fd76a32d5c56bb4eebd987429d20c",
+      "bytes": 35918
+    },
+    {
+      "assetId": "KL_SH03_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-10.webp",
+      "gitBlobSha": "93a01b5136bc521ee77577f3b4d21c9c235875bf",
+      "bytes": 18706
+    },
+    {
+      "assetId": "KL_SH03_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-11.webp",
+      "gitBlobSha": "a07a19b5a757da570e4b04f9c41da8a1a5312d08",
+      "bytes": 14696
+    },
+    {
+      "assetId": "KL_SH03_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH03/KL-SH03-12.webp",
+      "gitBlobSha": "fe05a05e2753c2229cca57c5e9c344f2121ccd72",
+      "bytes": 22382
+    },
+    {
+      "assetId": "KL_SH04_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-01.webp",
+      "gitBlobSha": "8e1821c5845fb17dd06e31848d6026763a616016",
+      "bytes": 35356
+    },
+    {
+      "assetId": "KL_SH04_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-02.webp",
+      "gitBlobSha": "39c5ec0f83f703a01857517c6f751ed077fa7068",
+      "bytes": 40208
+    },
+    {
+      "assetId": "KL_SH04_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-03.webp",
+      "gitBlobSha": "d1005fda1cee3cbc6fd645c78fa1ebb8212c5c54",
+      "bytes": 47494
+    },
+    {
+      "assetId": "KL_SH04_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-04.webp",
+      "gitBlobSha": "9305cbb84b5717b51f06250df66ee7955fc7599d",
+      "bytes": 33382
+    },
+    {
+      "assetId": "KL_SH04_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-05.webp",
+      "gitBlobSha": "e32b18bc3e31129145260bf0504cdad631e13032",
+      "bytes": 140360
+    },
+    {
+      "assetId": "KL_SH04_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-06.webp",
+      "gitBlobSha": "c5f1ba9874495318330b1c9bad28debeaf4ca2d2",
+      "bytes": 35798
+    },
+    {
+      "assetId": "KL_SH04_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-07.webp",
+      "gitBlobSha": "e918f86169254736877e4f823aca834e3be8375a",
+      "bytes": 127426
+    },
+    {
+      "assetId": "KL_SH04_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-08.webp",
+      "gitBlobSha": "8b9dea1dbddb9a3ac2dc908b8740de9c096cdd1b",
+      "bytes": 18024
+    },
+    {
+      "assetId": "KL_SH04_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-09.webp",
+      "gitBlobSha": "13e83a913b6888032b7d6618db3c17e10637dd68",
+      "bytes": 29702
+    },
+    {
+      "assetId": "KL_SH04_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-10.webp",
+      "gitBlobSha": "51e8404f74511d8d2b4013e85cb56f77af692796",
+      "bytes": 28338
+    },
+    {
+      "assetId": "KL_SH04_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-11.webp",
+      "gitBlobSha": "f57b98145ac4ad40e191788ce84aecb45a05ec71",
+      "bytes": 70198
+    },
+    {
+      "assetId": "KL_SH04_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH04/KL-SH04-12.webp",
+      "gitBlobSha": "58ddad8d0ce291fdf7e32c5d6ac7945dd71a1335",
+      "bytes": 34560
+    },
+    {
+      "assetId": "KL_SH05_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-01.webp",
+      "gitBlobSha": "8373bc0bfcbad53f1877e3f6c09a5580c234ce4c",
+      "bytes": 42676
+    },
+    {
+      "assetId": "KL_SH05_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-02.webp",
+      "gitBlobSha": "63e6aed04a945f6aad6bbae3b33aa1c1359b52e2",
+      "bytes": 45824
+    },
+    {
+      "assetId": "KL_SH05_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-03.webp",
+      "gitBlobSha": "59577760c3815af5cd6e70c5b8ba3deed72b73f9",
+      "bytes": 37610
+    },
+    {
+      "assetId": "KL_SH05_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-04.webp",
+      "gitBlobSha": "3aff3e3da23bffef7c00a628a10e21fd4effd096",
+      "bytes": 38700
+    },
+    {
+      "assetId": "KL_SH05_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-05.webp",
+      "gitBlobSha": "ea9118dfeee220d3974f2fcbb81a2c3ebb046cf7",
+      "bytes": 35020
+    },
+    {
+      "assetId": "KL_SH05_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-06.webp",
+      "gitBlobSha": "b8f28bb65fd5510c9225f84ddd09aaaba717ff47",
+      "bytes": 35896
+    },
+    {
+      "assetId": "KL_SH05_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-07.webp",
+      "gitBlobSha": "fbad507db44deb98d6462ea1b6f3108f4ccb4636",
+      "bytes": 38646
+    },
+    {
+      "assetId": "KL_SH05_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-08.webp",
+      "gitBlobSha": "419281780b94f225481a94e73922e3faff9550b6",
+      "bytes": 143546
+    },
+    {
+      "assetId": "KL_SH05_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-09.webp",
+      "gitBlobSha": "4974e06a034ebd4145c94ddf341f8f0676bf7587",
+      "bytes": 41728
+    },
+    {
+      "assetId": "KL_SH05_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-10.webp",
+      "gitBlobSha": "9114da50def011431d039e2b37668f70cda6fe2c",
+      "bytes": 49094
+    },
+    {
+      "assetId": "KL_SH05_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-11.webp",
+      "gitBlobSha": "3d51ecf58dbdee3eb1163ab9fba14557b3f5250e",
+      "bytes": 38138
+    },
+    {
+      "assetId": "KL_SH05_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH05/KL-SH05-12.webp",
+      "gitBlobSha": "de0721f741b38b647365b8d1a184220407c9787b",
+      "bytes": 48794
+    },
+    {
+      "assetId": "KL_SH06_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-01.webp",
+      "gitBlobSha": "b5f0f2a3b3b0d048bb51752d27fb77d67eabd831",
+      "bytes": 26100
+    },
+    {
+      "assetId": "KL_SH06_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-02.webp",
+      "gitBlobSha": "055c8526da6904374b1ba4749fc8f91cf874d9f1",
+      "bytes": 36266
+    },
+    {
+      "assetId": "KL_SH06_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-03.webp",
+      "gitBlobSha": "2dc9d1ef0bc10a4b89f8d1cc669c3e78d56585e6",
+      "bytes": 32402
+    },
+    {
+      "assetId": "KL_SH06_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-04.webp",
+      "gitBlobSha": "064bdc2994b898805d5befa9d3114485b92d88ac",
+      "bytes": 23546
+    },
+    {
+      "assetId": "KL_SH06_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-05.webp",
+      "gitBlobSha": "ed616259649561db6a243bddcbc7a22828bc11c3",
+      "bytes": 31962
+    },
+    {
+      "assetId": "KL_SH06_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-06.webp",
+      "gitBlobSha": "0bb95b0f1dcbed0500905c498cf12697dd63e6e0",
+      "bytes": 41594
+    },
+    {
+      "assetId": "KL_SH06_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-07.webp",
+      "gitBlobSha": "a262fa14c3bdb7de8ee0dbed563171462f73a2cb",
+      "bytes": 35216
+    },
+    {
+      "assetId": "KL_SH06_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-08.webp",
+      "gitBlobSha": "a51a21d35177327b8f2ae5b4bf66bae4f5dbfebd",
+      "bytes": 31996
+    },
+    {
+      "assetId": "KL_SH06_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-09.webp",
+      "gitBlobSha": "ce3624d33ffa5a4c23da71902f76d748b1fd9a7a",
+      "bytes": 29196
+    },
+    {
+      "assetId": "KL_SH06_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-10.webp",
+      "gitBlobSha": "e198f4d11d1422ce1350f88be01e203fc5c21eea",
+      "bytes": 23838
+    },
+    {
+      "assetId": "KL_SH06_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-11.webp",
+      "gitBlobSha": "8c52f228cd5961bfe0f57ebd608348e6a9bb93d6",
+      "bytes": 25212
+    },
+    {
+      "assetId": "KL_SH06_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH06/KL-SH06-12.webp",
+      "gitBlobSha": "02c77bf22b4ae6af6f3efcf43941bf75258f408f",
+      "bytes": 55284
+    },
+    {
+      "assetId": "KL_SH07_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-01.webp",
+      "gitBlobSha": "b21e5913acf2b900776a7be4b76549438d6c752f",
+      "bytes": 61364
+    },
+    {
+      "assetId": "KL_SH07_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-02.webp",
+      "gitBlobSha": "d876c30ac8316ccdb9ba7e20d58e97f41be2ca0c",
+      "bytes": 44756
+    },
+    {
+      "assetId": "KL_SH07_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-03.webp",
+      "gitBlobSha": "7f1fdffcc58710f91d61517498419399a22dfeb0",
+      "bytes": 33522
+    },
+    {
+      "assetId": "KL_SH07_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-04.webp",
+      "gitBlobSha": "d19909c3ad81d3204942771f36c1e1d07049ba51",
+      "bytes": 132302
+    },
+    {
+      "assetId": "KL_SH07_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-05.webp",
+      "gitBlobSha": "0a4cb9829e255489335858da836ae8cb82b5fc4b",
+      "bytes": 107686
+    },
+    {
+      "assetId": "KL_SH07_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-06.webp",
+      "gitBlobSha": "bbe77a94b86a5a9514c094471effa21474626ae8",
+      "bytes": 35906
+    },
+    {
+      "assetId": "KL_SH07_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-07.webp",
+      "gitBlobSha": "dbbf22685a553dfdd882f22384300b7d38bbf7db",
+      "bytes": 32592
+    },
+    {
+      "assetId": "KL_SH07_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-08.webp",
+      "gitBlobSha": "10127925a6bafb9d69ca2334f7155c54b2eb5824",
+      "bytes": 35948
+    },
+    {
+      "assetId": "KL_SH07_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-09.webp",
+      "gitBlobSha": "dba7de998a4f383b604934c0c3ae3af60d7fae85",
+      "bytes": 46272
+    },
+    {
+      "assetId": "KL_SH07_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-10.webp",
+      "gitBlobSha": "7749ce8119117c551898d788acbd1cfbb2782db6",
+      "bytes": 31054
+    },
+    {
+      "assetId": "KL_SH07_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-11.webp",
+      "gitBlobSha": "97eb1f8b360d60c0c878f9de465345c8c93616c9",
+      "bytes": 42918
+    },
+    {
+      "assetId": "KL_SH07_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH07/KL-SH07-12.webp",
+      "gitBlobSha": "08e0583a261fd526bfd7e991f6469b372d80ceef",
+      "bytes": 22608
+    },
+    {
+      "assetId": "KL_SH08_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-01.webp",
+      "gitBlobSha": "36c0de7fd038683258ea9a4e9333388a54a46517",
+      "bytes": 147434
+    },
+    {
+      "assetId": "KL_SH08_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-02.webp",
+      "gitBlobSha": "3c72f765b26c0834894de6c08e9f71f06ea7e71d",
+      "bytes": 31866
+    },
+    {
+      "assetId": "KL_SH08_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-03.webp",
+      "gitBlobSha": "cabfec8a2b1d862259944edd0d0c88c6426d0bbf",
+      "bytes": 39906
+    },
+    {
+      "assetId": "KL_SH08_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-04.webp",
+      "gitBlobSha": "47598e054ac8b99ec1653d632084bc738e15af2e",
+      "bytes": 46474
+    },
+    {
+      "assetId": "KL_SH08_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-05.webp",
+      "gitBlobSha": "f4a52218f22be1e64a0bccbda3eaf7c4cd73a7df",
+      "bytes": 26648
+    },
+    {
+      "assetId": "KL_SH08_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-06.webp",
+      "gitBlobSha": "bdfa78e9410aea61a21307919416d2340f66cd9c",
+      "bytes": 30864
+    },
+    {
+      "assetId": "KL_SH08_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-07.webp",
+      "gitBlobSha": "2366d7fbfbf1e4c6889c93375ce7cf8b34a59c07",
+      "bytes": 48542
+    },
+    {
+      "assetId": "KL_SH08_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-08.webp",
+      "gitBlobSha": "ba18b5e639638faebb830fd0f41f6466ade51e4b",
+      "bytes": 42780
+    },
+    {
+      "assetId": "KL_SH08_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-09.webp",
+      "gitBlobSha": "58ba2ce2a891ca4d1a735dcc1d86877358cf3b12",
+      "bytes": 35462
+    },
+    {
+      "assetId": "KL_SH08_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-10.webp",
+      "gitBlobSha": "b041c1777997c77f549ea345b091b11227868028",
+      "bytes": 34466
+    },
+    {
+      "assetId": "KL_SH08_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-11.webp",
+      "gitBlobSha": "1fb43db4fb8312ddfb2e367cf918b7b3449095de",
+      "bytes": 30326
+    },
+    {
+      "assetId": "KL_SH08_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH08/KL-SH08-12.webp",
+      "gitBlobSha": "f32da0c65467970cc5b6c27b14450ad73b390d1b",
+      "bytes": 36882
+    },
+    {
+      "assetId": "KL_SH09_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-01.webp",
+      "gitBlobSha": "f74370fa9a81a3c1cea70cfa228b84fede395cbb",
+      "bytes": 32628
+    },
+    {
+      "assetId": "KL_SH09_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-02.webp",
+      "gitBlobSha": "085eea4c3589237d3e2df4a0096d73801b54ff57",
+      "bytes": 30186
+    },
+    {
+      "assetId": "KL_SH09_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-03.webp",
+      "gitBlobSha": "ad26f1289f700d28944dc904c34bafbebd529c24",
+      "bytes": 43896
+    },
+    {
+      "assetId": "KL_SH09_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-04.webp",
+      "gitBlobSha": "f5ceea65f4531b253a34bcf960c6d934d7d046d8",
+      "bytes": 30816
+    },
+    {
+      "assetId": "KL_SH09_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-05.webp",
+      "gitBlobSha": "eacdf39935db49b2525228610b40a9618b79b7b3",
+      "bytes": 144656
+    },
+    {
+      "assetId": "KL_SH09_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-06.webp",
+      "gitBlobSha": "b01fc7f8e17d7a092e0ba50badb8751aac47ffce",
+      "bytes": 39188
+    },
+    {
+      "assetId": "KL_SH09_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-07.webp",
+      "gitBlobSha": "c07ec0d5cbacc32088f8299730df291761f1a492",
+      "bytes": 180084
+    },
+    {
+      "assetId": "KL_SH09_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-08.webp",
+      "gitBlobSha": "cdbb5463e29e754c4d9b9e6866a685ffda838f80",
+      "bytes": 45858
+    },
+    {
+      "assetId": "KL_SH09_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-09.webp",
+      "gitBlobSha": "9596f06662cf21b84c245ad8ab97d1c346e4a9e4",
+      "bytes": 37236
+    },
+    {
+      "assetId": "KL_SH09_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-10.webp",
+      "gitBlobSha": "9c8cbebeaf50e50e06838f18bf286027f11e0682",
+      "bytes": 33410
+    },
+    {
+      "assetId": "KL_SH09_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-11.webp",
+      "gitBlobSha": "903f3d9e6678343c68791660a24b2635d1c9aa44",
+      "bytes": 69502
+    },
+    {
+      "assetId": "KL_SH09_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH09/KL-SH09-12.webp",
+      "gitBlobSha": "91b24d4bb6970054aea6f101fb8e4d2697f5a679",
+      "bytes": 35312
+    },
+    {
+      "assetId": "KL_SH10_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-01.webp",
+      "gitBlobSha": "7cfeab1d6672dbc47c631bc34887a33b1cdb61d2",
+      "bytes": 32090
+    },
+    {
+      "assetId": "KL_SH10_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-02.webp",
+      "gitBlobSha": "0e8c734d37ded6992e053c349579102ba7fd2a9d",
+      "bytes": 37050
+    },
+    {
+      "assetId": "KL_SH10_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-03.webp",
+      "gitBlobSha": "711c9fb8707aac2f41464833a491fe4964e91438",
+      "bytes": 27250
+    },
+    {
+      "assetId": "KL_SH10_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-04.webp",
+      "gitBlobSha": "4e2c3d83ddfedf19b53fe7e07f12f0823963176d",
+      "bytes": 35484
+    },
+    {
+      "assetId": "KL_SH10_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-05.webp",
+      "gitBlobSha": "f6a725317d30e8dd94076307776a49ebea547471",
+      "bytes": 22188
+    },
+    {
+      "assetId": "KL_SH10_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-06.webp",
+      "gitBlobSha": "7461a8d9d976c7d42cb4e60d29b582a23ff1f3a0",
+      "bytes": 40776
+    },
+    {
+      "assetId": "KL_SH10_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-07.webp",
+      "gitBlobSha": "9ef25e5317a8ba931a782b653db62fba20b4a9d3",
+      "bytes": 55196
+    },
+    {
+      "assetId": "KL_SH10_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-08.webp",
+      "gitBlobSha": "a04e4e4d004c365a280d1cab7835fb1e43d18aa3",
+      "bytes": 22368
+    },
+    {
+      "assetId": "KL_SH10_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-09.webp",
+      "gitBlobSha": "cb95ecad18e298c2a67fa3f3dad17c7b65bdcfb1",
+      "bytes": 25728
+    },
+    {
+      "assetId": "KL_SH10_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-10.webp",
+      "gitBlobSha": "ffc9694627455fa71aaade996a4f70be54efcf52",
+      "bytes": 20258
+    },
+    {
+      "assetId": "KL_SH10_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-11.webp",
+      "gitBlobSha": "4dae2b8e98c774682e99d3121b78bb137e267df8",
+      "bytes": 29458
+    },
+    {
+      "assetId": "KL_SH10_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH10/KL-SH10-12.webp",
+      "gitBlobSha": "0d3d11a2100c327d4e4efedfc9f24086f4d5cb15",
+      "bytes": 31660
+    },
+    {
+      "assetId": "KL_SH11_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-01.webp",
+      "gitBlobSha": "c7f6ecc2a8ebab18670564ae4661c840f0a8ce9f",
+      "bytes": 47026
+    },
+    {
+      "assetId": "KL_SH11_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-02.webp",
+      "gitBlobSha": "df0563b92f40ad695421fc6a42183fac9cfa44cb",
+      "bytes": 56242
+    },
+    {
+      "assetId": "KL_SH11_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-03.webp",
+      "gitBlobSha": "90f58bd0e9b8d0a5fcb3bc2d45d1ff30dc3463ab",
+      "bytes": 67358
+    },
+    {
+      "assetId": "KL_SH11_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-04.webp",
+      "gitBlobSha": "65cb1ce2a9d12e27539bc838c4e6e6bdf56543c6",
+      "bytes": 37724
+    },
+    {
+      "assetId": "KL_SH11_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-05.webp",
+      "gitBlobSha": "0aad6a08887636eda255a3075060b0d449b71d78",
+      "bytes": 31930
+    },
+    {
+      "assetId": "KL_SH11_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-06.webp",
+      "gitBlobSha": "e289cc96e9fe071d8ede263de94b056243d522b3",
+      "bytes": 37054
+    },
+    {
+      "assetId": "KL_SH11_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-07.webp",
+      "gitBlobSha": "fb863cf75cea16ab4f48c665c3d02c8a0d67cf89",
+      "bytes": 58794
+    },
+    {
+      "assetId": "KL_SH11_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-08.webp",
+      "gitBlobSha": "39f423eaa08265fef6ec625258afa823cf2350a6",
+      "bytes": 111898
+    },
+    {
+      "assetId": "KL_SH11_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-09.webp",
+      "gitBlobSha": "f295786a69ea2d20d628e4fd2ec9e835bb53526d",
+      "bytes": 38358
+    },
+    {
+      "assetId": "KL_SH11_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-10.webp",
+      "gitBlobSha": "9dfdce180bc8461a81109d40d1aa0f251a2eeecc",
+      "bytes": 45316
+    },
+    {
+      "assetId": "KL_SH11_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-11.webp",
+      "gitBlobSha": "caa4ca8d3a9cfe382a5ba81cc8647a1d8bb31d52",
+      "bytes": 88304
+    },
+    {
+      "assetId": "KL_SH11_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH11/KL-SH11-12.webp",
+      "gitBlobSha": "0a7bd3146b26a04a7a6d46eea1b59e5c9670fa7c",
+      "bytes": 166716
+    },
+    {
+      "assetId": "KL_SH12_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-01.webp",
+      "gitBlobSha": "4c4491241150e9d87fc2f6016b1a2e3d42046a87",
+      "bytes": 75618
+    },
+    {
+      "assetId": "KL_SH12_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-02.webp",
+      "gitBlobSha": "bbde2b6d32d78e15282ebbcf59dda141c6b95c0a",
+      "bytes": 41284
+    },
+    {
+      "assetId": "KL_SH12_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-03.webp",
+      "gitBlobSha": "765f0a67b22572718c0ec30c41545261eef232cf",
+      "bytes": 36120
+    },
+    {
+      "assetId": "KL_SH12_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-04.webp",
+      "gitBlobSha": "38d100af3fdb53088c0176c58466226674c97df6",
+      "bytes": 28356
+    },
+    {
+      "assetId": "KL_SH12_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-05.webp",
+      "gitBlobSha": "25024a7ecb7d64c3c133f2ccbf4eed235a3aca09",
+      "bytes": 35806
+    },
+    {
+      "assetId": "KL_SH12_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-06.webp",
+      "gitBlobSha": "035c0480132b2331e0d9f72f0c8feb03df60eb28",
+      "bytes": 39572
+    },
+    {
+      "assetId": "KL_SH12_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-07.webp",
+      "gitBlobSha": "a30a8373694439b7c4e052d5220570427781b45c",
+      "bytes": 32518
+    },
+    {
+      "assetId": "KL_SH12_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-08.webp",
+      "gitBlobSha": "de99a280d9019e737fa7bdbd87fcfd39e4e189ff",
+      "bytes": 24338
+    },
+    {
+      "assetId": "KL_SH12_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-09.webp",
+      "gitBlobSha": "e1a41b6e8229a9acd9ecd11d9d3ddba1b12cf37d",
+      "bytes": 29856
+    },
+    {
+      "assetId": "KL_SH12_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-10.webp",
+      "gitBlobSha": "b2e3b077e3dcc720c534437e9f1dac3cb9bfae7a",
+      "bytes": 45264
+    },
+    {
+      "assetId": "KL_SH12_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-11.webp",
+      "gitBlobSha": "bbffa10e6b9e208ba26c24f15dc5141172632aed",
+      "bytes": 37760
+    },
+    {
+      "assetId": "KL_SH12_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH12/KL-SH12-12.webp",
+      "gitBlobSha": "21dc1e79e4214f8d00c57d98a489b576e5f74179",
+      "bytes": 30752
+    },
+    {
+      "assetId": "KL_M01_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-01.webp",
+      "gitBlobSha": "0fd90e5bcd140e2de9984dacf9062c1a304078d4",
+      "bytes": 7736
+    },
+    {
+      "assetId": "KL_M01_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-02.webp",
+      "gitBlobSha": "27cb26c59fe247848773ef14d2f106dbafa4ae98",
+      "bytes": 26008
+    },
+    {
+      "assetId": "KL_M01_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-03.webp",
+      "gitBlobSha": "09ae385944e92aee06ed003c541891fd0f13841f",
+      "bytes": 190220
+    },
+    {
+      "assetId": "KL_M01_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-04.webp",
+      "gitBlobSha": "4eebc57ee326fb3a00d261e10b73035f56da23f1",
+      "bytes": 28174
+    },
+    {
+      "assetId": "KL_M01_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-05.webp",
+      "gitBlobSha": "f88478d1aa3a05ef9f9207d98682a82fe322c3eb",
+      "bytes": 79220
+    },
+    {
+      "assetId": "KL_M01_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-06.webp",
+      "gitBlobSha": "a637038945d9e55e1fe6259791a368e2a6993e24",
+      "bytes": 21558
+    },
+    {
+      "assetId": "KL_M01_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-07.webp",
+      "gitBlobSha": "820f4ceec979e4a996b4b757fe992aa3242a9a6b",
+      "bytes": 85480
+    },
+    {
+      "assetId": "KL_M01_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-08.webp",
+      "gitBlobSha": "94d029bd60a50b136c3c5c9a4a9996dc8a34ccb7",
+      "bytes": 26710
+    },
+    {
+      "assetId": "KL_M01_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-09.webp",
+      "gitBlobSha": "d553ce749b711e4f71e85e1e984dda277800f086",
+      "bytes": 74482
+    },
+    {
+      "assetId": "KL_M01_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-10.webp",
+      "gitBlobSha": "4fc28f166f1cf0586c20aba1925aad4a48b01b68",
+      "bytes": 42886
+    },
+    {
+      "assetId": "KL_M01_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-11.webp",
+      "gitBlobSha": "72691b2e9a694d0518bae0fb0fcc595c71b6ea12",
+      "bytes": 103584
+    },
+    {
+      "assetId": "KL_M01_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M01/KL-M01-12.webp",
+      "gitBlobSha": "1ccc45cc704021e67a1bf6a3c499328b66c47eee",
+      "bytes": 49340
+    },
+    {
+      "assetId": "KL_M02_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-01.webp",
+      "gitBlobSha": "f7f089f4ae2dc9cf9837291409e900fc1d0d5442",
+      "bytes": 27838
+    },
+    {
+      "assetId": "KL_M02_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-02.webp",
+      "gitBlobSha": "95b1954c718df238f2d601b081c4eb8253bdbbcd",
+      "bytes": 9782
+    },
+    {
+      "assetId": "KL_M02_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-03.webp",
+      "gitBlobSha": "a2272f49b9fd78f97502006097da2337272c7a7e",
+      "bytes": 29834
+    },
+    {
+      "assetId": "KL_M02_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-04.webp",
+      "gitBlobSha": "1e6aa4d3169a4662db8a5708bc25cc8331d836be",
+      "bytes": 13332
+    },
+    {
+      "assetId": "KL_M02_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-05.webp",
+      "gitBlobSha": "9447064d9a5fea62a1acefeeb5d270df242494d9",
+      "bytes": 25032
+    },
+    {
+      "assetId": "KL_M02_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-06.webp",
+      "gitBlobSha": "65d28876f263a6ff23e0fdc822a77814cb5b958c",
+      "bytes": 141230
+    },
+    {
+      "assetId": "KL_M02_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-07.webp",
+      "gitBlobSha": "b35cf3f069f18625b780e785b8443fb0c189ea94",
+      "bytes": 127856
+    },
+    {
+      "assetId": "KL_M02_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-08.webp",
+      "gitBlobSha": "5c8ef381d9473930e8f7707962bd99655ca2ef99",
+      "bytes": 147684
+    },
+    {
+      "assetId": "KL_M02_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-09.webp",
+      "gitBlobSha": "744051c3843173d32ee605e90fd8484d75a0dc2a",
+      "bytes": 156720
+    },
+    {
+      "assetId": "KL_M02_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-10.webp",
+      "gitBlobSha": "4462b0e86d2beb512c5f804fc96d50f1fd7cc182",
+      "bytes": 38104
+    },
+    {
+      "assetId": "KL_M02_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-11.webp",
+      "gitBlobSha": "52fe23b892d1cf84d8b572b941b84ccbcdd88975",
+      "bytes": 39630
+    },
+    {
+      "assetId": "KL_M02_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M02/KL-M02-12.webp",
+      "gitBlobSha": "3e1e28bcc98cb83a1f26e3f44a172599ccd6225b",
+      "bytes": 17644
+    },
+    {
+      "assetId": "KL_M03_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-01.webp",
+      "gitBlobSha": "9367857e9328543da858a37b9511df9e0827b6f9",
+      "bytes": 23402
+    },
+    {
+      "assetId": "KL_M03_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-02.webp",
+      "gitBlobSha": "951fb971ff40824ae6fec00ac0ef76e161a66ff5",
+      "bytes": 18068
+    },
+    {
+      "assetId": "KL_M03_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-03.webp",
+      "gitBlobSha": "9207ad97219e2062de4ceb0a9632ebfaac34531d",
+      "bytes": 48326
+    },
+    {
+      "assetId": "KL_M03_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-04.webp",
+      "gitBlobSha": "1e8b5e0d69bae6ec6e309248879b4e9b365db58b",
+      "bytes": 31976
+    },
+    {
+      "assetId": "KL_M03_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-05.webp",
+      "gitBlobSha": "081c909dc0f9087933bd2b2b371d6b581f6c3ac9",
+      "bytes": 29302
+    },
+    {
+      "assetId": "KL_M03_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-06.webp",
+      "gitBlobSha": "588ad29bfbf4fb938670e1f36953df6c91e73248",
+      "bytes": 52522
+    },
+    {
+      "assetId": "KL_M03_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-07.webp",
+      "gitBlobSha": "6c2c6b822130f7cbd7620b59b37387d08beb509a",
+      "bytes": 98678
+    },
+    {
+      "assetId": "KL_M03_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-08.webp",
+      "gitBlobSha": "236e63daf7ca22d879fa50533e35e034511ff4da",
+      "bytes": 19614
+    },
+    {
+      "assetId": "KL_M03_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-09.webp",
+      "gitBlobSha": "246633e40ec0b46936148ed2e5af6ff2d1647d51",
+      "bytes": 37894
+    },
+    {
+      "assetId": "KL_M03_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-10.webp",
+      "gitBlobSha": "9b3478a04373e3e897293f5ca8e0b6a6b556ba30",
+      "bytes": 34072
+    },
+    {
+      "assetId": "KL_M03_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-11.webp",
+      "gitBlobSha": "1353c546cda53d88cd4b9402a1727fc50238ec78",
+      "bytes": 37200
+    },
+    {
+      "assetId": "KL_M03_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M03/KL-M03-12.webp",
+      "gitBlobSha": "1e997accda94cb2e87983b2a998a73ff7503125d",
+      "bytes": 28254
+    },
+    {
+      "assetId": "KL_M04_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-01.webp",
+      "gitBlobSha": "fc702a81dfbb4a98a75bb32816dd7fe2d0b1a177",
+      "bytes": 101214
+    },
+    {
+      "assetId": "KL_M04_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-02.webp",
+      "gitBlobSha": "734f43edeb2d6fe30275890688987cab02ef670d",
+      "bytes": 41480
+    },
+    {
+      "assetId": "KL_M04_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-03.webp",
+      "gitBlobSha": "1e7b5646eca93f73ec22b10f7f73d0e5b53407ae",
+      "bytes": 28946
+    },
+    {
+      "assetId": "KL_M04_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-04.webp",
+      "gitBlobSha": "e9df078dd3f8673133a3bfbc8ab0870512258830",
+      "bytes": 19238
+    },
+    {
+      "assetId": "KL_M04_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-05.webp",
+      "gitBlobSha": "c0523799fa98e9b35daeded0760a27bacfa00737",
+      "bytes": 19934
+    },
+    {
+      "assetId": "KL_M04_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-06.webp",
+      "gitBlobSha": "d1fce42c3f27dbe6ece9f00cca8e4972c141515c",
+      "bytes": 41006
+    },
+    {
+      "assetId": "KL_M04_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-07.webp",
+      "gitBlobSha": "2860d79446bbf2bb6832a81f6121ca677b335903",
+      "bytes": 34598
+    },
+    {
+      "assetId": "KL_M04_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-08.webp",
+      "gitBlobSha": "09f0bb34aae43c17f6adfe153aca2ed03377e535",
+      "bytes": 32438
+    },
+    {
+      "assetId": "KL_M04_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-09.webp",
+      "gitBlobSha": "fa0be7262e3bd505e308427dafc065eb7a3fdf46",
+      "bytes": 39770
+    },
+    {
+      "assetId": "KL_M04_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-10.webp",
+      "gitBlobSha": "3c3959a76a6a33a103ada007a54492accdbc0211",
+      "bytes": 64850
+    },
+    {
+      "assetId": "KL_M04_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-11.webp",
+      "gitBlobSha": "bb1d2a4caa43a50566758478b2391114c92ff4fa",
+      "bytes": 30454
+    },
+    {
+      "assetId": "KL_M04_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M04/KL-M04-12.webp",
+      "gitBlobSha": "1cb10656e3174d532e4dc5348914e3aac11fcde2",
+      "bytes": 26292
+    },
+    {
+      "assetId": "KL_M05_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-01.webp",
+      "gitBlobSha": "f676a3e44728467d6006dd87c56b6de74372ab58",
+      "bytes": 22944
+    },
+    {
+      "assetId": "KL_M05_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-02.webp",
+      "gitBlobSha": "51f2da240a97ab24f79a89b782a7b0797faee2a3",
+      "bytes": 18202
+    },
+    {
+      "assetId": "KL_M05_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-03.webp",
+      "gitBlobSha": "afcab0fedf9e36c3560c1be797705b8ef874ff83",
+      "bytes": 29456
+    },
+    {
+      "assetId": "KL_M05_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-04.webp",
+      "gitBlobSha": "3fc75ef839c8937ef524e0678d08d62095238783",
+      "bytes": 33860
+    },
+    {
+      "assetId": "KL_M05_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-05.webp",
+      "gitBlobSha": "de042fb38fef60937be5ec84f5591fbc3195a532",
+      "bytes": 35466
+    },
+    {
+      "assetId": "KL_M05_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-06.webp",
+      "gitBlobSha": "12ff58f5fa612e7bb1cb30eee0f96606729dd13d",
+      "bytes": 38244
+    },
+    {
+      "assetId": "KL_M05_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-07.webp",
+      "gitBlobSha": "3a2972a17435eeeb35a3f24af7e02f9fc7af1320",
+      "bytes": 36518
+    },
+    {
+      "assetId": "KL_M05_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-08.webp",
+      "gitBlobSha": "f2efd47e9106689f85ce27802b53d385d52451ba",
+      "bytes": 35064
+    },
+    {
+      "assetId": "KL_M05_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-09.webp",
+      "gitBlobSha": "2d1c1a15da6b5b48b0129980de924cda0846c8d7",
+      "bytes": 37730
+    },
+    {
+      "assetId": "KL_M05_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-10.webp",
+      "gitBlobSha": "b9b9909132dc12b544f81ae3419e3dd37620562f",
+      "bytes": 26662
+    },
+    {
+      "assetId": "KL_M05_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-11.webp",
+      "gitBlobSha": "bb1432d207d20012e6edf9daaffe41fecb605a7f",
+      "bytes": 32100
+    },
+    {
+      "assetId": "KL_M05_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M05/KL-M05-12.webp",
+      "gitBlobSha": "60772978dbee418af38e2686764460a24153d116",
+      "bytes": 29358
+    },
+    {
+      "assetId": "KL_M06_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-01.webp",
+      "gitBlobSha": "ee58566fb614887fc6b075dac5dfbfead9832220",
+      "bytes": 32264
+    },
+    {
+      "assetId": "KL_M06_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-02.webp",
+      "gitBlobSha": "b052c4c7f13c1beb5a6138d565d09979da230134",
+      "bytes": 25198
+    },
+    {
+      "assetId": "KL_M06_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-03.webp",
+      "gitBlobSha": "99ffa19179e6a244e4b96e6e344caaf4389f895f",
+      "bytes": 139024
+    },
+    {
+      "assetId": "KL_M06_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-04.webp",
+      "gitBlobSha": "9eddd70a66c40ebd928a6ea1a1c9e182d1ef074f",
+      "bytes": 26830
+    },
+    {
+      "assetId": "KL_M06_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-05.webp",
+      "gitBlobSha": "3a6175bc14e0499ee06d1e580daa1970bcde29fb",
+      "bytes": 21850
+    },
+    {
+      "assetId": "KL_M06_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-06.webp",
+      "gitBlobSha": "9249c71433ab611451fefb226a4015e38c19f44e",
+      "bytes": 11382
+    },
+    {
+      "assetId": "KL_M06_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-07.webp",
+      "gitBlobSha": "33fdd865e3f1e5572e7ba2efd175135e7feba3e0",
+      "bytes": 23446
+    },
+    {
+      "assetId": "KL_M06_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-08.webp",
+      "gitBlobSha": "c425c9dc3ecbfca2f471b47a748ca12c6edf9a8b",
+      "bytes": 26514
+    },
+    {
+      "assetId": "KL_M06_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-09.webp",
+      "gitBlobSha": "5477b34734c86692b579c5d58f0449738da54b72",
+      "bytes": 35470
+    },
+    {
+      "assetId": "KL_M06_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-10.webp",
+      "gitBlobSha": "aaf581cf80eeb9d19b9b71df7986a78738d6fcc4",
+      "bytes": 18284
+    },
+    {
+      "assetId": "KL_M06_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-11.webp",
+      "gitBlobSha": "8dc86bed968787b298d034bf9c04a9a544fc46de",
+      "bytes": 131980
+    },
+    {
+      "assetId": "KL_M06_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M06/KL-M06-12.webp",
+      "gitBlobSha": "5d0aaac409fc78ece97062efd44c280e26a90493",
+      "bytes": 34096
+    },
+    {
+      "assetId": "KL_M07_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-01.webp",
+      "gitBlobSha": "3f5fb0f9e2aedac5053863580ff5a1ba9a53a1cc",
+      "bytes": 35686
+    },
+    {
+      "assetId": "KL_M07_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-02.webp",
+      "gitBlobSha": "04c28514c99d971fdabf880458cc207890aeb021",
+      "bytes": 23494
+    },
+    {
+      "assetId": "KL_M07_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-03.webp",
+      "gitBlobSha": "b10e3bcf94812941231d31e6f4b23fd99433c9f9",
+      "bytes": 19216
+    },
+    {
+      "assetId": "KL_M07_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-04.webp",
+      "gitBlobSha": "0821f90f713da8f60b325fa691e4ca73a3486808",
+      "bytes": 35524
+    },
+    {
+      "assetId": "KL_M07_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-05.webp",
+      "gitBlobSha": "48e15353d9286d084d64ce4ebccb477b230ea2b8",
+      "bytes": 37322
+    },
+    {
+      "assetId": "KL_M07_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-06.webp",
+      "gitBlobSha": "19ceb4c8e900530da3eb15c17c9e4c28728f3dba",
+      "bytes": 48990
+    },
+    {
+      "assetId": "KL_M07_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-07.webp",
+      "gitBlobSha": "bc00dbe2f3271cc8619928be3643be32e4dbcac1",
+      "bytes": 30632
+    },
+    {
+      "assetId": "KL_M07_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-08.webp",
+      "gitBlobSha": "9d2fbad4f4b71a00bdba90021ef7ac653f582f5e",
+      "bytes": 30034
+    },
+    {
+      "assetId": "KL_M07_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-09.webp",
+      "gitBlobSha": "dd70a890c6c3fff4cd6a29d0513366a870736f1f",
+      "bytes": 26504
+    },
+    {
+      "assetId": "KL_M07_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-10.webp",
+      "gitBlobSha": "4f423d7973da4f42849b809b226d5e1d38b101ad",
+      "bytes": 24476
+    },
+    {
+      "assetId": "KL_M07_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-11.webp",
+      "gitBlobSha": "1aafd92eb41bd4049d5d4b3c7a1e57083c75491f",
+      "bytes": 21656
+    },
+    {
+      "assetId": "KL_M07_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M07/KL-M07-12.webp",
+      "gitBlobSha": "3c021ba6e6b82d4e33c3e6918446168cc9057361",
+      "bytes": 20116
+    },
+    {
+      "assetId": "KL_M08_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-01.webp",
+      "gitBlobSha": "5a8c0f53843a32a3eaf08653d5dbf040b94b4391",
+      "bytes": 28448
+    },
+    {
+      "assetId": "KL_M08_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-02.webp",
+      "gitBlobSha": "1ec0d328efe4c45f67f9eb5d774d07ffa9c30951",
+      "bytes": 26292
+    },
+    {
+      "assetId": "KL_M08_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-03.webp",
+      "gitBlobSha": "7a94d016c483de8049c693b401f5fb2e71e41cf3",
+      "bytes": 30258
+    },
+    {
+      "assetId": "KL_M08_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-04.webp",
+      "gitBlobSha": "0fe1494bf4513c3bb3b95037f9f60346f4b86229",
+      "bytes": 31110
+    },
+    {
+      "assetId": "KL_M08_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-05.webp",
+      "gitBlobSha": "730286f65863af2019559cd5ecbcbac49f101dc0",
+      "bytes": 124882
+    },
+    {
+      "assetId": "KL_M08_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-06.webp",
+      "gitBlobSha": "aa050aa02e234cc8208eed83dc9f62e80a35f3bf",
+      "bytes": 51412
+    },
+    {
+      "assetId": "KL_M08_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-07.webp",
+      "gitBlobSha": "8bff6ccb51b41c07b9b34e042943a34e9756d216",
+      "bytes": 23988
+    },
+    {
+      "assetId": "KL_M08_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-08.webp",
+      "gitBlobSha": "3c86c66b17203bd77c887faaece65bc1a987c239",
+      "bytes": 26234
+    },
+    {
+      "assetId": "KL_M08_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-09.webp",
+      "gitBlobSha": "5a2e866350e1d6c37011158012cdb05c66807e3a",
+      "bytes": 25568
+    },
+    {
+      "assetId": "KL_M08_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-10.webp",
+      "gitBlobSha": "9ed10d3a65886d4c800dd3b7894ec27d1a0103f6",
+      "bytes": 11468
+    },
+    {
+      "assetId": "KL_M08_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-11.webp",
+      "gitBlobSha": "dd203228cd892c25f018dd3dab8bfbd7d3b372f7",
+      "bytes": 30698
+    },
+    {
+      "assetId": "KL_M08_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M08/KL-M08-12.webp",
+      "gitBlobSha": "82cccef15f5c71f5637e2cc3d67dea2bfead0a47",
+      "bytes": 22438
+    },
+    {
+      "assetId": "KL_M09_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-01.webp",
+      "gitBlobSha": "2402be03aaa8660fbfaaf28d6179869ea660c28e",
+      "bytes": 30968
+    },
+    {
+      "assetId": "KL_M09_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-02.webp",
+      "gitBlobSha": "7722543de7b8c8e9b355d0340c3d53a877b05edf",
+      "bytes": 35050
+    },
+    {
+      "assetId": "KL_M09_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-03.webp",
+      "gitBlobSha": "bc0641949b41b0ec5a10aab5a0748fd947e0373a",
+      "bytes": 24028
+    },
+    {
+      "assetId": "KL_M09_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-04.webp",
+      "gitBlobSha": "cd7f2f96be687745fc57f2e71600552cb383103c",
+      "bytes": 30598
+    },
+    {
+      "assetId": "KL_M09_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-05.webp",
+      "gitBlobSha": "2ba08464b774a0342ebc4b069bcbdef20e7c59c5",
+      "bytes": 44964
+    },
+    {
+      "assetId": "KL_M09_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-06.webp",
+      "gitBlobSha": "2493fab2509c530b58fe6899c3f7bea13051dcdd",
+      "bytes": 35040
+    },
+    {
+      "assetId": "KL_M09_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-07.webp",
+      "gitBlobSha": "2aced739ffd7bbbbeb41e6413c744f9f9d750cbf",
+      "bytes": 32164
+    },
+    {
+      "assetId": "KL_M09_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-08.webp",
+      "gitBlobSha": "8b2d2fffaab0e3ce9a3c916a234dfdcbdcceac86",
+      "bytes": 185420
+    },
+    {
+      "assetId": "KL_M09_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-09.webp",
+      "gitBlobSha": "1d21b4086b65f63babb1a2fdaedc64ab464e01cc",
+      "bytes": 172262
+    },
+    {
+      "assetId": "KL_M09_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-10.webp",
+      "gitBlobSha": "d6ef31af5847b3cbc85242e212d4f8cc654c1923",
+      "bytes": 22686
+    },
+    {
+      "assetId": "KL_M09_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-11.webp",
+      "gitBlobSha": "d130fe2f3e782e1b52b7c1cae23eddb7383fffbd",
+      "bytes": 30326
+    },
+    {
+      "assetId": "KL_M09_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M09/KL-M09-12.webp",
+      "gitBlobSha": "e8d5e477a2f36b4a00b71d48375e21b8173f41a9",
+      "bytes": 27424
+    },
+    {
+      "assetId": "KL_M10_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-01.webp",
+      "gitBlobSha": "2770cf1b9c35326050d881605b85893c2da9ade8",
+      "bytes": 33744
+    },
+    {
+      "assetId": "KL_M10_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-02.webp",
+      "gitBlobSha": "b4b8d07f5fd365e1b372b263b24d4c73aa3ce54c",
+      "bytes": 33700
+    },
+    {
+      "assetId": "KL_M10_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-03.webp",
+      "gitBlobSha": "4d9aab54f5a116b2554c51d61bea0d6400fecda7",
+      "bytes": 31358
+    },
+    {
+      "assetId": "KL_M10_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-04.webp",
+      "gitBlobSha": "bd9e926469bf5a43a8caa643fc39f64eb5889170",
+      "bytes": 27706
+    },
+    {
+      "assetId": "KL_M10_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-05.webp",
+      "gitBlobSha": "1ee6f907b2216522da2f59fdd3e79a312b747da5",
+      "bytes": 29992
+    },
+    {
+      "assetId": "KL_M10_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-06.webp",
+      "gitBlobSha": "662924ccb5cb7484374bb5583a2d12e9c4831cbc",
+      "bytes": 30046
+    },
+    {
+      "assetId": "KL_M10_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-07.webp",
+      "gitBlobSha": "85267cd4810a238f6ca2486712b09435e9319bb9",
+      "bytes": 27426
+    },
+    {
+      "assetId": "KL_M10_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-08.webp",
+      "gitBlobSha": "f160a6506f9fe45e46deaddd9d8ffc73edf3a400",
+      "bytes": 28696
+    },
+    {
+      "assetId": "KL_M10_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-09.webp",
+      "gitBlobSha": "f563130b0e770defff1dab8ea02412ae83cb48dd",
+      "bytes": 40388
+    },
+    {
+      "assetId": "KL_M10_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-10.webp",
+      "gitBlobSha": "79845ebe2501f40c0131aa4ac8a7e5708423e9ac",
+      "bytes": 25118
+    },
+    {
+      "assetId": "KL_M10_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-11.webp",
+      "gitBlobSha": "cc29b58e1f1e622e4e7af9e5b6ad0967e46f7887",
+      "bytes": 30474
+    },
+    {
+      "assetId": "KL_M10_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M10/KL-M10-12.webp",
+      "gitBlobSha": "55e7b222001674edeae6383c47df7e58653b0546",
+      "bytes": 35394
+    },
+    {
+      "assetId": "KL_M11_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-01.webp",
+      "gitBlobSha": "fafde11cdcd7523055a70fe43cb14594b64c3e01",
+      "bytes": 117176
+    },
+    {
+      "assetId": "KL_M11_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-02.webp",
+      "gitBlobSha": "2baebbe4d5186d15b32e56734e76103e78dbded4",
+      "bytes": 27320
+    },
+    {
+      "assetId": "KL_M11_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-03.webp",
+      "gitBlobSha": "fb9c8ca611c0a6d1c0a6fafaf38279e370ad4a3c",
+      "bytes": 29500
+    },
+    {
+      "assetId": "KL_M11_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-04.webp",
+      "gitBlobSha": "d3d814efb6af785f297254450fdd03768c13790b",
+      "bytes": 18004
+    },
+    {
+      "assetId": "KL_M11_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-05.webp",
+      "gitBlobSha": "a5d7f47d3cb9360fb08585929f8015b53f63b13c",
+      "bytes": 31144
+    },
+    {
+      "assetId": "KL_M11_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-06.webp",
+      "gitBlobSha": "60b47921353b7a1d01c5df99e4bf5b81d12a7bc6",
+      "bytes": 44054
+    },
+    {
+      "assetId": "KL_M11_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-07.webp",
+      "gitBlobSha": "5f2f1f4b03ded26a6f148d71e96deeacd641786f",
+      "bytes": 18294
+    },
+    {
+      "assetId": "KL_M11_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-08.webp",
+      "gitBlobSha": "71bb70389a0fe17209e60d204d3925c5207bd0c2",
+      "bytes": 25462
+    },
+    {
+      "assetId": "KL_M11_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-09.webp",
+      "gitBlobSha": "84c89484370f386113e6152acd6b85eb189b13f5",
+      "bytes": 31654
+    },
+    {
+      "assetId": "KL_M11_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-10.webp",
+      "gitBlobSha": "61a20a288256383ee6a00436e1d6149fe27b9ea1",
+      "bytes": 23214
+    },
+    {
+      "assetId": "KL_M11_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-11.webp",
+      "gitBlobSha": "951b1a9daf2fb7e3323c66acf9ad637b0159e3f8",
+      "bytes": 133444
+    },
+    {
+      "assetId": "KL_M11_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M11/KL-M11-12.webp",
+      "gitBlobSha": "880d910aca08582fe1f17c04c7065332e86036a5",
+      "bytes": 27876
+    },
+    {
+      "assetId": "KL_M12_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-01.webp",
+      "gitBlobSha": "d05160afbce7329ef2098d8cd4743ba147a70ba8",
+      "bytes": 28874
+    },
+    {
+      "assetId": "KL_M12_002",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-02.webp",
+      "gitBlobSha": "f3340ed62577bdf70d456aee54c43138ef280d0b",
+      "bytes": 47754
+    },
+    {
+      "assetId": "KL_M12_003",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-03.webp",
+      "gitBlobSha": "113c5d6d6ae9694f2c31b736dbc4db3417dfe349",
+      "bytes": 21648
+    },
+    {
+      "assetId": "KL_M12_004",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-04.webp",
+      "gitBlobSha": "6861be18f9d1efc16a704746255b682b7488dc0a",
+      "bytes": 18112
+    },
+    {
+      "assetId": "KL_M12_005",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-05.webp",
+      "gitBlobSha": "30e4b75aee3e0c56e051a42eb2b33daf291fbdd4",
+      "bytes": 24988
+    },
+    {
+      "assetId": "KL_M12_006",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-06.webp",
+      "gitBlobSha": "2c455e3be04cadc2a41bbae7b2100e5ca3baace8",
+      "bytes": 19486
+    },
+    {
+      "assetId": "KL_M12_007",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-07.webp",
+      "gitBlobSha": "62c66026d9ce366bce143d842ecf7f8840f78921",
+      "bytes": 29656
+    },
+    {
+      "assetId": "KL_M12_008",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-08.webp",
+      "gitBlobSha": "b917878472f50a6b897a86f20729f5f831f66994",
+      "bytes": 32742
+    },
+    {
+      "assetId": "KL_M12_009",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-09.webp",
+      "gitBlobSha": "815743fcc3508f30bf88f16b1266f12bc71f8295",
+      "bytes": 25100
+    },
+    {
+      "assetId": "KL_M12_010",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-10.webp",
+      "gitBlobSha": "8a1f8a2c699559d38f2d8f92797541199c738f9e",
+      "bytes": 16904
+    },
+    {
+      "assetId": "KL_M12_011",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-11.webp",
+      "gitBlobSha": "a8eb330215eaf8c57bc337bb7a8035d2e4abeb05",
+      "bytes": 32676
+    },
+    {
+      "assetId": "KL_M12_012",
+      "path": "hinh-anh/webp-g7/v1/WEBP/M12/KL-M12-12.webp",
+      "gitBlobSha": "6459ed678b8aa9c41c588ceb9b36a01f0873a628",
+      "bytes": 14820
+    }
+  ],
+  "total": 288,
+  "totalBytes": 12350644,
+  "sourceBlobRegistry": "544377bf3cbc0d7b19a4a6f76efd9ae84845b123"
+}
