@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "baselineCommit": "7d454560190785d295cfc3793902672a699e79c1",
   "branch": "test/g7-6-b6-c083-owner-e04-activation-readiness-20261116",
-  "status": "REVIEW_PACKET_PASS_TECHNICALLY_OWNER_DECISIONS_UNSIGNED_NO_GO",
+  "status": "OWNER_DECISION_PACKETS_TECHNICALLY_PASS_UNSIGNED_NO_GO_ACTIVATION",
   "inheritedC082Run": 43791133947,
   "counts": {
     "legacySourceIdsReviewed": 13,
@@ -20,9 +20,13 @@
     "p06Test": "NOT_AUTHORIZED"
   },
   "technicalCi": {
-    "status": "NOT_YET_VERIFIED",
-    "runId": null,
-    "runHeadSha": null
+    "status": "COMPLETED_SUCCESS",
+    "runId": 43791632566,
+    "runHeadSha": "5250302f7d3f38093c3434b849d556d7dc5be008",
+    "artifactId": 14193140739,
+    "ownerDecisionTests": "NO_GO_GATES_PASS",
+    "sourceOnly": true,
+    "original1710AssertionsRerun": false
   },
   "protected": {
     "sourceSheetsUnchanged": true,

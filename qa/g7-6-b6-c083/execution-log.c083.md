@@ -5,3 +5,5 @@
 03 | Build unsigned separate D5, D9 decision options, source item disposition, skill ID options, multi-stage activation matrix.
 04 | Continue C07 independent; no manifest, GAS, runtime or source mutations.
 05 | Run C08.3-only CI on isolated branch; record new run in checkpoint on next commit.
+
+06 | GitHub CI 43791632566 SUCCESS on 5250302f7d3f38093c3434b849d556d7dc5be008; artifact 14193140739; pinned P0.6 and B5-A approval fail-closed check passed. No approvals granted.
