@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "be-hoc.d2.manual-carry.checkpoint.v1",
+  "branch": "be-hoc",
+  "baseCommit": "e8fc06b38fb9df1ae5cf986d684265c702e0b72a",
+  "contract": "D2_MANUAL_CARRY_REQUIRED_V1",
+  "status": "PENDING_CI",
+  "gasDeployed": false,
+  "realScoreWrites": false,
+  "serverGradingConnected": false,
+  "ci": {
+    "status": "PENDING"
+  },
+  "rollbackCommit": "e8fc06b38fb9df1ae5cf986d684265c702e0b72a"
+}

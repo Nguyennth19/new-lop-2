@@ -16,14 +16,14 @@ function fromB20(q){
  // Never inspect private solution fields; only forward visible operands.
  const base=API.publicPlan(candidate);
  if(!base.ok)return base;
- return root.BE_HOC_D2_AUTO?root.BE_HOC_D2_AUTO.makePlan({variantId:candidate.variantId,profile:'PV100',operation:'ADD',level:q.level,operands:[a,b]}):base;
+ return root.BE_HOC_D2_MANUAL?root.BE_HOC_D2_MANUAL.makePlan({variantId:candidate.variantId,profile:'PV100',operation:'ADD',level:q.level,operands:[a,b]}):base;
 }
 function fromB20Three(q){
  if(!q||q.type!=='mental'||q.variantType!=='three'||q.valid!==true||!validId(q.id))return {ok:false,reason:'NOT_VERIFIED_THREE_ADDENDS'};
  if(!['LV1','LV2','LV3'].includes(q.level))return {ok:false,reason:'INVALID_LEVEL'};
  const operands=[q.n1,q.n2,q.n3].map(Number);
  if(operands.some(n=>!Number.isSafeInteger(n)||n<0||n>99))return {ok:false,reason:'OPERAND_OUT_OF_SCOPE'};
- return root.BE_HOC_D2_AUTO.makePlan({variantId:'COL_B20_'+q.id,profile:'PV100',operation:'ADD',level:q.level,operands});
+ return root.BE_HOC_D2_MANUAL.makePlan({variantId:'COL_B20_'+q.id,profile:'PV100',operation:'ADD',level:q.level,operands});
 }
 function mountB20(data,screen,viewName){
  if(!API||!View||!data||data.lesson?.id!=='toan_b20'||!Array.isArray(data.questions)||!screen||!screen.querySelector)return {ok:false,reason:'INVALID_LESSON'};
@@ -35,13 +35,13 @@ function mountB20(data,screen,viewName){
   const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(n=>n.dataset.mlQCard===q.id);
   if(!card||card.querySelector('[data-d2-practice]'))continue;
   const holder=document.createElement('details');holder.className='kl-d2-practice';holder.dataset.d2Practice=q.id;
-  const summary=document.createElement('summary');summary.textContent='🧮 Thử đặt tính D2 V1.2 (không tính điểm)';
-  const note=document.createElement('p');note.className='kl-d2-b20-note';note.textContent='Ô nhớ tự điền từ các số đã cho. Em chỉ điền chữ số kết quả; khung này không chấm điểm và không cấp sao.';
+  const summary=document.createElement('summary');summary.textContent='🧮 Đặt tính: tự điền ô nhớ (luyện tập)';
+  const note=document.createElement('p');note.className='kl-d2-b20-note';note.textContent='Em tự điền số nhớ và chữ số kết quả; không nhớ thì để trống. Khung này chưa chấm hay cấp sao.';
   const mount=document.createElement('div');mount.className='kl-d2-mount';
   holder.append(summary,note,mount);card.append(holder);
   holder.addEventListener('toggle',()=>{
    if(!holder.open||holder.dataset.d2Mounted==='1')return;
-   const result=root.BE_HOC_D2_AUTO.mount(mount,[plan],{
+   const result=root.BE_HOC_D2_MANUAL.mount(mount,[plan],{
     onSpeak:p=>{const rows=[p.a,p.b,...(p.additionalRows||[])];const text=rows.map(row=>row.slice().reverse().map(x=>x.digit).join('')).join(' cộng ')+' bằng mấy?';
      if(root.BE_HOC_GIONG_DOC_V2)root.BE_HOC_GIONG_DOC_V2.speak(text,null);},
     onChange:()=>{const status=mount.querySelector('.kl-col-v12-status');if(status)status.textContent='Đang luyện tập; chưa gửi chấm điểm.';},
@@ -56,16 +56,16 @@ function mountB20(data,screen,viewName){
 }
 function handleKey(k){
  const active=document.activeElement;
- const curr=active?.matches?.('#mathFullScreen .kl-d2-practice[open] .kl-col-v12-answer')?active:lastField;
+ const curr=active?.matches?.('#mathFullScreen .kl-d2-practice[open] .kl-col-v12-answer, #mathFullScreen .kl-d2-practice[open] .kl-d2-manual-carry')?active:lastField;
  if(!curr||!curr.isConnected||!curr.closest('.kl-d2-practice[open]'))return false;
  if(active?.matches?.('#mathFullScreen [data-ml-field]'))return false;
  if(k==='⌫')curr.value=curr.value.slice(0,-1);
- else if(/^[0-9]$/.test(k))curr.value=k;
+ else if(/^[0-9]$/.test(k))curr.value=curr.classList.contains('kl-d2-manual-carry')?(curr.value+k).slice(0,Number(curr.maxLength)||2):k;
  else return true;
  curr.dispatchEvent(new Event('input',{bubbles:true}));return true;
 }
 document.addEventListener('focusin',e=>{
- if(e.target.matches?.('#mathFullScreen .kl-d2-practice .kl-col-v12-answer'))lastField=e.target;
+ if(e.target.matches?.('#mathFullScreen .kl-d2-practice .kl-col-v12-answer, #mathFullScreen .kl-d2-practice .kl-d2-manual-carry'))lastField=e.target;
  else if(e.target.matches?.('#mathFullScreen [data-ml-field]'))lastField=null;
 });
 root.BE_HOC_D2_V12=Object.freeze({fromB20,fromB20Three,mountB20,handleKey});

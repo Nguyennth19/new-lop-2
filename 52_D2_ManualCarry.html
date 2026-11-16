@@ -1,0 +1,58 @@
+/* D2_MANUAL_CARRY_REQUIRED_V1 — learner supplies memory; no answer key in client.
+ * Reuse byte-frozen D2 core and view, overlay blank input fields and extra rows.
+ */
+(function(root){
+'use strict';
+const Core=root.KLColumnV12,View=root.KLColumnViewV12;
+const PLACES=['ones','tens','hundreds','thousands'];
+const reject=reason=>({ok:false,reason});
+function makePlan(s){
+ if(!s||s.operation!=='ADD'||!Array.isArray(s.operands)||s.operands.length<2||s.operands.length>4)return reject('OPERANDS_2_TO_4_ADD_ONLY');
+ const max=s.profile==='PV100'?99:s.profile==='PV1000'?999:null;
+ if(max===null||s.operands.some(x=>!Number.isSafeInteger(x)||x<0||x>max))return reject('OPERAND_OUT_OF_SCOPE');
+ if(s.operands.reduce((a,b)=>a+b,0)>max)return reject('RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+ const plan=Core.publicPlan({variantId:s.variantId,profile:s.profile,operation:'ADD',level:s.level,
+  a:s.operands[0],b:s.operands[1],carryPolicy:'OPTIONAL_HINT',assetId:null});
+ if(!plan.ok)return plan;
+ const rows=s.operands.slice(2).map(n=>plan.displayOrder.map(place=>({place,digit:Math.floor(n/10**PLACES.indexOf(place))%10})));
+ return Object.freeze({...plan,additionalRows:rows,operandCount:s.operands.length,
+  transitionSlots:plan.transitionSlots.map(x=>({...x,role:'LEARNER_NUMERIC_INPUT',value:null})),
+  carryMode:'MANUAL_INPUT_REQUIRED',carryPolicy:'REQUIRED_ASSESSED',manualCarryMaxDigits:2,
+  gradingEnabled:false,runtimeEnabled:false,contractId:'D2_MANUAL_CARRY_REQUIRED_V1'});
+}
+function decorate(card,plan,onChange){
+ const grid=card?.querySelector('.kl-col-v12-number-grid'),rule=grid?.querySelector('.kl-col-v12-rule');
+ if(!grid||!rule)return reject('MISSING_GRID');
+ for(const row of plan.additionalRows||[]){
+  const sign=document.createElement('span');sign.className='kl-col-v12-sign kl-d2-multi-row';sign.textContent='+';
+  grid.insertBefore(sign,rule);
+  for(const item of row){const el=document.createElement('span');el.className='kl-col-v12-digit kl-d2-multi-row';el.textContent=String(item.digit);grid.insertBefore(el,rule);}
+ }
+ for(const button of [...grid.querySelectorAll('.kl-col-v12-transition')]){
+  const field=document.createElement('input');field.type='text';field.inputMode='numeric';field.autocomplete='off';
+  field.maxLength=plan.manualCarryMaxDigits;field.className='kl-d2-manual-carry';field.dataset.carryInput=button.dataset.transition;
+  field.dataset.place=button.dataset.place;field.value='';field.setAttribute('aria-label','Tự điền số nhớ hàng '+button.dataset.place);
+  field.addEventListener('input',()=>{field.value=field.value.replace(/\D/g,'').slice(0,plan.manualCarryMaxDigits);onChange?.();});
+  button.replaceWith(field);
+ }
+ const note=card.querySelector('.kl-col-v12-note');
+ if(note)note.textContent='Tự điền ô nhớ nếu có; không nhớ thì để trống. Cả đáp số và ô nhớ phải đúng khi chấm. Hiện đây là bài luyện không tính điểm.';
+ card.querySelector('.kl-col-v12-reset')?.addEventListener('click',()=>{card.querySelectorAll('.kl-d2-manual-carry').forEach(x=>{x.value='';});onChange?.();});
+ card.dataset.carryMode='manual';card.dataset.operandCount=String(plan.operandCount);
+ return {ok:true};
+}
+function mount(container,plans,callbacks={}){
+ if(!Array.isArray(plans)||!plans.length||plans.some(p=>!p?.ok||p.carryMode!=='MANUAL_INPUT_REQUIRED'||p.operation!=='ADD'))return reject('INVALID_MANUAL_PLAN');
+ let result;
+ const collect=i=>{
+  const payload={...result.collect(i)};
+  for(const field of result.cards.children[i].querySelectorAll('.kl-d2-manual-carry'))payload[field.dataset.carryInput]=field.value;
+  return payload;
+ };
+ const wrapped={onSpeak:callbacks.onSpeak,onChange:i=>{if(result)callbacks.onChange?.(i,collect(i));},onSubmit:i=>{if(result)callbacks.onSubmit?.(i,collect(i));}};
+ result=View.mount(container,plans,wrapped);if(!result.ok)return result;
+ for(let i=0;i<plans.length;i++){const r=decorate(result.cards.children[i],plans[i],()=>wrapped.onChange(i));if(!r.ok)return r;}
+ return {...result,collect};
+}
+root.BE_HOC_D2_MANUAL=Object.freeze({makePlan,decorate,mount});
+})(window);

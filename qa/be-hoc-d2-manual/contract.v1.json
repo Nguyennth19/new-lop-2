@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "D2_MANUAL_CARRY_REQUIRED_V1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "humanDirective": "MANUAL_CARRY_ASSESSED",
+  "learner": {
+    "defaultCarry": "",
+    "editable": true,
+    "autoPopulate": false,
+    "slots": "carry_<destinationPlace>",
+    "maxDigits": 2,
+    "zeroCarryShouldBeBlank": true
+  },
+  "score": {
+    "allResultDigitsMustMatch": true,
+    "allRequiredCarryValuesMustMatch": true,
+    "missingCarryWrong": true,
+    "wrongCarryWrong": true,
+    "unneededCarryMustBeBlank": true,
+    "questionCreditIfAllCorrect": 1,
+    "partialCredit": 0,
+    "clientAwardsStars": false,
+    "authority": "TRUSTED_SERVER_ONLY"
+  },
+  "scope": {
+    "operation": "ADD_ONLY",
+    "operandCounts": [
+      2,
+      3,
+      4
+    ],
+    "B20": "vertical and eligible mental-three",
+    "PV1000": "QA_ONLY",
+    "result1000": "BLOCKED"
+  },
+  "gates": {
+    "GAS_DEPLOY": "NO_GO",
+    "ACTUAL_SERVER_GRADING": "PENDING",
+    "C07": "UNCHANGED",
+    "C08": "UNCHANGED",
+    "C09": "UNCHANGED",
+    "C12": "UNCHANGED"
+  },
+  "sourcePins": {
+    "D2Core": "16ae440618bcb3cf90706cdad2ccd11cbadc222a",
+    "D2View": "214b615d0c595dfd76695c75e5443cefc36a921d"
+  },
+  "rollbackCommit": "e8fc06b38fb9df1ae5cf986d684265c702e0b72a"
+}

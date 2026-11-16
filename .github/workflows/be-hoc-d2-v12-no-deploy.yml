@@ -8,6 +8,7 @@ on:
       - '47_D2V12_Core.html'
       - '48_D2V12_View.html'
       - '49_D2V12_BaiHoc.html'
+      - '52_D2_ManualCarry.html'
       - '50_CSS_D2V12.html'
       - 'qa/be-hoc-d2-v12/**'
       - '.github/workflows/be-hoc-d2-v12-no-deploy.yml'
@@ -36,4 +37,4 @@ jobs:
           for f in MayChu.gs ThanhTichMayChu.gs 26_ChamCauHoiToan.html appsscript.json; do
             test "$(git hash-object "$f")" = "$(git show a69cb2153590645b1f9ee7119011cfbd7a324eae:"$f" | git hash-object --stdin)"
           done
-          node qa/be-hoc-d2-v12/d2-contract.test.cjs
+          node qa/be-hoc-d2-manual/manual-contract.test.cjs

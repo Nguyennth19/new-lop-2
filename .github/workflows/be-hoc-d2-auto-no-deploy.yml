@@ -1,13 +1,13 @@
-name: BE-HOC D2 automatic carry and 3/4 operand QA
+name: BE-HOC D2 manual carry required QA
 on:
   push:
     branches: [be-hoc]
     paths:
-      - '51_D2_AutoCarry.html'
+      - '52_D2_ManualCarry.html'
       - '49_D2V12_BaiHoc.html'
       - '50_CSS_D2V12.html'
       - 'GiaoDien.html'
-      - 'qa/be-hoc-d2-auto/**'
+      - 'qa/be-hoc-d2-manual/**'
       - '.github/workflows/be-hoc-d2-auto-no-deploy.yml'
   workflow_dispatch:
 permissions:
@@ -33,10 +33,10 @@ jobs:
           for f in MayChu.gs 26_ChamCauHoiToan.html ThanhTichMayChu.gs appsscript.json; do
             test "$(git hash-object "$f")" = "$(git show 72d52c32aa81e37e989629c11c7f892b65d612a2:"$f" | git hash-object --stdin)"
           done
-      - run: node qa/be-hoc-d2-auto/d2-auto.test.cjs
-      - run: node qa/be-hoc-d2-auto/private-scoring-policy.test.cjs
+      - run: node qa/be-hoc-d2-manual/manual-contract.test.cjs
+      - run: node qa/be-hoc-d2-manual/private-manual-grade.test.cjs
       - name: Install isolated Chromium
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
           npx playwright install --with-deps chromium
-      - run: node qa/be-hoc-d2-auto/d2-auto.browser.test.cjs
+      - run: node qa/be-hoc-d2-manual/manual-browser.test.cjs

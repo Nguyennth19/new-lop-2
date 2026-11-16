@@ -8,6 +8,7 @@ on:
       - '47_D2V12_Core.html'
       - '48_D2V12_View.html'
       - '49_D2V12_BaiHoc.html'
+      - '52_D2_ManualCarry.html'
       - '50_CSS_D2V12.html'
       - 'qa/be-hoc-d2-v12/**'
       - '.github/workflows/be-hoc-d2-v12-chromium.yml'
@@ -28,4 +29,4 @@ jobs:
       - run: |
           npm install --no-save --no-package-lock playwright@1.56.1
           npx playwright install --with-deps chromium
-      - run: node qa/be-hoc-d2-v12/d2-browser.test.cjs
+      - run: node qa/be-hoc-d2-manual/manual-browser.test.cjs
