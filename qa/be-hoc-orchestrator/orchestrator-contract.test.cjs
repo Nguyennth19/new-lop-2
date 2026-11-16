@@ -2,7 +2,7 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 let count=0;const ok=(x,m)=>{assert.ok(x,m);count++},eq=(a,b)=>{assert.deepEqual(a,b);count++};
 const gui=fs.readFileSync('GiaoDien.html','utf8'),math=fs.readFileSync('19_KhongGianHocToan.html','utf8');
-const modules=['65_D1_Type1','66_D3_Core','67_D3_View','68_D4_Core','69_D4_View','70_D5_View','71_D6_Core','72_D6_View','73_D7_Core','74_D7_View','75_D8_Core','76_D8_View','77_D8A_Core','78_D8A_View','79_D8B_View','80_D10_Core','81_D10_Adapter','83_Visual_Orchestrator'];
+const modules=['65_D1_Type1','66_D3_Core','67_D3_View','68_D4_Core','69_D4_View','70_D5_View','71_D6_Core','72_D6_View','73_D7_Core','74_D7_View','75_D8_Core','76_D8_View','77_D8A_Core','78_D8A_View','79_D8B_View','80_D10_Core','81_D10_Adapter','85_Fluent_Asset_46','83_Visual_Orchestrator'];
 for(const m of modules)eq(gui.split("napThanhPhan('"+m+"')").length-1,1);
 eq(gui.split("napThanhPhan('82_CSS_OrchestratorModules')").length-1,1);
 ok(math.includes('BE_HOC_VISUAL_ORCHESTRATOR.mountLesson(fullData,root,view)'));
@@ -27,4 +27,6 @@ const unknown=vm.runInNewContext("window.BE_HOC_VISUAL_ORCHESTRATOR.resolve({ren
 const d2=vm.runInNewContext("window.BE_HOC_VISUAL_ORCHESTRATOR.resolve({rendererId:'D2',lessonId:'toan_b20',questionId:'q1',questionType:'vertical',skillId:'ADD_WITH_CARRY_2DIGIT',publicVariant:{}})",ctx);eq(d2.ok,true);
 const d2dup=vm.runInNewContext("window.BE_HOC_VISUAL_ORCHESTRATOR.mountEnvelope({ownerDocument:{}},{rendererId:'D2',lessonId:'toan_b20',questionId:'q1',questionType:'vertical',skillId:'ADD_WITH_CARRY_2DIGIT',publicVariant:{}})",ctx);eq(d2dup.reason,'D2_DELEGATED_TO_MANUAL_CARRY_HOST');
 eq(api.release,'SOURCE_TEST_ONLY');
+eq(api.chooseAsset({assetId:'FLUENT:banana',visualIntent:'EXACT_COUNT',countUnit:'quả',exactQuantity:3}).ok,true);
+eq(api.chooseAsset({assetId:'FLUENT:books',visualIntent:'EXACT_COUNT',countUnit:'cuốn',exactQuantity:3}).ok,false);
 console.log('VISUAL_ORCHESTRATOR_V1_CORE_PASS',count,'assertions');

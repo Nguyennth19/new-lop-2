@@ -11,7 +11,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),{chromium}=requ
   await page.setContent('<!doctype html><html lang="vi"><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><main id="mathFullScreen"><section id="mlContent"></section></main></body></html>');
   const modules=['47_D2V12_Core','48_D2V12_View','53_Geometry_Core','55_Pictograph_Core','56_Pictograph_View','59_Visual_Public_Assets',
    '65_D1_Type1','66_D3_Core','67_D3_View','68_D4_Core','69_D4_View','70_D5_View','71_D6_Core','72_D6_View',
-   '73_D7_Core','74_D7_View','75_D8_Core','76_D8_View','77_D8A_Core','78_D8A_View','79_D8B_View','80_D10_Core','81_D10_Adapter','83_Visual_Orchestrator'];
+   '73_D7_Core','74_D7_View','75_D8_Core','76_D8_View','77_D8A_Core','78_D8A_View','79_D8B_View','80_D10_Core','81_D10_Adapter','85_Fluent_Asset_46','83_Visual_Orchestrator'];
   for(const m of modules)await page.addScriptTag({content:fs.readFileSync(m+'.html','utf8')});
   const result=await page.evaluate(()=>{
    const api=window.BE_HOC_VISUAL_ORCHESTRATOR;
@@ -28,9 +28,11 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),{chromium}=requ
   assert.equal(result.names.length,12);n++;
   assert.equal(result.images,288);n++;
   assert.equal(result.decorator,true);n++;
-  assert.equal(result.denied,'EXACT_COUNT_EVIDENCE_NOT_PINNED');n++;
+  assert.equal(result.denied,'WEBP_EXACT_COUNT_UNIT_NOT_PINNED');n++;
   assert.equal(result.bad,'LESSON_POLICY_NOT_APPROVED');n++;
   assert.equal(result.good,true);n++;
+  const fluent=await page.evaluate(()=>window.BE_HOC_VISUAL_ORCHESTRATOR.chooseAsset({assetId:'FLUENT:banana',visualIntent:'EXACT_COUNT',countUnit:'quả',exactQuantity:4}));
+  assert.equal(fluent.ok,true);n++;
   const widths=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:innerWidth}));
   assert(widths.scroll<=widths.view+1,label+' overflow');n++;
   await ctx.close();
