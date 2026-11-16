@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "g76b6.per-gate-approval-packet.v1",
+  "stage": "G7.6-B.6",
+  "gateId": "C10",
+  "name": "Per-asset WebP/Fluent content runtime activation",
+  "sourceStatusAtB5C": "BLOCKED_PER_ASSET_QA",
+  "approvalStatus": "PENDING_INDIVIDUAL_OWNER_REVIEW",
+  "decision": "UNSIGNED_NO_GO",
+  "ownerRole": "ASSET_AND_SECURITY_OWNER",
+  "baselineCommit": "2862a81908557212e6561c6372df435d9d236784",
+  "supportingEvidence": [
+    "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+    "du-lieu/asset-selector/asset-registry-288.v1.json",
+    "hinh-anh/svg-fallback/fluent-emoji-flat/v1/manifest.v1.json"
+  ],
+  "requiresGates": [],
+  "acceptanceCriteria": [
+    "Physical content/hash/license/security/semantics reviewed per asset",
+    "288 labels do not authorize 288 runtime contents",
+    "46 Fluent staging assets remain disabled pending explicit per-icon security signoff",
+    "No count inference from decorative icons, dynamic geometry uses SVG",
+    "Explicit allowlist and rollback per asset"
+  ],
+  "hardLocks": [
+    "NO_AUTO_ACTIVATION",
+    "NO_ASSET_AUTOPROMOTION"
+  ],
+  "reviewerName": null,
+  "reviewerId": null,
+  "reviewerSignature": null,
+  "reviewDate": null,
+  "approvalRef": null,
+  "approvedScope": null,
+  "approvedCommit": null,
+  "allowRuntimeChange": false,
+  "allowManifestMutation": false,
+  "allowAppIntegration": false,
+  "allowDeployment": false,
+  "rollback": {
+    "toCommit": "2862a81908557212e6561c6372df435d9d236784",
+    "action": "STOP_READING_B6_GATE_PACK_AND_USE_B5C_STATE",
+    "requiresRuntimeRevert": false
+  }
+}

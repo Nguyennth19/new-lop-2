@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "g76b6.per-gate-approval-packet.v1",
+  "stage": "G7.6-B.6",
+  "gateId": "C12",
+  "name": "Public host-app read-only adapter boundary",
+  "sourceStatusAtB5C": "NOT_STARTED_BY_DESIGN",
+  "approvalStatus": "PENDING_INDIVIDUAL_OWNER_REVIEW",
+  "decision": "UNSIGNED_NO_GO",
+  "ownerRole": "APP_INTEGRATION_AND_SECURITY_OWNER",
+  "baselineCommit": "2862a81908557212e6561c6372df435d9d236784",
+  "supportingEvidence": [
+    "du-lieu/g7-6/variant-public-envelope.schema.json",
+    "qa/g7-6-b5c/integration-go-no-go.matrix.v1.json"
+  ],
+  "requiresGates": [
+    "C07",
+    "C08",
+    "C09",
+    "C11"
+  ],
+  "acceptanceCriteria": [
+    "Approve versioned route and readonly public-plan schema with strict allowlist",
+    "Reject private answerSpec, gradingKey, proof, secret, score/stars, student data",
+    "Define validation, refusal/error states, auth boundary and no-GAS-execution dry-run",
+    "No main/test-theo-main mutation and no GAS deploy at this stage",
+    "Separate authorization for future integration and deployment, never implied by CI"
+  ],
+  "hardLocks": [
+    "NO_HOST_WIRING",
+    "NO_GAS",
+    "NO_DATA_IO"
+  ],
+  "reviewerName": null,
+  "reviewerId": null,
+  "reviewerSignature": null,
+  "reviewDate": null,
+  "approvalRef": null,
+  "approvedScope": null,
+  "approvedCommit": null,
+  "allowRuntimeChange": false,
+  "allowManifestMutation": false,
+  "allowAppIntegration": false,
+  "allowDeployment": false,
+  "rollback": {
+    "toCommit": "2862a81908557212e6561c6372df435d9d236784",
+    "action": "STOP_READING_B6_GATE_PACK_AND_USE_B5C_STATE",
+    "requiresRuntimeRevert": false
+  }
+}

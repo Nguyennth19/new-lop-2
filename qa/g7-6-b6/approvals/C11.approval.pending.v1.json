@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "g76b6.per-gate-approval-packet.v1",
+  "stage": "G7.6-B.6",
+  "gateId": "C11",
+  "name": "All ten forms multi-lesson real-producer E2E coverage",
+  "sourceStatusAtB5C": "NOT_EVIDENCED_BY_14_CASE_B5B",
+  "approvalStatus": "PENDING_INDIVIDUAL_OWNER_REVIEW",
+  "decision": "UNSIGNED_NO_GO",
+  "ownerRole": "QA_OWNER",
+  "baselineCommit": "2862a81908557212e6561c6372df435d9d236784",
+  "supportingEvidence": [
+    "qa/g7-6-b5c/checkpoint.g76b5c.v1.json",
+    "qa/g7-6-b5c/integration-go-no-go.matrix.v1.json"
+  ],
+  "requiresGates": [
+    "C08",
+    "C09"
+  ],
+  "acceptanceCriteria": [
+    "Build actual producer/renderer by lessonId x typeId x LV1/LV2/LV3 coverage matrix",
+    "Separate registry12 technical coverage from B5B 14-case E2E five-family subset",
+    "Exercise non-public-answer, accessibility, TTS, count, rollback and negative cases",
+    "No assertion of ten-form coverage until representative sample CI and owner UX acceptance"
+  ],
+  "hardLocks": [
+    "NO_FULL_COVERAGE_CLAIM"
+  ],
+  "reviewerName": null,
+  "reviewerId": null,
+  "reviewerSignature": null,
+  "reviewDate": null,
+  "approvalRef": null,
+  "approvedScope": null,
+  "approvedCommit": null,
+  "allowRuntimeChange": false,
+  "allowManifestMutation": false,
+  "allowAppIntegration": false,
+  "allowDeployment": false,
+  "rollback": {
+    "toCommit": "2862a81908557212e6561c6372df435d9d236784",
+    "action": "STOP_READING_B6_GATE_PACK_AND_USE_B5C_STATE",
+    "requiresRuntimeRevert": false
+  }
+}

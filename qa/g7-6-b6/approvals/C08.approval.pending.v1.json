@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "g76b6.per-gate-approval-packet.v1",
+  "stage": "G7.6-B.6",
+  "gateId": "C08",
+  "name": "D5/D9 SGK pages, skills and E04 pedagogy",
+  "sourceStatusAtB5C": "BLOCKED_SOURCE_AND_OWNER",
+  "approvalStatus": "PENDING_INDIVIDUAL_OWNER_REVIEW",
+  "decision": "UNSIGNED_NO_GO",
+  "ownerRole": "PEDAGOGICAL_OWNER",
+  "baselineCommit": "2862a81908557212e6561c6372df435d9d236784",
+  "supportingEvidence": [
+    "e04-sgk-skill-crosswalk.candidate.v1.json",
+    "SGK_T1_T2_PDF",
+    "B027_B065_LIVE_SHEETS"
+  ],
+  "requiresGates": [],
+  "acceptanceCriteria": [
+    "Reconcile conflicting source page numbers and edition/hash",
+    "Correct B065 clock/calendar contaminated exercise ledger",
+    "Confirm App runtime lessonId and skillId for D5 and D9 separately",
+    "Approve D5 3-piece vs SGK 4-triangle adaptation or reject",
+    "Validate D9 1 symbol=1 and only 2-row subset; LV2 SBT evidence",
+    "Independent signed E04 pedagogy decision for each family"
+  ],
+  "hardLocks": [
+    "SOURCE_CONFLICT",
+    "NO_E04_ACTIVATION"
+  ],
+  "reviewerName": null,
+  "reviewerId": null,
+  "reviewerSignature": null,
+  "reviewDate": null,
+  "approvalRef": null,
+  "approvedScope": null,
+  "approvedCommit": null,
+  "allowRuntimeChange": false,
+  "allowManifestMutation": false,
+  "allowAppIntegration": false,
+  "allowDeployment": false,
+  "rollback": {
+    "toCommit": "2862a81908557212e6561c6372df435d9d236784",
+    "action": "STOP_READING_B6_GATE_PACK_AND_USE_B5C_STATE",
+    "requiresRuntimeRevert": false
+  }
+}

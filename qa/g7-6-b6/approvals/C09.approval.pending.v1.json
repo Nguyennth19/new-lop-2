@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "g76b6.per-gate-approval-packet.v1",
+  "stage": "G7.6-B.6",
+  "gateId": "C09",
+  "name": "Official P0.6 E04 producer of real lesson",
+  "sourceStatusAtB5C": "NOT_READY_SIDECAR_ONLY",
+  "approvalStatus": "PENDING_INDIVIDUAL_OWNER_REVIEW",
+  "decision": "UNSIGNED_NO_GO",
+  "ownerRole": "PRODUCER_OWNER",
+  "baselineCommit": "2862a81908557212e6561c6372df435d9d236784",
+  "supportingEvidence": [
+    "qa/g7-6-b5a/e04-producer-contract.cjs",
+    "qa/g7-6-b5a/e04-curriculum-policy.draft.v1.json"
+  ],
+  "requiresGates": [
+    "C08"
+  ],
+  "acceptanceCriteria": [
+    "C08 approved, source registry immutable and signed",
+    "Design new generator contract with real lesson mapping (not lab B999)",
+    "No regression to P0.6 E02/E03, no answers in public payload",
+    "Independent producer contract and negative gates in isolated TEST",
+    "Explicit narrow authorization before any connection"
+  ],
+  "hardLocks": [
+    "NO_P06_CORE_CHANGE",
+    "NO_E04_RELEASE"
+  ],
+  "reviewerName": null,
+  "reviewerId": null,
+  "reviewerSignature": null,
+  "reviewDate": null,
+  "approvalRef": null,
+  "approvedScope": null,
+  "approvedCommit": null,
+  "allowRuntimeChange": false,
+  "allowManifestMutation": false,
+  "allowAppIntegration": false,
+  "allowDeployment": false,
+  "rollback": {
+    "toCommit": "2862a81908557212e6561c6372df435d9d236784",
+    "action": "STOP_READING_B6_GATE_PACK_AND_USE_B5C_STATE",
+    "requiresRuntimeRevert": false
+  }
+}

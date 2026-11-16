@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "g76b6.per-gate-approval-packet.v1",
+  "stage": "G7.6-B.6",
+  "gateId": "C07",
+  "name": "Mental renderer TEST auxiliary manifest registration",
+  "sourceStatusAtB5C": "BLOCKED_OWNER_MANIFEST_DECISION",
+  "approvalStatus": "PENDING_INDIVIDUAL_OWNER_REVIEW",
+  "decision": "UNSIGNED_NO_GO",
+  "ownerRole": "POLICY_OWNER",
+  "baselineCommit": "2862a81908557212e6561c6372df435d9d236784",
+  "supportingEvidence": [
+    "mental-renderer-registration.candidate.v1.json",
+    "qa/g7-6-b5a/auxiliary-renderer-overlay.v1.json"
+  ],
+  "requiresGates": [],
+  "acceptanceCriteria": [
+    "Owner signs renderer identity and public-plan whitelist",
+    "Choose separate TEST-only registry and version; 12 base renderers unchanged",
+    "Boundary negative tests: no answerSpec, client grading, score, stars, GAS",
+    "Versioned rollback and owner authorizes narrowly scoped TEST registry only"
+  ],
+  "hardLocks": [
+    "B5C_C07_UNAPPROVED",
+    "NO_MANIFEST_MUTATION"
+  ],
+  "reviewerName": null,
+  "reviewerId": null,
+  "reviewerSignature": null,
+  "reviewDate": null,
+  "approvalRef": null,
+  "approvedScope": null,
+  "approvedCommit": null,
+  "allowRuntimeChange": false,
+  "allowManifestMutation": false,
+  "allowAppIntegration": false,
+  "allowDeployment": false,
+  "rollback": {
+    "toCommit": "2862a81908557212e6561c6372df435d9d236784",
+    "action": "STOP_READING_B6_GATE_PACK_AND_USE_B5C_STATE",
+    "requiresRuntimeRevert": false
+  }
+}

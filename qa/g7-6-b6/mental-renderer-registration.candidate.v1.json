@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "g76b6.mental-registration-approval-candidate.v1",
+  "stage": "G7.6-B.6",
+  "date": "2026-11-16",
+  "proposalId": "C07_MATH_MENTAL_NUMBER_INPUT_V1_TEST",
+  "status": "PROPOSED_ONLY_OWNER_APPROVAL_REQUIRED",
+  "registrationTarget": "SEPARATE_AUXILIARY_MANIFEST_TEST_OVERLAY_ONLY",
+  "officialManifest": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+  "officialManifestMustRemainUnchanged": true,
+  "baseRegistryCount": 12,
+  "notAThirteenthForm": true,
+  "existingTestOverlay": "qa/g7-6-b5a/auxiliary-renderer-overlay.v1.json",
+  "auxiliaryRenderer": {
+    "id": "MATH_MENTAL_NUMBER_INPUT_V1",
+    "kind": "math.mental",
+    "typeId": "MENTAL_INPUT_TEST_EXTENSION",
+    "publicPlanSchema": "g76b3.mental-number-input.v1",
+    "sourcePolicy": "P06_E03_REAL_B21_ONLY",
+    "sourceCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "sourceLessonId": "toan_b21",
+    "projector": "qa/g7-6-b3/mental-number-input.cjs",
+    "view": "qa/g7-6-b3/mental-number-input-view.js",
+    "input": {
+      "kind": "NUMBER_INPUT",
+      "inputMode": "numeric",
+      "nonNegative": true,
+      "digitsOnly": true,
+      "maxLength": 3,
+      "rangePolicy": "PINNED_B21_ADDITION_CARRY_RESULT_WITHIN_100"
+    },
+    "publicProjectionFields": [
+      "schemaVersion",
+      "lessonId",
+      "questionId",
+      "skillFamily",
+      "typeId",
+      "mode",
+      "prompt",
+      "operands",
+      "input",
+      "rendererRegistration",
+      "voice",
+      "assetId",
+      "gradingEnabled",
+      "serverGradingConnected",
+      "answerKeyIncluded",
+      "progressWritesAllowed",
+      "starWritesAllowed",
+      "releaseReady"
+    ],
+    "secretPayloadPolicy": "STRICT_WHITELIST_NO_ANSWER_SPEC_VERIFIER_OR_PROOF",
+    "gradingEnabled": false,
+    "progressWritesAllowed": false,
+    "starWritesAllowed": false,
+    "studentWritesAllowed": false,
+    "speechEnabled": false,
+    "assetRuntimeEnabled": false,
+    "releaseReady": false
+  },
+  "registrationContract": {
+    "requestSource": "C07_OWNER_DECISION",
+    "sideBySideOfficialRegistry": false,
+    "nextStepOnlyIfApproved": "CREATE_VERSIONED_TEST_ONLY_AUXILIARY_REGISTRY_WITH_SEPARATE_CONTRACT_CI",
+    "noChangesTo": [
+      "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+      "du-lieu/g7-6/variant-public-envelope.schema.json",
+      "main",
+      "test-theo-main",
+      "GAS"
+    ],
+    "requiredEvidence": [
+      "OWNER_SIGNED_C07",
+      "SOURCE_HASH_PINNED",
+      "STRICT_PUBLIC_SCHEMA_AND_NEGATIVE_TESTS",
+      "ISOLATED_TEST_ROLLBACK",
+      "NO_STUDENT_IO"
+    ],
+    "ownerDecision": null,
+    "reviewerId": null,
+    "reviewerSignature": null,
+    "approvedAt": null,
+    "approvalRecorded": false
+  },
+  "forbidden": [
+    "AUTO_REGISTER_IN_BASE_12",
+    "RECLASSIFY_AS_D1_OR_D4",
+    "ADD_D13",
+    "GRADE_ON_CLIENT",
+    "EXPOSE_SECRETS",
+    "WRITE_STUDENT_SCORE_STARS",
+    "MERGE_OR_DEPLOY"
+  ],
+  "rollback": {
+    "baselineCommit": "2862a81908557212e6561c6372df435d9d236784",
+    "operation": "STOP_CONSUMING_B6_C07_CANDIDATE_AND_USE_B5A_OVERLAY_AS_BEFORE",
+    "runtimeRollback": false
+  }
+}

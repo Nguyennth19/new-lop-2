@@ -1,0 +1,51 @@
+name: G7.6-B.6 Policy Renderer Approval Closure (NO DEPLOY)
+on:
+  push:
+    branches:
+      - test/g7-6-b6-policy-renderer-approval-closure-20261116
+    paths:
+      - 'qa/g7-6-b6/**'
+      - 'docs/kiem-dinh/G7.6-B6*'
+      - '.github/workflows/g7-6-b6-approval-closure-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout isolated candidate only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm B5C frozen ancestor and restrict all changed paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 2862a81908557212e6561c6372df435d9d236784 HEAD
+          if git diff --name-only 2862a81908557212e6561c6372df435d9d236784 HEAD | grep -Ev '^(qa/g7-6-b6/|docs/kiem-dinh/G7\.6-B6|\.github/workflows/g7-6-b6-approval-closure-no-deploy\.yml)' ; then
+            echo 'G76B6_PROTECTED_DIFF_DENIED'; exit 1
+          fi
+          test "$(git show 2862a81908557212e6561c6372df435d9d236784:du-lieu/g7-6/resource-renderer-manifest.v1.json | git hash-object --stdin)" = "$(git hash-object du-lieu/g7-6/resource-renderer-manifest.v1.json)"
+          test "$(git show 2862a81908557212e6561c6372df435d9d236784:du-lieu/g7-6/variant-public-envelope.schema.json | git hash-object --stdin)" = "$(git hash-object du-lieu/g7-6/variant-public-envelope.schema.json)"
+          echo G76B6_NO_PROTECTED_SOURCE_MUTATION_PASS
+      - name: New B6 contracts and six unsigned gate packets ONLY
+        run: |
+          node --check qa/g7-6-b6/approval-closure-gates.test.cjs
+          node qa/g7-6-b6/approval-closure-gates.test.cjs
+      - name: Public-only policy and checkpoint receipt (NO DEPLOY)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B6-C07-C12-PENDING-APPROVALS-NO-DEPLOY
+          path: |
+            qa/g7-6-b6/mental-renderer-registration.candidate.v1.json
+            qa/g7-6-b6/e04-sgk-skill-crosswalk.candidate.v1.json
+            qa/g7-6-b6/approvals/*.json
+            qa/g7-6-b6/checkpoint.g76b6.v1.json
+          retention-days: 30

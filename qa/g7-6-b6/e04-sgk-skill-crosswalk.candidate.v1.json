@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "g76b6.e04-sgk-lesson-skill-crosswalk-candidate.v1",
+  "stage": "G7.6-B.6",
+  "date": "2026-11-16",
+  "status": "SOURCE_CONFLICTS_FOUND_CANDIDATE_ONLY_NO_PEDAGOGICAL_APPROVAL",
+  "sourceSystem": "GRADE2_KNTT",
+  "ownerCurriculumDecision": null,
+  "materialsRule": {
+    "SGK": "AUTHORITATIVE_FOR_LV1_SUBJECT_TO_EDITION_PAGE_IMAGE",
+    "SBT": "LV2_AFTER_SAME_SKILL_CROSSWALK_AND_QA",
+    "reference": "LV3_NOT_SUPPORTED",
+    "teacherGuide": "PEDAGOGICAL_REFERENCE_ONLY"
+  },
+  "evidence": {
+    "pdfVolume1DriveId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+    "pdfVolume2DriveId": "1T8RaavitX03_f0VvxjO1zOiXjnMBhrrs",
+    "pdfVolume1Public": "https://sqhx-hanoi.mediacdn.vn/91579363132710912/2025/11/19/1-sgk-toan-2-ket-noi-tri-thuc-tap-1-1763523535048210837133.pdf",
+    "pdfVolume2Public": "https://sqhx-hanoi.mediacdn.vn/91579363132710912/2025/11/19/2-sgk-toan-2-ket-noi-tri-thuc-tap-2-1763523535069399028015.pdf",
+    "internalIndexB027": "https://docs.google.com/spreadsheets/d/1mxIkQk0wmNcghUlP96j5y29RVEieCCK5Ie_OvRvfTHI/edit",
+    "internalIndexB065": "https://docs.google.com/spreadsheets/d/1gPmmM7WRE2m1rBsLL9LHDwePA4JXSoyTC4zwKUyOac4/edit",
+    "evidenceMethod": "PUBLIC_PDF_TEXT_CROSSCHECK_AND_PROJECT_SHEET_LIVE_READ; NOT_PHOTOGRAPHIC_PAGE_IMAGE_APPROVAL",
+    "originalDrivePdfByteHashesVerified": false,
+    "printedPageImageOwnerConfirmed": false,
+    "internalEditionRegisterHashesVerified": false
+  },
+  "candidates": [
+    {
+      "mode": "D5_TANGRAM",
+      "typeId": "D5",
+      "labLessonId": "toan_b999",
+      "labRenderer": "G76B5A_TANGRAM_PLACEMENT_V12",
+      "sourceLessonIdCandidate": "MATH_B027",
+      "sourceSkillIdCandidate": "SKILL_PRACTICE_SHAPES_DRAWING",
+      "sourceExerciseIdCandidate": null,
+      "appLessonId": null,
+      "appSkillId": null,
+      "curriculumRef": null,
+      "sourceSeries": "Kết nối tri thức với cuộc sống",
+      "volume": 1,
+      "lessonNumber": 27,
+      "lessonTitle": "Thực hành gấp, cắt, ghép, xếp hình. Vẽ đoạn thẳng",
+      "publicPdfPrintedPages": [
+        106,
+        107,
+        108,
+        109
+      ],
+      "projectSheetSessionPrintedPages": [
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceSessionIds": [
+        "SGK_B027_T01",
+        "SGK_B027_T02"
+      ],
+      "sourceRelatedExercise": "Bài 2, trang 106: sử dụng BỐN hình tam giác để ghép mẫu",
+      "labGeometricCount": 3,
+      "sgkExampleTriangleCount": 4,
+      "matchingClassification": "TOPIC_SKILL_CANDIDATE_NOT_EXERCISE_EQUIVALENCE",
+      "conflicts": [
+        "PRINTED_PAGE_RANGE_DIFFERS_WITH_SHEET",
+        "SGK_FOUR_TRIANGLES_VS_TEST_THREE_PIECES",
+        "EXERCISE_LEDGER_DESCRIPTIONS_REQUIRE_IMAGE_REVIEW"
+      ],
+      "policy": {
+        "LV1": "ASSISTED_IDENTIFY_AND_PLACE_SHAPES",
+        "LV2": "ROTATE_DRAG_AND_COMPARE_WITH_TEMPLATE_AFTER_SBT_SKILL_CHECK",
+        "LV3": "NOT_SUPPORTED",
+        "grading": false
+      },
+      "needsOwner": [
+        "PDF_EDITION_AND_PRINTED_PAGE_IMAGE_CONFIRMATION",
+        "THREE_PIECE_PEDAGOGICAL_EQUIVALENCE_REVIEW",
+        "APP_LESSON_AND_SKILL_REGISTRY_LOOKUP",
+        "LV2_SBT_SOURCE_PROOF",
+        "PEDAGOGICAL_SIGNATURE"
+      ],
+      "approvalRef": null,
+      "releaseReady": false
+    },
+    {
+      "mode": "D9_COMPARE_DIFFERENCE",
+      "typeId": "D9",
+      "labLessonId": "toan_b999",
+      "labRenderer": "G7.4_PICTOGRAPH_V11",
+      "sourceLessonIdCandidate": "MATH_B065",
+      "sourceSkillIdCandidate": "SKILL_PICTOGRAPH",
+      "sourceExerciseIdCandidate": null,
+      "appLessonId": null,
+      "appSkillId": null,
+      "curriculumRef": null,
+      "sourceSeries": "Kết nối tri thức với cuộc sống",
+      "volume": 2,
+      "lessonNumber": 65,
+      "lessonTitle": "Biểu đồ tranh",
+      "publicPdfPrintedPages": [
+        102,
+        103,
+        104,
+        105
+      ],
+      "projectSheetSessionPrintedPages": [
+        113,
+        114,
+        115,
+        116
+      ],
+      "sourceSessionIds": [
+        "SGK_B065_T01",
+        "SGK_B065_T02"
+      ],
+      "sourceRelatedExercise": "Bài 2 trang 103: biểu đồ các loại hoa và câu hỏi hoa hồng hơn hoa cúc bao nhiêu",
+      "labRows": 2,
+      "labUnitsPerIcon": 1,
+      "labMaxItemsPerRow": 12,
+      "matchingClassification": "SCALE_1_TWO_ROW_SUBSET_ONLY_NOT_ENTIRE_SGK_LESSON",
+      "conflicts": [
+        "MAJOR_PAGE_MISMATCH_BETWEEN_SHEET_AND_PUBLIC_SGK",
+        "B065_EXERCISE_LEDGER_CONTAINS_CLOCK_AND_CALENDAR_TEXT_NOT_PICTOGRAPHS",
+        "SOME_SGK_GRAPHS_SHOW_THREE_OR_MORE_CATEGORIES",
+        "SOME_SGK_SYMBOLS_REPRESENT_TEN_UNITS",
+        "SHEET_EDITION_SHA256_VALUES_NOT_BYTE_VERIFIED"
+      ],
+      "forbiddenExamples": [
+        "P105_TENS_BUNDLES_ONE_SYMBOL_EQUAL_TEN",
+        "THREE_OR_MORE_CATEGORY_DATA_WITHOUT_EXPLICIT_PEDAGOGIC_SUBSET_APPROVAL"
+      ],
+      "policy": {
+        "LV1": "EXACT_COUNT_EACH_ICON_ONE_UNIT",
+        "LV2": "COMPARE_TWO_ROWS_MORE_OR_LESS_DIFFERENCE_AFTER_SBT_SKILL_CHECK",
+        "LV3": "NOT_SUPPORTED",
+        "maxRows": 2,
+        "maxItemsPerRow": 12,
+        "oneIconEqualsOneUnit": true,
+        "grading": false
+      },
+      "needsOwner": [
+        "RECTIFY_B065_SOURCE_LEDGER_AND_PAGE_INDEX",
+        "VERIFY_SGK_SOURCE_IMAGE_AND_EDITION",
+        "CHECK_1_TO_1_SYMBOL_UNIT_AND_SELECTED_ROW_PAIR",
+        "APP_LESSON_AND_SKILL_REGISTRY_LOOKUP",
+        "LV2_SBT_SOURCE_PROOF",
+        "PEDAGOGICAL_SIGNATURE"
+      ],
+      "approvalRef": null,
+      "releaseReady": false
+    }
+  ],
+  "separation": {
+    "noAutomaticB21Binding": true,
+    "invalidB21ForD5D9": true,
+    "labLessonId": "toan_b999",
+    "labOnly": true,
+    "activationAllowed": false,
+    "runtimeLessonIdsConfirmed": false,
+    "runtimeSkillIdsConfirmed": false,
+    "ownerSigned": false
+  },
+  "resolutionOrder": [
+    "RECONCILE_PROJECT_LEDGER_WITH_VERIFIED_SGK_PAGE_IMAGES",
+    "CONFIRM_OFFICIAL_SOURCE_EDITION_AND_HASH",
+    "MAP_SOURCE_IDS_TO_P06_RUNTIME_REGISTRY",
+    "INDEPENDENT_D5_D9_PEDAGOGY_REVIEW",
+    "REVIEW_SBT_FOR_LV2",
+    "OWNER_SIGNOFF",
+    "BUILD_TEST_ONLY_E04_AFTER_C08_AND_C09"
+  ]
+}
