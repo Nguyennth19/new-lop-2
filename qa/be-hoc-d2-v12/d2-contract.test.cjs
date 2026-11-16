@@ -25,5 +25,5 @@ eq(pv1000(999,1).reason,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');eq(pv1000(500,500)
 eq(pv1000(402,187,'SUBTRACT').ok,true);
 const policy=win.KLColumnV12.publicPlan({variantId:'COL_QA_POLICY',profile:'PV100',operation:'ADD',level:'LV1',a:36,b:17,carryPolicy:'REQUIRED_ASSESSED',assetId:null});
 eq(policy.reason,'CARRY_ASSESSMENT_NOT_APPROVED');
-const audit=require('./checkpoint.v1.json');eq(audit.deployedToGas,false);eq(audit.newScoreWrites,false);
+const audit=require('./checkpoint.v1.json');eq(audit.security.GASDeploy,false);eq(audit.security.newStudentWrites,false);eq(audit.functionality.scoreFromD2,false);
 console.log('BE_HOC_D2_V12_CONTRACT_PASS',n,'assertions');
