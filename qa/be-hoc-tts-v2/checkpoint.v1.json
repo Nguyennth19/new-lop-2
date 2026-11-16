@@ -20,10 +20,33 @@
     "stopOnExit": true,
     "privateAnswerSpeech": false,
     "actualDeviceAudibleVerified": false,
-    "gasDeployed": false
+    "gasDeployed": false,
+    "browserDomEmulated": true,
+    "manualChromeDesktopAudibleVerified": false,
+    "manualAndroidAudibleVerified": false,
+    "manualIOSAudibleVerified": false
   },
   "ci": {
-    "status": "PENDING"
+    "status": "PASS_READONLY_V2_INTEGRATION",
+    "unit": {
+      "runId": 43807969710,
+      "result": "SUCCESS"
+    },
+    "chromium": {
+      "runId": 43807969730,
+      "result": "SUCCESS",
+      "assertions": 17,
+      "desktopViewport": "1366x768",
+      "mobileEmulationViewport": "390x844",
+      "audibleVoiceDeviceVerified": false
+    },
+    "legacyLayerA": {
+      "runId": 43808156834,
+      "result": "SUCCESS"
+    },
+    "testedCommit": "4b4e3b168cdd0d8956621ba12c9fbac768eea46f",
+    "updatedWorkflowCommit": "2a814c353adad2e1d5ccc68ea8a3639752282252"
   },
-  "rollbackCommit": "40bac7e3452492fad74c8b1982206c96a6797f7d"
+  "rollbackCommit": "40bac7e3452492fad74c8b1982206c96a6797f7d",
+  "next": "GAS TEST deploy explicitly approved + actual Chrome Android/iOS audible check; this checkpoint does not authorize deploy."
 }
