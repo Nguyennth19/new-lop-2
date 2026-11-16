@@ -4,7 +4,7 @@
   "branch": "test/g7-6-b6-c082-source-item-skill-review-20261116",
   "inheritedCommit": "ef73696db6380997fea6a2d1465e691b9a303739",
   "inheritedC081CI": 43788985242,
-  "status": "TECHNICAL_SOURCE_ITEM_REVIEW_COMPLETE_NO_OWNER_APPROVAL_NO_GO",
+  "status": "PASS_NEW_C082_TECHNICAL_AUDIT_C08_C09_STILL_BLOCKED",
   "coverage": {
     "oldSourceItemsReviewed": 13,
     "sourceTaskCandidates": 13,
@@ -33,9 +33,14 @@
     "stars": false
   },
   "ci": {
-    "runId": null,
-    "headSha": null,
-    "status": "NOT_RUN_YET"
+    "runId": 43791015473,
+    "headSha": "ed3359d3bee4ec44f0b11fb9228cfc1ff41822a9",
+    "status": "COMPLETED_SUCCESS",
+    "artifactId": 14193055070,
+    "sourceOnlyChecks": true,
+    "original1710Rerun": false,
+    "verifiedPinnedP06": true,
+    "scopeDiffGuard": true
   },
   "rollback": {
     "returnCommit": "ef73696db6380997fea6a2d1465e691b9a303739",
