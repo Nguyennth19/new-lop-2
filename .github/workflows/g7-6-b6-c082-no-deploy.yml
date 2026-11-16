@@ -42,7 +42,7 @@ jobs:
       - name: Review 13 old items, 13 SGK source activities, 13 LV2 VBT items, E04 owner gates
         run: |
           node --check qa/g7-6-b6-c082/c082-review.test.cjs
-          node qa/g7-6-b6-c082/c082-review.test.cjs
+          node qa/g7-6-b6-c082/c082-review.test.cjs _external/p06
       - name: Save public metadata proof
         if: always()
         uses: actions/upload-artifact@v4
