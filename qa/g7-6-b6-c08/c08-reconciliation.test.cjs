@@ -45,7 +45,7 @@ eq(cp.coverage.old1710AssertionsRerun,false);
 eq(cp.coverage.sessionRowsProposed,4);
 eq(cp.coverage.exerciseRowsQuarantined,13);
 for(const v of Object.values(cp.protected))eq(v,true===v?true:false===v?false:v);
-eq(cp.approvals.C08,'BLOCKED_PENDING_RECONCILIATION_AND_PEDAGOGY');
+eq(cp.approvals.C08,'BLOCKED_SOURCE_PATCHES_UNAPPLIED_AND_PEDAGOGY_NOT_APPROVED');
 eq(cp.rollback.appRollbackRequired,false);eq(cp.rollback.gasRollbackRequired,false);
 const source=process.argv[2];
 if(source){
