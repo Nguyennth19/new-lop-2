@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "branch": "audit/g7-6-ai-workflow-orchestration-v1-20261116",
   "baseCommit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
-  "status": "AI1_READONLY_ORCHESTRATION_CANDIDATE_NO_OWNER_POLICY_APPROVAL",
+  "status": "PASS_AI1_CONTEXT_AND_HANDOFF_READONLY_CI_NO_OWNER_RELEASE",
   "scope": "VERSIONED_CONTEXT_INDEX_PLUS_HANDOFF_CONTRACT_AND_FAIL_CLOSED_VALIDATION",
   "outcome": {
     "projectStatePointers": 10,
@@ -29,9 +29,14 @@
     "testTheoMain": "DENIED"
   },
   "ci": {
-    "status": "PENDING",
-    "headSha": null,
-    "runId": null
+    "status": "COMPLETED_SUCCESS",
+    "runId": 43800886064,
+    "headSha": "5d7ddfddc5b19ad5ed2f38ceb3efe19d3ebc86f2",
+    "artifactId": 14195983589,
+    "sourcePinsVerified": 10,
+    "handoffContractNegativeQA": true,
+    "protectedPathsVerified": true,
+    "former1710Rerun": false
   },
   "rollback": {
     "commit": "11d691aa9e5f82f27b8df664ee710b17009d5600",
