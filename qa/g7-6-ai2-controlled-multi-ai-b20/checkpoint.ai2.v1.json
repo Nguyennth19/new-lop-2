@@ -4,7 +4,7 @@
   "branch": "audit/g7-6-ai2-controlled-multi-ai-b20-pilot-20261116",
   "baseCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",
   "sourceCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
-  "status": "AI2_TECHNICAL_PILOT_PENDING_CI_NO_REAL_MODEL_EXECUTION",
+  "status": "PASS_READONLY_TWO_ROLE_HANDOFF_REHEARSAL_NO_LIVE_GEMINI_OR_OWNER_APPROVAL",
   "outcome": {
     "sourceFilesPinned": 11,
     "lessonIds": 1,
@@ -30,9 +30,14 @@
     "RELEASE": "NO_GO"
   },
   "ci": {
-    "runId": null,
-    "status": "PENDING",
-    "headSha": null
+    "runId": 43802149850,
+    "status": "COMPLETED_SUCCESS",
+    "headSha": "8235ad9a3296077d0a678c5a40d2e325244ebf42",
+    "artifactId": 14197310728,
+    "assertions": 37,
+    "sourcePins": 11,
+    "negativeTests": true,
+    "rerunOriginalFB3BrowserQA": false
   },
   "rollback": {
     "returnCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",

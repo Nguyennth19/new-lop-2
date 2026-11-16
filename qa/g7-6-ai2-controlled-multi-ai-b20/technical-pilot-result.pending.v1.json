@@ -3,13 +3,13 @@
   "date": "2026-11-16",
   "sourceCommit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
   "auditBaselineCommit": "9a981929437285e2bc2a79e809cae422f27f3c03",
-  "status": "PENDING_CI_READONLY_HANDOFF_QA",
+  "status": "PASS_TECHNICAL_HANDOFF_ONLY_NOT_A_LIVE_MULTI_AI_RUN",
   "checks": {
-    "sourcePinValidation": "CI_PENDING",
-    "questionIdAndSessionAudit": "CI_PENDING",
-    "privateFieldExclusion": "CI_PENDING",
-    "crossLessonIsolation": "CI_PENDING",
-    "gateInvariance": "CI_PENDING"
+    "sourcePinValidation": "PASS_11_11",
+    "questionIdAndSessionAudit": "PASS_30Q_6SESSIONS_6KINDS",
+    "privateFieldExclusion": "PASS_HANDOFF_METADATA_ONLY",
+    "crossLessonIsolation": "PASS_B20_TEST_ONLY_NO_E04_REGISTRY",
+    "gateInvariance": "PASS_C07_C08_C09_UNCHANGED"
   },
   "metrics": {
     "frozenQuestions": 30,
@@ -43,5 +43,11 @@
   "ownerApproved": false,
   "mayCreateTestRegistry": false,
   "mayDeploy": false,
-  "mayReadOrWriteStudentData": false
+  "mayReadOrWriteStudentData": false,
+  "ciReference": {
+    "runId": 43802149850,
+    "headSha": "8235ad9a3296077d0a678c5a40d2e325244ebf42",
+    "checks": 37,
+    "browserQARerun": false
+  }
 }
