@@ -11,6 +11,7 @@ on:
       - '52_D2_ManualCarry.html'
       - '50_CSS_D2V12.html'
       - 'qa/be-hoc-d2-v12/**'
+      - 'qa/be-hoc-d2-manual/**'
       - '.github/workflows/be-hoc-d2-v12-chromium.yml'
   workflow_dispatch:
 permissions:

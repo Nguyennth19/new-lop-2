@@ -3,12 +3,27 @@
   "branch": "be-hoc",
   "baseCommit": "e8fc06b38fb9df1ae5cf986d684265c702e0b72a",
   "contract": "D2_MANUAL_CARRY_REQUIRED_V1",
-  "status": "PENDING_CI",
+  "status": "PASS_CONTRACT_BROWSER_AND_PRIVATE_GRADE_QA_ONLY",
   "gasDeployed": false,
   "realScoreWrites": false,
   "serverGradingConnected": false,
   "ci": {
-    "status": "PENDING"
+    "status": "PASS",
+    "runId": 43817958668,
+    "headSha": "dae7ea2ddb50b4639b975e49ad21dc73a7b05f32",
+    "conclusion": "SUCCESS",
+    "contractAssertions": 29,
+    "privateGradingAssertions": 28,
+    "chromiumAssertions": 27,
+    "totalAssertions": 84,
+    "actualGASDeviceTest": false
   },
-  "rollbackCommit": "e8fc06b38fb9df1ae5cf986d684265c702e0b72a"
+  "rollbackCommit": "e8fc06b38fb9df1ae5cf986d684265c702e0b72a",
+  "manualApproval": {
+    "scope": "D2_MANUAL_CARRY_REQUIRED_V1_POLICY",
+    "approvedBy": "USER_IN_CONVERSATION",
+    "technicalQA": "PASS",
+    "serverGradeAuthority": "PENDING",
+    "GASDeploy": "NO_GO"
+  }
 }

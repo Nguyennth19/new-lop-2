@@ -6,3 +6,10 @@ Date: 2026-11-16. Branch be-hoc. Baseline e8fc06b38fb9df1ae5cf986d684265c702e0b7
 **Scoring authority:** server MUST derive expected result and column carries from trusted lessonId/questionId and immutable source, not from client supplied operands/correct flags. QA-only private evaluator validates all result digits and required carry values. No runtime grading until approved integration.
 **QA:** node contract, trusted-grader fixture suite, desktop + simulated mobile Chromium. Separate GAS TEST deploy authorization and device QA needed.
 **Rollback:** e8fc06b38fb9df1ae5cf986d684265c702e0b72a. No main/test-theo-main modification.
+
+## CI evidence and security boundary
+- GitHub Actions `43817958668`: SUCCESS on `dae7ea2ddb50b4639b975e49ad21dc73a7b05f32`; **29 contract + 28 private scoring + 27 Chromium desktop/mobile emulation = 84/84 PASS**.
+- The private scorer is `qa/be-hoc-d2-manual/private-manual-grader.qa-only.cjs`; it is deliberately **not** imported in `GiaoDien.html`, and **not** a GAS deployable score endpoint.
+- Legacy D2 `47/48` frozen sources and existing main B20 `26_ChamCauHoiToan.html` remain unchanged; no student writes, no auto rewards, no client grading.
+- Existing legacy auto code `51_D2_AutoCarry.html` remains in Git history/source archive only. **Not loaded in runtime**; `GiaoDien.html` includes `52_D2_ManualCarry.html` instead.
+- Must separately approve, implement, and test the trusted server scoring binding before D2 answers update scores/stars. GAS TEST device smoke remains pending.

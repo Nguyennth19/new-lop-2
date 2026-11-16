@@ -18,6 +18,7 @@ on:
       - '52_D2_ManualCarry.html'
       - '51_D2_AutoCarry.html'
       - 'qa/be-hoc-lop-a/**'
+      - 'qa/be-hoc-d2-manual/**'
       - 'docs/kiem-dinh/BE_HOC_LAYER_A_*'
       - '.github/workflows/be-hoc-layer-a-no-deploy.yml'
   workflow_dispatch:
