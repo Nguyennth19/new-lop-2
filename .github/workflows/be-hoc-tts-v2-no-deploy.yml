@@ -1,0 +1,38 @@
+name: BE-HOC Math TTS V2 no-deploy QA
+on:
+  push:
+    branches: [be-hoc]
+    paths:
+      - 'GiaoDien.html'
+      - '19_KhongGianHocToan.html'
+      - '41_HienThiCauHoiToan.html'
+      - '44_G75_NormalizerToanV2.html'
+      - '45_DieuKhienGiongDocToan.html'
+      - '46_CSS_GiongDocToan.html'
+      - 'qa/be-hoc-tts-v2/**'
+      - '.github/workflows/be-hoc-tts-v2-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  speech-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locked-source and host boundary QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 40bac7e3452492fad74c8b1982206c96a6797f7d HEAD
+          test "$(git hash-object 44_G75_NormalizerToanV2.html)" = 605a8ed9b335526af82c8870dca4753bd511b913
+          for f in MayChu.gs ThanhTichMayChu.gs appsscript.json 26_ChamCauHoiToan.html; do
+            test "$(git hash-object "$f")" = "$(git show 40bac7e3452492fad74c8b1982206c96a6797f7d:"$f" | git hash-object --stdin)"
+          done
+          node qa/be-hoc-tts-v2/tts-v2.test.cjs

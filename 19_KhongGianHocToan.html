@@ -62,23 +62,26 @@ function start(index){
  });
 }
 function exit(){
+ if(window.BE_HOC_GIONG_DOC_V2)window.BE_HOC_GIONG_DOC_V2.stop();
  const root=document.getElementById('mathFullScreen');if(root)root.hidden=true;
  document.body.classList.remove('math-learning');
  try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
  navigate('path');
 }
 function choose(id){
+ if(window.BE_HOC_GIONG_DOC_V2)window.BE_HOC_GIONG_DOC_V2.stop();
  view=id;level=id==='THEORY'?level:id;levelStart=Date.now();gradingState={};if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.reset();
  render();
  try{history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+view);}catch(e){}
 }
 function render(){
+ if(window.BE_HOC_GIONG_DOC_V2)window.BE_HOC_GIONG_DOC_V2.stop();
  if(!fullData)return;
  const root=shell();refreshProgress();root.classList.toggle('ml-theory-mode',view==='THEORY');
  const target=root.querySelector('#mlContent');
  const keypad=root.querySelector('#mlDock');
  if(view==='THEORY'){
-  target.innerHTML=typeof renderLyThuyetToan==='function'?renderLyThuyetToan():'<section class="ml-theory-empty"></section>';
+  target.innerHTML='<div class="ml-speak-theory-actions"><button type="button" class="ml-speak-btn" data-ml-speak-theory aria-label="Nghe hướng dẫn bài học" aria-pressed="false">🔊 Nghe hướng dẫn</button></div>'+(typeof renderLyThuyetToan==='function'?renderLyThuyetToan():'<section class="ml-theory-empty"></section>');
   root.querySelector('#mlResults').hidden=true;
   keypad.hidden=true;root.querySelector('#mlShowKeyboard').hidden=true;return;
  }

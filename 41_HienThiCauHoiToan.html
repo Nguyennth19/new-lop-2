@@ -1,5 +1,6 @@
 /* G6 – Renderer câu Toán thuần HTML, tách khỏi điều hướng và chấm điểm. */
 function taoHienThiCauToan({E,input,baseCard}){
+function hear(q){return '<button type="button" class="ml-speak-btn" data-ml-speak-question="'+E(q.id)+'" aria-label="Nghe câu hỏi" aria-pressed="false">🔊 Nghe</button>';}
 function vertical(q){
  if(!q.valid)return invalid(q);
  const a=String(q.n1).padStart(2,'0'),b=String(q.n2).padStart(2,'0');
@@ -17,16 +18,16 @@ function mental(q){
  // Sử dụng grid năm cột có sẵn của test-theo-main; không đưa câu dài vào ô số.
  if(q.variantType==='carry'){
    const a=Number(q.n1)%10,b=Number(q.n2)%10;
-   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(a+'+'+b+'='+(a+b))+'</span><b>→</b><span>nhớ</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(a+'+'+b+'='+(a+b))+'</span><b>→</b><span>nhớ</span><b>=</b>'+input(q,q.id+':answer',3)+hear(q)+'</div>';
  }
  if(q.variantType==='reverse'){
-   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'">'+input(q,q.id+':answer',3)+'<b>+</b><span>'+E(q.n2)+'</span><b>=</b><span>'+E(Number(q.n1)+Number(q.n2))+'</span></div>';
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'">'+input(q,q.id+':answer',3)+'<b>+</b><span>'+E(q.n2)+'</span><b>=</b><span>'+E(Number(q.n1)+Number(q.n2))+'</span>'+hear(q)+'</div>';
  }
  if(q.variantType==='three'){
-   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+'+'+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+'+'+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+hear(q)+'</div>';
  }
- if(q.pilotPrompt)return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+'</div>';
- return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
+ if(q.pilotPrompt)return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+hear(q)+'</div>';
+ return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+hear(q)+'</div>';
 }
 function puzzle(q){
  if(!q.valid)return invalid(q);

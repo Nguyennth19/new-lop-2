@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "be-hoc.tts-v2.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "be-hoc",
+  "baseline": "40bac7e3452492fad74c8b1982206c96a6797f7d",
+  "source": {
+    "blobSha": "605a8ed9b335526af82c8870dca4753bd511b913",
+    "original": "thu-nghiem/g7-5-vietnamese-tts/compat-v2/G75_MathSpeechNormalizer_V2.js"
+  },
+  "activatedInSource": [
+    "44_G75_NormalizerToanV2.html",
+    "45_DieuKhienGiongDocToan.html",
+    "46_CSS_GiongDocToan.html",
+    "GiaoDien.html",
+    "41_HienThiCauHoiToan.html",
+    "19_KhongGianHocToan.html"
+  ],
+  "controls": {
+    "manualClick": true,
+    "stopOnExit": true,
+    "privateAnswerSpeech": false,
+    "actualDeviceAudibleVerified": false,
+    "gasDeployed": false
+  },
+  "ci": {
+    "status": "PENDING"
+  },
+  "rollbackCommit": "40bac7e3452492fad74c8b1982206c96a6797f7d"
+}
