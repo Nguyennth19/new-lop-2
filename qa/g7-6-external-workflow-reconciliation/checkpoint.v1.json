@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "g76.external-workflow-reconciliation.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "audit/g7-6-external-workflow-reconciliation-20261116",
+  "baseCommit": "733422f11ddb415b2f898e2e38c009f6594401f1",
+  "status": "TECHNICAL_CROSSWALK_COMPLETE_APPROVAL_NOT_REQUESTED",
+  "modulesReviewed": 52,
+  "classificationCounts": {
+    "PARTIAL_EXISTS": 17,
+    "UNVERIFIED": 1,
+    "RISK_NO_GO": 13,
+    "CANDIDATE": 7,
+    "ALREADY_EXISTS": 7,
+    "DUPLICATE": 7
+  },
+  "githubPins": {
+    "main": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+    "testTheoMain": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+    "auditBaseline": "733422f11ddb415b2f898e2e38c009f6594401f1"
+  },
+  "driveInventory": "DIRECT_FOLDER_AND_DOC_READ_20261116",
+  "c07": "INDEPENDENT_PENDING",
+  "c08": "PENDING",
+  "c09": "PENDING_C08",
+  "noGo": {
+    "officialManifest": true,
+    "p06Test": true,
+    "gas": true,
+    "main": true,
+    "testTheoMain": true,
+    "studentGrades": true,
+    "stars": true
+  },
+  "ci": {
+    "runId": null,
+    "status": "NOT_RUN_YET",
+    "headSha": null
+  },
+  "rollback": {
+    "baseCommit": "733422f11ddb415b2f898e2e38c009f6594401f1",
+    "action": "DISCARD_AUDIT_BRANCH_NO_RUNTIME_STATE_TO_REVERT"
+  }
+}
