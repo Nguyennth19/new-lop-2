@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "g76b6.c081.checkpoint.v1",
+  "status": "WORKING_OVERLAY_APPLIED_C08_POLICY_BLOCKED",
+  "date": "2026-11-16",
+  "branch": "test/g7-6-b6-c081-controlled-source-patch-20261116",
+  "base": "c4f194043c515ee9b55040c3d6ce6fed76668cdc",
+  "counts": {
+    "sessionRowsPatched": 8,
+    "legacyExercisesQuarantined": 13,
+    "variantRulesDisabled": 2,
+    "vbtTasksVerified": 13
+  },
+  "c07": "INDEPENDENT_PENDING_OWNER",
+  "c08": "PEDAGOGICAL_AND_SOURCE_PATCH_REVIEW_PENDING",
+  "sourceSheetsEdited": false,
+  "manifestEdited": false,
+  "p06Edited": false,
+  "gas": false,
+  "mainMerge": false,
+  "testTheoMainMerge": false,
+  "d10": false,
+  "studentWrites": false,
+  "scoreStarWrites": false,
+  "old1710TestsRerun": false,
+  "ci": {
+    "runId": null,
+    "status": "PENDING"
+  },
+  "rollback": "c4f194043c515ee9b55040c3d6ce6fed76668cdc"
+}

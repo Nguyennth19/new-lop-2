@@ -1,0 +1,44 @@
+name: G7.6 B6 C08.1 isolated source and C07 contract (NO DEPLOY)
+on:
+  push:
+    branches:
+      - test/g7-6-b6-c081-controlled-source-patch-20261116
+    paths:
+      - 'qa/g7-6-b6-c081/**'
+      - 'docs/kiem-dinh/G7.6-B6-C081_*'
+      - '.github/workflows/g7-6-b6-c081-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-only:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Protected diff and baseline checkpoint
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor c4f194043c515ee9b55040c3d6ce6fed76668cdc HEAD
+          if git diff --name-only c4f194043c515ee9b55040c3d6ce6fed76668cdc HEAD | grep -Ev '^(qa/g7-6-b6-c081/|docs/kiem-dinh/G7\.6-B6-C081_|\.github/workflows/g7-6-b6-c081-no-deploy.yml)' ; then exit 1; fi
+          for f in du-lieu/g7-6/resource-renderer-manifest.v1.json qa/g7-6-b6/mental-renderer-registration.candidate.v1.json qa/g7-6-b6/approvals/C07.approval.pending.v1.json qa/g7-6-b6-c08/source-reconciliation.v1.json; do
+            test "$(git hash-object "$f")" = "$(git show c4f194043c515ee9b55040c3d6ce6fed76668cdc:"$f" | git hash-object --stdin)"
+          done
+      - name: New working patch and C07-only contract validation
+        run: |
+          node --check qa/g7-6-b6-c081/c081-contract.test.cjs
+          node qa/g7-6-b6-c081/c081-contract.test.cjs
+      - name: Archive metadata only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76-B6-C081-SOURCE-PATCH-NO-DEPLOY
+          path: |
+            qa/g7-6-b6-c081/*.json
+            docs/kiem-dinh/G7.6-B6-C081_CONTROLLED_WORKING_SOURCE_20261116.md
+          retention-days: 30

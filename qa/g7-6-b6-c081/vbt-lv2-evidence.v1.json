@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "g76b6.c081.vbt-lv2-evidence.v1",
+  "date": "2026-11-16",
+  "status": "VISUALLY_VERIFIED_SOURCE_NOT_APPROVED_FOR_E04",
+  "sources": [
+    {
+      "lesson": "B027",
+      "driveId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+      "sha256": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+      "printedPages": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "pdfPages": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "bytes": 21472578
+    },
+    {
+      "lesson": "B065",
+      "driveId": "15XyTPJBRMHXGikjGyZ_o4vWzQWTOtVCU",
+      "sha256": "9f3b4d9ff793e4280de7e72d1854a7492d77c88809c9bd9c2be4fa9af3b732c2",
+      "printedPages": [
+        93,
+        94,
+        95
+      ],
+      "pdfPages": [
+        93,
+        94,
+        95
+      ],
+      "bytes": 20005394
+    }
+  ],
+  "exercises": [
+    {
+      "evidenceId": "C081_VBT_B027_T01_E01",
+      "lesson": "B027",
+      "session": "T01",
+      "exercise": "E01",
+      "printedPage": 100,
+      "pdfPage": 100,
+      "objective": "FOUR_CONGRUENT_TRIANGLES_PICK_IMPOSSIBLE_SHAPE",
+      "compatibility": "D5_VARIANT_REVIEW",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B027_T01_E02",
+      "lesson": "B027",
+      "session": "T01",
+      "exercise": "E02",
+      "printedPage": 101,
+      "pdfPage": 101,
+      "objective": "CUT_POLYGON_INTO_TRIANGLE_AND_QUADRILATERAL",
+      "compatibility": "NOT_NATIVE_D5",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B027_T01_E03",
+      "lesson": "B027",
+      "session": "T01",
+      "exercise": "E03",
+      "printedPage": 101,
+      "pdfPage": 101,
+      "objective": "CHOOSE_TWO_PIECES_TO_FORM_TARGET_TRIANGLE",
+      "compatibility": "D5_VARIANT_REVIEW",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B027_T01_E04",
+      "lesson": "B027",
+      "session": "T01",
+      "exercise": "E04",
+      "printedPage": 101,
+      "pdfPage": 101,
+      "objective": "COUNT_SMALL_TRIANGLES_IN_COMPOSITE_SHAPE",
+      "compatibility": "D5_VARIANT_REVIEW",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B027_T02_E01",
+      "lesson": "B027",
+      "session": "T02",
+      "exercise": "E01",
+      "printedPage": 102,
+      "pdfPage": 102,
+      "objective": "DRAW_SEGMENTS_6CM_AND_10CM",
+      "compatibility": "NOT_D5",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B027_T02_E02",
+      "lesson": "B027",
+      "session": "T02",
+      "exercise": "E02",
+      "printedPage": 102,
+      "pdfPage": 102,
+      "objective": "MEASURE_RECTANGLE_AND_DRAW_SEGMENTS",
+      "compatibility": "NOT_D5",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B027_T02_E03",
+      "lesson": "B027",
+      "session": "T02",
+      "exercise": "E03",
+      "printedPage": 103,
+      "pdfPage": 103,
+      "objective": "NEXT_SQUARE_ON_SQUARED_GRID",
+      "compatibility": "NOT_D5",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B027_T02_E04",
+      "lesson": "B027",
+      "session": "T02",
+      "exercise": "E04",
+      "printedPage": 103,
+      "pdfPage": 103,
+      "objective": "FIND_LONGEST_ROUTE_ON_GRID",
+      "compatibility": "NOT_D5",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B065_T01_E01",
+      "lesson": "B065",
+      "session": "T01",
+      "exercise": "E01",
+      "printedPage": 93,
+      "pdfPage": 93,
+      "objective": "COUNT_TYPES_OF_DRAWN_CIRCLES",
+      "compatibility": "D9_COUNT_1_TO_1_MORE_THAN_TWO_CATEGORIES",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B065_T01_E02",
+      "lesson": "B065",
+      "session": "T01",
+      "exercise": "E02",
+      "printedPage": [
+        93,
+        94
+      ],
+      "pdfPage": [
+        93,
+        94
+      ],
+      "objective": "COUNT_AND_COMPARE_CIRCLES_TRIANGLES_SQUARES",
+      "compatibility": "D9_TWO_ROW_SUBSET_REVIEW",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B065_T02_E01",
+      "lesson": "B065",
+      "session": "T02",
+      "exercise": "E01",
+      "printedPage": 94,
+      "pdfPage": 94,
+      "objective": "ONE_DOT_PER_TOY_THREE_CATEGORIES",
+      "compatibility": "D9_TWO_ROW_SUBSET_REVIEW",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B065_T02_E02",
+      "lesson": "B065",
+      "session": "T02",
+      "exercise": "E02",
+      "printedPage": 95,
+      "pdfPage": 95,
+      "objective": "ADD_DOTS_TO_REPRESENT_8_RABBITS_6_SQUIRRELS_5_TURTLES",
+      "compatibility": "D9_THREE_ROW_EXTENSION",
+      "approvedForRuntime": false
+    },
+    {
+      "evidenceId": "C081_VBT_B065_T02_E03",
+      "lesson": "B065",
+      "session": "T02",
+      "exercise": "E03",
+      "printedPage": 95,
+      "pdfPage": 95,
+      "objective": "BAG_REPRESENTS_10_TOMATOES_DOT_REPRESENTS_1",
+      "compatibility": "D9_UNIT_SCALE_NOT_SUPPORTED",
+      "approvedForRuntime": false
+    }
+  ],
+  "limits": [
+    "B027_3_PIECE_LAB_NOT_EQUALS_4_TRIANGLES",
+    "D9_TWO_ROW_LIMIT",
+    "D9_10_UNIT_SYMBOL_NOT_SUPPORTED"
+  ],
+  "answersExcluded": true
+}

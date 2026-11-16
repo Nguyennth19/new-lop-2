@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "g76b6.c081.c07-independent-contract-review.v1",
+  "status": "TECHNICAL_QA_ONLY_NO_MANIFEST_REGISTRATION",
+  "rendererId": "MATH_MENTAL_NUMBER_INPUT_V1",
+  "ownerSignature": null,
+  "independentOfC08": true,
+  "officialManifestUnchanged": true,
+  "registerTest": false,
+  "sourceLessonId": "toan_b21",
+  "noGrading": true,
+  "noStudentWrites": true,
+  "releaseReady": false
+}

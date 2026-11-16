@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "g76b6.c081.pedagogy-review.v1",
+  "date": "2026-11-16",
+  "status": "INDEPENDENT_OWNER_REVIEW_PENDING",
+  "families": [
+    {
+      "mode": "D5_TANGRAM",
+      "sourceLessonId": "MATH_B027",
+      "sourceSkillId": "SKILL_PRACTICE_SHAPES_DRAWING",
+      "runtimeLessonIdCandidate": "toan_b27",
+      "runtimeSkillId": null,
+      "sgkPages": [
+        106,
+        107,
+        108,
+        109
+      ],
+      "vbtPages": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "ownerQuestion": "Does the 3-piece tangram sufficiently align with 4-triangle SGK/VBT exercises, or should a distinct geometry mode be used?",
+      "lv3": "NOT_SUPPORTED",
+      "signoff": null,
+      "activation": false
+    },
+    {
+      "mode": "D9_COMPARE_DIFFERENCE",
+      "sourceLessonId": "MATH_B065",
+      "sourceSkillId": "SKILL_PICTOGRAPH",
+      "runtimeLessonIdCandidate": "toan_b65",
+      "runtimeSkillId": null,
+      "sgkPages": [
+        102,
+        103,
+        104,
+        105
+      ],
+      "vbtPages": [
+        93,
+        94,
+        95
+      ],
+      "ownerQuestion": "May a 2-row, 1-icon=1-object subset be taken from 3-category charts; keep 1-bag=10 separate?",
+      "lv3": "NOT_SUPPORTED",
+      "signoff": null,
+      "activation": false
+    }
+  ],
+  "p06RegistryHasB27B65": false,
+  "sidecarLessonId": "toan_b999",
+  "forbidB21": true,
+  "approvalRef": null
+}
