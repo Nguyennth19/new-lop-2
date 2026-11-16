@@ -1,0 +1,123 @@
+/* BE-HOC-VISUAL-ORCHESTRATOR-V1
+ * All pinned renderer families available; automatic lesson binding only if source
+ * type + lesson + skill + QA manifest authorize. No client grading or answer keys.
+ */
+(function(root){
+'use strict';
+const ALL=Object.freeze(['D1','D2','D3','D4','D5','D6','D7','D8','D8A','D8B','D9','D10']);
+const FORBIDDEN=new Set(['answer','answers','answerKey','correctAnswer','correct','correctOptionId','correctStatementId','expectedAnswer','expectedResult','expectedCarry','solution','solutionPrompt','gradingKey','isCorrect','teacherSolution','prefilledSolution','gradingState','grade','starCredit','starAmount','studentId']);
+const REGISTRY=Object.freeze({
+ D1:{core:'G74Type1C2',kind:'DIRECT',version:'G7.4 QA-C2'},
+ D2:{core:'KLColumnV12',view:'KLColumnViewV12',kind:'D2_MANUAL',version:'V1.2'},
+ D3:{core:'KLMatchingV11',view:'KLMatchingViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D4:{core:'KLChoiceV11',view:'KLChoiceViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D5:{core:'KLGeometryTangramV11',view:'KLGeometryTangramViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D6:{core:'KLDragSortV11',view:'KLDragSortViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D7:{core:'KLComparisonV11',view:'KLComparisonViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D8:{core:'KLMeasurementV11',view:'KLMeasurementViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D8A:{core:'KLCapacityWeightV11',view:'KLCapacityWeightViewV12',kind:'COMPILE_VIEW',version:'V1.2'},
+ D8B:{core:'KLCapacityWeightV11',view:'KLCapacityWeightViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D9:{core:'KLPictographV11',view:'KLPictographViewV11',kind:'COMPILE_VIEW',version:'V1.1'},
+ D10:{core:'KLWordUnificationV11',view:'KLWordUnificationAdapterV11',kind:'EXISTING_WORD',version:'V1.1'}
+});
+const LESSONS=Object.freeze({
+ toan_b20:Object.freeze({
+  // B20 sheet data has only vertical/mental/missing_digit/word_problem.
+  // Do NOT infer D3-D9 merely from words or an arbitrary question id.
+  D2:Object.freeze({type:'vertical',skillId:'ADD_WITH_CARRY_2DIGIT',grade:'SERVER_READONLY'}),
+  D10:Object.freeze({type:'word_problem',skillId:'ADD_WORD_PROBLEM',grade:'LEGACY_UNCHANGED'})
+ })
+});
+let mounted=[];
+function cleanup(){for(const entry of mounted){try{entry.destroy?.();}catch(_){} }mounted=[];}
+function safePublic(value,depth=0){
+ if(depth>12)return {ok:false,reason:'DEPTH_LIMIT'};
+ if(value===null||typeof value==='string'||typeof value==='boolean'||typeof value==='number'){
+  if(typeof value==='number'&&!Number.isFinite(value))return {ok:false,reason:'INVALID_NUMBER'};
+  return {ok:true,value};
+ }
+ if(Array.isArray(value)){
+  if(value.length>120)return {ok:false,reason:'TOO_MANY_ITEMS'};
+  const out=[];for(const v of value){const x=safePublic(v,depth+1);if(!x.ok)return x;out.push(x.value);}return {ok:true,value:out};
+ }
+ if(!value||typeof value!=='object'||Object.getPrototypeOf(value)!==Object.prototype)return {ok:false,reason:'INVALID_OBJECT'};
+ const out={};for(const [k,v] of Object.entries(value)){
+  if(FORBIDDEN.has(k)||/^(__proto__|constructor|prototype)$/.test(k))return {ok:false,reason:'PRIVATE_FIELD'};
+  const result=safePublic(v,depth+1);if(!result.ok)return result;out[k]=result.value;
+ }return {ok:true,value:out};
+}
+function chooseAsset({assetId,visualIntent,exactQuantity,unitCountEvidence}={}){
+ const assets=root.BE_HOC_ASSETS_288;
+ if(!assets)return {ok:false,reason:'ASSET_LIBRARY_NOT_LOADED'};
+ const r=assets.resolve(assetId);
+ if(!r.ok)return r;
+ if(['DECORATIVE','CHOICE'].includes(visualIntent))return {...r,semanticUse:'APPROVED_DECORATIVE'};
+ // Exact counting needs explicit per-asset evidence, not a count inferred from a bunch/stack.
+ if(visualIntent==='EXACT_COUNT'&&Number.isSafeInteger(exactQuantity)&&exactQuantity>=0&&
+   unitCountEvidence?.approved===true&&unitCountEvidence.assetId===assetId&&
+   unitCountEvidence.objectsPerAsset===1&&unitCountEvidence.unit==='single-object'){
+  return {...r,semanticUse:'COMPOSITION_ELIGIBLE',quantity:exactQuantity};
+ }
+ return {ok:false,reason:'EXACT_COUNT_EVIDENCE_MISSING'};
+}
+function resolve(e){
+ if(!e||typeof e!=='object'||Array.isArray(e))return {ok:false,reason:'INVALID_ENVELOPE'};
+ const id=e.rendererId,type=REGISTRY[id];
+ if(!type)return {ok:false,reason:'UNKNOWN_RENDERER'};
+ if(!/^toan_b\d{1,4}$/.test(e.lessonId||'')||!/^[-\w]{2,90}$/.test(e.questionId||''))return {ok:false,reason:'INVALID_IDS'};
+ const policy=LESSONS[e.lessonId]?.[id];
+ if(!policy)return {ok:false,reason:'LESSON_POLICY_NOT_APPROVED'};
+ if(e.questionType!==policy.type||e.skillId!==policy.skillId)return {ok:false,reason:'SKILL_TYPE_MISMATCH'};
+ const publicOnly=safePublic(e.publicVariant);
+ if(!publicOnly.ok)return publicOnly;
+ const core=root[type.core],view=type.view?root[type.view]:null;
+ if(!core||(type.kind==='COMPILE_VIEW'&&!view))return {ok:false,reason:'RENDERER_RUNTIME_MISSING'};
+ return {ok:true,rendererId:id,publicPlan:publicOnly.value,core,view,kind:type.kind,grading:'NOT_CLIENT'};
+}
+function mountEnvelope(host,envelope){
+ if(!host?.ownerDocument)return {ok:false,reason:'MISSING_HOST'};
+ const r=resolve(envelope);if(!r.ok)return r;
+ // D2 is already mounted via 49_D2V12_BaiHoc, with the approved manual-carry
+ // contract and trusted read-only grading; never duplicate another D2.
+ if(r.kind==='D2_MANUAL')return {ok:false,reason:'D2_DELEGATED_TO_MANUAL_CARRY_HOST'};
+ if(r.kind==='EXISTING_WORD'){
+  const baseCard=host.closest('.ml-word-card');
+  if(!baseCard)return {ok:false,reason:'WORD_CARD_NOT_FOUND'};
+  const p=r.core.compile(r.publicPlan);
+  if(!p?.ok)return p||{ok:false,reason:'COMPILE_FAILED'};
+  const view=r.view.mount(baseCard,p.plan||p,{});
+  if(view?.ok)mounted.push(view);return view;
+ }
+ if(r.kind==='DIRECT'){
+  if(!r.core.validPublic(r.publicPlan))return {ok:false,reason:'INVALID_D1_PUBLIC'};
+  const view=r.core.mount(host,r.publicPlan,{});
+  if(view?.ok)mounted.push(view);return view;
+ }
+ const p=r.core.compile(r.publicPlan);
+ if(!p?.ok)return p||{ok:false,reason:'COMPILE_FAILED'};
+ const result=r.view.mount(host,p.plan||p,{});
+ if(result?.ok)mounted.push(result);
+ return result||{ok:false,reason:'VIEW_FAILED'};
+}
+function mountLesson(data,screen,level){
+ cleanup();
+ if(!data?.lesson||!screen?.querySelector||!Array.isArray(data.questions))return {ok:false,reason:'INVALID_LESSON'};
+ let mapped=0,ignored=0,denied=0;
+ for(const q of data.questions){
+  if(q.level!==level||!q.visualContract){ignored++;continue;}
+  const c=q.visualContract;
+  const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(el=>el.dataset.mlQCard===q.id);
+  if(!card){denied++;continue;}
+  const result=mountEnvelope(card,{lessonId:data.lesson.id,questionId:q.id,questionType:q.type,skillId:c.skillId,
+   rendererId:c.rendererId,publicVariant:c.publicVariant});
+  if(result.ok)mapped++;else denied++;
+ }
+ return {ok:true,lessonId:data.lesson.id,mapped,ignored,denied,
+  noClientGrading:true,assetLibraryCount:root.BE_HOC_ASSETS_288?.count||0};
+}
+root.BE_HOC_VISUAL_ORCHESTRATOR=Object.freeze({
+ schemaVersion:'BE-HOC-VISUAL-ORCHESTRATOR-V1',allRendererIds:ALL,registry:REGISTRY,
+ resolve,chooseAsset,mountEnvelope,mountLesson,cleanup,safePublic,
+ release:'SOURCE_TEST_ONLY',studentWrites:false,autoGrade:false
+});
+})(window);
