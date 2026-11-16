@@ -1,0 +1,51 @@
+name: G7.6 B6 C08.5 collect owner evidence and byte-lock (READ ONLY)
+on:
+  push:
+    branches:
+      - test/g7-6-b6-c085-owner-evidence-lock-20261116
+    paths:
+      - 'qa/g7-6-b6-c085/**'
+      - 'docs/kiem-dinh/G7.6-B6-C085_*'
+      - '.github/workflows/g7-6-b6-c085-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06
+          persist-credentials: false
+      - name: Verify changed-path scope and immutable ancestor
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 416867bcaf4d271f2d6730235e3a219c854306e0 HEAD
+          if git diff --name-only 416867bcaf4d271f2d6730235e3a219c854306e0 HEAD | grep -Ev '^(qa/g7-6-b6-c085/|docs/kiem-dinh/G7\.6-B6-C085_|\.github/workflows/g7-6-b6-c085-no-deploy.yml)' ; then exit 1; fi
+          test "$(git -C _external/p06 rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+      - name: Check byte-level evidence anchors, intake status, negative gates
+        run: |
+          node --check qa/g7-6-b6-c085/owner-evidence-lock-validator.cjs
+          node --check qa/g7-6-b6-c085/c085-evidence-lock.test.cjs
+          node qa/g7-6-b6-c085/c085-evidence-lock.test.cjs _external/p06
+      - name: Archive unsigned audit metadata ONLY
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76-B6-C085-OWNER-EVIDENCE-LOCK-UNSIGNED-NO-DEPLOY
+          path: |
+            qa/g7-6-b6-c085/*.json
+            docs/kiem-dinh/G7.6-B6-C085_OWNER_EVIDENCE_LOCK_20261116.md
+          retention-days: 30

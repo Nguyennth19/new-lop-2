@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "g76b6.c085.evidence-lock.v1",
+  "date": "2026-11-16",
+  "purpose": "AUDIT_SNAPSHOT_LOCK_NOT_A_POLICY_APPROVAL_OR_REGISTRATION",
+  "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+  "ownerDecisionCount": 0,
+  "approvedDecisionCount": 0,
+  "evidenceFiles": [
+    {
+      "path": "qa/g7-6-b5a/e04-curriculum-policy.draft.v1.json",
+      "gitBlobSha": "bebd1ede683a8869035c1a63f66fea421c516895",
+      "status": "POLICY_DRAFT_ONLY_NOT_APPROVED",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6-c082/source-item-review.v1.json",
+      "gitBlobSha": "42ff6e0d809389064abcd0994b307d3cd1c5cc68",
+      "status": "SOURCE_ITEM_REVIEW_NOT_APPROVED",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6-c082/e04-lv1-lv2-review.v1.json",
+      "gitBlobSha": "f734184c97cfbbe1b24575d5af76a33fda6cce1b",
+      "status": "CURRICULUM_SCOPE_NOT_APPROVED",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6-c083/e04-owner-options.v1.json",
+      "gitBlobSha": "d1c2ac84b1d3d0fc76381bd68655958e38afb761",
+      "status": "OWNER_OPTIONS_NOT_APPROVED",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6-c083/skill-id-owner-options.v1.json",
+      "gitBlobSha": "f3ee21508515c9b72d10f17088a21d20e3e5a560",
+      "status": "SKILL_PROPOSALS_NOT_REGISTERED",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6-c084/owner-signoff-gate.pending.v1.json",
+      "gitBlobSha": "55bddb5a149a6ef9fb8e869cb0a6d185ed9a16e1",
+      "status": "SIGNATURE_PACKETS_NULL",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6-c084/conditional-signoff-validator.cjs",
+      "gitBlobSha": "864c7b4a4db0863695a578903381901c539e6d75",
+      "status": "SIGNATURE_VALIDATOR_TECHNICAL_ONLY",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6/approvals/C08.approval.pending.v1.json",
+      "gitBlobSha": "d28d50a39d04bb91c92bfc8dc46c17fd6bc35164",
+      "status": "C08_OWNER_UNSIGNED",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    },
+    {
+      "path": "qa/g7-6-b6/approvals/C09.approval.pending.v1.json",
+      "gitBlobSha": "418c842fd05b6d686753713d174f32fe695f6f75",
+      "status": "C09_OWNER_UNSIGNED",
+      "sourceCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "ownerApprovalRef": null,
+      "immutableEvidenceOnly": true
+    }
+  ],
+  "externalBooks": [
+    {
+      "type": "SGK_T1",
+      "driveId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+      "sha256": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+      "printedPages": [
+        106,
+        107,
+        108,
+        109
+      ],
+      "verifiedEarlier": true
+    },
+    {
+      "type": "SGK_T2",
+      "driveId": "1T8RaavitX03_f0VvxjO1zOiXjnMBhrrs",
+      "sha256": "044142f31fa94769a143dd029422ee74c49480ad9304e567cc8d97efa4c42f36",
+      "printedPages": [
+        102,
+        103,
+        104,
+        105
+      ],
+      "verifiedEarlier": true
+    },
+    {
+      "type": "VBT_T1",
+      "driveId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+      "sha256": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+      "printedPages": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "verifiedEarlier": true
+    },
+    {
+      "type": "VBT_T2",
+      "driveId": "15XyTPJBRMHXGikjGyZ_o4vWzQWTOtVCU",
+      "sha256": "9f3b4d9ff793e4280de7e72d1854a7492d77c88809c9bd9c2be4fa9af3b732c2",
+      "printedPages": [
+        93,
+        94,
+        95
+      ],
+      "verifiedEarlier": true
+    }
+  ],
+  "sourceItems": {
+    "reviewedLegacy": 13,
+    "allQuarantined": true,
+    "approvedForRuntime": 0,
+    "sgkSourceTaskCandidateCount": 13,
+    "vbtLv2EvidenceCount": 13
+  },
+  "familyScope": {
+    "D5": {
+      "sourceLesson": "MATH_B027",
+      "candidateLessonId": "toan_b27",
+      "candidateSkillId": "SHAPE_COMPOSE_SELECT",
+      "sourceTasksApproved": [],
+      "approvedLevelScopes": [],
+      "policyVersion": "DRAFT",
+      "ownerApprovalRef": null,
+      "explicitExcluded": [
+        "3_PIECE_LAB_IS_NOT_FOUR_TRIANGLE_SGK_TASK",
+        "RULER_MEASUREMENT_EXCLUDED"
+      ]
+    },
+    "D9": {
+      "sourceLesson": "MATH_B065",
+      "candidateLessonId": "toan_b65",
+      "candidateSkillId": "PICTOGRAPH_COUNT_COMPARE",
+      "sourceTasksApproved": [],
+      "approvedLevelScopes": [],
+      "policyVersion": "DRAFT",
+      "ownerApprovalRef": null,
+      "explicitExcluded": [
+        "THREE_PLUS_CATEGORY_AUTO_SUBSET",
+        "SYMBOL_EQUALS_TEN",
+        "EQUAL_RELATION_NOT_SUPPORTED",
+        "MORE_THAN_TWELVE_ICONS_PER_ROW"
+      ]
+    }
+  },
+  "registry": {
+    "sourceP06Commit": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+    "candidateLessonRegistered": false,
+    "candidateSkillRegistered": false,
+    "manifest12Unchanged": true,
+    "manifestTestApproved": false,
+    "trustAdapterApproved": false
+  },
+  "status": "EVIDENCE_VERSION_PINNED_WITHOUT_OWNER_SIGNOFF",
+  "permissions": {
+    "C08": false,
+    "C09": false,
+    "p06Test": false,
+    "application": false,
+    "gas": false,
+    "studentIO": false,
+    "scores": false,
+    "stars": false
+  },
+  "explicitNote": "Git blob SHA pins bytes at a commit; it does NOT prove owner endorsement or replace Ed25519 signature",
+  "rollback": "IGNORE_C085_INTAKE_AND_RESUME_C084_BASELINE_WITHOUT_RUNTIME_CHANGES"
+}

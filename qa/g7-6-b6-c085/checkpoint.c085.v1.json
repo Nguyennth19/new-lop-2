@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "g76b6.c085.checkpoint.v1",
+  "date": "2026-11-16",
+  "branch": "test/g7-6-b6-c085-owner-evidence-lock-20261116",
+  "baseCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+  "status": "OWNER_INTAKE_AND_BYTE_LOCK_READY_NO_REAL_SIGNOFF_NO_GO",
+  "inheritedCI": {
+    "runId": 43792990045,
+    "headCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+    "status": "SUCCESS"
+  },
+  "counts": {
+    "ownerPackets": 6,
+    "submittedOwnerDecisions": 0,
+    "signedOwnerDecisions": 0,
+    "verifiedOwnerDecisions": 0,
+    "pinnedGitBlobFiles": 9,
+    "externalPdfSources": 4,
+    "originalQuarantinedSourceItems": 13,
+    "registeredLessonIds": 0
+  },
+  "gates": {
+    "C07": "INDEPENDENT_PENDING",
+    "C08": "PENDING",
+    "C09": "PENDING",
+    "p06Test": "NOT_AUTHORIZED"
+  },
+  "protectedChanges": {
+    "sourceSheets": false,
+    "officialManifest": false,
+    "p06Catalog": false,
+    "main": false,
+    "testTheoMain": false,
+    "GAS": false,
+    "studentData": false,
+    "grades": false,
+    "stars": false
+  },
+  "ci": {
+    "runId": null,
+    "headSha": null,
+    "status": "PENDING"
+  },
+  "rollback": {
+    "returnCommit": "416867bcaf4d271f2d6730235e3a219c854306e0",
+    "action": "DISCARD_C085_REVIEW_RECORDS_AND_EVIDENCE_LOCK_NO_RUNTIME_REVERT_NEEDED"
+  }
+}
