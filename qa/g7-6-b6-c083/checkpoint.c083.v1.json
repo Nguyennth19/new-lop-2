@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "g76b6.c083.checkpoint.v1",
+  "date": "2026-11-16",
+  "baselineCommit": "7d454560190785d295cfc3793902672a699e79c1",
+  "branch": "test/g7-6-b6-c083-owner-e04-activation-readiness-20261116",
+  "status": "REVIEW_PACKET_PASS_TECHNICALLY_OWNER_DECISIONS_UNSIGNED_NO_GO",
+  "inheritedC082Run": 43791133947,
+  "counts": {
+    "legacySourceIdsReviewed": 13,
+    "sgkSourceTaskCandidates": 13,
+    "vbtTasksReviewed": 13,
+    "approvalPackets": 6,
+    "skillIdCandidates": 2,
+    "approvedSkillIds": 0
+  },
+  "decisions": {
+    "C07": "INDEPENDENT_PENDING_OWNER",
+    "C08": "PENDING_SOURCE_AND_PEDAGOGICAL_OWNER",
+    "C09": "PENDING_PRODUCER_OWNER",
+    "p06Test": "NOT_AUTHORIZED"
+  },
+  "technicalCi": {
+    "status": "NOT_YET_VERIFIED",
+    "runId": null,
+    "runHeadSha": null
+  },
+  "protected": {
+    "sourceSheetsUnchanged": true,
+    "c081OverlayUnchanged": true,
+    "c082ReviewUnchanged": true,
+    "officialManifestUnchanged": true,
+    "p06RegistryUnchanged": true,
+    "mainUnchanged": true,
+    "testTheoMainUnchanged": true,
+    "gasUnchanged": true,
+    "studentIOOff": true,
+    "gradingOff": true,
+    "starsOff": true
+  },
+  "rollback": {
+    "returnCommit": "7d454560190785d295cfc3793902672a699e79c1",
+    "operation": "DISCARD_C083_OWNER_REVIEW_CANDIDATES_NO_RUNTIME_REVERT_REQUIRED"
+  }
+}

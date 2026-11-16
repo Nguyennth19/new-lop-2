@@ -1,0 +1,52 @@
+name: G7.6 B6 C08.3 owner decisions & E04 activation readiness (NO DEPLOY)
+on:
+  push:
+    branches:
+      - test/g7-6-b6-c083-owner-e04-activation-readiness-20261116
+    paths:
+      - 'qa/g7-6-b6-c083/**'
+      - 'docs/kiem-dinh/G7.6-B6-C083_*'
+      - '.github/workflows/g7-6-b6-c083-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          repository: Nguyennth19/new-lop-2
+          ref: c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+          path: _external/p06
+          persist-credentials: false
+      - name: Frozen source CI guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 7d454560190785d295cfc3793902672a699e79c1 HEAD
+          if git diff --name-only 7d454560190785d295cfc3793902672a699e79c1 HEAD | grep -Ev '^(qa/g7-6-b6-c083/|docs/kiem-dinh/G7\.6-B6-C083_|\.github/workflows/g7-6-b6-c083-no-deploy.yml)' ; then echo PROTECTED_CHANGE; exit 1; fi
+          for p in qa/g7-6-b6-c082/source-item-review.v1.json qa/g7-6-b6-c082/p06-lesson-skill-registration.candidate.v1.json qa/g7-6-b5a/e04-curriculum-policy.draft.v1.json qa/g7-6-b6/approvals/C08.approval.pending.v1.json qa/g7-6-b6/approvals/C09.approval.pending.v1.json du-lieu/g7-6/resource-renderer-manifest.v1.json; do
+            test "$(git hash-object "$p")" = "$(git show 7d454560190785d295cfc3793902672a699e79c1:"$p" | git hash-object --stdin)"
+          done
+          test "$(git -C _external/p06 rev-parse HEAD)" = c0c5620f30edd92ab45d4ec87a8a07ffa38948e2
+      - name: Owner packet readiness negative gates
+        run: |
+          node --check qa/g7-6-b6-c083/c083-owner-gates.test.cjs
+          node qa/g7-6-b6-c083/c083-owner-gates.test.cjs _external/p06
+      - name: Archive public and unsigned review artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G76B6-C083-OWNER-REVIEW-NO-GO-NO-DEPLOY
+          path: |
+            qa/g7-6-b6-c083/*.json
+            docs/kiem-dinh/G7.6-B6-C083_OWNER_DECISION_READINESS_20261116.md
+          retention-days: 30

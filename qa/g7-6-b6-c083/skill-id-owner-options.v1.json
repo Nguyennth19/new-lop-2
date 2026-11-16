@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "g76b6.c083.skill-id-owner-options.v1",
+  "date": "2026-11-16",
+  "status": "PROPOSED_NOT_REGISTERED",
+  "sourceP06Pin": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+  "p06CatalogUnmodified": true,
+  "fields": [
+    {
+      "sourceLessonId": "MATH_B027",
+      "sourceSkillId": "SKILL_PRACTICE_SHAPES_DRAWING",
+      "lessonIdCandidate": "toan_b27",
+      "skillIdCandidate": "SHAPE_COMPOSE_SELECT",
+      "recommendation": "RESERVE_NAME_ONLY_DO_NOT_REGISTER_UNTIL_GEOMETRY_POLICY_AND_E04_SIGNOFF",
+      "skillType": "D5_PIECE_SELECTION_COMPOSITION",
+      "alternatives": [
+        "REJECT_OR_RENAME_ON_SKILL_REGISTRY_REVIEW"
+      ],
+      "approvedLessonId": null,
+      "approvedSkillId": null,
+      "verifiedExistingInP06": false,
+      "skillOwnerSignature": null,
+      "sourceOwnerSignature": null
+    },
+    {
+      "sourceLessonId": "MATH_B065",
+      "sourceSkillId": "SKILL_PICTOGRAPH",
+      "lessonIdCandidate": "toan_b65",
+      "skillIdCandidate": "PICTOGRAPH_COUNT_COMPARE",
+      "recommendation": "RESERVE_NAME_ONLY_DO_NOT_REGISTER_UNTIL_TWO_ROW_SOURCE_SUBSETS_SIGNED",
+      "skillType": "D9_TWO_ROW_PICTOGRAPH_COMPARE_DIFFERENCE",
+      "alternatives": [
+        "REJECT_OR_RENAME_ON_SKILL_REGISTRY_REVIEW"
+      ],
+      "approvedLessonId": null,
+      "approvedSkillId": null,
+      "verifiedExistingInP06": false,
+      "skillOwnerSignature": null,
+      "sourceOwnerSignature": null
+    }
+  ],
+  "requiredRegistrationInputs": [
+    "OWNER_SIGNED_C08_SOURCE_ITEM_DECISION",
+    "PEDAGOGY_SIGNED_D5_OR_D9_SCOPE",
+    "C09_PRODUCER_OWNER_APPROVAL",
+    "CURRICULUM_REF_EDITION_AND_PAGE_BYTES",
+    "LESSON_ID_SKILL_ID_COLLISION_CHECK",
+    "VERSIONED_E04_POLICY_AND_SHA256",
+    "ISOLATED_TEST_TRUST_ANCHOR",
+    "INDEPENDENT_NEGATIVE_QA",
+    "EXPLICIT_LIMITED_TEST_REGISTRATION_PERMISSION"
+  ],
+  "createRegistryFileNow": false,
+  "allowRegistryMutation": false,
+  "ownerDecision": null,
+  "decision": "NO_GO_REGISTRATION_OR_PRODUCER_ACTIVATION"
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "g76b6.c083.e04-owner-options.v1",
+  "date": "2026-11-16",
+  "status": "READY_FOR_INDIVIDUAL_OWNER_DECISION_NOT_SIGNED",
+  "parent": "7d454560190785d295cfc3793902672a699e79c1",
+  "governingPolicy": "qa/g7-6-b5a/e04-curriculum-policy.draft.v1.json",
+  "governingContract": "qa/g7-6-b5a/e04-producer-contract.cjs",
+  "rules": {
+    "notLiveActivation": true,
+    "d5ThreePieceOnlyLab": true,
+    "d9MaxRows": 2,
+    "d9MaxCountEachRow": 12,
+    "d9SymbolUnit": 1,
+    "d9CompareDifferenceOnly": true,
+    "lv1FromSGK": true,
+    "lv2FromVBT": true,
+    "lv3Unsupported": true,
+    "forbidB21": true
+  },
+  "decisions": [
+    {
+      "decisionId": "C083_D5_EQUIVALENCE",
+      "family": "D5_TANGRAM",
+      "sourceLessonId": "MATH_B027",
+      "lessonCandidate": "toan_b27",
+      "skillCandidate": "SHAPE_COMPOSE_SELECT",
+      "recommendedOption": "KEEP_THREE_PIECE_LAB_AS_PROJECT_VARIANT_NOT_SGK_REPLICA",
+      "options": [
+        {
+          "id": "KEEP_THREE_PIECE_LAB_AS_PROJECT_VARIANT_NOT_SGK_REPLICA",
+          "scope": "Retain 3-piece as ungraded, independent project visual play; do not cite SGK B027 4-triangle exercise as exact reproduction",
+          "wouldAllowRealP06Activation": false
+        },
+        {
+          "id": "DEVELOP_SEPARATE_FOUR_PIECE_SGK_CONTRACT_AFTER_QA",
+          "scope": "Separate 4-triangle source-faithful mode and visual QA before proposing production lesson mapping",
+          "wouldAllowRealP06Activation": false
+        },
+        {
+          "id": "REJECT_D5_B027_MAPPING",
+          "scope": "Do not map existing D5 to B027",
+          "wouldAllowRealP06Activation": false
+        }
+      ],
+      "evidence": [
+        "SGK_T1_PRINTED_106_107_4_TRIANGLES",
+        "VBT_T1_PRINTED_100_101_4_TRIANGLES",
+        "B5A_D5_LAB_EXACT_THREE_PIECES"
+      ],
+      "reviewerRequired": "PEDAGOGICAL_OWNER",
+      "chosenOption": null,
+      "reviewer": null,
+      "signature": null,
+      "reviewDate": null,
+      "approvalRef": null,
+      "authorityScope": null,
+      "ownerApproved": false
+    },
+    {
+      "decisionId": "C083_D9_TWO_ROW_SUBSET",
+      "family": "D9_COMPARE_DIFFERENCE",
+      "sourceLessonId": "MATH_B065",
+      "lessonCandidate": "toan_b65",
+      "skillCandidate": "PICTOGRAPH_COUNT_COMPARE",
+      "recommendedOption": "REVIEW_CASE_BY_CASE_TWO_ROW_SUBSET_ONLY",
+      "options": [
+        {
+          "id": "REVIEW_CASE_BY_CASE_TWO_ROW_SUBSET_ONLY",
+          "scope": "Exactly 2 rows, counts 1..12, unit 1:1, explicit MORE_THAN/LESS_THAN; per-exercise preserved intent + approval",
+          "wouldAllowRealP06Activation": false
+        },
+        {
+          "id": "KEEP_FULL_THREE_PLUS_CATEGORY_SOURCES_OUTSIDE_CURRENT_D9",
+          "scope": "Retain source diagrams requiring 3+ groups intact without current D9 mapping",
+          "wouldAllowRealP06Activation": false
+        },
+        {
+          "id": "REQUEST_D9_SCALED_OR_MULTIROW_V2",
+          "scope": "Separate future renderer/contract for multi-row and per-symbol 10 units",
+          "wouldAllowRealP06Activation": false
+        }
+      ],
+      "exclusions": [
+        "NO_ONE_BAG_EQUALS_TEN",
+        "NO_ONE_BUNDLE_EQUALS_TEN",
+        "NO_AUTOMATIC_DROP_THIRD_CATEGORY",
+        "NO_COMPARE_EQUAL_BECAUSE_D9_ONLY_MORE_LESS"
+      ],
+      "reviewerRequired": "PEDAGOGICAL_OWNER",
+      "chosenOption": null,
+      "reviewer": null,
+      "signature": null,
+      "reviewDate": null,
+      "approvalRef": null,
+      "authorityScope": null,
+      "ownerApproved": false
+    }
+  ],
+  "sourceItemOwnerDisposition": {
+    "reviewedItemCount": 13,
+    "approvedSourceRows": 0,
+    "nonReusableLegacyIds": [
+      "SGK_B027_T01_E01",
+      "SGK_B027_T01_E02",
+      "SGK_B027_T01_E03",
+      "SGK_B027_T02_E01",
+      "SGK_B027_T02_E02",
+      "SGK_B027_T02_E03",
+      "SGK_B065_T01_E01",
+      "SGK_B065_T01_E02",
+      "SGK_B065_T01_E03",
+      "SGK_B065_T02_E01",
+      "SGK_B065_T02_E02",
+      "SGK_B065_T02_E03",
+      "SGK_B065_T02_E04"
+    ],
+    "independentNewSourceTaskCount": 13,
+    "reuseWithoutSignoff": false
+  },
+  "decision": "GO_OWNER_REVIEW_ONLY_NO_GO_E04_ACTIVATION"
+}

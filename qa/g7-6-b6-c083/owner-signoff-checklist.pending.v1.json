@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "g76b6.c083.review-handbook.v1",
+  "date": "2026-11-16",
+  "status": "AWAITING_INDIVIDUAL_OWNER_DECISIONS",
+  "packets": [
+    {
+      "id": "C08-D5",
+      "reference": "qa/g7-6-b6-c083/e04-owner-options.v1.json#C083_D5_EQUIVALENCE",
+      "eligibleOwner": "PEDAGOGICAL_OWNER",
+      "decision": null,
+      "signature": null,
+      "signoffCriteria": [
+        "Adopt or reject existing 3-piece lab analogy",
+        "Independent 4-piece evidence required before SGK claim",
+        "Map each source candidate, forbid ruler tasks",
+        "LV1/LV2 kept separate"
+      ],
+      "gateAfterSignoff": "STILL_NO_E04_ACTIVATION"
+    },
+    {
+      "id": "C08-D9",
+      "reference": "qa/g7-6-b6-c083/e04-owner-options.v1.json#C083_D9_TWO_ROW_SUBSET",
+      "eligibleOwner": "PEDAGOGICAL_OWNER",
+      "decision": null,
+      "signature": null,
+      "signoffCriteria": [
+        "Choose source 1:1 two-category comparisons case by case",
+        "No auto subset from three categories",
+        "1 icon=10 unit excluded",
+        "0..12 bounded quantity, MORE/LESS only"
+      ],
+      "gateAfterSignoff": "STILL_NO_E04_ACTIVATION"
+    },
+    {
+      "id": "C08-SOURCE-ITEMS",
+      "reference": "qa/g7-6-b6-c082/source-item-review.v1.json",
+      "eligibleOwner": "SOURCE_QA_OWNER",
+      "decision": null,
+      "signature": null,
+      "signoffCriteria": [
+        "Approve 13 legacy rejected descriptions individually",
+        "Approve candidate source IDs with book-page-pdf hash",
+        "Source workbook remains unchanged until separately authorized"
+      ],
+      "gateAfterSignoff": "C09_AND_P06_STILL_BLOCKED"
+    },
+    {
+      "id": "P06-SKILL-ID-D5",
+      "reference": "qa/g7-6-b6-c083/skill-id-owner-options.v1.json",
+      "eligibleOwner": "P06_SKILL_REGISTRY_OWNER",
+      "decision": null,
+      "signature": null,
+      "signoffCriteria": [
+        "Check uniqueness and approved vocabulary",
+        "Decide toan_b27/SHAPE_COMPOSE_SELECT or replacement"
+      ],
+      "gateAfterSignoff": "C09_STILL_REQUIRED"
+    },
+    {
+      "id": "P06-SKILL-ID-D9",
+      "reference": "qa/g7-6-b6-c083/skill-id-owner-options.v1.json",
+      "eligibleOwner": "P06_SKILL_REGISTRY_OWNER",
+      "decision": null,
+      "signature": null,
+      "signoffCriteria": [
+        "Check uniqueness and approved vocabulary",
+        "Decide toan_b65/PICTOGRAPH_COUNT_COMPARE or replacement"
+      ],
+      "gateAfterSignoff": "C09_STILL_REQUIRED"
+    },
+    {
+      "id": "C09-PRODUCER",
+      "reference": "qa/g7-6-b6/approvals/C09.approval.pending.v1.json",
+      "eligibleOwner": "PRODUCER_OWNER",
+      "decision": null,
+      "signature": null,
+      "signoffCriteria": [
+        "Requires fully signed C08 source + pedagogy",
+        "Full isolated TEST contract, no B999 fake registration",
+        "No answer keys in client payload"
+      ],
+      "gateAfterSignoff": "SEPARATE_P06_TEST_REGISTRATION_REVIEW"
+    }
+  ],
+  "policyNoAutoApproval": true,
+  "allowPartialDecisions": true,
+  "notASigningInstrument": true
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "g76b6.c083.activation-gate-matrix.v1",
+  "date": "2026-11-16",
+  "stages": [
+    {
+      "id": "OWNER_REVIEW",
+      "requires": [
+        "C082_ITEMWISE_SOURCE_REVIEW",
+        "SGK_AND_VBT_PAGE_PROOFS",
+        "D5_D9_SEPARATE_OPTIONS"
+      ],
+      "satisfied": true,
+      "authorization": "MAY_SUBMIT_UNSIGNED_REVIEW_PACKETS_ONLY"
+    },
+    {
+      "id": "C08_SOURCE_APPROVAL",
+      "requires": [
+        "OWNER_APPROVES_13_LEGACY_ROW_DISPOSITIONS",
+        "APPROVES_SELECTED_SOURCE_TASK_IDS",
+        "EDITION_SHA_AND_PAGE_REFERENCE",
+        "D5_OR_D9_PEDAGOGICAL_SCOPE"
+      ],
+      "satisfied": false,
+      "authorization": "DENIED"
+    },
+    {
+      "id": "C09_E04_POLICY_PRODUCER_APPROVAL",
+      "requires": [
+        "SIGNED_C08",
+        "E04_POLICY_VERSION_AND_SOURCE_REF",
+        "GENERATOR_TRUSTED_CONTRACT_AND_NEGATIVE_QA",
+        "NO_PUBLIC_ANSWER_LEAK"
+      ],
+      "satisfied": false,
+      "authorization": "DENIED"
+    },
+    {
+      "id": "P06_TEST_REGISTRATION",
+      "requires": [
+        "SIGNED_C08",
+        "SIGNED_C09",
+        "APPROVED_LESSON_ID_AND_SKILL_ID",
+        "IMMUTABLE_POLICY_DIGEST",
+        "ISOLATED_TEST_TRUST_ADAPTER",
+        "OWNER_EXPLICIT_TEST_SCOPE"
+      ],
+      "satisfied": false,
+      "authorization": "DENIED"
+    },
+    {
+      "id": "APP_OR_GAS_DEPLOYMENT",
+      "requires": [
+        "SEPARATE_FUTURE_RELEASE_APPROVAL_AND_C10_TO_C12",
+        "SECURITY_AND_STUDENT_IO_POLICY"
+      ],
+      "satisfied": false,
+      "authorization": "DENIED"
+    }
+  ],
+  "currentStatuses": {
+    "C07": "INDEPENDENT_OWNER_UNSIGNED",
+    "C08": "BLOCKED_OWNER_SOURCE_AND_PEDAGOGY",
+    "C09": "BLOCKED_E04_POLICY_AND_REGISTER",
+    "C10": "BLOCKED_PER_ASSET_QA",
+    "C11": "NOT_EVIDENCED_FOR_ALL_10",
+    "C12": "HOST_INTEGRATION_NOT_STARTED"
+  },
+  "sourceTaskSelectionAllowed": false,
+  "approveOnBehalfOfOwner": false,
+  "studentIO": false,
+  "scoring": false,
+  "stars": false,
+  "releaseReady": false,
+  "decision": "GO_TO_OWNER_REVIEW_NO_GO_ANY_ACTIVATION"
+}
