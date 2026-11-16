@@ -22,6 +22,28 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),{chromium}=requ
   await page.locator('.kl-col-v12-send').click();
   const msg=await page.locator('.kl-col-v12-status').textContent();assert.match(msg,/chưa|bài chính|phiên luyện/i);total++;
   assert.equal(await page.locator('[data-ml-field="VAR_20_X:ones"]').inputValue(),'');total++;
+  // Reuse the app's numeric-keypad adapter, without touching legacy graded fields.
+  await ones.focus();
+  const keypad=await page.evaluate(()=>window.BE_HOC_D2_V12.handleKey('4'));
+  assert.equal(keypad,true);total++;
+  assert.equal(await ones.inputValue(),'4');total++;
+  assert.equal(await page.locator('[data-ml-field="VAR_20_X:ones"]').inputValue(),'');total++;
+  // PV1000 UI verification is QA-only; never attach this 3-digit fixture to B20.
+  const three=await page.evaluate(()=>{
+   const screen=document.getElementById('mathFullScreen');
+   const fixture=document.createElement('div');fixture.id='pv1000-qa';screen.append(fixture);
+   const spec={variantId:'COL_QA_356_128',profile:'PV1000',operation:'ADD',level:'LV2',a:356,b:128,carryPolicy:'OPTIONAL_HINT',assetId:null};
+   const plan=window.KLColumnV12.publicPlan(spec);
+   const run=window.KLColumnViewV12.mount(fixture,[plan],{onSpeak:()=>{}});
+   const blocked=window.KLColumnV12.publicPlan({...spec,a:999,b:1});
+   const blockedAlso=window.KLColumnV12.publicPlan({...spec,a:500,b:500});
+   return {ok:run.ok,columns:plan.columns,blocked:blocked.reason,blockedAlso:blockedAlso.reason};
+  });
+  assert.equal(three.ok,true);assert.equal(three.columns,3);total+=2;
+  assert.equal(three.blocked,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');
+  assert.equal(three.blockedAlso,'RESULT_OUT_OF_SCOPE_NO_FOUR_COLUMN');total+=2;
+  assert.equal(await page.locator('#pv1000-qa .kl-col-v12-answer').count(),3);total++;
+  assert.equal(await page.locator('#pv1000-qa .kl-col-v12-transition').count(),2);total++;
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);assert.equal(overflow,false,label+' overflows');total++;
   if(label==='mobile-emulation'){let h=await page.locator('.kl-col-v12-transition').evaluate(x=>x.getBoundingClientRect().height);assert(h>=44);total++;}
   await ctx.close();
