@@ -118,6 +118,28 @@ function khoLamMoiBai_(lessonId){
  CacheService.getScriptCache().remove('kho_bai_'+KHO_BAI_HOC_VERSION+'_'+lessonId);
 }
 
+/** B20 public SVG is an untrusted Sheet value, not HTML authorized for execution.
+ * Allow only the five primitive tags/attributes used by the 8 verified QA shapes.
+ * Unknown markup fails closed to an empty decorative fragment. */
+function g3aSafePublicSvg_(raw){
+ const svg=String(raw||'');if(!svg)return '';
+ if(svg.length>8000||/<!--|<!\[CDATA|<\?|<script|<style|foreignobject|javascript:|data:|url\s*\(|\b(?:onload|onerror|onclick|href|xlink:href|style)\s*=/i.test(svg))return '';
+ const tags=svg.match(/<[^<>]*>/g)||[];
+ if(!tags.length||/[<>]/.test(svg.replace(/<[^<>]*>/g,'')))return '';
+ const allowed={circle:true,rect:true,polygon:true,path:true,text:true};
+ const attrs={cx:true,cy:true,r:true,fill:true,points:true,x:true,y:true,width:true,height:true,rx:true,
+   stroke:true,'stroke-width':true,d:true,'text-anchor':true,'font-size':true,'font-weight':true};
+ for(const tag of tags){
+  const m=/^<(\/?)([a-z]+)([\s\S]*?)(\/?)>$/i.exec(tag);
+  if(!m||!allowed[m[2].toLowerCase()])return '';
+  const rest=m[3];
+  if(m[1]){if(rest.trim()||m[4])return '';continue;}
+  const pairs=[...rest.matchAll(/\s+([a-z-]+)="([^"<>&]*)"/gi)];
+  if(rest.replace(/\s+([a-z-]+)="([^"<>&]*)"/gi,'').trim()||
+      pairs.some(function(x){return !attrs[x[1].toLowerCase()];}))return '';
+ }
+ return svg;
+}
 /** G3-A: public projection by an explicit allowlist, not a blacklist.
  * The source q (including answer, puzzle.ans, solutionPrompt) never leaves GAS.
  * This function MUST NOT be used as a grading source.
@@ -130,7 +152,7 @@ function g3aB20PublicQuestion_(q){
  keys.forEach(function(k){
   const v=q[k];
   if(v===undefined||v===null)return;
-  if(typeof v==='string')out[k]=v.slice(0,k==='svg'?8000:2000);
+  if(typeof v==='string')out[k]=k==='svg'?g3aSafePublicSvg_(v):v.slice(0,2000);
   else if(typeof v==='number'&&Number.isFinite(v))out[k]=v;
   else if(typeof v==='boolean')out[k]=v;
  });
