@@ -143,6 +143,24 @@ pass('no student answer keys or executable private grading in package schema',()
    assert(!t.includes(secret),file.lessonId+' leaks '+secret);
  }
 });
+pass('formal LessonPackage v1 schema required contract matches 24 generated files',()=>{
+ const schema=JSON.parse(fs.readFileSync(path.join(directory,'lessonpackage.schema.v1.json'),'utf8'));
+ assert.equal(schema.$schema,'https://json-schema.org/draft/2020-12/schema');
+ assert.equal(schema.properties.packageStatus.const,'INDEXED_NOT_PLAYABLE');
+ assert.equal(schema.properties.reviewGates.properties.studentRelease.const,'NO_GO');
+ assert.equal(schema.$defs.sourceQuestion.properties.skillId.type,'null');
+ assert.equal(schema.$defs.sourceQuestion.properties.publicVariant.type,'null');
+ for(const row of manifest.files){
+  const obj=JSON.parse(fs.readFileSync(path.join(root,row.file),'utf8'));
+  for(const k of schema.required)assert(Object.hasOwn(obj,k),row.lessonId+' missing '+k);
+  for(const q of obj.questions)for(const k of schema.$defs.sourceQuestion.required)
+   assert(Object.hasOwn(q,k),q.questionId+' missing '+k);
+  for(const q of obj.technicalReviewCandidates)for(const k of schema.$defs.g2Candidate.required)
+   assert(Object.hasOwn(q,k),q.questionId+' missing '+k);
+  for(const q of obj.variantPool.candidates)for(const k of schema.$defs.previewCandidate.required)
+   assert(Object.hasOwn(q,k),q.originExerciseId+' missing '+k);
+ }
+});
 const report={tests:count+errors.length,passed:count,failed:errors.length,lessons:24,
  c1SourceCandidates:sourceRows,g2TechnicalCandidates:g2Rows,
  ownerCaseChecks:checks,keptUnique:kept,droppedUnique:dropped,
