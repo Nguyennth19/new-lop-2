@@ -1,0 +1,41 @@
+name: P0 G2B 25-case reusable adaptation contract (TEST ONLY)
+on:
+  push:
+    branches:
+      - test/p0-g2b-variant-adaptation-20261117
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  adaptation-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Strict JS syntax and Apps Script HTML include order
+        shell: bash
+        run: |
+          set -eu
+          node --check --input-type=commonjs < 89_P0_VariantRouter.html
+          node --check --input-type=commonjs < 90_P0_VectorStructural.html
+          node --check --input-type=commonjs < 83_Visual_Orchestrator.html
+          node --check qa/p0-g2b-adaptation/test_p0_contract.cjs
+      - name: Validate all 25 decisions and malicious/future contracts
+        run: node qa/p0-g2b-adaptation/test_p0_contract.cjs
+      - name: Do not commit textbook image/PDF into public audit data
+        shell: bash
+        run: |
+          set -eu
+          if find qa/p0-g2b-adaptation -type f \( -iname '*.pdf' -o -iname '*.png' -o -iname '*.jpg' -o -iname '*.webp' \) | grep .; then
+            echo 'Source textbook pages must remain private'; exit 1
+          fi
+      - name: Save scope-labeled test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p0-g2b-variant-template-ci
+          path: qa/p0-g2b-adaptation/TEST_RESULTS.json
+          retention-days: 14
