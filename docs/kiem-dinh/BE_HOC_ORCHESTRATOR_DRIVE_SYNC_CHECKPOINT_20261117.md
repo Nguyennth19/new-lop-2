@@ -44,3 +44,10 @@ The configured runtime spreadsheet `1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8
 4. Verify new CI and actual Web App TEST deployment/phone E2E before any release claim.
 
 **Current milestone:** SOURCE_CODE_READY_FOR_STRUCTURED_DISPLAY; MASTER_PNG_MIRROR_24_OF_288; REAL_TEN_FAMILY_COVERAGE_UNPROVEN; NO_DEPLOY.
+
+## CI follow-up (verified after original checkpoint)
+- GitHub Actions run `44011827493` on commit `dcf9a25edc6abc952b28ae272a05c143dbec727f`: **COMPLETED / SUCCESS**.
+- Public-only module/contract tests, new structured source ingestion and exact-byte master PNG pins: PASS.
+- Chromium desktop/mobile runtime smoke: PASS.
+- This is GitHub CI, **not** proof of GAS TEST deployment, physical handset E2E, or 10 real lesson families.
+- Run URL: https://github.com/Nguyennth19/new-lop-2/actions/runs/44011827493
