@@ -44,3 +44,26 @@ Do not edit `be-hoc`, `main`, `test-theo-main`, historical QA, production B20 Sh
 **Exact single remaining acceptance session:** synchronize this branch's exact SHA to a *separate restricted GAS TEST project*, configure private `G3A_TEST_ENABLED`, QA workbook ID and `G3A_TEST_ALLOWED_EMAILS`; run `g3bAuditGasServerOnce_` once as an allowlisted account; deploy as **user accessing Web App**, record the real version/deployment ID, browser Network public/legacy/grade/replay/OAuth evidence and before/after QA workbook hash/tab counts; sign a receipt. **Do not treat the editor-only audit as Web App E2E**. Never deploy to production or enable points/star writes.
 
 **Explicit blocker:** this connected toolset supports Drive/Sheets and GitHub, **not** creation/deployment/execution of Google Apps Script or a signed-in Chrome browser. The exact credential-dependent step cannot be performed truthfully from here. Keep remaining work on THIS branch; do not open further branches or switch to lesson-building work.
+
+## P0 one-session Web App acceptance — browser smoke route, 2026-11-17
+
+**No new branch.** New scope on the existing G3-B TEST branch only:
+
+- `G3B_BrowserSmoke.html` is a restricted HTML Service page with a manual **Chạy kiểm thử GAS TEST** button, reachable only as `<ISOLATED_TEST_WEB_APP_EXEC_URL>?g3bSmoke=1` (use `&` if the URL already has query parameters).
+- `MayChu.gs::doGet(e)` first invokes `g3aQaContext_()`; unauthorized/blank active-user email cannot view the smoke page. The normal student-like TEST UI is unchanged.
+- The smoke page makes a public B20 allowlist request (51 source records), confirms no hidden keys or unapproved renderer policies, checks the legacy raw extractor fails, tests server-side **empty** and **wrong** submissions at LV1/LV2/LV3 with a 300-second one-use token, checks replay denial, and checks B024 denied. It **never uses private correct answers in the browser**.
+- It creates a redacted, read-only receipt, without tester email, tokens, private answers or source Sheet rows. The report expressly says `GAS_WEBAPP_RPC_SMOKE_ONLY`, `gasEditorAuditVerified=false`, `networkTraceVerified=false`, `visualUXVerified=false`, `deployedCodeShaVerified=false`, `studentRelease=NO_GO`.
+- The browser bridge has an independent local mocked `google.script.run` replay test of **21/21 PASS**. [CI run 44111761967](https://github.com/Nguyennth19/new-lop-2/actions/runs/44111761967) = **33/33 VM + 6/6 mock HTTP + 26/26 G3-B + 21/21 browser mocked checks**, 0 FAIL. This is NOT a real GAS deployment.
+- QA source live-read (read-only): **4 tabs, with 1 / 3 / 8 / 51 data rows**, and real-level selector preview **LV1 12; LV2 4; LV3 22**. No learner profile, answer values, script credentials or confidential Sheet data were published.
+
+### Close the real deployment-dependent gate exactly once
+
+1. From the pinned **G3-B branch commit** (the last HEAD at deployment), create/synchronize a **separate TEST Apps Script project**; never deploy from `main`, `be-hoc` or an old G3-A SHA.
+2. Set private Script Properties `G3A_TEST_ENABLED=true`, `G3A_TEST_SOURCE_SPREADSHEET_ID` to the isolated QA workbook `1Y4PldXPFXr08wJEHvxLw_3KWk97a0Q6BS3p-kiMxxRQ`, and `G3A_TEST_ALLOWED_EMAILS` to the real approved testers. Do not commit or paste identities, passwords or tokens. Grant that tester access to the QA workbook.
+3. In Apps Script Editor, run **`g3bAuditGasServerOnce_()`** as the authorized tester and retain the returned **redacted** QA receipt. Require `ok=true`, `failed=0`, `writes=0`, `awarded=false`, workbook counts unchanged. This is REAL GAS SERVER test, NOT browser test.
+4. Publish ONLY the isolated TEST Web App, **execute as user accessing the web app**, restricted to testers; record the deployed version/code-SHA match, deployment ID, identity gate, URL, and OAuth consent result privately. Empty `Session.getActiveUser().getEmail()` must be rejected.
+5. Open that `/exec` URL with `?g3bSmoke=1` in the authenticated tester browser. Run the button once and save the **21/21 PASS** redacted receipt. Check the Chrome Network RPC response for `g3aLayBaiToan20Test`/`layBaiToan20` recursively contains no secret key, raw legacy export errors, and grading responses include no private answer fields.
+6. On the **normal** `/exec` TEST page inspect B20 LV1/2/3 on desktop/mobile and actually submit through the lesson UI; compare source QA tab counts/hashes before and after. Verify no `90_Lan_lam_bai`, `91_So_sao`, `92_Ghi_chu_phu_huynh` created.
+7. **Only then** sign `REAL_GAS_E2E_PASS` for that exact deployed SHA and reviewer. Without ALL independent evidence, preserve `REAL_GAS_E2E_NOT_RUN` and `P0_B20_FULL_CLOSURE=NO_GO`.
+
+**Access limitation verified:** the active tools allow connected GitHub and Google Drive/Sheets access, but **no Apps Script project create/execute/deploy connector and no authenticated remote Chrome browser**; no real Web App URL/version/deployment receipt was available. The assistant did not claim to run real GAS or authenticate a tester and did not open any additional development branch. This is the sole remaining external acceptance blocker, not an invitation to start P0.1/P1.
