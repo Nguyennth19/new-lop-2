@@ -1,0 +1,32 @@
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+let checks=0;
+const eq=(a,b)=>{assert.equal(a,b);checks++;};
+const ctx={window:{},console,Map,Set};ctx.globalThis=ctx.window;
+for(const p of ['59_Visual_Public_Assets','85_Fluent_Asset_46','87_Characters_Drive_30','88_Visual_Semantic_Router','83_Visual_Orchestrator'])
+ vm.runInNewContext(fs.readFileSync(p+'.html','utf8'),ctx,{filename:p+'.html'});
+const sem=ctx.window.BE_HOC_VISUAL_SEMANTIC,orch=ctx.window.BE_HOC_VISUAL_ORCHESTRATOR;
+eq(ctx.window.BE_HOC_CHARACTERS_30.count,30);
+eq(ctx.window.BE_HOC_CHARACTERS_30.list().length,30);
+eq(ctx.window.BE_HOC_ASSETS_288.count,288);
+eq(ctx.window.BE_HOC_FLUENT_46.count,46);
+eq(sem.plan({assetId:'KL2_ROBOT_01_STAND',visualIntent:'DECORATIVE'}).ok,true);
+eq(sem.plan({assetId:'KL2_GIRL_HOME_04_READ',visualIntent:'CHOICE'}).ok,false);
+eq(sem.plan({canonicalObject:'một con gà',visualIntent:'EXACT_COUNT',countUnit:'con',exactQuantity:3}).ok,true);
+eq(sem.plan({canonicalObject:'quả táo',visualIntent:'DECORATIVE'}).reason,'AMBIGUOUS_SEMANTIC_MATCH');
+eq(sem.plan({assetId:'FLUENT:books',visualIntent:'EXACT_COUNT',countUnit:'cuốn',exactQuantity:3}).ok,false);
+eq(sem.plan({assetId:'KL_SH01_001',visualIntent:'EXACT_COUNT',countUnit:'quả',exactQuantity:3}).ok,false);
+eq(sem.plan({assetId:'KL2_BOY_HOME_01_STAND',visualIntent:'EXACT_COUNT',countUnit:'bạn',exactQuantity:2}).ok,false);
+eq(orch.resolve({rendererId:'D5',lessonId:'toan_b20',questionId:'q1',questionType:'vertical',skillId:'ADD_WITH_CARRY_2DIGIT',publicVariant:{}}).reason,'LESSON_POLICY_NOT_APPROVED');
+const status=sem.coverage({questions:[{id:'a',visualContract:{assetId:'FLUENT:banana',visualIntent:'EXACT_COUNT',countUnit:'quả',exactQuantity:4}},{id:'b'}]});
+eq(status.counts.total,2);eq(status.counts.visualRoutable,1);eq(status.counts.withContract,1);
+const sheet={};vm.runInNewContext(fs.readFileSync('KhoBaiHoc.gs','utf8'),sheet);
+const visual=sheet.khoVisualContract_({asset_id:'KL_SH01_001',visual_intent:'DECORATIVE',renderer_id:'D1',skill_id:'COUNT_OBJECTS',public_variant_json:'{"prompt":"Đếm hình"}'});
+eq(visual?.rendererId,'D1');
+eq(sheet.khoVisualContract_({asset_id:'KL_SH01_001',renderer_id:'D1',skill_id:'COUNT_OBJECTS',public_variant_json:'{"answerKey":10}'}),null);
+const evidence={rendererId:'D5',questionType:'geometry',skillId:'GEOMETRY_PIECES',qaStatus:'PASS',evidenceId:'E04-VERIFY-20261117'};
+eq(sheet.khoRendererPolicies_({visual_renderer_policy_json:JSON.stringify([evidence])}).length,0);
+eq(sheet.khoRendererPolicies_({visual_renderer_policy_json:JSON.stringify([{...evidence,e04Approved:true}])}).length,1);
+for(const name of ['87_Characters_Drive_30','88_Visual_Semantic_Router'])
+ eq(fs.readFileSync('GiaoDien.html','utf8').includes("napThanhPhan('"+name+"')"),true);
+console.log('BE_HOC_SEMANTIC_CHARACTER_CONTRACT_PASS',checks,'assertions');
