@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "be-hoc.live-sheet-coverage.v1",
+  "checkedAt": "2026-11-17",
+  "source": {
+    "spreadsheetId": "1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8",
+    "sourceType": "Google Sheets live metadata and bounded range reads",
+    "reads": [
+      "01_Bai_hoc!A1:Q100",
+      "02_Cap_do!A1:J100",
+      "03_Nhom_bai!A1:E100",
+      "04_Cau_hoi!A1:U100"
+    ]
+  },
+  "actual": {
+    "lessonRecords": 75,
+    "levelRecords": 3,
+    "sectionRecords": 8,
+    "questionRecords": 51,
+    "questionLessonIds": [
+      "toan_b20"
+    ],
+    "questionTypes": [
+      "vertical",
+      "mental",
+      "word_problem",
+      "missing_digit"
+    ],
+    "structuredVisualContractColumnsPresent": false,
+    "rendererPolicyColumnPresent": false
+  },
+  "runtime": {
+    "rendererRoutesRegistered": 12,
+    "webpAssetCount": 288,
+    "fluentSVGCount": 46,
+    "charactersCount": 30,
+    "sourceSheetsMirrored": 24,
+    "individualPNGMastersMirrored": 24,
+    "individualPNGMasterGroups": [
+      "M01",
+      "M02"
+    ]
+  },
+  "gate": {
+    "realLessonTenFamilyCoverage": "NOT_PROVEN_SOURCE_RECORDS_ABSENT",
+    "runtimeModules": "LOADED",
+    "imageLibraries": "REUSE_PASSED_QA",
+    "structuredTypes": "SOURCE_AND_DISPLAY_ONLY_CAPABILITY_ADDED",
+    "gradeWrites": "NOT_PROMOTED",
+    "gasTestDeploy": "NOT_PERFORMED",
+    "release": "NO_GO"
+  },
+  "notes": [
+    "75 rows in 01_Bai_hoc are index/metadata, not 75 composed lessons",
+    "No fabricated QA evidence or inferred SGK binding",
+    "M01/M02 PNG master group copies are direct Drive bytes, remaining PNG master sources still in Drive",
+    "Do not alter main or test-theo-main"
+  ]
+}
