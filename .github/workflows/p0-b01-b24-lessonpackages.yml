@@ -1,0 +1,65 @@
+name: P0 B001-B024 LessonPackage JSON reproducible build (TEST)
+on:
+  push:
+    branches: [test/p0-b01-b24-lessonpackage-v1-20261117]
+    paths:
+      - qa/p0-b01-b24/inputs/**
+      - qa/p0-b01-b24/test_lessonpackages.cjs
+      - scripts/lessonpackage/**
+      - qa/p0-g2b-adaptation/25-case-decisions.v1.json
+      - .github/workflows/p0-b01-b24-lessonpackages.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-and-pin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout isolated branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 2
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of deterministic builder and assertions
+        run: |
+          node --check scripts/lessonpackage/build_b001_b024.cjs
+          node --check qa/p0-b01-b24/test_lessonpackages.cjs
+      - name: Rebuild 24 JSON packages from frozen C1 and G2 evidence
+        run: node scripts/lessonpackage/build_b001_b024.cjs --write
+      - name: Byte-exact rebuild and 24 package QA
+        run: |
+          node scripts/lessonpackage/build_b001_b024.cjs --check
+          node qa/p0-b01-b24/test_lessonpackages.cjs --write-report
+      - name: Assert 24 packages, manifest and QA result exist
+        shell: bash
+        run: |
+          set -eu
+          test "$(find du-lieu/bai-hoc/toan/v1 -maxdepth 1 -name 'B[0-9][0-9][0-9].lesson.json' | wc -l)" -eq 24
+          test -s du-lieu/bai-hoc/toan/v1/manifest.B001-B024.json
+          test -s qa/p0-b01-b24/TEST_RESULTS.json
+      - name: Pin generated files ONLY on isolated TEST branch
+        if: github.ref == 'refs/heads/test/p0-b01-b24-lessonpackage-v1-20261117'
+        shell: bash
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- du-lieu/bai-hoc/toan/v1/B*.lesson.json du-lieu/bai-hoc/toan/v1/manifest.B001-B024.json qa/p0-b01-b24/TEST_RESULTS.json
+          if git diff --cached --quiet; then
+            echo 'No generated package diff'
+          else
+            git commit -m "build(p0): pin 24 source-preserving LessonPackages [skip ci]"
+            git push origin "HEAD:refs/heads/test/p0-b01-b24-lessonpackage-v1-20261117"
+          fi
+      - name: Save compact QA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b001-b024-lessonpackages-v1-qa
+          path: qa/p0-b01-b24/TEST_RESULTS.json
+          retention-days: 14
