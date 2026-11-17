@@ -44,7 +44,7 @@ function contract(c){
  return {lessonId:c.lessonId,originExerciseId:c.exerciseId,
   skillId:c.skillId,questionType:qtypes[c.familyId]||'interactive',
   semanticKind:c.familyId,visualIntent:['TWO_GROUP_COUNT_ADD','SYNTHETIC_EXACT_COUNT_TENS'].includes(c.familyId)?'EXACT_COUNT':'STRUCTURAL_MATH',
-  semantic:fixture[c.familyId]||{},publicVariant:{}};
+  semantic:clone(fixture[c.familyId]||{}),publicVariant:{}};
 }
 function clone(x){return JSON.parse(JSON.stringify(x));}
 test('manifest has 25 cases, 24 unique exercises, no hidden duplicate',()=>{
