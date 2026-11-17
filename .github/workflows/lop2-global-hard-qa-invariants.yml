@@ -1,0 +1,18 @@
+name: LOP2 global hard QA evidence invariants (read-only)
+on:
+  push:
+    branches:
+      - audit/master-state-reconciliation-20261117
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-sanity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate global audit data and safe gate semantics
+        run: |
+          node --check qa/global-audit/validate_global_audit.cjs
+          node qa/global-audit/validate_global_audit.cjs
