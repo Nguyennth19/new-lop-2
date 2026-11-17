@@ -24,7 +24,7 @@ jobs:
         run: |
           node qa/g3a/test_g3a_isolated.cjs
           node qa/g3a/test_g3a_http_loopback.cjs
-      - name: Regression: legacy secret-export bypasses denied, QA has no writes
+      - name: "Regression: legacy secret-export bypasses denied, QA has no writes"
         run: node qa/g3b/test_g3b_boundary.cjs
       - name: Preserve scope-labeled evidence
         if: always()
