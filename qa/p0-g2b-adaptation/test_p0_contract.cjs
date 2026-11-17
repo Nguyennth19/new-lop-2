@@ -359,6 +359,21 @@ fs.writeFileSync(join(__dirname,'QC25_CASE_MATRIX_RESULTS.json'),JSON.stringify(
  independentReviewerSigned:0,sourceOrigins:24,keptUnique:17,dropped:7},
  cases:qcRows,release:'NO_GO'
 },null,2)+'\n');
+test('all 25 source identities are quarantined from the learner renderer including 7 DROP',()=>{
+ const root={BE_HOC_P0_VARIANT_ROUTER:router,BE_HOC_P0_VECTOR_PREVIEW:vector};
+ const context=vm.createContext({window:root});
+ vm.runInContext(fs.readFileSync(join(project,'83_Visual_Orchestrator.html'),'utf8'),context);
+ const orchestrator=root.BE_HOC_VISUAL_ORCHESTRATOR;
+ for(const c of manifest.caseRules){
+  const q=contract(c),data={lesson:{id:'toan_b'+String(Number(c.lessonId.slice(-3)))}};
+  const planned=orchestrator.planQuestion(data,{
+   id:'qa_candidate_'+c.caseId,sourceExerciseId:c.exerciseId,p0Adaptation:q
+  });
+  assert.equal(planned.ok,false,c.caseId);
+  assert.equal(planned.reason,c.decision==='DROP'?'P0_UNSAFE_OR_UNVERIFIED_ADAPTATION':
+    'P0_PENDING_INDEPENDENT_SOURCE_REVIEW_AND_RENDERER_GATE',c.caseId);
+ }
+});
 const fails=checks.filter(x=>x.status==='FAIL');
 const report={phase:'P0 G2B adaptation',scope:'STRUCTURED_TEMPLATE_AND_READONLY_VECTOR_PREVIEW_NOT_GAS_OR_STUDENT_RELEASE',
  checks:checks.length,passed:pass,failed:fails.length,caseCount:25,uniqueExerciseIds:24,
