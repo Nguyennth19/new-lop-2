@@ -59,7 +59,7 @@ function start(index){
    resolve(data);
   }).withFailureHandler(reject).g3aLayBaiToan20Test();
  });
- BO_NHO_BAI_HOC.fetch('g3a_public_toan_b20_v1',load).then(data=>{
+ BO_NHO_BAI_HOC.fetch('toan_b20',load).then(data=>{
   fullData=data;boDuLieuToan=data;
   if(document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden)render();
  }).catch(err=>{
