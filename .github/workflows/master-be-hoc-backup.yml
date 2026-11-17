@@ -14,8 +14,8 @@ concurrency:
 
 jobs:
   commit-snapshot:
-    # SAFE DEFAULT: skip until the owner sets this repository variable.
-    if: ${{ vars.MASTER_BE_HOC_BACKUP_ENABLED == 'true' }}
+    # SAFE DEFAULT: two owner-controlled variables must be true: backup enabled AND storage policy approved.
+    if: ${{ vars.MASTER_BE_HOC_BACKUP_ENABLED == 'true' && vars.MASTER_BE_HOC_RETENTION_APPROVED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
