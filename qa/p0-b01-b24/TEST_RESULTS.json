@@ -1,0 +1,16 @@
+{
+  "tests": 101,
+  "passed": 101,
+  "failed": 0,
+  "lessons": 24,
+  "c1SourceCandidates": 536,
+  "g2TechnicalCandidates": 96,
+  "ownerCaseChecks": 25,
+  "keptUnique": 17,
+  "droppedUnique": 7,
+  "templatePool": 17,
+  "studentPlayable": 0,
+  "status": "PASS_TECHNICAL_INDEX_ONLY",
+  "studentRelease": "NO_GO",
+  "errors": []
+}
