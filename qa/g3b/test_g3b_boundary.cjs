@@ -93,6 +93,17 @@ check('Public B20 adapter cannot use private loader',()=>{
  const x=fs.readFileSync(path.join(root,'DuLieuToanSheet.gs'),'utf8');
  assert(/g3aQaContext_\(\)/.test(x));assert(!/return\s+khoLayBaiHoc_\(/.test(x));
 });
+check('G3B Editor-only audit accepts only 4 source tabs or 8 exact TEST NEW tabs',()=>{
+ const source=['01_Bai_hoc','02_Cap_do','03_Nhom_bai','04_Cau_hoi'];
+ const review=['00_HUONG_DAN','05_G2B_25_CASE','06_NGHIEM_THU_B20','07_NGHIEM_THU_HINH'];
+ assert.equal(call('g3bApprovedQaTabSet_',source),true);
+ assert.equal(call('g3bApprovedQaTabSet_',source.concat(review)),true);
+ assert.equal(call('g3bApprovedQaTabSet_',source.concat(review.slice(0,3))),false);
+ assert.equal(call('g3bApprovedQaTabSet_',source.concat(review).map((x,i)=>i===5?'90_Lan_lam_bai':x)),false);
+ assert.equal(call('g3bApprovedQaTabSet_',source.concat(['90_Lan_lam_bai'])),false);
+ assert.equal(call('g3bApprovedQaTabSet_',source.concat(review,['90_Lan_lam_bai'])),false);
+ assert.equal(call('g3bApprovedQaTabSet_',source.concat([source[0]])),false);
+});
 check('GAS TEST manifest requests active tester identity scope',()=>{
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'appsscript.json'),'utf8'));
  assert(manifest.oauthScopes.includes('https://www.googleapis.com/auth/userinfo.email'));
