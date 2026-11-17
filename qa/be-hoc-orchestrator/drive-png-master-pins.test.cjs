@@ -9,7 +9,7 @@ for(const [group,shas] of Object.entries(pins)){
   const name='KL-'+group+'-'+String(i+1).padStart(2,'0')+'.png';
   const data=fs.readFileSync(root+group+'/'+name);
   assert.equal(data.subarray(0,8).toString('hex'),'89504e470d0a1a0a',name+' must be real PNG'); checks++;
-  const gitBlob=crypto.createHash('sha1').update(Buffer.from('blob '+data.length+'\\0')).update(data).digest('hex');
+  const gitBlob=crypto.createHash('sha1').update(Buffer.from('blob '+data.length+'\0')).update(data).digest('hex');
   assert.equal(gitBlob,shas[i],name+' exact-byte pin');checks++;
  }
 }
