@@ -112,3 +112,21 @@ function g3bChanDoanB20Test_(){
   }catch(_){pass('BROWSER_RPC_PUBLIC_HANDLER',false);return stop('PUBLIC_RPC_FAIL');}
   return stop('SERVER_SOURCE_AND_PUBLIC_HANDLER_PASS');
 }
+
+/**
+ * Entry point visible in Apps Script Editor (no trailing underscore).
+ * Explicitly prompt the allowlisted TEST user for the Sheets OAuth scope;
+ * then call the existing private read-only diagnostic. No writes or answer keys.
+ *
+ * The authorization dialog is provided by Google, not this source file.
+ * If a consent dialog interrupts execution, run this function again after approval.
+ */
+function g3bCapQuyenSheetsTest(){
+  // Validate existing TEST identity and isolated Sheet config before authorization.
+  g3aQaContext_();
+  ScriptApp.requireScopes(ScriptApp.AuthMode.FULL,[
+    'https://www.googleapis.com/auth/spreadsheets'
+  ]);
+  // Only reached when the current TEST user has granted the requested scope.
+  return g3bChanDoanB20Test_();
+}
