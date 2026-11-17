@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G3-B B20 · GAS TEST</title>
+<style>
+body{font:15px/1.5 Arial,sans-serif;max-width:820px;margin:24px auto;padding:0 18px;color:#263445;background:#fafbfe}
+main{background:#fff;padding:22px;border:1px solid #d7dfe9;border-radius:14px}
+h1{font-size:23px;margin:0 0 12px}.notice{padding:10px;border-left:3px solid #9ca3af;background:#f5f6f8}
+button{padding:11px 16px;background:#294c81;color:white;border:0;border-radius:8px;cursor:pointer;font-weight:bold}
+button:disabled{opacity:.55}li{padding:4px 0}.pass{color:#167c54}.fail{color:#b42318}
+textarea{width:100%;min-height:220px;box-sizing:border-box;font:12px/1.4 monospace;border:1px solid #d7dfe9;border-radius:8px}
+</style></head><body><main>
+<h1>G3-B · B20 kiểm thử GAS Web App</h1>
+<p class="notice">Chỉ chạy trên dự án Apps Script TEST riêng, bằng tài khoản được cấp quyền. Không trả đáp án bí mật và không ghi điểm/sao. Kết quả của trang này không tự phê duyệt phát hành.</p>
+<button id="run" type="button">Chạy kiểm thử GAS TEST</button>
+<p id="status" role="status">Chưa chạy.</p>
+<ol id="checks" aria-live="polite"></ol>
+<label for="receipt"><b>Biên nhận không chứa đáp án, token hoặc email:</b></label>
+<textarea id="receipt" readonly spellcheck="false"></textarea>
+<p>Để hoàn tất P0 còn cần kiểm tra riêng trên GAS Editor bằng hàm g3bAuditGasServerOnce_(), quan sát B20 LV1–LV3 trên giao diện học, xác nhận Network và các tab QA trước/sau.</p>
+</main><script>
+(function(){
+'use strict';
+const btn=document.getElementById('run'),label=document.getElementById('status');
+const list=document.getElementById('checks'),receipt=document.getElementById('receipt'),checks=[];
+function add(name,pass){
+ checks.push({name,status:pass?'PASS':'FAIL'});
+ const li=document.createElement('li');li.className=pass?'pass':'fail';
+ li.textContent=(pass?'PASS · ':'FAIL · ')+name;list.appendChild(li);
+}
+function rpc(name,arg){
+ return new Promise(function(resolve,reject){
+  const run=window.google&&google.script&&google.script.run;
+  if(!run){reject(Error('GAS_REQUIRED'));return;}
+  const chain=run.withSuccessHandler(resolve).withFailureHandler(reject);
+  switch(name){
+   case 'public':chain.g3aLayBaiToan20Test();break;
+   case 'legacyPublic':chain.layBaiToan20();break;
+   case 'legacyExport':chain.layThongTinDuLieuBaiHoc();break;
+   case 'start':chain.g3aTaoPhienChamB20Test(arg);break;
+   case 'grade':chain.g3aChamBaiToan20Test(arg);break;
+   case 'b024':chain.g3aChamBaiB024Test(arg);break;
+   default:reject(Error('INVALID_RPC'));
+  }
+ });
+}
+const forbidden=new Set(['answer','answers','ans','answerkey','correctanswer','correctoptionid',
+ 'solution','solutionprompt','gradingkey','teachersolution','studentid','starcredit','prefilledsolution','expectedanswer','expectedcarry']);
+function clean(v){
+ if(Array.isArray(v))return v.every(clean);
+ if(!v||typeof v!=='object')return true;
+ return Object.keys(v).every(function(k){return !forbidden.has(k.toLowerCase())&&clean(v[k]);});
+}
+function selected(data,level){
+ const lv=data.levels.find(function(x){return x.level===level;});
+ if(!lv)throw Error('LEVEL_NOT_FOUND');
+ const limits={
+  toan_b20_lv1_ex1:{max:4},toan_b20_lv1_ex2:{perGroup:2},toan_b20_lv1_ex3:{max:2},
+  toan_b20_lv2_problems:{max:4},toan_b20_lv3_ex1:{max:6},toan_b20_lv3_ex2:{max:6},
+  toan_b20_lv3_ex3:{max:6},toan_b20_lv3_ex4:{max:4}};
+ const picked=[];
+ for(const s of data.sections.filter(function(x){return x.levelId===lv.id;})){
+  const all=data.questions.filter(function(q){return q.sectionId===s.id&&q.valid;})
+   .sort(function(a,b){return a.order-b.order;});
+  const rule=limits[s.id]||{};
+  if(rule.perGroup){
+   const groups=new Map();
+   all.forEach(function(q){const name=q.group||'Chung';if(!groups.has(name))groups.set(name,[]);groups.get(name).push(q);});
+   groups.forEach(function(v){picked.push.apply(picked,v.slice(0,rule.perGroup));});
+  }else picked.push.apply(picked,all.slice(0,rule.max||all.length));
+ }
+ return picked;
+}
+function answersFor(questions,wrong){
+ const result={};
+ for(const q of questions){
+  let keys=[];
+  if(q.type==='vertical')keys=['ones','tens','carry'];
+  else if(q.type==='mental')keys=['answer'];
+  else if(q.type==='word_problem')keys=['n1','n2','op','sum','answer'];
+  else if(q.type==='missing_digit'){
+   for(let i=0;i<q.puzzle.length;i++)for(let j=0;j<q.puzzle[i].length;j++){
+    const cell=q.puzzle[i][j];
+    if(cell&&typeof cell==='object'&&!Array.isArray(cell))keys.push('p'+i+j);
+   }
+  }else throw Error('UNSUPPORTED_TYPE');
+  const values={};keys.forEach(function(k){values[k]='';});result[q.id]=values;
+ }
+ if(wrong){
+  const first=result[questions[0].id],firstKey=Object.keys(first)[0];
+  if(!firstKey)throw Error('NO_INPUT');first[firstKey]='999';
+ }
+ return result;
+}
+async function main(){
+ btn.disabled=true;checks.length=0;list.textContent='';receipt.value='';
+ label.textContent='Đang thực hiện RPC trên GAS TEST thật…';
+ const startedAt=new Date().toISOString();
+ try{
+  const data=await rpc('public');
+  add('Public B20 có 51 câu, đúng contract',data&&data.securityContract==='G3A_PUBLIC_ALLOWLIST_V1'&&data.lesson&&data.lesson.id==='toan_b20'&&Array.isArray(data.questions)&&data.questions.length===51);
+  add('Không trả đáp án bí mật qua public payload',clean(data));
+  add('Không cấp renderer policy chưa duyệt',!!data.lesson&&Array.isArray(data.lesson.rendererPolicies)&&data.lesson.rendererPolicies.length===0);
+  const legacy=await rpc('legacyPublic');
+  add('B20 legacy trả cùng public allowlist',legacy&&legacy.questions&&legacy.questions.length===51&&clean(legacy));
+  let rawDenied=false;
+  try{await rpc('legacyExport');}catch(e){rawDenied=/G3B_LEGACY_RAW_SHEET_EXPORT_DISABLED/.test(String(e&&e.message||e));}
+  add('Đường xuất 04_Cau_hoi thô bị chặn',rawDenied);
+  for(const level of ['LV1','LV2','LV3']){
+   const questions=selected(data,level);
+   add(level+' chọn đúng các câu theo chính sách',questions.length>0&&questions.every(function(q){return q.level===level;})&&new Set(questions.map(function(q){return q.id;})).size===questions.length);
+   for(const mode of ['empty','wrong']){
+    const session=await rpc('start',{lessonId:'toan_b20',level});
+    if(!session||!session.ok||!session.token)throw Error('QA_SESSION_DENIED');
+    const request={contractId:'G3A_READONLY_V1',lessonId:'toan_b20',level,token:session.token,answers:answersFor(questions,mode==='wrong')};
+    const graded=await rpc('grade',request);
+    const status=graded&&Array.isArray(graded.perQuestion)&&(
+     mode==='empty'?(graded.answered===0&&graded.correct===0&&graded.perQuestion.every(function(x){return x.status==='empty';})):
+     (graded.answered===1&&graded.correct===0&&graded.perQuestion.some(function(x){return x.status==='wrong';})));
+    add(level+' server grade '+mode+' chỉ đọc, không lộ key',
+     graded&&graded.ok&&graded.level===level&&graded.awarded===false&&graded.writes===0&&
+     graded.total===questions.length&&clean(graded)&&status);
+    const replay=await rpc('grade',request);
+    add(level+' chống replay token '+mode,replay&&replay.ok===false&&replay.reason==='SESSION_EXPIRED_OR_REPLAYED');
+   }
+  }
+  const invalid=await rpc('start',{lessonId:'toan_b24',level:'LV1'});
+  const b024=await rpc('b024',{lessonId:'toan_b24'});
+  add('B024 và phạm vi bài sai đều bị từ chối',invalid&&invalid.ok===false&&b024&&b024.ok===false);
+ }catch(e){
+  // No error text, answer, token or tester identity in the user-visible receipt.
+  add('Luồng GAS hoàn thành không có lỗi RPC',false);
+ }
+ const passed=checks.filter(function(x){return x.status==='PASS';}).length;
+ const report={scope:'GAS_WEBAPP_RPC_SMOKE_ONLY',startedAt,finishedAt:new Date().toISOString(),
+  checks,tests:checks.length,passed,failed:checks.length-passed,
+  gradeWritesExpected:0,privateKeysNeverRequested:true,
+  gasEditorAuditVerified:false,visualUXVerified:false,networkTraceVerified:false,
+  deployedCodeShaVerified:false,studentRelease:'NO_GO'};
+ receipt.value=JSON.stringify(report,null,2);
+ label.textContent=passed===21&&checks.length===21?'RPC smoke PASS. Cần nghiệm thu GAS Editor, UI và Network.':
+  'Có bài kiểm thất bại. Không thể đóng P0.';
+ btn.disabled=false;
+}
+btn.addEventListener('click',main);
+}());
+</script></body></html>
