@@ -28,6 +28,12 @@ jobs:
         run: node qa/g3b/test_g3b_boundary.cjs
       - name: "Browser QA bridge: 21 simulated public RPC checks (not actual GAS)"
         run: node qa/g3b/test_g3b_browser_smoke.cjs
+      - name: "P0 integrated 25-case semantic, unit and renderer QA (no GAS deploy)"
+        run: |
+          node --check --input-type=commonjs < 89_P0_VariantRouter.html
+          node --check --input-type=commonjs < 90_P0_VectorStructural.html
+          node --check --input-type=commonjs < G2B_ReviewFixtures.html
+          node qa/p0-g2b-adaptation/test_p0_contract.cjs
       - name: Preserve scope-labeled evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -38,4 +44,6 @@ jobs:
             qa/g3a/G3A_HTTP_LOOPBACK_RESULTS.json
             qa/g3b/G3B_RESULTS.json
             qa/g3b/G3B_BROWSER_SMOKE_RESULTS.json
+            qa/p0-g2b-adaptation/TEST_RESULTS.json
+            qa/p0-g2b-adaptation/QC25_CASE_MATRIX_RESULTS.json
           retention-days: 14
