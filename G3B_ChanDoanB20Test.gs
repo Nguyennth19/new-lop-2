@@ -17,9 +17,48 @@ function g3bChanDoanB20Test_(){
   let ctx;
   try{ctx=g3aQaContext_();pass('TEST_IDENTITY_AND_PROPERTIES',true);}
   catch(_){pass('TEST_IDENTITY_AND_PROPERTIES',false);return stop('AUTH_OR_PROPERTIES_FAIL');}
+  // Diagnose config without exposing the private Sheet ID or tester email.
+  // SHA-256 belongs to the dedicated P0 TEST NEW workbook only.
+  const expectedSourceSha256='e0f5af2ce1c0496f3d18a8e6ef7bccafa91a3afff14c739f3440b9e20b2f8b1c';
+  const bytes=Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,
+    String(ctx.qaSourceId),Utilities.Charset.UTF_8);
+  const fingerprint=bytes.map(function(b){return ('0'+(b&255).toString(16)).slice(-2);}).join('');
+  const idMatches=fingerprint===expectedSourceSha256;
+  pass('CONFIGURED_SOURCE_ID_IS_P0_TEST_NEW',idMatches);
+  if(!idMatches)return stop('SOURCE_ID_MISMATCH');
+  let sheetsScope='UNKNOWN';
+  try{
+    const sheetsScopeUri='https://www.googleapis.com/auth/spreadsheets';
+    const auth=ScriptApp.getAuthorizationInfo(ScriptApp.AuthMode.FULL,[sheetsScopeUri]);
+    const scopes=auth.getAuthorizedScopes();
+    sheetsScope=Array.isArray(scopes)&&scopes.includes(sheetsScopeUri)?
+      'GRANTED':auth.getAuthorizationStatus()===ScriptApp.AuthorizationStatus.REQUIRED?
+      'REQUIRED':'UNKNOWN';
+  }catch(_){sheetsScope='UNKNOWN';}
+  if(sheetsScope!=='UNKNOWN'){
+    pass('OAUTH_SPREADSHEETS_SCOPE_GRANTED',sheetsScope==='GRANTED');
+    if(sheetsScope==='REQUIRED')return stop('SHEETS_OAUTH_NOT_GRANTED');
+  }else{
+    report.checks.push({code:'OAUTH_SPREADSHEETS_SCOPE_CHECK',status:'INCONCLUSIVE'});
+  }
   let book;
   try{book=SpreadsheetApp.openById(ctx.qaSourceId);pass('SOURCE_SPREADSHEET_OPEN',true);}
-  catch(_){pass('SOURCE_SPREADSHEET_OPEN',false);return stop('SOURCE_OPEN_FAIL');}
+  catch(e){
+    // Only fixed code from a constrained list; never log the raw exception.
+    const message=String(e&&e.message||'').toLowerCase();
+    let category='SOURCE_OPEN_UNKNOWN_ERROR';
+    if(/permission|access denied|forbidden|not have permission|insufficient permissions/.test(message))
+      category='SOURCE_ACCESS_DENIED';
+    else if(/authorization is required|not authorized|oauth|scopes?/.test(message))
+      category='SHEETS_AUTHORIZATION_REQUIRED';
+    else if(/not found|does not exist|no item with/.test(message))
+      category='SOURCE_NOT_FOUND';
+    else if(/invalid|malformed|incorrect.*id/.test(message))
+      category='SOURCE_ID_REJECTED';
+    else if(/service|unexpected error|quota|temporarily unavailable/.test(message))
+      category='GOOGLE_SHEETS_SERVICE_ERROR';
+    pass('SOURCE_SPREADSHEET_OPEN',false);return stop(category);
+  }
   const names=['01_Bai_hoc','02_Cap_do','03_Nhom_bai','04_Cau_hoi'];
   const expected=[1,3,8,51];
   try{
