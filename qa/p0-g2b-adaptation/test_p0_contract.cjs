@@ -18,7 +18,7 @@ let pass=0;const checks=[];
 function test(label,fn){try{fn();pass++;checks.push({label,status:'PASS'});}catch(e){checks.push({label,status:'FAIL',detail:String(e.message||e)});}}
 const fixture={
  GRID_100_2X2:{patches:[{id:'A',topLeft:65},{id:'B',topLeft:47},{id:'C',topLeft:25},{id:'D',topLeft:43}]},
- TWO_GROUP_COUNT_ADD:{groups:[{id:'a',label:'Cá',quantity:18},{id:'b',label:'Ngôi sao',quantity:5}],task:'TOTAL',unit:'con',seed:1121},
+ TWO_GROUP_COUNT_ADD:{groups:[{id:'a',label:'Vỏ ốc trắng',quantity:18},{id:'b',label:'Vỏ ốc xanh',quantity:5}],task:'TOTAL',unit:'vỏ ốc',seed:1121},
  ADDITION_PYRAMID:{base:[4,5,7,2],visible:[{row:1,index:0,value:9},{row:1,index:1,value:12}]},
  POLYLINE_LENGTH:{segments:[37,54],unit:'cm'},
  WORD_LESS_THAN:{first:34,second:7,unit:'quả',relation:'LESS_THAN',calculationSteps:1,prompt:'Ngày đầu có 34 quả, ngày sau ít hơn 7 quả. Hỏi ngày sau có mấy quả?'},
@@ -162,8 +162,8 @@ test('public source word-problem numbers and relation must agree with prompt',()
  assert.equal(router.classify(c).ok,false);
 });
 test('seed-driven two-group generator is deterministic, key-free, bounded',()=>{
- const a=router.makeSeededTwoGroup(123456,['Cá','Ngôi sao']);
- const b=router.makeSeededTwoGroup(123456,['Cá','Ngôi sao']);
+ const a=router.makeSeededTwoGroup(123456,['Cá vàng','Cá xanh'],'con');
+ const b=router.makeSeededTwoGroup(123456,['Cá vàng','Cá xanh'],'con');
  assert.deepEqual(a,b);assert(a.ok);assert(a.semantic.groups.every(x=>x.quantity>=2&&x.quantity<=40));
  assert(!JSON.stringify(a).includes('"answer"'));
 });
@@ -221,6 +221,80 @@ test('review vector preview is opt-in and never becomes a learner route',()=>{
  const host={innerHTML:'',getAttribute(){return 'true';}};
  const yes=vector.mountReviewPreview(host,c,router);
  assert(yes.ok);assert(host.innerHTML.includes('<svg'));assert.equal(yes.gradingEnabled,false);
+});
+test('hundred-chart patches reject overlapping 2x2 cardboard pieces',()=>{
+ const q=contract(manifest.caseRules.find(c=>c.caseId==='C01'));
+ q.semantic={patches:[{id:'A',topLeft:65},{id:'B',topLeft:66}]};
+ assert.equal(router.classify(q).ok,false);
+ q.semantic={patches:[{id:'A',topLeft:65},{id:'B',topLeft:76}]};
+ assert.equal(router.classify(q).ok,false);
+});
+test('addition pyramid visible clues agree with children and cannot contradict base',()=>{
+ const q=contract(manifest.caseRules.find(c=>c.caseId==='C03'));
+ q.semantic={base:[4,5,7,2],visible:[{row:1,index:1,value:99}]};
+ assert.equal(router.classify(q).ok,false);
+ q.semantic.visible=[{row:1,index:0,value:9},{row:1,index:0,value:9}];
+ assert.equal(router.classify(q).ok,false);
+ q.semantic.visible=[{row:1,index:0,value:9},{row:2,index:0,value:21}];
+ assert.equal(router.classify(q).ok,true);
+});
+test('subtraction missing-digit vector only accepts at least one arithmetically solvable set of slots',()=>{
+ const q=contract(manifest.caseRules.find(c=>c.caseId==='V14'));
+ q.semantic={operation:'SUBTRACT',rows:[{minuend:'10',subtrahend:'99',result:'?1'}]};
+ assert.equal(router.classify(q).ok,false);
+ q.semantic.rows=[{minuend:'4?',subtrahend:'17',result:'24'}];
+ assert.equal(router.classify(q).ok,true);
+ assert.equal(vector.renderSvg(q,router).ok,true);
+});
+test('generated two groups must declare count unit; renderer uses neutral tokens, never invented fish/stars',()=>{
+ const q=contract(manifest.caseRules.find(c=>c.caseId==='C02'));
+ assert.equal(q.semantic.unit,'vỏ ốc');
+ assert.equal(router.makeSeededTwoGroup(123,['Cá vàng','Cá xanh']).ok,false);
+ const gen=router.makeSeededTwoGroup(123,['Cá vàng','Cá xanh'],'con');
+ assert.equal(gen.ok,true);assert.equal(gen.semantic.unit,'con');
+ const comp=router.compileReviewPayload(q,{D9});
+ assert.equal(comp.ok,true);assert(comp.requiresSidecar);
+ assert(comp.payloads[0].rows.every(row=>row.symbol==='●'));
+});
+test('D9 E04 fallback preserves no-score REVIEW_ONLY until approved total and estimate slots',()=>{
+ for(const c of manifest.caseRules.filter(c=>c.rendererCandidate.startsWith('D9_'))){
+  const p=router.compileReviewPayload(contract(c),{D9});
+  assert(p.ok);assert(p.requiresSidecar);assert.equal(p.gradingEnabled,false);
+  assert.equal(p.publishable,false);assert.equal(router.classify(contract(c)).rendererGrant,'DENY');
+ }
+});
+test('SOURCE pin and renderer/skill/count/vector/fallback matrix for every 25 case is consistent',()=>{
+ const sha=/^[a-f0-9]{64}$/;
+ for(const c of manifest.caseRules){
+  const fam=manifest.families[c.familyId],q=contract(c),view=router.classify(q);
+  assert(sha.test(c.sourcePDFSHA256),c.caseId+' pdf SHA');
+  assert(String(c.sourceExcerptRGBSHA256).split(';').every(part=>/^(?:\d+:)?[a-f0-9]{64}$/.test(part)),c.caseId+' crop RGB SHA');
+  assert(/^[0-9]+(?:,[0-9]+)?$/.test(c.printedPages),c.caseId+' print page');
+  assert(c.exerciseId.startsWith(c.sourceTrack+'_B'),c.caseId+' track');
+  assert.equal(c.lessonId,'MATH_B'+c.exerciseId.match(/_B(\d{3})_/)[1],c.caseId+' lessonId');
+  assert(fam,c.caseId+' family');
+  assert.equal(fam.renderer,c.rendererCandidate,c.caseId+' renderer');
+  assert.equal(c.independentApproval,'NOT_SIGNED',c.caseId+' review');
+  assert.equal(c.rendererGrant,'DENY',c.caseId+' renderer gate');
+  assert.equal(c.assetGrant,'DENY',c.caseId+' asset gate');
+  assert.equal(c.publicVariantGrant,'DENY',c.caseId+' public gate');
+  assert(c.sourceEvidence&&c.adaptationRule,c.caseId+' evidence');
+  assert(view.ok,c.caseId+' classification');
+  assert.equal(view.decision,c.decision,c.caseId+' decision');
+  if(c.decision==='DROP'){assert.equal(c.rendererCandidate,'NONE');continue;}
+  assert(fam.skills.includes(c.skillId),c.caseId+' index skill');
+  assert.equal(router.routes[c.familyId],c.rendererCandidate,c.caseId+' runtime');
+  assert.equal(view.playable,false,c.caseId+' fallback');
+  if(c.rendererCandidate.startsWith('VECTOR_')){
+   const picture=vector.renderSvg(q,router);
+   assert(picture.ok,c.caseId+' vector preview');
+   assert.equal(picture.gradingEnabled,false,c.caseId);
+  }else{
+   const p=router.compileReviewPayload(q,{D3,D4,D7,D9,D10});
+   assert(p.ok,c.caseId+' renderer preview');
+   assert.equal(p.gradingEnabled,false,c.caseId);
+  }
+ }
 });
 test('existing app includes are loaded before orchestrator in isolated TEST',()=>{
  const s=fs.readFileSync(join(project,'GiaoDien.html'),'utf8');
