@@ -1,0 +1,66 @@
+/* BE-HOC-VISUAL-SEMANTIC-V1: public-only matching, deterministic and fail-closed. */
+(function(root){
+'use strict';
+const VALID_ROLES=new Set(['DECORATIVE','CHOICE','EXACT_COUNT']);
+const norm=s=>String(s||'').normalize('NFC').toLocaleLowerCase('vi').trim().replace(/\s+/g,' ');
+const candidatesFromFluent=(phrase)=>{
+ const lib=root.BE_HOC_FLUENT_46;if(!lib?.list)return [];
+ const label=norm(phrase);return lib.list().filter(a=>[a.id,a.id.replace(/_/g,' '),...(a.aliases||[])].some(t=>norm(t)===label)).map(a=>'FLUENT:'+a.id);
+};
+const candidatesFromWebp=(phrase)=>{
+ const lib=root.BE_HOC_ASSETS_288;if(!lib?.search)return [];
+ const label=norm(phrase);return lib.search('',288).filter(a=>norm(a.label)===label).map(a=>a.id);
+};
+function plan(intent={}){
+ if(!intent||typeof intent!=='object'||Array.isArray(intent))return {ok:false,reason:'INVALID_VISUAL_INTENT'};
+ const role=intent.visualIntent||'DECORATIVE';
+ if(!VALID_ROLES.has(role))return {ok:false,reason:'UNKNOWN_ROLE'};
+ let chosen=intent.assetId;
+ const phrase=norm(intent.canonicalObject||intent.objectLabel||intent.semanticLabel);
+ if(!chosen){
+  if(!phrase)return {ok:false,reason:'NO_ASSET_ID_OR_SEMANTIC_LABEL'};
+  // Intent and unit are required for exact quantity. Do not infer a unit from text.
+  const fluent=candidatesFromFluent(phrase),webp=role==='EXACT_COUNT'?[]:candidatesFromWebp(phrase);
+  const all=[...new Set([...fluent,...webp])];
+  if(all.length!==1)return {ok:false,reason:all.length?'AMBIGUOUS_SEMANTIC_MATCH':'NO_APPROVED_SEMANTIC_MATCH',candidates:all};
+  chosen=all[0];
+ }
+ const unit=intent.countUnit||'',count=intent.exactQuantity;
+ if(typeof chosen!=='string')return {ok:false,reason:'INVALID_ASSET_ID'};
+ if(chosen.startsWith('KL2_')){
+  if(role!=='DECORATIVE')return {ok:false,reason:'CHARACTER_DECORATION_ONLY'};
+  const r=root.BE_HOC_CHARACTERS_30?.resolve(chosen);
+  return r?.ok?{ok:true,assetId:chosen,kind:'CHARACTER_WEBP',visualIntent:role,url:r.url}:r||{ok:false,reason:'CHARACTERS_UNAVAILABLE'};
+ }
+ if(chosen.startsWith('FLUENT:')){
+  const r=root.BE_HOC_FLUENT_46?.resolve(chosen.slice(7),role,unit);
+  if(!r?.ok)return r||{ok:false,reason:'FLUENT_UNAVAILABLE'};
+  if(role==='EXACT_COUNT'&&(!Number.isSafeInteger(count)||count<1||count>50))return {ok:false,reason:'BAD_EXACT_QUANTITY'};
+  return {ok:true,kind:'FLUENT_SVG',assetId:chosen,visualIntent:role,countUnit:unit,exactQuantity:count||1,url:r.url};
+ }
+ const r=root.BE_HOC_ASSETS_288?.resolve(chosen);
+ if(!r?.ok)return r||{ok:false,reason:'WEBP_UNAVAILABLE'};
+ if(role==='EXACT_COUNT')return {ok:false,reason:'WEBP_COUNT_COMPOSITION_NOT_PINNED'};
+ return {ok:true,kind:'WEBP',assetId:chosen,visualIntent:role,url:r.url};
+}
+function mount(target,intent={}){
+ const r=plan(intent);if(!r.ok)return r;
+ if(!target?.appendChild)return {ok:false,reason:'INVALID_TARGET'};
+ const common={visualIntent:r.visualIntent,onError:intent.onError};
+ if(r.kind==='CHARACTER_WEBP')return root.BE_HOC_CHARACTERS_30.mount(target,r.assetId,common);
+ if(r.kind==='FLUENT_SVG')return root.BE_HOC_FLUENT_46.mount(target,r.assetId.slice(7),{...common,countUnit:r.countUnit,count:r.exactQuantity});
+ return root.BE_HOC_ASSETS_288.mount(target,r.assetId,common);
+}
+function coverage(data){
+ if(!Array.isArray(data?.questions))return {ok:false,reason:'INVALID_LESSON'};
+ const detail=data.questions.map(q=>{
+  const c=q.visualContract;if(!c)return {id:q.id,status:'NO_VISUAL_CONTRACT',renderer:q.type||null};
+  const image=c.visualIntent?plan(c):{ok:true,reason:'NO_IMAGE_REQUEST'};
+  const renderer=c.rendererId||null;
+  return {id:q.id,status:image.ok?'VISUAL_ROUTABLE':'VISUAL_BLOCKED',renderer,reason:image.ok?null:image.reason};
+ });
+ const counts={total:detail.length,withContract:detail.filter(x=>x.status!=='NO_VISUAL_CONTRACT').length,visualRoutable:detail.filter(x=>x.status==='VISUAL_ROUTABLE').length,visualBlocked:detail.filter(x=>x.status==='VISUAL_BLOCKED').length};
+ return {ok:true,counts,detail};
+}
+root.BE_HOC_VISUAL_SEMANTIC=Object.freeze({plan,mount,coverage,normalize:norm});
+})(window);
