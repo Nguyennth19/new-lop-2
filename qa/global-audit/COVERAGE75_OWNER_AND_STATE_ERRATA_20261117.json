@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "lop2.coverage75.errata.v1",
+  "date": "2026-11-17",
+  "status": "VERIFIED_ERRATUM_REVIEW_ONLY_NO_SOURCE_PATCH",
+  "affectedDerivedFiles": [
+    "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit#gid=910113",
+    "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit#gid=910114",
+    "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit#gid=910115",
+    "https://github.com/Nguyennth19/new-lop-2/blob/audit/data-b-coverage75-20261117/qa/coverage75/DATA_B_COVERAGE75_SNAPSHOT.json"
+  ],
+  "error": "Historical Consolidated LESSONS_75 was selected for ownership although V8 had already corrected owner and C1 inherited the corrected map.",
+  "historicalWrongActiveCount": 65,
+  "historicalResolvedOwnerRows": {"B061": 28, "B062": 37},
+  "historicalOtherResolvedBatchBoundaryIssues": 2,
+  "currentCorrectOwner": {
+    "B059": "BQA-17", "B060": "BQA-17", "B061": "BQA-17", "B062": "BQA-17",
+    "B063": "BQA-18", "B064": "BQA-18", "B065": "BQA-18", "B066": "BQA-18"
+  },
+  "currentOwnerMismatchRows": 0,
+  "currentOwnerProof": {
+    "v8Workbook": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+    "tabs": ["LESSONS_75", "SOURCE_1406", "V8_OWNER_CANONICAL_LOCK", "V8_INTERIM_REPORT"],
+    "fixId": "V8-OWNER-FIX-20261109-01",
+    "readback": "READBACK_VERIFIED",
+    "c1Workbook": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+    "c1OwnerConflicts": 0
+  },
+  "additionalStatusErrata": [
+    {"domain":"C1","correct":"OWNER_APPROVED_FOR_C1; 1406 JSON ENVELOPE COMPLETE","doNotInfer":"1406 playable"},
+    {"domain":"C4","correct":"27 DEV rendered + QA passed in stated source","doNotInfer":"0 content built for entire project"},
+    {"domain":"P0_6","correct":"TECHNICAL CLOSED IN ISOLATED TEST OWNER APPROVED WITH EXCLUSIONS","doNotInfer":"production release approved"},
+    {"domain":"G7_4_ASSET_LABEL","correct":"288/288 LABEL_APPROVED in later owner signoff","doNotInfer":"288 mathematical semantic QA PASS"},
+    {"domain":"G7_6_C086","correct":"CI PASS but 0/6 real owner signatures","doNotInfer":"C07–C09 owner approved"}
+  ],
+  "migrationRule": "Mark erroneous active 65 as SUPERSEDED_BY_V8_OWNER_FIX in derived coverage view. Do not rewrite historic Consolidated or V8 source, and do not downgrade resolved owner scope.",
+  "liveRelease": "NO_GO",
+  "approval": "REVIEW_ONLY_CORRECTION_AUDIT_NOT_AUTOMATIC_CANONICAL_EDIT"
+}
