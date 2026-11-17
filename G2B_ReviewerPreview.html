@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P0 · G2B 25 case – GAS TEST reviewer</title>
+<style>
+<?!= napThanhPhan('20_CSS_KhongGianHocToan') ?>
+<?!= napThanhPhan('63_CSS_Pictograph') ?>
+<?!= napThanhPhan('82_CSS_OrchestratorModules') ?>
+html,body{margin:0;padding:0;background:#f5f7fb;color:#1c2a42;font:15px/1.5 Arial,sans-serif}
+main{max-width:1280px;margin:auto;padding:22px}
+h1{font-size:24px;line-height:1.3}
+strong{font-weight:700}
+.banner{padding:12px 14px;background:#fff5db;border-left:4px solid #b47914;border-radius:5px}
+.cards{display:grid;grid-template-columns:250px 1fr;gap:16px;margin-top:20px}
+nav{background:#fff;border:1px solid #d9e0ea;border-radius:12px;padding:10px;max-height:72vh;overflow-y:auto}
+nav button{display:block;width:100%;text-align:left;background:#fff;border:1px solid #e1e6ed;border-radius:8px;margin:4px 0;padding:9px;color:#23334f;cursor:pointer}
+nav button.active{background:#e6eefb;border-color:#5479b1;font-weight:700}
+nav button.drop{background:#f6f7f8;color:#6d737c}
+section#inspection{background:#fff;border:1px solid #d9e0ea;border-radius:12px;padding:19px;min-height:450px;min-width:0;overflow:hidden}
+h2{font-size:21px;margin:0 0 8px}
+.qa-status{font-weight:700;color:#975e13}
+.qa-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:12px 0}
+.qa-meta div{font-size:13px;overflow-wrap:anywhere}
+.qa-preview{border:1px dashed #aebbd1;border-radius:10px;padding:18px;min-height:170px;margin:16px 0;overflow:auto}
+.qa-preview svg{max-width:100%;height:auto}
+.qa-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.qa-actions button{background:#264f90;color:white;border:none;padding:10px 15px;border-radius:8px;cursor:pointer}
+.qa-actions button:disabled{opacity:.5;cursor:not-allowed}
+.qa-actions button.secondary{background:#566474}
+.qa-sub{color:#50617a;font-size:13px}
+textarea{display:block;width:100%;box-sizing:border-box;min-height:155px;border:1px solid #d8dfe9;border-radius:8px;padding:9px;font:12px/1.4 monospace;margin-top:8px}
+.qa-d10-wrap{padding:10px}
+.qa-d10-wrap .ml-word-card{border:1px solid #dce2e8;padding:14px;border-radius:10px}
+.qa-d10-wrap input{max-width:70px;margin:4px;padding:5px}
+.qa-d10-wrap .ml-graph-paper{padding:12px;background:#fafbff;border-radius:8px}
+.qa-d4-list>div{padding:8px;margin:7px 0;border-bottom:1px solid #ddd}
+@media(max-width:700px){main{padding:12px}.cards{grid-template-columns:1fr}nav{max-height:170px}.qa-meta{grid-template-columns:1fr}}
+</style></head>
+<body><main>
+<h1>P0 – 25 case: QA/QC hình ảnh và hợp đồng ngữ nghĩa</h1>
+<p class="banner"><b>GAS TEST / reviewer-only.</b> Đây là các <b>fixture toán học tổng hợp</b> từ bộ kiểm thử đã duyệt kỹ thuật, <b>không phải ảnh SGK hoặc đề nguyên văn</b>. Renderer có thể tương tác để quan sát, nhưng <b>không chấm bài, không ghi điểm/sao, không ký duyệt nguồn và không phát hành</b>.</p>
+<p>Đủ 25 hồ sơ · 18 quyết định giữ (17 bài nguồn duy nhất) · 7 DROP loại khỏi pool. Chỉ kiểm hình, đơn vị, tương tác và fallback trong TEST. Người ký duyệt nguồn độc lập phải xử lý trên bảng reviewer riêng tư.</p>
+<div class="cards"><nav id="caselist" aria-label="Chọn 25 trường hợp"></nav>
+<section id="inspection" aria-live="polite">
+<h2 id="case-title">Chọn một case</h2><p class="qa-status" id="case-state">Chưa thử</p>
+<div class="qa-meta" id="metadata"></div>
+<p class="qa-sub" id="case-note"></p>
+<div class="qa-preview" id="preview" data-p0-review-preview="true"></div>
+<div class="qa-actions">
+<button id="observed" disabled>Đánh dấu đã xem – đúng giao diện mẫu</button>
+<button id="issue" class="secondary" disabled>Đánh dấu cần sửa giao diện mẫu</button>
+</div></section></div>
+<h2 style="margin-top:24px">Biên nhận kiểm tra trực quan TEST</h2>
+<p class="qa-sub">Mọi trạng thái ghi nhận dưới đây là <b>quan sát thủ công</b>; không được hiểu là reviewer độc lập đã ký. Không đưa dữ liệu riêng tư, ảnh SGK, token hoặc đáp án vào biên nhận.</p>
+<textarea id="receipt" readonly spellcheck="false" aria-label="Biên nhận QA đã lược bỏ dữ liệu riêng tư"></textarea>
+</main>
+<script><?!= napThanhPhan('G2B_ReviewFixtures') ?></script>
+<script><?!= napThanhPhan('89_P0_VariantRouter') ?></script>
+<script><?!= napThanhPhan('90_P0_VectorStructural') ?></script>
+<script><?!= napThanhPhan('66_D3_Core') ?></script>
+<script><?!= napThanhPhan('67_D3_View') ?></script>
+<script><?!= napThanhPhan('68_D4_Core') ?></script>
+<script><?!= napThanhPhan('69_D4_View') ?></script>
+<script><?!= napThanhPhan('73_D7_Core') ?></script>
+<script><?!= napThanhPhan('74_D7_View') ?></script>
+<script><?!= napThanhPhan('55_Pictograph_Core') ?></script>
+<script><?!= napThanhPhan('56_Pictograph_View') ?></script>
+<script><?!= napThanhPhan('80_D10_Core') ?></script>
+<script><?!= napThanhPhan('81_D10_Adapter') ?></script>
+<script>
+(function(){
+'use strict';
+const list=document.getElementById('caselist'),preview=document.getElementById('preview');
+const title=document.getElementById('case-title'),state=document.getElementById('case-state');
+const info=document.getElementById('metadata'),note=document.getElementById('case-note');
+const observed=document.getElementById('observed'),issue=document.getElementById('issue');
+const receipt=document.getElementById('receipt'),source=window.G2B_QA_REVIEW;
+const router=window.BE_HOC_P0_VARIANT_ROUTER,vector=window.BE_HOC_P0_VECTOR_PREVIEW;
+const cores={D3:window.KLMatchingV11,D4:window.KLChoiceV11,
+ D7:window.KLComparisonV11,D9:window.KLPictographV11,D10:window.KLWordUnificationV11};
+const views={D3:window.KLMatchingViewV11,D4:window.KLChoiceViewV11,
+ D7:window.KLComparisonViewV11,D9:window.KLPictographViewV11,D10:window.KLWordUnificationAdapterV11};
+const qtypes={GRID_100_2X2:'grid',TWO_GROUP_COUNT_ADD:'counting',ADDITION_PYRAMID:'number_input',
+ POLYLINE_LENGTH:'measurement',WORD_LESS_THAN:'word_problem',WORD_COMPLEMENT:'word_problem',
+ WORD_PART_WHOLE:'word_problem',ONE_TO_ONE_ARITH_MATCH:'matching',SYNTHETIC_EXACT_COUNT_TENS:'counting',
+ MANY_TO_ONE_OPTIONS:'choice',POLYLINE_COMPARE:'measurement',NUMBER_LINE_STEP:'number_input',
+ SUBTRACTION_COMPARE:'comparison',COLUMN_MISSING_DIGITS:'missing_digit'};
+const marks=Object.create(null);let active=null,controllers=[],eligible=false;
+function clear(){
+ controllers.forEach(function(c){try{c.destroy&&c.destroy();}catch(_){}});
+ controllers=[];preview.replaceChildren();
+}
+function text(parent,label,value){
+ const d=document.createElement('div'),b=document.createElement('b');
+ b.textContent=label+': ';d.append(b,document.createTextNode(value));parent.append(d);
+}
+function contract(item){
+ return {lessonId:item.lessonId,originExerciseId:item.exerciseId,skillId:item.skillId,
+ questionType:qtypes[item.familyId]||'interactive',semanticKind:item.familyId,
+ visualIntent:['TWO_GROUP_COUNT_ADD','SYNTHETIC_EXACT_COUNT_TENS'].includes(item.familyId)?'EXACT_COUNT':'STRUCTURAL_MATH',
+ semantic:JSON.parse(JSON.stringify(source.fixtures[item.familyId]||{})),publicVariant:{}};
+}
+function mountD10(host,plan){
+ const card=document.createElement('article');card.className='ml-word-card ml-word-structured';
+ card.setAttribute('data-ml-q-card',plan.questionId);
+ const paragraph=document.createElement('p');paragraph.textContent=plan.prompt;
+ const graph=document.createElement('div');graph.className='ml-graph-paper';
+ const line=document.createElement('p');line.textContent='Phần bài làm mẫu – không có đáp án mẫu.';
+ graph.append(line);
+ for(const key of cores.D10.G6_FIELDS){
+  const input=document.createElement('input');input.readOnly=true;input.placeholder=key;
+  input.dataset.mlField=plan.questionId+':'+key;
+  input.setAttribute('aria-label','Ô '+key+' trong G6 – chỉ xem');graph.append(input);
+ }
+ card.prepend(paragraph);card.append(graph);host.append(card);
+ const r=views.D10.mount(card,plan,{});
+ if(r.ok)controllers.push(r);
+ return r;
+}
+function mountFamily(item,c){
+ const selected=router.classify(c);
+ if(!selected.ok||selected.decision!==item.decision)return {ok:false,reason:'FAMILY_MAPPING_DENIED'};
+ if(item.decision==='DROP')return {ok:true,kind:'DROP_EXCLUDED'};
+ if(item.rendererCandidate.startsWith('VECTOR_')){
+  const r=vector.mountReviewPreview(preview,c,router);
+  return r.ok?{ok:true,kind:'VECTOR_REVIEW_ONLY'}:r;
+ }
+ const compiled=router.compileReviewPayload(c,cores);
+ if(!compiled.ok)return compiled;
+ const family=item.rendererCandidate.split('_')[0],core=cores[family],view=views[family];
+ if(!core||!view)return {ok:false,reason:'ENGINE_MISSING'};
+ for(const data of compiled.payloads){
+  const layer=document.createElement('div');layer.className='qa-review-layer';
+  preview.append(layer);
+  const built=core.compile(data);
+  if(!built.ok)return {ok:false,reason:'CORE_COMPILE_FAILED'};
+  const r=family==='D10'?mountD10(layer,built.plan):view.mount(layer,built.plan,{});
+  if(!r.ok)return {ok:false,reason:'VIEW_MOUNT_FAILED'};
+  if(family!=='D10')controllers.push(r);
+ }
+ return {ok:true,kind:family+'_REVIEW_ONLY',
+  requiresSidecar:compiled.requiresSidecar||null};
+}
+function updateReceipt(){
+ const statuses=source.cases.map(function(c){
+  return {caseId:c.caseId,decision:c.decision,visualObservation:marks[c.caseId]||'NOT_OBSERVED'};
+ });
+ const result={scope:'G2B_25_CASE_QA_FIXTURE_VISUAL_ONLY',caseCount:25,
+  retainedChecks:18,retainedUniqueOrigins:17,dropped:7,
+  manualVisualObservationOnly:true,independentReviewerSigned:false,
+  gasServerB20AcceptanceIncluded:false,deployCodeShaVerified:false,
+  release:'NO_GO',cases:statuses};
+ receipt.value=JSON.stringify(result,null,2);
+}
+function select(item){
+ active=item;eligible=false;clear();
+ observed.disabled=true;issue.disabled=true;
+ title.textContent=item.caseId+' – '+item.familyId;
+ info.replaceChildren();
+ text(info,'Bài',item.lessonId);text(info,'Nguồn',item.exerciseId);
+ text(info,'Trang',item.printedPages+' ('+item.sourceTrack+')');
+ text(info,'skillId','INDEX_ONLY · '+item.skillId);
+ text(info,'Renderer ứng viên',item.rendererCandidate);
+ text(info,'Quyết định',item.decision);
+ let result;
+ try{result=mountFamily(item,contract(item));}
+ catch(_){result={ok:false,reason:'PREVIEW_RUNTIME_ERROR'};}
+ const isDrop=item.decision==='DROP';
+ state.textContent=isDrop?'DROP – không dựng hình, không vào pool':
+   result.ok?'REVIEW PREVIEW – chưa cấp quyền renderer/chấm điểm':'PREVIEW FAILED – cần sửa';
+ note.textContent=isDrop?
+  'Hình/topology phức tạp bị loại có chủ ý; không dựng lại và không tính là lỗi thiếu hình.':
+  result.ok?'Hình và tương tác đang dùng fixture tổng hợp, không chứng minh nguồn SGK nguyên văn. '+
+   (result.requiresSidecar?'Cần chính sách '+result.requiresSidecar+'.':'Không ghi điểm/sao.'):
+   'Renderer chưa dựng được fixture. Ghi nhận lỗi kỹ thuật trước khi nghiệm thu GAS.';
+ if(isDrop){preview.textContent='ĐÃ LOẠI KHỎI POOL: '+item.familyId;marks[item.caseId]='DROPPED_BY_POLICY';}
+ else if(!result.ok){preview.textContent='Không thể hiển thị preview; không mở quyền học sinh.';marks[item.caseId]='PREVIEW_FAILED';}
+ else{eligible=true;observed.disabled=false;issue.disabled=false;}
+ [...list.querySelectorAll('button')].forEach(b=>b.classList.toggle('active',b.dataset.caseId===item.caseId));
+ updateReceipt();
+}
+for(const item of source.cases){
+ const button=document.createElement('button');button.type='button';
+ button.dataset.caseId=item.caseId;
+ button.className=item.decision==='DROP'?'drop':'';
+ button.textContent=item.caseId+' · '+item.familyId+(item.decision==='DROP'?' [DROP]':'');
+ button.addEventListener('click',()=>select(item));list.append(button);
+}
+observed.addEventListener('click',function(){
+ if(!eligible||!active||active.decision==='DROP')return;
+ marks[active.caseId]='VISUAL_OBSERVED_OK_NOT_SIGNED';updateReceipt();
+});
+issue.addEventListener('click',function(){
+ if(!eligible||!active||active.decision==='DROP')return;
+ marks[active.caseId]='VISUAL_ISSUE_NOT_SIGNED';updateReceipt();
+});
+updateReceipt();
+if(source.cases.length===25)select(source.cases[0]);
+})();
+</script></body></html>
