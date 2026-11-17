@@ -26,6 +26,8 @@ jobs:
           node qa/g3a/test_g3a_http_loopback.cjs
       - name: "Regression: legacy secret-export bypasses denied, QA has no writes"
         run: node qa/g3b/test_g3b_boundary.cjs
+      - name: "Browser QA bridge: 21 simulated public RPC checks (not actual GAS)"
+        run: node qa/g3b/test_g3b_browser_smoke.cjs
       - name: Preserve scope-labeled evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -35,4 +37,5 @@ jobs:
             qa/g3a/G3A_TEST_RESULTS.json
             qa/g3a/G3A_HTTP_LOOPBACK_RESULTS.json
             qa/g3b/G3B_RESULTS.json
+            qa/g3b/G3B_BROWSER_SMOKE_RESULTS.json
           retention-days: 14
