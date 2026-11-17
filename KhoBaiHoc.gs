@@ -2,7 +2,7 @@
  * Giữ đúng schema 4 tab Sheet (01,02,03,04); nguồn dữ liệu đã cấu hình một chỗ.
  * Bài khác chỉ thêm dữ liệu Sheet và loại câu hỏi có bộ chấm phù hợp.
  */
-const KHO_BAI_HOC_VERSION='g6_v1';
+const KHO_BAI_HOC_VERSION='g6_v2_visual_contract';
 function khoDocTab_(wb,name){
  const sh=wb.getSheetByName(name);
  if(!sh)throw Error('Thiếu tab '+name);
@@ -13,6 +13,42 @@ function khoDocTab_(wb,name){
   const obj={};keys.forEach((k,i)=>{if(k)obj[k]=row[i]||'';});return obj;
  });
 }
+/** Read only the public visual contract from a trusted Sheet row. Never return a grading key. */
+function khoVisualContract_(x){
+ const renderer=String(x.renderer_id||'').trim().toUpperCase();
+ const skillId=String(x.skill_id||'').trim();
+ const visualIntent=String(x.visual_intent||'').trim().toUpperCase();
+ const assetId=String(x.asset_id||'').trim();
+ const semanticLabel=String(x.semantic_label||'').trim();
+ const countUnit=String(x.count_unit||'').trim();
+ const countText=String(x.exact_quantity||'').trim();
+ const json=String(x.public_variant_json||'').trim();
+ // No implied renderer from question prompt or filename.
+ if(!renderer&&!assetId&&!semanticLabel)return null;
+ if(renderer&&!/^D(?:10|8A|8B|[1-9])$/.test(renderer))return null;
+ if(renderer&&!/^[A-Z0-9_\\-]{3,90}$/.test(skillId))return null;
+ if(visualIntent&&!['DECORATIVE','CHOICE','EXACT_COUNT'].includes(visualIntent))return null;
+ if(assetId&&!/^(?:FLUENT:[a-z0-9_]+|KL_(?:SH|M)\\d{2}_\\d{3}|KL2_[A-Z0-9_]+)$/.test(assetId))return null;
+ if(semanticLabel.length>120||countUnit.length>30)return null;
+ if(countText&&!/^(?:[1-9]|[1-4][0-9]|50)$/.test(countText))return null;
+ let publicVariant={};
+ if(json){
+  if(json.length>16000)return null;
+  try{publicVariant=JSON.parse(json)}catch(e){return null;}
+  if(!publicVariant||Array.isArray(publicVariant)||typeof publicVariant!=='object')return null;
+  const forbidden=/^(?:answer|answers|answerKey|correctAnswer|correct|correctOptionId|expectedAnswer|expectedResult|expectedCarry|solution|solutionPrompt|gradingKey|isCorrect|teacherSolution|prefilledSolution|gradingState|grade|starCredit|starAmount|studentId|__proto__|constructor|prototype)$/;
+  function safe(v,depth){
+   if(depth>12)return false;
+   if(Array.isArray(v))return v.length<=120&&v.every(a=>safe(a,depth+1));
+   if(v&&typeof v==='object')return Object.keys(v).every(k=>!forbidden.test(k)&&safe(v[k],depth+1));
+   return v===null||typeof v==='string'||typeof v==='boolean'||(typeof v==='number'&&isFinite(v));
+  }
+  if(!safe(publicVariant,0))return null;
+ }
+ return {rendererId:renderer||null,skillId:skillId||null,visualIntent:visualIntent||'DECORATIVE',
+   assetId:assetId||null,semanticLabel:semanticLabel||null,countUnit:countUnit||null,
+   exactQuantity:countText?Number(countText):null,publicVariant};
+}
 function khoChuyenCauHoi_(x){
  const allowed=['vertical','mental','word_problem','missing_digit'];
  let puzzle=null;
@@ -22,7 +58,7 @@ function khoChuyenCauHoi_(x){
  return {id:x.question_id,level:x.level,sectionId:x.section_id,order:Number(x.order)||0,
   label:x.label,type:x.type,prompt:x.prompt,n1:x.n1,op:x.op,n2:x.n2,answer:String(x.answer||''),
   unit:x.unit,group:x.group,theme:x.theme,summary:x.summary,solutionPrompt:x.solution_prompt,
-  svg:x.svg||'',puzzle,valid,issue:valid?'':'Thiếu đề bài hoặc dữ liệu ô số trong Google Sheet'};
+  svg:x.svg||'',puzzle,visualContract:khoVisualContract_(x),valid,issue:valid?'':'Thiếu đề bài hoặc dữ liệu ô số trong Google Sheet'};
 }
 function khoLayBaiHoc_(lessonId){
  if(!/^[a-z0-9_]{3,64}$/.test(String(lessonId||'')))throw Error('ID bài học không hợp lệ');
