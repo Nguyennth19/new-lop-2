@@ -32,7 +32,7 @@ let mounted=[];
 let activeLessonPolicies=Object.create(null);
 function prepareLessonPolicies(lesson){
  const next=Object.create(null);
- if(!lesson||!/^toan_b\\d{1,4}$/.test(lesson.id||'')||!Array.isArray(lesson.rendererPolicies))return next;
+ if(!lesson||!/^toan_b\d{1,4}$/.test(lesson.id||'')||!Array.isArray(lesson.rendererPolicies))return next;
  for(const p of lesson.rendererPolicies){
   if(!p||!REGISTRY[p.rendererId]||p.qaStatus!=='PASS'||!/^[-A-Za-z0-9_.:/]{8,160}$/.test(p.evidenceId||''))continue;
   if(!/^[a-z_]{3,40}$/.test(p.type||'')||!/^[-A-Z0-9_]{3,90}$/.test(p.skillId||''))continue;
