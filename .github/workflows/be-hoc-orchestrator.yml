@@ -7,6 +7,7 @@ on:
       - '19_KhongGianHocToan.html'
       - '8?_*.html'
       - 'qa/be-hoc-orchestrator/**'
+      - 'KhoBaiHoc.gs'
       - '.github/workflows/be-hoc-orchestrator.yml'
   workflow_dispatch:
 permissions:
@@ -26,6 +27,7 @@ jobs:
         run: |
           node qa/be-hoc-orchestrator/orchestrator-contract.test.cjs
           node qa/be-hoc-orchestrator/fluent-46.test.cjs
+          node qa/be-hoc-orchestrator/semantic-character-contract.test.cjs
       - name: Install Chromium
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
