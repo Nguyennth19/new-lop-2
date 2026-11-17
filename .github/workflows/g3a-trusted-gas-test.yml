@@ -1,0 +1,33 @@
+name: G3-A Trusted GAS TEST Preflight (read-only)
+on:
+  push:
+    branches:
+      - test/data-b-g3a-trusted-gas-adapter-20261117
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-trusted-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate modified GAS and HTML source syntax
+        shell: bash
+        run: |
+          set -eu
+          for path in KhoBaiHoc.gs DuLieuToanSheet.gs G3ATrustedTest.gs CauHinh.gs ThanhTichMayChu.gs ThanhTichBaoCao.gs D2ChamTinCayTest.gs 19_KhongGianHocToan.html 26_ChamCauHoiToan.html 41_HienThiCauHoiToan.html; do
+            node --check --input-type=commonjs < "$path"
+          done
+      - name: Run private/public VM and local serialized HTTP boundary tests
+        run: |
+          node qa/g3a/test_g3a_isolated.cjs
+          node qa/g3a/test_g3a_http_loopback.cjs
+      - name: Preserve read-only QA test evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: g3a-trusted-test-preflight
+          path: |
+            qa/g3a/G3A_TEST_RESULTS.json
+            qa/g3a/G3A_HTTP_LOOPBACK_RESULTS.json
+          retention-days: 7
