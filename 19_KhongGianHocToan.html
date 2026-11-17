@@ -30,9 +30,9 @@ function shell(){
  return root;
 }
 function activeQuestions(){return fullData?chonCauHoiTheoNhom(fullData):[];}
-function completed(){return activeQuestions().filter(q=>cauDaDungToan[q.id]).length;}
+function completed(){return 0;} // TEST is read-only
 function validCount(){return activeQuestions().length;}
-function levelDone(lv){return !!(typeof TIEN_DO_HOC!=='undefined'&&TIEN_DO_HOC.get()?.completedLevels?.[lv]);}
+function levelDone(_lv){return false;} // TEST never reads learner achievement
 function refreshProgress(){
  if(!fullData)return;
  const total=validCount(),p=total?Math.round(completed()/total*100):0;
@@ -47,15 +47,19 @@ function start(index){
  root.querySelector('#mlTitle').textContent='Bài 20: Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số';
  root.querySelector('#mlContent').innerHTML='<div class="ml-loading">Đang nạp bài học từ Google Sheets…</div>';
  document.getElementById('mlDock').hidden=true;
- if(typeof ghiNhanBatDauHoc==='function')ghiNhanBatDauHoc();
+ // G3-A TEST is read-only; do not record a learning session.
  try {history.replaceState(null,'',location.pathname+location.search+'#bai-toan20/'+level);}catch(e){}
- if(typeof TIEN_DO_HOC!=='undefined'&&!TIEN_DO_HOC.get())TIEN_DO_HOC.refresh().catch(()=>{});
+ // QA branch never pulls persisted achievement state from an unverified student source.
  if(fullData){render();return;}
  const load=()=>new Promise((resolve,reject)=>{
   if(!window.google||!google.script||!google.script.run){reject(Error('Hãy mở Web App Google Apps Script'));return;}
-  google.script.run.withSuccessHandler(resolve).withFailureHandler(reject).layBaiToan20();
+  google.script.run.withSuccessHandler(data=>{
+   if(!data||data.securityContract!=='G3A_PUBLIC_ALLOWLIST_V1'||!data.lesson||
+       data.lesson.id!=='toan_b20'||!Array.isArray(data.questions))return reject(Error('GAS TEST chưa được cấp quyền hoặc nguồn chưa đúng'));
+   resolve(data);
+  }).withFailureHandler(reject).g3aLayBaiToan20Test();
  });
- BO_NHO_BAI_HOC.fetch('toan_b20',load).then(data=>{
+ BO_NHO_BAI_HOC.fetch('g3a_public_toan_b20_v1',load).then(data=>{
   fullData=data;boDuLieuToan=data;
   if(document.getElementById('mathFullScreen')&&!document.getElementById('mathFullScreen').hidden)render();
  }).catch(err=>{
@@ -124,7 +128,7 @@ function input(q,key,max,extra=''){
  return '<input class="ml-input'+(key.endsWith(':carry')?' ml-carry':'')+'" type="text" inputmode="none" autocomplete="off" maxlength="'+max+'" data-ml-field="'+E(key)+'" data-ml-q="'+E(q.id)+'" '+extra+' aria-label="'+E(key.split(':').pop())+'">';
 }
 function baseCard(q,inside,kind){
- return '<article class="ml-card ml-theme-'+E(q.theme||'blue')+' '+kind+'" data-ml-q-card="'+E(q.id)+'"><div class="ml-card-top"><b>'+E(q.label||('Câu '+q.order))+'</b><small class="ml-earned">'+(cauDaDungToan[q.id]?'✓':'')+'</small></div>'+inside+'</article>';
+ return '<article class="ml-card ml-theme-'+E(q.theme||'blue')+' '+kind+'" data-ml-q-card="'+E(q.id)+'"><div class="ml-card-top"><b>'+E(q.label||('Câu '+q.order))+'</b><small class="ml-earned">'+''+'</small></div>'+inside+'</article>';
 }
 const {vertical,mental,puzzle,word,invalid}=taoHienThiCauToan({E,input,baseCard});
 function keyValue(q,k){
@@ -132,33 +136,55 @@ function keyValue(q,k){
  return el?el.value.trim():'';
 }
 function fields(q){return [...shell().querySelectorAll('[data-ml-q="'+q.id+'"]')];}
-function gradeQuestion(q){
- if(!q.valid)return false;
- const f=fields(q);if(!f.length)return false;
- const ok=danhGiaCauToan(q,k=>keyValue(q,k));
- f.forEach(el=>el.classList.toggle('ml-right',ok));
- f.forEach(el=>el.classList.toggle('ml-wrong',!ok&&el.value!==''));
- f.forEach(el=>el.classList.toggle('ml-empty',!ok&&el.value===''));
- // Dấu tích đã học chỉ được máy chủ xác minh sau khi nộp.
- gradingState[q.id]=ok?'correct':f.every(x=>!x.value.trim())?'empty':'wrong';
- const card=shell().querySelector('[data-ml-q-card="'+q.id+'"]');
- if(card){card.classList.toggle('ml-correct',ok);const star=card.querySelector('.ml-earned');if(star&&ok)star.textContent='✓';}
- return ok;
-}
-function afterGrade(){
- refreshProgress();
- // Chỉ tiến độ từ layTienDoHocTap mới đánh dấu đã học trên sidebar và lộ trình.
-}
+// G3-A: the browser only collects fields; it NEVER compares them with a private key.
+function fieldsFilled(q){return fields(q).some(function(el){return !!String(el.value||'').trim();});}
+function afterGrade(){refreshProgress();}
+let g3aPending=false;
 function gradeLevel(){
+ if(g3aPending||!fullData||view==='THEORY')return;
  const qs=activeQuestions().filter(q=>q.level===view);
- qs.forEach(gradeQuestion);afterGrade();
- const n=qs.filter(q=>cauDaDungToan[q.id]).length;
-
- const record={at:new Date().toISOString(),seconds:typeof DEM_TUONG_TAC!=='undefined'?DEM_TUONG_TAC.seconds():0,total:qs.length,correct:qs.filter(q=>gradingState[q.id]==='correct').length,answered:qs.filter(q=>fields(q).some(el=>el.value.trim()!=='')).length};
- submissions[view]=record;
- renderResults();
- // Học sinh không thể tự cấp sao: gửi các ô đã nhập cho máy chủ kiểm tra lại.
- if(typeof THANH_TICH_GUI!=='undefined')THANH_TICH_GUI.send('toan_b20',view,qs,fields,record.seconds);
+ if(!qs.length)return;
+ if(!window.google?.script?.run){
+  const p=shell().querySelector('#mlRewardSync');if(p)p.textContent='Chỉ được chấm trong GAS TEST được xác thực.';
+  return;
+ }
+ const startView=view,answers={};
+ qs.forEach(q=>{const values={};fields(q).forEach(el=>{
+   const fieldName=String(el.dataset.mlField||'').slice(q.id.length+1);
+   if(/^(?:ones|tens|carry|answer|n1|n2|op|sum|p[0-7][0-7])$/.test(fieldName))values[fieldName]=String(el.value||'').slice(0,10);
+  });answers[q.id]=values;});
+ const seconds=typeof DEM_TUONG_TAC!=='undefined'?DEM_TUONG_TAC.seconds():0;
+ const status=shell().querySelector('#mlRewardSync');
+ if(status)status.textContent='GAS TEST đang xác minh đáp án; không cộng điểm hay sao…';
+ g3aPending=true;
+ const fail=()=>{g3aPending=false;if(status)status.textContent='GAS TEST chưa xác minh. Không có điểm hoặc sao nào được ghi.';};
+ google.script.run.withSuccessHandler(session=>{
+  if(!session?.ok||!session.token){fail();return;}
+  const request={contractId:'G3A_READONLY_V1',lessonId:'toan_b20',level:startView,token:session.token,answers};
+  google.script.run.withSuccessHandler(result=>{
+   g3aPending=false;
+   if(!result?.ok||result.awarded!==false||result.level!==startView||
+      !Array.isArray(result.perQuestion)||result.perQuestion.length!==qs.length){fail();return;}
+   if(view!==startView)return; // Ignore late result after navigation.
+   const byId=new Map(result.perQuestion.map(row=>[row.id,row.status]));
+   if(byId.size!==qs.length||qs.some(q=>!['correct','wrong','empty'].includes(byId.get(q.id)))){fail();return;}
+   qs.forEach(q=>{
+    const s=byId.get(q.id);gradingState[q.id]=s;
+    for(const el of fields(q)){
+     el.classList.toggle('ml-right',s==='correct');
+     el.classList.toggle('ml-wrong',s==='wrong'&&!!el.value);
+     el.classList.toggle('ml-empty',s==='empty'&&!el.value);
+    }
+    const card=shell().querySelector('[data-ml-q-card="'+q.id+'"]');
+    if(card)card.classList.toggle('ml-correct',s==='correct');
+   });
+   submissions[startView]={at:new Date().toISOString(),seconds,total:result.total,
+    correct:result.correct,answered:result.answered};
+   renderResults();afterGrade();
+   const freshStatus=shell().querySelector('#mlRewardSync');
+   if(freshStatus)freshStatus.textContent='Đã kiểm tra trên GAS TEST (chỉ đọc; không ghi sao hay tiến độ).';
+  }).withFailureHandler(fail).g3aChamBaiToan20Test(request);
+ }).withFailureHandler(fail).g3aTaoPhienChamB20Test({lessonId:'toan_b20',level:startView});
 }
 function resetLevel(){
  if(!fullData||view==='THEORY')return;
@@ -181,7 +207,7 @@ function renderResults(){
  const submitDate=record?new Date(record.at).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}):'Chưa nộp bài';
  const duration=record?Math.floor(record.seconds/60)+' phút '+record.seconds%60+' giây':'Chưa nộp';
  panel.innerHTML='<div class="ml-result-card"><h2>Kết quả</h2><div class="ml-result-meta"><span>Thời gian nộp</span><strong>'+E(submitDate)+'</strong></div><div class="ml-result-meta"><span>Thời gian làm bài</span><strong>'+E(duration)+'</strong></div><div class="ml-result-meta"><span>Câu đã trả lời</span><strong>'+(record?record.answered:answered)+' / '+questions.length+'</strong></div><div class="ml-result-score"><strong>Điểm</strong><b>'+(record?Math.round(record.correct/Math.max(record.total,1)*100)/10:'—')+'</b></div></div>'+
- '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button></div><div class="ml-reward-sync" id="mlRewardSync" aria-live="polite">Sao thưởng được tính khi máy chủ xác minh bài nộp.</div></div>';
+ '<div class="ml-result-card"><h2>Đáp án</h2><div class="ml-legend"><span class="correct">● Trả lời đúng</span><span class="wrong">● Trả lời sai</span><span class="empty">● Chưa điền</span><span class="unanswered">● Chưa kiểm tra</span></div><div class="ml-answer-grid">'+items+'</div><div class="ml-result-actions"><button type="button" data-ml-submit>'+muiIcon('check')+' Nộp &amp; chấm bài</button><button type="button" data-ml-reset-level>'+muiIcon('refresh')+' Làm lại</button></div><div class="ml-reward-sync" id="mlRewardSync" aria-live="polite">G3-A TEST chỉ đọc: không ghi điểm, sao hoặc tiến độ.</div></div>';
 }
 function restoreDrafts(){
  shell().querySelectorAll('[data-ml-field]').forEach(el=>{if(drafts[el.dataset.mlField]!==undefined)el.value=drafts[el.dataset.mlField]});
