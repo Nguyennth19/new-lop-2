@@ -17,7 +17,8 @@ function caiDatIdSheetDuLieu() {
 /** Một nguồn cấu hình cho toàn bộ dữ liệu học tập và thành tích. */
 function moBangDuAn_(){
  const p=PropertiesService.getScriptProperties();
- const id=p.getProperty(CAU_HINH_LOP_2.MA_SHEET_THUOC_TINH)||CAU_HINH_LOP_2.SHEET_MAC_DINH;
- if(!id)throw new Error('Chưa cấu hình Google Sheet nguồn dữ liệu');
+ // G3-A TEST branch never opens the production B20 Sheet, even accidentally.
+ const id=String(p.getProperty('G3A_TEST_SOURCE_SPREADSHEET_ID')||'').trim();
+ if(!id||id===CAU_HINH_LOP_2.SHEET_MAC_DINH)throw Error('G3A_TEST_SHEET_NOT_ISOLATED');
  return SpreadsheetApp.openById(id);
 }
