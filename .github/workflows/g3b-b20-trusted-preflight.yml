@@ -1,0 +1,38 @@
+name: G3-B B20 trusted public/private boundary (no-deploy)
+on:
+  push:
+    branches: [test/data-b-g3b-b20-trusted-gas-e2e-20261117]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g3b-secure-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of restricted GAS files and test harness
+        shell: bash
+        run: |
+          set -eu
+          for f in DocDuLieuSheet.gs DuLieuToanSheet.gs MayChu.gs ThanhTichMayChu.gs PhuHuynhMayChu.gs G3ATrustedTest.gs; do node --check --input-type=commonjs < "$f"; done
+          node --check qa/g3b/test_g3b_boundary.cjs
+      - name: Reuse G3-A private grading VM and JSON HTTP loopback
+        run: |
+          node qa/g3a/test_g3a_isolated.cjs
+          node qa/g3a/test_g3a_http_loopback.cjs
+      - name: Regression: legacy secret-export bypasses denied, QA has no writes
+        run: node qa/g3b/test_g3b_boundary.cjs
+      - name: Preserve scope-labeled evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g3b-test-only-code-qa
+          path: |
+            qa/g3a/G3A_TEST_RESULTS.json
+            qa/g3a/G3A_HTTP_LOOPBACK_RESULTS.json
+            qa/g3b/G3B_RESULTS.json
+          retention-days: 14
