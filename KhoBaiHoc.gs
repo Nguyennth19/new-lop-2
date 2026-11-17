@@ -2,7 +2,7 @@
  * Giữ đúng schema 4 tab Sheet (01,02,03,04); nguồn dữ liệu đã cấu hình một chỗ.
  * Bài khác chỉ thêm dữ liệu Sheet và loại câu hỏi có bộ chấm phù hợp.
  */
-const KHO_BAI_HOC_VERSION='g6_v2_visual_contract';
+const KHO_BAI_HOC_VERSION='g6_v3_visual_display_only';
 function khoDocTab_(wb,name){
  const sh=wb.getSheetByName(name);
  if(!sh)throw Error('Thiếu tab '+name);
@@ -51,14 +51,22 @@ function khoVisualContract_(x){
 }
 function khoChuyenCauHoi_(x){
  const allowed=['vertical','mental','word_problem','missing_digit'];
+ const structured=['matching','choice','geometry','drag_sort','comparison','measurement','capacity','weight','pictograph','counting','number_input','interactive'];
+ const visualContract=khoVisualContract_(x);
+ // New exercise families may be shown only with an explicit safe public
+ // variant. This never opts them into legacy scoring, rewards or submissions.
+ const structuredValid=structured.includes(x.type)&&!!visualContract&&!!visualContract.rendererId&&
+  !!visualContract.skillId&&!!String(x.question_id||'').trim()&&
+  !!String(x.section_id||'').trim()&&!!String(x.level||'').trim()&&
+  !!String(x.public_variant_json||'').trim();
  let puzzle=null;
  if(x.puzzle_json){try{puzzle=JSON.parse(x.puzzle_json)}catch(e){}}
  const puzzleValid=Array.isArray(puzzle)&&puzzle.length>0&&puzzle.some(row=>Array.isArray(row)&&row.some(cell=>cell&&typeof cell==='object'&&cell.ans!==undefined));
- const valid=allowed.includes(x.type)&&(x.type==='missing_digit'?puzzleValid:Boolean(x.prompt&&x.answer));
+ const valid=(allowed.includes(x.type)&&(x.type==='missing_digit'?puzzleValid:Boolean(x.prompt&&x.answer)))||structuredValid;
  return {id:x.question_id,level:x.level,sectionId:x.section_id,order:Number(x.order)||0,
   label:x.label,type:x.type,prompt:x.prompt,n1:x.n1,op:x.op,n2:x.n2,answer:String(x.answer||''),
   unit:x.unit,group:x.group,theme:x.theme,summary:x.summary,solutionPrompt:x.solution_prompt,
-  svg:x.svg||'',puzzle,visualContract:khoVisualContract_(x),valid,issue:valid?'':'Thiếu đề bài hoặc dữ liệu ô số trong Google Sheet'};
+  svg:x.svg||'',puzzle,visualContract,displayOnly:structuredValid,valid,issue:valid?'':'Thiếu đề bài hoặc dữ liệu ô số trong Google Sheet'};
 }
 /**
  * Curricular binding policy is read from the real lesson row; never infer a
