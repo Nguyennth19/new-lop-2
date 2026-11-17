@@ -1,0 +1,32 @@
+/* BE-HOC characters: exact Drive WebP mirrored 2026-11-17; illustration only. */
+(function(root){
+'use strict';
+const BASE='https://raw.githubusercontent.com/Nguyennth19/new-lop-2/d780609bd93cf8dbdf20f77aebfea9c89b9d85e7/hinh-anh/nhan-vat-drive/v1/';
+const SETS=Object.freeze({
+ robot:['STAND','WAVE','POINT','READ','TEACH','CELEBRATE'],
+ boy_home:['STAND','WAVE','WRITE','READ','POINT','CELEBRATE'],
+ boy_school:['BACKPACK','RAISE_HAND','BOOKS','WRITE','TEACH','WALK'],
+ girl_home:['STAND','WAVE','WRITE','READ','POINT','CELEBRATE'],
+ girl_school:['BACKPACK','RAISE_HAND','BOOKS','WRITE','TEACH','WALK']
+});
+const catalog=Object.freeze(Object.entries(SETS).flatMap(([kind,poses])=>poses.map((pose,i)=>{
+ const parts=kind.split('_'),prefix=parts[0]==='robot'?'KL2_ROBOT':('KL2_'+parts[0].toUpperCase()+'_'+parts[1].toUpperCase());
+ const name=prefix+'_'+String(i+1).padStart(2,'0')+'_'+pose+'_v1.webp';
+ return Object.freeze({id:prefix+'_'+String(i+1).padStart(2,'0')+'_'+pose,kind,pose,path:kind==='robot'?'robot/'+name:parts[0]+'/'+parts[1]+'/'+name,role:'DECORATIVE',countSafe:false});
+})));
+const map=new Map(catalog.map(x=>[x.id,x]));
+function resolve(id){
+ const item=map.get(String(id||''));
+ if(!item)return {ok:false,reason:'UNKNOWN_CHARACTER'};
+ return {ok:true,assetId:item.id,kind:'CHARACTER_WEBP',url:BASE+item.path,role:'DECORATIVE',quantityApproved:false};
+}
+function mount(target,id,options={}){
+ const r=resolve(id);if(!r.ok)return r;
+ if(!target?.appendChild||!root.document)return {ok:false,reason:'INVALID_TARGET'};
+ if(options.visualIntent && options.visualIntent!=='DECORATIVE')return {ok:false,reason:'CHARACTER_ILLUSTRATION_ONLY'};
+ const img=root.document.createElement('img');img.src=r.url;img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.alt=String(options.alt||'Nhân vật học tập');img.dataset.klCharacter=id;
+ img.addEventListener('error',()=>{img.remove();if(typeof options.onError==='function')options.onError();},{once:true});
+ target.appendChild(img);return {ok:true,img,assetId:id};
+}
+root.BE_HOC_CHARACTERS_30=Object.freeze({count:30,list:()=>catalog.slice(),resolve,mount,sourceCommit:'d780609bd93cf8dbdf20f77aebfea9c89b9d85e7'});
+})(window);
