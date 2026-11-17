@@ -237,6 +237,52 @@
    options:semantic.options.map((n,i)=>({id:'option_'+i,content:{type:'TEXT',text:String(n)}}))
   })),grading:'SERVER_ONLY',awarded:false};
  }
+ function compileReviewPayload(contract,engines={}){
+  const a=classify(contract);
+  if(!a.ok)return a;
+  if(a.decision==='DROP')return reject('DROP_IS_NOT_RENDERABLE');
+  const s=contract.semantic,f=contract.semanticKind,id=contract.originExerciseId;
+  let payloads=[],core=null,sidecar=null;
+  if(VECTOR.has(f)){
+   return {ok:true,rendererCandidate:a.rendererCandidate,kind:'VECTOR_SEMANTIC_PREVIEW',
+    payloads:[{semanticKind:f,semantic:s}],requiresSidecar:null,reviewPreview:true,
+    gradingEnabled:false,awarded:false,publishable:false};
+  }
+  if(['WORD_LESS_THAN','WORD_COMPLEMENT','WORD_PART_WHOLE'].includes(f)){
+   core=engines.D10;
+   payloads=[{questionId:id,mode:'GUIDED',prompt:s.prompt,summary:'',unit:s.unit,calculationSteps:1}];
+  }else if(f==='ONE_TO_ONE_ARITH_MATCH'){
+   core=engines.D3;
+   payloads=[{exerciseId:id,relationMode:'SINGLE_RELATION',
+    leftItems:s.left.map(x=>({id:x.id,content:{type:'MATH',text:x.expression}})),
+    rightItems:s.right.map(x=>({id:x.id,content:{type:'TEXT',text:x.label}}))}];
+  }else if(f==='MANY_TO_ONE_OPTIONS'){
+   core=engines.D4;const made=composeD4Choices(s);if(!made.ok)return made;
+   payloads=made.payloads; // Five independent D4 choices; duplicate destination is allowed.
+  }else if(f==='SUBTRACTION_COMPARE'){
+   core=engines.D7;
+   payloads=[{exerciseId:id,rows:s.rows.map(r=>({id:r.id,left:{type:'MATH',text:r.left},right:{type:'MATH',text:r.right}}))}];
+  }else if(f==='TWO_GROUP_COUNT_ADD'){
+   core=engines.D9;sidecar='E04_TOTAL_OPERATION_WITH_TRUSTED_GRADING_REQUIRED';
+   payloads=[{exerciseId:id,mode:'ASSESSMENT',
+    rows:s.groups.map((g,i)=>({id:g.id,label:g.label,contentType:'EMOJI',symbol:i===0?'🐟':'⭐',itemCount:g.quantity})),
+    questions:s.groups.map((g,i)=>({id:'count_'+i,type:'COUNT',rowId:g.id,prompt:'Đếm số '+g.label.toLowerCase()}))}];
+  }else if(f==='SYNTHETIC_EXACT_COUNT_TENS'){
+   core=engines.D9;sidecar='E04_ESTIMATE_TENS_SECOND_SLOT_REQUIRED';
+   payloads=[{exerciseId:id,mode:'ASSESSMENT',
+    rows:[{id:'objects',label:s.countUnit,contentType:'EMOJI',symbol:'●',itemCount:s.count}],
+    questions:[{id:'count',type:'COUNT',rowId:'objects',prompt:'Đếm đúng số '+s.countUnit}]}];
+  }else return reject('FAMILY_RENDERER_ADAPTER_NOT_FOUND');
+  if(core&&typeof core.compile==='function'){
+   for(const payload of payloads){
+    const c=core.compile(payload);
+    if(!c?.ok)return reject('RENDERER_CORE_COMPILE_FAILED:'+String(c?.reason||'UNKNOWN'));
+   }
+  }
+  return {ok:true,kind:'EXISTING_RENDERER_REVIEW_PREVIEW',rendererCandidate:a.rendererCandidate,
+   payloads,requiresSidecar:sidecar,rendererCoreChecked:!!core,reviewPreview:true,
+   gradingEnabled:false,sourceReview:'NOT_SIGNED',awarded:false,publishable:false};
+ }
  function buildCandidatePool(contracts){
   if(!Array.isArray(contracts)||contracts.length>500)return reject('INVALID_POOL');
   const seen=new Set(),included=[],excluded=[];
@@ -259,7 +305,7 @@
    replacementPolicy:'REQUIRES_APPROVED_SAME_LESSON_SKILL_POOL_NO_INVENTION',
    grading:'NONE',publishable:false,awarded:false};
  }
- const api={version:VERSION,classify,validSemantic,makeSeededTwoGroup,composeD4Choices,buildCandidatePool,
+ const api={version:VERSION,classify,validSemantic,makeSeededTwoGroup,composeD4Choices,buildCandidatePool,compileReviewPayload,
   droppedFamilies:Object.freeze([...DROPPED]),routes:ROUTES};
  return Object.freeze(api);
 });
