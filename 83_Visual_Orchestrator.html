@@ -115,15 +115,17 @@ function mountLesson(data,screen,level){
   if(!card){denied++;continue;}
   // Resources can be attached independently of renderer when source has
   // explicit public visual intent and approved item ID; never guess by text.
-  if(typeof c.assetId==='string'&&['DECORATIVE','CHOICE','EXACT_COUNT'].includes(c.visualIntent)){
-   const selected=chooseAsset({assetId:c.assetId,visualIntent:c.visualIntent,
-     countUnit:c.countUnit,exactQuantity:c.exactQuantity});
-   if(selected.ok){
+  // V1.1: one unified router for WebP, Fluent and Drive characters. If assetId
+  // is absent, a *unique* approved semantic match is required; no random search.
+  if(c.visualIntent){
+   const router=root.BE_HOC_VISUAL_SEMANTIC;
+   if(router){
     const zone=card.querySelector('.ml-svg')||card;
-    const grant=c.assetId.startsWith('FLUENT:')
-     ?root.BE_HOC_FLUENT_46.mount(zone,c.assetId.slice(7),{
-       visualIntent:c.visualIntent,countUnit:c.countUnit,count:c.exactQuantity})
-     :root.BE_HOC_ASSETS_288.mount(zone,c.assetId,{visualIntent:c.visualIntent});
+    const grant=router.mount(zone,{
+     assetId:c.assetId,visualIntent:c.visualIntent,canonicalObject:c.canonicalObject,
+     objectLabel:c.objectLabel,semanticLabel:c.semanticLabel,
+     countUnit:c.countUnit,exactQuantity:c.exactQuantity
+    });
     if(grant?.ok)mapped++;else denied++;
    }else denied++;
   }
@@ -138,6 +140,8 @@ function mountLesson(data,screen,level){
 root.BE_HOC_VISUAL_ORCHESTRATOR=Object.freeze({
  schemaVersion:'BE-HOC-VISUAL-ORCHESTRATOR-V1',allRendererIds:ALL,registry:REGISTRY,
  resolve,chooseAsset,mountEnvelope,mountLesson,cleanup,safePublic,
+ semanticPlan:(intent)=>root.BE_HOC_VISUAL_SEMANTIC?.plan(intent)||{ok:false,reason:'SEMANTIC_ROUTER_MISSING'},
+ coverage:(data)=>root.BE_HOC_VISUAL_SEMANTIC?.coverage(data)||{ok:false,reason:'SEMANTIC_ROUTER_MISSING'},
  release:'SOURCE_TEST_ONLY',studentWrites:false,autoGrade:false
 });
 })(window);
