@@ -153,7 +153,12 @@ function mountLesson(data,screen,level){
   const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(el=>el.dataset.mlQCard===q.id);
   if(!card){denied++;continue;}
   const planned=planQuestion(data,q);
-  if(!planned.ok){denied++;continue;}
+  if(!planned.ok){
+   denied++;
+   const slot=card.querySelector('[data-visual-slot]');
+   if(slot&&q.displayOnly)slot.textContent='Bài tập tương tác chưa sẵn sàng. Vui lòng dùng bài khác.';
+   continue;
+  }
   if(planned.intent){
    const zone=card.querySelector('.ml-svg')||card;
    // Keep existing lesson artwork as fallback; a failed IMG load is removed by
@@ -163,8 +168,14 @@ function mountLesson(data,screen,level){
   }
   if(!planned.envelope)continue;
   if(planned.rendererId==='D2'){ignored++;continue;} // existing trusted B20 D2 host
-  const result=mountEnvelope(card,planned.envelope);
-  if(result.ok)mapped++;else denied++;
+  const host=card.querySelector('[data-visual-slot]')||card;
+  const result=mountEnvelope(host,planned.envelope);
+  if(result.ok)mapped++;
+  else{
+   denied++;
+   const slot=card.querySelector('[data-visual-slot]');
+   if(slot&&q.displayOnly)slot.textContent='Bài tập tương tác chưa sẵn sàng. Vui lòng dùng bài khác.';
+  }
  }
  return {ok:true,lessonId:data.lesson.id,mapped,ignored,denied,
   noClientGrading:true,assetLibraryCount:root.BE_HOC_ASSETS_288?.count||0};
