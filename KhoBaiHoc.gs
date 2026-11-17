@@ -60,6 +60,34 @@ function khoChuyenCauHoi_(x){
   unit:x.unit,group:x.group,theme:x.theme,summary:x.summary,solutionPrompt:x.solution_prompt,
   svg:x.svg||'',puzzle,visualContract:khoVisualContract_(x),valid,issue:valid?'':'Thiếu đề bài hoặc dữ liệu ô số trong Google Sheet'};
 }
+/**
+ * Curricular binding policy is read from the real lesson row; never infer a
+ * renderer from a textbook title or prompt. New forms require recorded QA.
+ * This is a public display authorization, not trusted scoring authorization.
+ */
+function khoRendererPolicies_(lesson){
+ const raw=String(lesson.visual_renderer_policy_json||'').trim();
+ if(!raw)return [];
+ if(raw.length>24000)return [];
+ let list;try{list=JSON.parse(raw)}catch(e){return [];}
+ if(!Array.isArray(list)||list.length>12)return [];
+ const supported=['D1','D2','D3','D4','D5','D6','D7','D8','D8A','D8B','D9','D10'];
+ const result=[],seen={};
+ for(const p of list){
+  if(!p||typeof p!=='object'||Array.isArray(p))continue;
+  const rendererId=String(p.rendererId||'').trim().toUpperCase();
+  const type=String(p.questionType||'').trim(),skillId=String(p.skillId||'').trim();
+  const evidenceId=String(p.evidenceId||'').trim();
+  if(!supported.includes(rendererId)||seen[rendererId])continue;
+  if(!/^[a-z_]{3,40}$/.test(type)||!/^[A-Z0-9_\\-]{3,90}$/.test(skillId))continue;
+  if(p.qaStatus!=='PASS'||!/^[-A-Za-z0-9_.:/]{8,160}$/.test(evidenceId))continue;
+  if((rendererId==='D5'||rendererId==='D9')&&p.e04Approved!==true)continue;
+  // Special trusted-grading gates remain separate; policy grants ONLY display.
+  seen[rendererId]=true;
+  result.push({rendererId,type,skillId,qaStatus:'PASS',evidenceId,e04Approved:p.e04Approved===true});
+ }
+ return result;
+}
 function khoLayBaiHoc_(lessonId){
  if(!/^[a-z0-9_]{3,64}$/.test(String(lessonId||'')))throw Error('ID bài học không hợp lệ');
  const cache=CacheService.getScriptCache(),key='kho_bai_'+KHO_BAI_HOC_VERSION+'_'+lessonId;
@@ -70,7 +98,7 @@ function khoLayBaiHoc_(lessonId){
  const levels=khoDocTab_(wb,'02_Cap_do').filter(x=>x.lesson_id===lessonId);
  const sections=khoDocTab_(wb,'03_Nhom_bai').filter(x=>levels.some(l=>l.level_id===x.level_id));
  const questions=khoDocTab_(wb,'04_Cau_hoi').filter(x=>x.lesson_id===lessonId).map(khoChuyenCauHoi_);
- const result={lesson:{id:lesson.lesson_id,title:lesson.title,subject:lesson.subject,series:lesson.series},
+ const result={lesson:{id:lesson.lesson_id,title:lesson.title,subject:lesson.subject,series:lesson.series,rendererPolicies:khoRendererPolicies_(lesson)},
   levels:levels.map(x=>({id:x.level_id,level:x.level,name:x.name})),
   sections:sections.map(x=>({id:x.section_id,levelId:x.level_id,name:x.name,type:x.question_type})),
   questions,readAt:new Date().toISOString()};
