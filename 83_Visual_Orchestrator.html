@@ -29,6 +29,18 @@ const LESSONS=Object.freeze({
  })
 });
 let mounted=[];
+let activeLessonPolicies=Object.create(null);
+function prepareLessonPolicies(lesson){
+ const next=Object.create(null);
+ if(!lesson||!/^toan_b\\d{1,4}$/.test(lesson.id||'')||!Array.isArray(lesson.rendererPolicies))return next;
+ for(const p of lesson.rendererPolicies){
+  if(!p||!REGISTRY[p.rendererId]||p.qaStatus!=='PASS'||!/^[-A-Za-z0-9_.:/]{8,160}$/.test(p.evidenceId||''))continue;
+  if(!/^[a-z_]{3,40}$/.test(p.type||'')||!/^[-A-Z0-9_]{3,90}$/.test(p.skillId||''))continue;
+  if((p.rendererId==='D5'||p.rendererId==='D9')&&p.e04Approved!==true)continue;
+  next[lesson.id+'|'+p.rendererId]={type:p.type,skillId:p.skillId,grade:'DISPLAY_ONLY'};
+ }
+ return next;
+}
 function cleanup(){for(const entry of mounted){try{entry.destroy?.();}catch(_){} }mounted=[];}
 function safePublic(value,depth=0){
  if(depth>12)return {ok:false,reason:'DEPTH_LIMIT'};
@@ -70,7 +82,7 @@ function resolve(e){
  const id=e.rendererId,type=REGISTRY[id];
  if(!type)return {ok:false,reason:'UNKNOWN_RENDERER'};
  if(!/^toan_b\d{1,4}$/.test(e.lessonId||'')||!/^[-\w]{2,90}$/.test(e.questionId||''))return {ok:false,reason:'INVALID_IDS'};
- const policy=LESSONS[e.lessonId]?.[id];
+ const policy=LESSONS[e.lessonId]?.[id]||activeLessonPolicies[e.lessonId+'|'+id];
  if(!policy)return {ok:false,reason:'LESSON_POLICY_NOT_APPROVED'};
  if(e.questionType!==policy.type||e.skillId!==policy.skillId)return {ok:false,reason:'SKILL_TYPE_MISMATCH'};
  const publicOnly=safePublic(e.publicVariant);
@@ -106,7 +118,9 @@ function mountEnvelope(host,envelope){
 }
 function mountLesson(data,screen,level){
  cleanup();
+ activeLessonPolicies=Object.create(null);
  if(!data?.lesson||!screen?.querySelector||!Array.isArray(data.questions))return {ok:false,reason:'INVALID_LESSON'};
+ activeLessonPolicies=prepareLessonPolicies(data.lesson);
  let mapped=0,ignored=0,denied=0;
  for(const q of data.questions){
   if(q.level!==level||!q.visualContract){ignored++;continue;}
@@ -117,7 +131,7 @@ function mountLesson(data,screen,level){
   // explicit public visual intent and approved item ID; never guess by text.
   // V1.1: one unified router for WebP, Fluent and Drive characters. If assetId
   // is absent, a *unique* approved semantic match is required; no random search.
-  if(c.visualIntent){
+  if(c.visualIntent&&(c.assetId||c.canonicalObject||c.objectLabel||c.semanticLabel)){
    const router=root.BE_HOC_VISUAL_SEMANTIC;
    if(router){
     const zone=card.querySelector('.ml-svg')||card;
