@@ -263,39 +263,65 @@ test('D9 E04 fallback preserves no-score REVIEW_ONLY until approved total and es
   assert.equal(p.publishable,false);assert.equal(router.classify(contract(c)).rendererGrant,'DENY');
  }
 });
-test('SOURCE pin and renderer/skill/count/vector/fallback matrix for every 25 case is consistent',()=>{
- const sha=/^[a-f0-9]{64}$/;
- for(const c of manifest.caseRules){
+const qcRows=[];
+for(const c of manifest.caseRules){
+ const label='QC25_CASE_'+c.caseId;
+ test(label,()=>{
   const fam=manifest.families[c.familyId],q=contract(c),view=router.classify(q);
-  assert(sha.test(c.sourcePDFSHA256),c.caseId+' pdf SHA');
-  assert(String(c.sourceExcerptRGBSHA256).split(';').every(part=>/^(?:\d+:)?[a-f0-9]{64}$/.test(part)),c.caseId+' crop RGB SHA');
+  assert(/^[a-f0-9]{64}$/.test(c.sourcePDFSHA256),c.caseId+' pdf SHA');
+  assert(String(c.sourceExcerptRGBSHA256).split(';').every(part=>/^(?:\d+:)?[a-f0-9]{64}$/.test(part)),c.caseId+' crop SHA');
   assert(/^[0-9]+(?:,[0-9]+)?$/.test(c.printedPages),c.caseId+' print page');
   assert(c.exerciseId.startsWith(c.sourceTrack+'_B'),c.caseId+' track');
-  assert.equal(c.lessonId,'MATH_B'+c.exerciseId.match(/_B(\d{3})_/)[1],c.caseId+' lessonId');
+  assert.equal(c.lessonId,'MATH_B'+c.exerciseId.match(/_B(\d{3})_/)[1],c.caseId+' lesson');
   assert(fam,c.caseId+' family');
   assert.equal(fam.renderer,c.rendererCandidate,c.caseId+' renderer');
   assert.equal(c.independentApproval,'NOT_SIGNED',c.caseId+' review');
-  assert.equal(c.rendererGrant,'DENY',c.caseId+' renderer gate');
-  assert.equal(c.assetGrant,'DENY',c.caseId+' asset gate');
-  assert.equal(c.publicVariantGrant,'DENY',c.caseId+' public gate');
-  assert(c.sourceEvidence&&c.adaptationRule,c.caseId+' evidence');
+  for(const grant of ['rendererGrant','assetGrant','publicVariantGrant'])
+   assert.equal(c[grant],'DENY',c.caseId+' '+grant);
+  assert(c.sourceEvidence&&c.adaptationRule,c.caseId+' source/rule evidence');
   assert(view.ok,c.caseId+' classification');
   assert.equal(view.decision,c.decision,c.caseId+' decision');
-  if(c.decision==='DROP'){assert.equal(c.rendererCandidate,'NONE');continue;}
-  assert(fam.skills.includes(c.skillId),c.caseId+' index skill');
+  if(c.decision==='DROP'){
+   assert.equal(c.rendererCandidate,'NONE');
+   assert.equal(view.publishable,false);assert.equal(view.playable,false);return;
+  }
+  assert(fam.skills.includes(c.skillId),c.caseId+' skill index');
   assert.equal(router.routes[c.familyId],c.rendererCandidate,c.caseId+' runtime');
-  assert.equal(view.playable,false,c.caseId+' fallback');
+  assert.equal(view.playable,false,c.caseId+' student gate');
+  assert.equal(view.publishable,false,c.caseId+' publication gate');
+  assert.equal(view.awarded,false,c.caseId+' rewards');
   if(c.rendererCandidate.startsWith('VECTOR_')){
    const picture=vector.renderSvg(q,router);
    assert(picture.ok,c.caseId+' vector preview');
    assert.equal(picture.gradingEnabled,false,c.caseId);
+   assert.equal(picture.publishable,false,c.caseId);
   }else{
    const p=router.compileReviewPayload(q,{D3,D4,D7,D9,D10});
    assert(p.ok,c.caseId+' renderer preview');
    assert.equal(p.gradingEnabled,false,c.caseId);
+   assert.equal(p.publishable,false,c.caseId);
+   if(c.rendererCandidate.startsWith('D9_'))assert(p.requiresSidecar,c.caseId+' missing E04 gate');
   }
- }
-});
+ });
+ const row=checks[checks.length-1];
+ qcRows.push({
+  caseId:c.caseId,exerciseId:c.exerciseId,lessonId:c.lessonId,skillIdIndexOnly:c.skillId,
+  sourceTrack:c.sourceTrack,printedPages:c.printedPages,
+  sourcePdfShaPinned:!!c.sourcePDFSHA256,sourceCropRgbShaPinned:!!c.sourceExcerptRGBSHA256,
+  decision:c.decision,familyId:c.familyId,rendererCandidate:c.rendererCandidate,
+  visualRisk:c.sourceVisualRisk,
+  contractTechnicalQA:row.status,technicalFailure:row.status==='FAIL'?row.detail:null,
+  exactCountGate:c.rendererCandidate.startsWith('D9_')?'E04_AND_TYPED_COUNT_UNIT_REQUIRED':'NOT_APPLICABLE',
+  rendererUse:c.decision==='DROP'?'EXCLUDE_FROM_GENERATOR':
+   c.rendererCandidate.startsWith('VECTOR_')?'VECTOR_REVIEW_ONLY_NO_STUDENT_ROUTE':
+   'EXISTING_CORE_REVIEW_ONLY_NO_STUDENT_ROUTE',
+  fallback:c.decision==='DROP'?'NO_SOURCE_TOPOLOGY_GUESS_NO_REPLACEMENT':
+    'DENY_STUDENT_ROUTE_UNTIL_INDEPENDENT_SOURCE_AND_RENDERER_APPROVAL',
+  independentReviewer:'NOT_SIGNED',
+  rendererGrant:'DENY',assetGrant:'DENY',publicVariantGrant:'DENY',
+  liveGASVerified:false,studentRelease:'NO_GO'
+ });
+}
 test('existing app includes are loaded before orchestrator in isolated TEST',()=>{
  const s=fs.readFileSync(join(project,'GiaoDien.html'),'utf8');
  const i=s.indexOf("napThanhPhan('89_P0_VariantRouter')"),j=s.indexOf("napThanhPhan('90_P0_VectorStructural')"),k=s.indexOf("napThanhPhan('83_Visual_Orchestrator')");
@@ -325,6 +351,14 @@ test('real orchestrator denies all unsiged P0 variants even after template PASS'
  const d=o.planQuestion({lesson:{id:'toan_b10'}},{id:drop.originExerciseId,p0Adaptation:drop});
  assert.equal(d.ok,false);assert.equal(d.reason,'P0_UNSAFE_OR_UNVERIFIED_ADAPTATION');
 });
+fs.writeFileSync(join(__dirname,'QC25_CASE_MATRIX_RESULTS.json'),JSON.stringify({
+ schema:'P0_CONSOLIDATED_QC25_TEST_ONLY_V1',phase:'P0_STEP1_QA_QC',
+ scope:'PINNED_SOURCE_EVIDENCE_REUSE_NO_ORIGINAL_PDF_RECHECK',
+ counts:{caseRecords:qcRows.length,technicalPass:qcRows.filter(x=>x.contractTechnicalQA==='PASS').length,
+ technicalFail:qcRows.filter(x=>x.contractTechnicalQA==='FAIL').length,
+ independentReviewerSigned:0,sourceOrigins:24,keptUnique:17,dropped:7},
+ cases:qcRows,release:'NO_GO'
+},null,2)+'\n');
 const fails=checks.filter(x=>x.status==='FAIL');
 const report={phase:'P0 G2B adaptation',scope:'STRUCTURED_TEMPLATE_AND_READONLY_VECTOR_PREVIEW_NOT_GAS_OR_STUDENT_RELEASE',
  checks:checks.length,passed:pass,failed:fails.length,caseCount:25,uniqueExerciseIds:24,
