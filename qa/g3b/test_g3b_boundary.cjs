@@ -140,6 +140,43 @@ check('Public projector strips malicious Svg while preserving other public keys'
  assert.equal(q.answer,undefined);assert.equal(q.solutionPrompt,undefined);
  clean(q);
 });
+check('G3B browser smoke route never bypasses allowlisted active user',()=>{
+ const old=props.get('G3A_TEST_ALLOWED_EMAILS');
+ props.set('G3A_TEST_ALLOWED_EMAILS','intruder@example.test');
+ try{assert.throws(()=>call('doGet',{parameter:{g3bSmoke:'1'}}),/G3A_TEST_UNAUTHORIZED/);}
+ finally{props.set('G3A_TEST_ALLOWED_EMAILS',old);}
+});
+check('G3B browser smoke route returns separate QA HTML only after auth',()=>{
+ const prior=ctx.HtmlService;let requested=null;
+ ctx.HtmlService={createHtmlOutputFromFile:function(name){
+  requested=name;
+  return {setTitle:function(){return this;},addMetaTag:function(){return this;}};
+ }};
+ try{
+  const result=call('doGet',{parameter:{g3bSmoke:'1'}});
+  assert.equal(requested,'G3B_BrowserSmoke');
+  assert.equal(typeof result,'object');
+ }finally{ctx.HtmlService=prior;}
+});
+check('G3B browser smoke source syntax valid and runs only on explicit click',()=>{
+ const page=fs.readFileSync(path.join(root,'G3B_BrowserSmoke.html'),'utf8');
+ const scripts=[...page.matchAll(/<script>([\s\S]*?)<\/script>/gi)];
+ assert.equal(scripts.length,1);
+ new vm.Script(scripts[0][1],{filename:'G3B_BrowserSmoke.html'});
+ assert(page.includes("btn.addEventListener('click',main)"));
+ assert(page.includes('GAS_WEBAPP_RPC_SMOKE_ONLY'));
+ assert(!/location\.href\s*=\s*['"]https?:/.test(page));
+});
+check('G3B browser smoke receipt excludes answer keys and one-time tokens',()=>{
+ const page=fs.readFileSync(path.join(root,'G3B_BrowserSmoke.html'),'utf8');
+ const suffix=page.slice(page.indexOf('const report={scope:'));
+ assert(suffix.includes('studentRelease'));
+ assert(!/session\.token|request\.answers|answerKey|studentId/.test(suffix));
+ assert(page.includes('const forbidden=new Set('));
+ assert(page.includes("case 'legacyExport'"));
+ assert(page.includes("case 'grade'"));
+ assert(page.includes("case 'b024'"));
+});
 const report={phase:'G3-B',scope:'SYNTHETIC_VM_ONLY_NOT_REAL_GAS',total:cases.length,
  passed:cases.filter(x=>x.status==='PASS').length,failed:cases.filter(x=>x.status==='FAIL').length,cases};
 fs.writeFileSync(path.join(__dirname,'G3B_RESULTS.json'),JSON.stringify(report,null,2)+'\n');
