@@ -44,3 +44,8 @@ Next: **B01–B24 semantic hydration** using approved family templates and C1/G2
 - Prior TEST adaptation base: `test/p0-g2b-variant-adaptation-20261117@a00a7f348db566bc024ff7ba42d874fe5d6c018a`.
 - Student-facing branches unchanged: `be-hoc`, `test-theo-main`, `main`.
 - No GAS deployment, grade log, parent/scores, source workbook or 25 reviewer registers edited. To roll back, discard this isolated TEST branch and remove optional tab 20 after retaining audit evidence. Never roll back into insecure legacy client grading.
+
+### Schema / final QA extension
+
+- `du-lieu/bai-hoc/toan/v1/lessonpackage.schema.v1.json` formally defines the nonplayable V1 package gate.
+- [Further CI on test source SHA 61661986ed13309699665843f54cc6bd022a2dce](https://github.com/Nguyennth19/new-lop-2/actions/runs/44103551700) = **102/102 PASS**, 0 FAIL; the generated QA report was pinned in the branch by the same isolated job. This supersedes the 101-test count of the original build without changing 24 lesson JSON content.
