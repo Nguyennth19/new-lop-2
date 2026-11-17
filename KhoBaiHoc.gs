@@ -2,7 +2,7 @@
  * Giữ đúng schema 4 tab Sheet (01,02,03,04); nguồn dữ liệu đã cấu hình một chỗ.
  * Bài khác chỉ thêm dữ liệu Sheet và loại câu hỏi có bộ chấm phù hợp.
  */
-const KHO_BAI_HOC_VERSION='g6_v3_visual_display_only';
+const KHO_BAI_HOC_VERSION='g3a_v1_private_source_20261117';
 function khoDocTab_(wb,name){
  const sh=wb.getSheetByName(name);
  if(!sh)throw Error('Thiếu tab '+name);
@@ -116,4 +116,49 @@ function khoLayBaiHoc_(lessonId){
 function khoLamMoiBai_(lessonId){
  if(!/^[a-z0-9_]{3,64}$/.test(String(lessonId||'')))throw Error('ID bài học không hợp lệ');
  CacheService.getScriptCache().remove('kho_bai_'+KHO_BAI_HOC_VERSION+'_'+lessonId);
+}
+
+/** G3-A: public projection by an explicit allowlist, not a blacklist.
+ * The source q (including answer, puzzle.ans, solutionPrompt) never leaves GAS.
+ * This function MUST NOT be used as a grading source.
+ */
+function g3aB20PublicQuestion_(q){
+ if(!q||typeof q!=='object'||Array.isArray(q))throw Error('G3A_BAD_QUESTION');
+ const keys=['id','level','sectionId','order','label','type','prompt','n1','op','n2',
+   'unit','group','theme','summary','svg','valid','issue','displayOnly'];
+ const out={};
+ keys.forEach(function(k){
+  const v=q[k];
+  if(v===undefined||v===null)return;
+  if(typeof v==='string')out[k]=v.slice(0,k==='svg'?8000:2000);
+  else if(typeof v==='number'&&Number.isFinite(v))out[k]=v;
+  else if(typeof v==='boolean')out[k]=v;
+ });
+ // All unknown properties are dropped. In particular no correct answer cell.
+ if(Array.isArray(q.puzzle)){
+  if(q.puzzle.length>8||q.puzzle.some(function(r){return !Array.isArray(r)||r.length>8;}))
+   throw Error('G3A_BAD_PUZZLE');
+  out.puzzle=q.puzzle.map(function(row){return row.map(function(cell){
+   if(cell!==null&&typeof cell==='object')return {blank:true};
+   if(cell===null)return null;
+   if(typeof cell==='number'&&Number.isFinite(cell))return cell;
+   if(typeof cell==='string'&&cell.length<15)return cell;
+   throw Error('G3A_BAD_PUZZLE_CELL');
+  });});
+ }
+ // B20 release policy has not approved any structured publicVariant / visual asset.
+ // Silently omitting unapproved q.visualContract prevents a nested key bypass.
+ out.visualContract=null;
+ return out;
+}
+function khoLayBaiHocPublic_(lessonId){
+ const src=khoLayBaiHoc_(lessonId);
+ if(!src||!src.lesson||src.lesson.id!==lessonId)throw Error('G3A_SOURCE_CONFLICT');
+ if(!Array.isArray(src.questions)||src.questions.length>500)throw Error('G3A_BAD_SOURCE');
+ return {lesson:{id:src.lesson.id,title:String(src.lesson.title||''),
+   subject:String(src.lesson.subject||''),series:String(src.lesson.series||''),rendererPolicies:[]},
+   levels:src.levels.map(function(v){return {id:v.id,level:v.level,name:v.name};}),
+   sections:src.sections.map(function(v){return {id:v.id,levelId:v.levelId,name:v.name,type:v.type};}),
+   questions:src.questions.map(g3aB20PublicQuestion_),readAt:new Date().toISOString(),
+   securityContract:'G3A_PUBLIC_ALLOWLIST_V1',gradingAuthority:'SERVER_ONLY_TEST'};
 }
