@@ -1,0 +1,42 @@
+name: MASTER-BE-HOC commit backup (opt-in)
+on:
+  push:
+    branches:
+      - be-hoc
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: master-be-hoc-backup-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  commit-snapshot:
+    # SAFE DEFAULT: skip until the owner sets this repository variable.
+    if: ${{ vars.MASTER_BE_HOC_BACKUP_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout immutable triggering commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backup-only Drive client
+        run: python -m pip install "google-api-python-client==2.154.0" "google-auth==2.36.0"
+
+      - name: Create snapshot, verify and upload to private Drive
+        env:
+          MASTER_BE_HOC_DRIVE_FOLDER_ID: ${{ vars.MASTER_BE_HOC_DRIVE_FOLDER_ID }}
+          GDRIVE_OAUTH_CLIENT_ID: ${{ secrets.GDRIVE_OAUTH_CLIENT_ID }}
+          GDRIVE_OAUTH_CLIENT_SECRET: ${{ secrets.GDRIVE_OAUTH_CLIENT_SECRET }}
+          GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+        run: python scripts/master_be_hoc_backup.py
