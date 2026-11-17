@@ -116,6 +116,32 @@ function mountEnvelope(host,envelope){
  if(result?.ok)mounted.push(result);
  return result||{ok:false,reason:'VIEW_FAILED'};
 }
+function planQuestion(data,q){
+ if(!data?.lesson?.id||!q||typeof q!=='object')return {ok:false,reason:'INVALID_QUESTION'};
+ const c=q.visualContract;
+ if(!c||typeof c!=='object'||Array.isArray(c))return {ok:false,reason:'NO_VISUAL_CONTRACT'};
+ const skillId=c.skillId||q.skillId||null;
+ // A renderer may be inferred only from a SINGLE QA-backed curricular policy,
+ // never from prompt wording or an arbitrary visual resemblance.
+ const matches=Object.entries(activeLessonPolicies).filter(([key,p])=>
+   key.startsWith(data.lesson.id+'|')&&p.type===q.type&&p.skillId===skillId).map(([key])=>key.split('|')[1]);
+ const explicit=c.rendererId||null;
+ if(explicit&&matches.length&& !matches.includes(explicit)&& !LESSONS[data.lesson.id]?.[explicit])return {ok:false,reason:'RENDERER_POLICY_MISMATCH'};
+ if(!explicit&&matches.length>1)return {ok:false,reason:'AMBIGUOUS_RENDERER_POLICY',candidates:matches};
+ const rendererId=explicit||matches[0]||null;
+ if(rendererId&&!skillId)return {ok:false,reason:'SKILL_REQUIRED'};
+ const intent=c.visualIntent&&(c.assetId||c.canonicalObject||c.objectLabel||c.semanticLabel)?{
+   assetId:c.assetId,visualIntent:c.visualIntent,canonicalObject:c.canonicalObject,
+   objectLabel:c.objectLabel,semanticLabel:c.semanticLabel,
+   countUnit:c.countUnit,exactQuantity:c.exactQuantity}:null;
+ const assetPlan=intent?(root.BE_HOC_VISUAL_SEMANTIC?.plan(intent)||{ok:false,reason:'SEMANTIC_ROUTER_MISSING'}):null;
+ if(assetPlan&&!assetPlan.ok)return {ok:false,reason:assetPlan.reason,assetPlan};
+ if(!rendererId&&!assetPlan)return {ok:false,reason:'NO_ROUTABLE_RESOURCE'};
+ const envelope=rendererId?{lessonId:data.lesson.id,questionId:q.id,questionType:q.type,
+  skillId,rendererId,publicVariant:c.publicVariant||{}}:null;
+ if(envelope){const grant=resolve(envelope);if(!grant.ok)return {ok:false,reason:grant.reason};}
+ return {ok:true,rendererId,assetPlan,envelope,intent};
+}
 function mountLesson(data,screen,level){
  cleanup();
  activeLessonPolicies=Object.create(null);
@@ -124,28 +150,20 @@ function mountLesson(data,screen,level){
  let mapped=0,ignored=0,denied=0;
  for(const q of data.questions){
   if(q.level!==level||!q.visualContract){ignored++;continue;}
-  const c=q.visualContract;
   const card=[...screen.querySelectorAll('#mlContent [data-ml-q-card]')].find(el=>el.dataset.mlQCard===q.id);
   if(!card){denied++;continue;}
-  // Resources can be attached independently of renderer when source has
-  // explicit public visual intent and approved item ID; never guess by text.
-  // V1.1: one unified router for WebP, Fluent and Drive characters. If assetId
-  // is absent, a *unique* approved semantic match is required; no random search.
-  if(c.visualIntent&&(c.assetId||c.canonicalObject||c.objectLabel||c.semanticLabel)){
-   const router=root.BE_HOC_VISUAL_SEMANTIC;
-   if(router){
-    const zone=card.querySelector('.ml-svg')||card;
-    const grant=router.mount(zone,{
-     assetId:c.assetId,visualIntent:c.visualIntent,canonicalObject:c.canonicalObject,
-     objectLabel:c.objectLabel,semanticLabel:c.semanticLabel,
-     countUnit:c.countUnit,exactQuantity:c.exactQuantity
-    });
-    if(grant?.ok)mapped++;else denied++;
-   }else denied++;
+  const planned=planQuestion(data,q);
+  if(!planned.ok){denied++;continue;}
+  if(planned.intent){
+   const zone=card.querySelector('.ml-svg')||card;
+   // Keep existing lesson artwork as fallback; a failed IMG load is removed by
+   // the asset adapter without destroying the pre-existing card content.
+   const grant=root.BE_HOC_VISUAL_SEMANTIC.mount(zone,planned.intent);
+   if(grant?.ok)mapped++;else denied++;
   }
-  if(!c.rendererId)continue;
-  const result=mountEnvelope(card,{lessonId:data.lesson.id,questionId:q.id,questionType:q.type,skillId:c.skillId,
-   rendererId:c.rendererId,publicVariant:c.publicVariant});
+  if(!planned.envelope)continue;
+  if(planned.rendererId==='D2'){ignored++;continue;} // existing trusted B20 D2 host
+  const result=mountEnvelope(card,planned.envelope);
   if(result.ok)mapped++;else denied++;
  }
  return {ok:true,lessonId:data.lesson.id,mapped,ignored,denied,
@@ -153,7 +171,7 @@ function mountLesson(data,screen,level){
 }
 root.BE_HOC_VISUAL_ORCHESTRATOR=Object.freeze({
  schemaVersion:'BE-HOC-VISUAL-ORCHESTRATOR-V1',allRendererIds:ALL,registry:REGISTRY,
- resolve,chooseAsset,mountEnvelope,mountLesson,cleanup,safePublic,
+ resolve,chooseAsset,mountEnvelope,mountLesson,planQuestion,cleanup,safePublic,
  semanticPlan:(intent)=>root.BE_HOC_VISUAL_SEMANTIC?.plan(intent)||{ok:false,reason:'SEMANTIC_ROUTER_MISSING'},
  coverage:(data)=>root.BE_HOC_VISUAL_SEMANTIC?.coverage(data)||{ok:false,reason:'SEMANTIC_ROUTER_MISSING'},
  release:'SOURCE_TEST_ONLY',studentWrites:false,autoGrade:false
