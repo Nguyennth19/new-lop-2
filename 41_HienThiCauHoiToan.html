@@ -4,7 +4,6 @@ function hear(q){return '<button type="button" class="ml-speak-btn" data-ml-spea
 function vertical(q){
  if(!q.valid)return invalid(q);
  const a=String(q.n1).padStart(2,'0'),b=String(q.n2).padStart(2,'0');
- const answer=String(q.answer).padStart(2,'0');
  const inside='<div class="ml-vert-note">ĐV → Nhớ → Chục</div><div class="ml-vertical-matrix">'+
  '<div class="ml-vert-row"><span></span><small>CHỤC</small><small>ĐV</small></div>'+
  '<div class="ml-vert-row"><span class="ml-remember-label">nhớ</span>'+input(q,q.id+':carry',1,'data-ml-carry="1"')+'<span></span></div>'+
@@ -38,7 +37,7 @@ function word(q){
  if(!q.valid)return invalid(q);
  // Preserve existing G7 SVG/WebP loader; missing asset stays a visual fallback.
  const summary=String(q.summary||'').trim();
- const explanation=String(q.solutionPrompt||'').trim();
+ const explanation='Em viết phép tính thích hợp:'; // Fixed scaffold, not private solutionPrompt.
  const unit=String(q.unit||'').trim();
  const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'" role="img" aria-label="Hình minh họa cho bài toán"></div><p>'+E(q.prompt)+'</p></div>'+
  (summary?'<div class="ml-word-summary"><b>TÓM TẮT:</b> '+E(summary)+'</div>':'')+
