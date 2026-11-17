@@ -88,6 +88,23 @@ test('future pool excludes invalid contracts and never invents replacements',()=
  assert.equal(x.ok,true);assert.equal(x.counts.kept,1);assert.equal(x.excluded.length,1);
  assert.equal(x.replacementPolicy,'REQUIRES_APPROVED_SAME_LESSON_SKILL_POOL_NO_INVENTION');
 });
+test('all 18 KEEP decisions compile a candidate view on the actual installed D3/D4/D7/D9/D10 cores',()=>{
+ const engines={D3,D4,D7,D9,D10};let built=0,sidecars=0;
+ for(const item of manifest.caseRules.filter(c=>c.decision!=='DROP')){
+  const out=router.compileReviewPayload(contract(item),engines);
+  assert.equal(out.ok,true,item.caseId+' '+out.reason);
+  assert(out.payloads.length>=1);
+  assert.equal(out.publishable,false);assert.equal(out.gradingEnabled,false);
+  if(out.requiresSidecar){sidecars++;assert.equal(out.rendererCoreChecked,true);}
+  built++;
+ }
+ assert.equal(built,18);assert.equal(sidecars,3);
+});
+test('E04 two-group picture cannot be incorrectly labeled playable TOTAL assessment',()=>{
+ const p=router.compileReviewPayload(contract(manifest.caseRules.find(x=>x.caseId==='C02')),{D9});
+ assert(p.ok);assert.equal(p.requiresSidecar,'E04_TOTAL_OPERATION_WITH_TRUSTED_GRADING_REQUIRED');
+ assert(p.payloads[0].questions.every(q=>q.type==='COUNT'));assert.equal(p.gradingEnabled,false);
+});
 test('E04 D9 contracts never grant E04 automatically',()=>{
  for(const c of manifest.caseRules.filter(x=>x.rendererCandidate.startsWith('D9_'))){
   const q=router.classify(contract(c));assert(q.ok);assert.equal(q.requiresE04,true);assert.equal(q.rendererGrant,'DENY');
@@ -209,6 +226,16 @@ test('existing app includes are loaded before orchestrator in isolated TEST',()=
  const s=fs.readFileSync(join(project,'GiaoDien.html'),'utf8');
  const i=s.indexOf("napThanhPhan('89_P0_VariantRouter')"),j=s.indexOf("napThanhPhan('90_P0_VectorStructural')"),k=s.indexOf("napThanhPhan('83_Visual_Orchestrator')");
  assert(i>0&&j>i&&k>j);
+});
+test('adapted question keeps independent variant id and pinned sourceExerciseId',()=>{
+ const core={BE_HOC_P0_VARIANT_ROUTER:router,BE_HOC_P0_VECTOR_PREVIEW:vector};
+ const ctx=vm.createContext({window:core});
+ vm.runInContext(fs.readFileSync(join(project,'83_Visual_Orchestrator.html'),'utf8'),ctx);
+ const p=contract(manifest.caseRules.find(x=>x.caseId==='C04'));
+ const out=core.BE_HOC_VISUAL_ORCHESTRATOR.planQuestion({lesson:{id:'toan_b20'}},{
+  id:'variant_POLYLINE_SEED42',sourceExerciseId:p.originExerciseId,p0Adaptation:p});
+ assert.equal(out.ok,false);
+ assert.equal(out.reason,'P0_PENDING_INDEPENDENT_SOURCE_REVIEW_AND_RENDERER_GATE');
 });
 test('real orchestrator denies all unsiged P0 variants even after template PASS',()=>{
  const s=fs.readFileSync(join(project,'83_Visual_Orchestrator.html'),'utf8');
