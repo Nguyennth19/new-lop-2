@@ -130,3 +130,141 @@ function g3aChamBaiToan20Test(payload){
 /** B024 is alpha, G2-B human source-exact 0/96; refuse grading and asset grants. */
 function g3aLayBaiB024Test(){return g3aDeny_('B024_SOURCE_NOT_APPROVED');}
 function g3aChamBaiB024Test(_payload){return g3aDeny_('B024_SOURCE_NOT_APPROVED');}
+
+
+/**
+ * G3-B one-run REAL Apps Script server acceptance (Editor-only, suffix '_').
+ * Must run in the isolated authorized GAS TEST project AFTER code synchronization.
+ * This audits the actual QA workbook and GAS runtime, not a simulated VM.
+ * It DOES NOT prove the deployed Web App code SHA, OAuth browser identity or
+ * Chrome Network payload; these still require independent E2E evidence.
+ * No answers, tokens, secret values, email or sheet data are returned.
+ */
+function g3bAuditGasServerOnce_(){
+ const tests=[];
+ function check(name,fn){
+  try{if(fn()!==true)throw Error('ASSERTION');tests.push({name:name,pass:true});}
+  catch(_){tests.push({name:name,pass:false});}
+ }
+ let ctx,wb,before,source;
+ try{
+  ctx=g3aQaContext_(); // fail closed without active, allowlisted TEST identity
+  wb=SpreadsheetApp.openById(ctx.qaSourceId);
+ }catch(_){
+  return {ok:false,scope:'REAL_GAS_SERVER_ONLY',reason:'QA_IDENTITY_OR_SOURCE_DENIED',
+   tests:[],writes:0,awarded:false,webDeploymentVerified:false,networkVerified:false};
+ }
+ const names=['01_Bai_hoc','02_Cap_do','03_Nhom_bai','04_Cau_hoi'];
+ const expected=[1,3,8,51];
+ function fingerprint(){
+  return names.map(function(n){
+   const sh=wb.getSheetByName(n);
+   if(!sh)throw Error('QA_SOURCE_TAB_MISSING');
+   // Values are compared within GAS and NEVER returned.
+   const rows=sh.getDataRange().getDisplayValues();
+   return {name:n,count:rows.slice(1).filter(function(r){return r.some(function(v){return String(v).trim();});}).length,
+    serialized:JSON.stringify(rows)};
+  });
+ }
+ try{before=fingerprint();}catch(_){
+  return {ok:false,scope:'REAL_GAS_SERVER_ONLY',reason:'QA_WORKBOOK_MISMATCH',
+   tests:[],writes:0,awarded:false,webDeploymentVerified:false,networkVerified:false};
+ }
+ check('QA_WORKBOOK_4_TABS_1_3_8_51',function(){
+  const actual=wb.getSheets().map(function(s){return s.getName();}).sort();
+  return actual.length===4&&actual.every(function(n,i){return n===names.slice().sort()[i];})&&
+   before.every(function(v,i){return v.count===expected[i];});
+ });
+ check('LEGACY_04_RAW_EXPORT_DISABLED',function(){
+  try{layThongTinDuLieuBaiHoc();return false;}
+  catch(e){return /G3B_LEGACY_RAW_SHEET_EXPORT_DISABLED/.test(String(e));}
+ });
+ check('PUBLIC_B20_NO_PRIVATE_KEY_FIELDS',function(){
+  const pub=g3aLayBaiToan20Test();
+  if(!pub||!pub.questions||pub.questions.length!==51)return false;
+  if(pub.securityContract!=='G3A_PUBLIC_ALLOWLIST_V1')return false;
+  const forbidden=/^(?:answer|answers|ans|solution|solutionPrompt|correctAnswer|answerKey|gradingKey|teacherSolution|studentId)$/i;
+  function clean(v){
+   if(Array.isArray(v))return v.every(clean);
+   if(v&&typeof v==='object')return Object.keys(v).every(function(k){return !forbidden.test(k)&&clean(v[k]);});
+   return true;
+  }
+  return clean(pub);
+ });
+ check('SAFE_SVG_PUBLIC_ALLOWLIST',function(){
+  const pub=g3aLayBaiToan20Test();
+  return pub.questions.every(function(q){return typeof q.svg!=='string'||
+   q.svg===''||g3aSafePublicSvg_(q.svg)===q.svg;});
+ });
+ try{source=khoLayBaiHoc_('toan_b20');}
+ catch(_){source=null;}
+ check('SOURCE_51_SERVER_PRIVATE_ONLY',function(){
+  return !!source&&source.lesson.id==='toan_b20'&&source.questions.length===51&&
+   source.questions.some(function(q){return !!q.answer||q.type==='missing_digit';});
+ });
+ function answersFor(qs,mode){
+  const out={};
+  for(const q of qs){
+   let fields={};
+   if(q.type==='vertical'){
+    const ans=String(q.answer||'').padStart(2,'0');
+    fields={ones:ans.charAt(ans.length-1),tens:ans.charAt(ans.length-2),
+     carry:(Number(q.n1)%10+Number(q.n2)%10)>=10?'1':'0'};
+   }else if(q.type==='mental')fields={answer:String(q.answer||'')};
+   else if(q.type==='word_problem')fields={n1:String(q.n1),n2:String(q.n2),op:String(q.op),
+    sum:String(q.answer),answer:String(q.answer)};
+   else if(q.type==='missing_digit'){
+    for(let i=0;i<q.puzzle.length;i++)for(let j=0;j<q.puzzle[i].length;j++){
+     const c=q.puzzle[i][j];
+     if(c&&typeof c==='object')fields['p'+i+j]=String(c.ans);
+    }
+   }else throw Error('UNSUPPORTED_TEST_QUESTION');
+   if(mode==='empty')Object.keys(fields).forEach(function(k){fields[k]='';});
+   out[q.id]=fields;
+  }
+  if(mode==='wrong'){
+   const first=qs[0],fields=out[first.id],key=Object.keys(fields)[0];
+   if(!key)throw Error('NO_ANSWERS_TO_MUTATE');
+   fields[key]=fields[key]==='999'?'998':'999';
+  }
+  return out;
+ }
+ for(const level of ['LV1','LV2','LV3']){
+  for(const mode of ['correct','wrong','empty']){
+   check('GRADE_'+level+'_'+mode+'_SINGLE_USE_READONLY',function(){
+    if(!source)return false;
+    const selected=achSelect_(source,level);
+    if(!selected.length)return false;
+    const session=g3aTaoPhienChamB20Test({lessonId:'toan_b20',level:level});
+    if(!session.ok||!session.token)return false;
+    const req={contractId:'G3A_READONLY_V1',lessonId:'toan_b20',level:level,
+     token:session.token,answers:answersFor(selected,mode)};
+    const graded=g3aChamBaiToan20Test(req);
+    if(!graded.ok||graded.awarded!==false||graded.writes!==0||
+       graded.total!==selected.length||graded.perQuestion.length!==selected.length)return false;
+    const good=mode==='correct'?graded.correct===selected.length:
+     mode==='wrong'?graded.correct<selected.length:graded.answered===0&&graded.correct===0;
+    // A replay of the same one-use token must always fail.
+    const replay=g3aChamBaiToan20Test(req);
+    return good&&replay.ok===false&&replay.reason==='SESSION_EXPIRED_OR_REPLAYED';
+   });
+  }
+ }
+ check('BAD_SCOPE_AND_B024_DENIED',function(){
+  const bad=g3aTaoPhienChamB20Test({lessonId:'toan_b24',level:'LV1'});
+  const b024=g3aChamBaiB024Test({});
+  return bad.ok===false&&b024.ok===false;
+ });
+ check('SOURCE_WORKBOOK_UNCHANGED_AND_STUDENT_TABS_ABSENT',function(){
+  const after=fingerprint();
+  const noTabs=['90_Lan_lam_bai','91_So_sao','92_Ghi_chu_phu_huynh']
+   .every(function(n){return wb.getSheetByName(n)===null;});
+  return noTabs&&after.every(function(v,i){return v.name===before[i].name&&
+   v.count===before[i].count&&v.serialized===before[i].serialized;});
+ });
+ const passed=tests.filter(function(t){return t.pass;}).length;
+ return {ok:passed===tests.length,scope:'REAL_GAS_SERVER_ONLY',
+  passed:passed,failed:tests.length-passed,checks:tests,qaSourceCount:51,
+  writes:0,awarded:false,webDeploymentVerified:false,networkVerified:false,
+  release: 'NO_GO_UNTIL_AUTHENTICATED_WEB_APP_E2E'};
+}
