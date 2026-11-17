@@ -45,6 +45,32 @@
  });
  const VECTOR=new Set(['GRID_100_2X2','ADDITION_PYRAMID','POLYLINE_LENGTH','POLYLINE_COMPARE','NUMBER_LINE_STEP','COLUMN_MISSING_DIGITS']);
  const DROPPED=new Set(['HIDDEN_3D_BLOCKS','BOARD_GAME_GRAPH','MAZE_GRAPH','MATCHSTICK_TOPOLOGY','BRANCH_PATH','MULTI_ROW_GRAPH','MULTIPAGE_STRING_PATH']);
+ const PINNED=Object.freeze({
+ "SGK_B001_LT03_E04": "GRID_100_2X2",
+ "SGK_B019_LT01_E03": "TWO_GROUP_COUNT_ADD",
+ "SGK_B019_LT01_E04": "ADDITION_PYRAMID",
+ "SGK_B020_LT01_E05": "POLYLINE_LENGTH",
+ "SGK_B022_HD_E03": "WORD_LESS_THAN",
+ "SGK_B022_LT02_E05": "WORD_LESS_THAN",
+ "SGK_B022_LT03_E04": "WORD_COMPLEMENT",
+ "SGK_B023_LT03_E03": "WORD_COMPLEMENT",
+ "SGK_B023_LT03_E05": "ONE_TO_ONE_ARITH_MATCH",
+ "SGK_B023_LT04_E04": "WORD_PART_WHOLE",
+ "SGK_B001_LT03_E01": "SYNTHETIC_EXACT_COUNT_TENS",
+ "SGK_B001_LT03_E02": "SYNTHETIC_EXACT_COUNT_TENS",
+ "SGK_B010_LT01_E02": "MANY_TO_ONE_OPTIONS",
+ "SGK_B010_LT01_E04": "HIDDEN_3D_BLOCKS",
+ "SGK_B010_GAME01_G01": "BOARD_GAME_GRAPH",
+ "SGK_B019_LT02_E05": "MAZE_GRAPH",
+ "SGK_B020_HD_E03": "MATCHSTICK_TOPOLOGY",
+ "SGK_B020_LT02_E03": "POLYLINE_COMPARE",
+ "SGK_B020_LT03_E02": "NUMBER_LINE_STEP",
+ "SGK_B022_LT01_E03": "BRANCH_PATH",
+ "SGK_B022_LT03_E05": "MULTI_ROW_GRAPH",
+ "SGK_B023_LT01_E05": "SUBTRACTION_COMPARE",
+ "SGK_B023_LT03_E02": "COLUMN_MISSING_DIGITS",
+ "VBT_B024_T02_E02": "MULTIPAGE_STRING_PATH"
+});
  const ID=/^[A-Za-z0-9_-]{1,90}$/;
  const FORBIDDEN=/^(?:answer|answers|answerKey|correct|correctAnswer|correctOptionId|correctOptionIds|isCorrect|solution|solutionPrompt|gradingKey|teacherSolution|teacherRubric|rubric|expected|expectedValue|expectedResult|grade|starCredit|studentId|__proto__|constructor|prototype)$/i;
  const reject=reason=>({ok:false,reason,playable:false,publishable:false,awarded:false});
@@ -160,6 +186,11 @@
   if(!only(c,['lessonId','skillId','questionType','semanticKind','visualIntent','semantic','publicVariant','originExerciseId'])||
     !safe(c))return reject('CONTRACT_OR_PRIVATE_FIELD_DENIED');
   if(!/^MATH_B\d{3}$/.test(c.lessonId||'')||!ID.test(c.originExerciseId||''))return reject('MISSING_CANONICAL_ID');
+  if(!/^(SGK|VBT)_B\d{3}_[A-Za-z0-9_-]+$/.test(c.originExerciseId))return reject('INVALID_SOURCE_EXERCISE_ID');
+  if(c.lessonId!=='MATH_B'+c.originExerciseId.match(/_B(\d{3})_/)[1])
+   return reject('SOURCE_LESSON_CROSSWALK_CONFLICT');
+  if(PINNED[c.originExerciseId]&&PINNED[c.originExerciseId]!==c.semanticKind)
+   return reject('PINNED_SOURCE_FAMILY_MISMATCH');
   if(DROPPED.has(c.semanticKind))return {ok:true,decision:'DROP',reason:'UNSAFE_TOPOLOGY_EXCLUDED',rendererCandidate:null,
     familyContractPass:false,playable:false,publishable:false,awarded:false};
   const skills=SKILLS[c.semanticKind],renderer=ROUTES[c.semanticKind];
