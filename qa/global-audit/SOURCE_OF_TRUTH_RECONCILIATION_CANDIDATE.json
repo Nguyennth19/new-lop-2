@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "LOP2_GLOBAL_AUDIT_SOURCE_CHOICE_V1",
+  "date": "2026-11-17",
+  "status": "REVIEW_CANDIDATE_NOT_OFFICIAL",
+  "purpose": "Prevent stale snapshot or wide CI from overwriting later narrower owner-signed state",
+  "choosingRule": [
+    "Use exact scope/pinned ref per domain",
+    "Prefer later verified owner decision over earlier stale summary",
+    "Do not infer deployment from repository branch",
+    "Only promote to official canonical after human scope approval"
+  ],
+  "recordCount": 19,
+  "records": [
+    {
+      "domain": "APPLICATION_MAIN",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/main",
+      "sha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+      "state": "BASE_CODE_NOT_LIVE_GAS_ATTESTED",
+      "approval": "NO_PUBLISHED_STUDENT_RELEASE",
+      "rationale": "Main code baseline, no proof current GAS deployment points here."
+    },
+    {
+      "domain": "APPLICATION_STABLE_TEST_UI",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test-theo-main",
+      "sha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+      "state": "STABLE_REFERENCE_FOR_UI",
+      "approval": "VISUAL_USER_TEST_IN_PRIOR_CONVERSATION_SCOPE_ONLY",
+      "rationale": "Do not replace stable UI based only on larger be-hoc repo."
+    },
+    {
+      "domain": "BE_HOC_ASSET_RICH_AND_ORCHESTRATOR",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/be-hoc",
+      "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+      "state": "CODE_TEST_BRANCH",
+      "approval": "CI_SELECTED_SUCCESS_NO_GAS",
+      "evidence": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44011827493",
+      "rationale": "288 G7 WebP + 30 characters + 46 Fluent SVG plus other assets; only 24 of 288 source PNG masters mirrored. Workflow CI earlier commit, branch HEAD backup-only success."
+    },
+    {
+      "domain": "BQA_OWNER_B061_B062",
+      "chosenRef": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+      "state": "OWNER_CORRECTED_CANONICAL_V8",
+      "approval": "V8_STATIC_OWNER_PATCH_VERIFIED",
+      "rationale": "BQA17 B059-B062; BQA18 B063-B066. Consolidated snapshot retained 65 historic mismatches only, not 65 active."
+    },
+    {
+      "domain": "HISTORICAL_SOURCE_REGISTRY_75",
+      "chosenRef": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+      "state": "1406_CANDIDATES_SOURCE_PENDING",
+      "approval": "0_75_SOURCE_EXACT_V8",
+      "rationale": "677 SGK +729 VBT, 1406 C1 scaffolds; no app release inferred."
+    },
+    {
+      "domain": "C1_JSON_ENVELOPES",
+      "chosenRef": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+      "state": "C1_COMPLETE_READBACK_1406",
+      "approval": "OWNER_APPROVED_FOR_C1_NOT_RUNTIME",
+      "rationale": "75 lesson envelopes +1406 JSON question shells; 0/1406 render_eligible within C1; six batches readback."
+    },
+    {
+      "domain": "C4_DEV_PLAYABLE_CONTENT",
+      "chosenRef": "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
+      "state": "27_DEV_REAL_QUESTIONS",
+      "approval": "DEV_QA_PASS_132_132_NODE_27_BROWSER_DESKTOP_MOBILE",
+      "rationale": "121 parts across 27 items; 1379 deferred; not student publication."
+    },
+    {
+      "domain": "B20_PEDAGOGY_30",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-5-h2-owner-signoff-20261113",
+      "sha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+      "state": "PEDAGOGY_SIGNED_BY_PROJECT_OWNER_CHAT_SCOPE",
+      "approval": "30_QUESTIONS_P0_5_H2_APPROVED_ONLY",
+      "rationale": "Do not confuse approved 30 question variant runtime with legacy 51 rows."
+    },
+    {
+      "domain": "B20_51_LEGACY_APP_SHEET",
+      "chosenRef": "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
+      "state": "51_RUNTIME_ROWS_B20",
+      "approval": "CONTENT_AND_SECURITY_SEPARATE",
+      "rationale": "Legacy answer leaks in be-hoc KhoBaiHoc/26; no claim 51 sourceExact verified."
+    },
+    {
+      "domain": "P0_6_TECH_CLOSURE",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-fc-audit-20261114",
+      "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "state": "P06_TECHNICAL_CLOSED_ISOLATED_TEST_ONLY",
+      "approval": "OWNER_APPROVED_FC4_WITH_EXCLUSIONS",
+      "rationale": "Do not reopen passed F-C closure; separate remaining GAS, student integration and curriculum gates."
+    },
+    {
+      "domain": "G7_4_RENDERER_MANIFEST_12",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-resource-renderer-consolidation-v1-20261114",
+      "sha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+      "state": "12_REFERENCE_ITEMS_10_FAMILIES",
+      "approval": "TEST_CONTRACT_PASS_NOT_HOST_RUNTIME",
+      "rationale": "G7.6 B5C later test 1710 PASS readiness; C07.. gates are separate."
+    },
+    {
+      "domain": "G7_5_APPROVED_VOICE",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-5-approved-voice-profiles-20261114",
+      "sha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+      "state": "V1_2_AND_V2_USER_VOICE_APPROVED",
+      "approval": "USER_AUDIO_ATTESTED_PROFILE_SCOPE",
+      "rationale": "Retain stable V1.2; V2 preferred default, parent control not implemented."
+    },
+    {
+      "domain": "G7_6_C086_OWNER_GATES",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+      "sha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+      "state": "C07_C08_C09_PENDING",
+      "approval": "0_6_SIGNED_OWNER_DECISIONS",
+      "rationale": "Crypto validator tests PASS, no actual signed evidence, no C07 registry/test adapter authorization."
+    },
+    {
+      "domain": "G7_3_G7_4_ASSET_LABELS",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+      "sha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+      "state": "288_LABEL_APPROVED",
+      "approval": "LABEL_SCOPE_ONLY_CONTENT_QA_PER_ASSET_PENDING",
+      "rationale": "Historical G7.3 100+188 open superseded by owner label signoff 188, but not mathematical semantic/counted proof."
+    },
+    {
+      "domain": "G3A_TRUSTED_GRADING_CODE",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3a-trusted-gas-adapter-20261117",
+      "sha": "59827dee9a712dadfafb6b06d4f59403cf2c7783",
+      "state": "39_39_ISOLATED_AND_CI_PASS",
+      "approval": "REAL_GAS_NETWORK_NOT_RUN",
+      "evidence": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44029669866",
+      "rationale": "Separate test branch & private QA workbook; no verified deployed GAS."
+    },
+    {
+      "domain": "G2_B_96_EXERCISE_SOURCE_CANDIDATES",
+      "chosenRef": "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+      "state": "96_G2_CANDIDATES_7_LESSONS",
+      "approval": "G2B_INDEPENDENT_0_96",
+      "rationale": "Crosswalk historical 1406 by normalized lesson/session/page/semantics; do not count 96 as new unique."
+    },
+    {
+      "domain": "B024_ALPHA",
+      "chosenRef": "https://drive.google.com/file/d/1INMFN1grCl7upyiVoing9ErRq2kn9DTQ/view",
+      "state": "ALPHA_CANDIDATE_UNAPPROVED",
+      "approval": "SCHEMA_PRIVATE_GRADING_SOURCE_OPEN",
+      "rationale": "19 VBT parts fail closed in G3; no independent source exact permission."
+    },
+    {
+      "domain": "DATA_CONTRACT_V2",
+      "chosenRef": "https://drive.google.com/file/d/1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc/view",
+      "state": "PROPOSED_FOR_FREEZE",
+      "approval": "NOT_PRODUCTION_MANIFEST",
+      "rationale": "L0-L7 stable/version schema proposed; do not replace existing C1 or source IDs automatically."
+    },
+    {
+      "domain": "PROJECT_RULES_GLOBAL",
+      "chosenRef": "https://github.com/Nguyennth19/new-lop-2/tree/audit/g7-6-workflow-rules-consolidation-review-20261116",
+      "sha": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "state": "REVIEW_CANDIDATE_V0_1",
+      "approval": "0_10_OWNER_RULE_APPROVAL_PENDING",
+      "rationale": "Do not install official PROJECT_RULES without explicit approval; external DOCX a reference, not release instructions."
+    }
+  ]
+}
