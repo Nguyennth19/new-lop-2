@@ -1,18 +1,5 @@
-/** Đọc 4 tab dữ liệu, không tự ghi hay thay đổi các tab. */
-function layThongTinDuLieuBaiHoc() {
-  const ss = moBangDuLieu_(), ketQua = {};
-  CAU_HINH_LOP_2.CAC_TAB.forEach(tenTab => {
-    const sheet = ss.getSheetByName(tenTab);
-    if (!sheet) { ketQua[tenTab] = []; return; }
-    const rows = sheet.getDataRange().getDisplayValues();
-    if (rows.length < 2) { ketQua[tenTab] = []; return; }
-    const headers = rows.shift();
-    ketQua[tenTab] = rows.filter(r => r.some(v => v !== '')).map(r => {
-      const item = {};
-      headers.forEach((name, i) => { if (name) item[name] = r[i] || ''; });
-      return item;
-    });
-  });
-  return ketQua;
-}
+/** G3-B: raw legacy exporter once exposed all 04_Cau_hoi answer and puzzle_json fields.
+ * Not a safe browser contract. Only G3A's explicit public allowlist is permitted.
+ */
+function layThongTinDuLieuBaiHoc(){throw Error('G3B_LEGACY_RAW_SHEET_EXPORT_DISABLED');}
 function moBangDuLieu_(){return moBangDuAn_();}

@@ -60,12 +60,13 @@ function phuHuynhKhoiTaoPin_(){
  return 'Đã cấu hình PIN. Đã xóa PH_PIN_BOOTSTRAP.';
 }
 function phuHuynhTrangThai(){
- return {configured:!!phProps_().getProperty(PH_KEYS.HASH)};
+ return {configured:false,testMode:true};
 }
 function phSessionKey_(token){
  return PH_CACHE_PREFIX+phDigest_(String(token||''));
 }
 function phRequire_(token){
+ throw Error('G3B_TEST_PARENT_ACCESS_DISABLED');
  if(!/^[a-f0-9-]{70,90}$/i.test(String(token||'')))throw Error('Phiên phụ huynh không hợp lệ. Vui lòng đăng nhập lại.');
  const cache=CacheService.getScriptCache();
  const k=phSessionKey_(token);
@@ -75,6 +76,7 @@ function phRequire_(token){
  cache.put(k,version,PH_SESSION_SECONDS);
 }
 function phuHuynhDangNhap(pin){
+ return {ok:false,message:'Chức năng phụ huynh tắt trong GAS TEST chấm bài.'};
  const p=phProps_();if(!p.getProperty(PH_KEYS.HASH))return {ok:false,message:'Chưa thiết lập mã PIN trong Apps Script.'};
  const verdict=phValidatePin_(pin);if(!verdict.ok)return verdict;
  const token=Utilities.getUuid()+'-'+Utilities.getUuid();
@@ -82,6 +84,7 @@ function phuHuynhDangNhap(pin){
  return {ok:true,token,expiresIn:PH_SESSION_SECONDS};
 }
 function phuHuynhDangXuat(token){
+ return {ok:true,testMode:true};
  if(/^[a-f0-9-]{70,90}$/i.test(String(token||'')))CacheService.getScriptCache().remove(phSessionKey_(token));
  return {ok:true};
 }

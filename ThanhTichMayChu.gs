@@ -12,10 +12,13 @@ const ACH_HEADERS_ATTEMPTS=['attempt_id','at_utc','profile_id','lesson_id','leve
 const ACH_HEADERS_LEDGER=['event_key','at_utc','profile_id','event_type','delta','lesson_id','level','attempt_id','note'];
 const ACH_POINTS={LV1:15,LV2:25,LV3:35};
 function achS_(name,headers){
- const wb=moBangDuAn_();
- let sheet=wb.getSheetByName(name);
- if(!sheet){sheet=wb.insertSheet(name);sheet.getRange(1,1,1,headers.length).setValues([headers]);sheet.setFrozenRows(1);}
- return sheet;
+ // Dedicated G3-B TEST uses empty in-memory ledgers. Never open/create/write student tabs.
+ if(!['90_Lan_lam_bai','91_So_sao','92_Ghi_chu_phu_huynh'].includes(name)||!Array.isArray(headers))
+  throw Error('G3B_TEST_LEDGER_SCOPE_DENIED');
+ return {
+  getDataRange:function(){return {getValues:function(){return [headers.slice()];}};},
+  appendRow:function(){throw Error('G3B_TEST_STUDENT_WRITE_DENIED');}
+ };
 }
 function achRows_(sheet){
  const values=sheet.getDataRange().getValues();

@@ -1,5 +1,6 @@
 /** Máy chủ Apps Script: phục vụ giao diện Lớp 2 V2.2. */
 function doGet() {
+  g3aQaContext_(); // TEST access only: reject anonymous or non-allowlisted sessions.
   return HtmlService.createTemplateFromFile('GiaoDien').evaluate()
     .setTitle('Lớp 2 – V2.2')
     .addMetaTag('viewport', 'width=device-width, initial-scale=1.0');
