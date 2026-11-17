@@ -30,11 +30,12 @@ function d2GradePure_(operands,submission,profile){
 }
 /** Only callable in separately restricted GAS TEST. Always read-only. */
 function d2ChamTinCayTest(payload){
+ try{g3aQaContext_();}catch(e){return d2Reject_('G3A_TEST_UNAUTHORIZED_OR_DISABLED');}
  if(!payload||typeof payload!=='object'||Array.isArray(payload)||payload.contractId!==D2_TEST_POLICY||payload.lessonId!=='toan_b20')return d2Reject_('INVALID_REQUEST');
  if(Object.keys(payload).some(function(k){return ['contractId','lessonId','level','questionId','submission'].indexOf(k)<0;}))return d2Reject_('UNEXPECTED_INPUT');
  const level=String(payload.level||''),qid=String(payload.questionId||'');
  if(!/^LV[123]$/.test(level)||!/^toan_b20_[A-Za-z0-9_-]{1,65}$/.test(qid))return d2Reject_('INVALID_REFERENCE');
- const data=layBaiToan20();
+ const data=khoLayBaiHoc_('toan_b20');
  if(!data||!data.lesson||data.lesson.id!=='toan_b20')return d2Reject_('SOURCE_LESSON_MISMATCH');
  const match=achSelect_(data,level).filter(function(q){return q.id===qid;});
  if(match.length!==1)return d2Reject_('QUESTION_NOT_SELECTED');
