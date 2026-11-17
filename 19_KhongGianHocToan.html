@@ -108,9 +108,17 @@ function section(s,i){
   const names=[...new Set(list.map(q=>q.group||'Tính nhẩm'))];
   content='<div class="ml-mental-groups">'+names.map((n,k)=>'<div class="ml-mental-group ml-theme-'+themes[k%themes.length]+'"><h4>'+E(n)+'</h4>'+list.filter(q=>(q.group||'Tính nhẩm')===n).map(mental).join('')+'</div>').join('')+'</div>';
  }else{
-  content='<div class="ml-cards '+(type==='word_problem'?'ml-word-grid':'')+'">'+list.map(q=>q.type==='vertical'?vertical(q):q.type==='missing_digit'?puzzle(q):q.type==='mental'?mental(q):word(q)).join('')+'</div>';
+  content='<div class="ml-cards '+(type==='word_problem'?'ml-word-grid':'')+'">'+list.map(q=>q.type==='vertical'?vertical(q):q.type==='missing_digit'?puzzle(q):q.type==='mental'?mental(q):q.type==='word_problem'?word(q):structured(q)).join('')+'</div>';
  }
  return '<section class="ml-section" id="ml-section-'+E(s.id)+'"><div class="ml-section-heading"><b class="ml-step">'+(i+1)+'</b><h3>'+E(s.name||'Bài tập '+(i+1))+'</h3></div><div class="ml-section-box">'+content+'</div></section>';
+}
+/* Structured renderer slot, isolated from legacy question grading. */
+function structured(q){
+ if(!q.valid||!q.displayOnly||!q.visualContract)return invalid(q);
+ const desc=String(q.prompt||q.label||'Bài tập tương tác');
+ // No answer inputs: renderer-specific interaction is mounted by the trusted
+ // visual orchestrator only after evidence-backed policy validation.
+ return baseCard(q,'<p class="ml-structured-prompt">'+E(desc)+'</p><div class="ml-structured-host" data-visual-slot="'+E(q.id)+'" aria-label="Nội dung bài tập tương tác"></div>','ml-structured-card');
 }
 function input(q,key,max,extra=''){
  return '<input class="ml-input'+(key.endsWith(':carry')?' ml-carry':'')+'" type="text" inputmode="none" autocomplete="off" maxlength="'+max+'" data-ml-field="'+E(key)+'" data-ml-q="'+E(q.id)+'" '+extra+' aria-label="'+E(key.split(':').pop())+'">';
