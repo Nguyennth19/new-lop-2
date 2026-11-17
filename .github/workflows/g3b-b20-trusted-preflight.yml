@@ -1,7 +1,7 @@
 name: G3-B B20 trusted public/private boundary (no-deploy)
 on:
   push:
-    branches: [test/data-b-g3b-b20-trusted-gas-e2e-20261117]
+    branches: [test/data-b-g3b-b20-trusted-gas-e2e-20261117, test-new]
   workflow_dispatch:
 permissions:
   contents: read
@@ -18,7 +18,7 @@ jobs:
         shell: bash
         run: |
           set -eu
-          for f in DocDuLieuSheet.gs DuLieuToanSheet.gs MayChu.gs ThanhTichMayChu.gs PhuHuynhMayChu.gs G3ATrustedTest.gs; do node --check --input-type=commonjs < "$f"; done
+          for f in DocDuLieuSheet.gs DuLieuToanSheet.gs MayChu.gs ThanhTichMayChu.gs PhuHuynhMayChu.gs G3ATrustedTest.gs G3B_ChanDoanB20Test.gs; do node --check --input-type=commonjs < "$f"; done
           node --check qa/g3b/test_g3b_boundary.cjs
       - name: Reuse G3-A private grading VM and JSON HTTP loopback
         run: |
