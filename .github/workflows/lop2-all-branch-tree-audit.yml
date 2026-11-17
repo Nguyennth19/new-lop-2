@@ -1,0 +1,28 @@
+name: LOP2 all-branch tree structural audit (read-only)
+on:
+  push:
+    branches:
+      - audit/master-state-reconciliation-20261117
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  structural-branches:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect every GitHub branch tree using read-only API
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python qa/global-audit/scan_all_branch_trees.py
+      - name: Check existing audit invariants
+        run: node qa/global-audit/validate_global_audit.cjs
+      - name: Upload all-branch structural evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: global-branch-tree-structural-audit
+          path: qa/global-audit/BRANCH_TREE_RUNTIME_REPORT.json
+          if-no-files-found: warn
+          retention-days: 10
