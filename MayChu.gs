@@ -7,6 +7,13 @@ function doGet(e) {
       .setTitle('G3-B – B20 GAS TEST')
       .addMetaTag('viewport', 'width=device-width, initial-scale=1.0');
   }
+  if (e && e.parameter && e.parameter.g2bReview === '1') {
+    // QA-only preview of synthetic fixtures; same active-user allowlist as B20.
+    // This route does not expose private textbook PDFs, answer keys or student state.
+    return HtmlService.createTemplateFromFile('G2B_ReviewerPreview').evaluate()
+      .setTitle('G2B – 25 case reviewer QA')
+      .addMetaTag('viewport', 'width=device-width, initial-scale=1.0');
+  }
   return HtmlService.createTemplateFromFile('GiaoDien').evaluate()
     .setTitle('Lớp 2 – V2.2')
     .addMetaTag('viewport', 'width=device-width, initial-scale=1.0');
