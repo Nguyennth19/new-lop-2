@@ -1,0 +1,112 @@
+/* P0-G2B: safe SVG preview for new vector/structural family, TEST ONLY.
+ * This is a visual renderer, NOT a trusted grader or an approved student route.
+ * All input passes BE_HOC_P0_VARIANT_ROUTER.classify first.
+ */
+(function(root,factory){
+ 'use strict';
+ const api=factory(root);
+ if(typeof module==='object'&&module.exports)module.exports=api;
+ if(root)root.BE_HOC_P0_VECTOR_PREVIEW=api;
+})(typeof window!=='undefined'?window:null,function(root){
+ 'use strict';
+ const esc=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+ const txt=(x,y,s,opts='')=>'<text x="'+x+'" y="'+y+'" '+opts+'>'+esc(s)+'</text>';
+ const rect=(x,y,w,h,color='#fff',stroke='#aeb8c6',rad=7)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+rad+'" fill="'+color+'" stroke="'+stroke+'" stroke-width="1.4"/>';
+ const line=(a,b,c,d,opts='')=>'<line x1="'+a+'" y1="'+b+'" x2="'+c+'" y2="'+d+'" '+opts+'/>';
+ function renderSvg(contract,sourceRouter){
+  const router=sourceRouter||(root&&root.BE_HOC_P0_VARIANT_ROUTER);
+  const verdict=router?.classify(contract);
+  if(!verdict?.ok||verdict.decision!=='KEEP_STRUCTURAL')
+   return {ok:false,reason:verdict?.reason||'VECTOR_FAMILY_NOT_ALLOWED',awarded:false};
+  const f=contract.semanticKind,s=contract.semantic;
+  let width=560,height=240,body='',aria='Minh họa toán học dạng '+f;
+  const baseText='font-family="Arial, sans-serif" font-size="15" fill="#24304a" text-anchor="middle"';
+  if(f==='GRID_100_2X2'){
+   width=530;height=435;const patch=new Map();
+   for(const p of s.patches)for(const n of [p.topLeft,p.topLeft+1,p.topLeft+10,p.topLeft+11])patch.set(n,p.id);
+   body+=txt(195,25,'BẢNG SỐ TỪ 1 ĐẾN 100','font-size="18" font-weight="700" fill="#24304a" text-anchor="middle"');
+   for(let i=1;i<=100;i++){
+    const c=(i-1)%10,row=Math.floor((i-1)/10),x=21+c*38,y=39+row*37,isMasked=patch.has(i);
+    body+=rect(x,y,37,36,isMasked?'#fbe7b1':'#fff','#b2bbc8',2);
+    body+=txt(x+18,y+24,isMasked?'□':String(i),'font-size="13" font-family="Arial" text-anchor="middle" fill="#26354a"');
+   }
+   s.patches.forEach((p,i)=>{
+    body+=rect(412,45+i*72,98,58,'#e8f2fc','#93b0d8',5);
+    body+=txt(461,64,'Miếng '+p.id,'font-size="12" font-weight="700" text-anchor="middle"');
+    body+=txt(461,83,String(p.topLeft)+' · '+String(p.topLeft+1),'font-size="11" text-anchor="middle"');
+    body+=txt(461,99,String(p.topLeft+10)+' · '+String(p.topLeft+11),'font-size="11" text-anchor="middle"');
+   });
+  }else if(f==='ADDITION_PYRAMID'){
+   width=540;height=340;const n=s.base.length,cellW=75,cellH=46,firstY=260;
+   for(let level=0;level<n;level++){
+    const count=n-level,y=firstY-level*52;
+    for(let j=0;j<count;j++){
+     const x=270-count*cellW/2+j*cellW,shown=level===0?s.base[j]:'□';
+     const v=level>0&&s.visible? s.visible.find(t=>t.row===level&&t.index===j)?.value??shown:shown;
+     body+=rect(x,y,cellW-6,cellH,level===0?'#e6f0fb':'#fff9df','#879ab4',6);
+     body+=txt(x+(cellW-6)/2,y+30,String(v),baseText);
+    }
+   }
+   body+=txt(270,28,'Ô trên = tổng của hai ô ngay dưới','font-size="17" text-anchor="middle" fill="#24304a"');
+  }else if(f==='POLYLINE_LENGTH'){
+   width=590;height=250;const ns=s.segments;
+   const points=ns.map((_,i)=>[30+i*520/ns.length,i%2?104:176]);points.push([550,ns.length%2?104:176]);
+   body+='<polyline points="'+points.map(p=>p.join(',')).join(' ')+'" fill="none" stroke="#2563a4" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>';
+   points.forEach((p,i)=>{body+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="5" fill="#2563a4"/>';body+=txt(p[0],p[1]+25,String.fromCharCode(65+i),'font-size="13" text-anchor="middle"');});
+   ns.forEach((v,i)=>{const a=points[i],b=points[i+1];body+=txt((a[0]+b[0])/2,(a[1]+b[1])/2-12,v+' '+s.unit,'font-size="15" text-anchor="middle" fill="#1d416d"');});
+   body+=txt(width/2,25,'Tính theo nhãn độ dài, KHÔNG đo pixel','font-size="16" text-anchor="middle" fill="#24304a"');
+  }else if(f==='POLYLINE_COMPARE'){
+   width=630;height=110+s.paths.length*88;
+   const colors=['#b44444','#248b81','#444e64','#9d6aba'];
+   s.paths.forEach((p,i)=>{
+    const y=73+i*88,x0=145,dx=445/p.segments.length;
+    let points=[[x0,y+12]];
+    p.segments.forEach((_,j)=>points.push([x0+(j+1)*dx,y+(j%2?12:-18)]));
+    body+=txt(75,y+5,p.label,'font-size="15" text-anchor="middle"');
+    body+='<polyline points="'+points.map(pt=>pt.join(',')).join(' ')+'" stroke="'+colors[i]+'" stroke-width="4" fill="none" stroke-linejoin="round"/>';
+    p.segments.forEach((n,j)=>{const a=points[j],b=points[j+1];body+=txt((a[0]+b[0])/2,(a[1]+b[1])/2-9,n+' '+s.unit,'font-size="13" text-anchor="middle"');});
+   });
+   body+=txt(width/2,28,'So sánh tổng số đo từng đường','font-size="17" text-anchor="middle"');
+  }else if(f==='NUMBER_LINE_STEP'){
+   width=640;height=220;const n=(s.end-s.start)/s.step,dx=565/n;
+   body+=line(35,130,615,130,'stroke="#28466e" stroke-width="3"');
+   for(let j=0;j<=n;j++){
+    const x=35+j*dx;body+=line(x,119,x,142,'stroke="#28466e" stroke-width="2"');
+    body+=txt(x,164,s.start+j*s.step,'font-size="12" text-anchor="middle"');
+   }
+   body+=txt(width/2,25,'Tia số: nhãn liên tiếp cách nhau '+s.step,'font-size="17" text-anchor="middle"');
+   body+=txt(width/2,62,'Các phép tính: '+s.expressions.join(' · '),'font-size="14" text-anchor="middle"');
+  }else if(f==='COLUMN_MISSING_DIGITS'){
+   width=600;height=75+s.rows.length*151;
+   body+=txt(width/2,25,'Trừ có ô khuyết – điền vào từng □','font-size="16" text-anchor="middle"');
+   s.rows.forEach((r,i)=>{
+    const y=43+i*151,x=100,cell=32,cols=r.minuend.length;
+    body+=rect(60,y,475,141,'#fafbfd','#d7e2f0',7);
+    const display=(str,yy)=>{
+      [...str].forEach((char,j)=>{
+       const x0=x+250+(j-cols)*cell;
+       if(char==='?')body+=rect(x0,yy-21,cell-5,27,'#fff1d5','#dbb66e',2);
+       else body+=txt(x0+12,yy,String(char),'font-size="19" font-weight="700" text-anchor="middle"');
+      });
+    };
+    display(r.minuend,y+35);
+    display(r.subtrahend,y+72);
+    body+=txt(x+178,y+72,'−','font-size="22" font-weight="700" text-anchor="middle"');
+    body+=line(x+160,y+83,x+260,y+83,'stroke="#3c5879" stroke-width="2"');
+    display(r.result,y+111);
+    body+=txt(75,y+45,'Phép '+(i+1),'font-size="13"');
+   });
+  }else return {ok:false,reason:'UNKNOWN_VECTOR_FAMILY',awarded:false};
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+height+'" width="100%" role="img" aria-label="'+esc(aria)+'">'+
+    '<rect x="0" y="0" width="'+width+'" height="'+height+'" rx="12" fill="#f9fbff"/>'+body+'</svg>';
+  return {ok:true,svg,family:f,kind:'REVIEW_PREVIEW_ONLY',gradingEnabled:false,
+    awarded:false,studentWrites:false,publishable:false};
+ }
+ function mountReviewPreview(host,contract,sourceRouter){
+  if(!host||host.getAttribute('data-p0-review-preview')!=='true')
+   return {ok:false,reason:'REVIEW_PREVIEW_HOST_REQUIRED'};
+  const r=renderSvg(contract,sourceRouter);if(!r.ok)return r;
+  host.innerHTML=r.svg;return {ok:true,preview:true,gradingEnabled:false,awarded:false};
+ }
+ return Object.freeze({renderSvg,mountReviewPreview});
+});
