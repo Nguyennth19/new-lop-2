@@ -66,7 +66,7 @@ function achAnalyses_(attempts){
  });
  const skills=[];
  try{
-  const source=layBaiToan20(),latest={};
+  const source=khoLayBaiHoc_('toan_b20'),latest={};
   attempts.filter(a=>a.lesson_id==='toan_b20').forEach(a=>{
    if(!latest[a.level]||achDate_(a.at_utc)>achDate_(latest[a.level].at_utc))latest[a.level]=a;
   });
