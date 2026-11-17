@@ -93,6 +93,11 @@ check('Public B20 adapter cannot use private loader',()=>{
  const x=fs.readFileSync(path.join(root,'DuLieuToanSheet.gs'),'utf8');
  assert(/g3aQaContext_\(\)/.test(x));assert(!/return\s+khoLayBaiHoc_\(/.test(x));
 });
+check('GAS TEST manifest requests active tester identity scope',()=>{
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'appsscript.json'),'utf8'));
+ assert(manifest.oauthScopes.includes('https://www.googleapis.com/auth/userinfo.email'));
+ assert(manifest.oauthScopes.includes('https://www.googleapis.com/auth/spreadsheets'));
+});
 check('Client local grading still disabled',()=>{
  const x=fs.readFileSync(path.join(root,'26_ChamCauHoiToan.html'),'utf8');
  assert(!/q\.(?:answer|solutionPrompt)\b/.test(x));
