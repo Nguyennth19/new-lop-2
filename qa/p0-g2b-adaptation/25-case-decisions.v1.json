@@ -6,11 +6,13 @@
   "sourceWorkbook": "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit#gid=910116",
   "status": {
     "ownerRule": "OWNER_AUTHORIZED_TRANSFORMATIONS",
-    "technicalAutomation": "PENDING_CI",
+    "technicalAutomation": "CI_29_OF_29_PASS_TEMPLATE_ONLY",
     "independentSourceReview": "0_OF_25",
     "renderAndAssetGrants": "0",
     "realGas": "NOT_VERIFIED",
-    "studentRelease": "NO_GO"
+    "studentRelease": "NO_GO",
+    "reviewPreview": "VECTOR_6_FAMILIES_AND_EXISTING_D3_D4_D7_D9_D10_COMPILE_PASS_NO_GAS",
+    "originalSourceIndependentApproval": "0_OF_25_AND_0_OF_96"
   },
   "counts": {
     "KEEP_STRUCTURAL": 7,
@@ -789,5 +791,13 @@
       "renderer": "NONE",
       "validation": "drop_multisheet"
     }
+  },
+  "ciEvidence": {
+    "validatedCommit": "375a5c0cf72642c045335ecc38f3b35591b23ea6",
+    "workflowRun": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44098183197",
+    "checks": 29,
+    "passed": 29,
+    "failed": 0,
+    "scope": "NODE_VM_RENDERER_CONTRACTS_NOT_BROWSER_VISUAL_NOT_GAS"
   }
 }

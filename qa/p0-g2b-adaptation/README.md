@@ -91,3 +91,9 @@ Input tối thiểu của `89_P0_VariantRouter.html::classify`:
 ## Rollback / next major step
 
 **Không merge `main`, `test-theo-main`, `be-hoc`, không GAS deploy.** Nhánh TEST fork từ `be-hoc@59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff`; rollback bằng cách không áp dụng nhánh hoặc checkout SHA gốc. Khóa reviewer độc lập **0/25**, cổng 96 bài G2-B vẫn **0/96**, asset/renderer/publicVariant grant **0**. Bước dữ liệu B001–B024 tiếp theo lấy mapping family/nguồn theo cùng JSON contract, chỉ đưa vào pool nếu có dữ liệu biến thể hợp lệ và chính sách đã duyệt.
+
+## Checkpoint / bảng quản lý
+
+- [Quyết định 25 case trên MASTER](https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit#gid=910119) (đã xác minh 11 / 7 / 7; 18 template PASS, 0 release).
+- [CI 29/29 PASS](https://github.com/Nguyennth19/new-lop-2/actions/runs/44098183197), không được hiểu là GAS hoặc UI browser PASS.
+- Xem `P0_CHECKPOINT_20261117.md` cho phần phản biện độc lập và rollback.
