@@ -70,6 +70,8 @@ function achAdd_(sheet,events,key,type,delta,lesson,lv,attempt,note){
 }
 /** Nhận đáp án chứ KHÔNG nhận điểm do client tự tính; chỉ chấp nhận id bài/cấp độ đã biết. */
 function ghiNhanKetQuaToan20(payload){
+ // G3-A restricted TEST branch is READ-ONLY even when legacy reward endpoint is called.
+ throw Error('G3A_TEST_READ_ONLY_NO_REWARDS');
  if(!payload||!/^LV[123]$/.test(String(payload.level)))throw Error('Cấp độ không hợp lệ');
  const lv=String(payload.level);
  const raw=payload.answers||{};
@@ -85,7 +87,7 @@ function ghiNhanKetQuaToan20(payload){
   // Retry có cùng attemptId được trả về nhưng không chấm/cộng lần nữa.
   const prior=old.find(x=>String(x.attempt_id)===id);
   if(prior)return {ok:true,duplicate:true,score:Number(prior.correct),total:Number(prior.total),summary:achSummary_(attemptSheet,pointsSheet)};
-  const data=layBaiToan20(),questions=achSelect_(data,lv);
+  const data=khoLayBaiHoc_('toan_b20'),questions=achSelect_(data,lv);
   if(!questions.length)throw Error('Không tìm thấy câu hỏi hợp lệ');
   if(questions.some(q=>!Object.prototype.hasOwnProperty.call(raw,q.id)))throw Error('Thiếu dữ liệu câu hỏi');
   let correct=0,answered=0;const correctIds=[];
