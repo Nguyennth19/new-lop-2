@@ -133,6 +133,20 @@ function g3aChamBaiB024Test(_payload){return g3aDeny_('B024_SOURCE_NOT_APPROVED'
 
 
 /**
+ * QA tab allowlist: the original isolated B20 workbook has only 4 source tabs.
+ * TEST NEW adds exactly 4 review/acceptance tabs; never allow arbitrary tabs.
+ * This does not approve G2B source content or relax private grading rules.
+ */
+function g3bApprovedQaTabSet_(actual){
+ const source=['01_Bai_hoc','02_Cap_do','03_Nhom_bai','04_Cau_hoi'];
+ const review=['00_HUONG_DAN','05_G2B_25_CASE','06_NGHIEM_THU_B20','07_NGHIEM_THU_HINH'];
+ if(!Array.isArray(actual)||!(actual.length===4||actual.length===8))return false;
+ const wanted=actual.length===4?source:source.concat(review);
+ const set=new Set(actual);
+ return set.size===wanted.length&&wanted.every(function(name){return set.has(name);});
+}
+
+/**
  * G3-B one-run REAL Apps Script server acceptance (Editor-only, suffix '_').
  * Must run in the isolated authorized GAS TEST project AFTER code synchronization.
  * This audits the actual QA workbook and GAS runtime, not a simulated VM.
@@ -170,9 +184,9 @@ function g3bAuditGasServerOnce_(){
   return {ok:false,scope:'REAL_GAS_SERVER_ONLY',reason:'QA_WORKBOOK_MISMATCH',
    tests:[],writes:0,awarded:false,webDeploymentVerified:false,networkVerified:false};
  }
- check('QA_WORKBOOK_4_TABS_1_3_8_51',function(){
-  const actual=wb.getSheets().map(function(s){return s.getName();}).sort();
-  return actual.length===4&&actual.every(function(n,i){return n===names.slice().sort()[i];})&&
+ check('QA_WORKBOOK_4_SOURCE_TABS_1_3_8_51_WITH_APPROVED_REVIEW_TABS',function(){
+  const actual=wb.getSheets().map(function(s){return s.getName();});
+  return g3bApprovedQaTabSet_(actual)&&
    before.every(function(v,i){return v.count===expected[i];});
  });
  check('LEGACY_04_RAW_EXPORT_DISABLED',function(){
