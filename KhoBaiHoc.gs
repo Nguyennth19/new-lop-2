@@ -24,9 +24,9 @@ function khoVisualContract_(x){
  const countText=String(x.exact_quantity||'').trim();
  const json=String(x.public_variant_json||'').trim();
  // No implied renderer from question prompt or filename.
- if(!renderer&&!assetId&&!semanticLabel)return null;
+ if(!renderer&&!assetId&&!semanticLabel&&!(skillId&&json))return null;
  if(renderer&&!/^D(?:10|8A|8B|[1-9])$/.test(renderer))return null;
- if(renderer&&!/^[A-Z0-9_\\-]{3,90}$/.test(skillId))return null;
+ if((renderer||json)&&!/^[A-Z0-9_\\-]{3,90}$/.test(skillId))return null;
  if(visualIntent&&!['DECORATIVE','CHOICE','EXACT_COUNT'].includes(visualIntent))return null;
  if(assetId&&!/^(?:FLUENT:[a-z0-9_]+|KL_(?:SH|M)\d{2}_\d{3}|KL2_[A-Z0-9_]+)$/.test(assetId))return null;
  if(semanticLabel.length>120||countUnit.length>30)return null;
@@ -55,7 +55,7 @@ function khoChuyenCauHoi_(x){
  const visualContract=khoVisualContract_(x);
  // New exercise families may be shown only with an explicit safe public
  // variant. This never opts them into legacy scoring, rewards or submissions.
- const structuredValid=structured.includes(x.type)&&!!visualContract&&!!visualContract.rendererId&&
+ const structuredValid=structured.includes(x.type)&&!!visualContract&&
   !!visualContract.skillId&&!!String(x.question_id||'').trim()&&
   !!String(x.section_id||'').trim()&&!!String(x.level||'').trim()&&
   !!String(x.public_variant_json||'').trim();
