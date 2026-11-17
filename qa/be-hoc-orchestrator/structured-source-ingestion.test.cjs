@@ -1,0 +1,21 @@
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('KhoBaiHoc.gs','utf8'),lesson=fs.readFileSync('19_KhongGianHocToan.html','utf8');
+const ctx={};vm.createContext(ctx);vm.runInContext(source,ctx);
+let assertions=0;
+function eq(a,b,msg){assert.equal(a,b,msg);assertions++;}
+const base={question_id:'q31',level:'LV1',section_id:'s31',type:'matching',skill_id:'MATCH_PAIRS',public_variant_json:JSON.stringify({pairs:[{left:'A',right:'B'}]}),prompt:'Nối các cặp phù hợp'};
+let q=ctx.khoChuyenCauHoi_(base);
+eq(q.valid,true,'A structured question can be public-only');eq(q.displayOnly,true);eq(q.visualContract.rendererId,null);
+eq(q.visualContract.skillId,'MATCH_PAIRS');
+q=ctx.khoChuyenCauHoi_({...base,renderer_id:'D3'});
+eq(q.valid,true);eq(q.visualContract.rendererId,'D3');
+q=ctx.khoChuyenCauHoi_({...base,public_variant_json:JSON.stringify({pairs:[{answerKey:'B'}]})});
+eq(q.valid,false,'Reject grading keys in public payload');
+q=ctx.khoChuyenCauHoi_({...base,public_variant_json:''});eq(q.valid,false);
+q=ctx.khoChuyenCauHoi_({...base,skill_id:''});eq(q.valid,false);
+q=ctx.khoChuyenCauHoi_({...base,type:'word_problem',answer:'11'});
+eq(q.displayOnly,false,'Legacy grading contract unchanged');
+eq(lesson.includes('function structured(q)'),true);
+eq(lesson.includes('q.type===\'word_problem\'?word(q):structured(q)'),true);
+console.log('BE_HOC_STRUCTURED_SOURCE_INGEST_PASS',assertions,'assertions');
