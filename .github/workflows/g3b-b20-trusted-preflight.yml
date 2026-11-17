@@ -47,3 +47,28 @@ jobs:
             qa/p0-g2b-adaptation/TEST_RESULTS.json
             qa/p0-g2b-adaptation/QC25_CASE_MATRIX_RESULTS.json
           retention-days: 14
+
+  g2b-review-browser:
+    needs: g3b-secure-test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated Chromium for synthetic QA review only
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Render 25 P0 cases on desktop and mobile, no actual GAS
+        run: node qa/p0-g2b-adaptation/test_integrated_browser.cjs
+      - name: Retain read-only visual evidence (not SGK images)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p0-g2b-visual-review-fixtures-only
+          path: |
+            qa/p0-g2b-adaptation/QC25_BROWSER_RESULTS.json
+            qa/p0-g2b-adaptation/screenshots/
+          retention-days: 14
