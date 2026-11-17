@@ -1,0 +1,18 @@
+name: DATA-B COVERAGE-75 audit (candidate-only)
+on:
+  push:
+    branches:
+      - audit/data-b-coverage75-20261117
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  coverage75-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check audit code syntax
+        run: node --check qa/coverage75/verify_coverage75.cjs
+      - name: Verify 75 lesson evidence and NO-GO invariants
+        run: node qa/coverage75/verify_coverage75.cjs
