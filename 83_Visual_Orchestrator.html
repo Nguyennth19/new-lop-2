@@ -125,7 +125,10 @@ function planQuestion(data,q){
   const candidate=router?.classify(q.p0Adaptation);
   if(!candidate?.ok||candidate.decision==='DROP')
    return {ok:false,reason:'P0_UNSAFE_OR_UNVERIFIED_ADAPTATION',candidate};
-  if(q.id!==q.p0Adaptation.originExerciseId||
+  // A generated variant has its own questionId; its trusted source provenance
+  // must remain on sourceExerciseId (not inferred from the new questionId).
+  const sourceExerciseId=q.sourceExerciseId||q.id;
+  if(sourceExerciseId!==q.p0Adaptation.originExerciseId||
      data.lesson.id!=='toan_b'+String(q.p0Adaptation.lessonId).slice(-3).replace(/^0+/,'')){
    return {ok:false,reason:'P0_SOURCE_ID_CROSSWALK_REQUIRED'};
   }
