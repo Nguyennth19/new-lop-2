@@ -64,3 +64,42 @@ jobs:
           if-no-files-found: error
           retention-days: 1
           compression-level: 0
+
+  reference-branches-export:
+    # One-time A1 archival job for reference branches, not a release/deployment.
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[A1_EXPORT_MAIN_TEST_ONCE]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [main, test-theo-main]
+    steps:
+      - name: Checkout pinned reference branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.target }}
+          path: target
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Checkout A1 snapshot tool from triggering commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: tools
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Export target branch exact SHA without Drive credentials
+        run: |
+          cd target
+          GITHUB_SHA="" GITHUB_REF_NAME="${{ matrix.target }}" python3 ../tools/scripts/master_be_hoc_backup.py --dry-run --out ../out
+      - name: Produce short-lived reference snapshot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: a1-ref-${{ matrix.target }}-${{ github.run_id }}
+          path: out/*
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
