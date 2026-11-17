@@ -26,7 +26,9 @@
     "masterLedger": "Secondary/partial exercise catalog, not full independent SGK/VBT QA",
     "overlap": "G2 and SOURCE_1406 text-ID overlap=0, semantic overlap not yet reconciled",
     "priority": "SOURCE_FIRST_WITH_EXISTING_C1_AND_G2",
-    "release": "NO_GO"
+    "release": "NO_GO",
+    "ownerMismatch": "Current unresolved V8/C1 owner mismatches only; older Consolidated counts are excluded",
+    "ownerMismatchHistoricalResolved": "Pre-V8 Consolidated errors B061=28 and B062=37, resolved under V8-OWNER-FIX-20261109-01"
   },
   "metrics": {
     "lessons": 75,
@@ -44,12 +46,13 @@
     "G2Bsigned": 0,
     "rendererGrant": 0,
     "publicGrant": 0,
-    "ownerMismatch": 65,
+    "ownerMismatch": 0,
     "coverageTier": {
       "MASTER_G2_CANDIDATES": 7,
       "MASTER_LEDGER_ONLY": 17,
       "HISTORICAL_C1_ONLY": 51
-    }
+    },
+    "ownerMismatchHistoricalResolved": 65
   },
   "risks": {
     "historicSourceExcluded": 1406,
@@ -57,11 +60,15 @@
     "c1FullPromptMissing": 1053,
     "c1PartialHintOnly": 353,
     "BQAOwnerMismatch": {
-      "B061": 28,
-      "B062": 37
+      "B061": 0,
+      "B062": 0
     },
     "g2HumanSigned": 0,
-    "realGasNetworkChecked": false
+    "realGasNetworkChecked": false,
+    "BQAOwnerMismatchHistoricalResolved": {
+      "B061": 28,
+      "B062": 37
+    }
   },
   "records": [
     {
@@ -3147,10 +3154,10 @@
         "PublicVariant grant": 0,
         "Coverage tier": "HISTORICAL_C1_ONLY",
         "Release gate": "NO_GO",
-        "Owner conflict": 28,
+        "Owner conflict": 0,
         "Ưu tiên": "P0_OWNER_CONFLICT",
         "Next action": "BQA_OWNER_CONFLICT_SOURCE_REVIEW",
-        "Cảnh báo": "MASTER_DETAIL_NOT_INDEXED; OWNER_MISMATCH_28"
+        "Cảnh báo": "MASTER_DETAIL_NOT_INDEXED; OWNER_RESOLVED_V8_FIX_20261109_01; HISTORICAL_OWNER_28"
       },
       "evidence": {
         "lessonId": "MATH_B061",
@@ -3166,7 +3173,7 @@
         "V8 review status": "STATIC_TRIAGE_DONE_NOT_SOURCE_AUDIT",
         "G1 corrections": 0,
         "Visual priority": 0,
-        "BQA owner mismatch": 28,
+        "BQA owner mismatch": 0,
         "Historical source gate": "NO_SOURCE_READY_VERIFIED",
         "V8 source verified": "V8_VERIFIED_0",
         "G2 signed": 0,
@@ -3198,10 +3205,10 @@
         "PublicVariant grant": 0,
         "Coverage tier": "HISTORICAL_C1_ONLY",
         "Release gate": "NO_GO",
-        "Owner conflict": 37,
+        "Owner conflict": 0,
         "Ưu tiên": "P0_OWNER_CONFLICT",
         "Next action": "BQA_OWNER_CONFLICT_SOURCE_REVIEW",
-        "Cảnh báo": "MASTER_DETAIL_NOT_INDEXED; OWNER_MISMATCH_37"
+        "Cảnh báo": "MASTER_DETAIL_NOT_INDEXED; OWNER_RESOLVED_V8_FIX_20261109_01; HISTORICAL_OWNER_37"
       },
       "evidence": {
         "lessonId": "MATH_B062",
@@ -3217,7 +3224,7 @@
         "V8 review status": "STATIC_TRIAGE_DONE_NOT_SOURCE_AUDIT",
         "G1 corrections": 0,
         "Visual priority": 0,
-        "BQA owner mismatch": 37,
+        "BQA owner mismatch": 0,
         "Historical source gate": "NO_SOURCE_READY_VERIFIED",
         "V8 source verified": "V8_VERIFIED_0",
         "G2 signed": 0,
@@ -3889,5 +3896,26 @@
         "Next action": "REUSE_C1_HYDRATE_SOURCE_EXACT_BOTH_TRACKS"
       }
     }
-  ]
+  ],
+  "ownerReconciliation": {
+    "status": "HISTORICAL_65_RESOLVED_ACTIVE_0",
+    "patchId": "V8-OWNER-FIX-20261109-01",
+    "historicalSource": "Consolidated pre-V8",
+    "historicalResolved": {
+      "MATH_B061": 28,
+      "MATH_B062": 37,
+      "total": 65
+    },
+    "active": {
+      "MATH_B061": 0,
+      "MATH_B062": 0,
+      "total": 0
+    },
+    "canonicalV8": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+    "canonicalC1": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+    "errataRef": "https://github.com/Nguyennth19/new-lop-2/blob/audit/master-state-reconciliation-20261117/qa/global-audit/COVERAGE75_OWNER_AND_STATE_ERRATA_20261117.json",
+    "approval": "REPORT_CORRECTION_ONLY_NO_SOURCE_WRITE",
+    "sourceStatus": "SOURCE_EXACT_NOT_APPROVED",
+    "release": "NO_GO"
+  }
 }

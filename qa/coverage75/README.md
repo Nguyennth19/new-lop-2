@@ -1,6 +1,6 @@
 # DATA-B / COVERAGE-75 — Source Coverage Audit (2026-11-17)
 
-**Status: INVENTORY PASS · SOURCE/PEDAGOGY/RENDERER/RELEASE NO-GO.** Audit-only branch derived from `be-hoc @59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff`. No production changes.
+**Status: INVENTORY PASS · OWNER MISMATCH ACTIVE 0 · HISTORICAL RESOLVED 65 · SOURCE/PEDAGOGY/RENDERER/RELEASE NO-GO.** Audit-only branch derived from `be-hoc @59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff`. No production changes.
 
 ## What is preserved rather than re-extracted
 
@@ -25,7 +25,7 @@
 
 ## Blocking exceptions
 
-1. `B061`: 28 candidate SOURCE rows have owner BQA mismatch; `B062`: 37 rows. **65 total**, recorded in the earlier V8 audit. Do not silently reassign batch owners.
+1. **RESOLVED in V8/C1:** Older Consolidated owner discrepancies were B061 28 + B062 37 = 65 historical rows. V8 patch `V8-OWNER-FIX-20261109-01` repaired them; active owner discrepancies are now **0**. Do not rewrite historical SOURCE data.
 2. Historical SOURCE track PDFs have their own edition/source SHA. The G2 reference MASTER PDF SHA differs for Tập 1; page/edition crosswalk is required before treating evidence as interchangeable.
 3. V8 has **0/75 source-verified lesson gates**, even though its static registry triage covers all 75.
 4. `G2B` independent signatures **0/96**; `rendererId`, `assetId`, `publicVariant` granted **0**.
@@ -41,7 +41,7 @@
 
 ## Next decisions, without re-extraction
 
-1. **P0:** Resolve B061/B062 BQA ownership + edition version boundaries. Never overwrite historic source IDs.
+1. **P0 owner issue CLOSED in V8/C1:** Preserve 65 historical fixes and revalidate active 0 when mapping changes. Edition/source PDF boundaries remain independent.
 2. **P0:** Crosswalk seven G2 lessons against historical 1,406 records by lesson/session/page/semantics. The 96 G2 IDs cannot simply be appended as new exercises.
 3. **P1:** For remaining B001–B024 ledger records, independently inspect exact part/slot/figure and complete reviewer signoff.
 4. **P2:** For B025–B075, reuse the existing 1,406 C1 scaffolds: fill the missing source-exact prompts, visual geometry, grading contracts and lesson-scoped skills; keep provenance and BQA owner.
@@ -50,3 +50,11 @@
 ## Rollback
 
 The work adds tabs 13–15 to the governance Sheet and this isolated audit branch. No alteration to MASTER / Consolidated / V8 / C1 / B20 sources, `be-hoc`, `main`, GAS or student records. Disable/ignore the new tabs or branch to return to the prior state; do not delete prior ledgers.
+
+## Owner report reconciliation — 2026-11-17
+
+- Canonical active 0 across BQA-17/18; history B061=28 and B062=37, sum=65 resolved by V8-OWNER-FIX-20261109-01. Two separate batch-boundary issues are also closed, not included in 65.
+- V8_OWNER_CANONICAL_LOCK and C1_FINAL_REPORT are the evidence authorities; old V8_INTERIM_REPORT/Consolidated do **not** mean 65 still open.
+- Google Sheet `15_COVERAGE75_ROLLUP` now has separate metrics **0 open / 65 historical resolved**; `13_COVERAGE75_MASTER` and `14_COVERAGE75_EVIDENCE` already showed 0 active.
+- Snapshot and CI test enforce current 0 and historic 65 while preserving 75/1406 totals. Source documents, original BQA records and learner data are unchanged. Release remains NO-GO.
+- [V8 authority](https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit) · [C1 authority](https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit) · [audit errata](https://github.com/Nguyennth19/new-lop-2/blob/audit/master-state-reconciliation-20261117/qa/global-audit/COVERAGE75_OWNER_AND_STATE_ERRATA_20261117.json)

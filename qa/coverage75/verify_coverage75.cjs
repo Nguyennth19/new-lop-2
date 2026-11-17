@@ -23,7 +23,16 @@ eq(totals('B20 runtime'),51,'legacy B20');
 eq(totals('G2B signed'),0,'independent human signoffs');
 eq(totals('Renderer grant'),0,'renderer releases');
 eq(totals('PublicVariant grant'),0,'student releases');
-eq(totals('Owner conflict'),65,'BQA mismatch');
+eq(totals('Owner conflict'),0,'current V8 owner mismatch');
+eq(d.metrics.ownerMismatch,0,'derived current owner metric');
+eq(d.metrics.ownerMismatchHistoricalResolved,65,'historical resolved total');
+eq(d.risks.BQAOwnerMismatch.B061,0,'B061 current owner');
+eq(d.risks.BQAOwnerMismatch.B062,0,'B062 current owner');
+eq(d.risks.BQAOwnerMismatchHistoricalResolved.B061,28,'B061 historical resolved');
+eq(d.risks.BQAOwnerMismatchHistoricalResolved.B062,37,'B062 historical resolved');
+eq(d.ownerReconciliation.patchId,'V8-OWNER-FIX-20261109-01','fix authority');
+eq(d.ownerReconciliation.active.total,0,'reconciliation active total');
+eq(d.ownerReconciliation.historicalResolved.total,65,'reconciliation history total');
 eq(d.risks.historicSourceExcluded,1406,'source pending B');
 eq(d.risks.sourceVerifiedV8,0,'V8 source QA pending');
 eq(d.risks.c1FullPromptMissing,1053,'source text missing');
@@ -44,9 +53,9 @@ for(let i=0;i<75;i++){
  if(n>24){eq(c['MASTER SGK'],0,'no MASTER SGK detail beyond B024');eq(c['MASTER VBT'],0,'no MASTER VBT detail beyond B024');}
  if(n===20)eq(c['B20 runtime'],51,'B20 legacy only');
  else eq(c['B20 runtime'],0,'only B20 runtime');
- if(n===61)eq(c['Owner conflict'],28,'B061 owner mismatch');
- else if(n===62)eq(c['Owner conflict'],37,'B062 owner mismatch');
- else eq(c['Owner conflict'],0,'other BQA owner matches');
+ eq(c['Owner conflict'],0,'current owner mismatch per lesson');
+ eq(r.evidence['BQA owner mismatch'],0,'current owner mismatch per evidence');
+ if(n===61||n===62)assert.ok(c['Cảnh báo'].includes('OWNER_RESOLVED_V8_FIX_20261109_01'),'preserve historical resolved marker');
  tiers[c['Coverage tier']]=(tiers[c['Coverage tier']]||0)+1;
 }
 eq(tiers.MASTER_G2_CANDIDATES,7,'G2 lesson subset');
@@ -55,4 +64,4 @@ eq(tiers.HISTORICAL_C1_ONLY,51,'historical-only group');
 const scan=JSON.stringify(d).toLowerCase();
 for(const key of ['"answer":','"solutionprompt":','"puzzle.ans":','"studentid":','"parentemail":'])assert.ok(!scan.includes(key),'private field in metadata: '+key);
 assert.equal(d.noStudentData,true,'no student data');
-console.log('COVERAGE75 VALIDATION PASS: 75 lessons; 1406 historic source candidates; 1406 C1 scaffolds; 0 approved/renderable; 65 owner mismatches.');
+console.log('COVERAGE75 VALIDATION PASS: 75 lessons; 1406 historic source candidates; 1406 C1 scaffolds; 0 approved/renderable; 0 current owner mismatches; 65 historical owner mismatches resolved.');
