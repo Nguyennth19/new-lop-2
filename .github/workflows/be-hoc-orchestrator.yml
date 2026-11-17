@@ -30,6 +30,7 @@ jobs:
           node qa/be-hoc-orchestrator/semantic-character-contract.test.cjs
           node qa/be-hoc-orchestrator/structured-auto-binding.test.cjs
           node qa/be-hoc-orchestrator/structured-source-ingestion.test.cjs
+          node qa/be-hoc-orchestrator/drive-png-master-pins.test.cjs
       - name: Install Chromium
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
