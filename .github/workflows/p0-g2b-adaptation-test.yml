@@ -37,5 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: p0-g2b-variant-template-ci
-          path: qa/p0-g2b-adaptation/TEST_RESULTS.json
+          path: |
+            qa/p0-g2b-adaptation/TEST_RESULTS.json
+            qa/p0-g2b-adaptation/QC25_CASE_MATRIX_RESULTS.json
           retention-days: 14
