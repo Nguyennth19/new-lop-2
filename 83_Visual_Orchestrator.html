@@ -118,6 +118,24 @@ function mountEnvelope(host,envelope){
 }
 function planQuestion(data,q){
  if(!data?.lesson?.id||!q||typeof q!=='object')return {ok:false,reason:'INVALID_QUESTION'};
+ // P0-G2B variants have an independent source/pedagogy gate. The new reusable
+ // template resolver may PASS technically without ever granting a student route.
+ if(Object.prototype.hasOwnProperty.call(q,'p0Adaptation')){
+  const router=root.BE_HOC_P0_VARIANT_ROUTER;
+  const candidate=router?.classify(q.p0Adaptation);
+  if(!candidate?.ok||candidate.decision==='DROP')
+   return {ok:false,reason:'P0_UNSAFE_OR_UNVERIFIED_ADAPTATION',candidate};
+  // A generated variant has its own questionId; its trusted source provenance
+  // must remain on sourceExerciseId (not inferred from the new questionId).
+  const sourceExerciseId=q.sourceExerciseId||q.id;
+  if(sourceExerciseId!==q.p0Adaptation.originExerciseId||
+     data.lesson.id!=='toan_b'+String(q.p0Adaptation.lessonId).slice(-3).replace(/^0+/,'')){
+   return {ok:false,reason:'P0_SOURCE_ID_CROSSWALK_REQUIRED'};
+  }
+  return {ok:false,reason:'P0_PENDING_INDEPENDENT_SOURCE_REVIEW_AND_RENDERER_GATE',
+   candidate,grading:'SERVER_ONLY',publishable:false};
+ }
+
  const c=q.visualContract;
  if(!c||typeof c!=='object'||Array.isArray(c))return {ok:false,reason:'NO_VISUAL_CONTRACT'};
  const skillId=c.skillId||q.skillId||null;
@@ -181,6 +199,16 @@ function mountLesson(data,screen,level){
   noClientGrading:true,assetLibraryCount:root.BE_HOC_ASSETS_288?.count||0};
 }
 root.BE_HOC_VISUAL_ORCHESTRATOR=Object.freeze({
+ p0Candidate:(contract)=>root.BE_HOC_P0_VARIANT_ROUTER?.classify(contract)||
+  {ok:false,reason:'P0_ADAPTATION_ROUTER_NOT_LOADED'},
+ p0ReviewPreview:(host,contract)=>{
+  const engine=root.BE_HOC_P0_VARIANT_ROUTER,check=engine?.classify(contract);
+  if(!check?.ok||check.decision!=='KEEP_STRUCTURAL')
+   return {ok:false,reason:'P0_PREVIEW_DENIED',candidate:check};
+  return root.BE_HOC_P0_VECTOR_PREVIEW?.mountReviewPreview(host,contract,engine)||
+   {ok:false,reason:'P0_VECTOR_PREVIEW_NOT_LOADED'};
+ },
+
  schemaVersion:'BE-HOC-VISUAL-ORCHESTRATOR-V1',allRendererIds:ALL,registry:REGISTRY,
  resolve,chooseAsset,mountEnvelope,mountLesson,planQuestion,cleanup,safePublic,
  semanticPlan:(intent)=>root.BE_HOC_VISUAL_SEMANTIC?.plan(intent)||{ok:false,reason:'SEMANTIC_ROUTER_MISSING'},
