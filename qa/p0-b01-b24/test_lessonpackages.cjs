@@ -1,4 +1,8 @@
 'use strict';
+/* Contract lock: the formal V1 schema, generated 24 files, deterministic
+ * builder, and 102 current checks must remain synchronized on one TEST HEAD.
+ * CI on this commit is a source-index QA receipt, never a release approval.
+ */
 /* CI must fail closed: a valid source index is NOT a playable lesson.
  * 24 JSON files + manifest, 536 C1 source, 96 G2 review, 25 decisions.
  */
