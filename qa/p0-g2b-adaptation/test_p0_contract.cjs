@@ -74,6 +74,20 @@ test('each source case is pinned to exactly the same router family',()=>{
   assert.equal(v.playable,false,c.caseId);
  }
 });
+test('full candidate pool keeps 17 unique variants/structural and excludes 7 drops + 1 repeated ID',()=>{
+ const batch=manifest.caseRules.map(contract),out=router.buildCandidatePool(batch);
+ assert(out.ok);assert.deepEqual(out.counts,{input:25,kept:17,excluded:8});
+ assert.equal(out.excluded.filter(x=>x.reason==='DROPPED_UNSAFE_SOURCE_TOPOLOGY').length,7);
+ assert.equal(out.excluded.filter(x=>x.reason==='DUPLICATE_SOURCE_EXERCISE').length,1);
+ assert.equal(out.publishable,false);assert.equal(out.grading,'NONE');
+});
+test('future pool excludes invalid contracts and never invents replacements',()=>{
+ const first=contract(manifest.caseRules.find(x=>x.caseId==='C03'));
+ const bad={...first,skillId:'NOT_REGISTERED'};
+ const x=router.buildCandidatePool([first,bad]);
+ assert.equal(x.ok,true);assert.equal(x.counts.kept,1);assert.equal(x.excluded.length,1);
+ assert.equal(x.replacementPolicy,'REQUIRES_APPROVED_SAME_LESSON_SKILL_POOL_NO_INVENTION');
+});
 test('E04 D9 contracts never grant E04 automatically',()=>{
  for(const c of manifest.caseRules.filter(x=>x.rendererCandidate.startsWith('D9_'))){
   const q=router.classify(contract(c));assert(q.ok);assert.equal(q.requiresE04,true);assert.equal(q.rendererGrant,'DENY');
