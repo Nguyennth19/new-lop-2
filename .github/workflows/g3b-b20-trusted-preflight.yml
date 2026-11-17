@@ -63,6 +63,8 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Render 25 P0 cases on desktop and mobile, no actual GAS
         run: node qa/p0-g2b-adaptation/test_integrated_browser.cjs
+      - name: B20 public lesson cache Chromium regression (51 public questions)
+        run: node qa/g3b/test_b20_client_cache_browser.cjs
       - name: Retain read-only visual evidence (not SGK images)
         if: always()
         uses: actions/upload-artifact@v4
@@ -70,5 +72,6 @@ jobs:
           name: p0-g2b-visual-review-fixtures-only
           path: |
             qa/p0-g2b-adaptation/QC25_BROWSER_RESULTS.json
+            qa/g3b/B20_CLIENT_CACHE_BROWSER_RESULTS.json
             qa/p0-g2b-adaptation/screenshots/
           retention-days: 14
