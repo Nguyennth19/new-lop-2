@@ -102,6 +102,44 @@ check('Client local grading still disabled',()=>{
  const x=fs.readFileSync(path.join(root,'26_ChamCauHoiToan.html'),'utf8');
  assert(!/q\.(?:answer|solutionPrompt)\b/.test(x));
 });
+check('Public SVG preserves safe B20 math picture primitives',()=>{
+ const sample='<circle cx="36" cy="44" r="20" fill="#facc15"/><path d="M 3 4 L 6 8" fill="#fff"/><text x="40" y="32">5 quả</text>';
+ assert.equal(call('g3aSafePublicSvg_',sample),sample);
+ const q=call('g3aB20PublicQuestion_',{id:'safe',type:'word_problem',svg:sample});
+ assert.equal(q.svg,sample);clean(q);
+});
+check('Public SVG does not return script, event handlers or foreign objects',()=>{
+ for(const bad of [
+  '<script>alert(1)</script>',
+  '<circle cx="5" onload="alert(1)"/>',
+  '<foreignObject><div>answer:73</div></foreignObject>',
+  '<image href="https://external.example/track"/>',
+  '<circle fill="url(javascript:alert(1))"/>',
+  '<text x="5">OK</text><svg onload="a()"/>'
+ ]){
+  assert.equal(call('g3aSafePublicSvg_',bad),'');
+  const p=call('g3aB20PublicQuestion_',{id:'bad',type:'word_problem',svg:bad});
+  assert.equal(p.svg,'');
+ }
+});
+check('B20 SVG cannot escape attributes or smuggle unapproved URL/style',()=>{
+ for(const bad of [
+  '<circle cx="5" style="display:none" />',
+  '<circle cx="5" data-secret="true"/>',
+  '<rect width="6" height="7" onclick="alert(1)"/>',
+  '<path d="M5 2" fill="url(https://bad.example)"/>',
+  '<text x="4">&lt;script&gt;</text><iframe src="x"/>'
+ ])assert.equal(call('g3aSafePublicSvg_',bad),'');
+});
+check('Public projector strips malicious Svg while preserving other public keys',()=>{
+ const q=call('g3aB20PublicQuestion_',{
+  id:'toan_b20_test_svg',type:'word_problem',prompt:'Tính tổng',
+  svg:'<script>42</script>',answer:'42',solutionPrompt:'TOP_SECRET'
+ });
+ assert.equal(q.svg,'');assert.equal(q.prompt,'Tính tổng');
+ assert.equal(q.answer,undefined);assert.equal(q.solutionPrompt,undefined);
+ clean(q);
+});
 const report={phase:'G3-B',scope:'SYNTHETIC_VM_ONLY_NOT_REAL_GAS',total:cases.length,
  passed:cases.filter(x=>x.status==='PASS').length,failed:cases.filter(x=>x.status==='FAIL').length,cases};
 fs.writeFileSync(path.join(__dirname,'G3B_RESULTS.json'),JSON.stringify(report,null,2)+'\n');
