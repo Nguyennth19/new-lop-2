@@ -28,7 +28,7 @@ function khoVisualContract_(x){
  if(renderer&&!/^D(?:10|8A|8B|[1-9])$/.test(renderer))return null;
  if(renderer&&!/^[A-Z0-9_\\-]{3,90}$/.test(skillId))return null;
  if(visualIntent&&!['DECORATIVE','CHOICE','EXACT_COUNT'].includes(visualIntent))return null;
- if(assetId&&!/^(?:FLUENT:[a-z0-9_]+|KL_(?:SH|M)\\d{2}_\\d{3}|KL2_[A-Z0-9_]+)$/.test(assetId))return null;
+ if(assetId&&!/^(?:FLUENT:[a-z0-9_]+|KL_(?:SH|M)\d{2}_\d{3}|KL2_[A-Z0-9_]+)$/.test(assetId))return null;
  if(semanticLabel.length>120||countUnit.length>30)return null;
  if(countText&&!/^(?:[1-9]|[1-4][0-9]|50)$/.test(countText))return null;
  let publicVariant={};
