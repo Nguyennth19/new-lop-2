@@ -177,6 +177,72 @@ check('G3B browser smoke receipt excludes answer keys and one-time tokens',()=>{
  assert(page.includes("case 'grade'"));
  assert(page.includes("case 'b024'"));
 });
+check('G2B 25-case reviewer route rejects unauthorized identity before templating',()=>{
+ const old=props.get('G3A_TEST_ALLOWED_EMAILS');
+ props.set('G3A_TEST_ALLOWED_EMAILS','intruder@example.test');
+ try{assert.throws(()=>call('doGet',{parameter:{g2bReview:'1'}}),/G3A_TEST_UNAUTHORIZED/);}
+ finally{props.set('G3A_TEST_ALLOWED_EMAILS',old);}
+});
+check('G2B 25-case reviewer route rejects disabled TEST',()=>{
+ const old=props.get('G3A_TEST_ENABLED');
+ props.set('G3A_TEST_ENABLED','false');
+ try{assert.throws(()=>call('doGet',{parameter:{g2bReview:'1'}}),/G3A_TEST_DISABLED/);}
+ finally{props.set('G3A_TEST_ENABLED',old);}
+});
+check('G2B reviewer route uses a separate Apps Script HTML template after authorization',()=>{
+ const prior=ctx.HtmlService;let used=null;
+ ctx.HtmlService={createTemplateFromFile:function(name){
+  used=name;return {evaluate:function(){return {setTitle:function(){return this;},addMetaTag:function(){return this;}};}};
+ }};
+ try{
+  const result=call('doGet',{parameter:{g2bReview:'1'}});
+  assert.equal(used,'G2B_ReviewerPreview');
+  assert.equal(typeof result,'object');
+ }finally{ctx.HtmlService=prior;}
+});
+check('G2B reviewer fixture registry is 25 safe synthetic descriptors and 14 families',()=>{
+ const s=fs.readFileSync(path.join(root,'G2B_ReviewFixtures.html'),'utf8');
+ const app={};vm.runInNewContext(s,{window:app},{filename:'G2B_ReviewFixtures.html'});
+ assert.equal(app.G2B_QA_REVIEW.cases.length,25);
+ assert.equal(Object.keys(app.G2B_QA_REVIEW.fixtures).length,14);
+ const seen=new Set();
+ for(const q of app.G2B_QA_REVIEW.cases){
+  assert(!seen.has(q.caseId));seen.add(q.caseId);clean(q);
+  assert(/^(?:KEEP_VARIANT|KEEP_STRUCTURAL|DROP)$/.test(q.decision));
+  assert(/^MATH_B\d{3}$/.test(q.lessonId));
+ }
+ assert.equal(app.G2B_QA_REVIEW.cases.filter(x=>x.decision==='DROP').length,7);
+ assert(!/https?:\/\/drive\.google\.com|data:image\/|base64,/.test(s));
+});
+check('G2B restricted reviewer page loads actual D3 D4 D7 D9 D10 cores and P0 router',()=>{
+ const s=fs.readFileSync(path.join(root,'G2B_ReviewerPreview.html'),'utf8');
+ for(const file of ['G2B_ReviewFixtures','89_P0_VariantRouter','90_P0_VectorStructural',
+  '66_D3_Core','67_D3_View','68_D4_Core','69_D4_View','73_D7_Core','74_D7_View',
+  '55_Pictograph_Core','56_Pictograph_View','80_D10_Core','81_D10_Adapter'])
+  assert(s.includes("napThanhPhan('"+file+"')"),file+' was not loaded');
+ const scripts=[...s.matchAll(/<script>([\s\S]*?)<\/script>/gi)];
+ new vm.Script(scripts[scripts.length-1][1],{filename:'G2B_ReviewerPreview.html'});
+ assert(s.includes("data-p0-review-preview=\"true\""));
+ assert(s.includes("router.compileReviewPayload"));
+ assert(s.includes("view.mount(layer,built.plan"));
+ assert(s.includes("studentRelease")===false||s.includes("'NO_GO'"));
+ assert(s.includes("release:'NO_GO'"));
+ assert(!/google\.script\.run|doPost\(|localStorage\.setItem/.test(s));
+ assert(!/https?:\/\/drive\.google\.com|data:image\/|base64,/.test(s));
+});
+check('B20 UI and reviewer QA include order preserve trusted grading and deny student variants',()=>{
+ const s=fs.readFileSync(path.join(root,'GiaoDien.html'),'utf8');
+ const names=['89_P0_VariantRouter','90_P0_VectorStructural','83_Visual_Orchestrator','19_KhongGianHocToan'];
+ const positions=names.map(n=>s.indexOf("napThanhPhan('"+n+"')"));
+ assert(positions.every(x=>x>=0));
+ assert(positions.every((x,i)=>i===0||x>positions[i-1]));
+ const core=fs.readFileSync(path.join(root,'83_Visual_Orchestrator.html'),'utf8');
+ assert(core.includes('P0_PENDING_INDEPENDENT_SOURCE_REVIEW_AND_RENDERER_GATE'));
+ assert(core.includes('P0_UNSAFE_OR_UNVERIFIED_ADAPTATION'));
+ const b20=fs.readFileSync(path.join(root,'19_KhongGianHocToan.html'),'utf8');
+ assert(b20.includes('g3aChamBaiToan20Test'));
+ assert(b20.includes('g3aLayBaiToan20Test'));
+});
 const report={phase:'G3-B',scope:'SYNTHETIC_VM_ONLY_NOT_REAL_GAS',total:cases.length,
  passed:cases.filter(x=>x.status==='PASS').length,failed:cases.filter(x=>x.status==='FAIL').length,cases};
 fs.writeFileSync(path.join(__dirname,'G3B_RESULTS.json'),JSON.stringify(report,null,2)+'\n');
