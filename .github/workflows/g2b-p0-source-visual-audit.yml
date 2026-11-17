@@ -1,0 +1,24 @@
+name: G2B P0 source image skill reviewer packet QA (no deploy)
+on:
+  push:
+    branches:
+      - audit/data-b-g2b-p0-source-visual-20261117
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate reviewer ledger and fail-closed gates
+        run: node qa/g2b-p0/verify_review_25.cjs
+      - name: Prevent published textbook pages/figures in audit code
+        shell: bash
+        run: |
+          set -eu
+          if find qa/g2b-p0 -type f \( -iname '*.pdf' -o -iname '*.png' -o -iname '*.jpg' \) | grep .; then
+            echo 'Textbook excerpt must remain in private reviewer packet, not public GitHub'
+            exit 1
+          fi
