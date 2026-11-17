@@ -237,7 +237,29 @@
    options:semantic.options.map((n,i)=>({id:'option_'+i,content:{type:'TEXT',text:String(n)}}))
   })),grading:'SERVER_ONLY',awarded:false};
  }
- const api={version:VERSION,classify,validSemantic,makeSeededTwoGroup,composeD4Choices,
+ function buildCandidatePool(contracts){
+  if(!Array.isArray(contracts)||contracts.length>500)return reject('INVALID_POOL');
+  const seen=new Set(),included=[],excluded=[];
+  for(const q of contracts){
+   const result=classify(q);
+   if(!result.ok){excluded.push({originExerciseId:q?.originExerciseId||null,reason:result.reason});continue;}
+   if(result.decision==='DROP'){
+    excluded.push({originExerciseId:q.originExerciseId,reason:'DROPPED_UNSAFE_SOURCE_TOPOLOGY'});continue;
+   }
+   if(seen.has(q.originExerciseId)){
+    excluded.push({originExerciseId:q.originExerciseId,reason:'DUPLICATE_SOURCE_EXERCISE'});continue;
+   }
+   seen.add(q.originExerciseId);
+   included.push({lessonId:q.lessonId,originExerciseId:q.originExerciseId,skillId:q.skillId,
+    decision:result.decision,semanticKind:result.semanticKind,
+    rendererCandidate:result.rendererCandidate,admission:'TEST_TEMPLATE_ONLY',
+    publishable:false,awarded:false});
+  }
+  return {ok:true,included,excluded,counts:{input:contracts.length,kept:included.length,excluded:excluded.length},
+   replacementPolicy:'REQUIRES_APPROVED_SAME_LESSON_SKILL_POOL_NO_INVENTION',
+   grading:'NONE',publishable:false,awarded:false};
+ }
+ const api={version:VERSION,classify,validSemantic,makeSeededTwoGroup,composeD4Choices,buildCandidatePool,
   droppedFamilies:Object.freeze([...DROPPED]),routes:ROUTES};
  return Object.freeze(api);
 });
