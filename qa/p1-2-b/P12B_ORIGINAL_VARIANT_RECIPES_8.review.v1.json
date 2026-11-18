@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "P12B_ORIGINAL_MATH_VARIANT_RECIPE_CATALOG_V1",
+  "stage": "DEV_ONLY_ORIGINAL_SYNTHETIC_VARIANTS_NOT_TEXTBOOK_REWRITES",
+  "reference": "P1_1_OFFICIAL_SOURCE_ROUTING_19",
+  "sourceBaseSha": "1a550444a188697cef5ae1ce007e4c7f8b11946d",
+  "sourceExactGrant": false,
+  "ownerPedagogicSigned": false,
+  "independentQA": false,
+  "rendererGrants": [],
+  "studentRelease": "NO_GO",
+  "templateSeeds": [
+    1031,
+    2047,
+    3091,
+    4057
+  ],
+  "families": [
+    {
+      "familyId": "B001_PLACE_VALUE",
+      "lessonId": "MATH_B001",
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "mathRuleId": "two_digit_place_value",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    },
+    {
+      "familyId": "B001_EXPANDED_FORM",
+      "lessonId": "MATH_B001",
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "mathRuleId": "expanded_tens_ones",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    },
+    {
+      "familyId": "B002_PREDECESSOR",
+      "lessonId": "MATH_B002",
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "mathRuleId": "predecessor",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    },
+    {
+      "familyId": "B002_SUCCESSOR",
+      "lessonId": "MATH_B002",
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "mathRuleId": "successor",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    },
+    {
+      "familyId": "B003_ADDEND_SUM_ROLE",
+      "lessonId": "MATH_B003",
+      "lessonSkillCandidate": "ADDITION",
+      "mathRuleId": "addition_terms",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    },
+    {
+      "familyId": "B003_SUBTRACTION_ROLE",
+      "lessonId": "MATH_B003",
+      "lessonSkillCandidate": "ADDITION",
+      "mathRuleId": "subtraction_terms",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    },
+    {
+      "familyId": "B004_MORE_THAN",
+      "lessonId": "MATH_B004",
+      "lessonSkillCandidate": "WORD_PROBLEM",
+      "mathRuleId": "comparison_more",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    },
+    {
+      "familyId": "B004_LESS_THAN",
+      "lessonId": "MATH_B004",
+      "lessonSkillCandidate": "WORD_PROBLEM",
+      "mathRuleId": "comparison_less",
+      "rendererReferenceCandidate": "D4",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "questionType": "SINGLE_CHOICE",
+      "visualIntent": "REPRESENTATIVE_NO_VISUAL",
+      "origin": "ORIGINAL_MATH_RULE_SYNTHETIC_NOT_SGK_OR_VBT_TEXT",
+      "requires": [
+        "PEDAGOGIC_OWNER_REVIEW",
+        "SKILL_AND_RENDERER_ROUTING_APPROVAL",
+        "TRUSTED_SERVER_GRADING_E2E",
+        "NO_PUBLIC_ANSWER_KEYS"
+      ],
+      "seedCount": 4
+    }
+  ],
+  "routingPolicy": "Do not map these synthetic family rules onto a C1/G2 exercise ID without source crosswalk and owner approval. D4 is an existing TEST reference only, not approved per-question.",
+  "privateDataPolicy": "QA engine calculates expected answers in local runtime; committed previews contain no answer keys or scoring oracle."
+}
