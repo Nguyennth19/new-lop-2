@@ -128,7 +128,7 @@ function g3aChamBaiToan20Test(payload){
       return typeof fields[k]==='string'&&fields[k].trim()!=='';})){
      const digits=String(q.answer||'');
      // B20 uses two-digit result slots; unsupported totals get no field hints.
-     if(/^\\d{2}$/.test(digits)){
+     if(/^\d{2}$/.test(digits)){
        const expectedCarry=(Number(q.n1)%10+Number(q.n2)%10)>=10?'1':'0';
        cellFeedback[q.id]={
          ones:fields.ones===digits[1]?'correct':'wrong',
