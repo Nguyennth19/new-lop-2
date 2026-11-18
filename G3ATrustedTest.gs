@@ -115,15 +115,32 @@ function g3aChamBaiToan20Test(payload){
   const questions=achSelect_(data,payload.level);
   if(!questions.length||!g3aValidateAnswers_(payload.answers,questions))return g3aDeny_('INVALID_ANSWERS');
   let correct=0,answered=0;
+  // Field-level color feedback is computed only on this trusted TEST server,
+  // after one-use submission; never return expected digits or a grading key.
+  // No partial feedback for incomplete vertical questions (limits probing).
+  const cellFeedback={};
   const perQuestion=questions.map(function(q){
    const fields=payload.answers[q.id],filled=Object.values(fields).some(v=>!!v.trim());
    const isCorrect=filled&&achCheck_(q,fields);
    if(filled)answered++;
    if(isCorrect)correct++;
+   if(q.type==='vertical'&&['ones','tens','carry'].every(function(k){
+      return typeof fields[k]==='string'&&fields[k].trim()!=='';})){
+     const digits=String(q.answer||'');
+     // B20 uses two-digit result slots; unsupported totals get no field hints.
+     if(/^\\d{2}$/.test(digits)){
+       const expectedCarry=(Number(q.n1)%10+Number(q.n2)%10)>=10?'1':'0';
+       cellFeedback[q.id]={
+         ones:fields.ones===digits[1]?'correct':'wrong',
+         tens:fields.tens===digits[0]?'correct':'wrong',
+         carry:fields.carry===expectedCarry?'correct':'wrong'
+       };
+     }
+   }
    return {id:q.id,status:isCorrect?'correct':filled?'wrong':'empty'};
   });
   return {ok:true,contractId:G3A_TEST_CONTRACT,lessonId:'toan_b20',level:payload.level,
-   correct,total:questions.length,answered,perQuestion,awarded:false,
+   correct,total:questions.length,answered,perQuestion,cellFeedback,awarded:false,
    writes:0,mode:'GAS_TEST_READ_ONLY'};
  });
 }
