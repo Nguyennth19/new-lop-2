@@ -170,10 +170,22 @@ function gradeLevel(){
    if(byId.size!==qs.length||qs.some(q=>!['correct','wrong','empty'].includes(byId.get(q.id)))){fail();return;}
    qs.forEach(q=>{
     const s=byId.get(q.id);gradingState[q.id]=s;
-    for(const el of fields(q)){
-     el.classList.toggle('ml-right',s==='correct');
-     el.classList.toggle('ml-wrong',s==='wrong'&&!!el.value);
-     el.classList.toggle('ml-empty',s==='empty'&&!el.value);
+    const inputFields=fields(q),allFilled=inputFields.every(el=>String(el.value||'').trim()!=='');
+    const verdict=q.type==='vertical'&&allFilled&&result.cellFeedback?.[q.id];
+    for(const el of inputFields){
+     const name=el.dataset.mlField.slice(q.id.length+1);
+     const fieldState=verdict?.[name];
+     // Cell verdicts exist only AFTER a trusted one-use server submission.
+     if(fieldState==='correct'||fieldState==='wrong'){
+      el.classList.toggle('ml-right',fieldState==='correct');
+      el.classList.toggle('ml-wrong',fieldState==='wrong');
+      el.classList.remove('ml-empty');
+     }else{
+      const partial=q.type==='vertical'&&!allFilled;
+      el.classList.toggle('ml-right',!partial&&s==='correct');
+      el.classList.toggle('ml-wrong',!partial&&s==='wrong'&&!!el.value);
+      el.classList.toggle('ml-empty',s==='empty'&&!el.value);
+     }
     }
     const card=shell().querySelector('[data-ml-q-card="'+q.id+'"]');
     if(card)card.classList.toggle('ml-correct',s==='correct');
@@ -293,6 +305,15 @@ document.addEventListener('input',e=>{
  const op=!!el.dataset.mlField&&el.dataset.mlField.endsWith(':op');
  el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
  drafts[el.dataset.mlScratch?'scratch:'+el.dataset.mlScratch:el.dataset.mlField]=el.value;
+ // Editing a trusted-graded answer invalidates its server verdict and score.
+ // Scratch-only notes cannot affect grade calculation or student rewards.
+ if(el.dataset.mlField&&el.dataset.mlQ){
+  delete gradingState[el.dataset.mlQ];delete submissions[view];
+  const card=el.closest('[data-ml-q-card]');
+  if(card){card.classList.remove('ml-correct');card.querySelectorAll('[data-ml-field]').forEach(x=>
+    x.classList.remove('ml-right','ml-wrong','ml-empty'));}
+  if(fullData&&view!=='THEORY')renderResults();
+ }
  // Bản nháp chỉ được giữ trong bộ nhớ của trang đang mở.
 });
 document.addEventListener('keydown',e=>{
