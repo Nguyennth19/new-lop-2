@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "P1_2_LAYERED_PACKAGES_QA_CHECKPOINT_V1",
+  "asOfLocalDate": "2026-11-18",
+  "status": "STRUCTURAL_DATA_LAYER_AND_CROSSWALK_PASS_CONTENT_APPROVAL_PENDING",
+  "inputs": {
+    "officialSourceRouting": "P1_1_OFFICIAL_SOURCE_ROUTING_19",
+    "routingCommit": "6a05a042bd614f22450ec74e99f5e65aecee3399",
+    "routingBlobSha": "1930790369530aecd4b95ab0ce793dd8d87c6477",
+    "v1SourceCommit": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+    "rendererManifestBlobSha": "27c6db04ce514c83d2b72f4068f20df8917e45ff"
+  },
+  "audited": {
+    "lessonJsonV1Kept": 24,
+    "lessonJsonV2Created": 24,
+    "c1SourceCandidatesPreserved": 536,
+    "g2ReviewCandidatesPreserved": 96,
+    "variantTemplatesPreserved": 17,
+    "excludedVariantsPreserved": 7,
+    "exactRendererIdsExistingInTestRegistry": 72,
+    "unmatchedRendererCandidates": 34,
+    "missingRendererCandidates": 7,
+    "sourceIndependentSigned": 0,
+    "publicVariantReady": 0,
+    "studentPlayable": 0
+  },
+  "qa": {
+    "deterministicGeneratorCheck": "24/24 PASS",
+    "v1ToV2DeepEquality": "24/24 PASS",
+    "crosswalk": "536+96+17+7 PASS",
+    "negativeGates": "9/9 PASS",
+    "runId": 44246041439,
+    "testedCommit": "e647e02c7e529ede0a7c14e35e0aa11b35dc0e56",
+    "result": "SUCCESS",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44246041439",
+    "actualGAS": "NOT_RUN",
+    "humanSourceExactQA": "NOT_SIGNED"
+  },
+  "reuse": {
+    "c4DevItems": 27,
+    "c4DevB001": 24,
+    "c4DevB002": 3,
+    "b20H2PedagogyApprovedItems": 30,
+    "b20LegacyItemsKeptSeparate": 51,
+    "webpHistoricalApproved": 288
+  },
+  "blockers": [
+    "C1 source prompts/parts/figure/validators not independently verified",
+    "G2 96 independent reviewer signatures missing",
+    "Renderer exact ID not enough to grant semantic usage, 34 unresolved aliases, 7 null",
+    "No approved student publicVariant nor real GAS E2E"
+  ],
+  "next": "P1.2-B source-first B001–B004 with C4 27 DEV reuse, then B005–B024; verify SGK/VBT editions and signoff before grant",
+  "rollback": {
+    "sourceCommit": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+    "modifiedMain": false,
+    "modifiedDrive": false,
+    "modifiedStudentData": false,
+    "modifiedGAS": false
+  }
+}
