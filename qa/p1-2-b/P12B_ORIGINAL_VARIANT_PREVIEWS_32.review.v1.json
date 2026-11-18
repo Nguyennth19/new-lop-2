@@ -1,0 +1,1815 @@
+{
+  "schemaVersion": "LOP2_P12B_ORIGINAL_MATH_PREVIEWS_32_V1",
+  "date": "2026-11-18",
+  "state": "32_ORIGINAL_MATH_RULE_DEV_PREVIEWS_NO_APPROVED_VARIANTS",
+  "sourceCatalog": "P12B_ORIGINAL_VARIANT_RECIPES_8.review.v1.json",
+  "sourceRouting": "P1_1_OFFICIAL_SOURCE_ROUTING_19",
+  "sourceDataNeverClaimedExact": true,
+  "previewOnly": true,
+  "answersAndRubricsIncluded": false,
+  "candidatePublicVariantGrants": 0,
+  "difficultyLevelSignoffs": 0,
+  "realTrustedGASGrading": "NOT_CONNECTED",
+  "total": 32,
+  "countsByLesson": {
+    "MATH_B001": 8,
+    "MATH_B002": 8,
+    "MATH_B003": 8,
+    "MATH_B004": 8
+  },
+  "variants": [
+    {
+      "familyId": "B001_PLACE_VALUE",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_PLACE_VALUE_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_PLACE_VALUE",
+        "variantId": "PV_B001_PLACE_VALUE_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số gồm 4 chục và 5 đơn vị là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "two_digit_place_value"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "44"
+            },
+            {
+              "id": "c2",
+              "text": "54"
+            },
+            {
+              "id": "c3",
+              "text": "45"
+            },
+            {
+              "id": "c4",
+              "text": "46"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B001_PLACE_VALUE",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_PLACE_VALUE_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_PLACE_VALUE",
+        "variantId": "PV_B001_PLACE_VALUE_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số gồm 2 chục và 5 đơn vị là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "two_digit_place_value"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "24"
+            },
+            {
+              "id": "c2",
+              "text": "52"
+            },
+            {
+              "id": "c3",
+              "text": "25"
+            },
+            {
+              "id": "c4",
+              "text": "26"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B001_PLACE_VALUE",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_PLACE_VALUE_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_PLACE_VALUE",
+        "variantId": "PV_B001_PLACE_VALUE_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số gồm 4 chục và 1 đơn vị là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "two_digit_place_value"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "40"
+            },
+            {
+              "id": "c2",
+              "text": "14"
+            },
+            {
+              "id": "c3",
+              "text": "41"
+            },
+            {
+              "id": "c4",
+              "text": "42"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B001_PLACE_VALUE",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_PLACE_VALUE_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_PLACE_VALUE",
+        "variantId": "PV_B001_PLACE_VALUE_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số gồm 4 chục và 7 đơn vị là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "two_digit_place_value"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "47"
+            },
+            {
+              "id": "c2",
+              "text": "48"
+            },
+            {
+              "id": "c3",
+              "text": "46"
+            },
+            {
+              "id": "c4",
+              "text": "74"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B001_EXPANDED_FORM",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_EXPANDED_FORM_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_EXPANDED_FORM",
+        "variantId": "PV_B001_EXPANDED_FORM_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số 45 được viết thành tổng nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "expanded_tens_ones"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "30 + 5"
+            },
+            {
+              "id": "c2",
+              "text": "50 + 4"
+            },
+            {
+              "id": "c3",
+              "text": "40 + 5"
+            },
+            {
+              "id": "c4",
+              "text": "40 + 6"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B001_EXPANDED_FORM",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_EXPANDED_FORM_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_EXPANDED_FORM",
+        "variantId": "PV_B001_EXPANDED_FORM_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số 25 được viết thành tổng nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "expanded_tens_ones"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "10 + 5"
+            },
+            {
+              "id": "c2",
+              "text": "50 + 2"
+            },
+            {
+              "id": "c3",
+              "text": "20 + 5"
+            },
+            {
+              "id": "c4",
+              "text": "20 + 6"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B001_EXPANDED_FORM",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_EXPANDED_FORM_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_EXPANDED_FORM",
+        "variantId": "PV_B001_EXPANDED_FORM_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số 41 được viết thành tổng nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "expanded_tens_ones"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "30 + 1"
+            },
+            {
+              "id": "c2",
+              "text": "10 + 4"
+            },
+            {
+              "id": "c3",
+              "text": "40 + 1"
+            },
+            {
+              "id": "c4",
+              "text": "40 + 2"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B001_EXPANDED_FORM",
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_EXPANDED_FORM_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "P12B_B001_EXPANDED_FORM",
+        "variantId": "PV_B001_EXPANDED_FORM_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số 47 được viết thành tổng nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "expanded_tens_ones"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "40 + 7"
+            },
+            {
+              "id": "c2",
+              "text": "40 + 8"
+            },
+            {
+              "id": "c3",
+              "text": "30 + 7"
+            },
+            {
+              "id": "c4",
+              "text": "70 + 4"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_PREDECESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_PREDECESSOR_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_PREDECESSOR",
+        "variantId": "PV_B002_PREDECESSOR_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền trước của 40 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "predecessor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "42"
+            },
+            {
+              "id": "c2",
+              "text": "38"
+            },
+            {
+              "id": "c3",
+              "text": "39"
+            },
+            {
+              "id": "c4",
+              "text": "40"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_PREDECESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_PREDECESSOR_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_PREDECESSOR",
+        "variantId": "PV_B002_PREDECESSOR_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền trước của 28 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "predecessor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "30"
+            },
+            {
+              "id": "c2",
+              "text": "26"
+            },
+            {
+              "id": "c3",
+              "text": "27"
+            },
+            {
+              "id": "c4",
+              "text": "28"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_PREDECESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_PREDECESSOR_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_PREDECESSOR",
+        "variantId": "PV_B002_PREDECESSOR_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền trước của 22 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "predecessor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "24"
+            },
+            {
+              "id": "c2",
+              "text": "20"
+            },
+            {
+              "id": "c3",
+              "text": "21"
+            },
+            {
+              "id": "c4",
+              "text": "22"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_PREDECESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_PREDECESSOR_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_PREDECESSOR",
+        "variantId": "PV_B002_PREDECESSOR_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền trước của 16 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "predecessor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "15"
+            },
+            {
+              "id": "c2",
+              "text": "16"
+            },
+            {
+              "id": "c3",
+              "text": "18"
+            },
+            {
+              "id": "c4",
+              "text": "14"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_SUCCESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_SUCCESSOR_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_SUCCESSOR",
+        "variantId": "PV_B002_SUCCESSOR_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền sau của 40 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "successor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "42"
+            },
+            {
+              "id": "c2",
+              "text": "38"
+            },
+            {
+              "id": "c3",
+              "text": "41"
+            },
+            {
+              "id": "c4",
+              "text": "40"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_SUCCESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_SUCCESSOR_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_SUCCESSOR",
+        "variantId": "PV_B002_SUCCESSOR_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền sau của 28 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "successor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "30"
+            },
+            {
+              "id": "c2",
+              "text": "26"
+            },
+            {
+              "id": "c3",
+              "text": "29"
+            },
+            {
+              "id": "c4",
+              "text": "28"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_SUCCESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_SUCCESSOR_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_SUCCESSOR",
+        "variantId": "PV_B002_SUCCESSOR_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền sau của 22 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "successor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "24"
+            },
+            {
+              "id": "c2",
+              "text": "20"
+            },
+            {
+              "id": "c3",
+              "text": "23"
+            },
+            {
+              "id": "c4",
+              "text": "22"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B002_SUCCESSOR",
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_SUCCESSOR_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "P12B_B002_SUCCESSOR",
+        "variantId": "PV_B002_SUCCESSOR_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền sau của 16 là số nào?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "successor"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "17"
+            },
+            {
+              "id": "c2",
+              "text": "16"
+            },
+            {
+              "id": "c3",
+              "text": "18"
+            },
+            {
+              "id": "c4",
+              "text": "14"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_ADDEND_SUM_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_ADDEND_SUM_ROLE_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_ADDEND_SUM_ROLE",
+        "variantId": "PV_B003_ADDEND_SUM_ROLE_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 34 + 13 = 47, số 47 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "addition_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Số bị trừ"
+            },
+            {
+              "id": "c2",
+              "text": "Hiệu"
+            },
+            {
+              "id": "c3",
+              "text": "Tổng"
+            },
+            {
+              "id": "c4",
+              "text": "Số hạng"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_ADDEND_SUM_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_ADDEND_SUM_ROLE_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_ADDEND_SUM_ROLE",
+        "variantId": "PV_B003_ADDEND_SUM_ROLE_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 18 + 17 = 35, số 35 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "addition_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Số bị trừ"
+            },
+            {
+              "id": "c2",
+              "text": "Hiệu"
+            },
+            {
+              "id": "c3",
+              "text": "Tổng"
+            },
+            {
+              "id": "c4",
+              "text": "Số hạng"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_ADDEND_SUM_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_ADDEND_SUM_ROLE_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_ADDEND_SUM_ROLE",
+        "variantId": "PV_B003_ADDEND_SUM_ROLE_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 34 + 17 = 51, số 51 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "addition_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Số bị trừ"
+            },
+            {
+              "id": "c2",
+              "text": "Hiệu"
+            },
+            {
+              "id": "c3",
+              "text": "Tổng"
+            },
+            {
+              "id": "c4",
+              "text": "Số hạng"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_ADDEND_SUM_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_ADDEND_SUM_ROLE_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_ADDEND_SUM_ROLE",
+        "variantId": "PV_B003_ADDEND_SUM_ROLE_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 20 + 27 = 47, số 47 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "addition_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Tổng"
+            },
+            {
+              "id": "c2",
+              "text": "Số hạng"
+            },
+            {
+              "id": "c3",
+              "text": "Số bị trừ"
+            },
+            {
+              "id": "c4",
+              "text": "Hiệu"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_SUBTRACTION_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_SUBTRACTION_ROLE_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_SUBTRACTION_ROLE",
+        "variantId": "PV_B003_SUBTRACTION_ROLE_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 78 − 17 = 61, số 61 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "subtraction_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Số trừ"
+            },
+            {
+              "id": "c2",
+              "text": "Số hạng"
+            },
+            {
+              "id": "c3",
+              "text": "Hiệu"
+            },
+            {
+              "id": "c4",
+              "text": "Số bị trừ"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_SUBTRACTION_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_SUBTRACTION_ROLE_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_SUBTRACTION_ROLE",
+        "variantId": "PV_B003_SUBTRACTION_ROLE_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 62 − 11 = 51, số 51 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "subtraction_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Số trừ"
+            },
+            {
+              "id": "c2",
+              "text": "Số hạng"
+            },
+            {
+              "id": "c3",
+              "text": "Hiệu"
+            },
+            {
+              "id": "c4",
+              "text": "Số bị trừ"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_SUBTRACTION_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_SUBTRACTION_ROLE_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_SUBTRACTION_ROLE",
+        "variantId": "PV_B003_SUBTRACTION_ROLE_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 57 − 11 = 46, số 46 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "subtraction_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Số trừ"
+            },
+            {
+              "id": "c2",
+              "text": "Số hạng"
+            },
+            {
+              "id": "c3",
+              "text": "Hiệu"
+            },
+            {
+              "id": "c4",
+              "text": "Số bị trừ"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B003_SUBTRACTION_ROLE",
+      "lessonId": "MATH_B003",
+      "variantId": "PV_B003_SUBTRACTION_ROLE_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B003",
+        "questionId": "P12B_B003_SUBTRACTION_ROLE",
+        "variantId": "PV_B003_SUBTRACTION_ROLE_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Trong phép tính 57 − 17 = 40, số 40 được gọi là gì?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "subtraction_terms"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "Hiệu"
+            },
+            {
+              "id": "c2",
+              "text": "Số bị trừ"
+            },
+            {
+              "id": "c3",
+              "text": "Số trừ"
+            },
+            {
+              "id": "c4",
+              "text": "Số hạng"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_MORE_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_MORE_THAN_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_MORE_THAN",
+        "variantId": "PV_B004_MORE_THAN_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Tổ A có 42 điểm, tổ B có 31 điểm. Tổ A nhiều hơn tổ B bao nhiêu điểm?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "comparison_more"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "10"
+            },
+            {
+              "id": "c2",
+              "text": "73"
+            },
+            {
+              "id": "c3",
+              "text": "11"
+            },
+            {
+              "id": "c4",
+              "text": "12"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_MORE_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_MORE_THAN_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_MORE_THAN",
+        "variantId": "PV_B004_MORE_THAN_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Tổ A có 24 điểm, tổ B có 15 điểm. Tổ A nhiều hơn tổ B bao nhiêu điểm?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "comparison_more"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "8"
+            },
+            {
+              "id": "c2",
+              "text": "39"
+            },
+            {
+              "id": "c3",
+              "text": "9"
+            },
+            {
+              "id": "c4",
+              "text": "10"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_MORE_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_MORE_THAN_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_MORE_THAN",
+        "variantId": "PV_B004_MORE_THAN_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Tổ A có 48 điểm, tổ B có 31 điểm. Tổ A nhiều hơn tổ B bao nhiêu điểm?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "comparison_more"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "16"
+            },
+            {
+              "id": "c2",
+              "text": "79"
+            },
+            {
+              "id": "c3",
+              "text": "17"
+            },
+            {
+              "id": "c4",
+              "text": "18"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_MORE_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_MORE_THAN_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_MORE_THAN",
+        "variantId": "PV_B004_MORE_THAN_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Tổ A có 20 điểm, tổ B có 17 điểm. Tổ A nhiều hơn tổ B bao nhiêu điểm?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "comparison_more"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "3"
+            },
+            {
+              "id": "c2",
+              "text": "4"
+            },
+            {
+              "id": "c3",
+              "text": "2"
+            },
+            {
+              "id": "c4",
+              "text": "37"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_LESS_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_LESS_THAN_S1031",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_LESS_THAN",
+        "variantId": "PV_B004_LESS_THAN_S1031",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Giỏ thứ nhất có 31 quả cam, giỏ thứ hai có 42 quả cam. Giỏ thứ nhất ít hơn giỏ thứ hai bao nhiêu quả?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 1031,
+            "reviewOnly": true,
+            "concept": "comparison_less"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "10"
+            },
+            {
+              "id": "c2",
+              "text": "73"
+            },
+            {
+              "id": "c3",
+              "text": "11"
+            },
+            {
+              "id": "c4",
+              "text": "12"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_LESS_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_LESS_THAN_S2047",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_LESS_THAN",
+        "variantId": "PV_B004_LESS_THAN_S2047",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Giỏ thứ nhất có 15 quả cam, giỏ thứ hai có 24 quả cam. Giỏ thứ nhất ít hơn giỏ thứ hai bao nhiêu quả?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 2047,
+            "reviewOnly": true,
+            "concept": "comparison_less"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "8"
+            },
+            {
+              "id": "c2",
+              "text": "39"
+            },
+            {
+              "id": "c3",
+              "text": "9"
+            },
+            {
+              "id": "c4",
+              "text": "10"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_LESS_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_LESS_THAN_S3091",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_LESS_THAN",
+        "variantId": "PV_B004_LESS_THAN_S3091",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Giỏ thứ nhất có 31 quả cam, giỏ thứ hai có 48 quả cam. Giỏ thứ nhất ít hơn giỏ thứ hai bao nhiêu quả?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 3091,
+            "reviewOnly": true,
+            "concept": "comparison_less"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "16"
+            },
+            {
+              "id": "c2",
+              "text": "79"
+            },
+            {
+              "id": "c3",
+              "text": "17"
+            },
+            {
+              "id": "c4",
+              "text": "18"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    },
+    {
+      "familyId": "B004_LESS_THAN",
+      "lessonId": "MATH_B004",
+      "variantId": "PV_B004_LESS_THAN_S4057",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererRouteCandidate": "D4",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B004",
+        "questionId": "P12B_B004_LESS_THAN",
+        "variantId": "PV_B004_LESS_THAN_S4057",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Giỏ thứ nhất có 17 quả cam, giỏ thứ hai có 20 quả cam. Giỏ thứ nhất ít hơn giỏ thứ hai bao nhiêu quả?",
+          "publicParameters": {
+            "originalMathRule": true,
+            "seed": 4057,
+            "reviewOnly": true,
+            "concept": "comparison_less"
+          },
+          "visibleChoices": [
+            {
+              "id": "c1",
+              "text": "3"
+            },
+            {
+              "id": "c2",
+              "text": "4"
+            },
+            {
+              "id": "c3",
+              "text": "2"
+            },
+            {
+              "id": "c4",
+              "text": "37"
+            }
+          ]
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      },
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED"
+    }
+  ],
+  "rollback": "Ignore DEV preview file; original V1/V2 and all owner approvals unchanged."
+}
