@@ -99,7 +99,7 @@ function render(){
  restoreDrafts();
  installSvg();
  // Remove duplicate D2 practice accordions; existing vertical fields remain unchanged.
- if(window.BE_HOC_STRUCTURED_PUBLIC_V2)window.BE_HOC_STRUCTURED_PUBLIC_V2.mountB20(fullData,root,view);
+ // B20 UX: no redundant base-10 visualization accordion under the vertical cards.
  if(window.BE_HOC_VISUAL_ORCHESTRATOR)window.BE_HOC_VISUAL_ORCHESTRATOR.mountLesson(fullData,root,view);
  target.scrollTop=0;
  renderResults();
