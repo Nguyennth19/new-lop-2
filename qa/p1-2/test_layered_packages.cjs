@@ -186,3 +186,44 @@ function verifyCrosswalk(){
 }
 if(require.main===module)verifyCrosswalk();
 module.exports.verifyCrosswalk=verifyCrosswalk;
+
+
+function verifyC4DevReuse(){
+ const file='qa/p1-2/P1_2_C4_DEV27_EXACT_ID_REUSE_CROSSWALK.review.v1.json';
+ const d=readJson(file);
+ assert.equal(d.schemaVersion,'P1_2_C4_DEV_EXACT_ID_REUSE_CROSSWALK_V1');
+ assert.equal(d.status,'27_OF_27_EXACT_ID_MATCH_FOR_DEV_REFERENCE_NO_STUDENT_GRANT');
+ assert.equal(d.records.length,27);
+ assert.equal(d.counts.B001,24);
+ assert.equal(d.counts.B002,3);
+ assert.equal(d.counts.publicVariantsApproved,0);
+ assert.equal(d.sourceWorkbook.privateAnswerKeysCopiedToGithub,false);
+ const unique=new Set();
+ const lessons=new Map();
+ for(const r of d.records){
+  assert.ok(!unique.has(r.joinKey),'C4 duplicate '+r.joinKey);unique.add(r.joinKey);
+  assert.ok(['MATH_B001','MATH_B002'].includes(r.lessonId));
+  assert.equal(r.sourceExactIndependentGrant,'NOT_GRANTED');
+  assert.equal(r.reuseScope,'C4_DEV_CONTENT_REFERENCE_ONLY');
+  assert.equal(r.rendererGrant,'DENY');
+  assert.equal(r.publicVariant,null);
+  assert.equal(r.identityMatch,'EXACT_ORIGIN_EXERCISE_ID');
+  assert.equal(r.c4Status,'REAL_ITEM_DEV_RENDERED');
+  assert.equal(r.c4ScoringQA,'SCORED_CHROME_DESKTOP_MOBILE');
+  if(!lessons.has(r.lessonId)){
+   const f=manifest.files.find(x=>x.lessonId===r.lessonId);
+   lessons.set(r.lessonId,{file:f,source:readJson(f.layeredFile)});
+  }
+  const src=lessons.get(r.lessonId),q=src.source.sourceLayer.items.find(x=>x.originExerciseId===r.originExerciseId);
+  assert.ok(q,'C4 DEV item without C1 ID '+r.originExerciseId);
+  assert.equal(r.v2LayerBlobSha,src.file.layeredBlobSha);
+  assert.equal(r.c1SourceRow,q.source.c1RegistryRow);
+  assert.equal(r.c1EnvelopeRow,q.source.c1EnvelopeRow);
+  assert.equal(r.sourceTrack,q.source.track);
+  assert.equal(r.level,q.source.level);
+ }
+ assert.equal(unique.size,27);
+ console.log(JSON.stringify({test:'P1_2_C4_DEV_REUSE',status:'PASS',exactIdLinks:27,B001:24,B002:3,answersCopied:false,studentRelease:'NO_GO'}));
+}
+if(require.main===module)verifyC4DevReuse();
+module.exports.verifyC4DevReuse=verifyC4DevReuse;
