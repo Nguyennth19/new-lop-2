@@ -98,7 +98,7 @@ function render(){
  target.innerHTML='<div class="ml-page">'+sections.map((s,i)=>section(s,i)).join('')+'</div>';
  restoreDrafts();
  installSvg();
- if(window.BE_HOC_D2_V12)window.BE_HOC_D2_V12.mountB20(fullData,root,view);
+ // Remove duplicate D2 practice accordions; existing vertical fields remain unchanged.
  if(window.BE_HOC_STRUCTURED_PUBLIC_V2)window.BE_HOC_STRUCTURED_PUBLIC_V2.mountB20(fullData,root,view);
  if(window.BE_HOC_VISUAL_ORCHESTRATOR)window.BE_HOC_VISUAL_ORCHESTRATOR.mountLesson(fullData,root,view);
  target.scrollTop=0;
@@ -191,6 +191,9 @@ function resetLevel(){
  const qs=activeQuestions().filter(q=>q.level===view);
  for(const q of qs){
   for(const el of fields(q)){el.value='';delete drafts[el.dataset.mlField];el.classList.remove('ml-right','ml-wrong','ml-empty');}
+  for(const el of shell().querySelectorAll('[data-ml-scratch]')){
+   if(el.dataset.mlScratch.startsWith(q.id+':')){el.value='';delete drafts['scratch:'+el.dataset.mlScratch];}
+  }
   delete gradingState[q.id];
  }
  delete submissions[view];
@@ -211,6 +214,9 @@ function renderResults(){
 }
 function restoreDrafts(){
  shell().querySelectorAll('[data-ml-field]').forEach(el=>{if(drafts[el.dataset.mlField]!==undefined)el.value=drafts[el.dataset.mlField]});
+ shell().querySelectorAll('[data-ml-scratch]').forEach(el=>{
+  const key='scratch:'+el.dataset.mlScratch;if(drafts[key]!==undefined)el.value=drafts[key];
+ });
 }
 function installSvg(){
  const root=shell();const ns='http://www.w3.org/2000/svg';
@@ -243,7 +249,7 @@ function installSvg(){
   if(!bound?.ok)fallback();
  });
 }
-function inputList(){return [...shell().querySelectorAll('#mlContent [data-ml-field]')];}
+function inputList(){return [...shell().querySelectorAll('#mlContent [data-ml-field],#mlContent [data-ml-scratch]')];}
 let selected=null;
 function pickInput(el){selected=el;}
 function press(k){
@@ -253,9 +259,9 @@ function press(k){
  const target=selected;
  if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  if(k==='⌫'){target.value=target.value.slice(0,-1);}
- else if(['+','−','×','÷','='].includes(k)){if(target.dataset.mlField.endsWith(':op'))target.value=({'+':'+','−':'-','×':'*','÷':'/','=':'='})[k];else return;}
+ else if(['+','−','×','÷','='].includes(k)){if(target.dataset.mlField?.endsWith(':op'))target.value=({'+':'+','−':'-','×':'*','÷':'/','=':'='})[k];else return;}
  else if(/^[0-9]$/.test(k)){
-  if(target.dataset.mlField.endsWith(':op'))return;
+  if(target.dataset.mlField?.endsWith(':op'))return;
   target.value=(target.value+k).slice(0,Number(target.maxLength)||3);
   if(target.value.length>=target.maxLength){
    const next=all[all.indexOf(target)+1];if(next)selected=next;
@@ -277,20 +283,20 @@ document.addEventListener('click',e=>{
   root.querySelector('#mlShowKeyboard').hidden=!dock.hidden;return;
  }
  const key=e.target.closest('[data-ml-key]');if(key){press(key.dataset.mlKey);return;}
- const focused=e.target.closest('[data-ml-field]');if(focused)pickInput(focused);
+ const focused=e.target.closest('[data-ml-field],[data-ml-scratch]');if(focused)pickInput(focused);
 });
 document.addEventListener('mousedown',e=>{const key=e.target.closest('#mathFullScreen [data-ml-key]');if(key)e.preventDefault();});
-document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-ml-field]'))pickInput(e.target);});
+document.addEventListener('focusin',e=>{if(e.target.matches('#mathFullScreen [data-ml-field],#mathFullScreen [data-ml-scratch]'))pickInput(e.target);});
 document.addEventListener('input',e=>{
- const el=e.target;if(!el.matches('#mathFullScreen [data-ml-field]'))return;
+ const el=e.target;if(!el.matches('#mathFullScreen [data-ml-field],#mathFullScreen [data-ml-scratch]'))return;
  if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
- const op=el.dataset.mlField.endsWith(':op');
+ const op=!!el.dataset.mlField&&el.dataset.mlField.endsWith(':op');
  el.value=op?el.value.replace(/[^+\-*\/=]/g,'').slice(-1):el.value.replace(/\D/g,'').slice(0,el.maxLength);
- drafts[el.dataset.mlField]=el.value;
+ drafts[el.dataset.mlScratch?'scratch:'+el.dataset.mlScratch:el.dataset.mlField]=el.value;
  // Bản nháp chỉ được giữ trong bộ nhớ của trang đang mở.
 });
 document.addEventListener('keydown',e=>{
- if(!e.target.matches('#mathFullScreen [data-ml-field]'))return;
+ if(!e.target.matches('#mathFullScreen [data-ml-field],#mathFullScreen [data-ml-scratch]'))return;
  if(typeof DEM_TUONG_TAC!=='undefined')DEM_TUONG_TAC.touch();
  if(e.key==='Enter'){e.preventDefault();const all=inputList(),i=all.indexOf(e.target);if(i>=0&&i<all.length-1)all[i+1].focus();}
 });
