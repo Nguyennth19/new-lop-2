@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "P1_1_P1_2_P1_3_SOURCE_HANDOFF_REVIEW_V1",
+  "governance": {
+    "decisionSource": "qa/p1-1/P1_1_DEEP_SOURCE_DECISIONS_19.review.v2.json",
+    "status": "OWNER_RATIFICATION_PENDING",
+    "noStudentRelease": true
+  },
+  "P1_2": {
+    "sourceC1": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+    "sourceV8": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+    "devC4": "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
+    "review96And25": "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+    "lesson24Manifest": "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/du-lieu/bai-hoc/toan/v1/manifest.B001-B024.json",
+    "schemaV1": "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/du-lieu/bai-hoc/toan/v1/lessonpackage.schema.v1.json",
+    "renderer12": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-6-resource-renderer-consolidation-v1-20261114/du-lieu/g7-6/resource-renderer-manifest.v1.json",
+    "trustedGradingTest": "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3b-b20-trusted-gas-e2e-20261117",
+    "requires": [
+      "lessonId",
+      "skillId",
+      "questionType",
+      "visualIntent",
+      "assetId_OR_verifiedSemanticMapping",
+      "publicVariant"
+    ],
+    "gates": "0 approved public variants, 0 independent source signs; no auto C1-G2 id join; no browser private answer"
+  },
+  "P1_3": {
+    "originalDrive": "https://drive.google.com/drive/folders/1IEIvmL_DmV9M1YxuWuBtvNeahilByl0x",
+    "githubMaster": "https://github.com/Nguyennth19/new-lop-2/blob/be-hoc/qa/be-hoc-orchestrator/drive-png-master-pins.test.cjs",
+    "ownerLabel": "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-7-perf-a-owner-label-approval-20261113/qa/g7-4-b5-7-perf-a/owner-label-approval-188.audit.json",
+    "sourcePng": 288,
+    "githubMirroredPng": 24,
+    "remainingPng": 264,
+    "webpApproved": 288,
+    "fluentSvg": 46,
+    "characterWebp": 30,
+    "require": "per file Drive ID + byte SHA256 + Git blob + dimensions + assetID + character QA separate; WebP/PNG count independent"
+  }
+}
