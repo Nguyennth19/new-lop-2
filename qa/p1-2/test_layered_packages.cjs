@@ -227,3 +227,34 @@ function verifyC4DevReuse(){
 }
 if(require.main===module)verifyC4DevReuse();
 module.exports.verifyC4DevReuse=verifyC4DevReuse;
+
+
+function verifyRendererReviewQueue(){
+ const q=readJson('qa/p1-2/P1_2_RENDERER_CANDIDATE_REVIEW_QUEUE_41.review.v1.json');
+ const files=[
+ 'qa/p1-2/P1_2_CROSSWALK_B001_B012.review.v1.json',
+ 'qa/p1-2/P1_2_CROSSWALK_B013_B024.review.v1.json'
+ ];
+ const combined=files.flatMap(f=>{const p=readJson(f);return [...p.technicalReview,...p.templateCandidates];});
+ assert.equal(q.schemaVersion,'P1_2_RENDERER_CANDIDATE_REVIEW_QUEUE_V1');
+ assert.equal(q.state,'TECHNICAL_ALIAS_AND_MISSING_QUEUE_NOT_APPROVAL');
+ assert.deepEqual(q.routesPinned,routes);
+ assert.equal(combined.length,113);
+ const alias=combined.filter(x=>x.rendererCandidate&&!routeSet.has(x.rendererCandidate));
+ const missing=combined.filter(x=>!x.rendererCandidate);
+ const exact=combined.filter(x=>routeSet.has(x.rendererCandidate));
+ assert.equal(exact.length,72);
+ assert.equal(alias.length,34);
+ assert.equal(missing.length,7);
+ assert.equal(q.rows.length,41);
+ assert.deepEqual(q.rows.map(x=>x.rowKey),[...alias,...missing].map(x=>x.rowKey));
+ for(const x of q.rows){
+  assert.equal(x.rendererGrant,'DENY');
+  assert.equal(x.publicVariant,null);
+  if(x.rendererCandidate)assert.equal(x.issue,'NO_EXACT_RENDERER_REGISTRY_ID');
+  else assert.equal(x.issue,'MISSING_RENDERER_CANDIDATE');
+ }
+ console.log(JSON.stringify({test:'P1_2_RENDERER_REVIEW_QUEUE',status:'PASS',exactRouteCandidates:72,aliasUnresolved:34,missing:7,studentRelease:'NO_GO'}));
+}
+if(require.main===module)verifyRendererReviewQueue();
+module.exports.verifyRendererReviewQueue=verifyRendererReviewQueue;
