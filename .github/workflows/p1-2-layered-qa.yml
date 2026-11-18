@@ -1,0 +1,28 @@
+name: P1.2 Layered B001-B024 Source QA (NO DEPLOY)
+on:
+  push:
+    branches:
+      - 'test/p1-2-b001-b024-layered-lesson-packages-20261118'
+    paths:
+      - 'du-lieu/bai-hoc/toan/v2/**'
+      - 'qa/p1-2/**'
+      - '.github/workflows/p1-2-layered-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  layered-packages:
+    name: 24 lesson candidates / no release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout pinned event commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate all 24 V1 to V2 data projections and negative gates
+        run: node qa/p1-2/test_layered_packages.cjs
