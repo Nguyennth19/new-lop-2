@@ -81,10 +81,28 @@ const grade=call('g3aChamBaiToan20Test',payload);
 check('READONLY grade covers exactly server-selected questions',()=>{assert.equal(grade.ok,true);assert.equal(grade.total,qs.length);assert.equal(grade.correct,qs.length);assert.equal(grade.awarded,false);assert.equal(grade.writes,0)});
 check('GRADE response is clean of answer keys',()=>{assert.equal(typeof grade.correct,'number');const {correct:_,...safe}=grade;assertClean(safe);});
 check('All 4 selected vertical examples are marked correct',()=>assert(grade.perQuestion.filter(v=>v.id.startsWith('toan_b20_lv1_v')&&v.status==='correct').length===4));
+check('B20 per-cell feedback confirms correct full vertical fields without sending expected digits',()=>{
+ const id=qs.find(q=>q.type==='vertical').id;
+ assert.deepEqual(Object.assign({},grade.cellFeedback[id]),{ones:'correct',tens:'correct',carry:'correct'});
+ assert(!JSON.stringify(grade).includes('SECRET_PRIVATE_SOLUTION'));
+});
+
 check('One-time token prevents replay',()=>assert.equal(call('g3aChamBaiToan20Test',payload).ok,false));
 session=call('g3aTaoPhienChamB20Test',{lessonId:'toan_b20',level:'LV1'});
 const bad=JSON.parse(JSON.stringify(payload));bad.token=session.token;bad.answers[qs[0].id]={ones:'0',tens:'0',carry:'0'};
 check('Wrong arithmetic produces wrong status',()=>{const r=call('g3aChamBaiToan20Test',bad);assert.equal(r.ok,true);assert(r.correct<r.total)});
+session=call('g3aTaoPhienChamB20Test',{lessonId:'toan_b20',level:'LV1'});
+check('Partially correct vertical fields are green only by server status while whole question stays wrong',()=>{
+ const v=qs.find(q=>q.type==='vertical');
+ const reply=structuredClone(payload);reply.token=session.token;
+ reply.answers[v.id]={ones:'3',tens:'0',carry:'1'};
+ const res=call('g3aChamBaiToan20Test',reply);
+ assert(res.ok);assert.equal(res.perQuestion.find(x=>x.id===v.id).status,'wrong');
+ assert.equal(res.cellFeedback[v.id].ones,'correct');
+ assert.equal(res.cellFeedback[v.id].tens,'wrong');
+ assert.equal(res.cellFeedback[v.id].carry,'correct');
+ assert.equal(res.awarded,false);assert.equal(res.writes,0);
+});
 session=call('g3aTaoPhienChamB20Test',{lessonId:'toan_b20',level:'LV1'});
 check('Reject unrecognized answer key before checking',()=>{let z=structuredClone(payload);z.token=session.token;z.answers[qs[0].id].isCorrect=true;assert.equal(call('g3aChamBaiToan20Test',z).ok,false);});
 check('Rejected payload still consumes token',()=>assert.equal(call('g3aChamBaiToan20Test',{...payload,token:session.token}).ok,false));
