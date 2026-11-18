@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'../..'),read=n=>fs.readFileSync(path.join(roo
 const code={renderer:read('41_HienThiCauHoiToan.html'),controller:read('19_KhongGianHocToan.html'),
   selector:read('23_ChonCauHoiToan.html'),server:read('ThanhTichMayChu.gs'),
   grade:read('G3ATrustedTest.gs'),tangram:read('54_Tangram_V12.html'),
-  mentalCss:read('20_CSS_KhongGianHocToan.html'),smoke:read('G3B_BrowserSmoke.html')};
+  mentalCss:read('43_CSS_ThanhPhanBaiToan.html'),smoke:read('G3B_BrowserSmoke.html')};
 const tests=[];
 function check(label,fn){try{fn();tests.push({label,status:'PASS'});}catch(e){tests.push({label,status:'FAIL',detail:e.message.slice(0,230)});}}
 const context=vm.createContext({window:{},console,document:{addEventListener(){}},Date,Math,Object,Set,Map});
