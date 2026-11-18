@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const {chromium}=require('playwright');const root=path.resolve(__dirname,'../..');
 const src=n=>fs.readFileSync(path.join(root,n),'utf8');
 const script=n=>'<script>'+src(n).replace(/<\/script/gi,'<\\/script')+'</script>';
-const css=src('20_CSS_KhongGianHocToan.html')+'\n'+src('62_CSS_Geometry.html');
+const css=['20_CSS_KhongGianHocToan.html','22_CSS_BaiHocKetQua.html','25_CSS_SuaBoCucBaiHoc.html','43_CSS_ThanhPhanBaiToan.html','62_CSS_Geometry.html'].map(src).join('\n');
 const title=(id,type,level,section,extra={})=>Object.assign({
   id,type,valid:true,level,sectionId:section,order:1,label:id,theme:'blue',
   prompt:'28 con gà và 17 con gà. Có tất cả bao nhiêu con?',unit:'con',
