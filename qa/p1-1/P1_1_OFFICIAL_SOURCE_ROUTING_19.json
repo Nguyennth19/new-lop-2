@@ -1,0 +1,921 @@
+{
+  "schemaVersion": "LOP2_P1_1_OFFICIAL_SOURCE_ROUTING_19_V1",
+  "registryId": "P1_1_OFFICIAL_SOURCE_ROUTING_19",
+  "decisionDate": "2026-11-18",
+  "state": "OWNER_APPROVED_SOURCE_SELECTION_SCOPE_ONLY",
+  "officialSourceRoutingFor": [
+    "P1_2_LESSONPACKAGES_B001_B024",
+    "P1_3_PNG_MASTER_CHARACTERS"
+  ],
+  "isStudentReleaseAuthority": false,
+  "sourcePins": {
+    "frozenBaselineCommit": "bf3d2adf90aa2594ac7a5b407218c36a028bc9ea",
+    "ratifiedMatrixCommit": "38593b68484db86c0c4aa63c2da17a6d0f0406a3",
+    "ratifiedMatrixPath": "qa/p1-1/P1_1_DEEP_SOURCE_DECISIONS_19.review.v2.json",
+    "ratifiedMatrixBlobSha": "e361b934b32bb42a0e0f8075a8df3d2ee09b562a",
+    "auditBranch": "audit/p1-1-source-of-truth-ledger-20261118"
+  },
+  "ownerDecision": {
+    "evidenceType": "PROJECT_OWNER_EXPLICIT_CHAT_CONFIRMATION",
+    "decisionRecordedLocalDate": "2026-11-18",
+    "quotedDecision": "xác nhận toàn bộ ma trận 15 GIỮ / 4 THAY theo phạm vi -> có thể phát hành `P1_1_OFFICIAL_SOURCE_ROUTING_19` làm nguồn tham chiếu chính thức cho P1.2 và P1.3. Các cổng riêng về source-exact SGK, GAS thực tế, quyền renderer và phát hành cho học sinh vẫn giữ nguyên.",
+    "approvalScope": "OFFICIAL_SOURCE_SELECTION_AND_ROUTING_FOR_P1_2_AND_P1_3_ONLY",
+    "signedAt": null,
+    "cryptographicSignature": null,
+    "independentIdentityVerification": "NOT_PERFORMED",
+    "notApproved": [
+      "SOURCE_EXACT_SGK_VBT_PER_ITEM",
+      "G2B_INDEPENDENT_REVIEW_96_ITEMS",
+      "G76_C07_C08_C09_AND_6_OWNER_GATE_PACKETS",
+      "ACTUAL_GAS_TEST_DEPLOYMENT_OR_NETWORK_ACCEPTANCE",
+      "AUTOMATIC_RENDERER_ASSET_OR_PUBLIC_VARIANT_GRANTS",
+      "STUDENT_RELEASE_OR_LEARNER_SCORE_WRITE",
+      "FORMAL_ADOPTION_OF_10_PROPOSED_WORKFLOW_RULES",
+      "SOURCE_PNG_288_FILE_BYTE_QA"
+    ]
+  },
+  "selectionSummary": {
+    "domains": 19,
+    "keep": 15,
+    "replaceScopeSpecific": 4,
+    "ownerApprovedSelections": 19,
+    "technicalOwnerDecisionRecords": 19,
+    "independentlySignedG2BReviewItems": 0,
+    "verifiedG76OwnerPackets": 0,
+    "newWorkflowRulesFormallyAdopted": 0,
+    "passedGASRealE2EByThisDecision": false,
+    "hasCompletedPNG288ByteMirroring": false
+  },
+  "noLossPrinciples": [
+    "Original 19 frozen records and owner signoff evidence remain immutable.",
+    "New routing selects the best proven source for a specified P1.2/P1.3 purpose, not a globally merged branch or student deployment.",
+    "Four scoped replacements preserve the previous original record, source SHA/ID, QA limits and rollback.",
+    "Historical per-domain QA approvals stay valid in their original scope; existing pending gates remain pending.",
+    "No editing or deleting Drive, Sheet, app, GitHub main, lesson source books, student points or real deployment."
+  ],
+  "records": [
+    {
+      "ordinal": 1,
+      "domain": "APPLICATION_MAIN",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "MAIN_BASELINE_REFERENCE_ONLY",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/main",
+        "branch": "main",
+        "sha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/main",
+        "branch": "main",
+        "sha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "Không có chứng thực deployment→Git SHA; giữ MAIN bất biến.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/main"
+      ],
+      "historicalPassScope": "NO_PUBLISHED_STUDENT_RELEASE",
+      "historicalApprovalState": "REVIEW_PENDING",
+      "responsibleRole": "APP_RELEASE_MAINTAINER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Pin existing main SHA; no merge, deploy or edit from this ledger; rollback means discard this audit index."
+    },
+    {
+      "ordinal": 2,
+      "domain": "APPLICATION_STABLE_TEST_UI",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "GOLDEN_UI_REFERENCE_ONLY",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test-theo-main",
+        "branch": "test-theo-main",
+        "sha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test-theo-main",
+        "branch": "test-theo-main",
+        "sha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "test-theo-main là chuẩn UI lịch sử; test-new chỉ bổ sung UX TEST, chưa GAS postpatch.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test-theo-main",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test-new/qa/p0-ux-patch/P0_TEST_NEW_UX_PATCH_QA_HANDOFF_20261118.md",
+        "https://github.com/Nguyennth19/new-lop-2/actions/runs/44226057957"
+      ],
+      "historicalPassScope": "VISUAL_USER_TEST_IN_PRIOR_CONVERSATION_SCOPE_ONLY",
+      "historicalApprovalState": "OWNER_ATTESTED_IN_CONVERSATION",
+      "responsibleRole": "PROJECT_OWNER_UI_ACCEPTANCE",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Retain pinned test-theo-main SHA and UI snapshot; no replace by be-hoc without separate visual diff and owner decision."
+    },
+    {
+      "ordinal": 3,
+      "domain": "BE_HOC_ASSET_RICH_AND_ORCHESTRATOR",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "TEST_ASSET_AND_ORCHESTRATOR_SOURCE",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/be-hoc",
+        "branch": "be-hoc",
+        "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/be-hoc",
+        "branch": "be-hoc",
+        "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "288 WebP/46 Fluent/30 nhân vật, nhưng chỉ 24/288 PNG MASTER source ở GitHub; không đồng nhất với ứng dụng đã phát hành.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/be-hoc",
+        "https://github.com/Nguyennth19/new-lop-2/blob/be-hoc/docs/kiem-dinh/BE_HOC_ORCHESTRATOR_DRIVE_SYNC_CHECKPOINT_20261117.md",
+        "https://github.com/Nguyennth19/new-lop-2/actions/runs/44011827493"
+      ],
+      "historicalPassScope": "CI_SELECTED_SUCCESS_NO_GAS",
+      "historicalApprovalState": "PARTIAL_HISTORICAL_APPROVAL",
+      "responsibleRole": "TECHNICAL_INTEGRATION_MAINTAINER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Keep original be-hoc HEAD and byte-pinned sources; do not revert code or promote candidate. Ignore audit ledger if rejected."
+    },
+    {
+      "ordinal": 4,
+      "domain": "BQA_OWNER_B061_B062",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "OWNER_CANONICAL_MAPPING_CORRECTED",
+      "selected": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+        "driveModifiedUtc": "2026-11-09T04:00:29.826Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "originalPreserved": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+        "driveModifiedUtc": "2026-11-09T04:00:29.826Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "V8 owner B061/B062=BQA-17; 65 mismatch lịch sử resolved; 0 active; không lấy Consolidated cũ ghi đè.",
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit#gid=208100110"
+      ],
+      "historicalPassScope": "V8_STATIC_OWNER_PATCH_VERIFIED",
+      "historicalApprovalState": "OWNER_CORRECTED_V8",
+      "responsibleRole": "DATA_BATCH_OWNER_BQA17",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Keep V8 owner patch; historical Consolidated stays immutable. If audit index is wrong, revert only its reference, never restore 65 resolved warnings."
+    },
+    {
+      "ordinal": 5,
+      "domain": "HISTORICAL_SOURCE_REGISTRY_75",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "CANDIDATE_PROVENANCE_ONLY",
+      "selected": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+        "driveModifiedUtc": "2026-11-09T04:00:29.826Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "originalPreserved": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+        "driveModifiedUtc": "2026-11-09T04:00:29.826Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "75 lessons, 1406 source candidates; 0/75 bài source-exact signed; dùng SGK/VBT gốc kiểm theo bài/trang.",
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/data-b-coverage75-20261117/qa/coverage75/README.md"
+      ],
+      "historicalPassScope": "0_75_SOURCE_EXACT_V8",
+      "historicalApprovalState": "INDEPENDENT_SOURCE_PENDING",
+      "responsibleRole": "CURRICULUM_SOURCE_OWNER_AND_INDEPENDENT_REVIEWER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Retain original 1406 SOURCE rows and C1 source IDs; withdraw ledger selection only, do not regenerate candidates."
+    },
+    {
+      "ordinal": 6,
+      "domain": "C1_JSON_ENVELOPES",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "C1_OWNER_APPROVED_SCAFFOLD_ONLY",
+      "selected": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM",
+        "driveModifiedUtc": "2026-11-09T05:02:17.854Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "originalPreserved": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM",
+        "driveModifiedUtc": "2026-11-09T05:02:17.854Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "75 lesson +1406 envelopes, 6 chunk readbacks; không phải 1406 câu playable.",
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+        "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit#gid=208101008"
+      ],
+      "historicalPassScope": "OWNER_APPROVED_FOR_C1_NOT_RUNTIME",
+      "historicalApprovalState": "OWNER_APPROVED_IN_SCOPE",
+      "responsibleRole": "C1_DATA_BUILD_OWNER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Preserve 6 verified readbacks and C1 workbook; no source rewrite or rollback of owner C1 approval."
+    },
+    {
+      "ordinal": 7,
+      "domain": "C4_DEV_PLAYABLE_CONTENT",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "DEV_ONLY_27_QUESTIONS_121_PARTS",
+      "selected": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+        "driveModifiedUtc": "2026-11-09T12:12:51.954Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "originalPreserved": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+        "driveModifiedUtc": "2026-11-09T12:12:51.954Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "27 câu DEV Node/browser PASS riêng; 1379 deferred; không phải học liệu student release.",
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
+        "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit#gid=208104006"
+      ],
+      "historicalPassScope": "DEV_QA_PASS_132_132_NODE_27_BROWSER_DESKTOP_MOBILE",
+      "historicalApprovalState": "TECH_QA_IN_SCOPE",
+      "responsibleRole": "C4_DEV_QA_OWNER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Preserve C4 27 DEV items; do not project to runtime. Discard only this audit index if invalid."
+    },
+    {
+      "ordinal": 8,
+      "domain": "B20_PEDAGOGY_30",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "OWNER_APPROVED_H2_30_ONLY",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-5-h2-owner-signoff-20261113",
+        "branch": "test/p0-5-h2-owner-signoff-20261113",
+        "sha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-5-h2-owner-signoff-20261113",
+        "branch": "test/p0-5-h2-owner-signoff-20261113",
+        "sha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "30 câu H2 đã duyệt sư phạm; khác 51 câu Sheet B20.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-5-h2-owner-signoff-20261113"
+      ],
+      "historicalPassScope": "30_QUESTIONS_P0_5_H2_APPROVED_ONLY",
+      "historicalApprovalState": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
+      "responsibleRole": "PROJECT_OWNER_PEDAGOGIC_APPROVER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Keep original H.2 signed 30-question packet; do not replace or merge it with legacy 51 question rows."
+    },
+    {
+      "ordinal": 9,
+      "domain": "B20_51_LEGACY_APP_SHEET",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "LEGACY_PRIVATE_CONTENT_ONLY",
+      "selected": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8",
+        "driveModifiedUtc": "2026-11-13T02:08:45.361Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "originalPreserved": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8",
+        "driveModifiedUtc": "2026-11-13T02:08:45.361Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "51 câu hiện hành; answer/puzzle/solution có trong 04_Cau_hoi, không xuất raw ra browser. TEST NEW workbook riêng chưa GAS QA.",
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
+        "https://docs.google.com/spreadsheets/d/1RKQbHSsk7kvpbVBsFZnNnlyFeXjfsNojRx9yo9S5_5k/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/data-b-g3b-b20-trusted-gas-e2e-20261117/DocDuLieuSheet.gs"
+      ],
+      "historicalPassScope": "CONTENT_AND_SECURITY_SEPARATE",
+      "historicalApprovalState": "OWNER_FUNCTIONAL_ATTESTED_SECURITY_SEPARATE",
+      "responsibleRole": "RUNTIME_DATA_CUSTODIAN",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Preserve source Sheet (including 90/91/92) without writes; any runtime changes require isolated TEST plus original deployment rollback record."
+    },
+    {
+      "ordinal": 10,
+      "domain": "P0_6_TECH_CLOSURE",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "P0_6_ISOLATED_TEST_CLOSED",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-fc-audit-20261114",
+        "branch": "test/p0-6-fc-audit-20261114",
+        "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-fc-audit-20261114",
+        "branch": "test/p0-6-fc-audit-20261114",
+        "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "Biên bản FC4 owner accepted P0.6 TEST, không mở lại vì release NO-GO.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-fc-audit-20261114",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-6-fc-audit-20261114/thu-nghiem/p0-6/final-acceptance/FC4_P06_TECHNICAL_TEST_CLOSURE_OWNER_DECISION_20261114.md"
+      ],
+      "historicalPassScope": "OWNER_APPROVED_FC4_WITH_EXCLUSIONS",
+      "historicalApprovalState": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
+      "responsibleRole": "PROJECT_OWNER_TECHNICAL_SIGNOFF",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Retain FC4 owner decision and pinned SHA. Exclusion to GAS/production is not reason to undo isolated TEST closure."
+    },
+    {
+      "ordinal": 11,
+      "domain": "G7_4_RENDERER_MANIFEST_12",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "TEST_RENDERER_REFERENCE_ONLY",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "branch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "sha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "branch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "sha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "12 route/10 dạng; mapping skill/lesson/E04 và trusted grading riêng, không tự cấp từ ID/keyword.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-6-resource-renderer-consolidation-v1-20261114/du-lieu/g7-6/resource-renderer-manifest.v1.json"
+      ],
+      "historicalPassScope": "TEST_CONTRACT_PASS_NOT_HOST_RUNTIME",
+      "historicalApprovalState": "TEST_QA_IN_SCOPE",
+      "responsibleRole": "RENDERER_POLICY_OWNER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Keep original reference renderer branch/policy and JS core; disable new routing without deleting historical references."
+    },
+    {
+      "ordinal": 12,
+      "domain": "G7_5_APPROVED_VOICE",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "OWNER_APPROVED_V1_2_V2_PROFILES",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-5-approved-voice-profiles-20261114",
+        "branch": "test/g7-5-approved-voice-profiles-20261114",
+        "sha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-5-approved-voice-profiles-20261114",
+        "branch": "test/g7-5-approved-voice-profiles-20261114",
+        "sha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "Giữ V1.2 stable và V2 dynamic; menu phụ huynh và GAS device QA là scope khác.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-5-approved-voice-profiles-20261114",
+        "https://docs.google.com/document/d/1EwQ0MHg8GlfTo4dgyRdPX9scVL7d7mWjm2jUQaB3JyA/edit"
+      ],
+      "historicalPassScope": "USER_AUDIO_ATTESTED_PROFILE_SCOPE",
+      "historicalApprovalState": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
+      "responsibleRole": "PROJECT_OWNER_AUDIO_ACCEPTANCE",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Keep V1.2 stable and V2 approved voice profiles; no TTS rewrite, revert only new integrations."
+    },
+    {
+      "ordinal": 13,
+      "domain": "G7_6_C086_OWNER_GATES",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "APPROVAL_EVIDENCE_REVIEW_ONLY",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "branch": "test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "sha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "branch": "test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "sha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "6/6 hồ sơ owner PENDING; giữ C07–C09 DENY và không ghi thêm manifest.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116/qa/g7-6-b6-c086/resolution.pending.v1.json"
+      ],
+      "historicalPassScope": "0_6_SIGNED_OWNER_DECISIONS",
+      "historicalApprovalState": "PENDING_OWNER_SIGNED_EVIDENCE",
+      "responsibleRole": "POLICY_SIGNATORY_OWNER_PENDING",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Leave owner decision packets pending (0/6); never synthesize signatures or register manifest automatically."
+    },
+    {
+      "ordinal": 14,
+      "domain": "G7_3_G7_4_ASSET_LABELS",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "WEBP_288_BINARY_LABEL_SCOPE_ONLY",
+      "selected": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "branch": "test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "sha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+        "headMatchesPinned": true
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "branch": "test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "sha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+        "headMatchesPinned": true
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "288/288 nhãn owner-approved; count-safe semantic từng cảnh và PNG nguồn độc lập.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-7-perf-a-owner-label-approval-20261113/qa/g7-4-b5-7-perf-a/owner-label-approval-188.audit.json"
+      ],
+      "historicalPassScope": "LABEL_SCOPE_ONLY_CONTENT_QA_PER_ASSET_PENDING",
+      "historicalApprovalState": "OWNER_APPROVED_IN_SCOPE",
+      "responsibleRole": "ASSET_OWNER_LABEL_APPROVAL",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Keep original 288 label owner approvals and pinned binary hashes; revert only unapproved semantic/count promotions."
+    },
+    {
+      "ordinal": 15,
+      "domain": "G3A_TRUSTED_GRADING_CODE",
+      "sourceSelectionDecision": "REPLACE_SCOPE_SPECIFIC",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "G3B_TEST_CODE_ONLY",
+      "selected": {
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3b-b20-trusted-gas-e2e-20261117",
+        "kind": "GITHUB_BRANCH",
+        "branch": "test/data-b-g3b-b20-trusted-gas-e2e-20261117",
+        "sha": "5db6634b3424d5f48a54716c45f069c0aefa4a45",
+        "ciSha": "e1e4f1084d3b6fc7e1d6d8f9c5588adc29053e48",
+        "scope": "TEST_CODE_ONLY_G3A_HISTORICAL_PASS_RETAINED",
+        "note": "G3B chặn raw DocDuLieuSheet exporter; code HEAD không khác CI tested, chỉ 3 .md; chưa real GAS E2E.",
+        "refs": [
+          "https://github.com/Nguyennth19/new-lop-2/blob/test/data-b-g3b-b20-trusted-gas-e2e-20261117/DocDuLieuSheet.gs",
+          "https://github.com/Nguyennth19/new-lop-2/actions/runs/44119669559"
+        ]
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3a-trusted-gas-adapter-20261117",
+        "branch": "test/data-b-g3a-trusted-gas-adapter-20261117",
+        "sha": "59827dee9a712dadfafb6b06d4f59403cf2c7783",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "59827dee9a712dadfafb6b06d4f59403cf2c7783",
+        "headMatchesPinned": true
+      },
+      "supersededBy": {
+        "ref": "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3b-b20-trusted-gas-e2e-20261117",
+        "scope": "TEST_CODE_ONLY_G3A_HISTORICAL_PASS_RETAINED",
+        "note": "ONLY_SCOPE_SPECIFIC; preserve prior source & owner scope"
+      },
+      "sourceSelectionReason": "G3B sửa raw exporter bypass; G3A 39/39 TEST legacy PASS giữ nguyên, GAS thực chưa triển khai.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3a-trusted-gas-adapter-20261117",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/data-b-g3b-b20-trusted-gas-e2e-20261117/DocDuLieuSheet.gs",
+        "https://github.com/Nguyennth19/new-lop-2/actions/runs/44119669559"
+      ],
+      "historicalPassScope": "REAL_GAS_NETWORK_NOT_RUN",
+      "historicalApprovalState": "CI_APPROVED_TEST_ONLY",
+      "responsibleRole": "SECURITY_TEST_OWNER",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Retain isolated G3A SHA and newer G3B candidate independently; no fallback to unsafe student-facing client grading."
+    },
+    {
+      "ordinal": 16,
+      "domain": "G2_B_96_EXERCISE_SOURCE_CANDIDATES",
+      "sourceSelectionDecision": "KEEP",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "INDEPENDENT_SOURCE_REVIEW_PENDING",
+      "selected": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts",
+        "driveModifiedUtc": "2026-11-17T14:25:30.285Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "originalPreserved": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts",
+        "driveModifiedUtc": "2026-11-17T14:25:30.285Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": null,
+      "sourceSelectionReason": "96 G2 ứng viên chưa signature; 25 case review gồm 10 lỗi ngữ nghĩa,15 topology, 0 renderer/public grants.",
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/data-b-g2b-p0-source-visual-20261117/qa/g2b-p0/README.md"
+      ],
+      "historicalPassScope": "G2B_INDEPENDENT_0_96",
+      "historicalApprovalState": "INDEPENDENT_SIGNOFF_PENDING",
+      "responsibleRole": "INDEPENDENT_SOURCE_REVIEWER_PENDING",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Preserve immutable 96 reviewer queue and private evidence; no automatic dedup with C1, no student grant."
+    },
+    {
+      "ordinal": 17,
+      "domain": "B024_ALPHA",
+      "sourceSelectionDecision": "REPLACE_SCOPE_SPECIFIC",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "P1_2_WORKING_PACKAGE_TEST_ONLY",
+      "selected": {
+        "url": "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/du-lieu/bai-hoc/toan/v1/B024.lesson.json",
+        "kind": "GITHUB_FILE",
+        "branch": "test/p0-b01-b24-lessonpackage-v1-20261117",
+        "sha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+        "gitBlobSha": "c39a76d25fab399aca0acc4e6b300af8995f1306",
+        "ciSha": "61661986ed13309699665843f54cc6bd022a2dce",
+        "scope": "P1_2_WORKING_JSON_INDEX_ONLY_ALPHA_RETAINED",
+        "note": "19 C1 candidates và 10 G2 B024; 0 student playable. Giữ alpha 20 bài + 238 schema errors làm lịch sử, không overwrite.",
+        "refs": [
+          "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/qa/p0-b01-b24/P0_CHECKPOINT_20261117.md"
+        ]
+      },
+      "originalPreserved": {
+        "kind": "DRIVE_FILE",
+        "url": "https://drive.google.com/file/d/1INMFN1grCl7upyiVoing9ErRq2kn9DTQ/view",
+        "branch": null,
+        "sha": null,
+        "driveId": "1INMFN1grCl7upyiVoing9ErRq2kn9DTQ",
+        "driveModifiedUtc": "2026-11-17T03:33:59.568Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": {
+        "ref": "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/du-lieu/bai-hoc/toan/v1/B024.lesson.json",
+        "scope": "P1_2_WORKING_JSON_INDEX_ONLY_ALPHA_RETAINED",
+        "note": "ONLY_SCOPE_SPECIFIC; preserve prior source & owner scope"
+      },
+      "sourceSelectionReason": "Alpha không conform schema V2, file B024.lesson.json dùng làm index shell; giữ alpha như reference.",
+      "evidenceRefs": [
+        "https://drive.google.com/file/d/1INMFN1grCl7upyiVoing9ErRq2kn9DTQ/view",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/qa/p0-b01-b24/P0_CHECKPOINT_20261117.md"
+      ],
+      "historicalPassScope": "SCHEMA_PRIVATE_GRADING_SOURCE_OPEN",
+      "historicalApprovalState": "PENDING_INDEPENDENT_QA",
+      "responsibleRole": "B024_CURRICULUM_REVIEWER_PENDING",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Leave alpha file candidate and frozen; do not overwrite it by derived or simulated questions."
+    },
+    {
+      "ordinal": 18,
+      "domain": "DATA_CONTRACT_V2",
+      "sourceSelectionDecision": "REPLACE_SCOPE_SPECIFIC",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "P1_2_SCHEMA_TEST_ONLY",
+      "selected": {
+        "url": "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/du-lieu/bai-hoc/toan/v1/lessonpackage.schema.v1.json",
+        "kind": "GITHUB_FILE",
+        "branch": "test/p0-b01-b24-lessonpackage-v1-20261117",
+        "sha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+        "gitBlobSha": "cc58cfa82469c08cf9eaf3180f152dc5c3330312",
+        "ciSha": "61661986ed13309699665843f54cc6bd022a2dce",
+        "scope": "P1_2_TECHNICAL_JSON_SCHEMA_V1_ONLY_V2_ARCHITECTURE_RETAINED",
+        "note": "DATA_CONTRACT_V2 L0-L7 và LOP2_LESSON_SCHEMA_2.0.0 vẫn PROPOSED; schema JSON V1 cho 24 packages TEST, không phải production migration.",
+        "refs": [
+          "https://drive.google.com/file/d/10df40RkocyYcy-isw3s-sZRw3nj4z5Y-/view"
+        ]
+      },
+      "originalPreserved": {
+        "kind": "DRIVE_FILE",
+        "url": "https://drive.google.com/file/d/1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc/view",
+        "branch": null,
+        "sha": null,
+        "driveId": "1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc",
+        "driveModifiedUtc": "2026-09-20T09:17:54.398Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "supersededBy": {
+        "ref": "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-b01-b24-lessonpackage-v1-20261117/du-lieu/bai-hoc/toan/v1/lessonpackage.schema.v1.json",
+        "scope": "P1_2_TECHNICAL_JSON_SCHEMA_V1_ONLY_V2_ARCHITECTURE_RETAINED",
+        "note": "ONLY_SCOPE_SPECIFIC; preserve prior source & owner scope"
+      },
+      "sourceSelectionReason": "Schema JSON V1 hợp lệ cho 24 gói INDEX_ONLY; DATA_CONTRACT_V2 và Schema 2.0.0 vẫn tham chiếu proposal.",
+      "evidenceRefs": [
+        "https://drive.google.com/file/d/1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc/view",
+        "https://drive.google.com/file/d/10df40RkocyYcy-isw3s-sZRw3nj4z5Y-/view"
+      ],
+      "historicalPassScope": "NOT_PRODUCTION_MANIFEST",
+      "historicalApprovalState": "PROPOSAL_ONLY",
+      "responsibleRole": "SCHEMA_GOVERNANCE_OWNER_PENDING",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Keep candidate as reference; no schema migration until owner change-control signoff."
+    },
+    {
+      "ordinal": 19,
+      "domain": "PROJECT_RULES_GLOBAL",
+      "sourceSelectionDecision": "REPLACE_SCOPE_SPECIFIC",
+      "routingOwnerApproval": "OWNER_APPROVED_SELECTION_SCOPE_ONLY_2026_11_18",
+      "routingScope": "DEV_GUIDANCE_ACTIVE_NOT_POLICY_ADOPTION",
+      "selected": {
+        "url": "https://github.com/Nguyennth19/new-lop-2/blob/be-hoc/AGENTS.md",
+        "kind": "GITHUB_FILE",
+        "branch": "be-hoc",
+        "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+        "gitBlobSha": "34c05e3518c6530f6fbb7f656cfd06907e262910",
+        "scope": "AI_DEVELOPER_OPERATING_GUIDELINES_ONLY",
+        "note": "Áp dụng AGENTS + guidelines VN/EN làm quy trình code hiện hữu; PROJECT_RULES.review-candidate 0/10 owner signed, không tạo root rule chính thức.",
+        "refs": [
+          "https://github.com/Nguyennth19/new-lop-2/blob/be-hoc/tai-lieu/quy-chuan-ai/universal_ai_coding_guidelines-vn-version.md",
+          "https://github.com/Nguyennth19/new-lop-2/blob/audit/g7-6-workflow-rules-consolidation-review-20261116/qa/g7-6-workflow-rules-consolidation-review/PROJECT_RULES.review-candidate.v0.1.md"
+        ]
+      },
+      "originalPreserved": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/audit/g7-6-workflow-rules-consolidation-review-20261116",
+        "branch": "audit/g7-6-workflow-rules-consolidation-review-20261116",
+        "sha": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+        "headMatchesPinned": true
+      },
+      "supersededBy": {
+        "ref": "https://github.com/Nguyennth19/new-lop-2/blob/be-hoc/AGENTS.md",
+        "scope": "AI_DEVELOPER_OPERATING_GUIDELINES_ONLY",
+        "note": "ONLY_SCOPE_SPECIFIC; preserve prior source & owner scope"
+      },
+      "sourceSelectionReason": "AGENTS.md hiện hữu có quy tắc ưu tiên; dự thảo 10 rule mới chưa owner phê duyệt.",
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/audit/g7-6-workflow-rules-consolidation-review-20261116",
+        "https://github.com/Nguyennth19/new-lop-2/blob/be-hoc/tai-lieu/quy-chuan-ai/universal_ai_coding_guidelines-vn-version.md",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/g7-6-workflow-rules-consolidation-review-20261116/qa/g7-6-workflow-rules-consolidation-review/PROJECT_RULES.review-candidate.v0.1.md"
+      ],
+      "historicalPassScope": "0_10_OWNER_RULE_APPROVAL_PENDING",
+      "historicalApprovalState": "OWNER_ADOPTION_PENDING",
+      "responsibleRole": "PROJECT_OWNER_RULE_APPROVER_PENDING",
+      "sourceExactIndependentApproval": "NOT_GRANTED_BY_P1_1",
+      "realGASApproval": "NOT_GRANTED_BY_P1_1",
+      "rendererAssetPublicVariantGrant": "NOT_GRANTED_BY_P1_1",
+      "studentReleasePermission": false,
+      "rollback": "Retain review-only draft; never auto-install PROJECT_RULES.md or enable deployment/backup pruning."
+    }
+  ],
+  "P12Handoff": {
+    "lessonPackageSourceBranch": "test/p0-b01-b24-lessonpackage-v1-20261117",
+    "lessonPackageSourceCommit": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+    "lessonPackagesIndexed": 24,
+    "C1SourceCandidatesForB001B024": 536,
+    "G2TechnicalCandidatesForB001B024": 96,
+    "referenceRendererRoutes": 12,
+    "studentPlayableFromExistingLessonPackages": 0,
+    "publicVariantApprovedFromExistingPackages": 0,
+    "sourceJoin": "NO_AUTO_C1_G2_ID_JOIN",
+    "trustedGradingTestSource": "test/data-b-g3b-b20-trusted-gas-e2e-20261117@5db6634b3424d5f48a54716c45f069c0aefa4a45",
+    "mandatoryDataFields": [
+      "lessonId",
+      "skillId",
+      "questionType",
+      "visualIntent",
+      "assetId_OR_verifiedSemanticMapping",
+      "publicVariant"
+    ],
+    "status": "INPUTS_CAN_BE_USED_FOR_REVIEW_AND_TEST_ONLY"
+  },
+  "P13Handoff": {
+    "sourceDriveFolder": "https://drive.google.com/drive/folders/1IEIvmL_DmV9M1YxuWuBtvNeahilByl0x",
+    "sourcePngRecordsHistorical": 288,
+    "individualPngMirroredToGithubHistorical": 24,
+    "individualPngStillToMirror": 264,
+    "approvedWebpBinaryAndLabelsHistorical": 288,
+    "separateCharacterWebpHistorical": 30,
+    "required": "Verify every original PNG via Drive source ID + byte SHA256 and compare GitHub target, audit character sources separately; never conflate WebP PASS with PNG source completeness.",
+    "status": "INPUTS_CAN_BE_USED_FOR_IMPORT_AND_QA_ONLY"
+  },
+  "exceptions": {
+    "sourceExactSGK": "PENDING_PER_ITEM",
+    "G2BIndependentSignature": "0_OF_96",
+    "G76OwnerPackets": "0_OF_6",
+    "GASTest": "NOT_VERIFIED",
+    "rendererGrant": "NOT_AUTOMATIC",
+    "publicVariantGrant": "NOT_AUTOMATIC",
+    "studentRelease": "NO_GO",
+    "workflowRulesOwnerSignoff": "0_OF_10",
+    "pngMirroring": "24_OF_288_HISTORICAL"
+  },
+  "auditLimits": [
+    "Google native file content not all byte-hashed",
+    "Past project chats are not all available as raw full transcript",
+    "Do not infer deployment from GitHub CI"
+  ],
+  "rollback": {
+    "action": "Revoke use of this routing file from P1 consumers and select immutable P1.1 V2 matrix at pinned commit; do not restore unsafe old grading code to students.",
+    "baselineCommit": "bf3d2adf90aa2594ac7a5b407218c36a028bc9ea",
+    "ratifiedMatrixCommit": "38593b68484db86c0c4aa63c2da17a6d0f0406a3",
+    "doesNotMutateApplication": true
+  }
+}
