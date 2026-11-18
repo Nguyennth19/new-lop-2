@@ -138,3 +138,51 @@ function run(){
 }
 if(require.main===module)run();
 module.exports={inspect,run,gitBlob};
+
+
+function verifyCrosswalk(){
+ const files=[
+  'qa/p1-2/P1_2_CROSSWALK_B001_B012.review.v1.json',
+  'qa/p1-2/P1_2_CROSSWALK_B013_B024.review.v1.json'
+ ];
+ const seen=new Set(),totals={lessonCount:0,c1:0,g2:0,templates:0,dropped:0};
+ for(const file of files){
+  const c=readJson(file),lessonIds=new Set();
+  assert.equal(c.schemaVersion,'P1_2_SOURCE_CANDIDATE_CROSSWALK_PART_V1');
+  assert.equal(c.status,'INDEX_QA_ONLY_NOT_SOURCE_EXACT');
+  const collections=[
+   ['source','c1'],['technicalReview','g2'],['templateCandidates','templates'],['droppedTemplateOrigins','dropped']
+  ];
+  for(const [key,tallyKey] of collections){
+   const list=c[key];
+   assert.equal(list.length,c.tally[tallyKey],file+' '+key+' count');
+   totals[tallyKey]+=list.length;
+   for(const row of list){
+    assert.ok(row.rowKey && !seen.has(row.rowKey),file+' duplicate key '+row.rowKey);
+    seen.add(row.rowKey);lessonIds.add(row.lessonId);
+    assert.ok(row.packageBlobSha && /^[a-f0-9]{40}$/.test(row.packageBlobSha));
+    if(key==='source'){assert.equal(row.sourceStatus,'C1_CANDIDATE_NOT_INDEPENDENTLY_SIGNED');assert.equal(row.skillIdApproved,null);assert.equal(row.publicVariant,null);}
+    if(key==='technicalReview'){assert.equal(row.reviewerStatus,'NOT_SIGNED');assert.equal(row.rendererGrant,'DENY');assert.equal(row.publicVariant,null);}
+    if(key==='templateCandidates'){assert.equal(row.publicVariant,null);assert.equal(row.studentPlayable,false);}
+    if(key==='droppedTemplateOrigins')assert.equal(row.sourceRecordDeletion,false);
+   }
+  }
+  assert.equal(lessonIds.size,c.tally.lessonCount);
+  for(const lessonId of lessonIds){
+   const n=lessonId.split('_')[1],f=manifest.files.find(x=>x.lessonId===lessonId);
+   assert.ok(f);const p=readJson(f.layeredFile);
+   const matching=(key)=>c[key].filter(x=>x.lessonId===lessonId);
+   const src=matching('source'),g2=matching('technicalReview'),templates=matching('templateCandidates'),drop=matching('droppedTemplateOrigins');
+   assert.deepEqual(src.map(x=>x.originExerciseId),p.sourceLayer.items.map(x=>x.originExerciseId));
+   assert.deepEqual(g2.map(x=>x.originExerciseId),p.technicalReviewLayer.items.map(x=>x.originExerciseId));
+   assert.deepEqual(templates.map(x=>x.variantId),p.variantCandidateLayer.templates.map(x=>x.variantId));
+   assert.deepEqual(drop.map(x=>x.originExerciseId),p.variantCandidateLayer.droppedSourceIds);
+   for(const list of [src,g2,templates,drop])for(const row of list)assert.equal(row.packageBlobSha,f.layeredBlobSha);
+  }
+  totals.lessonCount+=c.tally.lessonCount;
+ }
+ assert.deepEqual(totals,{lessonCount:24,c1:536,g2:96,templates:17,dropped:7});
+ console.log(JSON.stringify({test:'P1_2_CROSSWALK_COMPLETE',status:'PASS',...totals,autoJoin:false}));
+}
+if(require.main===module)verifyCrosswalk();
+module.exports.verifyCrosswalk=verifyCrosswalk;
