@@ -84,3 +84,12 @@ CI PASS [run 44246041439](https://github.com/Nguyennth19/new-lop-2/actions/runs/
 **Rollback:** bỏ nhánh TEST P1.2, dùng V1 pin `c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9`. Không có nguồn gốc/dữ liệu học sinh/MAIN/GAS được sửa.
 
 **Kết luận:** `P1_2_24_LAYERED_STRUCTURAL_PASS · SOURCE_EXACT_PENDING · PUBLIC_VARIANT_0 · STUDENT_RELEASE_NO_GO`.
+
+## Bổ sung P1.2-B: kết quả truy vết nguồn C4 và renderer (cùng ngày)
+
+- Đọc trực tiếp `C4_CONTENT_INDEX` từ [C4 workbook](https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit#gid=208104002), đối chiếu 27 item `REAL_ITEM_DEV_RENDERED` với B001/B002 V2: **27/27 exact originExerciseId matches** (B001 24, B002 3); không dùng phép nối ID G2↔C1 chưa có chứng cứ.
+- [Crosswalk C4 DEV 27 ID](https://github.com/Nguyennth19/new-lop-2/blob/test/p1-2-b001-b024-layered-lesson-packages-20261118/qa/p1-2/P1_2_C4_DEV27_EXACT_ID_REUSE_CROSSWALK.review.v1.json) chỉ chứa metadata, số dòng C1/C4, QA DEV và blob JSON V2. **Không sao chép expected answer** từ tab `C4_REAL_JSON` lên GitHub.
+- Phân tích 113 renderer candidates từ 96 G2 +17 template: **72** trùng ID registry 12 route, **34** alias chưa khớp và **7** thiếu tên. Không auto map `D9_E04_*` thành `D9`. Danh sách chi tiết: [Renderer candidate review queue 41](https://github.com/Nguyennth19/new-lop-2/blob/test/p1-2-b001-b024-layered-lesson-packages-20261118/qa/p1-2/P1_2_RENDERER_CANDIDATE_REVIEW_QUEUE_41.review.v1.json).
+- QA mới thêm kiểm tra exact 27 C4 linkage và 41 renderer review rows; đều là **bằng chứng sử dụng lại trong DEV/TEST**, không thay thế reviewer source-exact hay phê duyệt renderer học sinh.
+
+**Quyết định:** 27 C4 DEV là nguồn tái sử dụng được theo ID khi bắt đầu B001/B002 source hydration; 41 trường hợp renderer chưa đủ dữ liệu chuẩn hóa phải giữ trong hàng đợi. Không dựng lại C4, không mất/drop ID nguồn.
