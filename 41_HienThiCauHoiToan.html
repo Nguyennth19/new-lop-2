@@ -37,7 +37,7 @@ function puzzle(q){
   '<div class="ml-puzzle-carry-row"><span class="ml-puzzle-carry-label">Ô nhớ</span>'+
   '<input class="ml-input ml-carry ml-puzzle-carry" type="text" inputmode="none" maxlength="1" autocomplete="off" data-ml-scratch="'+E(q.id)+':carry" aria-label="Ô nhớ tự điền, chỉ hỗ trợ tính, không chấm điểm">'+
   '<span class="ml-puzzle-carry-note">Nháp tính · không chấm riêng</span></div>':'';
- const inside='<div class="ml-puzzle">'+scratch+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>v&&typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v==null?'':v)+'</b>').join('')+'</div>').join('')+'</div>';
+ const inside=scratch+'<div class="ml-puzzle">'+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>v&&typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v==null?'':v)+'</b>').join('')+'</div>').join('')+'</div>';
  return baseCard(q,inside,'ml-puzzle-card ml-puzzle-paper');
 }
 function word(q){
