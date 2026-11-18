@@ -34,6 +34,8 @@ jobs:
           node --check --input-type=commonjs < 90_P0_VectorStructural.html
           node --check --input-type=commonjs < G2B_ReviewFixtures.html
           node qa/p0-g2b-adaptation/test_p0_contract.cjs
+      - name: P0 TEST NEW B20 + Tangram UX contract
+        run: node qa/p0-ux-patch/test_ux_contract.cjs
       - name: Preserve scope-labeled evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -46,6 +48,7 @@ jobs:
             qa/g3b/G3B_BROWSER_SMOKE_RESULTS.json
             qa/p0-g2b-adaptation/TEST_RESULTS.json
             qa/p0-g2b-adaptation/QC25_CASE_MATRIX_RESULTS.json
+            qa/p0-ux-patch/UX_CONTRACT_RESULTS.json
           retention-days: 14
 
   g2b-review-browser:
@@ -65,6 +68,8 @@ jobs:
         run: node qa/p0-g2b-adaptation/test_integrated_browser.cjs
       - name: B20 public lesson cache Chromium regression (51 public questions)
         run: node qa/g3b/test_b20_client_cache_browser.cjs
+      - name: P0 TEST NEW B20 / mental / words / LV3 / Tangram visual QA
+        run: node qa/p0-ux-patch/test_ux_browser.cjs
       - name: Retain read-only visual evidence (not SGK images)
         if: always()
         uses: actions/upload-artifact@v4
@@ -73,5 +78,7 @@ jobs:
           path: |
             qa/p0-g2b-adaptation/QC25_BROWSER_RESULTS.json
             qa/g3b/B20_CLIENT_CACHE_BROWSER_RESULTS.json
+            qa/p0-ux-patch/UX_BROWSER_RESULTS.json
+            qa/p0-ux-patch/ux-*.png
             qa/p0-g2b-adaptation/screenshots/
           retention-days: 14
