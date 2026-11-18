@@ -4,9 +4,7 @@
   "snapshotScope": "129 branches existing before new P1.1 audit branch creation; source-of-truth only selects exact named refs; all others preserved for discovery",
   "branches": 129,
   "exactSelectedBranchRefs": 11,
-  "unmappedByBranchName": [
-    "g7-1-content-audit-20261112"
-  ],
+  "unmappedByBranchName": [],
   "status": "BRANCH_NAME_CLASSIFICATION_REVIEW_ONLY_NOT_COMPLETE_SEMANTIC_SOURCE_AUDIT",
   "records": [
     {
@@ -219,7 +217,10 @@
       "branch": "g7-1-content-audit-20261112",
       "sha": "9ae8a0fab1e3469469e121280e0e386f86de2b2c",
       "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
-      "potentialDomainIds": [],
+      "potentialDomainIds": [
+        "HISTORICAL_SOURCE_REGISTRY_75",
+        "G7_3_G7_4_ASSET_LABELS"
+      ],
       "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
       "reviewNeeded": true
     },
