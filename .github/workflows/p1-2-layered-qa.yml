@@ -24,5 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Verify exact reproducibility of 24 V1 to V2 JSON files
+        run: node qa/p1-2/build_layered_packages.cjs --check
       - name: Validate all 24 V1 to V2 data projections and negative gates
         run: node qa/p1-2/test_layered_packages.cjs
