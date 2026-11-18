@@ -33,3 +33,5 @@ jobs:
         run: node qa/p1-2-b/test_primary_pdf_evidence_and_visual_semantics.cjs
       - name: Verify 8 original recipe families and 32 secure DEV preview envelopes
         run: node qa/p1-2-b/original_variant_preview_generator.cjs
+      - name: Check P1.2-B QA checkpoint counters and no-release states
+        run: node qa/p1-2-b/test_checkpoint.cjs
