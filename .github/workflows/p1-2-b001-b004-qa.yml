@@ -1,0 +1,33 @@
+name: P1.2-B B001-B004 Content and Variant DEV QA (NO DEPLOY)
+on:
+  push:
+    branches:
+      - 'test/p1-2-b-b001-b004-content-variants-20261118'
+    paths:
+      - 'qa/p1-2-b/**'
+      - '.github/workflows/p1-2-b001-b004-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reuse-and-variants:
+    name: C4 27 DEV / 121 parts / 79 source references / 32 original previews
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout event commit only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify original 24 lesson V1-V2 inheritance
+        run: node qa/p1-2/build_layered_packages.cjs --check
+      - name: Verify 24 lesson structural and crosswalk QA
+        run: node qa/p1-2/test_layered_packages.cjs
+      - name: Verify 27 C4 private content references and 79 candidate gates
+        run: node qa/p1-2-b/test_content_hydration_and_admission.cjs
+      - name: Verify 8 original recipe families and 32 secure DEV preview envelopes
+        run: node qa/p1-2-b/original_variant_preview_generator.cjs
