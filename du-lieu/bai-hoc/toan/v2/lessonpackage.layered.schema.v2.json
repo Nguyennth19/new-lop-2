@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lop2:p1-2:layered-lesson:v2",
+  "title": "LOP2 P1.2 Layered Lesson Candidate Package V2 — PRIVATE QA, NOT playable",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "phase",
+    "lessonId",
+    "title",
+    "grade",
+    "subject",
+    "volume",
+    "ownerBatch",
+    "status",
+    "sourceOfTruth",
+    "learningPolicy",
+    "sourceLayer",
+    "technicalReviewLayer",
+    "variantCandidateLayer",
+    "semanticRoutingLayer",
+    "approvedRuntimeLayer",
+    "gates",
+    "counts",
+    "rollback"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "LOP2_P1_2_LAYERED_LESSON_V2"
+    },
+    "phase": {
+      "const": "P1.2"
+    },
+    "lessonId": {
+      "type": "string",
+      "pattern": "^MATH_B0(0[1-9]|1[0-9]|2[0-4])$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "grade": {
+      "const": 2
+    },
+    "subject": {
+      "const": "MATH"
+    },
+    "volume": {
+      "type": "integer",
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "ownerBatch": {
+      "type": "string",
+      "pattern": "^BQA-[0-9]{2}$"
+    },
+    "legacyLessonIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2
+    },
+    "status": {
+      "const": "STRUCTURED_SOURCE_AND_TEMPLATE_INDEX_NOT_STUDENT_PLAYABLE"
+    },
+    "sourceOfTruth": {
+      "type": "object",
+      "required": [
+        "routingName",
+        "routingCommit",
+        "routingBlobSha",
+        "sourceV1Commit",
+        "sourceV1BlobSha",
+        "sourceV1Path",
+        "rendererManifestCommit",
+        "rendererManifestBlobSha"
+      ],
+      "properties": {
+        "routingName": {
+          "const": "P1_1_OFFICIAL_SOURCE_ROUTING_19"
+        },
+        "routingCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "routingBlobSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourceV1Commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourceV1BlobSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourceV1Path": {
+          "type": "string",
+          "pattern": "\\.lesson\\.json$"
+        },
+        "rendererManifestCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "rendererManifestBlobSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
+      }
+    },
+    "learningPolicy": {
+      "type": "object",
+      "required": [
+        "skillIdsCandidate",
+        "skillIdsApproved"
+      ],
+      "properties": {
+        "skillIdsCandidate": {
+          "type": "array"
+        },
+        "skillIdsApproved": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "sourceLayer": {
+      "type": "object",
+      "required": [
+        "recordRole",
+        "items",
+        "independentSignoffs",
+        "canonicalSourceExactGranted"
+      ],
+      "properties": {
+        "recordRole": {
+          "const": "C1_SOURCE_CANDIDATE_ONLY"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1
+        },
+        "independentSignoffs": {
+          "const": 0
+        },
+        "canonicalSourceExactGranted": {
+          "const": false
+        }
+      }
+    },
+    "technicalReviewLayer": {
+      "type": "object",
+      "required": [
+        "recordRole",
+        "items",
+        "autoJoinToC1",
+        "independentSignoffs"
+      ],
+      "properties": {
+        "recordRole": {
+          "const": "G2_PRIMARY_PAGE_TECHNICAL_CANDIDATE_ONLY"
+        },
+        "items": {
+          "type": "array"
+        },
+        "autoJoinToC1": {
+          "const": false
+        },
+        "independentSignoffs": {
+          "const": 0
+        }
+      }
+    },
+    "variantCandidateLayer": {
+      "type": "object",
+      "required": [
+        "recordRole",
+        "templates",
+        "droppedSourceIds",
+        "rejectedAsStudentData",
+        "sourceOriginalExact"
+      ],
+      "properties": {
+        "recordRole": {
+          "const": "RULE_BASED_TEMPLATE_CANDIDATE_ONLY"
+        },
+        "templates": {
+          "type": "array"
+        },
+        "droppedSourceIds": {
+          "type": "array"
+        },
+        "rejectedAsStudentData": {
+          "const": true
+        },
+        "sourceOriginalExact": {
+          "const": false
+        }
+      }
+    },
+    "semanticRoutingLayer": {
+      "type": "object",
+      "required": [
+        "registryRoutes",
+        "candidates",
+        "bindingPolicy",
+        "exactRegistryRouteMeansRuntimeGrant"
+      ],
+      "properties": {
+        "registryRoutes": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "uniqueItems": true
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "originExerciseId",
+              "sourceLayer",
+              "rendererCandidate",
+              "rendererRegistryRouteCandidate",
+              "rendererCandidateResolution",
+              "rendererGrant",
+              "skillIdApproved",
+              "countUnitApproved",
+              "publicVariant"
+            ],
+            "properties": {
+              "originExerciseId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rendererRegistryRouteCandidate": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "rendererGrant": {
+                "const": "DENY"
+              },
+              "skillIdApproved": {
+                "const": null
+              },
+              "countUnitApproved": {
+                "const": null
+              },
+              "publicVariant": {
+                "const": null
+              }
+            }
+          }
+        },
+        "exactRegistryRouteMeansRuntimeGrant": {
+          "const": false
+        }
+      }
+    },
+    "approvedRuntimeLayer": {
+      "type": "object",
+      "required": [
+        "publicVariants",
+        "rendererGrants",
+        "assetGrants",
+        "trustedServerAnswerRefs",
+        "clientAnswerKeys",
+        "activeStudentQuestions",
+        "studentRelease"
+      ],
+      "properties": {
+        "publicVariants": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "rendererGrants": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "assetGrants": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "trustedServerAnswerRefs": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "clientAnswerKeys": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "activeStudentQuestions": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "studentRelease": {
+          "const": "DENY"
+        }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "required": [
+        "sourceExact",
+        "rendererId",
+        "skillId",
+        "assetId",
+        "publicVariant",
+        "realGasTest",
+        "studentRelease"
+      ],
+      "properties": {
+        "sourceExact": {
+          "const": "PENDING_INDEPENDENT_REVIEW"
+        },
+        "rendererId": {
+          "const": "DENY"
+        },
+        "skillId": {
+          "const": "INDEX_ONLY"
+        },
+        "assetId": {
+          "const": "DENY"
+        },
+        "publicVariant": {
+          "const": "DENY"
+        },
+        "realGasTest": {
+          "const": "NOT_ATTESTED"
+        },
+        "studentRelease": {
+          "const": "NO_GO"
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "c1Candidates",
+        "g2TechnicalCandidates",
+        "templateCandidates",
+        "rendererRouteCandidates",
+        "unmatchedRendererCandidates",
+        "sourceSigned",
+        "publicVariantReady",
+        "studentPlayable"
+      ],
+      "properties": {
+        "c1Candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "g2TechnicalCandidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "templateCandidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rendererRouteCandidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unmatchedRendererCandidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sourceSigned": {
+          "const": 0
+        },
+        "publicVariantReady": {
+          "const": 0
+        },
+        "studentPlayable": {
+          "const": 0
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "required": [
+        "sourceV1Commit",
+        "sourceV1BlobSha",
+        "productionChanged",
+        "returnToV1OnFailure"
+      ],
+      "properties": {
+        "sourceV1Commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourceV1BlobSha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "productionChanged": {
+          "const": false
+        },
+        "returnToV1OnFailure": {
+          "const": true
+        }
+      }
+    }
+  }
+}
