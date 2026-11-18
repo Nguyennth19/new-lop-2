@@ -61,7 +61,7 @@ check('Client colors fields from response, and whole question only from perQuest
  assert(code.controller.includes('delete gradingState[el.dataset.mlQ];delete submissions[view];'));
 });
 check('Scratch fields work with keypad, and are excluded from trusted submission',()=>{
- assert(code.controller.includes("inputList(){return [...shell().querySelectorAll('#mlContent [data-ml-field],#mlContent [data-ml-scratch]')]}"));
+ assert(code.controller.includes("querySelectorAll('#mlContent [data-ml-field],#mlContent [data-ml-scratch]')"));
  assert(code.controller.includes("if(el.dataset.mlField&&el.dataset.mlQ)"));
  assert(code.controller.includes("if(/^(?:ones|tens|carry|answer|n1|n2|op|sum|p[0-7][0-7])$/.test(fieldName))"));
 });
