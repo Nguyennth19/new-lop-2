@@ -1,6 +1,7 @@
 /* G6 – Renderer câu Toán thuần HTML, tách khỏi điều hướng và chấm điểm. */
 function taoHienThiCauToan({E,input,baseCard}){
-function hear(q){return '<button type="button" class="ml-speak-btn" data-ml-speak-question="'+E(q.id)+'" aria-label="Nghe câu hỏi" aria-pressed="false">🔊 Nghe</button>';}
+function hear(q){return '<button type="button" class="ml-speak-btn" data-ml-speak-question="'+E(q.id)+'" aria-label="Nghe đề toán có lời văn" aria-pressed="false">🔊 Nghe đề</button>';}
+function markNumbers(text){return E(text).replace(/\d+(?:[.,]\d+)*/g,n=>'<strong class="ml-summary-number">'+n+'</strong>');}
 function vertical(q){
  if(!q.valid)return invalid(q);
  const a=String(q.n1).padStart(2,'0'),b=String(q.n2).padStart(2,'0');
@@ -17,20 +18,26 @@ function mental(q){
  // Sử dụng grid năm cột có sẵn của test-theo-main; không đưa câu dài vào ô số.
  if(q.variantType==='carry'){
    const a=Number(q.n1)%10,b=Number(q.n2)%10;
-   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(a+'+'+b+'='+(a+b))+'</span><b>→</b><span>nhớ</span><b>=</b>'+input(q,q.id+':answer',3)+hear(q)+'</div>';
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(a+'+'+b+'='+(a+b))+'</span><b>→</b><span>nhớ</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
  }
  if(q.variantType==='reverse'){
-   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'">'+input(q,q.id+':answer',3)+'<b>+</b><span>'+E(q.n2)+'</span><b>=</b><span>'+E(Number(q.n1)+Number(q.n2))+'</span>'+hear(q)+'</div>';
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'">'+input(q,q.id+':answer',3)+'<b>+</b><span>'+E(q.n2)+'</span><b>=</b><span>'+E(Number(q.n1)+Number(q.n2))+'</span>'+'</div>';
  }
  if(q.variantType==='three'){
-   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+'+'+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+hear(q)+'</div>';
+   return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1+'+'+q.n2)+'</span><b>+</b><span>'+E(q.n3)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
  }
- if(q.pilotPrompt)return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+hear(q)+'</div>';
- return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+hear(q)+'</div>';
+ if(q.pilotPrompt)return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.pilotPrompt)+'</span>'+input(q,q.id+':answer',3)+(q.unit?' <span>'+E(q.unit)+'</span>':'')+'</div>';
+ return '<div class="'+row+'" data-ml-q-card="'+E(q.id)+'"><span class="'+first+'">'+E(q.n1)+'</span><b>+</b><span>'+E(q.n2)+'</span><b>=</b>'+input(q,q.id+':answer',3)+'</div>';
 }
 function puzzle(q){
  if(!q.valid)return invalid(q);
- const inside='<div class="ml-puzzle">'+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>v&&typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v==null?'':v)+'</b>').join('')+'</div>').join('')+'</div>';
+ // B20 LV3 sections 2/3/4: optional written carry as a learning scratchpad.
+ // Not part of the private grading payload and never assumed to be an answer.
+ const scratch=q.level==='LV3'&&/^toan_b20_lv3_ex[234]$/.test(q.sectionId)?
+  '<div class="ml-puzzle-carry-row"><span class="ml-puzzle-carry-label">Ô nhớ</span>'+
+  '<input class="ml-input ml-carry ml-puzzle-carry" type="text" inputmode="none" maxlength="1" autocomplete="off" data-ml-scratch="'+E(q.id)+':carry" aria-label="Ô nhớ tự điền, chỉ hỗ trợ tính, không chấm điểm">'+
+  '<span class="ml-puzzle-carry-note">Nháp tính · không chấm riêng</span></div>':'';
+ const inside='<div class="ml-puzzle">'+scratch+q.puzzle.map((row,ri)=>'<div class="ml-vert-row '+(ri===1?'rule ':'')+'numbers"><span class="operator">'+(ri===1?'+':'')+'</span>'+row.map((v,ci)=>v&&typeof v==='object'?input(q,q.id+':p'+ri+ci,1):'<b>'+E(v==null?'':v)+'</b>').join('')+'</div>').join('')+'</div>';
  return baseCard(q,inside,'ml-puzzle-card ml-puzzle-paper');
 }
 function word(q){
@@ -39,8 +46,8 @@ function word(q){
  const summary=String(q.summary||'').trim();
  const explanation='Em viết phép tính thích hợp:'; // Fixed scaffold, not private solutionPrompt.
  const unit=String(q.unit||'').trim();
- const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'" role="img" aria-label="Hình minh họa cho bài toán"></div><p>'+E(q.prompt)+'</p></div>'+
- (summary?'<div class="ml-word-summary"><b>TÓM TẮT:</b> '+E(summary)+'</div>':'')+
+ const inside='<div class="ml-word-head"><div class="ml-svg" data-ml-svg="'+E(q.id)+'" role="img" aria-label="Hình minh họa cho bài toán"></div><div class="ml-word-prompt"><p>'+E(q.prompt)+'</p>'+hear(q)+'</div></div>'+
+ (summary?'<div class="ml-word-summary"><b>TÓM TẮT:</b> '+markNumbers(summary)+'</div>':'')+
  '<div class="ml-graph-paper"><h4>BÀI GIẢI</h4>'+
  '<p>'+E(explanation||'Em viết phép tính thích hợp:')+'</p>'+
  '<div class="ml-word-calc-line"><strong>Phép tính:</strong><div class="ml-word-calc">'+
