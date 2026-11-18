@@ -67,7 +67,7 @@ check('Scratch fields work with keypad, and are excluded from trusted submission
  assert(code.controller.includes("if(/^(?:ones|tens|carry|answer|n1|n2|op|sum|p[0-7][0-7])$/.test(fieldName))"));
 });
 check('Responsive 3 mental cards and stronger summary scoped to B20',()=>{
- assert(code.mentalCss.includes('@container (min-width:745px)'));
+ assert(code.mentalCss.includes('@container (min-width:550px)'));
  assert(code.mentalCss.includes('repeat(3,minmax(0,1fr))'));
  assert(code.mentalCss.includes('#mathFullScreen .ml-summary-number'));
 });
