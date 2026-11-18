@@ -108,3 +108,34 @@ body.math-learning>.app,body.math-learning>#mobileNav{display:none!important}
 @media(max-width:1150px){.ml-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.ml-mental-groups{grid-template-columns:1fr}.ml-word-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.ml-sidebar{flex-basis:170px;max-width:170px;padding:13px 7px}.ml-sidebar-title{font-size:10px}.ml-navigation button{font-size:11px;padding:11px 5px;gap:5px}.ml-dock{left:170px}.ml-content{padding:12px 8px 120px}.ml-page{padding:12px}.ml-section-box{padding:12px}.ml-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.ml-heading-meta{gap:6px}.ml-progress{width:64px}.ml-key{height:42px}.ml-dock-keys{grid-template-columns:repeat(7,minmax(0,1fr))}}
 @media(max-width:520px){.ml-top{height:64px;min-height:64px;padding:6px;gap:6px}.ml-back{width:32px;height:35px}.ml-file{width:34px;height:35px}.ml-heading-meta{font-size:10px}.ml-heading-meta strong{font-size:10px}#mlTitle{font-size:12px}.ml-sidebar{flex-basis:118px;max-width:118px}.ml-navigation button{font-size:10px;flex-direction:column;align-items:flex-start;gap:4px}.ml-content{padding:7px 5px 145px}.ml-page{padding:8px}.ml-section-heading h3{font-size:13px;padding:7px 10px}.ml-section-heading>button{font-size:10px}.ml-step{width:28px;height:28px;flex-basis:28px}.ml-cards{gap:8px}.ml-card{padding:7px}.ml-vert-row{grid-template-columns:16px 31px 31px}.ml-vertical-matrix,.ml-puzzle{width:78px}.ml-vert-row .ml-input{width:28px}.ml-vert-note{font-size:7px}.ml-mental-group{padding:10px 4px}.ml-mental-row{grid-template-columns:66px 17px 32px 17px 50px;font-size:17px}.ml-mental-row .ml-input{width:50px}.ml-word-head{flex-direction:column}.ml-word-calc{gap:3px}.ml-word-calc .ml-input{width:37px}.ml-dock{left:0;padding:8px}.ml-dock-keys{grid-template-columns:repeat(7,minmax(0,1fr))}.ml-dock-heading{font-size:10px}}
+
+/* P0 TEST NEW UX patch (B20 only): flexible mental row, narrated word data,
+ * explicit ungraded LV3 carry scratch; no global layout or scoring change. */
+#mathFullScreen .ml-section-box{container-type:inline-size}
+#mathFullScreen .ml-mental-groups{gap:12px}
+#mathFullScreen .ml-mental-group{padding:12px 7px;min-width:0}
+#mathFullScreen .ml-mental-row{max-width:100%;font-size:clamp(14px,1.3vw,18px);grid-template-columns:minmax(60px,78px) 16px 33px 16px 54px}
+#mathFullScreen .ml-mental-row .ml-input{width:54px;max-width:100%;font-size:18px!important}
+@container (min-width:745px){
+ #mathFullScreen .ml-mental-groups{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@container (min-width:510px) and (max-width:744px){
+ #mathFullScreen .ml-mental-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@container (max-width:509px){
+ #mathFullScreen .ml-mental-groups{grid-template-columns:minmax(0,1fr)}
+}
+#mathFullScreen .ml-word-prompt{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+#mathFullScreen .ml-word-prompt p{margin:0;line-height:1.6}
+#mathFullScreen .ml-word-prompt .ml-speak-btn{align-self:flex-start;min-height:35px;font-size:12px}
+#mathFullScreen .ml-word-summary{border:1.5px solid #d3a02d;background:#fff4d6;padding:11px 13px;font-size:13px;color:#614015}
+#mathFullScreen .ml-word-summary> b{color:#9a3412;font-size:13px}
+#mathFullScreen .ml-summary-number{color:#a52a2a;background:#fff0b4;border-radius:4px;padding:0 3px;font-weight:900;font-size:14px}
+#mathFullScreen .ml-puzzle-carry-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px;margin:8px auto 3px;max-width:100%;font-size:11px;color:#92400e}
+#mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry-label{font-weight:800;white-space:nowrap}
+#mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry{width:29px;height:29px;font-size:17px!important}
+#mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry-note{flex:0 0 100%;text-align:center;font-size:9px;color:#64748b;line-height:1.2}
+@media(max-width:760px){
+ #mathFullScreen .ml-mental-row{grid-template-columns:minmax(58px,75px) 16px 33px 16px 50px}
+ #mathFullScreen .ml-mental-row .ml-input{width:50px}
+}
