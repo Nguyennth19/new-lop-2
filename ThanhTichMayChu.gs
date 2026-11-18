@@ -34,7 +34,7 @@ function achCut_(s,n){return String(s||'').slice(0,n);}
 function achSelect_(data,lv){
  // Sao chép quy tắc lựa chọn V2.5 để máy chủ KHÔNG tin danh sách câu từ trình duyệt.
  const limits={toan_b20_lv1_ex1:{max:4},toan_b20_lv1_ex2:{perGroup:2},toan_b20_lv1_ex3:{max:2},
-  toan_b20_lv2_problems:{max:4},toan_b20_lv3_ex1:{max:6},toan_b20_lv3_ex2:{max:6},toan_b20_lv3_ex3:{max:6},toan_b20_lv3_ex4:{max:4}};
+  toan_b20_lv2_problems:{max:4},toan_b20_lv3_ex1:{max:6},toan_b20_lv3_ex2:{max:6},toan_b20_lv3_ex3:{max:6},toan_b20_lv3_ex4:{max:3}};
  const sections=data.sections.filter(s=>data.levels.some(l=>l.level===lv&&l.id===s.levelId));
  const out=[];
  sections.forEach(section=>{
