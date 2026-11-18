@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "LOP2_P1_1_SOURCE_OF_TRUTH_LEDGER_19_V1",
+  "schemaVersion": "LOP2_P1_1_SOURCE_OF_TRUTH_LEDGER_19_V1_1_OWNER_ROLES",
   "snapshotDate": "2026-11-18",
   "repository": "Nguyennth19/new-lop-2",
   "ledgerStatus": "REVIEW_CANDIDATE_RECONCILED_NOT_OWNER_LOCKED",
@@ -47,7 +47,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "REVIEW_PENDING",
         "scope": "BASELINE_ONLY_NO_DEPLOY_ATTESTATION",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "APP_RELEASE_MAINTAINER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/main"
@@ -84,7 +87,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "OWNER_ATTESTED_IN_CONVERSATION",
         "scope": "VISUAL_SCOPE_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "PROJECT_OWNER_UI_ACCEPTANCE",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test-theo-main"
@@ -123,7 +129,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "PARTIAL_HISTORICAL_APPROVAL",
         "scope": "ASSET_BINARY_LABELS_AND_SELECTED_CI_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "TECHNICAL_INTEGRATION_MAINTAINER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/be-hoc",
@@ -163,7 +172,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "OWNER_CORRECTED_V8",
         "scope": "OWNER_BATCH_MAPPING_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "DATA_BATCH_OWNER_BQA17",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
@@ -203,7 +215,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "INDEPENDENT_SOURCE_PENDING",
         "scope": "1406_CANDIDATE_SOURCE_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "CURRICULUM_SOURCE_OWNER_AND_INDEPENDENT_REVIEWER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit"
@@ -242,7 +257,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "OWNER_APPROVED_IN_SCOPE",
         "scope": "C1_JSON_SCAFFOLD_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "C1_DATA_BUILD_OWNER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
@@ -282,7 +300,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "TECH_QA_IN_SCOPE",
         "scope": "27_DEV_ITEMS_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "C4_DEV_QA_OWNER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
@@ -320,7 +341,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
         "scope": "P0_5_H2_30_VARIANTS_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "PROJECT_OWNER_PEDAGOGIC_APPROVER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-5-h2-owner-signoff-20261113",
@@ -358,7 +382,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "OWNER_FUNCTIONAL_ATTESTED_SECURITY_SEPARATE",
         "scope": "51_LEGACY_RUNTIME_ROWS_NOT_SOURCE_EXACT",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "RUNTIME_DATA_CUSTODIAN",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
@@ -396,7 +423,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
         "scope": "FC4_ISOLATED_TEST_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "PROJECT_OWNER_TECHNICAL_SIGNOFF",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-fc-audit-20261114",
@@ -436,7 +466,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "TEST_QA_IN_SCOPE",
         "scope": "12_REFERENCE_ROUTES_NOT_ALL_REAL_LESSONS",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "RENDERER_POLICY_OWNER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-resource-renderer-consolidation-v1-20261114",
@@ -474,7 +507,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
         "scope": "VOICE_V1_2_AND_V2_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "PROJECT_OWNER_AUDIO_ACCEPTANCE",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-5-approved-voice-profiles-20261114",
@@ -512,7 +548,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "PENDING_OWNER_SIGNED_EVIDENCE",
         "scope": "0_OF_6_SIGNED",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "POLICY_SIGNATORY_OWNER_PENDING",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
@@ -550,7 +589,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "OWNER_APPROVED_IN_SCOPE",
         "scope": "288_LABELS_ONLY_NOT_ALL_COUNT_SEMANTICS",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "ASSET_OWNER_LABEL_APPROVAL",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
@@ -590,7 +632,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "CI_APPROVED_TEST_ONLY",
         "scope": "39_ISOLATED_NOT_REAL_GAS",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "SECURITY_TEST_OWNER",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3a-trusted-gas-adapter-20261117",
@@ -632,7 +677,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "INDEPENDENT_SIGNOFF_PENDING",
         "scope": "0_OF_96_SOURCE_SIGNED",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "INDEPENDENT_SOURCE_REVIEWER_PENDING",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
@@ -670,7 +718,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "PENDING_INDEPENDENT_QA",
         "scope": "ALPHA_CANDIDATE_ONLY",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "B024_CURRICULUM_REVIEWER_PENDING",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://drive.google.com/file/d/1INMFN1grCl7upyiVoing9ErRq2kn9DTQ/view"
@@ -707,7 +758,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "PROPOSAL_ONLY",
         "scope": "SCHEMA_NOT_PRODUCTION",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "SCHEMA_GOVERNANCE_OWNER_PENDING",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://drive.google.com/file/d/1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc/view"
@@ -744,7 +798,10 @@
         "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
         "decisionStatus": "OWNER_ADOPTION_PENDING",
         "scope": "0_OF_10_RULES",
-        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+        "officialLedgerLock": "PENDING_OWNER_REVIEW",
+        "responsibleRole": "PROJECT_OWNER_RULE_APPROVER_PENDING",
+        "verifiedNamedAssignee": null,
+        "namedAssignmentStatus": "PERSON_IDENTITY_NOT_ATTESTED_IN_LEDGER"
       },
       "evidenceRefs": [
         "https://github.com/Nguyennth19/new-lop-2/tree/audit/g7-6-workflow-rules-consolidation-review-20261116",
