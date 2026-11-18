@@ -29,5 +29,7 @@ jobs:
         run: node qa/p1-2/test_layered_packages.cjs
       - name: Verify 27 C4 private content references and 79 candidate gates
         run: node qa/p1-2-b/test_content_hydration_and_admission.cjs
+      - name: Verify primary original PDF hash receipts and 52 page-visual semantic candidates
+        run: node qa/p1-2-b/test_primary_pdf_evidence_and_visual_semantics.cjs
       - name: Verify 8 original recipe families and 32 secure DEV preview envelopes
         run: node qa/p1-2-b/original_variant_preview_generator.cjs
