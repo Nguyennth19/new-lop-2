@@ -113,16 +113,16 @@ body.math-learning>.app,body.math-learning>#mobileNav{display:none!important}
  * explicit ungraded LV3 carry scratch; no global layout or scoring change. */
 #mathFullScreen .ml-section-box{container-type:inline-size}
 #mathFullScreen .ml-mental-groups{gap:12px}
-#mathFullScreen .ml-mental-group{padding:12px 7px;min-width:0}
-#mathFullScreen .ml-mental-row{max-width:100%;font-size:clamp(14px,1.3vw,18px);grid-template-columns:minmax(60px,78px) 16px 33px 16px 54px}
-#mathFullScreen .ml-mental-row .ml-input{width:54px;max-width:100%;font-size:18px!important}
-@container (min-width:745px){
+#mathFullScreen .ml-mental-group{padding:11px 5px;min-width:0}
+#mathFullScreen .ml-mental-row{max-width:100%;font-size:clamp(13px,1.1vw,16px);grid-template-columns:minmax(54px,64px) 12px 28px 12px 42px}
+#mathFullScreen .ml-mental-row .ml-input{width:42px;max-width:100%;font-size:17px!important}
+@container (min-width:550px){
  #mathFullScreen .ml-mental-groups{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-@container (min-width:510px) and (max-width:744px){
+@container (min-width:370px) and (max-width:549px){
  #mathFullScreen .ml-mental-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@container (max-width:509px){
+@container (max-width:369px){
  #mathFullScreen .ml-mental-groups{grid-template-columns:minmax(0,1fr)}
 }
 #mathFullScreen .ml-word-prompt{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
@@ -136,6 +136,6 @@ body.math-learning>.app,body.math-learning>#mobileNav{display:none!important}
 #mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry{width:29px;height:29px;font-size:17px!important}
 #mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry-note{flex:0 0 100%;text-align:center;font-size:9px;color:#64748b;line-height:1.2}
 @media(max-width:760px){
- #mathFullScreen .ml-mental-row{grid-template-columns:minmax(58px,75px) 16px 33px 16px 50px}
- #mathFullScreen .ml-mental-row .ml-input{width:50px}
+ #mathFullScreen .ml-mental-row{grid-template-columns:minmax(54px,64px) 12px 28px 12px 42px}
+ #mathFullScreen .ml-mental-row .ml-input{width:42px}
 }
