@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "P1_2_RENDERER_REFERENCE_12_V1",
+  "sourceGitHubRepository": "Nguyennth19/new-lop-2",
+  "sourceBranch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+  "sourceCommit": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+  "sourcePath": "du-lieu/g7-6/resource-renderer-manifest.v1.json",
+  "sourceManifestBlobSha": "27c6db04ce514c83d2b72f4068f20df8917e45ff",
+  "referenceRoutes": [
+    {
+      "id": "D1",
+      "displayName": "Tách/gộp số và đổi đơn vị",
+      "version": "QA-D Type1 C2 patched",
+      "qaTechnical": "PASS_BROWSER_C2_D",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D2",
+      "displayName": "Đặt tính cộng/trừ",
+      "version": "Column V1.2 + keypad C2",
+      "qaTechnical": "PASS_BROWSER_C2_D",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D3",
+      "displayName": "Nối cặp",
+      "version": "V1.1",
+      "qaTechnical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D4",
+      "displayName": "Trắc nghiệm lựa chọn",
+      "version": "V1.1",
+      "qaTechnical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D5",
+      "displayName": "Hình học và Tangram",
+      "version": "V1.1",
+      "qaTechnical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D6",
+      "displayName": "Kéo thả / phân loại",
+      "version": "V1.1",
+      "qaTechnical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D7",
+      "displayName": "So sánh số",
+      "version": "V1.1",
+      "qaTechnical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D8",
+      "displayName": "Thước kẻ / đồng hồ",
+      "version": "V1.1",
+      "qaTechnical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D8A",
+      "displayName": "Dung tích lít",
+      "version": "Capacity SVG V1.2",
+      "qaTechnical": "PASS_D2_97_GEOMETRY_80_BROWSER",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D8B",
+      "displayName": "Cân khối lượng",
+      "version": "Capacity/Weight SVG V1.1",
+      "qaTechnical": "PASS_C3_AND_QAD_BROWSER",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D9",
+      "displayName": "Biểu đồ tranh, chạm đếm",
+      "version": "V1.1",
+      "qaTechnical": "PASS_QA_C_STRUCTURAL_INTERACTION",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    },
+    {
+      "id": "D10",
+      "displayName": "Giải toán có lời văn",
+      "version": "G6 existing + V1.1 unification reference",
+      "qaTechnical": "PASS_OFFLINE_REFERENCE_ONLY",
+      "releaseStatus": "ISOLATED_TEST_REFERENCE_ONLY",
+      "sourceBaseCommit": "b6678bcdde5672f3ac745d05da18c95d3e322063"
+    }
+  ],
+  "policy": {
+    "exactIdComparison": true,
+    "noGuessAliasOrParentByPrefix": true,
+    "noLessonOrSkillGrantByRouteName": true,
+    "noAssetCountInference": true,
+    "noPublicVariantUntilSourceAndPolicyQA": true
+  }
+}
