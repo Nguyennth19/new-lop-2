@@ -94,7 +94,7 @@
   p.textContent=canonical.prompt;
   const status=doc.createElement('p');status.className='g74-geo-status';status.setAttribute('aria-live','polite');
   const instructions=doc.createElement('p');instructions.className='g76b5a-hint';
-  instructions.textContent='Chọn mảnh, xoay hoặc kéo trên bảng. Chạm khung để thử đặt; dùng “Ghép vào mẫu” để căn theo hình mẫu. Chưa chấm đúng/sai.';
+  instructions.textContent='Chọn mảnh, xoay hoặc kéo trên bảng. Chạm khung để tự thử đặt; dùng “Làm lại” nếu muốn bắt đầu từ đầu. Chưa chấm đúng/sai.';
   const area=doc.createElement('div');area.className='g74-tangram-layout';
   const column=doc.createElement('div');column.className='g74-tangram-pieces';
   const board=doc.createElement('div');board.className='g74-tangram-board';
@@ -135,21 +135,13 @@
    if(r.ok)change();
    return r;
   }
-  function chooseFit(){
-   const id=state.snapshot().activePieceId;
-   if(!id){note('Em hãy chọn một mảnh hình trước.');return}
-   const resolved=resolveTarget(canonical,id);
-   if(!resolved.ok){note('Chưa tìm được khung mẫu duy nhất cho mảnh đang chọn.');return}
-   const r=place(id,resolved.id,{alignOutline:true});
-   if(!r.ok)note(r.reason==='TARGET_OCCUPIED'?'Khung mẫu đang có mảnh khác. Em hãy bỏ mảnh đó trước.':'Chưa đặt được mảnh này.');
-  }
   for(const [text,operation] of [
    ['↻ Xoay +90°',()=>{const id=state.snapshot().activePieceId;if(id){state.rotatePiece(id,90);change()}}],
    ['↺ Xoay −90°',()=>{const id=state.snapshot().activePieceId;if(id){state.rotatePiece(id,-90);change()}}],
-   ['Ghép vào mẫu',chooseFit],
+   ['↺ Làm lại',()=>{drag=null;state.clear();change()}],
    ['Bỏ vị trí đã đặt',()=>{const id=state.snapshot().activePieceId;if(id){state.unplacePiece(id);change()}}]
   ]){
-   const b=mk(text,'g74-tangram-tool');b.addEventListener('click',operation);tools.append(b);
+   const b=mk(text,'g74-tangram-tool');if(text.includes('Làm lại'))b.dataset.tangramReset='1';b.addEventListener('click',operation);tools.append(b);
   }
   const buttons=[...tools.querySelectorAll('button')];
   function render(){
@@ -159,7 +151,7 @@
    const placed=Object.values(snapshot.pieces).filter(x=>x.placedTargetId!==null).length;
    note(placed+' / '+canonical.items.length+' mảnh đã đặt (chưa chấm đúng/sai)');
    column.replaceChildren();svg.replaceChildren();targetButtons.replaceChildren();pieceElements.clear();
-   buttons.forEach(b=>{b.disabled=!active});
+   buttons.forEach(b=>{b.disabled=!active&&!b.hasAttribute('data-tangram-reset')});
    canonical.items.forEach(piece=>{
     const z=snapshot.pieces[piece.id];
     const b=mk(piece.label+' · '+z.rotation+'°'+(z.placedTargetId?' · đã đặt':''),
