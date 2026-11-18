@@ -79,3 +79,34 @@
  #mathFullScreen .ml-word-structured .ml-word-calc .ml-input{width:43px}
  #mathFullScreen .ml-word-structured .ml-word-result .ml-input{width:67px}
 }
+
+/* P0 TEST NEW UX patch (B20 only): flexible mental row, narrated word data,
+ * explicit ungraded LV3 carry scratch; no global layout or scoring change. */
+#mathFullScreen .ml-section-box{container-type:inline-size}
+#mathFullScreen .ml-mental-groups{gap:12px}
+#mathFullScreen .ml-mental-group{padding:11px 5px;min-width:0}
+#mathFullScreen .ml-mental-row{max-width:100%;font-size:clamp(13px,1.1vw,16px);grid-template-columns:minmax(54px,64px) 12px 28px 12px 42px;gap:2px}
+#mathFullScreen .ml-mental-row .ml-input{width:42px;max-width:100%;font-size:17px!important}
+@container (min-width:550px){
+ #mathFullScreen .ml-mental-groups{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@container (min-width:370px) and (max-width:549px){
+ #mathFullScreen .ml-mental-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@container (max-width:369px){
+ #mathFullScreen .ml-mental-groups{grid-template-columns:minmax(0,1fr)}
+}
+#mathFullScreen .ml-word-prompt{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+#mathFullScreen .ml-word-prompt p{margin:0;line-height:1.6}
+#mathFullScreen .ml-word-prompt .ml-speak-btn{align-self:flex-start;min-height:35px;font-size:12px}
+#mathFullScreen .ml-word-structured .ml-word-summary{border:1.5px solid #d3a02d;background:#fff4d6;padding:11px 13px;font-size:13px;color:#614015}
+#mathFullScreen .ml-word-structured .ml-word-summary> b{color:#9a3412;font-size:13px}
+#mathFullScreen .ml-summary-number{color:#a52a2a;background:#fff0b4;border-radius:4px;padding:0 3px;font-weight:900;font-size:14px}
+#mathFullScreen .ml-puzzle-carry-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px;margin:8px auto 3px;max-width:100%;font-size:11px;color:#92400e}
+#mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry-label{font-weight:800;white-space:nowrap}
+#mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry{width:29px;height:29px;font-size:17px!important}
+#mathFullScreen .ml-puzzle-carry-row .ml-puzzle-carry-note{flex:0 0 100%;text-align:center;font-size:9px;color:#64748b;line-height:1.2}
+@media(max-width:760px){
+ #mathFullScreen .ml-mental-row{grid-template-columns:minmax(54px,64px) 12px 28px 12px 42px}
+ #mathFullScreen .ml-mental-row .ml-input{width:42px}
+}
