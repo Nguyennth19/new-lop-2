@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": "LOP2_P1_1_BRANCH_TO_DOMAIN_COVERAGE_MAP_V1",
+  "sourceBranchInventory": "BRANCH_HEADS_129.prebranch.v1.json",
+  "snapshotScope": "129 branches existing before new P1.1 audit branch creation; source-of-truth only selects exact named refs; all others preserved for discovery",
+  "branches": 129,
+  "exactSelectedBranchRefs": 11,
+  "unmappedByBranchName": [
+    "g7-1-content-audit-20261112"
+  ],
+  "status": "BRANCH_NAME_CLASSIFICATION_REVIEW_ONLY_NOT_COMPLETE_SEMANTIC_SOURCE_AUDIT",
+  "records": [
+    {
+      "branch": "audit/data-b-coverage75-20261117",
+      "sha": "5bdfcff084c7ad2e0e78c626186677e8997df1b7",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G2_B_96_EXERCISE_SOURCE_CANDIDATES",
+        "HISTORICAL_SOURCE_REGISTRY_75"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "audit/data-b-g2b-p0-source-visual-20261117",
+      "sha": "969bdad4495839fddf303685e59416674460988c",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G2_B_96_EXERCISE_SOURCE_CANDIDATES",
+        "HISTORICAL_SOURCE_REGISTRY_75"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "audit/g4-kiem-tra-on-dinh-v1",
+      "sha": "ab718c58f6722301607e8549ecb3074c982e1d7c",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "PROJECT_RULES_GLOBAL",
+        "HISTORICAL_SOURCE_REGISTRY_75"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "audit/g7-6-ai2-controlled-multi-ai-b20-pilot-20261116",
+      "sha": "a73a98a90dab2499c359aa48dde2cda85c3f823e",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "audit/g7-6-ai3-real-handoff-evaluation-b20-20261116",
+      "sha": "83bb8a1784fabead2cd31b497044a1274f8bf1a1",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "audit/g7-6-ai-workflow-orchestration-v1-20261116",
+      "sha": "9a981929437285e2bc2a79e809cae422f27f3c03",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "audit/g7-6-external-workflow-reconciliation-20261116",
+      "sha": "6d88daa3383956e8e43ca1a8a328914a86386138",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "audit/g7-6-workflow-rules-consolidation-review-20261116",
+      "sha": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "PROJECT_RULES_GLOBAL"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "audit/master-state-reconciliation-20261117",
+      "sha": "79b801239e4da2765ce3d51fc1db73d76564451a",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "PROJECT_RULES_GLOBAL",
+        "HISTORICAL_SOURCE_REGISTRY_75"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "be-hoc",
+      "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "BE_HOC_ASSET_RICH_AND_ORCHESTRATOR"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "feat/google-apps-script-v2-1",
+      "sha": "1bdb40b3385eb00cbc9e2eb33934474680b7cf8a",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "APPLICATION_MAIN",
+        "APPLICATION_STABLE_TEST_UI"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "feature/g5-g6-chuan-hoa-bo-may-v1",
+      "sha": "d703077b140e6667480ba6079892abba31fb7ea4",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "HISTORICAL_SOURCE_REGISTRY_75",
+        "C1_JSON_ENVELOPES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "feature/g5-g6-dong-bo-du-lieu-bo-may",
+      "sha": "1e6bf8fa20b2db1236f7c0fa906ee745f830510a",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "HISTORICAL_SOURCE_REGISTRY_75",
+        "C1_JSON_ENVELOPES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "feature/g7-4-b2-b20-staging-20261112",
+      "sha": "47e62f503255423c9b890a45f341f5a82cf3264f",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "feature/g7-4-b3-json-asset-scenes-20261112",
+      "sha": "4be562fa31eb75c28bd584e3312596d2ddfed4ce",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "feature/g7-4-b-asset-variant-bridge-20261112",
+      "sha": "87c6187913139f2e86b0c8e5d9dfa285662169ad",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "feature/trang-phu-huynh-v1",
+      "sha": "243abddcf9bf1ee75b40deb489067706f49f67e1",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "B20_51_LEGACY_APP_SHEET"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "fix/apps-script-root-and-course-covers",
+      "sha": "41bd8631f1fca72e79e43f8af0eac957a7aa09d3",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "APPLICATION_MAIN",
+        "APPLICATION_STABLE_TEST_UI"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "fix/can-dau-trang-va-ngay-lich-hoc",
+      "sha": "645d3a0fd6c306577f0318fca30b8cca6775cf93",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "APPLICATION_MAIN",
+        "APPLICATION_STABLE_TEST_UI"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "g7-1-content-audit-20261112",
+      "sha": "9ae8a0fab1e3469469e121280e0e386f86de2b2c",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "g7-4-a2-webp-binary-20261112",
+      "sha": "5cbae75c4b33be1bfbaa8b9702d7868aef34cadf",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "g7-asset-registry-20261112",
+      "sha": "fbc32e0877d3e7fb9cccae71ed06e039e4a8ddde",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "hotfix/b20-book-illustration-20261112",
+      "sha": "2b4c44b298f4c9ca7d4c6e9f40aca0d7dfe35ec1",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "APPLICATION_MAIN",
+        "APPLICATION_STABLE_TEST_UI"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "hotfix/g6-thu-tu-khoi-tao-cau-hinh",
+      "sha": "047f3e9853117dec53506057b9cf10d12e3d1c62",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "APPLICATION_MAIN",
+        "APPLICATION_STABLE_TEST_UI"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "main",
+      "sha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "APPLICATION_MAIN"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "pilot-hinh-anh-g3",
+      "sha": "ed5a32f8e1fc5bb5e3af051f1ab0b8aa9f9ba944",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/data-b-g3a-trusted-gas-adapter-20261117",
+      "sha": "59827dee9a712dadfafb6b06d4f59403cf2c7783",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "G3A_TRUSTED_GRADING_CODE"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "test/data-b-g3b-b20-trusted-gas-e2e-20261117",
+      "sha": "5db6634b3424d5f48a54716c45f069c0aefa4a45",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G3A_TRUSTED_GRADING_CODE",
+        "B20_51_LEGACY_APP_SHEET"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-a3-loader-fallback-20261112",
+      "sha": "132ef0f9df78a8c154ec9cb01849a433491d3794",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b3-1-controlled-merge-20261112",
+      "sha": "55999500d2b33a3e932876ea897a2993e08d42d8",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b4-1-curated-rules-expansion-20261113",
+      "sha": "a2674717a8ea8671243b15121911b76c703e8583",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b4-semantic-asset-selector-20261112",
+      "sha": "b919d9ea6a561d14fdbe197d76798acea3d8f67a",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-1-shared-semantic-selector-20261113",
+      "sha": "3e6798c818e00aff015d68d46a3a831df55c4280",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-3-visual-intent-variant-data-20261113",
+      "sha": "a5c5a4e3901c078e527dbd6bfacc7ae44d0607fe",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-4-visual-intent-generator-gate-20261113",
+      "sha": "26a0fb4f18919c307c9c3011e652f5836302b132",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-5-multi-lesson-visual-intent-qa-20261113",
+      "sha": "5095266dc3cfc7d034140476e55510bb601237c4",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-6-standalone-visual-qa-20261113",
+      "sha": "bcb86bb3804fc33737e716b4e71c5656b922184d",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-7-asset-library-288-qa-20261113",
+      "sha": "4dce2496272c0c6de7c767343c6c65c2944693f5",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-7-perf-a-gallery-20261113",
+      "sha": "94f81d41f403b763e9fe2bf683daacdaef3d54ea",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+      "sha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "test/g7-4-b5-8-semantic-count-composition-20261113",
+      "sha": "2fe3b0c59fb152bca3736be6eacee4e60a838e02",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-8r-10-exercise-visual-reference-20261113",
+      "sha": "f4167eba244654ea44fb15f9f825bc9f13210393",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-8r-fluent-flat-pilot-import-20261113",
+      "sha": "5fcb8490338f821ba84bce9586def8e068f4fc8d",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-8r-fluent-flat-rulebook-v2-qa-20261113",
+      "sha": "82d8ebb16e5572bbe3fda865230472743d29672f",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-8r-pure-visual-resolver-20261113",
+      "sha": "6785a5f25a3b7ead217e87d0a33afa5b33e00762",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-8r-visual-orchestration-contract-20261113",
+      "sha": "30a9b279ac85002eea7daabd67bf56fb3caf2bee",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-9-fluent-flat-visual-qa-20261113",
+      "sha": "ebc1bdc5f483d9126fe72bec967de4a064496258",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-10-count-safe-b6-expansion-20261113",
+      "sha": "be787eadeb2a78aa73c19cc0b1016e944acad21b",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-11-count-evidence-b6-batch-import-20261113",
+      "sha": "210f41555945088ce56c3f392049314d55ae1ea8",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-12-delegated-count-safe-20261113",
+      "sha": "cbccf87d1358ea25eb6f842a15d0a7e1b25b8345",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-13-count-renderer-b6-20261113",
+      "sha": "44f8d45621210c106b8e766a0fe44651b8032093",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-14-webapp-count-renderer-20261113",
+      "sha": "12d2df017d0ba100f41d674131ae97986565b763",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-b5-14a-visual-mode-policy-20261113",
+      "sha": "14098eef59dcc5730e6c00b0418fc7ea99326e16",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-c1-c5-visual-closure-20261113",
+      "sha": "e6456430608a8cf2bd37a1f2959a66e31fdcc4d4",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-c3-visual-demo-v2-20261113",
+      "sha": "cbbc2c38f120735d2c345f02b524731fd38dcb54",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-capacity-weight-reference-v11-20261114",
+      "sha": "4b88316ba3844874d406772eac92674b604dc728",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-choice-reference-v11-20261114",
+      "sha": "2fcdffecc0de5620314f3c90e905340590e41d5d",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-column-calc-reference-v1-20261113",
+      "sha": "d52c08ef301c502c92612f8679936d352004ed74",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-column-calc-reference-v11-source-qa-20261113",
+      "sha": "2637e9b199e33591dcc0861103b198ac651c2476",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-column-calc-reference-v12-variant-renderer-20261114",
+      "sha": "3b3497f296c95f590753bc65da62136218117c40",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-column-calc-reference-v13-webapp-test-20261114",
+      "sha": "95d0ed90b15889ff069a82d24198fbc82d6ffe81",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-column-calc-reference-v14-e2e-audit-20261114",
+      "sha": "b766b6069d28f28b16e7dd7adf0035626710b285",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-comparison-reference-v11-20261114",
+      "sha": "38aba3e40ee694397528b3bc861cd59bb3ae3ec2",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-drag-sort-reference-v11-20261114",
+      "sha": "c77dd87de6a6e4ddb1d26b45a6afaef7bc2d3949",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-geometry-tangram-reference-v11-20261114",
+      "sha": "3f6130458c7ccd93d322e2760d555dd0c3b156d2",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-matching-reference-v11-20261114",
+      "sha": "06a228bf0c3ac746bf7a32ee7108ce273fadec88",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-measurement-reference-v11-20261114",
+      "sha": "a84886b123490e19331e11df75ee344fb178be2f",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-pictograph-reference-v11-20261114",
+      "sha": "80fc0dfdcf4f00e0da992768441895a865b98602",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-qa-d2-capacity-scale-v12-20261114",
+      "sha": "b6678bcdde5672f3ac745d05da18c95d3e322063",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-batch-qa-b1-v1-20261114",
+      "sha": "b38c1dc1a5e69064a67a846105a253fbfca6517f",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-batch-qa-b-v1-20261114",
+      "sha": "d046fae83b9ed1881958bde956db64ae66cc02eb",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-batch-qa-c-v1-20261114",
+      "sha": "de5f340d0870c8492b2a3f6e46b3b92b841f6a58",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-batch-qa-v1-20261114",
+      "sha": "4d0950589e2fba88e735959e71cc75c531a121ff",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-qa-c1-recovery-20261114",
+      "sha": "dcdbd1802cb6ded16dfd28d1af28978a29d846bf",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-qa-c2-variant-integration-20261114",
+      "sha": "a67662974d9869deb650cd547af13f7ac426c0c7",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-qa-c3-parity-assets-20261114",
+      "sha": "289320da58c4bf50809988a8da3133138cf002f0",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-renderer-qa-d-device-20261114",
+      "sha": "16ee7ce4df250d1f1b9fe071546374768c0cbfe0",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-structured-diagram-rules-v2-20261113",
+      "sha": "ed00924bc4e2757b9de872522754338f6446b99b",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-4-word-problem-unification-v11-20261114",
+      "sha": "c81d33fd7deb28238ab670d8909af960ae4e0f80",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_3_G7_4_ASSET_LABELS",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-5-approved-voice-profiles-20261114",
+      "sha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "G7_5_APPROVED_VOICE"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "test/g7-5-v2-prosody-20261114",
+      "sha": "c9880bfc56aec0cfc4ea7f788983bcc3761d7b48",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_5_APPROVED_VOICE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-5-vi-tts-compat-v1-20261114",
+      "sha": "59410efa288b5f84e1ae9079f82ccc4d3c4f3311",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_5_APPROVED_VOICE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-5-vietnamese-tts-reference-20261114",
+      "sha": "9d952154d606f95c5ba3aa703bea07a0462a28a9",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_5_APPROVED_VOICE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b2-real-producer-submode-chrome-20261115",
+      "sha": "be426e6c10c6ae9636a9a8b28c59b407641222d4",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b3-producer-coverage-visual-20261115",
+      "sha": "c3757227856f50e0e122407e0121c3e40e024728",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b4-1-owner-evidence-signoff-20261115",
+      "sha": "0263175544bcfd03433a89b8515bdd9f11a00d26",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b4-owner-visual-policy-20261115",
+      "sha": "322015ee50d76fcbc067f9e4ee90ae471f3dd062",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b5a-renderer-curriculum-tangram-20261115",
+      "sha": "f3653d850864f75c7e3640585364d68f17f1428c",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b5b-resource-tts-e2e-20261115",
+      "sha": "98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_5_APPROVED_VOICE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b5c-integration-readiness-gates-20261116",
+      "sha": "2862a81908557212e6561c6372df435d9d236784",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b6-c08-source-reconciliation-20261116",
+      "sha": "c4f194043c515ee9b55040c3d6ce6fed76668cdc",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b6-c081-controlled-source-patch-20261116",
+      "sha": "ef73696db6380997fea6a2d1465e691b9a303739",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b6-c082-source-item-skill-review-20261116",
+      "sha": "7d454560190785d295cfc3793902672a699e79c1",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b6-c083-owner-e04-activation-readiness-20261116",
+      "sha": "342e517b83893a5fc1a540f8dc6299dd7667c4f9",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b6-c084-owner-signoff-conditional-gate-20261116",
+      "sha": "416867bcaf4d271f2d6730235e3a219c854306e0",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b6-c085-owner-evidence-lock-20261116",
+      "sha": "300e0aa6e26bf04e7a4b35da42ffd9d9af9d1584",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+      "sha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "test/g7-6-b6-policy-renderer-approval-closure-20261116",
+      "sha": "0a453101ab47567bdf3ff820f9b58a9d7c0c86d3",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-b-variant-adapter-matrix-v1-20261115",
+      "sha": "0a8768ac5658f6396e76f68a3513a3c1e6843918",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+      "sha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "test/p0-2-validator-v1-20261112",
+      "sha": "debab97e67ed48002f01572fc6a031d8a26f31d6",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-3-dry-run-no-write-20261112",
+      "sha": "8c6763c5cb323c0c64e46d87881e2f18670a3764",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-4-qa-runner-20261113",
+      "sha": "c84b93802df59a6861e5e37d770eef13e56eb66a",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-5-h1-pedagogy-copy-20261113",
+      "sha": "e74dfec0257ef512118061353cb166604723e53e",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-5-h2-owner-signoff-20261113",
+      "sha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "B20_PEDAGOGY_30"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "test/p0-5-h-pedagogy-20261113",
+      "sha": "f622893a6e08e206565ef8591298d744bcdf055d",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-5-i2-webapp-evidence-20261113",
+      "sha": "31ca84afa1e3903a700f31e370f17c56a0768590",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-5-release-closure-20261113",
+      "sha": "b510f056fba5bce4844d18e045f5db34a3707107",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-5-release-gate-20261113",
+      "sha": "60d5b68275879c1c4d932f7dcff54fd4a18ae70d",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-5-ui-a-mobile-20261113",
+      "sha": "4d8fbeef2a10d61d126aa4d6c90eff014bcfee05",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-5-ui-b-equations-20261113",
+      "sha": "535f06468a16e1e104edb5f6ab0a179ca2b16ef1",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-b-adapter-registry-20261113",
+      "sha": "aa75aad8ac49f640cd5be2a1beb494c9d7486565",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-c-qa-grading-20261113",
+      "sha": "6854a127c4823050ab320a87fd79fd2aa0ebd649",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-d-renderer-registry-20261113",
+      "sha": "ac00d05405d1dc2e8a9cb2dd205c8d644e850fe4",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "G7_4_RENDERER_MANIFEST_12",
+        "G7_6_C086_OWNER_GATES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-e0-math-variant-acceptance-20261113",
+      "sha": "e7452be3c997f395aaafcb91d491973aa071fe5d",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-e01-math-variant-validator-20261113",
+      "sha": "8b012bec31461d65e2b9e24c2a525bb2112b858d",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-e02-policy-registry-generator-20261113",
+      "sha": "193354ed4f2a626dd168c2cf1538c0a9e67301b5",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-e03-multi-family-composition-20261113",
+      "sha": "b0ae0eab7f4b8bfe5687ae49cdb701da74ba9583",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-e-multi-lesson-pilot-20261113",
+      "sha": "528d2ddab5058d35223762c9c2cec9127de31bbe",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-fa-policy-pedagogy-20261113",
+      "sha": "612bcf54c5c67247c97be1c2c6a931c367ddeb5b",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-fb-from-fa-20261113",
+      "sha": "f60eb781df402df3373c4c0f5987087ab01a5764",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-6-fc-audit-20261114",
+      "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    },
+    {
+      "branch": "test/p0-6-platform-foundation-20261113",
+      "sha": "a8378f7931cb79292a80fd34017707f492f02a1e",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-b01-b24-lessonpackage-v1-20261117",
+      "sha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "HISTORICAL_SOURCE_REGISTRY_75",
+        "C1_JSON_ENVELOPES"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test/p0-g2b-variant-adaptation-20261117",
+      "sha": "1a331239f3572c8264e1c71cf74b1fda22ff9efc",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "P0_6_TECH_CLOSURE"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test-b20-bien-the-20261112",
+      "sha": "84430d8f7809cb763a1308928ae91810fbc86ad1",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "B20_PEDAGOGY_30",
+        "B20_51_LEGACY_APP_SHEET"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test-bai-20",
+      "sha": "1511a75aefe0e62e61cec39e192648d0e0d6542a",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "B20_PEDAGOGY_30",
+        "B20_51_LEGACY_APP_SHEET"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test-new",
+      "sha": "59ad330271caffeee92b339816f45eb87be20040",
+      "sourceOfTruthSelection": "REFERENCE_OR_HISTORICAL_UNAPPROVED_BY_NAME",
+      "potentialDomainIds": [
+        "APPLICATION_STABLE_TEST_UI",
+        "B20_51_LEGACY_APP_SHEET",
+        "G7_4_RENDERER_MANIFEST_12"
+      ],
+      "classifierBasis": "BRANCH_NAME_ONLY_NOT_SEMANTIC_VALIDATION",
+      "reviewNeeded": true
+    },
+    {
+      "branch": "test-theo-main",
+      "sha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+      "sourceOfTruthSelection": "SELECTED_FOR_EXACT_DOMAIN",
+      "potentialDomainIds": [
+        "APPLICATION_STABLE_TEST_UI"
+      ],
+      "classifierBasis": "EXACT_LEDGER_SELECTED_REF_SHA",
+      "reviewNeeded": false
+    }
+  ]
+}
