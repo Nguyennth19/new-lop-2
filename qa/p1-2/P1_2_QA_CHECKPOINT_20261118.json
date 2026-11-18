@@ -33,7 +33,9 @@
     "result": "SUCCESS",
     "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44246041439",
     "actualGAS": "NOT_RUN",
-    "humanSourceExactQA": "NOT_SIGNED"
+    "humanSourceExactQA": "NOT_SIGNED",
+    "c4DevSourceIdCrosswalk": "27/27 EXACT_ID_PASS_DEV_ONLY",
+    "rendererCandidateReviewQueue": "41/41 PRESERVED_NO_AUTO_ROUTE_GRANT"
   },
   "reuse": {
     "c4DevItems": 27,
@@ -56,5 +58,26 @@
     "modifiedDrive": false,
     "modifiedStudentData": false,
     "modifiedGAS": false
+  },
+  "additionalReconciliation": {
+    "c4DevExactIdReuse": {
+      "count": 27,
+      "B001": 24,
+      "B002": 3,
+      "sourceWorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "sourceTab": "C4_CONTENT_INDEX",
+      "crosswalk": "qa/p1-2/P1_2_C4_DEV27_EXACT_ID_REUSE_CROSSWALK.review.v1.json",
+      "status": "DEV_REFERENCE_ONLY_NO_PRIVATE_ANSWERS_COPIED",
+      "independentSourceExactApprovalAdded": 0
+    },
+    "rendererCandidateQueue": {
+      "totalCandidates": 113,
+      "exactRouteIdCandidates": 72,
+      "unmatchedAliasCount": 34,
+      "missingRendererNameCount": 7,
+      "queueSize": 41,
+      "path": "qa/p1-2/P1_2_RENDERER_CANDIDATE_REVIEW_QUEUE_41.review.v1.json",
+      "status": "REVIEW_QUEUE_NO_AUTOMATIC_RENDERER_GRANTS"
+    }
   }
 }
