@@ -1,0 +1,875 @@
+{
+  "schemaVersion": "LOP2_P1_1_SOURCE_OF_TRUTH_LEDGER_19_V1",
+  "snapshotDate": "2026-11-18",
+  "repository": "Nguyennth19/new-lop-2",
+  "ledgerStatus": "REVIEW_CANDIDATE_RECONCILED_NOT_OWNER_LOCKED",
+  "baselineSource": {
+    "url": "https://github.com/Nguyennth19/new-lop-2/blob/audit/master-state-reconciliation-20261117/qa/global-audit/SOURCE_OF_TRUTH_RECONCILIATION_CANDIDATE.json",
+    "sha": "79b801239e4da2765ce3d51fc1db73d76564451a",
+    "records": 19
+  },
+  "scope": {
+    "gitBranchHeadsObserved": 129,
+    "priorStructuralTreesInspected": 124,
+    "newAndChangedTreeDiffsReviewed": 7,
+    "driveProjectRootDirectFilesAndFolders": 44,
+    "driveAssetRootDirectFolders": 8,
+    "driveOriginalInventoryRowsHistorical": 1769,
+    "governanceSheetTabs": 20,
+    "webAppRealGASTestExecuted": false,
+    "allDriveFilesRead": false,
+    "allChatTranscriptsRead": false
+  },
+  "selectionPolicy": [
+    "Preserve historical owner approvals in their exact scopes.",
+    "Source-original PDF plus independent review governs exact textbook content; code CI does not.",
+    "Never infer real GAS deployment from GitHub HEAD or local Chrome.",
+    "No merging MAIN/test-theo-main; no student score or private answer data export.",
+    "Candidate supersession is not automatic; official ledger lock requires owner confirmation."
+  ],
+  "records": [
+    {
+      "ordinal": 1,
+      "domain": "APPLICATION_MAIN",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/main",
+        "branch": "main",
+        "sha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "BASE_CODE_NOT_LIVE_GAS_ATTESTED",
+      "passScope": "NO_PUBLISHED_STUDENT_RELEASE",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "REVIEW_PENDING",
+        "scope": "BASELINE_ONLY_NO_DEPLOY_ATTESTATION",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/main"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Pin existing main SHA; no merge, deploy or edit from this ledger; rollback means discard this audit index.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Main code baseline, no proof current GAS deployment points here.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 2,
+      "domain": "APPLICATION_STABLE_TEST_UI",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test-theo-main",
+        "branch": "test-theo-main",
+        "sha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "STABLE_REFERENCE_FOR_UI",
+      "passScope": "VISUAL_USER_TEST_IN_PRIOR_CONVERSATION_SCOPE_ONLY",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "OWNER_ATTESTED_IN_CONVERSATION",
+        "scope": "VISUAL_SCOPE_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test-theo-main"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [
+        "test-new@59ad330271caffeee92b339816f45eb87be20040: QA-only UX candidate; not baseline replacement"
+      ],
+      "rollback": "Retain pinned test-theo-main SHA and UI snapshot; no replace by be-hoc without separate visual diff and owner decision.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Do not replace stable UI based only on larger be-hoc repo.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 3,
+      "domain": "BE_HOC_ASSET_RICH_AND_ORCHESTRATOR",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/be-hoc",
+        "branch": "be-hoc",
+        "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "CODE_TEST_BRANCH",
+      "passScope": "CI_SELECTED_SUCCESS_NO_GAS",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "PARTIAL_HISTORICAL_APPROVAL",
+        "scope": "ASSET_BINARY_LABELS_AND_SELECTED_CI_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/be-hoc",
+        "https://github.com/Nguyennth19/new-lop-2/blob/be-hoc/docs/kiem-dinh/BE_HOC_ORCHESTRATOR_DRIVE_SYNC_CHECKPOINT_20261117.md",
+        "https://github.com/Nguyennth19/new-lop-2/actions/runs/44011827493",
+        "https://github.com/Nguyennth19/new-lop-2/actions/runs/44011827493"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Keep original be-hoc HEAD and byte-pinned sources; do not revert code or promote candidate. Ignore audit ledger if rejected.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "288 G7 WebP + 30 characters + 46 Fluent SVG plus other assets; only 24 of 288 source PNG masters mirrored. Workflow CI earlier commit, branch HEAD backup-only success.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 4,
+      "domain": "BQA_OWNER_B061_B062",
+      "selectedSource": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+        "driveModifiedUtc": "2026-11-09T04:00:29.826Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "OWNER_CORRECTED_CANONICAL_V8",
+      "passScope": "V8_STATIC_OWNER_PATCH_VERIFIED",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "OWNER_CORRECTED_V8",
+        "scope": "OWNER_BATCH_MAPPING_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/master-state-reconciliation-20261117/qa/global-audit/COVERAGE75_OWNER_AND_STATE_ERRATA_20261117.json"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [
+        "Consolidated/V8 interim 65 active-mismatch warning -> V8-OWNER-FIX-20261109-01 (resolved 65/65)"
+      ],
+      "newerScopeCandidates": [],
+      "rollback": "Keep V8 owner patch; historical Consolidated stays immutable. If audit index is wrong, revert only its reference, never restore 65 resolved warnings.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "BQA17 B059-B062; BQA18 B063-B066. Consolidated snapshot retained 65 historic mismatches only, not 65 active.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 5,
+      "domain": "HISTORICAL_SOURCE_REGISTRY_75",
+      "selectedSource": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+        "driveModifiedUtc": "2026-11-09T04:00:29.826Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "1406_CANDIDATES_SOURCE_PENDING",
+      "passScope": "0_75_SOURCE_EXACT_V8",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "INDEPENDENT_SOURCE_PENDING",
+        "scope": "1406_CANDIDATE_SOURCE_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo/edit"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [
+        "Stale B061/B062 ownership values only; raw SOURCE_1406 candidates preserved"
+      ],
+      "newerScopeCandidates": [],
+      "rollback": "Retain original 1406 SOURCE rows and C1 source IDs; withdraw ledger selection only, do not regenerate candidates.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "677 SGK +729 VBT, 1406 C1 scaffolds; no app release inferred.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 6,
+      "domain": "C1_JSON_ENVELOPES",
+      "selectedSource": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM",
+        "driveModifiedUtc": "2026-11-09T05:02:17.854Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "C1_COMPLETE_READBACK_1406",
+      "passScope": "OWNER_APPROVED_FOR_C1_NOT_RUNTIME",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "OWNER_APPROVED_IN_SCOPE",
+        "scope": "C1_JSON_SCAFFOLD_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/data-b-coverage75-20261117/qa/coverage75/README.md"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [
+        "Historical claim that C1 was unfinished solely because 0 runtime-playable"
+      ],
+      "newerScopeCandidates": [],
+      "rollback": "Preserve 6 verified readbacks and C1 workbook; no source rewrite or rollback of owner C1 approval.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "75 lesson envelopes +1406 JSON question shells; 0/1406 render_eligible within C1; six batches readback.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 7,
+      "domain": "C4_DEV_PLAYABLE_CONTENT",
+      "selectedSource": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+        "driveModifiedUtc": "2026-11-09T12:12:51.954Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "27_DEV_REAL_QUESTIONS",
+      "passScope": "DEV_QA_PASS_132_132_NODE_27_BROWSER_DESKTOP_MOBILE",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "TECH_QA_IN_SCOPE",
+        "scope": "27_DEV_ITEMS_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/master-state-reconciliation-20261117/qa/global-audit/LOP2_GLOBAL_HARD_QA_REPORT_20261117.md"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Preserve C4 27 DEV items; do not project to runtime. Discard only this audit index if invalid.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "121 parts across 27 items; 1379 deferred; not student publication.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 8,
+      "domain": "B20_PEDAGOGY_30",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-5-h2-owner-signoff-20261113",
+        "branch": "test/p0-5-h2-owner-signoff-20261113",
+        "sha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "PEDAGOGY_SIGNED_BY_PROJECT_OWNER_CHAT_SCOPE",
+      "passScope": "30_QUESTIONS_P0_5_H2_APPROVED_ONLY",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
+        "scope": "P0_5_H2_30_VARIANTS_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-5-h2-owner-signoff-20261113",
+        "https://docs.google.com/document/d/1p7NGew-ncfELgnv0L96lsKT5pORmuOVhRr1rVHBdHac/edit"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Keep original H.2 signed 30-question packet; do not replace or merge it with legacy 51 question rows.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Do not confuse approved 30 question variant runtime with legacy 51 rows.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 9,
+      "domain": "B20_51_LEGACY_APP_SHEET",
+      "selectedSource": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8",
+        "driveModifiedUtc": "2026-11-13T02:08:45.361Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "51_RUNTIME_ROWS_B20",
+      "passScope": "CONTENT_AND_SECURITY_SEPARATE",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "OWNER_FUNCTIONAL_ATTESTED_SECURITY_SEPARATE",
+        "scope": "51_LEGACY_RUNTIME_ROWS_NOT_SOURCE_EXACT",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/data-b-g3b-b20-trusted-gas-e2e-20261117/docs/kiem-dinh/G3B_B20_TRUSTED_GAS_TEST_GATE_20261117.md"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Preserve source Sheet (including 90/91/92) without writes; any runtime changes require isolated TEST plus original deployment rollback record.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Legacy answer leaks in be-hoc KhoBaiHoc/26; no claim 51 sourceExact verified.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 10,
+      "domain": "P0_6_TECH_CLOSURE",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-fc-audit-20261114",
+        "branch": "test/p0-6-fc-audit-20261114",
+        "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "P06_TECHNICAL_CLOSED_ISOLATED_TEST_ONLY",
+      "passScope": "OWNER_APPROVED_FC4_WITH_EXCLUSIONS",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
+        "scope": "FC4_ISOLATED_TEST_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/p0-6-fc-audit-20261114",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/p0-6-fc-audit-20261114/thu-nghiem/p0-6/final-acceptance/FC4_P06_TECHNICAL_TEST_CLOSURE_OWNER_DECISION_20261114.md"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [
+        "Historical claim that F-C.4 technical TEST had not closed"
+      ],
+      "newerScopeCandidates": [],
+      "rollback": "Retain FC4 owner decision and pinned SHA. Exclusion to GAS/production is not reason to undo isolated TEST closure.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Do not reopen passed F-C closure; separate remaining GAS, student integration and curriculum gates.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 11,
+      "domain": "G7_4_RENDERER_MANIFEST_12",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "branch": "test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "sha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "12_REFERENCE_ITEMS_10_FAMILIES",
+      "passScope": "TEST_CONTRACT_PASS_NOT_HOST_RUNTIME",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "TEST_QA_IN_SCOPE",
+        "scope": "12_REFERENCE_ROUTES_NOT_ALL_REAL_LESSONS",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-resource-renderer-consolidation-v1-20261114",
+        "https://docs.google.com/document/d/1sR7cLDGGGm6qG5rRmk-Bm7a3I4G9XEzHVZmQgxbD9WI/edit"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Keep original reference renderer branch/policy and JS core; disable new routing without deleting historical references.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "G7.6 B5C later test 1710 PASS readiness; C07.. gates are separate.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 12,
+      "domain": "G7_5_APPROVED_VOICE",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-5-approved-voice-profiles-20261114",
+        "branch": "test/g7-5-approved-voice-profiles-20261114",
+        "sha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "V1_2_AND_V2_USER_VOICE_APPROVED",
+      "passScope": "USER_AUDIO_ATTESTED_PROFILE_SCOPE",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "PROJECT_OWNER_CHAT_APPROVED_IN_SCOPE",
+        "scope": "VOICE_V1_2_AND_V2_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-5-approved-voice-profiles-20261114",
+        "https://docs.google.com/document/d/1EwQ0MHg8GlfTo4dgyRdPX9scVL7d7mWjm2jUQaB3JyA/edit"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Keep V1.2 stable and V2 approved voice profiles; no TTS rewrite, revert only new integrations.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Retain stable V1.2; V2 preferred default, parent control not implemented.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 13,
+      "domain": "G7_6_C086_OWNER_GATES",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "branch": "test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "sha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "C07_C08_C09_PENDING",
+      "passScope": "0_6_SIGNED_OWNER_DECISIONS",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "PENDING_OWNER_SIGNED_EVIDENCE",
+        "scope": "0_OF_6_SIGNED",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116/qa/g7-6-b6-c086/resolution.pending.v1.json"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Leave owner decision packets pending (0/6); never synthesize signatures or register manifest automatically.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Crypto validator tests PASS, no actual signed evidence, no C07 registry/test adapter authorization.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 14,
+      "domain": "G7_3_G7_4_ASSET_LABELS",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "branch": "test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "sha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "288_LABEL_APPROVED",
+      "passScope": "LABEL_SCOPE_ONLY_CONTENT_QA_PER_ASSET_PENDING",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "OWNER_APPROVED_IN_SCOPE",
+        "scope": "288_LABELS_ONLY_NOT_ALL_COUNT_SEMANTICS",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/g7-4-b5-7-perf-a-owner-label-approval-20261113",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/g7-4-b5-7-perf-a-owner-label-approval-20261113/qa/g7-4-b5-7-perf-a/owner-label-approval-188.audit.json"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [
+        "G7.3 interim 100 approved + 188 pending label snapshot"
+      ],
+      "newerScopeCandidates": [],
+      "rollback": "Keep original 288 label owner approvals and pinned binary hashes; revert only unapproved semantic/count promotions.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Historical G7.3 100+188 open superseded by owner label signoff 188, but not mathematical semantic/counted proof.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 15,
+      "domain": "G3A_TRUSTED_GRADING_CODE",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3a-trusted-gas-adapter-20261117",
+        "branch": "test/data-b-g3a-trusted-gas-adapter-20261117",
+        "sha": "59827dee9a712dadfafb6b06d4f59403cf2c7783",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "59827dee9a712dadfafb6b06d4f59403cf2c7783",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "39_39_ISOLATED_AND_CI_PASS",
+      "passScope": "REAL_GAS_NETWORK_NOT_RUN",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "CI_APPROVED_TEST_ONLY",
+        "scope": "39_ISOLATED_NOT_REAL_GAS",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/test/data-b-g3a-trusted-gas-adapter-20261117",
+        "https://github.com/Nguyennth19/new-lop-2/actions/runs/44029669866",
+        "https://github.com/Nguyennth19/new-lop-2/blob/test/data-b-g3b-b20-trusted-gas-e2e-20261117/qa/p0-consolidated/STEP2_SINGLE_GAS_TEST_INTEGRATION_CHECKPOINT_20261117.md",
+        "https://github.com/Nguyennth19/new-lop-2/actions/runs/44029669866"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [
+        "test/data-b-g3b-b20-trusted-gas-e2e-20261117@5db6634b3424d5f48a54716c45f069c0aefa4a45"
+      ],
+      "rollback": "Retain isolated G3A SHA and newer G3B candidate independently; no fallback to unsafe student-facing client grading.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Separate test branch & private QA workbook; no verified deployed GAS.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 16,
+      "domain": "G2_B_96_EXERCISE_SOURCE_CANDIDATES",
+      "selectedSource": {
+        "kind": "GOOGLE_SHEET",
+        "url": "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+        "branch": null,
+        "sha": null,
+        "driveId": "1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts",
+        "driveModifiedUtc": "2026-11-17T14:25:30.285Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "96_G2_CANDIDATES_7_LESSONS",
+      "passScope": "G2B_INDEPENDENT_0_96",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "INDEPENDENT_SIGNOFF_PENDING",
+        "scope": "0_OF_96_SOURCE_SIGNED",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/data-b-g2b-p0-source-visual-20261117/qa/g2b-p0/README.md"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Preserve immutable 96 reviewer queue and private evidence; no automatic dedup with C1, no student grant.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Crosswalk historical 1406 by normalized lesson/session/page/semantics; do not count 96 as new unique.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 17,
+      "domain": "B024_ALPHA",
+      "selectedSource": {
+        "kind": "DRIVE_FILE",
+        "url": "https://drive.google.com/file/d/1INMFN1grCl7upyiVoing9ErRq2kn9DTQ/view",
+        "branch": null,
+        "sha": null,
+        "driveId": "1INMFN1grCl7upyiVoing9ErRq2kn9DTQ",
+        "driveModifiedUtc": "2026-11-17T03:33:59.568Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "ALPHA_CANDIDATE_UNAPPROVED",
+      "passScope": "SCHEMA_PRIVATE_GRADING_SOURCE_OPEN",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "PENDING_INDEPENDENT_QA",
+        "scope": "ALPHA_CANDIDATE_ONLY",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://drive.google.com/file/d/1INMFN1grCl7upyiVoing9ErRq2kn9DTQ/view"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Leave alpha file candidate and frozen; do not overwrite it by derived or simulated questions.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "19 VBT parts fail closed in G3; no independent source exact permission.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 18,
+      "domain": "DATA_CONTRACT_V2",
+      "selectedSource": {
+        "kind": "DRIVE_FILE",
+        "url": "https://drive.google.com/file/d/1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc/view",
+        "branch": null,
+        "sha": null,
+        "driveId": "1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc",
+        "driveModifiedUtc": "2026-09-20T09:17:54.398Z",
+        "observedBranchHeadSha": null,
+        "headMatchesPinned": null
+      },
+      "observedTechnicalState": "PROPOSED_FOR_FREEZE",
+      "passScope": "NOT_PRODUCTION_MANIFEST",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "PROPOSAL_ONLY",
+        "scope": "SCHEMA_NOT_PRODUCTION",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://drive.google.com/file/d/1IjQMGHPUC-JiirpYeHT_0kbiISWZAiqc/view"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Keep candidate as reference; no schema migration until owner change-control signoff.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "L0-L7 stable/version schema proposed; do not replace existing C1 or source IDs automatically.",
+      "verificationThisSession": {
+        "githubHeadChecked": false,
+        "driveFileMetadataChecked": true,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    },
+    {
+      "ordinal": 19,
+      "domain": "PROJECT_RULES_GLOBAL",
+      "selectedSource": {
+        "kind": "GITHUB_BRANCH",
+        "url": "https://github.com/Nguyennth19/new-lop-2/tree/audit/g7-6-workflow-rules-consolidation-review-20261116",
+        "branch": "audit/g7-6-workflow-rules-consolidation-review-20261116",
+        "sha": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+        "driveId": null,
+        "driveModifiedUtc": null,
+        "observedBranchHeadSha": "11d691aa9e5f82f27b8df664ee710b17009d5600",
+        "headMatchesPinned": true
+      },
+      "observedTechnicalState": "REVIEW_CANDIDATE_V0_1",
+      "passScope": "0_10_OWNER_RULE_APPROVAL_PENDING",
+      "owner": {
+        "authorityRole": "PROJECT_OWNER_OR_DELEGATED_REVIEWER",
+        "decisionStatus": "OWNER_ADOPTION_PENDING",
+        "scope": "0_OF_10_RULES",
+        "officialLedgerLock": "PENDING_OWNER_REVIEW"
+      },
+      "evidenceRefs": [
+        "https://github.com/Nguyennth19/new-lop-2/tree/audit/g7-6-workflow-rules-consolidation-review-20261116",
+        "https://github.com/Nguyennth19/new-lop-2/blob/audit/master-state-reconciliation-20261117/qa/global-audit/LOP2_PROJECT_RULES_HARD_QA_DELTA_REVIEW_ONLY.md"
+      ],
+      "supersededBy": null,
+      "supersedesHistorical": [],
+      "newerScopeCandidates": [],
+      "rollback": "Retain review-only draft; never auto-install PROJECT_RULES.md or enable deployment/backup pruning.",
+      "releaseState": "STUDENT_RELEASE_NOT_AUTHORIZED_BY_THIS_LEDGER",
+      "restrictions": "Do not install official PROJECT_RULES without explicit approval; external DOCX a reference, not release instructions.",
+      "verificationThisSession": {
+        "githubHeadChecked": true,
+        "driveFileMetadataChecked": false,
+        "deepContentReadForThisExactSelectedSource": false,
+        "historicalEvidenceReconciled": true
+      }
+    }
+  ],
+  "supplementaryScopeNotPartOf19": [
+    {
+      "id": "A01_P0_1",
+      "source": "https://docs.google.com/document/d/1yVVYxCnSSk5AEZuV0pRnRybPf0DbKyzHyvdUtBOByjQ/edit",
+      "state": "AUDIT_DONE_20261112",
+      "scope": "KID_LEARN_QA_REUSE_ASSESSMENT_ONLY",
+      "note": "Does not grant new runtime or P1 release."
+    },
+    {
+      "id": "A02_B01_B24_PACKAGES",
+      "ref": "test/p0-b01-b24-lessonpackage-v1-20261117",
+      "sha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+      "ci": {
+        "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44103551700",
+        "testedSha": "61661986ed13309699665843f54cc6bd022a2dce",
+        "result": "SUCCESS_102_OF_102_NOT_HEAD_ATTESTATION"
+      },
+      "metrics": {
+        "jsonPackages": 24,
+        "c1Candidates": 536,
+        "g2TechnicalCandidates": 96,
+        "readyPublicVariants": 0,
+        "studentPlayable": 0
+      },
+      "state": "STRUCTURAL_PASS_ONLY_SOURCE_APPROVAL_PENDING",
+      "rollback": "Ignore isolated TEST branch; keep C1/V8/source originals."
+    },
+    {
+      "id": "A03_G2B_25_POLICY",
+      "ref": "test/p0-g2b-variant-adaptation-20261117",
+      "sha": "1a331239f3572c8264e1c71cf74b1fda22ff9efc",
+      "metrics": {
+        "caseChecks": 25,
+        "uniqueSourceIds": 24,
+        "keepVariant": 11,
+        "keepStructural": 7,
+        "drop": 7,
+        "independentSignatures": 0,
+        "rendererGrants": 0
+      },
+      "state": "OWNER_TRANSFORMATION_POLICY_APPROVED_ONLY",
+      "rollback": "Do not merge branch or grant publicVariants; retain 96-item original reviewer queue."
+    },
+    {
+      "id": "A04_G3B_SINGLE_TEST",
+      "ref": "test/data-b-g3b-b20-trusted-gas-e2e-20261117",
+      "sha": "5db6634b3424d5f48a54716c45f069c0aefa4a45",
+      "ci": {
+        "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44119669559",
+        "testedSha": "e1e4f1084d3b6fc7e1d6d8f9c5588adc29053e48",
+        "result": "SUCCESS_ISOLATED_AND_CHROMIUM"
+      },
+      "state": "INTEGRATED_TEST_CODE_QA_PASS_REAL_GAS_NOT_DEPLOYED",
+      "rollback": "Do not deploy; keep G3A 59827dee baseline. No promotion to student app."
+    },
+    {
+      "id": "A05_TEST_NEW_UX",
+      "ref": "test-new",
+      "sha": "59ad330271caffeee92b339816f45eb87be20040",
+      "ci": {
+        "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44226057957",
+        "testedSha": "13674d3ebc415249c32724cfad7e5be29433360c",
+        "result": "SUCCESS_ON_TESTED_COMMIT_NOT_CURRENT_HEAD"
+      },
+      "state": "UX_CODE_CHROMIUM_PASS_REAL_GAS_POST_PATCH_PENDING",
+      "rollback": "Keep original test-new known-good SHA 12f32d381626b6092173635b69f295550831f50a; do not merge main."
+    },
+    {
+      "id": "A06_DRIVE_PNG_MASTER",
+      "driveAssetFolder": "https://drive.google.com/drive/folders/1IEIvmL_DmV9M1YxuWuBtvNeahilByl0x",
+      "gitRef": "be-hoc",
+      "head": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+      "metrics": {
+        "drivePngMasterRecorded": 288,
+        "githubIndividualPngMasterMirrored": 24,
+        "githubIndividualPngMasterRemaining": 264,
+        "webpHistoricalApproved": 288,
+        "fluentHistoricalIcons": 46,
+        "characterPoseWebp": 30
+      },
+      "state": "DRIVE_SOURCE_PRESENT_GITHUB_MIRROR_PARTIAL",
+      "rollback": "Preserve exact bytes and source ids; never claim 288 PNG sources are mirrored."
+    },
+    {
+      "id": "A07_GAP_FOLDER_CORRECTION",
+      "url": "https://drive.google.com/drive/folders/12R_DKbSSO6XPTv2gYFztVuSOHmHqwX4m",
+      "state": "LIVE_LISTED_4_CHILDREN",
+      "note": "Old shortened folder ID gave 404; verified full Drive ID contains B20 workbook and three course-cover PNGs."
+    },
+    {
+      "id": "A08_OWNER_P0_FUNCTIONAL",
+      "origin": "PROJECT_CONVERSATION_20261118",
+      "state": "OWNER_FUNCTIONAL_EXPERIENCE_ACCEPTED",
+      "scope": "P0 USER-VISIBLE EXPERIENCE ONLY",
+      "note": "Not equivalent to GAS deployment identity, no-score-write or production release attestation."
+    }
+  ],
+  "reconciliation": {
+    "expected": 19,
+    "accessible": 19,
+    "processed": 19,
+    "recordIdentityAndKnownHeadVerified": 19,
+    "deepContentFullyReverified": 0,
+    "unverifiedNewReleaseClaim": 19,
+    "failedIdentityValidation": 0,
+    "remainingOfficialOwnerLedgerLocks": 19,
+    "meaning": "19/19 indexed and source identifier reconciled; NOT 19/19 fully deep content audited or officially approved."
+  }
+}
