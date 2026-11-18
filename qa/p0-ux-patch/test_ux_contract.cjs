@@ -39,6 +39,7 @@ check('LV3 sections 2/3/4 carry is a scratch input, never submitted to trusted G
 });
 check('B20 does not mount duplicate D2 practice accordion',()=>{
  assert(!/BE_HOC_D2_V12\.mountB20\s*\(/.test(code.controller));
+ assert(!/BE_HOC_STRUCTURED_PUBLIC_V2\.mountB20\s*\(/.test(code.controller));
  assert(!code.controller.includes('g3a_public_toan_b20_v1'));
 });
 check('Client server smoke all select exactly 3 for LV3 mixed-column section4',()=>{
