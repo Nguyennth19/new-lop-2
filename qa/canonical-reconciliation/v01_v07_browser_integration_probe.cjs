@@ -86,7 +86,11 @@ async function open(page,file){
      window.__qaGASCalls.push(key);
      if(/^(?:ghi|luu|capNhat|save|append|award|submit|submitAnswer)/i.test(String(key)))
       window.__qaBlockedWrites++;
-     Promise.resolve().then(()=>success&&success(null));
+     // Unknown GAS calls intentionally remain unresolved in this offline fixture.
+     // Returning null as a "successful" statistics response would violate the
+     // production response contract and create false browser page errors.
+     // The only mocked resolved GAS method is layBaiToan20 above.
+     return undefined;
     };
    }});
   }
@@ -184,6 +188,7 @@ async function lesson(page,index){
    screens,checks,results,errors:errors.slice(0,20)
   };
   fs.writeFileSync(path.join(out,'v01-v07-probe.json'),JSON.stringify(final,null,2)+'\n');
+  assert.deepEqual(errors,[],'Offline browser JS errors: '+errors.join(' | '));
   console.log(JSON.stringify({summary:'V01_V07_OFFLINE_BROWSER_DIAGNOSTIC_COMPLETE',gates:final.gates,checks:checks.length,
    screens:screens.length,errors:errors.length,firstError:errors[0]||null}));
  }finally{await browser.close()}
