@@ -53,3 +53,11 @@ Each checkpoint: record source ID/ref+blob or commit SHA, what was actually read
 - The current 20+ row feature matrix/18-entry manifest remain `REVIEW_CANDIDATE`; no blanket merge or owner signoff.
 - Pending: full independent DEMO browser comparator with authoritative owner baseline, B20 D2 host parity without extra accordion, D10 trusted server E2E, LIVE GAS provenance, full nested Drive/Google Sheet review and newest B001–B024 R07.
 - Rollback: discard audit branch only. Original `be-hoc`, `main`, `test-theo-main`, GAS and student Sheet unchanged.
+
+## Checkpoint R04 — 2026-11-19 · Consolidated audit report and immutable diff verification
+- Published `GLOBAL_HARD_QA_REPORT_20261119.md` at audit commit `3f882e7e8b71c083c2b102a8ba6c673b4217f866`; includes sections A–G (sources, feature matrix, manifest, gaps, QA, rollback, blockers), with **PARTIAL** result instead of FULL_ACCEPTED.
+- Fresh GitHub `compare_commits` baseline `be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef` to audit branch returned `ahead`, `behind=0`, **7 added audit-only paths, no modified/deleted application paths**, so owner learner UI and all approved function sources retained unchanged.
+- GitHub Actions latest `44480260553` at `3f882e7e8b71...`: `completed/success`, scope audit source byte/CI only. Earlier `44479378714` FAIL remains traceable; ref checksum typo repaired `0c546bfb...`.
+- Explicit stop: NO PR to change be-hoc runtime, no merge, no live deployment, no Google Sheet mutations. Current audit cannot justify real app refactor without separate owner-approved visual baseline and GAS/test data provenance.
+- Next checkpoint R05: independently identify the owner-approved actual **inline D2** design and full LV1–LV3 screenshot reference; then create minimal diff proposal, test its browser parity in staging and obtain owner acceptance before merge.
+- Rollback the audit alone by not merging/deleting `audit/global-canonical-reconciliation-20261119`; no GitHub protected target modified.
