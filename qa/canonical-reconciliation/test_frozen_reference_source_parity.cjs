@@ -10,7 +10,7 @@ const frozen={
  '01_CSS_NenTang.html':'166bab6ce434ce198c14ce9617ae46a24ab68f56',
  '02_CSS_TrangChu.html':'bc432c3d5157500aead3f662b405fb3d0a8894e6',
  '03_CSS_ThanhTich.html':'585c89599dff529394395287aef0cc6cbef0291f',
- '04_CSS_LoTrinh.html':'56cafa2ed86f3d7fa850ed7aa80d061159a8caa',
+ '04_CSS_LoTrinh.html':'56cafa2ed86f3d7bfa850ed7aa80d061159a8caa',
  '44_G75_NormalizerToanV2.html':'605a8ed9b335526af82c8870dca4753bd511b913',
  '47_D2V12_Core.html':'16ae440618bcb3cf90706cdad2ccd11cbadc222a',
  '48_D2V12_View.html':'214b615d0c595dfd76695c75e5443cefc36a921d',
