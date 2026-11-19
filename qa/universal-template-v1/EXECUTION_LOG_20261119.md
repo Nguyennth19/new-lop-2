@@ -45,3 +45,15 @@ Scope: **OFFLINE / LOCAL NODE TEST ONLY; NO GOOGLE APP SCRIPT / NO STUDENT DATA 
 - Read-only original root modules, Drive, current Google Sheet B20, main and test-theo-main all untouched.
 - NO-Go: real GAS, actual B001–B024 content, private scoring on 10 families, signed pedagogical mapping, parent/student score, owner browser acceptance.
 - Next: resolve latest browser run, pin run+artifact hash, verify no application diffs, then T4 contract+trusted server on all supported families **without fake completion**.
+
+## ULT-07 – 2026-11-19 · Independent LAB E2E accepted IN OFFLINE SCOPE
+- Exact source checksum PASS: 28 original JS modules + 8 CSS byte-identical to be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef; generated HTML ~298,163 bytes.
+- Core unit compile 24/24 PASS: 12 renderer IDs x two different public JSON packs A/B. Server-only grade module is never bundled in the browser.
+- CI run 44490815874 SUCCESS: 48 renderer mounts; third user JSON accepted; nested answerKey denied; D2/D4 local server correct/incorrect submissions verified.
+- Additional contract hardening requires exact lessonId per question and approved LAB skillId/questionType. CI 44491226787 SUCCESS at 662577198030cc8fae0ab2d39551607c495f456c.
+- Final expanded Chrome browser CI 44491438977 SUCCESS at bedae30df3b4f4196f1623d6e219a024a52f7b84: 48 renderer mounts + 48 actual click/input interactions, 24 screenshots, no browser JavaScript failures/viewport overflow.
+- Evidence artifact LOP2_UNIVERSAL_TEMPLATE_V1_LAB ID 14513356171 size 2,989,487 bytes, ZIP sha256 b3212703bb17223c93c644fc92732e29ae83dbe4227ca5952c9afe71255ff1f4; link https://github.com/Nguyennth19/new-lop-2/actions/runs/44491438977.
+- QA report ULT_V1_ACCEPTANCE_MATRIX_20261119.md contains all 12 routes, exact Test-vs-Production boundaries, original CI failures and artifact provenance.
+- GitHub compare baseline be-hoc to this LAB shows 10 new paths only (9 under qa/universal-template-v1 and one no-deploy workflow), 0 app source edits, no GAS/Sheet mutation.
+- Technical status: T1-T3 PUBLIC LAB PASS; trusted grader is PARTIAL D2/D4 local Node only; owner live device and source lesson data remain PENDING; student release NO_GO.
+- Rollback: discard lab/universal-learning-template-v1-20261119 branch; preserve be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef.
