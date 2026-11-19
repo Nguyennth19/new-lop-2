@@ -19,6 +19,23 @@ const frozen={
  '80_D10_Core.html':'0e82f85f608a27dfda4c46a0246e05f707114967',
  '81_D10_Adapter.html':'dcbc9a7981aa75b44c9b2035e59f1bc41651003a'
 };
+// Independently read the ORIGINAL TEST branch Git commits, not just self-declared
+// hashes in this audit. GitHub Actions checkout MUST fetch full history.
+const independentReferences=[
+ ['95d0ed90b15889ff069a82d24198fbc82d6ffe81','qa/g7-4-column-calc-reference-v12/column-v12-core.js','47_D2V12_Core.html'],
+ ['95d0ed90b15889ff069a82d24198fbc82d6ffe81','qa/g7-4-column-calc-reference-v12/column-v12-view.js','48_D2V12_View.html'],
+ ['b6678bcdde5672f3ac745d05da18c95d3e322063','qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-view.js','78_D8A_View.html'],
+ ['c81d33fd7deb28238ab670d8909af960ae4e0f80','qa/g7-4-word-problem-unification-v11/word-unification-v11-core.js','80_D10_Core.html'],
+ ['c81d33fd7deb28238ab670d8909af960ae4e0f80','qa/g7-4-word-problem-unification-v11/word-unification-v11-adapter.js','81_D10_Adapter.html'],
+ ['f3653d850864f75c7e3640585364d68f17f1428c','qa/g7-6-b5a/tangram-placement-v12.js','54_Tangram_V12.html']
+];
+for(const [refSha,referencePath,currentPath] of independentReferences){
+ const original=cp.execFileSync('git',['show',refSha+':'+referencePath]);
+ const originalBlob=cp.execFileSync('git',['hash-object','--stdin'],{input:original,encoding:'utf8'}).trim();
+ assert.equal(originalBlob,git('hash-object',currentPath),
+  'Independent TEST reference differs from current be-hoc byte source: '+currentPath);
+}
+console.log('INDEPENDENT_TEST_ORIGINAL_BLOB_PARITY_PASS',independentReferences.length);
 for(const [path,expected] of Object.entries(frozen)){
  assert.equal(git('hash-object',path),expected,'frozen source/reference drift: '+path);
 }
