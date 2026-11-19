@@ -6,6 +6,9 @@ on:
       - 'qa/universal-template-v1/**'
       - '.github/workflows/universal-template-lab-v1.yml'
   workflow_dispatch:
+concurrency:
+  group: universal-template-v1-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
