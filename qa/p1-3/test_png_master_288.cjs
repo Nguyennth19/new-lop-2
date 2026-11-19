@@ -21,6 +21,11 @@ for(const r of records){
 const actual=fs.readdirSync(root,{withFileTypes:true}).filter(d=>d.isDirectory()).flatMap(d=>fs.readdirSync(path.join(root,d.name)).filter(f=>f.endsWith('.png')).map(f=>d.name+'/'+f));
 assert.equal(actual.length,288,'no extra PNG files');
 assert.equal(pinsChecked,205,'all 205 existing receipt pins');
+const drivePin=JSON.parse(fs.readFileSync('qa/p1-3/drive-source-sha256-root.v1.json','utf8'));
+assert.equal(drivePin.sourceFiles,inventory.length,'Drive independently pinned image count');
+assert.equal(drivePin.sourceTotalBytes,inventory.reduce((n,r)=>n+r.bytes,0),'Drive independently pinned total bytes');
+const sourceRoot=crypto.createHash('sha256').update(inventory.slice().sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:0).map(r=>r.name+'\t'+r.sha256+'\n').join('')).digest('hex');
+assert.equal(sourceRoot,drivePin.sourceRootSha256,'INDEPENDENT_DRIVE_SHA256_ROOT_MISMATCH');
 fs.mkdirSync('qa/p1-3/output',{recursive:true});
-fs.writeFileSync('qa/p1-3/output/png-master-github-sha256.json',JSON.stringify({schemaVersion:'P1_3_GITHUB_PNG_SHA256_V1',total:288,sourceSha256Verified:false,warning:'These SHA-256 digests were computed from GitHub working-tree bytes, NOT independently from Drive source bytes.',files:inventory},null,2)+'\n');
-console.log('P1_3_288_PNG_GIT_BINARY_QA_PASS',JSON.stringify({total:288,pinnedOriginal:205,unPinnedPreExisting:24,newAssets:59,sha256Computed:288,driveSha256Matches:'NOT_YET_VERIFIED'}));
+fs.writeFileSync('qa/p1-3/output/png-master-github-sha256.json',JSON.stringify({schemaVersion:'P1_3_GITHUB_PNG_SHA256_V1',total:288,sourceSha256Verified:true,driveSourceRootSha256:sourceRoot,warning:'All 288 GitHub-side SHA256 values were verified against the independently computed SHA256 aggregate root of source Drive bytes.',files:inventory},null,2)+'\n');
+console.log('P1_3_288_PNG_GIT_BINARY_QA_PASS',JSON.stringify({total:288,pinnedOriginal:205,unPinnedPreExisting:24,newAssets:59,sha256Computed:288,driveSha256Matches:288}));
