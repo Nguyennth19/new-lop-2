@@ -28,8 +28,25 @@ function validateFallback(primary,alternative){
  const alt=plan({...alternative,visualIntent:primary.visualIntent});
  if(!alt.ok)return {ok:false,reason:'FALLBACK_'+alt.reason};
  if(alt.assetId===primary.assetId)return {ok:false,reason:'FALLBACK_CYCLE'};
- // Only an explicitly identified and independently authorized decorative replacement.
- return {...alt,explicitFallback:true};
+ // Same asset family is necessary, never sufficient, for semantic equivalence.
+ if(alt.kind!==primary.kind)return {ok:false,reason:'FALLBACK_FAMILY_MISMATCH'};
+ if(primary.kind==='CHARACTER_WEBP'){
+  const registry=root.BE_HOC_CHARACTERS_30;
+  const source=registry?.list?.().find(x=>x.id===primary.assetId);
+  const substitute=registry?.list?.().find(x=>x.id===alt.assetId);
+  if(!source||!substitute||source.kind!==substitute.kind)
+   return {ok:false,reason:'FALLBACK_CHARACTER_GROUP_MISMATCH'};
+ }else if(primary.kind==='WEBP'){
+  const catalog=root.BE_HOC_ASSETS_288;
+  const source=catalog?.lookup?.(primary.assetId);
+  const substitute=catalog?.lookup?.(alt.assetId);
+  if(!source||!substitute||source.label!==substitute.label||source.category!==substitute.category)
+   return {ok:false,reason:'FALLBACK_SEMANTIC_MISMATCH'};
+ }else{
+  // Fluent SVG icons are NOT interchangeable just because their units agree.
+  return {ok:false,reason:'FALLBACK_FLUENT_EQUIVALENCE_UNAPPROVED'};
+ }
+ return {...alt,explicitFallback:true,semanticScope:'SAME_CHARACTER_GROUP_OR_EXACT_CATALOG_LABEL'};
 }
 function resolve(request){
  const primary=plan(request);
