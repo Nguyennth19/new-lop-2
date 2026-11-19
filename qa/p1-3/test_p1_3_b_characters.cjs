@@ -40,7 +40,7 @@ const sourceBytesTotal=output.reduce((n,x)=>n+x.bytes,0);
 assert.equal(sourceBytesTotal,provenance.sourceTotalBytes,'Drive source total byte pin');
 const sourceRoot=crypto.createHash('sha256').update(output.slice().sort((a,b)=>{
  const x=a.path.split('/').pop(),y=b.path.split('/').pop();return x<y?-1:x>y?1:0;
-}).map(x=>x.path.split('/').pop()+'\\t'+x.githubSha256+'\\n').join('')).digest('hex');
+}).map(x=>x.path.split('/').pop()+String.fromCharCode(9)+x.githubSha256+String.fromCharCode(10)).join('')).digest('hex');
 assert.equal(sourceRoot,provenance.sourceRootSha256,'Independent Drive SHA256 root mismatch');
 const reg=fs.readFileSync('87_Characters_Drive_30.html','utf8');
 assert.ok(reg.includes("role:'DECORATIVE',countSafe:false"),'decorative only');
