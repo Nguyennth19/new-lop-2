@@ -83,9 +83,16 @@ async function renderAll(page,pack){
     });
     assert.equal(negative.reason,'PRIVATE_FIELD_OR_UNSAFE_NESTED_STRUCTURE');
     assert.equal(negative.still,'MATH_LAB_B','invalid pack must leave active unchanged');
+    const swapped=await page.evaluate(()=>{
+     const p=JSON.parse(JSON.stringify(window.__ULTLAB_PACKS__.A));
+     p.questions[1].skillId='WORD_PROBLEM';
+     return window.ULTLAB.validate(p);
+    });
+    assert.equal(swapped.reason,'SKILL_TYPE_POLICY_MISMATCH');
     // File input uses a third public JSON pack without editing any renderer.
     const custom=JSON.parse(fs.readFileSync(path.join(dir,'LAB_MATH_B.json'),'utf8'));
     custom.packId='MATH_LAB_C';custom.lesson.id='LAB_MATH_C';
+    for(const q of custom.questions)q.lessonId='LAB_MATH_C';
     await page.locator('#ulJson').setInputFiles({name:'custom-public.json',mimeType:'application/json',
      buffer:Buffer.from(JSON.stringify(custom))});
     await page.waitForFunction(()=>window.ULTLAB.getState().packId==='MATH_LAB_C');
