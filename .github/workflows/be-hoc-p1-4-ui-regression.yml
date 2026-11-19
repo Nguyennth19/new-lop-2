@@ -1,0 +1,31 @@
+name: P1.4 be-hoc learner UX regression (no deploy)
+on:
+  push:
+    branches:
+      - integration/p1-4-be-hoc-ux-regression-20261119
+      - be-hoc
+    paths:
+      - '19_KhongGianHocToan.html'
+      - '41_HienThiCauHoiToan.html'
+      - '43_CSS_ThanhPhanBaiToan.html'
+      - 'qa/be-hoc-ui/**'
+      - 'qa/be-hoc-tts-v2/**'
+      - '.github/workflows/be-hoc-p1-4-ui-regression.yml'
+  pull_request:
+    branches: [be-hoc]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check source-only UX regression gates
+        run: |
+          node --check qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/be-hoc-tts-v2/tts-v2.test.cjs

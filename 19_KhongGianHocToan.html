@@ -94,8 +94,8 @@ function render(){
  target.innerHTML='<div class="ml-page">'+sections.map((s,i)=>section(s,i)).join('')+'</div>';
  restoreDrafts();
  installSvg();
- if(window.BE_HOC_D2_V12)window.BE_HOC_D2_V12.mountB20(fullData,root,view);
- if(window.BE_HOC_STRUCTURED_PUBLIC_V2)window.BE_HOC_STRUCTURED_PUBLIC_V2.mountB20(fullData,root,view);
+  // P1.4: do not auto-inject TEST D2 practice into a learner card.
+  // P1.4: place-value SVG stays available as a standalone QA/demo only.
  if(window.BE_HOC_VISUAL_ORCHESTRATOR)window.BE_HOC_VISUAL_ORCHESTRATOR.mountLesson(fullData,root,view);
  target.scrollTop=0;
  renderResults();
