@@ -1,4 +1,4 @@
-/* P1.3-C Unified Asset Resolver V1 — isolated TEST module, not loaded into production. */
+/* P1.3-C.1 Unified Asset Resolver TEST hardening — no production load. */
 (function(root){
 'use strict';
 const ROLES=new Set(['DECORATIVE','CHOICE','EXACT_COUNT']);
@@ -78,8 +78,27 @@ function mount(target,request){
   countUnit:resolved.primary.countUnit||request.countUnit,exactQuantity:resolved.primary.exactQuantity||request.exactQuantity,
   onError:fallbackOnce};
  const outcome=sem.mount(target,intent);
- return outcome?.ok?{ok:true,plan:resolved,assetId:resolved.primary.assetId,kind:resolved.primary.kind,fallbackSupportedOnLoadError:resolved.primary.kind!=='FLUENT_SVG'}:
-  {ok:false,reason:outcome?.reason||'MOUNT_FAILED'};
+ if(!outcome?.ok)return {ok:false,reason:outcome?.reason||'MOUNT_FAILED'};
+ if(resolved.primary.kind==='FLUENT_SVG'){
+  // Install listeners on the just-created scene; the legacy adapter does not expose onError.
+  // A partial EXACT_COUNT scene must never remain visible and imply a false quantity.
+  const scene=outcome.element;
+  if(!scene?.querySelectorAll)return {ok:false,reason:'FLUENT_SCENE_UNINSPECTABLE'};
+  const images=Array.from(scene.querySelectorAll('img'));
+  const expected=resolved.primary.visualIntent==='EXACT_COUNT'?resolved.primary.exactQuantity:1;
+  if(images.length!==expected){scene.remove?.();return {ok:false,reason:'FLUENT_SCENE_COUNT_MISMATCH'};}
+  let sceneFailed=false;
+  const fail=()=>{
+   if(sceneFailed)return;
+   sceneFailed=true;scene.remove?.();
+   fallbackOnce(); // no substitution is permitted for Fluent; preserves existing card content
+  };
+  for(const image of images){
+   image.addEventListener('error',fail,{once:true});
+   if(image.complete===true&&image.naturalWidth===0)fail();
+  }
+ }
+ return {ok:true,plan:resolved,assetId:resolved.primary.assetId,kind:resolved.primary.kind,fallbackSupportedOnLoadError:true};
 }
 function planQuestion(data,question){
  const orch=root.BE_HOC_VISUAL_ORCHESTRATOR;
