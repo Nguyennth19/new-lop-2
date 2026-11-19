@@ -1,0 +1,40 @@
+name: Canonical Reconciliation Reference-Byte and Blocker Audit (NO DEPLOY)
+on:
+  push:
+    branches: [audit/global-canonical-reconciliation-20261119]
+    paths:
+      - 'qa/canonical-reconciliation/**'
+      - '.github/workflows/canonical-audit-no-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference-source-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independently pinned visual/voice/source blobs and no-app-change audit
+        run: node qa/canonical-reconciliation/test_frozen_reference_source_parity.cjs
+      - name: Current B20 accepted scoped UX (no production/GAS)
+        run: |
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/be-hoc-lop-a/layer-a.test.cjs
+          node qa/be-hoc-tts-v2/tts-v2.test.cjs
+      - name: Renderer orchestration source-contract and asset fallback policy
+        run: |
+          node qa/be-hoc-orchestrator/orchestrator-contract.test.cjs
+          node qa/be-hoc-orchestrator/structured-source-ingestion.test.cjs
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs
+          node qa/p1-2/test_layered_packages.cjs
+      - name: Disclose limits of source-only PASS
+        run: |
+          echo 'SOURCE_REFERENCE_PARITY only; actual owner browser comparison, independent original demo browser and GAS TEST: NOT EXECUTED.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Known legacy client answer exposure, D2 host and B20 schema routing gaps remain release blockers.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This job contains NO deployment token, no Script Property update, no Spreadsheet write and no approved production gate.' >> "$GITHUB_STEP_SUMMARY"
