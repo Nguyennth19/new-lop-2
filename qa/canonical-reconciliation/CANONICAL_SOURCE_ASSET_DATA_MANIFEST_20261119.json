@@ -176,6 +176,64 @@
       "sourceStatus": "NOT_VERIFIED",
       "integrationAndReleaseGate": "GAS_TEST_OFF_ON_OFF_NOT_EXECUTED",
       "decision": "NO_GO"
+    },
+    {
+      "id": "C1_ENVELOPES_1406",
+      "sourceRef": "Google Sheet 1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM",
+      "currentPaths": "C1 exported JSON envelopes/readback",
+      "pinOrScope": "1406 C1 owner approved in scope",
+      "sourceStatus": "OWNER_APPROVED_FOR_C1_ONLY",
+      "integrationAndReleaseGate": "No 75 student playable; source exact independent pending",
+      "decision": "PRESERVE_ARCHIVE"
+    },
+    {
+      "id": "C4_DEV_27",
+      "sourceRef": "Google Sheet 1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "currentPaths": "C4 27 DEV / 121 parts",
+      "pinOrScope": "132/132 Node, 27 desktop and 27 mobile isolated",
+      "sourceStatus": "DEV_TECH_QA_PASS",
+      "integrationAndReleaseGate": "No GAS/student grant; no private answers public",
+      "decision": "DEV_ARCHIVE"
+    },
+    {
+      "id": "B061_B062_V8_OWNER_FIX",
+      "sourceRef": "Google Sheet 1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+      "currentPaths": "V8 owner corrected source metadata",
+      "pinOrScope": "0 active owner discrepancies in V8; historical 65 resolved",
+      "sourceStatus": "OWNER_CORRECTED_IN_SCOPE",
+      "integrationAndReleaseGate": "No backward re-open of superseded exceptions",
+      "decision": "PRESERVE_SCOPE"
+    },
+    {
+      "id": "P0_6_FC4",
+      "sourceRef": "test/p0-6-fc-audit-20261114",
+      "currentPaths": "P0.6 technical closeout",
+      "pinOrScope": "F-C.4 owner approved technical with exclusions",
+      "sourceStatus": "TECHNICAL_CLOSED_ISOLATED_TEST",
+      "integrationAndReleaseGate": "Not GAS LIVE or production",
+      "decision": "PRESERVE_PASS"
+    },
+    {
+      "id": "G2_B_96",
+      "sourceRef": "Google Sheet 1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts",
+      "currentPaths": "96 G2 source review candidates",
+      "pinOrScope": "0/96 independent signed",
+      "sourceStatus": "SOURCE_REVIEW_CANDIDATE",
+      "integrationAndReleaseGate": "No 96 new student-approved questions",
+      "decision": "DENY_PRODUCTION"
+    },
+    {
+      "id": "G76_C07_C09",
+      "sourceRef": "test/g7-6-b6-c086-owner-resolution-signed-evidence-20261116",
+      "currentPaths": "C07–C09/E04 approval decision packets",
+      "pinOrScope": "0/6 real owner signatures; synthetic validator scoped",
+      "sourceStatus": "OWNER_SIGNOFF_PENDING",
+      "integrationAndReleaseGate": "Do not bind D5/D9 or mental official manifest",
+      "decision": "NO_GRANT"
     }
+  ],
+  "notes": [
+    "Scoped source-of-truth ledger remains REVIEW_CANDIDATE_RECONCILED_NOT_OWNER_LOCKED; these six additions preserve historical PASS in scope, not an owner ledger lock or release permission.",
+    "Count of manifest entries reflects reviewed priority sources, not full project universe."
   ]
 }
