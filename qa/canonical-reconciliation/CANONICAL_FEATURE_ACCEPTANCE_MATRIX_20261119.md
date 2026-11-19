@@ -56,3 +56,10 @@ The original **19-domain** `qa/p1-1/SOURCE_OF_TRUTH_LEDGER_19.review.v1.json` wa
 
 ### No unauthorized changes
 This matrix is a **read-only candidate** created on `audit/global-canonical-reconciliation-20261119`. It does not change app/runtime, policy, GAS, data, student records or existing QA snapshots. Verify actual new source/owner approval and separate rollback before any feature correction. No merge is justified solely by the status in this file.
+
+### R06 B20 source reconciled by actual Sheet read (not a design assumption)
+- READ-ONLY `04_Cau_hoi!A1:H75`: **51 nonempty question IDs**. LV1=17 (vertical 6, mental 9, word 2), LV2=6 (word 6), LV3=28 (vertical 10, missing_digit 18). This is the **currently observed Sheet**, not an approval of all 51 answer or question semantics.
+- `01_Bai_hoc` actual header has **17 columns**, `04_Cau_hoi` has 21. Earlier R01 log mistakenly said 7 for `01_Bai_hoc`; see append-only R05 erratum in execution log. Critical visual-policy and public-variant columns still absent.
+- `02_Cap_do` three levels each state `DESIGN_NOT_QA`; `05_Cau_hinh` still records `verification=Chưa đối chiếu tài liệu sách`. No source-exact or student-release authority is derived from the 51-row count.
+- Drive `LOP2_B20_UI20-01_DacTaHienThi_45Cau_20261112` (ID `1xTliucW47fdXMIOjD-nXjyb4f423bNaD86IbaAlfTns`): 18 sections/45 questions **DESIGN_APPROVED_COUNTS, CONTENT_NOT_YET_BUILT, UI_NOT_YET_ACCEPTED**, not currently deployed 51 questions and not a signed UI screenshot. UI20-02A Drive ID `1-N2rRDei8bkFRPl7Z-mUNtw3UV2T-HNEKDd8rkmcy1M` is 30-question **STATIC_PASS, WEBAPP_VISUAL_PENDING**. Neither is a license to overwrite B20 live or reinsert an unapproved D2 practice panel.
+- Current `test-theo-main` reference is an approved home/UI baseline with existing vertical-card placement; the separate D2 V1.2 iframe QA-D source has no evidence of owner-authorized placement as an extra B20 accordion. Final A/B owner parity still required.
