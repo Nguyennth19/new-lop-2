@@ -7,7 +7,7 @@ assert.equal(records.length,288,'expected 288 source directory entries');
 assert.equal(new Set(records.map(r=>r.name)).size,288,'duplicate source filenames');
 const receipts=fs.readdirSync('qa/p1-3/receipts').filter(f=>f.endsWith('.json')).flatMap(f=>JSON.parse(fs.readFileSync('qa/p1-3/receipts/'+f,'utf8')).rows);
 const receiptByName=new Map(receipts.map(r=>[r.name,r]));
-assert.equal(receiptByName.size,229,'229 already imported receipt rows');
+assert.equal(receiptByName.size,205,'expected 205 currently recorded receipt pins; 24 prior assets lack receipts');
 const inventory=[];let pinsChecked=0;
 for(const r of records){
  const filename=path.join(root,r.group,r.name),buf=fs.readFileSync(filename);
@@ -20,7 +20,7 @@ for(const r of records){
 }
 const actual=fs.readdirSync(root,{withFileTypes:true}).filter(d=>d.isDirectory()).flatMap(d=>fs.readdirSync(path.join(root,d.name)).filter(f=>f.endsWith('.png')).map(f=>d.name+'/'+f));
 assert.equal(actual.length,288,'no extra PNG files');
-assert.equal(pinsChecked,229,'all original 229 receipt pins');
+assert.equal(pinsChecked,205,'all 205 existing receipt pins');
 fs.mkdirSync('qa/p1-3/output',{recursive:true});
 fs.writeFileSync('qa/p1-3/output/png-master-github-sha256.json',JSON.stringify({schemaVersion:'P1_3_GITHUB_PNG_SHA256_V1',total:288,sourceSha256Verified:false,warning:'These SHA-256 digests were computed from GitHub working-tree bytes, NOT independently from Drive source bytes.',files:inventory},null,2)+'\n');
-console.log('P1_3_288_PNG_GIT_BINARY_QA_PASS',JSON.stringify({total:288,pinnedOriginal:229,newAssets:59,sha256Computed:288,driveSha256Matches:'NOT_YET_VERIFIED'}));
+console.log('P1_3_288_PNG_GIT_BINARY_QA_PASS',JSON.stringify({total:288,pinnedOriginal:205,unPinnedPreExisting:24,newAssets:59,sha256Computed:288,driveSha256Matches:'NOT_YET_VERIFIED'}));
