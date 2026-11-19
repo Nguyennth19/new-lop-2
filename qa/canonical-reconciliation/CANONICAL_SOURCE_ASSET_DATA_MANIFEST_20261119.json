@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "LOP2_CANONICAL_SOURCE_ASSET_DATA_MANIFEST_R02",
+  "dateLocal": "2026-11-19",
+  "target": "be-hoc",
+  "targetHead": "1b69e277f8de6cb156f46a1d85af33bdad70c0ef",
+  "status": "RECONCILIATION_CANDIDATE_ONLY",
+  "authority": "Explicit source/owner scoped evidence > historical reports; no auto promotion",
+  "schema": [
+    "id",
+    "sourceRef",
+    "currentPaths",
+    "pinOrScope",
+    "sourceStatus",
+    "integrationAndReleaseGate",
+    "decision"
+  ],
+  "entries": [
+    {
+      "id": "UI_BASELINE",
+      "sourceRef": "test-theo-main@f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+      "currentPaths": "01_CSS_NenTang,02_CSS_TrangChu,03_CSS_ThanhTich,04_CSS_LoTrinh",
+      "pinOrScope": "4 exact Git blobs",
+      "sourceStatus": "SOURCE_SAME",
+      "integrationAndReleaseGate": "OWNER_VISUAL_RUNTIME_PARITY_NOT_TESTED",
+      "decision": "PRESERVE"
+    },
+    {
+      "id": "LESSON_B20",
+      "sourceRef": "be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef",
+      "currentPaths": "19_KhongGianHocToan.html",
+      "pinOrScope": "3 levels, Sheet 02 17/6/28",
+      "sourceStatus": "ACTIVE_LEGACY_ON_SELECTED_SHEET",
+      "integrationAndReleaseGate": "ACTUAL_GAS_SCRIPT_PROPERTY_OVERRIDE_UNKNOWN",
+      "decision": "PRESERVE"
+    },
+    {
+      "id": "D2_CORE",
+      "sourceRef": "test/g7-4-column-calc-reference-v13-webapp-test-20261114@95d0ed90b15889ff069a82d24198fbc82d6ffe81",
+      "currentPaths": "47_D2V12_Core.html,48_D2V12_View.html",
+      "pinOrScope": "16ae440618bcb3cf90706cdad2ccd11cbadc222a,214b615d0c595dfd76695c75e5443cefc36a921d",
+      "sourceStatus": "SOURCE_SAME",
+      "integrationAndReleaseGate": "D2_V12_HOST_NOT_MOUNTED_IN_B20; LEGACY_VERTICAL_PRESENT",
+      "decision": "REVIEW_APPROVED_INLINE_UX"
+    },
+    {
+      "id": "D8A_VIEW",
+      "sourceRef": "test/g7-4-qa-d2-capacity-scale-v12-20261114@b6678bcdde5672f3ac745d05da18c95d3e322063",
+      "currentPaths": "78_D8A_View.html",
+      "pinOrScope": "865dcf673fdfea61bd731e3d487b49a2669ccae9",
+      "sourceStatus": "SOURCE_SAME",
+      "integrationAndReleaseGate": "REGISTERED_NO_B20_VARIANT_GRANT; OWNER_VISUAL_SCOPE_PENDING",
+      "decision": "PRESERVE"
+    },
+    {
+      "id": "D8B_SCALE",
+      "sourceRef": "G7.4_QA-C3_DRIVE@1JHa05h8Fu1hTN4RR04inO6A04Nq5HReH0oHdCxmufoM",
+      "currentPaths": "79_D8B_View.html",
+      "pinOrScope": "ea97fa92ea3e35a1be8de9c304a8a58e093e5c43",
+      "sourceStatus": "SOURCE_PRESENT",
+      "integrationAndReleaseGate": "NO_B20_VARIANT_GRANT; DYNAMIC_SVG_REQUIRED",
+      "decision": "PRESERVE"
+    },
+    {
+      "id": "D5_TANGRAM",
+      "sourceRef": "test/g7-6-b5a-renderer-curriculum-tangram-20261115@f3653d850864f75c7e3640585364d68f17f1428c",
+      "currentPaths": "54_Tangram_V12.html",
+      "pinOrScope": "2c768bbe3b1f271cbf7a9dcb799994e5995ceb5e",
+      "sourceStatus": "SOURCE_SAME; B5A_USER_ATTESTED_15_OF_15",
+      "integrationAndReleaseGate": "E04_CURRICULUM_UNAUTHORIZED",
+      "decision": "LAB_ONLY"
+    },
+    {
+      "id": "D9_PICTOGRAPH",
+      "sourceRef": "test/g7-6-b5b-resource-tts-e2e-20261115@98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae",
+      "currentPaths": "55_Pictograph_Core.html,56_Pictograph_View.html",
+      "pinOrScope": "722e286d6253d4d959336298a6a2e5af73b2a0e8,9dca5884eb05d3010b823daf1fdd71bf9e287148",
+      "sourceStatus": "SOURCE_PRESENT",
+      "integrationAndReleaseGate": "E04_CURRICULUM_UNAUTHORIZED",
+      "decision": "LAB_ONLY"
+    },
+    {
+      "id": "D10_WORD",
+      "sourceRef": "test/g7-4-word-problem-unification-v11-20261114@c81d33fd7deb28238ab670d8909af960ae4e0f80",
+      "currentPaths": "80_D10_Core.html,81_D10_Adapter.html",
+      "pinOrScope": "0e82f85f608a27dfda4c46a0246e05f707114967,dcbc9a7981aa75b44c9b2035e59f1bc41651003a",
+      "sourceStatus": "SOURCE_SAME",
+      "integrationAndReleaseGate": "B20_WORD_LEGACY_ACTIVE; ADAPTER_VARIANT_NOT_WIRED; CLIENT_SCORE_BLOCKED",
+      "decision": "PRESERVE_PENDING_TRUSTED_GRADING"
+    },
+    {
+      "id": "TTS_V2",
+      "sourceRef": "test/g7-6-b5b-resource-tts-e2e-20261115@98e4fe63cbfe1ab42dc4b16e8b8666ffc5b73fae",
+      "currentPaths": "44_G75_NormalizerToanV2.html,45_DieuKhienGiongDocToan.html",
+      "pinOrScope": "605a8ed9b335526af82c8870dca4753bd511b913",
+      "sourceStatus": "SOURCE_SAME; B5C_USER_AUDIO_OK_IN_STANDALONE_SCOPE",
+      "integrationAndReleaseGate": "CURRENT_GAS_REAL_AUDIO_UNVERIFIED",
+      "decision": "PRESERVE_NO_MENTAL_CARD_BUTTON"
+    },
+    {
+      "id": "ASSET_WEBP",
+      "sourceRef": "be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef",
+      "currentPaths": "hinh-anh/**/*.webp",
+      "pinOrScope": "332 historical WebP Git blobs preserved",
+      "sourceStatus": "SOURCE_INTEGRITY_PASS",
+      "integrationAndReleaseGate": "PER_ASSET_RUNTIME_SEMANTICS_PENDING",
+      "decision": "PRESERVE"
+    },
+    {
+      "id": "ASSET_PNG_MASTER",
+      "sourceRef": "P1.3-C3@9da26587c59c4df769ba95e5e46fd15965454d3b",
+      "currentPaths": "hinh-anh/nguon-drive/v1/png-master",
+      "pinOrScope": "288 exact source PNG paths",
+      "sourceStatus": "SOURCE_INTEGRITY_PASS",
+      "integrationAndReleaseGate": "NO_QUANTITY_INFERENCE_FROM_PICTURES",
+      "decision": "PRESERVE"
+    },
+    {
+      "id": "FLUENT_46",
+      "sourceRef": "be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef",
+      "currentPaths": "85_Fluent_Asset_46.html",
+      "pinOrScope": "46 reference SVG",
+      "sourceStatus": "SOURCE_PRESENT",
+      "integrationAndReleaseGate": "STAGING_POLICY; REQUIRES_SEMANTIC_GATES",
+      "decision": "HOLD_STAGING"
+    },
+    {
+      "id": "P1_3_RESOLVER",
+      "sourceRef": "P1.3-C3@9da26587c59c4df769ba95e5e46fd15965454d3b",
+      "currentPaths": "89_Asset_Unified_Resolver_TEST.html,90_C2_Test_Integration_Bridge.html",
+      "pinOrScope": "git blobs efd8011d63719d3cc8b680a2de898d456a9d1651,79ad2ffb1d46598cd01c8dde458fc9b118120480",
+      "sourceStatus": "SOURCE_READY",
+      "integrationAndReleaseGate": "DEFAULT_OFF; LIVE_BLOCKED",
+      "decision": "TEST_ONLY"
+    },
+    {
+      "id": "B20_SHEET",
+      "sourceRef": "https://docs.google.com/spreadsheets/d/1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8/edit",
+      "currentPaths": "01_Bai_hoc,02_Cap_do,03_Nhom_bai,04_Cau_hoi",
+      "pinOrScope": "question headers 21; 17+6+28 per levels",
+      "sourceStatus": "SHEET_READ_ONLY_INSPECTED",
+      "integrationAndReleaseGate": "NO_VISUAL_CONTRACT_COLUMNS; answer column public",
+      "decision": "NO_UNAPPROVED_MUTATION"
+    },
+    {
+      "id": "P1_2_STRUCTURES",
+      "sourceRef": "test/p1-2-b-b001-b004-content-variants-20261118@109300158378cbbf48a4724453cc1e555d7eaccd",
+      "currentPaths": "du-lieu/bai-hoc/toan/v1 and /v2",
+      "pinOrScope": "24 V1+24 V2",
+      "sourceStatus": "STRUCTURAL_PASS",
+      "integrationAndReleaseGate": "studentPlayable=0/publicVariantReady=0",
+      "decision": "ARCHIVE_ONLY"
+    },
+    {
+      "id": "B001_B024_V7",
+      "sourceRef": "Drive V7 R05 ID 1bypzbcK8supU4A3GdbqjUe7jOSy6butgKlFPypWneUA",
+      "currentPaths": "04_CAU_HOI,05_DAP_AN_PRIVATE,13_BAN_GIAO",
+      "pinOrScope": "64 actual prompts/384 allocated; four known B015 mismatches",
+      "sourceStatus": "AUTHOR_SUBMITTED",
+      "integrationAndReleaseGate": "BLOCKED_INDEPENDENT_QA; later R07 NOT_ACCESSED",
+      "decision": "PRIVATE_REVIEW_ONLY"
+    },
+    {
+      "id": "GRADING_G3A",
+      "sourceRef": "test/data-b-g3a-trusted-gas-adapter-20261117@59827dee9f87cd36f7ceabf6a353c5a17787e19f",
+      "currentPaths": "qa/g3a isolated trusted adapter",
+      "pinOrScope": "39/39 offline QA in historical report",
+      "sourceStatus": "TEST_TECH_PASS",
+      "integrationAndReleaseGate": "NO_REAL_GAS; B20 uses q.answer client",
+      "decision": "HARD_NO_GO_STUDENT_RELEASE"
+    },
+    {
+      "id": "GAS_DEPLOYMENT",
+      "sourceRef": "be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef",
+      "currentPaths": "Google Apps Script versioned deployment",
+      "pinOrScope": "no authenticated version/source map",
+      "sourceStatus": "NOT_VERIFIED",
+      "integrationAndReleaseGate": "GAS_TEST_OFF_ON_OFF_NOT_EXECUTED",
+      "decision": "NO_GO"
+    }
+  ]
+}
