@@ -24,7 +24,7 @@ function validateFallback(primary,alternative){
  if(!isObject(alternative))return {ok:false,reason:'NO_EXPLICIT_FALLBACK'};
  if(primary.visualIntent==='EXACT_COUNT')return {ok:false,reason:'COUNT_FALLBACK_NOT_APPROVED'};
  if(primary.visualIntent!=='DECORATIVE')return {ok:false,reason:'CHOICE_FALLBACK_NOT_APPROVED'};
- if(alternative.visualIntent&&alternative.visualIntent!=='primary.visualIntent')return {ok:false,reason:'FALLBACK_ROLE_MISMATCH'};
+ if(alternative.visualIntent&&alternative.visualIntent!==primary.visualIntent)return {ok:false,reason:'FALLBACK_ROLE_MISMATCH'};
  const alt=plan({...alternative,visualIntent:primary.visualIntent});
  if(!alt.ok)return {ok:false,reason:'FALLBACK_'+alt.reason};
  if(alt.assetId===primary.assetId)return {ok:false,reason:'FALLBACK_CYCLE'};
@@ -51,11 +51,11 @@ function mount(target,request){
  let failed=false;
  function fallbackOnce(){
   if(failed)return;failed=true;
-  if(!resolved.fallback){request?.onFallback?.({reason:'PRESERVE_EXISTING_CONTENT'});return;}
+  if(!resolved.fallback){if(typeof request?.onFallback==='function')request.onFallback({reason:'PRESERVE_EXISTING_CONTENT'});return;}
   // Fluent mount does not currently offer an image error callback. No claim of guaranteed image replacement.
   const alt=sem.mount(target,{assetId:resolved.fallback.assetId,visualIntent:'DECORATIVE'});
-  if(!alt?.ok)request?.onFallback?.({reason:'PRESERVE_EXISTING_CONTENT',denied:alt?.reason});
-  else request?.onFallback?.({reason:'EXPLICIT_FALLBACK_ATTEMPTED',assetId:resolved.fallback.assetId});
+  if(!alt?.ok){if(typeof request?.onFallback==='function')request.onFallback({reason:'PRESERVE_EXISTING_CONTENT',denied:alt?.reason});}
+  else {if(typeof request?.onFallback==='function')request.onFallback({reason:'EXPLICIT_FALLBACK_ATTEMPTED',assetId:resolved.fallback.assetId});}
  }
  const intent={assetId:resolved.primary.assetId,visualIntent:resolved.primary.visualIntent,
   countUnit:resolved.primary.countUnit||request.countUnit,exactQuantity:resolved.primary.exactQuantity||request.exactQuantity,
