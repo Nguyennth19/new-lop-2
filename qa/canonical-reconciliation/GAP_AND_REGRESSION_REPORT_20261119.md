@@ -1,0 +1,37 @@
+# Global Canonical — Gap & Regression Report (R03)
+Date 2026-11-19 | Target reference: `be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef`
+Status: `SOURCE_AUDIT_PARTIAL · INTEGRATION_NOT_SIGNED · LIVE_NOT_VERIFIED · RELEASE_NO_GO`
+This is a **read-only independent QA finding**, not permission to replace or activate any current learner screen.
+
+## Verified source inputs and priority
+1. Locked `AGENTS.md`, both original Universal AI Coding Guidelines and `PROJECT_INSTRUCTIONS_CHATGPT.md` read from current `be-hoc`.
+2. Current Git blobs: `19_KhongGianHocToan.html`, `83_Visual_Orchestrator.html`, `47_D2V12_Core.html`, `48_D2V12_View.html`, `78_D8A_View.html`, `80_D10_Core.html`, `81_D10_Adapter.html`, `54_Tangram_V12.html`, `KhoBaiHoc.gs`, `26_ChamCauHoiToan.html`.
+3. Six **independent** frozen source files from four TEST commits (pinned in `test_frozen_reference_source_parity.cjs`): all exact Git blob SHA match current corresponding `be-hoc` sources. Source identity is NOT proof of wiring or visual parity.
+4. Live READ-ONLY B20 spreadsheet `1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8`: exact tabs `01_Bai_hoc`, `02_Cap_do`, `03_Nhom_bai`, `04_Cau_hoi`, `05_Cau_hinh`. **Correction:** `01_Bai_hoc` has **17 populated header cells** (not 7 as an earlier audit note said); `04_Cau_hoi` has 21. Neither header contains the explicitly required policy/variant routing fields; `02_Cap_do` LV1/LV2/LV3 `plan_status=DESIGN_NOT_QA`. The B20 registered lesson is not a proof of curriculum routing.
+5. Historical frozen 10-type demo source QA-C.3 Drive document ID `1JHa05h8Fu1hTN4RR04inO6A04Nq5HReH0oHdCxmufoM`; source demo SHA256 `78998d2c3968686973cc5f0ed9a02d04606430431bca789154b74fde13de3ced`; OWNER visual parity still not signed in that QA-C3 record. B5A owner Tangram interaction confirmation is a *separate scope*.
+
+## Findings — current source fact vs missing proof
+
+| ID | Severity / class | Observed evidence | B20 user-facing implication | Smallest authorized action | Gate |
+|---|---|---|---|---|---|
+| F01 | HIGH / security boundary | `KhoBaiHoc.gs` (function `khoChuyenCauHoi_`) includes `answer:String(x.answer||'')`, and `26_ChamCauHoiToan.html` compares `q.answer` in the browser | Historic B20 scoring response is **not server-secret**; new trusted D10 release cannot be authorized | Preserve old visible experience in TEST; separately design/verify server-authoritative grading contract with synthetic session and no public answerKey | **BLOCKED** GAS E2E |
+| F02 | HIGH / integration-wire | `19_KhongGianHocToan.html` no longer invokes `BE_HOC_D2_V12.mountB20`; `83_Visual_Orchestrator.html` rejects D2 envelope / skips D2 expecting manual-carry host | Original legacy vertical math remains rendered, but independent V1.2 manual-carry host is **not invoked through this B20 route** | Do **not** reintroduce two unapproved accordions. Find owner-approved inline behavior and pin original screenshot/interaction fixture before scoped patch | **WIRE_GAP_REVIEW** |
+| F03 | HIGH / content-contract | Live Sheet `04_Cau_hoi` 21 columns lacks `renderer_id,skill_id,visual_intent,public_variant_json`; Sheet `01_Bai_hoc` 17 columns lacks `visual_renderer_policy_json`; `KhoBaiHoc.gs` produces `visualContract` only from explicit fields; `83.mountLesson` skips `!q.visualContract` | Twelve registry entries do not imply twelve B20 student renderers; the current Sheet cannot produce the intended new structured envelopes | Design isolated, backwards-compatible source mapping only after owner curriculum/skill/variant and public/private contracts are approved; preserve B20 data untouched | **B20_ROUTING_PENDING** |
+| F04 | MEDIUM / source present, wiring unverified | V1.1 word core + adapter byte-identical in `80_D10_Core`/`81_D10_Adapter`; current `41_HienThiCauHoiToan` renders legacy word card but current Sheet lacks adapter contract fields | Cannot claim prior stand-alone G6/D10 scaffold has been faithfully integrated into real B20 variant flow | Compare **original Word_Unification_V11_Standalone_TEST** vs actual B20 using approved UI/word fixtures; do not rebuild D10 or expose private grade key | **WIRE_GAP_REVIEW** |
+| F05 | MEDIUM / visual parity evidence | Existing P1.4 unit tests demand newline/pipe summary and no mental listen button; tests do not compare complete frozen UI DOM/screenshot to user-approved reference | The P1.4 P/F test is **implementation-conformance**, not proof of exact historical UX | Build a read-only independent A/B harness on actual reference demos; have user compare intended LV1/2/3 desktop/mobile | **OWNER_VISUAL_PENDING** |
+| F06 | POLICY / curriculum | D5 Tangram V1.2 and D8A V1.2 exact source present; D9 and D8B available; independent B5A/QA-D2 technical tests have narrower scopes, E04 SGK lesson/skill signoff remains separate | Having QA-green demo does not authorize placing Tangram, bar chart or variable vessel into B20 arbitrarily | Preserve source, lab and existing route; do not auto-bind lesson content without policy | **PEDAGOGY_NO_GO** |
+| F07 | MEDIUM / source scope | B001–B024 24 V1 +24 V2 JSON are structure-only, `studentPlayable=0`. Drive V7 R05 has incomplete content; latest referenced V7 R07 or V8 B001–B024 not found through connector name search or Project file search in this checkpoint | No blanket promotion of 24 lessons or private answer table | Independently open the exact later candidate once accessible; validate original max/min/oracle and 42 reviews before accepting its data | **DATA_QA_BLOCKED** |
+| F08 | ENVIRONMENT / release | GitHub commit + offline CI not authenticated GAS deployment/version; P1.4-C access record `LIVE_BLOCKED` | Source SHA cannot prove actual `/exec` is current or rollback works | Confirm isolated TEST Script Properties, Script ID, deployed version, actual OFF/ON/OFF and owner device acceptance | **LIVE_NOT_VERIFIED** |
+
+## Findings deliberately NOT called regressions
+- `78_D8A_View.html` equals original V1.2 source **byte-for-byte**; no need to copy 239 independent QA files blindly. V1.2 still requires owner visual gate.
+- `47_D2V12_Core.html`, `48_D2V12_View.html`, `80_D10_Core.html`, `81_D10_Adapter.html`, `54_Tangram_V12.html` each equal original independent source. Never report these components as `SOURCE_MISSING`.
+- No new B20 mini-panels is an explicit previous user UX constraint. F02 is the **deferred V1.2 mount**, not permission to append the unapproved panels back.
+- P1.3 resolver sidecar OFF by default is an intentional safety gate, not an integration failure.
+- Previous QA PASS/owner attestations are preserved at their signed/observed scope; a blocked release never retroactively changes historical technical PASS to FAIL.
+
+## Acceptance gates for proposed repair
+For each F02/F03/F04/F05: evidence packet must include approved specific reference, source+current SHA, exact behavioral delta, authorized owner scope, minimum code diff, before/after independent tests, offline browser screenshots and rollback. Any failed owner parity means NO MERGE. F01 security requires trusted server and synthetic GAS test separate from visual parity.
+
+## Rollback and no-regression guarantee
+This audit modifies only `qa/canonical-reconciliation/**` on `audit/global-canonical-reconciliation-20261119`; `be-hoc@1b69e277f8de6cb156f46a1d85af33bdad70c0ef`, `main`, `test-theo-main`, GAS deployments and all student Sheets remain unchanged. GitHub Actions source CI is not actual browser owner acceptance.
