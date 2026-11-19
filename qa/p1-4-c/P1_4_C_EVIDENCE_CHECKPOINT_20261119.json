@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "P1_4_C_EVIDENCE_CHECKPOINT_V1",
+  "asOfDate": "2026-11-19",
+  "pinnedBeHocSha": "1b69e277f8de6cb156f46a1d85af33bdad70c0ef",
+  "auditSourceSha": "463d88e23af79c45071056b8809ab91067678712",
+  "ci": {
+    "runId": 44471537307,
+    "status": "completed",
+    "conclusion": "success",
+    "scope": "SOURCE_READINESS_OFFLINE_ONLY",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44471537307"
+  },
+  "live": {
+    "suppliedEndpointClassification": "CANDIDATE_NOT_AUTHENTICATED_TEST_DEPLOYMENT",
+    "attemptedAccess": true,
+    "webReader": "CACHE_MISS_NO_HTML",
+    "isolatedHTTP": "DNS_RESOLUTION_FAILED_NO_HTTP_RESPONSE",
+    "actualDeploymentVersionVerified": false,
+    "actualSpreadsheetIsolationVerified": false,
+    "flagOffLiveExecuted": false,
+    "flagOnLiveExecuted": false,
+    "actualRollbackExecuted": false,
+    "lv1toLv3ActualLessonExecuted": false,
+    "ownerDeviceAcceptanceSigned": false
+  },
+  "decision": {
+    "source": "PASS",
+    "offlineRegression": "PASS",
+    "liveGas": "BLOCKED",
+    "ownerAcceptance": "PENDING",
+    "mainProduction": "NO_GO"
+  },
+  "notes": [
+    "A source CI pass is not evidence of actual Apps Script deployment/runtime.",
+    "No student answer/private grading or Script Properties were accessed.",
+    "No application, GAS, main, student data or existing be-hoc files modified."
+  ]
+}
