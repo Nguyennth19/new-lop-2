@@ -30,6 +30,14 @@ jobs:
       - name: Source contracts and no-private-answer-shipping, trusted mock PASS/FAIL
         run: |
           node qa/universal-template-v1/contracts.test.cjs
+      - name: Install isolated Chromium browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Browser E2E 12 original routes x 2 packs x 2 devices + server-grade D2/D4
+        run: |
+          node --check qa/universal-template-v1/browser.test.cjs
+          node qa/universal-template-v1/browser.test.cjs
       - name: Enforce no application changes from frozen base
         run: |
           set -euo pipefail
