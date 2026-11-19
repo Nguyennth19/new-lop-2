@@ -36,8 +36,8 @@ function makePack(tag='A'){
   }],
   ['D3','MATCH_PAIRS','matching',{
    exerciseId:prefix+'MATCH',relationMode:'SINGLE_RELATION',
-   leftItems:[{id:'l1',content:opt(beta?'6 + 4':'7 + 2')},{id:'l2',content:opt(beta?'3 + 5':'6 + 3')}],
-   rightItems:[{id:'r1',content:opt(beta?'8':'9')},{id:'r2',content:opt(beta?'10':'9 (cách khác)')}]
+   leftItems:[{id:'l1',content:opt(beta?'6 + 4':'7 + 2')},{id:'l2',content:opt(beta?'3 + 5':'4 + 3')}],
+   rightItems:[{id:'r1',content:opt(beta?'8':'9')},{id:'r2',content:opt(beta?'10':'7')}]
   }],
   ['D4','SELECT_CHOICE','choice',{
    questionId:prefix+'CHOICE',selectionMode:'SINGLE',
@@ -76,7 +76,7 @@ function makePack(tag='A'){
    prompt:'Chạm từng hình để đếm; chọn câu để nhập số.',
    demoRowId:'apple',
    rows:[{id:'apple',label:'Táo',contentType:'EMOJI',symbol:'🍎',itemCount:beta?4:6},
-     {id:'orange',label:'Cam',contentType:'EMOJI',symbol:'🍊',itemCount:beta?7:4}],
+     {id:'orange',label:'Cam',contentType:'EMOJI',symbol:'🍊',itemCount:beta?7:8}],
    questions:[{id:'qa',type:'COUNT',rowId:'apple',prompt:'Có bao nhiêu quả táo?'},
      {id:'qb',type:'COMPARE_DIFFERENCE',rowId:'orange',otherRowId:'apple',
       relation:'MORE_THAN',prompt:'Cam nhiều hơn táo bao nhiêu quả?'}]
