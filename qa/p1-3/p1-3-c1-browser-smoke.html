@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><title>P1.3-C.1 Browser Integration Smoke</title></head>
+<body><main id="test-host"><p id="original">Bài học gốc vẫn giữ nguyên</p></main><output id="result">RUNNING</output>
+<script src="../../59_Visual_Public_Assets.html"></script>
+<script src="../../85_Fluent_Asset_46.html"></script>
+<script src="../../87_Characters_Drive_30.html"></script>
+<script src="../../88_Visual_Semantic_Router.html"></script>
+<script src="../../83_Visual_Orchestrator.html"></script>
+<script src="../../89_Asset_Unified_Resolver_TEST.html"></script>
+<script>
+(async function(){
+ const report={browser:'HEADLESS_CHROMIUM',checks:[],failures:[]};
+ function check(value,message){(value?report.checks:report.failures).push(message);}
+ function pause(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
+ const unified=window.BE_HOC_ASSET_UNIFIED_TEST,host=document.getElementById('test-host'),original=document.getElementById('original');
+ check(!!unified,'unified resolver loaded after the original adapters');
+ check(window.BE_HOC_VISUAL_ORCHESTRATOR.release==='SOURCE_TEST_ONLY','legacy renderer unchanged');
+ let callbacks=[];
+ const r=unified.mount(host,{assetId:'FLUENT:chicken',visualIntent:'EXACT_COUNT',countUnit:'con',exactQuantity:3,onFallback:x=>callbacks.push(x)});
+ check(r.ok&&r.fallbackSupportedOnLoadError,'Fluent mounted and error guard attached');
+ const scene=host.querySelector('.kl-fluent-scene');
+ check(scene?.querySelectorAll('img').length===3,'three-count scene has three image nodes');
+ scene.querySelector('img').src='data:image/svg+xml,%bad-image';
+ await pause(350);
+ check(!scene.isConnected,'incomplete exact-count scene removed after genuine img error');
+ check(original.isConnected&&original.textContent.includes('gốc'),'pre-existing lesson content survives SVG image failure');
+ check(callbacks.length===1&&callbacks[0].reason==='PRESERVE_EXISTING_CONTENT','single fallback report, no incorrect substitute');
+ const cr=unified.mount(host,{assetId:'KL2_ROBOT_01_STAND',visualIntent:'DECORATIVE',fallback:{assetId:'KL2_ROBOT_02_WAVE'},onFallback:x=>callbacks.push(x)});
+ check(cr.ok,'character decorative mounted by unified adapter');
+ const first=host.querySelector('img[data-kl-character="KL2_ROBOT_01_STAND"]');
+ check(!!first,'initial robot exists');
+ first.src='data:image/webp,%bad-image';
+ await pause(350);
+ const alt=host.querySelector('img[data-kl-character="KL2_ROBOT_02_WAVE"]');
+ check(!!alt&&callbacks.some(x=>x.reason==='EXPLICIT_FALLBACK_ATTEMPTED'),'same-group explicitly designated robot fallback attempted');
+ if(alt){alt.src='data:image/webp,%bad-image';await pause(350);}
+ check(!alt?.isConnected&&original.isConnected,'fallback image failure leaves original card intact');
+ const denied=unified.planQuestion({lesson:{id:'toan_b20'}},{id:'q1',type:'vertical',skillId:'ADD_WITH_CARRY_2DIGIT',visualContract:{rendererId:'D5',assetId:'KL2_ROBOT_01_STAND',visualIntent:'DECORATIVE',publicVariant:{}}});
+ check(!denied.ok,'unauthorized renderer policy fails closed');
+ check(!unified.resolve({assetId:'FLUENT:chicken',visualIntent:'EXACT_COUNT',countUnit:'con',exactQuantity:3,fallback:{assetId:'FLUENT:rooster'}}).ok,'exact-count fallback prohibited');
+ report.status=report.failures.length?'FAIL':'PASS';
+ const el=document.getElementById('result');el.textContent='P13_C1_BROWSER_RESULT '+JSON.stringify(report);
+ document.documentElement.dataset.p13C1=report.status;
+})();
+</script></body></html>
