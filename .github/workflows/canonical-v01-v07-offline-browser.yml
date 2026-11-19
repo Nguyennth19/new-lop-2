@@ -55,6 +55,8 @@ jobs:
         run: node qa/canonical-reconciliation/v01_v07_browser_integration_probe.cjs
       - name: Original frozen G7.4 demo all 10 forms rendered on desktop/mobile Chromium (V03 reference scope only)
         run: node qa/canonical-reconciliation/v03_frozen10_demo_browser.cjs
+      - name: Actual D8A proportional liters and D8B lower-heavier pan Chromium public fixture (V05)
+        run: node qa/canonical-reconciliation/v05_d8a_d8b_browser.cjs
       - name: Independent browser behavior across existing D2, D5/D9, assets, TTS and orchestrator (V03–V07)
         run: |
           set -euo pipefail
