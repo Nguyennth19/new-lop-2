@@ -1,0 +1,79 @@
+name: Canonical V01–V07 Owner-Reference QA (OFFLINE ONLY)
+on:
+  push:
+    branches: [audit/global-canonical-reconciliation-20261119]
+    paths:
+      - 'qa/canonical-reconciliation/**'
+      - '.github/workflows/canonical-v01-v07-offline-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference-and-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify frozen baseline, no-runtime-edits and existing B20 source behavior
+        run: |
+          set -euo pipefail
+          node --check qa/canonical-reconciliation/v01_v07_browser_integration_probe.cjs
+          node qa/canonical-reconciliation/test_frozen_reference_source_parity.cjs
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/be-hoc-lop-a/layer-a.test.cjs
+      - name: Run frozen independent TEST core QA V03-V05 without modifying be-hoc
+        run: |
+          set -euo pipefail
+          git worktree add --detach "${RUNNER_TEMP}/g74-volume-reference" b6678bcdde5672f3ac745d05da18c95d3e322063
+          git worktree add --detach "${RUNNER_TEMP}/g74-word-reference" c81d33fd7deb28238ab670d8909af960ae4e0f80
+          git worktree add --detach "${RUNNER_TEMP}/g74-column-reference" 95d0ed90b15889ff069a82d24198fbc82d6ffe81
+          ( cd "${RUNNER_TEMP}/g74-volume-reference" && node qa/g7-4-capacity-weight-reference-v11/capacity-weight-v11.test.cjs && node qa/g7-4-capacity-weight-reference-v12/capacity-weight-v12-geometry.test.cjs )
+          ( cd "${RUNNER_TEMP}/g74-word-reference" && node qa/g7-4-word-problem-unification-v11/word-unification-v11.test.cjs )
+          ( cd "${RUNNER_TEMP}/g74-column-reference" && node qa/g7-4-column-calc-reference-v12/column-v12.test.cjs )
+      - name: Verify public asset/fallback/renderer contracts V03-V06
+        run: |
+          set -euo pipefail
+          node qa/be-hoc-visual/binary-integrity.test.cjs
+          node qa/be-hoc-visual/visual-contract.test.cjs
+          node qa/be-hoc-orchestrator/orchestrator-contract.test.cjs
+          node qa/be-hoc-orchestrator/fluent-46.test.cjs
+          node qa/be-hoc-orchestrator/structured-source-ingestion.test.cjs
+          node qa/p1-3/test_p1_3_b3_runtime_fallback.cjs
+          node qa/p1-3/test_p1_3_c1_fluent_hardening.cjs
+          node qa/be-hoc-tts-v2/tts-v2.test.cjs
+      - name: Install isolated Playwright Chromium and fonts
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: A/B compiled actual current vs owner-reference B20 with SYNTHETIC 51-row public-shape fixture (V01/V02/V07)
+        run: node qa/canonical-reconciliation/v01_v07_browser_integration_probe.cjs
+      - name: Independent browser behavior across existing D2, D5/D9, assets, TTS and orchestrator (V03–V07)
+        run: |
+          set -euo pipefail
+          node qa/be-hoc-d2-manual/manual-browser.test.cjs
+          node qa/be-hoc-d2-gas/browser-lesson.test.cjs
+          node qa/be-hoc-visual/visual-browser.test.cjs
+          node qa/be-hoc-orchestrator/orchestrator-browser.test.cjs
+          node qa/be-hoc-tts-v2/tts-browser.test.cjs
+      - name: Upload actual Chromium screenshots and evidence JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-v01-v07-offline-browser-evidence
+          path: |
+            qa/canonical-reconciliation/output/*.png
+            qa/canonical-reconciliation/output/*.json
+          if-no-files-found: warn
+      - name: Disclose hard QA interpretation
+        if: always()
+        run: |
+          echo 'V01 Owner baseline lab-menu difference is explicitly FAIL/PENDING owner scope, not accepted based on green CI.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'V02 uses 51 synthetic public-shape cases; no GAS, private answer export, exact real Sheet content or star writes.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'V03–V07 include independently pinned frozen TEST source/core and standalone Chromium; this is not D1–D10 real-lesson owner acceptance.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'RELEASE = NO-GO. No script/deployment/sheet/score writes in this workflow.' >> "$GITHUB_STEP_SUMMARY"
