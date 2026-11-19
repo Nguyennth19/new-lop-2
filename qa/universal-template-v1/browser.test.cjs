@@ -60,7 +60,7 @@ async function renderAll(page,pack){
  return observed;
 }
 (async()=>{
- const port=await listen(),base='http://127.0.0.1:'+port, browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+ const port=await listen(),base='http://127.0.0.1:'+port, browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage'],...(process.env.ULT_SYSTEM_CHROME==='1'?{channel:'chrome'}:{})});
  try{
   for(const [device,opts] of [['desktop',{viewport:{width:1366,height:768}}],
    ['mobile',{viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:2}]]){
