@@ -1,0 +1,42 @@
+name: P1.4-B P1.2 Structural Archive No-Runtime QA
+on:
+  push:
+    branches: [integration/p1-4-b-p12-structural-archive-20261119]
+  pull_request:
+    branches: [be-hoc]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nonplayable-archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Hard no-runtime-mutation diff gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-status e061d2d41579b72ae7765a25ffd8e2a3ba16eb96 HEAD > /tmp/delta.txt
+          if grep -E '^[MDT]' /tmp/delta.txt; then echo 'DENY: existing file modified/deleted'; exit 1; fi
+          if grep -vE '^A[[:space:]]+(du-lieu/bai-hoc/toan/|qa/p1-2/|qa/p1-2-b/|qa/p1-4/P1_4_B_P12_STRUCTURAL_ARCHIVE_ADMISSION_20261119.md|.github/workflows/be-hoc-p1-4-b-p12-structural.yml)' /tmp/delta.txt; then echo 'DENY: unexpected path'; exit 1; fi
+          echo "P1.2 archive diff only:"
+          cut -f2 /tmp/delta.txt | wc -l
+      - name: 24 V1+V2 byte-preserving packages, deny all student-ready
+        run: node qa/p1-2/test_layered_packages.cjs
+      - name: B001-B004 inherited DEV admission and policy regression
+        run: |
+          node qa/p1-2-b/test_checkpoint.cjs
+          node qa/p1-2-b/test_content_hydration_and_admission.cjs
+          node qa/p1-2-b/test_primary_pdf_evidence_and_visual_semantics.cjs
+      - name: Revalidate existing P1.4 UX, orchestrator and P1.3 flag
+        run: |
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/be-hoc-orchestrator/orchestrator-contract.test.cjs
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs

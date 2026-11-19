@@ -1,0 +1,454 @@
+{
+  "schemaVersion": "LOP2_P1_2_LAYERED_MANIFEST_V2",
+  "status": "P1_2_STRUCTURAL_PACKAGE_BUILD_COMPLETE_CONTENT_GATES_PENDING",
+  "governance": {
+    "routingName": "P1_1_OFFICIAL_SOURCE_ROUTING_19",
+    "routingCommit": "6a05a042bd614f22450ec74e99f5e65aecee3399",
+    "routingBlobSha": "1930790369530aecd4b95ab0ce793dd8d87c6477",
+    "sourceBaseSha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+    "sourceManifestBlobSha": "2a2bdaf44fa3831fd478e301fc2fe45187452a7c",
+    "rendererReferencePath": "qa/p1-2/P1_2_RENDERER_REFERENCE_12.v1.json",
+    "rendererManifestBlobSha": "27c6db04ce514c83d2b72f4068f20df8917e45ff"
+  },
+  "dataContract": {
+    "schemaPath": "du-lieu/bai-hoc/toan/v2/lessonpackage.layered.schema.v2.json",
+    "sourceLayer": "C1_SOURCE_CANDIDATE",
+    "technicalLayer": "G2_PRIMARY_PAGE_TECHNICAL_CANDIDATE",
+    "templateLayer": "RULE_BASED_TEMPLATE_CANDIDATE",
+    "mappingLayer": "SYNTAX_VERIFIED_ROUTE_ONLY_NO_AUTHORIZATION",
+    "publicProjectionPolicy": "NO_PUBLIC_VARIANTS_OR_ANSWER_KEYS"
+  },
+  "totals": {
+    "lessons": 24,
+    "c1SourceCandidates": 536,
+    "g2TechnicalCandidates": 96,
+    "templateCandidates": 17,
+    "publicVariantReady": 0,
+    "studentPlayable": 0,
+    "sourceIndependentApproved": 0
+  },
+  "files": [
+    {
+      "lessonId": "MATH_B001",
+      "title": "Ôn tập các số đến 100",
+      "ownerBatch": "BQA-01",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B001.lesson.json",
+      "sourceV1BlobSha": "643ce8093f7e2b23edac55113c23f92f8c079f29",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B001.layered.json",
+      "layeredBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "expected": {
+        "c1": 24,
+        "g2": 12,
+        "template": 3,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B002",
+      "title": "Tia số. Số liền trước, số liền sau",
+      "ownerBatch": "BQA-01",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B002.lesson.json",
+      "sourceV1BlobSha": "47682a1de9bd42f379961e2c8aac864fc4044caa",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B002.layered.json",
+      "layeredBlobSha": "47fbe73c780d996160daba94ef3e82b30b9f13ff",
+      "expected": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B003",
+      "title": "Các thành phần của phép cộng, phép trừ",
+      "ownerBatch": "BQA-01",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B003.lesson.json",
+      "sourceV1BlobSha": "1ca114f9caa2e34fe97c2d38a90df8841f3ba709",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B003.layered.json",
+      "layeredBlobSha": "5cdeb76ee58670c985cea875b2ec7a866f0089c2",
+      "expected": {
+        "c1": 23,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B004",
+      "title": "Hơn, kém nhau bao nhiêu",
+      "ownerBatch": "BQA-01",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B004.lesson.json",
+      "sourceV1BlobSha": "06b07ac18a6cc2e62c63a69d8b09f9d968043849",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B004.layered.json",
+      "layeredBlobSha": "ac9d6b7fb1517f062e01e00a7e7891cc5a3404e4",
+      "expected": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B005",
+      "title": "Ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100",
+      "ownerBatch": "BQA-02",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B005.lesson.json",
+      "sourceV1BlobSha": "4178b868edb6af6bf76c82c04b12bfbf927a261a",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B005.layered.json",
+      "layeredBlobSha": "7757d72ffb2be2a2d3108f7ba6230b24a618e5d5",
+      "expected": {
+        "c1": 30,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B006",
+      "title": "Luyện tập chung",
+      "ownerBatch": "BQA-02",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B006.lesson.json",
+      "sourceV1BlobSha": "d174461a61f023f38f44b9e14a1f8b14b820cf99",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B006.layered.json",
+      "layeredBlobSha": "8a42450d990dec0f6f84fe965640de1424c3e990",
+      "expected": {
+        "c1": 18,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B007",
+      "title": "Phép cộng (qua 10) trong phạm vi 20",
+      "ownerBatch": "BQA-03",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B007.lesson.json",
+      "sourceV1BlobSha": "0141dd38faed4748df529716e92c0c0adcc77c7a",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B007.layered.json",
+      "layeredBlobSha": "0f94365d0204c6ef13dc43b50a82a4ee6406e4a6",
+      "expected": {
+        "c1": 40,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B008",
+      "title": "Bảng cộng (qua 10)",
+      "ownerBatch": "BQA-03",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B008.lesson.json",
+      "sourceV1BlobSha": "cdc0e04e94c49d0cfdb5abccb50cd0b6238d9feb",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B008.layered.json",
+      "layeredBlobSha": "0fd194a4305731032423b64f9574be6c125b1a96",
+      "expected": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B009",
+      "title": "Bài toán về thêm, bớt một số đơn vị",
+      "ownerBatch": "BQA-03",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B009.lesson.json",
+      "sourceV1BlobSha": "8097dc133f31664217d4c21c5eccb64734ad0539",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B009.layered.json",
+      "layeredBlobSha": "c3f78eed049737accbdd84666428896720482334",
+      "expected": {
+        "c1": 12,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B010",
+      "title": "Luyện tập chung",
+      "ownerBatch": "BQA-03",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B010.lesson.json",
+      "sourceV1BlobSha": "f5fbdb78c39baf6721a146c94b9c4eda1e6d4616",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B010.layered.json",
+      "layeredBlobSha": "750abef0149d7e80c6605e12d8200aeb088dfaa7",
+      "expected": {
+        "c1": 14,
+        "g2": 8,
+        "template": 1,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B011",
+      "title": "Phép trừ (qua 10) trong phạm vi 20",
+      "ownerBatch": "BQA-04",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B011.lesson.json",
+      "sourceV1BlobSha": "a350e8d9428439e2257d358983a86349fc272193",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B011.layered.json",
+      "layeredBlobSha": "b6bf17c6a5c9e7befa24d2373172c6036b219cb6",
+      "expected": {
+        "c1": 46,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B012",
+      "title": "Bảng trừ (qua 10)",
+      "ownerBatch": "BQA-04",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B012.lesson.json",
+      "sourceV1BlobSha": "b1981ccc24c56984dc01e338239d446d989fd2d5",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B012.layered.json",
+      "layeredBlobSha": "3656c948b69e3d95a94c798c5192865146aaa61b",
+      "expected": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B013",
+      "title": "Bài toán về nhiều hơn, ít hơn một số đơn vị",
+      "ownerBatch": "BQA-04",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B013.lesson.json",
+      "sourceV1BlobSha": "3858ec77d22b0f141993b27228b756161d320eac",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B013.layered.json",
+      "layeredBlobSha": "33f490ee4ed73bb35537f0895f66e78ebf24b666",
+      "expected": {
+        "c1": 10,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B014",
+      "title": "Luyện tập chung",
+      "ownerBatch": "BQA-04",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B014.lesson.json",
+      "sourceV1BlobSha": "97c8503a07b934e2de74116fd1be395bccb8be10",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B014.layered.json",
+      "layeredBlobSha": "d6570a35bbdf52a98090a467130bf851ac8f22b6",
+      "expected": {
+        "c1": 26,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B015",
+      "title": "Ki-lô-gam",
+      "ownerBatch": "BQA-05",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B015.lesson.json",
+      "sourceV1BlobSha": "5f9052d4c079e599f4858a019205f0382336f269",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B015.layered.json",
+      "layeredBlobSha": "3a42ae913e7da1d3ef03b8d702464758b0e91144",
+      "expected": {
+        "c1": 19,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B016",
+      "title": "Lít",
+      "ownerBatch": "BQA-05",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B016.lesson.json",
+      "sourceV1BlobSha": "52661a636022e8064510cef73c57fc0dba239688",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B016.layered.json",
+      "layeredBlobSha": "f518a489a157ed0f2f74485520b62daed9028a2e",
+      "expected": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B017",
+      "title": "Thực hành và trải nghiệm với đơn vị ki-lô-gam, lít",
+      "ownerBatch": "BQA-05",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B017.lesson.json",
+      "sourceV1BlobSha": "510a2f82507e003809f0cbe1640695ca0659657e",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B017.layered.json",
+      "layeredBlobSha": "97ba97c75413000f876618654121da3939d8112c",
+      "expected": {
+        "c1": 15,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B018",
+      "title": "Luyện tập chung",
+      "ownerBatch": "BQA-05",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B018.lesson.json",
+      "sourceV1BlobSha": "ccd8257448f825312dea5a0709adbd393c665adb",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B018.layered.json",
+      "layeredBlobSha": "49bb7ec27b0207cb61f30ffa4ad8f62435ad0ac8",
+      "expected": {
+        "c1": 8,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B019",
+      "title": "Phép cộng (có nhớ) số có hai chữ số với số có một chữ số",
+      "ownerBatch": "BQA-06",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B019.lesson.json",
+      "sourceV1BlobSha": "11130f138e3af9b15344ecb9139ded4f4f2b90cc",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B019.layered.json",
+      "layeredBlobSha": "41a12fe090ac2f0f3e380aefc66a3a3d8afa4c35",
+      "expected": {
+        "c1": 24,
+        "g2": 12,
+        "template": 2,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B020",
+      "title": "Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
+      "ownerBatch": "BQA-06",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B020.lesson.json",
+      "sourceV1BlobSha": "ffb8bed45b2321a669a42ee09f8a233f072e01c6",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B020.layered.json",
+      "layeredBlobSha": "caecffb776bffd8d7265947ed70b6fd2aa7c77d7",
+      "expected": {
+        "c1": 33,
+        "g2": 16,
+        "template": 3,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B021",
+      "title": "Luyện tập chung",
+      "ownerBatch": "BQA-06",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B021.lesson.json",
+      "sourceV1BlobSha": "b8b469ca83bf826360b45634da60afce8d3c6147",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B021.layered.json",
+      "layeredBlobSha": "2cd26950a49edc579b1c0ff9911f310d7a71e102",
+      "expected": {
+        "c1": 19,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B022",
+      "title": "Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số",
+      "ownerBatch": "BQA-07",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B022.lesson.json",
+      "sourceV1BlobSha": "ec0838624ad0f07ad1a9fb2e3540eaa8ad07072e",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B022.layered.json",
+      "layeredBlobSha": "1ade16207160048cd684f91b0dee3c25a1b6d120",
+      "expected": {
+        "c1": 34,
+        "g2": 17,
+        "template": 3,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B023",
+      "title": "Phép trừ (có nhớ) số có hai chữ số cho số có hai chữ số",
+      "ownerBatch": "BQA-07",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B023.lesson.json",
+      "sourceV1BlobSha": "acf693599bb04f8511b97233410dcabe66a58309",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B023.layered.json",
+      "layeredBlobSha": "e5a62e8a34fdca69905d7a756b3f356698e6a3a3",
+      "expected": {
+        "c1": 42,
+        "g2": 21,
+        "template": 5,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    },
+    {
+      "lessonId": "MATH_B024",
+      "title": "Luyện tập chung",
+      "ownerBatch": "BQA-07",
+      "sourceV1File": "du-lieu/bai-hoc/toan/v1/B024.lesson.json",
+      "sourceV1BlobSha": "c39a76d25fab399aca0acc4e6b300af8995f1306",
+      "layeredFile": "du-lieu/bai-hoc/toan/v2/B024.layered.json",
+      "layeredBlobSha": "87a20ef82769301a6885ac67962b5b8b5e15c6eb",
+      "expected": {
+        "c1": 19,
+        "g2": 10,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "reviewGate": "CANDIDATE_ONLY_NO_STUDENT_RELEASE"
+    }
+  ],
+  "runGates": {
+    "sourceExact": "PENDING",
+    "skillId": "PENDING",
+    "rendererGrant": "DENY",
+    "assetCountSemantic": "PENDING",
+    "trustedGrading": "TEST_CODE_ONLY_NO_REAL_GAS",
+    "studentRelease": "NO_GO"
+  },
+  "rollback": {
+    "originalSourceCommit": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+    "mainTouched": false,
+    "driveTouched": false,
+    "studentsTouched": false
+  }
+}

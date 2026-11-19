@@ -1,0 +1,1343 @@
+{
+  "schemaVersion": "LOP2_LESSON_PACKAGE_V1",
+  "packageId": "LOP2_MATH_B002_LPV1",
+  "lessonId": "MATH_B002",
+  "legacyLessonIds": [
+    "B002",
+    "toan_b2"
+  ],
+  "title": "Tia số. Số liền trước, số liền sau",
+  "ownerBatch": "BQA-01",
+  "grade": 2,
+  "subject": "MATH",
+  "curriculumId": "KNTT_MATH_G2",
+  "volume": 1,
+  "packageStatus": "INDEXED_NOT_PLAYABLE",
+  "provenance": {
+    "c1Workbook": "https://docs.google.com/spreadsheets/d/1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM/edit",
+    "masterWorkbook": "https://docs.google.com/spreadsheets/d/1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts/edit",
+    "sourceQuestionTab": "SOURCE_1406",
+    "technicalReviewTab": "10_G2_96_MATRIX",
+    "sgkPagesCandidate": "10–12",
+    "vbtPagesCandidate": "10–12",
+    "lessonSourceGate": "NOT_RELEASE_READY",
+    "titleNote": null,
+    "sourceJoin": "C1_G2_ID_CROSSWALK_UNRESOLVED_NO_AUTO_JOIN"
+  },
+  "skills": {
+    "lessonCandidate": [
+      {
+        "skillId": "NUMBER_SENSE",
+        "status": "INDEX_ONLY"
+      }
+    ],
+    "perQuestionApproved": [],
+    "warning": null
+  },
+  "levelPolicy": {
+    "LV1": "SGK_CANDIDATE",
+    "LV2": "VBT_CANDIDATE",
+    "LV3": "NO_APPROVED_REFERENCE"
+  },
+  "questions": [
+    {
+      "questionId": "SGK_B002_H1_E01",
+      "originExerciseId": "SGK_B002_H1_E01",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "H1",
+        "exerciseLabel": "1",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 26,
+        "c1EnvelopeRow": 26,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "12",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 150334254,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 150334254,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "SGK_B002_H1_E02",
+      "originExerciseId": "SGK_B002_H1_E02",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "H1",
+        "exerciseLabel": "2",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 27,
+        "c1EnvelopeRow": 27,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "12",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 133556635,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 133556635,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "SGK_B002_H1_E03",
+      "originExerciseId": "SGK_B002_H1_E03",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "H1",
+        "exerciseLabel": "3",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 28,
+        "c1EnvelopeRow": 28,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "12",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 116779016,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 116779016,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "SGK_B002_L1_E01",
+      "originExerciseId": "SGK_B002_L1_E01",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "L1",
+        "exerciseLabel": "1",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 29,
+        "c1EnvelopeRow": 29,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "12",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1721206242,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1721206242,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "SGK_B002_L1_E02",
+      "originExerciseId": "SGK_B002_L1_E02",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "L1",
+        "exerciseLabel": "2",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 30,
+        "c1EnvelopeRow": 30,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "12",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1704428623,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1704428623,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "SGK_B002_L1_E03",
+      "originExerciseId": "SGK_B002_L1_E03",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "L1",
+        "exerciseLabel": "3",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 31,
+        "c1EnvelopeRow": 31,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "13",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1687651004,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1687651004,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "SGK_B002_L1_E04",
+      "originExerciseId": "SGK_B002_L1_E04",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "L1",
+        "exerciseLabel": "4",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 32,
+        "c1EnvelopeRow": 32,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "13",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1670873385,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1670873385,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "SGK_B002_L1_E05",
+      "originExerciseId": "SGK_B002_L1_E05",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "SGK",
+        "level": "LV1",
+        "session": "L1",
+        "exerciseLabel": "5",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 33,
+        "c1EnvelopeRow": 33,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "13",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "sourceSHA256Recorded": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1654095766,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1654095766,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T01_E01",
+      "originExerciseId": "VBT_B002_T01_E01",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T01",
+        "exerciseLabel": "1",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 34,
+        "c1EnvelopeRow": 34,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "10",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1604385679,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1604385679,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T01_E02",
+      "originExerciseId": "VBT_B002_T01_E02",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T01",
+        "exerciseLabel": "2",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 35,
+        "c1EnvelopeRow": 35,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "10",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1621163298,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1621163298,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T01_E03",
+      "originExerciseId": "VBT_B002_T01_E03",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T01",
+        "exerciseLabel": "3",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 36,
+        "c1EnvelopeRow": 36,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "10",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 1637940917,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 1637940917,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T02_E01",
+      "originExerciseId": "VBT_B002_T02_E01",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T02",
+        "exerciseLabel": "1",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 37,
+        "c1EnvelopeRow": 37,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "11",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 73579614,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 73579614,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T02_E02",
+      "originExerciseId": "VBT_B002_T02_E02",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T02",
+        "exerciseLabel": "2",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 38,
+        "c1EnvelopeRow": 38,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "11",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 56801995,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 56801995,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T02_E03",
+      "originExerciseId": "VBT_B002_T02_E03",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T02",
+        "exerciseLabel": "3",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 39,
+        "c1EnvelopeRow": 39,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "11",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 40024376,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 40024376,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T02_E04",
+      "originExerciseId": "VBT_B002_T02_E04",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T02",
+        "exerciseLabel": "4",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 40,
+        "c1EnvelopeRow": 40,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "12",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 157467709,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 157467709,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    },
+    {
+      "questionId": "VBT_B002_T02_E05",
+      "originExerciseId": "VBT_B002_T02_E05",
+      "lessonId": "MATH_B002",
+      "recordRole": "C1_SOURCE_CANDIDATE",
+      "source": {
+        "track": "VBT",
+        "level": "LV2",
+        "session": "T02",
+        "exerciseLabel": "5",
+        "c1Registry": "SOURCE_1406",
+        "c1RegistryRow": 41,
+        "c1EnvelopeRow": 41,
+        "ownerBatch": "BQA-01",
+        "pdfPageCandidate": "12",
+        "printedPageVerified": null,
+        "sourceFileIdRecorded": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "sourceSHA256Recorded": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+        "evidenceURL": "https://drive.google.com/file/d/1pak_EXVCiocEI0lDqnwirepzyrdrHSpM/view",
+        "sourceOrigin": "PRIOR_BATCH_XLSX_CANDIDATE",
+        "sourceIdLock": "UNIQUE_CANDIDATE_ID_NOT_SOURCE_CERTIFIED"
+      },
+      "prompt": null,
+      "sourceTextHint": "NOT_EXTRACTED_FULL_VERBATIM",
+      "skillId": null,
+      "lessonSkillCandidate": "NUMBER_SENSE",
+      "skillStatus": "UNRESOLVED_PER_QUESTION",
+      "questionType": null,
+      "typeStatus": "UNKNOWN",
+      "visualIntent": null,
+      "assetId": null,
+      "semanticMapping": null,
+      "rendererCandidate": null,
+      "publicVariant": null,
+      "seed": 140690090,
+      "variant": {
+        "variantId": null,
+        "mode": "NOT_MATERIALIZED",
+        "seed": 140690090,
+        "isSourceExact": false,
+        "publicVariant": null
+      },
+      "crosswalk": {
+        "g2Id": null,
+        "status": "UNRESOLVED_C1_G2_NAMING",
+        "autoJoin": false
+      },
+      "approval": {
+        "sourceExact": "NOT_INDEPENDENTLY_SIGNED",
+        "skillId": "INDEX_ONLY",
+        "renderer": "DENY",
+        "asset": "DENY",
+        "publicVariant": "DENY",
+        "trustedGrading": "NOT_VERIFIED",
+        "pedagogy": "NOT_SIGNED",
+        "studentRelease": "NO_GO"
+      },
+      "generatorAdmission": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT",
+      "grading": {
+        "serverRequired": true,
+        "ready": false,
+        "publicAnswerKey": false
+      },
+      "qa": {
+        "buildStatus": "ENVELOPE_BUILT_RENDER_SKIPPED",
+        "reasonCodes": [
+          "PROMPT_TEXT_MISSING",
+          "PART_SLOT_CONTENT_NOT_STRUCTURED",
+          "ANSWER_VALIDATOR_NOT_STRUCTURED",
+          "VISUAL_GRAPH_NOT_STRUCTURED"
+        ],
+        "sourceMath": "NOT_PROVEN",
+        "sourceText": "NOT_SOURCE_VERIFIED",
+        "sourceSlots": "NOT_SOURCE_PART_VERIFIED",
+        "sourceReviewer": "UNSIGNED",
+        "sourceRuntime": "NOT_EXECUTED",
+        "sourceRelease": "EXCLUDED_PENDING_B"
+      }
+    }
+  ],
+  "technicalReviewCandidates": [],
+  "variantPool": {
+    "mode": "REVIEW_TEMPLATE_CANDIDATES_ONLY",
+    "candidates": [],
+    "droppedSourceIds": [],
+    "missingVerifiedQuestionCount": 16,
+    "playableCount": 0,
+    "publicVariantReadyCount": 0,
+    "replacementPolicy": "APPROVED_SAME_LESSON_SKILL_ONLY_DO_NOT_INVENT"
+  },
+  "reviewGates": {
+    "sourceIndependent": "NOT_SIGNED",
+    "skillRegistry": "NOT_APPROVED",
+    "rendererPolicy": "DENY",
+    "e04Policy": "NOT_APPROVED_WHEN_REQUIRED",
+    "trustedGrading": "NOT_VERIFIED",
+    "studentRelease": "NO_GO"
+  },
+  "summary": {
+    "c1SourceCandidates": 16,
+    "g2ReviewCandidates": 0,
+    "adaptationCaseChecks": 0,
+    "adaptationUniqueSources": 0,
+    "keptUnique": 0,
+    "droppedUnique": 0,
+    "playable": 0,
+    "sourceSigned": 0,
+    "publicVariantReady": 0,
+    "studentRelease": "NO_GO"
+  },
+  "rollback": {
+    "branchBase": "test/p0-g2b-variant-adaptation-20261117",
+    "baseSha": "a00a7f348db566bc024ff7ba42d874fe5d6c018a",
+    "productionChanged": false
+  }
+}

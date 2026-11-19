@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const base='qa/p1-2-b/';
+const get=s=>JSON.parse(fs.readFileSync(base+s,'utf8'));
+const cp=get('P12B_B001_B004_CHECKPOINT_20261118.json');
+const hydrated=get('P12B_C4_27_CONTENT_HYDRATION_REFS.review.v1.json');
+const queue=get('P12B_B001_B004_79_SOURCE_ADMISSION_QUEUE.review.v1.json');
+const pdf=get('P12B_PRIMARY_PDF_HASH_AND_PAGE_79.review.v1.json');
+const sem=get('P12B_52_SOURCE_SEMANTIC_REVIEW_CANDIDATES.review.v1.json');
+const preview=get('P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json');
+const v=cp.achieved;
+assert.equal(cp.schemaVersion,'P12B_B001_B004_CONTENT_AND_VARIANTS_QA_CHECKPOINT_V1');
+assert.equal(v.B001B004OriginalC1CandidatesPreserved,79);
+assert.equal(v.C4DevContentLocationsMatched,hydrated.records.length);
+assert.equal(v.C4DevPartSlots,hydrated.records.reduce((a,x)=>a+x.devContent.partsCount,0));
+assert.equal(v.sourceOriginalPdfBytesMatchingRecordedHashes,pdf.records.length);
+assert.equal(v.sourcePageScopeInspected,pdf.records.length);
+assert.equal(v.C1WithoutC4FullContentPending,queue.items.filter(x=>!x.c4PrivateContentLocator).length);
+assert.equal(v.semanticCandidateLabelsFromVisualReview,sem.items.length);
+assert.equal(v.proposedRendererRoutesNoGrant,sem.items.filter(x=>x.rendererRouteCandidate).length);
+assert.equal(v.rendererUnmappedStillPending,sem.items.filter(x=>!x.rendererRouteCandidate).length);
+assert.equal(v.originalMathRecipeFamilies,8);
+assert.equal(v.originalDevMultipleChoicePreviews,preview.variants.length);
+assert.equal(v.C4EstimatedNoAutoGradeConflicts,hydrated.knownPolicyConflicts.length);
+assert.equal(v.answerKeysCopiedToGithub,0);
+assert.equal(v.independentlySignedSourceExercises,0);
+assert.equal(v.approvedPublicVariants,0);
+assert.equal(v.studentPlayablePromotions,0);
+assert.equal(cp.securityQA.privateExpectedKeysCopied,false);
+assert.equal(cp.securityQA.actualGASDeployment,'NOT_TESTED');
+assert.equal(cp.sourceQA.perExerciseTextPartsAndFigures,'PENDING_INDEPENDENT_VISUAL_TRANSCRIPTION');
+assert.equal(cp.sourceQA.bookBinaryAndPage,'79_OF_79_MATCH_SCOPE');
+assert.equal(cp.rollback.mainOrGASChanged,false);
+assert.equal(cp.rollback.c4OriginalSheetModified,false);
+assert.equal(cp.rollback.originalPdfFilesModified,false);
+assert.equal(cp.rollback.studentRecordsChanged,false);
+assert.deepEqual(cp.detailsByLesson.MATH_B001.inheritedC4DevItems,24);
+assert.deepEqual(cp.detailsByLesson.MATH_B002.inheritedC4DevItems,3);
+assert.deepEqual(cp.detailsByLesson.MATH_B003.unhydratedSourceCandidates,23);
+assert.deepEqual(cp.detailsByLesson.MATH_B004.unhydratedSourceCandidates,16);
+console.log(JSON.stringify({test:'P12B_CLOSED_TECH_SCOPE_ONLY',status:'PASS',lessonCount:4,
+ sourceIds:79,devReused:27,parts:121,pdfHashIndex:79,unhydrated:52,
+ mathPreviews:32,policyConflicts:2,studentRelease:'NO_GO'}));

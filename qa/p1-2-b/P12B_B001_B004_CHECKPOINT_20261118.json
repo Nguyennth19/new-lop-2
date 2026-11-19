@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "P12B_B001_B004_CONTENT_AND_VARIANTS_QA_CHECKPOINT_V1",
+  "dateLocal": "2026-11-18",
+  "state": "B001_B004_CONTENT_REFERENCES_AND_DEV_VARIANTS_TECH_QA_PASS_SOURCE_EXACT_AND_RELEASE_PENDING",
+  "sourceRouting": "P1_1_OFFICIAL_SOURCE_ROUTING_19",
+  "immutableSourceP12ACommit": "1a550444a188697cef5ae1ce007e4c7f8b11946d",
+  "originalC4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+  "originalBooks": {
+    "sgk": {
+      "driveFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+      "sha256": "cb8cb303294edc0be2f36a9507965b59345c0d53c296d610858e7454dfa8321e",
+      "pagesInspected": [
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    "vbt": {
+      "driveFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+      "sha256": "7c77820bb52a9f59b790180a16adc8231993768f59a16bb86084bb2f65f171cf",
+      "pagesInspected": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    }
+  },
+  "achieved": {
+    "B001B004OriginalC1CandidatesPreserved": 79,
+    "C4DevContentLocationsMatched": 27,
+    "C4DevPartSlots": 121,
+    "sourceOriginalPdfBytesMatchingRecordedHashes": 79,
+    "sourcePageScopeInspected": 79,
+    "C1WithoutC4FullContentPending": 52,
+    "semanticCandidateLabelsFromVisualReview": 52,
+    "proposedRendererRoutesNoGrant": 31,
+    "rendererUnmappedStillPending": 21,
+    "originalMathRecipeFamilies": 8,
+    "originalDevMultipleChoicePreviews": 32,
+    "C4EstimatedNoAutoGradeConflicts": 2,
+    "answerKeysCopiedToGithub": 0,
+    "independentlySignedSourceExercises": 0,
+    "approvedPublicVariants": 0,
+    "studentPlayablePromotions": 0
+  },
+  "detailsByLesson": {
+    "MATH_B001": {
+      "c1Candidates": 24,
+      "inheritedC4DevItems": 24,
+      "unhydratedSourceCandidates": 0,
+      "sourcePdfHashConfirmed": 24,
+      "primaryPageVisualScopeChecked": 24,
+      "visualSemanticReviewCandidates": 0,
+      "originalSyntheticDevPreviews": 8,
+      "officialPublicVariants": 0,
+      "sourceIndependentApproved": 0
+    },
+    "MATH_B002": {
+      "c1Candidates": 16,
+      "inheritedC4DevItems": 3,
+      "unhydratedSourceCandidates": 13,
+      "sourcePdfHashConfirmed": 16,
+      "primaryPageVisualScopeChecked": 16,
+      "visualSemanticReviewCandidates": 13,
+      "originalSyntheticDevPreviews": 8,
+      "officialPublicVariants": 0,
+      "sourceIndependentApproved": 0
+    },
+    "MATH_B003": {
+      "c1Candidates": 23,
+      "inheritedC4DevItems": 0,
+      "unhydratedSourceCandidates": 23,
+      "sourcePdfHashConfirmed": 23,
+      "primaryPageVisualScopeChecked": 23,
+      "visualSemanticReviewCandidates": 23,
+      "originalSyntheticDevPreviews": 8,
+      "officialPublicVariants": 0,
+      "sourceIndependentApproved": 0
+    },
+    "MATH_B004": {
+      "c1Candidates": 16,
+      "inheritedC4DevItems": 0,
+      "unhydratedSourceCandidates": 16,
+      "sourcePdfHashConfirmed": 16,
+      "primaryPageVisualScopeChecked": 16,
+      "visualSemanticReviewCandidates": 16,
+      "originalSyntheticDevPreviews": 8,
+      "officialPublicVariants": 0,
+      "sourceIndependentApproved": 0
+    }
+  },
+  "reviewRisk": {
+    "unmappedRendererCandidatesByLesson": {
+      "MATH_B002": 6,
+      "MATH_B003": 10,
+      "MATH_B004": 5
+    },
+    "estimationItemIds": [
+      "SGK_B001_L2_E01",
+      "SGK_B001_L2_E02"
+    ],
+    "c4SourceImageCropsSha256Verified": 0
+  },
+  "sourceQA": {
+    "bookBinaryAndPage": "79_OF_79_MATCH_SCOPE",
+    "perExerciseTextPartsAndFigures": "PENDING_INDEPENDENT_VISUAL_TRANSCRIPTION",
+    "printedEditionIndependentLock": "NOT_SIGNED",
+    "bookPixelsCommittedToGithub": false
+  },
+  "securityQA": {
+    "privateExpectedKeysCopied": false,
+    "privateC4WorkbookReadOnly": true,
+    "publicVariantsRemainNull": true,
+    "clientAnswerKeysGranted": false,
+    "actualGASDeployment": "NOT_TESTED",
+    "gradeBridge": "NOT_CONNECTED"
+  },
+  "CI": {
+    "runId": 44251155894,
+    "testedCommit": "d93950c5b3d92bbc44bda4401636dce11cf51759",
+    "conclusion": "SUCCESS",
+    "url": "https://github.com/Nguyennth19/new-lop-2/actions/runs/44251155894",
+    "scope": "P12B_LOCAL_DEV_QA_SOURCE_INDEX_AND_VARIANT_PREVIEW_NOT_STUDENT_RELEASE"
+  },
+  "blockers": [
+    "52 C1 source items lack full hydrated parts/private validators and independent SGK/VBT content QA",
+    "27 inherited C4 DEV source prompt/private grading cannot be exported to browser without tested trusted server projection",
+    "Two estimation items must explicitly force NO_AUTO_GRADE rather than generic scorer enable",
+    "21 of 52 visual semantic candidate items lack an exact supported renderer family and all 31 suggested routes lack per-item grant",
+    "Original book image assets/crops have no byte-level asset association here (P1.3 and specific renderer visual proof)",
+    "32 original mathematical DEV previews need teacher/owner pedagogic review; no LV1/LV2/LV3/sourceExact certification",
+    "Real GAS E2E and 0-to-publicVariant promotion blocked"
+  ],
+  "next": "P1.2-B.2: prioritize source-exact and semantic QA for 13 B002 +23 B003 +16 B004 items; reuse 24 B001+3 B002 C4 DEV; resolve two NO_AUTO_GRADE conflicts through trusted grader TEST before any public projection",
+  "rollback": {
+    "retainOriginalP12ABase": true,
+    "p12ACommit": "1a550444a188697cef5ae1ce007e4c7f8b11946d",
+    "mainOrGASChanged": false,
+    "c4OriginalSheetModified": false,
+    "originalPdfFilesModified": false,
+    "studentRecordsChanged": false
+  }
+}
