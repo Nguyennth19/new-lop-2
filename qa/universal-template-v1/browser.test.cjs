@@ -50,7 +50,29 @@ async function renderAll(page,pack){
   assert(visual.inputs+visual.buttons>0,q.rendererId+' lacks interaction control');
   assert.equal(visual.htmlOverflow,false,q.rendererId+' viewport overflow');
   assert.equal(visual.route,q.rendererId);
-  observed.push({id:q.rendererId,question:q.questionId,htmlLength:visual.htmlLength,buttons:visual.buttons,inputs:visual.inputs});
+  // Perform one real user input on every reference renderer, not merely count its DOM.
+  const locator=selector=>page.locator('#ulStage '+selector).first();
+  if(q.rendererId==='D1')await locator('.g74t1-pad-key[data-key="1"]').click();
+  if(q.rendererId==='D2')await locator('[data-answer="result_ones"]').fill('3');
+  if(q.rendererId==='D3'){
+    await locator('.g74-match-card.left').click();await locator('.g74-match-card.right').click();
+  }
+  if(q.rendererId==='D4')await locator('.g74-choice-answer').click();
+  if(q.rendererId==='D5')await locator('.g74-tangram-piece').click();
+  if(q.rendererId==='D6'){
+    await locator('.g74-ds-card').click();await locator('.g74-ds-target').click();
+  }
+  if(q.rendererId==='D7')await locator('.g74-cmp-sign').click();
+  if(q.rendererId==='D8')await locator('.g74-ruler-panel input').fill('7');
+  if(q.rendererId==='D8A')await locator('.g74-cw-btn').click();
+  if(q.rendererId==='D8B')await locator('.g74-cw-btn').click();
+  if(q.rendererId==='D9')await locator('.g74-picto-item').click();
+  if(q.rendererId==='D10')await locator('.g74-word-option-select').click();
+  const interaction=await page.evaluate(()=>window.ULTLAB.getDraft());
+  assert(interaction&&typeof interaction==='object',
+    q.rendererId+' had controls but did not report a changed draft');
+  observed.push({id:q.rendererId,question:q.questionId,htmlLength:visual.htmlLength,
+   buttons:visual.buttons,inputs:visual.inputs,interacted:true});
   if(['D2','D5','D8A','D8B','D9','D10'].includes(q.rendererId)){
    const file=path.join(dir,'ult-v1-'+pack+'-'+page.__viewport+'-'+q.rendererId+'.png');
    await page.screenshot({path:file,fullPage:false,animations:'disabled'});
