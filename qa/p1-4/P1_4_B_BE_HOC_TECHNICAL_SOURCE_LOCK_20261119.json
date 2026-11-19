@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "P1_4_B_BE_HOC_INTEGRATION_SOURCE_LOCK_V1",
+  "asOfLocalDate": "2026-11-19",
+  "sourceStatus": "TECHNICAL_SOURCE_INTEGRATED_WITH_SCOPE_GATES",
+  "liveAcceptance": "PENDING",
+  "productionRelease": "NO_GO",
+  "repository": "Nguyennth19/new-lop-2",
+  "branch": "be-hoc",
+  "preP14Base": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+  "mergeCheckpoints": {
+    "ux": "bca2613155b711e047db8b8fb9e908a3e8ec7f9e",
+    "assetsResolver": "e061d2d41579b72ae7765a25ffd8e2a3ba16eb96",
+    "structuralData": "f70e1d33266661bf97e4f36e86fdbea604c33a47"
+  },
+  "sourceImports": [
+    {
+      "sourceCommit": "9da26587c59c4df769ba95e5e46fd15965454d3b",
+      "sourceTree": "606b21931773c2bce67d133d12333a5148eb72bf",
+      "addedPaths": 329,
+      "modifiedPaths": [
+        "GiaoDien.html"
+      ],
+      "removedPaths": 0,
+      "classification": "P1.3_A_B_C_C2_C3_SOURCE_ONLY_OFF_BY_DEFAULT_LIVE_PENDING"
+    },
+    {
+      "sourceCommit": "109300158378cbbf48a4724453cc1e555d7eaccd",
+      "sourceTree": "b7673791cabebe9c5b63eaad27851566932745fb",
+      "addedArchivePaths": 73,
+      "modifiedPaths": [],
+      "removedPaths": 0,
+      "classification": "P1.2_STRUCTURAL_ONLY_NONPLAYABLE"
+    }
+  ],
+  "invariants": {
+    "historicalWebpUnchanged": 332,
+    "masterPngTotal": 288,
+    "lessonJsonV1": 24,
+    "lessonJsonV2": 24,
+    "historicalFilesDeleted": 0,
+    "displayPracticeAppendSuppressed": true,
+    "mentalQuestionListenSuppressed": true,
+    "wordSummaryPipeSeparated": true,
+    "legacyOrchestratorPreserved": true,
+    "unifiedResolverFlagDefaultOff": true,
+    "autoGrantStudentQuestionVariants": 0,
+    "studentPlayableNewLessons": 0
+  },
+  "pinnedCurrentBlobs": {
+    "19_KhongGianHocToan.html": "3cb8683df956a65c14dc68a6304b55fd7c5bdf8f",
+    "41_HienThiCauHoiToan.html": "25c2f0529c1612a385f8838df4cc6c5de1d08f37",
+    "43_CSS_ThanhPhanBaiToan.html": "4c8392db8d09d688180b825e61fea5dd5438a2b3",
+    "GiaoDien.html": "e25929d9eeb6fd48c0588b6472b8859aa258fc7f",
+    "KhoBaiHoc.gs": "ddace8952fca2f090294dce0f0ac358ae3c3c1c5"
+  },
+  "ciEvidence": [
+    "https://github.com/Nguyennth19/new-lop-2/actions/runs/44467639436",
+    "https://github.com/Nguyennth19/new-lop-2/actions/runs/44468665509",
+    "https://github.com/Nguyennth19/new-lop-2/actions/runs/44469075140"
+  ],
+  "evidence": "qa/p1-4/P1_4_B_CROSS_BRANCH_CANONICAL_LEDGER_20261119.md",
+  "openGates": [
+    "FULL_OWNER_VISUAL_ACCEPTANCE_3_LEVELS_MOBILE_DESKTOP",
+    "REAL_GAS_TEST_OFF_ON_OFF",
+    "PRIVATE_GRADING_SOURCE_AND_SESSION_E2E",
+    "B001_B024_SOURCE_EXACT_PEDAGOGY",
+    "P1_3_PUBLIC_ASSET_RIGHTS_AND_PLACEMENT",
+    "DEFAULT_B20_WORKBOOK_ANYONE_WRITER_SECURITY_REVIEW",
+    "DEVELOPMENT_BACKUP_AND_RELEASE_APPROVAL"
+  ]
+}

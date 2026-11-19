@@ -1,0 +1,53 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {execFileSync}=require('node:child_process');
+const read=p=>fs.readFileSync(p,'utf8');
+const lock=JSON.parse(read('qa/p1-4/P1_4_B_BE_HOC_TECHNICAL_SOURCE_LOCK_20261119.json'));
+const gitBlob=p=>execFileSync('git',['hash-object',p],{encoding:'utf8'}).trim();
+assert.equal(lock.productionRelease,'NO_GO');
+assert.equal(lock.liveAcceptance,'PENDING');
+assert.equal(lock.invariants.studentPlayableNewLessons,0);
+assert.equal(lock.invariants.autoGrantStudentQuestionVariants,0);
+for(const [p,sha] of Object.entries(lock.pinnedCurrentBlobs))assert.equal(gitBlob(p),sha,'pinned app blob drift: '+p);
+const walk=(dir,acc=[])=>{for(const f of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,f.name);if(f.isDirectory())walk(p,acc);else if(f.isFile())acc.push(p.replaceAll(path.sep,'/'));}return acc;};
+const all=walk('hinh-anh');
+const webp=all.filter(p=>p.toLowerCase().endsWith('.webp'));
+const master=all.filter(p=>p.includes('/png-master/')&&p.toLowerCase().endsWith('.png'));
+assert.equal(webp.length,332,'332 WebP byte source preservation');
+assert.equal(master.length,288,'288 original PNG master paths');
+const base='59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff';
+const oldWebp=execFileSync('git',['ls-tree','-r','--name-only',base],{encoding:'utf8'}).trim().split('\n').filter(p=>p.toLowerCase().endsWith('.webp'));
+assert.equal(oldWebp.length,332);
+for(const p of oldWebp){
+  const historic=execFileSync('git',['rev-parse',base+':'+p],{encoding:'utf8'}).trim();
+  assert.equal(gitBlob(p),historic,'do not alter approved WebP '+p);
+}
+const v1=fs.readdirSync('du-lieu/bai-hoc/toan/v1').filter(f=>/^B\d{3}\.lesson\.json$/.test(f));
+const v2=fs.readdirSync('du-lieu/bai-hoc/toan/v2').filter(f=>/^B\d{3}\.layered\.json$/.test(f));
+assert.equal(v1.length,24);assert.equal(v2.length,24);
+for(const name of v2){
+ const lesson=JSON.parse(read('du-lieu/bai-hoc/toan/v2/'+name));
+ assert.equal(lesson.status,'STRUCTURED_SOURCE_AND_TEMPLATE_INDEX_NOT_STUDENT_PLAYABLE');
+ assert.equal(lesson.learningPolicy.perQuestionApproval,'NOT_SIGNED');
+ assert.equal(lesson.sourceLayer.canonicalSourceExactGranted,false);
+ assert.equal(lesson.sourceLayer.independentSignoffs,0);
+}
+const manifest=JSON.parse(read('du-lieu/bai-hoc/toan/v2/manifest.B001-B024.layered.v2.json'));
+assert.equal(manifest.totals.lessons,24);
+assert.equal(manifest.totals.publicVariantReady,0);
+assert.equal(manifest.totals.studentPlayable,0);
+const math=read('19_KhongGianHocToan.html'),renderer=read('41_HienThiCauHoiToan.html'),template=read('GiaoDien.html'),gate=read('P13_C2_CauHinhTEST.gs');
+assert(!math.includes('window.BE_HOC_D2_V12.mountB20(fullData,root,view)'));
+assert(!math.includes('window.BE_HOC_STRUCTURED_PUBLIC_V2.mountB20(fullData,root,view)'));
+assert(!renderer.includes('data-ml-speak-question'));
+assert(renderer.includes('ml-word-summary-line'));
+assert(template.includes('p13C2GASTestEnabled_()'));
+assert.equal((template.match(/napThanhPhan\('89_Asset_Unified_Resolver_TEST'\)/g)||[]).length,1);
+assert.equal((template.match(/napThanhPhan\('90_C2_Test_Integration_Bridge'\)/g)||[]).length,1);
+assert(gate.includes("'LOP2_ENVIRONMENT'"));
+assert(gate.includes("'P13_C2_UNIFIED_RESOLVER'"));
+assert(gate.includes("'P13_C2_OWNER_TEST_APPROVAL'"));
+assert(!gate.includes('setProperty'));
+assert(fs.existsSync('83_Visual_Orchestrator.html'));
+assert(!fs.existsSync('89_P0_VariantRouter.html'),'do not activate candidate data router');
+console.log('P1_4_B_SOURCE_LOCK_PASS: WebP 332 original bytes, 288 PNG MASTER, 24+24 layered index nonplayable, learner UX and TEST default-OFF bridge.');

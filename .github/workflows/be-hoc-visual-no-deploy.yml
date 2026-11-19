@@ -9,6 +9,8 @@ on:
       - '6?_*.html'
       - 'qa/be-hoc-visual/**'
       - '.github/workflows/be-hoc-visual-no-deploy.yml'
+  pull_request:
+    branches: [be-hoc]
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,9 +29,14 @@ jobs:
       - name: Preserve core app, trusted grader and lesson sources
         run: |
           set -euo pipefail
-          for f in MayChu.gs KhoBaiHoc.gs ThanhTichMayChu.gs 26_ChamCauHoiToan.html appsscript.json D2ChamTinCayTest.gs; do
+          for f in MayChu.gs ThanhTichMayChu.gs 26_ChamCauHoiToan.html appsscript.json D2ChamTinCayTest.gs; do
             test "$(git hash-object "$f")" = "$(git show 0c576042d1c47b6f8b55e05a0f3616576629cb38:"$f" | git hash-object --stdin)"
           done
+          # P1.4-B accepted structured read-only source ingestion into KhoBaiHoc:
+          # historical 0c576 baseline predates this approved integration.
+          test "$(git hash-object KhoBaiHoc.gs)" = ddace8952fca2f090294dce0f0ac358ae3c3c1c5
+          node qa/be-hoc-orchestrator/structured-source-ingestion.test.cjs
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs
           test "$(git hash-object 53_Geometry_Core.html)" = fb920f24f506895a560829cb44b963536d249c48
           test "$(git hash-object 54_Tangram_V12.html)" = 2c768bbe3b1f271cbf7a9dcb799994e5995ceb5e
           test "$(git hash-object 55_Pictograph_Core.html)" = 722e286d6253d4d959336298a6a2e5af73b2a0e8

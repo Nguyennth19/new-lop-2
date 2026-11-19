@@ -1,35 +1,23 @@
 name: BE-HOC Layer A integration no deploy
 on:
   push:
-    branches:
-      - be-hoc
+    branches: [be-hoc]
     paths:
-      - '41_HienThiCauHoiToan.html'
       - '19_KhongGianHocToan.html'
-      - '44_G75_NormalizerToanV2.html'
-      - '45_DieuKhienGiongDocToan.html'
-      - '46_CSS_GiongDocToan.html'
+      - '41_HienThiCauHoiToan.html'
       - '43_CSS_ThanhPhanBaiToan.html'
       - 'GiaoDien.html'
-      - '57_Visual_Lab_Host.html'
-      - '64_SVG_Math_Public.html'
-      - '47_D2V12_Core.html'
-      - '48_D2V12_View.html'
-      - '49_D2V12_BaiHoc.html'
-      - '50_CSS_D2V12.html'
-      - '52_D2_ManualCarry.html'
-      - '51_D2_AutoCarry.html'
       - 'qa/be-hoc-lop-a/**'
-      - 'qa/be-hoc-d2-manual/**'
-      - 'docs/kiem-dinh/BE_HOC_LAYER_A_*'
       - '.github/workflows/be-hoc-layer-a-no-deploy.yml'
+  pull_request:
+    branches: [be-hoc]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   scoped-qa:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,31 +26,48 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Diff guard baseline and staging references
+      - name: Historical baseline and strict explicit source allowance
         shell: bash
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD
-          if git diff --name-only f51a12cc07b44f0f893c2e0de40e387cc17b5c3b HEAD | grep -vE '^(hinh-anh/nhan-vat-drive/v1/|hinh-anh/svg-fallback/fluent-emoji-flat/v1/|qa/be-hoc-orchestrator/|docs/kiem-dinh/BE_HOC_VISUAL_ORCHESTRATOR_|hinh-anh/webp-g7/v1/WEBP/|qa/be-hoc-d2-gas/|docs/kiem-dinh/BE_HOC_D2_GAS_|qa/be-hoc-visual/|docs/kiem-dinh/BE_HOC_VISUAL_|docs/kiem-dinh/BE_HOC_G7_288_|qa/be-hoc-tts-v2/|docs/kiem-dinh/BE_HOC_G75_V2_|qa/be-hoc-d2-v12/|docs/kiem-dinh/BE_HOC_D2_V12_|qa/be-hoc-d2-auto/|docs/kiem-dinh/BE_HOC_D2_AUTO_|qa/be-hoc-d2-manual/|docs/kiem-dinh/BE_HOC_D2_MANUAL_)' | grep -Ev '^(GiaoDien.html|19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|47_D2V12_Core.html|48_D2V12_View.html|49_D2V12_BaiHoc.html|50_CSS_D2V12.html|52_D2_ManualCarry.html|D2ChamTinCayTest.gs|.github/workflows/be-hoc-d2-gas.yml|53_Geometry_Core.html|54_Tangram_V12.html|55_Pictograph_Core.html|56_Pictograph_View.html|57_Visual_Lab_Host.html|58_CSS_Visual_Lab.html|59_Visual_Public_Assets.html|60_Geometry_Fixtures.html|61_Pictograph_Fixtures.html|62_CSS_Geometry.html|63_CSS_Pictograph.html|64_SVG_Math_Public.html|.github/workflows/be-hoc-visual-no-deploy.yml|.github/workflows/be-hoc-g7-288-binary.yml|.github/workflows/be-hoc-orchestrator.yml|82_CSS_OrchestratorModules.html|85_Fluent_Asset_46.html|86_CSS_Fluent.html|87_Characters_Drive_30.html|88_Visual_Semantic_Router.html|KhoBaiHoc.gs|83_Visual_Orchestrator.html|84_CSS_Orchestrator.html|65_D1_Type1.html|66_D3_Core.html|67_D3_View.html|68_D4_Core.html|69_D4_View.html|70_D5_View.html|71_D6_Core.html|72_D6_View.html|73_D7_Core.html|74_D7_View.html|75_D8_Core.html|76_D8_View.html|77_D8A_Core.html|78_D8A_View.html|79_D8B_View.html|80_D10_Core.html|81_D10_Adapter.html|.github/workflows/be-hoc-d2-auto-no-deploy.yml|51_D2_AutoCarry.html|.github/workflows/be-hoc-d2-v12-no-deploy.yml|.github/workflows/be-hoc-d2-v12-chromium.yml|44_G75_NormalizerToanV2.html|45_DieuKhienGiongDocToan.html|46_CSS_GiongDocToan.html|.github/workflows/be-hoc-tts-v2-no-deploy.yml|.github/workflows/be-hoc-tts-v2-chromium.yml|qa/be-hoc-tts-v2/|docs/kiem-dinh/BE_HOC_G75_V2_|qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_|\.github/workflows/be-hoc-layer-a-no-deploy.yml)$' | grep -vE '^(qa/be-hoc-lop-a/|docs/kiem-dinh/BE_HOC_LAYER_A_)'; then echo UNAUTHORIZED_DIFF; exit 1; fi
-          for f in MayChu.gs 26_ChamCauHoiToan.html ThanhTichMayChu.gs appsscript.json; do
-            test "$(git hash-object "$f")" = "$(git show f51a12cc07b44f0f893c2e0de40e387cc17b5c3b:"$f" | git hash-object --stdin)"
+          base=59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff
+          git merge-base --is-ancestor "$base" HEAD
+          while IFS=$'\t' read -r status filename; do
+            case "$status" in
+              A)
+                case "$filename" in
+                  hinh-anh/nguon-drive/v1/png-master/*|du-lieu/bai-hoc/toan/*|qa/p1-2/*|qa/p1-2-b/*|qa/p1-3/*|qa/p1-4/*|qa/be-hoc-ui/*|.github/workflows/p1-3-*|.github/workflows/be-hoc-p1-4-*|89_Asset_Unified_Resolver_TEST.html|90_C2_Test_Integration_Bridge.html|P13_C2_CauHinhTEST.gs) ;;
+                  *) echo "UNAPPROVED_ADD $filename"; exit 1;;
+                esac;;
+              M)
+                case "$filename" in
+                  19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|GiaoDien.html|qa/be-hoc-tts-v2/tts-v2.test.cjs|qa/be-hoc-visual/visual-contract.test.cjs|.github/workflows/be-hoc-layer-a-no-deploy.yml|.github/workflows/be-hoc-visual-no-deploy.yml|.github/workflows/be-hoc-p1-4-b-p12-structural.yml) ;;
+                  *) echo "UNAPPROVED_MODIFY $filename"; exit 1;;
+                esac;;
+              '') ;;
+              *) echo "UNAPPROVED_STATUS $status $filename"; exit 1;;
+            esac
+          done < <(git diff --name-status "$base" HEAD)
+          for f in MayChu.gs 26_ChamCauHoiToan.html ThanhTichMayChu.gs appsscript.json KhoBaiHoc.gs; do
+            test "$(git hash-object "$f")" = "$(git show "$base:$f" | git hash-object --stdin)"
           done
-          grep -q "data-ml-speak-question" 41_HienThiCauHoiToan.html
-          test "$(git hash-object 43_CSS_ThanhPhanBaiToan.html)" = ce7f279fc9185901d8f638bc87628b9c20bfda65
-      - name: Assert exact imported source blob hashes
-        shell: bash
+          test "$(git hash-object 41_HienThiCauHoiToan.html)" = 25c2f0529c1612a385f8838df4cc6c5de1d08f37
+          test "$(git hash-object 43_CSS_ThanhPhanBaiToan.html)" = 4c8392db8d09d688180b825e61fea5dd5438a2b3
+          if grep -q 'data-ml-speak-question' 41_HienThiCauHoiToan.html; then echo MENTAL_TTS_REGRESSION; exit 1; fi
+          grep -q 'data-ml-speak-theory' 19_KhongGianHocToan.html
+      - name: Pinned Layer A reference module bytes
         run: |
-          set -euo pipefail
           test "$(git hash-object qa/be-hoc-lop-a/refs/column-v12-core.js)" = 16ae440618bcb3cf90706cdad2ccd11cbadc222a
           test "$(git hash-object qa/be-hoc-lop-a/refs/column-v12-view.js)" = 214b615d0c595dfd76695c75e5443cefc36a921d
           test "$(git hash-object qa/be-hoc-lop-a/refs/structured-diagram-core.cjs)" = b6a1712cd2051ba417f011b653ff8184ce9f6f9e
           test "$(git hash-object qa/be-hoc-lop-a/refs/tts-math-normalizer-v2.js)" = 605a8ed9b335526af82c8870dca4753bd511b913
           test "$(git hash-object qa/be-hoc-lop-a/refs/b20-variant-adapter.html)" = e14a0c831837a91125a59dd5ce2d65288d056038
-      - name: Math display, scoped CSS, D2, SVG and TTS QA
+      - name: Accepted math UX and original Layer A contract
         run: |
-          node --check qa/be-hoc-lop-a/layer-a.test.cjs
           node qa/be-hoc-lop-a/layer-a.test.cjs
-      - name: Archive no-deploy evidence
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs
+      - name: Archive no-deploy source evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:

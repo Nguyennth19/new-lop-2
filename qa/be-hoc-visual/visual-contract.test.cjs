@@ -5,7 +5,9 @@ const html=fs.readFileSync('GiaoDien.html','utf8'),math=fs.readFileSync('19_Khon
 for(const name of ['53_Geometry_Core','54_Tangram_V12','55_Pictograph_Core','56_Pictograph_View','57_Visual_Lab_Host','58_CSS_Visual_Lab','59_Visual_Public_Assets','60_Geometry_Fixtures','61_Pictograph_Fixtures','62_CSS_Geometry','63_CSS_Pictograph','64_SVG_Math_Public'])
  eq(html.split("napThanhPhan('"+name+"')").length-1,1,'missing or duplicate '+name);
 ok(math.includes("data-ml-visual-lab=\"D5\""));ok(math.includes("data-ml-visual-lab=\"D9\""));ok(math.includes("data-ml-visual-lab=\"ASSETS\""));
-ok(math.includes("BE_HOC_STRUCTURED_PUBLIC_V2.mountB20(fullData,root,view)"));
+// P1.4 UX: SVG is independently QA-accessible, not auto-appended to learner cards.
+ok(!math.includes("BE_HOC_STRUCTURED_PUBLIC_V2.mountB20(fullData,root,view)"));
+ok(html.includes("napThanhPhan('64_SVG_Math_Public')"));
 const root={};root.window=root;const ctx={window:root,globalThis:root,console,Map,Set};
 for(const p of ['53_Geometry_Core.html','54_Tangram_V12.html','55_Pictograph_Core.html','56_Pictograph_View.html','60_Geometry_Fixtures.html','61_Pictograph_Fixtures.html','59_Visual_Public_Assets.html']){
  vm.runInNewContext(fs.readFileSync(p,'utf8'),ctx);
