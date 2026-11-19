@@ -106,7 +106,7 @@ async function renderAll(page,pack){
      assert.equal(grade.status,'CHECKED');assert.equal(grade.pass,false);
      report.serverGrade.d2IncorrectRejected=true;
      await page.evaluate(()=>window.ULTLAB.openQuestion('LAB_A_D4'));
-     const select=page.locator('#ulStage .g74-choice-options button');
+     const select=page.locator('#ulStage .g74-choice-answer');
      assert(await select.count()>=3,'D4 choices not present');
      await select.nth(1).click();
      grade=await page.evaluate(()=>window.ULTLAB.grade());
