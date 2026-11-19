@@ -25,7 +25,7 @@ assert.match(mental,/28/);assert.match(mental,/45/);
 assert.doesNotMatch(mental,/🔊|data-ml-speak-question/);
 const vertical=render.vertical(q);
 assert.match(vertical,/ml-vertical-matrix/);
-assert.match(vertical,/data-ml-carry/);
+assert.match(vertical,/T20_01:carry/);
 const word=render.word({...q,prompt:'Có 28 con gà và 17 con gà.',summary:'Gà mái: 28 con | Gà trống: 17 con | Tất cả: ... con?',solutionPrompt:'Số con gà là:'});
 assert.equal((word.match(/class="ml-word-summary-line"/g)||[]).length,3);
 assert.match(word,/Gà mái: 28 con/);
