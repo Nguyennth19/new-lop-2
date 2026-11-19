@@ -1,0 +1,69 @@
+{
+  "part": "shared",
+  "offset": 12,
+  "rows": [
+    {
+      "fileId": "1PrhXiKrlg5G3kveVj7MuDdpJ06TqGPzk",
+      "name": "KL-SH02-01.png",
+      "mime": "image/png",
+      "bytes": 201656,
+      "group": "SH02",
+      "blobSha": "f095cc4d48af68e0fc2666c0ffa248487872caa9",
+      "modified": "2026-10-29T04:57:08.584Z"
+    },
+    {
+      "fileId": "133xoLLZXsuKGt5GC9Od0Q8SYY3EZ-Sdh",
+      "name": "KL-SH02-02.png",
+      "mime": "image/png",
+      "bytes": 231889,
+      "group": "SH02",
+      "blobSha": "1d7391568ff2d1c504206afc61e177a532091a47",
+      "modified": "2026-10-29T04:57:17.454Z"
+    },
+    {
+      "fileId": "1TDGNqI-b6WZrwa6F-2S_JVKd4F3dSn4i",
+      "name": "KL-SH02-03.png",
+      "mime": "image/png",
+      "bytes": 262838,
+      "group": "SH02",
+      "blobSha": "f8f5df766b04cb9fbb98df9753446e9609f6e37a",
+      "modified": "2026-10-29T04:57:19.607Z"
+    },
+    {
+      "fileId": "1JLeU51fNEc4LPIY9hCCopDQQcv5m8Etr",
+      "name": "KL-SH02-04.png",
+      "mime": "image/png",
+      "bytes": 349204,
+      "group": "SH02",
+      "blobSha": "2639d664723fdb0597f4b3add0ce0b23cc286e19",
+      "modified": "2026-10-29T04:57:22.005Z"
+    },
+    {
+      "fileId": "1CtdLyu4MlOwENO6NCG9xdwcVy8TElBcU",
+      "name": "KL-SH02-05.png",
+      "mime": "image/png",
+      "bytes": 254781,
+      "group": "SH02",
+      "blobSha": "8747463f96dcf1492779748f7c7e0d9753a6b34d",
+      "modified": "2026-10-29T04:57:24.364Z"
+    },
+    {
+      "fileId": "1j6-MvcmB5shkTI049M6hKnkWXBsGB8oB",
+      "name": "KL-SH02-06.png",
+      "mime": "image/png",
+      "bytes": 313313,
+      "group": "SH02",
+      "blobSha": "b70adf3683cc0cde9228e2b1a829801d76437ee5",
+      "modified": "2026-10-29T04:57:26.636Z"
+    },
+    {
+      "fileId": "1aKfzOuyCtWMSR1ZDwa6HuvuBZXNtVZGh",
+      "name": "KL-SH02-07.png",
+      "mime": "image/png",
+      "bytes": 213722,
+      "group": "SH02",
+      "blobSha": "636840d2ab7607f053cacb68411d9a07d59b0837",
+      "modified": "2026-10-29T04:57:28.821Z"
+    }
+  ]
+}

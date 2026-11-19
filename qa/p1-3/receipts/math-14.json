@@ -1,0 +1,78 @@
+{
+  "part": "math",
+  "batch": 14,
+  "rows": [
+    {
+      "fileId": "1jyxfSSSpCy1ukI8SVELqCnFYJEnZxK4c",
+      "name": "KL-M12-05.png",
+      "mime": "image/png",
+      "bytes": 272597,
+      "group": "M12",
+      "blobSha": "e546ce33ca337e86211b41bbdf2f3cea7dd5d1d7",
+      "modified": "2026-10-29T06:13:56.157Z"
+    },
+    {
+      "fileId": "1dYww_GEW7f4_59HkXLGFFCIVW-SW0sE1",
+      "name": "KL-M12-06.png",
+      "mime": "image/png",
+      "bytes": 195229,
+      "group": "M12",
+      "blobSha": "69c046bbc31d9932fc9c537ecc68bce78b5e0d7c",
+      "modified": "2026-10-29T06:13:58.324Z"
+    },
+    {
+      "fileId": "1ksZGgqD0mbAAx6ylOwBxwVOBM90mhT4D",
+      "name": "KL-M12-07.png",
+      "mime": "image/png",
+      "bytes": 232731,
+      "group": "M12",
+      "blobSha": "aa049f41f19b8c5b30b50add0e811140ff287560",
+      "modified": "2026-10-29T06:14:00.423Z"
+    },
+    {
+      "fileId": "1pG2G5ElNUZqsU4r5Fmv1U8kn2ZBetBSq",
+      "name": "KL-M12-08.png",
+      "mime": "image/png",
+      "bytes": 248282,
+      "group": "M12",
+      "blobSha": "fb0ded08de59a4783143cb1d73c01cc40aebe0df",
+      "modified": "2026-10-29T06:14:02.513Z"
+    },
+    {
+      "fileId": "1t0bP3NbpytpHumMBuRrX4Cg8ZtBg13GE",
+      "name": "KL-M12-09.png",
+      "mime": "image/png",
+      "bytes": 177469,
+      "group": "M12",
+      "blobSha": "36e0f0d6f4ee79b08bc45cebc25343a8bfbdf86b",
+      "modified": "2026-10-29T06:14:04.546Z"
+    },
+    {
+      "fileId": "1-5WrO8CLXpK0v867AQaXvqviVs1xBLPy",
+      "name": "KL-M12-10.png",
+      "mime": "image/png",
+      "bytes": 234428,
+      "group": "M12",
+      "blobSha": "f29ad120d5289f88aa374753a0ef3dd3a3b8bac2",
+      "modified": "2026-10-29T06:13:43.460Z"
+    },
+    {
+      "fileId": "1aS88MQF4vtwDfj_23HeBkzgq661izbLU",
+      "name": "KL-M12-11.png",
+      "mime": "image/png",
+      "bytes": 224165,
+      "group": "M12",
+      "blobSha": "9407b8d25ecb3bcf97c1869e36be0a71cf03ea49",
+      "modified": "2026-10-29T06:13:45.668Z"
+    },
+    {
+      "fileId": "1sMGHPN8B1R8kj8rDC-JE0-t951i6_Skf",
+      "name": "KL-M12-12.png",
+      "mime": "image/png",
+      "bytes": 157220,
+      "group": "M12",
+      "blobSha": "5f30739152d0332e7753898b8d02a3495a040e7c",
+      "modified": "2026-10-29T06:13:47.724Z"
+    }
+  ]
+}

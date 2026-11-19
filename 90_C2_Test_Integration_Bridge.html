@@ -1,0 +1,26 @@
+/* P1.3-C.2 GAS TEST bridge: explicit sidecar, never patches existing orchestrator. */
+(function(root){
+'use strict';
+const unified=root.BE_HOC_ASSET_UNIFIED_TEST;
+const legacy=root.BE_HOC_VISUAL_ORCHESTRATOR;
+if(!unified||!legacy||!root.BE_HOC_VISUAL_SEMANTIC){
+ root.BE_HOC_C2_TEST_BRIDGE=Object.freeze({ready:false,reason:'LOAD_ORDER_OR_MODULE_MISSING',release:'TEST_ONLY'});
+ return;
+}
+function planQuestion(data,question){
+ const p=legacy.planQuestion(data,question);
+ if(!p?.ok)return p||{ok:false,reason:'ORCHESTRATOR_DENIED'};
+ if(!p.intent)return {ok:true,rendererId:p.rendererId,envelope:p.envelope,asset:null};
+ const a=unified.resolve(p.intent);
+ if(!a.ok)return a;
+ return {ok:true,rendererId:p.rendererId,envelope:p.envelope,asset:a};
+}
+function mountDecorative(host,request){
+ if(!request||request.visualIntent!=='DECORATIVE')return {ok:false,reason:'C2_DECORATIVE_ONLY'};
+ return unified.mount(host,request);
+}
+root.BE_HOC_C2_TEST_BRIDGE=Object.freeze({
+ ready:true,release:'GAS_TEST_ONLY',planQuestion,mountDecorative,
+ originalOrchestrator:legacy,studentWrites:false,autoGrade:false
+});
+})(window);

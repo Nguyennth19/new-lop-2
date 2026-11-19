@@ -1,0 +1,47 @@
+name: P1.3-C.2 GAS TEST Controlled Integration and Device QA
+on:
+  push:
+    branches: ['audit/p1-3-c2-gas-test-flag-deviceqa-20261119']
+    paths:
+      - 'GiaoDien.html'
+      - 'P13_C2_CauHinhTEST.gs'
+      - '90_C2_Test_Integration_Bridge.html'
+      - 'qa/p1-3/**'
+      - '.github/workflows/p1-3-c2-gas-test-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c2-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install browser automation client
+        run: npm install --no-save --no-package-lock playwright-core@1.57.0
+      - name: P1.3-A source integrity
+        run: node qa/p1-3/test_png_master_288.cjs
+      - name: P1.3-B character provenance
+        run: node qa/p1-3/test_p1_3_b_characters.cjs
+      - name: P1.3-C unified semantic regression
+        run: node qa/p1-3/test_p1_3_c_unified_resolver.cjs
+      - name: P1.3-C.1 Fluent error regression
+        run: node qa/p1-3/test_p1_3_c1_fluent_hardening.cjs
+      - name: GAS TEST server flag and bridge gate
+        run: node qa/p1-3/test_p1_3_c2_gas_gate.cjs
+      - name: Desktop and mobile Chromium, flag OFF and ON
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: node qa/p1-3/test_p1_3_c2_desktop_mobile.cjs
+      - name: Upload browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p1-3-c2-desktop-mobile-screenshots
+          path: qa/p1-3/output/c2-device/*.png
+          if-no-files-found: warn
