@@ -34,5 +34,25 @@ Version: R02 (2026-11-19) · Status: `REVIEW_CANDIDATE / NOT OWNER SIGNED / NO R
 - Original 10-type demo checksum source: Drive `G7.4_QA-C3_VISUAL_PARITY_ASSET_IDS_D10_VARIANT_BOUNDARY_20261114`, ID `1JHa05h8Fu1hTN4RR04inO6A04Nq5HReH0oHdCxmufoM`. It is **frozen original reference**; not automatically newer/better than a later approved override for a specific type.
 - `test-theo-main` UI CSS `01`/ `02`/`03`/`04` exact Git blob match current be-hoc; `GiaoDien.html` differs (module insertion). Final visual parity to owner's browser/screenshots still requires actual execution and comparison.
 
+
+### Preservation addendum: P1.1 19-domain source-of-truth owner scopes
+
+The original **19-domain** `qa/p1-1/SOURCE_OF_TRUTH_LEDGER_19.review.v1.json` was re-opened verbatim from `audit/p1-1-source-of-truth-ledger-20261118`. Its own `ledgerStatus` is `REVIEW_CANDIDATE_RECONCILED_NOT_OWNER_LOCKED`, and **all 19 entries show `officialLedgerLock=PENDING_OWNER_REVIEW`**. This does NOT revoke separate approvals inside each source.
+
+| Domain | Retained technical/owner decision | Runtime / grant boundary |
+|---|---|---|
+| 75-lesson SOURCE | 1,406 candidate source records; 0/75 independently source-exact in V8 | NOT 75 authorized playable lessons |
+| B061/B062 owner source | Corrected V8 owner metadata; earlier 65 mismatches resolved in applicable version | Do not revive stale legacy issues |
+| C1 JSON | 1,406 envelopes, `OWNER_APPROVED_FOR_C1` and readback | C1 approved within scaffold/readback scope; runtime not granted |
+| C4 DEV | 27 complete DEV items / 121 parts, 132/132 Node and 27×2 browser QA | DEV only; not a blanket student/GAS release |
+| P0.5-H.2 | Owner-approved 30 B20 pedagogical questions in specific 6-run scope | Must not silently replace 51-row legacy B20 Sheet |
+| P0.6 F-C.4 | Isolated technical closeout approved with exclusions | Do not reopen as failure merely because LIVE release is NO-GO |
+| G2-B | 96 candidates across 7 lessons; 0/96 independent source signatures | Never add as 96 new lessons or auto-release |
+| G7.6 C07–C09/E04 | 0/6 actual signed owner decision packets | Technical synthetic signature tests are not approvals |
+| Data Contract V2 | Proposed for freeze only | Not an adopted production manifest |
+| Global 10-rule workflow proposal | 0/10 owner adoption in original ledger | Do not silently promote the review candidate |
+
+**Source selection rule:** Owner-approved status must always remain scoped to exact artifacts/time and is never inferred from branch names. This addendum closes a documentation omission in the initial R02 matrix; it is **not an owner signoff of the new matrix**.
+
 ### No unauthorized changes
 This matrix is a **read-only candidate** created on `audit/global-canonical-reconciliation-20261119`. It does not change app/runtime, policy, GAS, data, student records or existing QA snapshots. Verify actual new source/owner approval and separate rollback before any feature correction. No merge is justified solely by the status in this file.
