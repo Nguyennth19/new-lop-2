@@ -19,6 +19,14 @@
   D9:{family:'Biểu đồ tranh',core:'KLPictographV11',view:'KLPictographViewV11'},
   D10:{family:'Giải toán lời văn',core:'KLWordUnificationV11',view:'KLWordUnificationAdapterV11',kind:'WORD'}
  });
+ const QA_GRANTS=Object.freeze({
+  D1:{type:'bond',skillId:'NUMBER_BOND'},D2:{type:'vertical',skillId:'COLUMN_ADD'},
+  D3:{type:'matching',skillId:'MATCH_PAIRS'},D4:{type:'choice',skillId:'SELECT_CHOICE'},
+  D5:{type:'geometry',skillId:'SHAPE_TANGRAM'},D6:{type:'ordering',skillId:'ORDER_NUMBERS'},
+  D7:{type:'comparison',skillId:'COMPARE_NUMBER'},D8:{type:'measurement',skillId:'MEASURE_RULER'},
+  D8A:{type:'capacity',skillId:'LITER_CAPACITY'},D8B:{type:'mass',skillId:'MASS_BALANCE'},
+  D9:{type:'pictograph',skillId:'PICTOGRAPH'},D10:{type:'word_problem',skillId:'WORD_PROBLEM'}
+ });
  const deniedKeys=new Set([
   '__proto__','prototype','constructor','answer','answers','answerKey','correct','correctAnswer',
   'correctOptionId','correctOptionIds','correctStatementId','isCorrect','expected','expectedResult',
@@ -61,6 +69,10 @@
       !ROUTES[q.rendererId]||!idPattern.test(q.skillId||'')||
       !idPattern.test(q.questionType||'')||!['LV1','LV2','LV3'].includes(q.level)||
       !q.publicVariant||!deepPublic(q.publicVariant))return {ok:false,reason:'BAD_QUESTION_META'};
+   if(q.lessonId!==candidate.lesson.id)return {ok:false,reason:'LESSON_ID_MISMATCH'};
+   const grant=QA_GRANTS[q.rendererId];
+   if(!grant||q.questionType!==grant.type||q.skillId!==grant.skillId)
+     return {ok:false,reason:'SKILL_TYPE_POLICY_MISMATCH'};
    seen.add(q.questionId);
    if(!['DECORATIVE','CHOICE','EXACT_COUNT'].includes(q.visualIntent||'DECORATIVE'))
      return {ok:false,reason:'UNSUPPORTED_VISUAL_INTENT'};
