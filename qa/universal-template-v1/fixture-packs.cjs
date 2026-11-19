@@ -101,7 +101,7 @@ function makePack(tag='A'){
     grade:2,studentRelease:false,sourceStatus:'SYNTHETIC_QA_ONLY'},
   status:'LAB_FIXTURE_ONLY_NO_GAS_RELEASE',
   questions:entries.map(([rendererId,skillId,questionType,publicVariant],i)=>({
-   questionId:prefix+rendererId,rendererId,skillId,questionType,level:levels[i%3],
+   lessonId:'LAB_MATH_'+tag,questionId:prefix+rendererId,rendererId,skillId,questionType,level:levels[i%3],
    visualIntent:rendererId==='D9'?'EXACT_COUNT':'DECORATIVE',
    countUnit:rendererId==='D9'?'quả':null,
    assetId:null,publicVariant
