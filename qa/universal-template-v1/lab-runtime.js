@@ -147,8 +147,10 @@
   ui.list.querySelectorAll('[data-question]').forEach(b=>b.classList.toggle('active',b.dataset.question===id));
   status('LAB / '+pack.packId+' / '+q.level+' · renderer '+q.rendererId+
    ' · KHÔNG phát hành và không chấm phía trình duyệt');
-  ui.grade.disabled=global.location.protocol==='file:'||!global.__ULTLAB_TRUSTED_ENDPOINT__;
-  ui.grade.title=ui.grade.disabled?'Chưa nối máy chủ chấm thử riêng của LAB':'Gửi bản nháp tới trusted LAB server';
+  const hasLabGradeGrant=q.rendererId==='D2'||q.rendererId==='D4';
+  ui.grade.disabled=global.location.protocol==='file:'||!global.__ULTLAB_TRUSTED_ENDPOINT__||!hasLabGradeGrant;
+  ui.grade.title=!hasLabGradeGrant?'Dạng này chưa có hợp đồng chấm LAB qua máy chủ':
+    ui.grade.disabled?'Chưa nối máy chủ chấm thử riêng của LAB':'Gửi bản nháp tới trusted LAB server';
   return {ok:true,rendererId:q.rendererId,questionId:q.questionId};
  }
  function drawList(){
