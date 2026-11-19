@@ -7,7 +7,7 @@
 - **Toán V1:** mười dạng G7.4, mười hai renderer IDs `D1,D2,D3,D4,D5,D6,D7,D8,D8A,D8B,D9,D10`.
 - **Độc lập dữ liệu:** đổi JSON công khai A/B hoặc nạp một JSON thứ ba qua browser; `validate → compile → mount → interact` mà không chỉnh HTML / renderer.
 - **Tái sử dụng nguyên source:** build tự lấy đúng byte 28 module HTML/JS và 8 CSS gốc ở root, so với Git blob tại checkpoint. Không viết lại thuật toán dựng D2, Tangram, dung tích, biểu đồ, lời văn hay TTS.
-- **An toàn:** `publicVariant` phải qua validator chặn trường đáp án và metadata riêng tư ở mọi độ sâu; renderer không lưu điểm/sao; TTS do người dùng bấm, không tự phát. Backend thử nghiệm Node **chỉ chấm D2 và D4**, với logic kiểm tra ở Node không nhúng vào trang HTML. Các dạng khác phải có hợp đồng chấm phía máy chủ trước khi bật.
+- **An toàn:** mỗi câu phải khớp chính xác `lessonId`, `skillId`, `questionType` với quyền route QA của LAB; `publicVariant` phải qua validator chặn trường đáp án và metadata riêng tư ở mọi độ sâu; renderer không lưu điểm/sao; TTS do người dùng bấm, không tự phát. Backend thử nghiệm Node **chỉ chấm D2 và D4**, với logic kiểm tra ở Node không nhúng vào trang HTML. Các dạng khác phải có hợp đồng chấm phía máy chủ trước khi bật.
 - **Bài học thật:** chưa có quyền tự động gán D5/D9 hoặc bất kỳ dữ liệu SGK. Fixture A/B chỉ là synthetic QA, không phải B020 đã duyệt.
 - **Môn khác:** chỉ thiết kế phần vỏ, điều hướng, bộ nhớ tương tác, kết nối, đọc và manifest theo cách dùng lại; **không** tạo renderer Tiếng Việt/Tiếng Anh trong V1.
 
@@ -50,6 +50,7 @@ node qa/universal-template-v1/browser.test.cjs
   },
   "questions": [
     {
+      "lessonId": "LAB_MATH_A",
       "questionId": "LAB_A_D2",
       "rendererId": "D2",
       "skillId": "COLUMN_ADD",
