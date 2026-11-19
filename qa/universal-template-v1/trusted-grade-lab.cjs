@@ -28,7 +28,7 @@ function evaluateSubmission(body){
   if(!Array.isArray(selected)||selected.length!==1||typeof selected[0]!=='string')
    return {status:'REJECTED',reason:'BAD_SELECTION'};
   // Correct label is intentionally a TEST-only server rule, not a client correctness flag.
-  const privateKey=q.questionId.endsWith('_CHOICE')?'opt2':null;
+  const privateKey=q.rendererId==='D4'?'opt2':null;
   if(!privateKey)return {status:'REJECTED',reason:'NO_PRIVATE_POLICY'};
   return {status:'CHECKED',pass:selected[0]===privateKey,scope:'SYNTHETIC_LAB_SERVER_ONLY'};
  }
