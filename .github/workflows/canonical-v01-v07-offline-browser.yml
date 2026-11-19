@@ -53,6 +53,8 @@ jobs:
           npx playwright install --with-deps chromium
       - name: A/B compiled actual current vs owner-reference B20 with SYNTHETIC 51-row public-shape fixture (V01/V02/V07)
         run: node qa/canonical-reconciliation/v01_v07_browser_integration_probe.cjs
+      - name: Original frozen G7.4 demo all 10 forms rendered on desktop/mobile Chromium (V03 reference scope only)
+        run: node qa/canonical-reconciliation/v03_frozen10_demo_browser.cjs
       - name: Independent browser behavior across existing D2, D5/D9, assets, TTS and orchestrator (V03–V07)
         run: |
           set -euo pipefail
