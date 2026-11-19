@@ -1,0 +1,38 @@
+name: P1.4-B Final Be-Hoc Canonical Source Lock (no deploy)
+on:
+  push:
+    branches:
+      - integration/p1-4-b-legacy-ci-rebaseline-20261119
+      - be-hoc
+  pull_request:
+    branches: [be-hoc]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  final-lock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Full current source tree invariant, 332 WebP and 288 PNG
+        run: node qa/p1-4/test_p1_4_b_final_source_lock.cjs
+      - name: Previously accepted B20 UX and Layer A source
+        run: |
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/be-hoc-lop-a/layer-a.test.cjs
+          node qa/be-hoc-tts-v2/tts-v2.test.cjs
+      - name: P1.3 opt-in only and rollback dry-run
+        run: |
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs
+          node qa/p1-3/test_p1_3_c3_rollback_drill.cjs
+      - name: P1.2 data nonplayable guard, source references
+        run: |
+          node qa/p1-2/test_layered_packages.cjs
+          node qa/p1-2-b/test_checkpoint.cjs
