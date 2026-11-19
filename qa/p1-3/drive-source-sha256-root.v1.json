@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "P1_3_DRIVE_SOURCE_SHA256_ROOT_V1",
+  "method": "SHA-256 of UTF-8 concatenation sorted by filename: `${name}\\t${sha256}\\n` for all 288 PNG files",
+  "source": "Raw Google Drive PNG bytes fetched independently on 2026-11-19",
+  "sourceFiles": 288,
+  "sourceTotalBytes": 75711089,
+  "sourceRootSha256": "cf52b405f88fdc7832842ce3df5a1498d625608b9f79b75b81d1c8e29970d8a6",
+  "comparison": {
+    "githubRunId": 44449254205,
+    "matchedSha256": 288,
+    "matchedGitBlobSha1": 288,
+    "mismatches": 0
+  },
+  "notes": "Aggregate digest is a cryptographic commitment to 288 individual SHA-256 values in filename order. Full row-level reconciliation manifest retained separately as P1_3_PNG_MASTER_288_SHA256_RECON.csv/json."
+}

@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "LOP2_P1_3_CHARACTER_30_SOURCE_MANIFEST_V1",
+  "sourceCommit": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+  "scope": "REFERENCE_CHARACTER_WEBP_ONLY",
+  "qaStatus": "BINARY_QA_PENDING_RUN",
+  "counts": {
+    "robot": 6,
+    "boyHome": 6,
+    "boySchool": 6,
+    "girlHome": 6,
+    "girlSchool": 6
+  },
+  "totalPoseWebp": 30,
+  "sourceSheetPng": 5,
+  "poses": [
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/home/KL2_BOY_HOME_01_STAND_v1.webp",
+      "blob": "13603e8c2bb7c21c6464723317d0cc26531a0fa3",
+      "bytes": 49954
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/home/KL2_BOY_HOME_02_WAVE_v1.webp",
+      "blob": "ea77fad8d2e063cab9f7ff6e37a484644425ca64",
+      "bytes": 57782
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/home/KL2_BOY_HOME_03_WRITE_v1.webp",
+      "blob": "7aa41de40f9126095a6e923daec08a6a2ffd3acc",
+      "bytes": 61008
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/home/KL2_BOY_HOME_04_READ_v1.webp",
+      "blob": "7f88148e65a66b82f5fa846744287dbe1c6baebd",
+      "bytes": 44916
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/home/KL2_BOY_HOME_05_POINT_v1.webp",
+      "blob": "115fd99615e77a09bd84f8632c01e0095f0bc815",
+      "bytes": 53284
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/home/KL2_BOY_HOME_06_CELEBRATE_v1.webp",
+      "blob": "39a7a1c61c131e58baf5de193ee31007a4ac0e19",
+      "bytes": 55848
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/school/KL2_BOY_SCHOOL_01_BACKPACK_v1.webp",
+      "blob": "d06219bd798ef47a74614552a575a4c6c92a570e",
+      "bytes": 57760
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/school/KL2_BOY_SCHOOL_02_RAISE_HAND_v1.webp",
+      "blob": "623bd3f812f5eb6deb83c44dbea5a10a32dc0c53",
+      "bytes": 55002
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/school/KL2_BOY_SCHOOL_03_BOOKS_v1.webp",
+      "blob": "11c9b436d78ee59a3e19aa96acddc74daffdc9c7",
+      "bytes": 52646
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/school/KL2_BOY_SCHOOL_04_WRITE_v1.webp",
+      "blob": "e0033cbb8ed10cbc745e806fc7e410361662ed24",
+      "bytes": 75838
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/school/KL2_BOY_SCHOOL_05_TEACH_v1.webp",
+      "blob": "7536e420c3c5ba66038d97d24283bb42efeea5f7",
+      "bytes": 57584
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/boy/school/KL2_BOY_SCHOOL_06_WALK_v1.webp",
+      "blob": "6f4f6945b6b8c621645b30757fafcd206cc1a27c",
+      "bytes": 56786
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/home/KL2_GIRL_HOME_01_STAND_v1.webp",
+      "blob": "379dc186b8bd9b2b6dda45dee733fc0408edf711",
+      "bytes": 51862
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/home/KL2_GIRL_HOME_02_WAVE_v1.webp",
+      "blob": "b2d2273f394a086da9485e91fb48d1718f04c3a5",
+      "bytes": 56032
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/home/KL2_GIRL_HOME_03_WRITE_v1.webp",
+      "blob": "84152eeb3988dc4f4b818e0b796d5b847f8f728c",
+      "bytes": 57388
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/home/KL2_GIRL_HOME_04_READ_v1.webp",
+      "blob": "0863251b39de1b5c2e95e55f858801d2f8777d0a",
+      "bytes": 44236
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/home/KL2_GIRL_HOME_05_POINT_v1.webp",
+      "blob": "ce06568f23470f58db141cf655af49e1c72b8bb4",
+      "bytes": 56776
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/home/KL2_GIRL_HOME_06_CELEBRATE_v1.webp",
+      "blob": "6b095f71e744530c2e9a81190342da4b34075503",
+      "bytes": 54932
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/school/KL2_GIRL_SCHOOL_01_BACKPACK_v1.webp",
+      "blob": "6777a8d75ab9d5df1ba2f7cbd330f8edff0f50f6",
+      "bytes": 57974
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/school/KL2_GIRL_SCHOOL_02_RAISE_HAND_v1.webp",
+      "blob": "9e775b26807fd8aa5be616b4e7fee8cf31125a74",
+      "bytes": 58676
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/school/KL2_GIRL_SCHOOL_03_BOOKS_v1.webp",
+      "blob": "517c4b614d75ab8e8127df13f48901a643a064ba",
+      "bytes": 55830
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/school/KL2_GIRL_SCHOOL_04_WRITE_v1.webp",
+      "blob": "9a76cc9967ebee200bce866d87361ef323ff26f8",
+      "bytes": 68114
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/school/KL2_GIRL_SCHOOL_05_TEACH_v1.webp",
+      "blob": "61695819e2be40140bb6ac1ee415f1e27a6339d9",
+      "bytes": 60656
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/girl/school/KL2_GIRL_SCHOOL_06_WALK_v1.webp",
+      "blob": "a7f6ec391c6b8a968870387401f991d8370b1ab9",
+      "bytes": 57462
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/robot/KL2_ROBOT_01_STAND_v1.webp",
+      "blob": "8df0ef7acc25ee6a4221bb40e0c4f735f81e3e13",
+      "bytes": 73202
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/robot/KL2_ROBOT_02_WAVE_v1.webp",
+      "blob": "8a46f69ffa946b6c8eb0b79b99ff8d45267298f1",
+      "bytes": 72460
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/robot/KL2_ROBOT_03_POINT_v1.webp",
+      "blob": "8456d522f8cfd690d3f5cd3d908da1f9c1d7ea26",
+      "bytes": 73196
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/robot/KL2_ROBOT_04_READ_v1.webp",
+      "blob": "a20aa5316f7f0d8a3be9769cb54ab42743d31333",
+      "bytes": 68462
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/robot/KL2_ROBOT_05_TEACH_v1.webp",
+      "blob": "fb3c8b3cabf8705c13fa1c666fc57bc14b3fb84c",
+      "bytes": 71142
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/robot/KL2_ROBOT_06_CELEBRATE_v1.webp",
+      "blob": "8cd878a17143dd6546d82230a1b1b2ad2e295583",
+      "bytes": 60458
+    }
+  ],
+  "sourceSheets": [
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/source-sheets/KL2_BOY_HOME_SOURCE_SHEET_v1.png",
+      "blob": "3290fc34c273f77f8284a2f30b53f5f4e32df192",
+      "bytes": 1510751
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/source-sheets/KL2_BOY_SCHOOL_SOURCE_SHEET_v1.png",
+      "blob": "b8a323e11f72b2292f705bf2f45498f1620e5d12",
+      "bytes": 1648419
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/source-sheets/KL2_GIRL_HOME_SOURCE_SHEET_v1.png",
+      "blob": "e2dfeb8f725a47fc0082c31f1f9f8d88211e68ec",
+      "bytes": 1611816
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/source-sheets/KL2_GIRL_SCHOOL_SOURCE_SHEET_v1.png",
+      "blob": "538933652799c4ae6786d9476205c5e855eca45d",
+      "bytes": 1694659
+    },
+    {
+      "path": "hinh-anh/nhan-vat-drive/v1/source-sheets/KL2_ROBOT_SOURCE_SHEET_v1.png",
+      "blob": "d565e2b09c4c2e7e31dc3a2e743fd1ef08d544e9",
+      "bytes": 1833808
+    }
+  ],
+  "routing": {
+    "registry": "87_Characters_Drive_30.html",
+    "semanticRouter": "88_Visual_Semantic_Router.html",
+    "role": "DECORATIVE",
+    "countSafe": false,
+    "assetPurpose": "STUDENT_MOTIVATION_NOT_EXACT_COUNT"
+  },
+  "provenance": {
+    "driveCharacterFolder": "1FZtiDtMTalwfbTAkzBM6lPUpg4YA8V73",
+    "driveFolderCurrentListingCount": 0,
+    "githubByteSourcesExist": true,
+    "perImageDriveSourceIdDirectRead": "NOT_VERIFIED_THIS_RUN",
+    "olderCharacterInventoryV1_0": "REVIEW_REQUIRED_NOT_REPLACEMENT"
+  },
+  "gates": {
+    "doNotReapproveExistingVisualOwnerLabels": true,
+    "productionAssetRouting": "PRESERVE_EXISTING_REFERENCE",
+    "studentRelease": "NO_GO"
+  }
+}

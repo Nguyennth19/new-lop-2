@@ -1,0 +1,78 @@
+{
+  "batch": 2,
+  "part": "math",
+  "rows": [
+    {
+      "fileId": "1shNln2o41dMwO5FFuYGdgPdGM9mScJ2T",
+      "name": "KL-M04-05.png",
+      "mime": "image/png",
+      "bytes": 225566,
+      "group": "M04",
+      "blobSha": "6e628a60575f1f9ba97f10506090d93ec24b8a4d",
+      "sourceModifiedUtc": "2026-10-29T05:14:58.156Z"
+    },
+    {
+      "fileId": "1HRZMGxcSUTE7Pr4lAtmxkrdPC7o9128g",
+      "name": "KL-M04-06.png",
+      "mime": "image/png",
+      "bytes": 374581,
+      "group": "M04",
+      "blobSha": "1477f0b393fa6e3c1685aeb8704fc2f36df6e821",
+      "sourceModifiedUtc": "2026-10-29T05:15:00.187Z"
+    },
+    {
+      "fileId": "1jrDAaA3aW5HqDu3dkuQPjt5V49t3oWOA",
+      "name": "KL-M04-07.png",
+      "mime": "image/png",
+      "bytes": 294550,
+      "group": "M04",
+      "blobSha": "db83a3a33a50c166d4ed7ba8e6a4d81472aef132",
+      "sourceModifiedUtc": "2026-10-29T05:15:02.217Z"
+    },
+    {
+      "fileId": "1TlH3pjmTNGMWE-Esmr2406IRzpt0iYgI",
+      "name": "KL-M04-08.png",
+      "mime": "image/png",
+      "bytes": 247615,
+      "group": "M04",
+      "blobSha": "7a065833c73220f02ae3d9b06ad1e5a02e922456",
+      "sourceModifiedUtc": "2026-10-29T05:15:04.233Z"
+    },
+    {
+      "fileId": "1pEM_FdhXOjAbsDBTKNXHCUi4tQipnAAQ",
+      "name": "KL-M04-09.png",
+      "mime": "image/png",
+      "bytes": 371411,
+      "group": "M04",
+      "blobSha": "52e06de4edbe00e25c41b3a0ce35722f7098f740",
+      "sourceModifiedUtc": "2026-10-29T05:15:06.273Z"
+    },
+    {
+      "fileId": "1fY-b64xbflI7HPSz0RBsKEjabDBcsaHY",
+      "name": "KL-M04-10.png",
+      "mime": "image/png",
+      "bytes": 428416,
+      "group": "M04",
+      "blobSha": "4cfcaf68e8aa9d7174a6d9372a66fdfdfd3542a3",
+      "sourceModifiedUtc": "2026-10-29T05:14:45.966Z"
+    },
+    {
+      "fileId": "1xwf1oAjsGDiGrj7nHIbx5qjzwpP98Dy5",
+      "name": "KL-M04-11.png",
+      "mime": "image/png",
+      "bytes": 225320,
+      "group": "M04",
+      "blobSha": "d18135dea3d7f22b8c6001a28c1c7af8a4ccf3ff",
+      "sourceModifiedUtc": "2026-10-29T05:14:48.052Z"
+    },
+    {
+      "fileId": "19WNK78yipzht02_HFtb5oHS6lCdSJy5H",
+      "name": "KL-M04-12.png",
+      "mime": "image/png",
+      "bytes": 248602,
+      "group": "M04",
+      "blobSha": "61b67f7443dcad817ec2ee8bca85424dc6e4a67f",
+      "sourceModifiedUtc": "2026-10-29T05:14:50.083Z"
+    }
+  ]
+}

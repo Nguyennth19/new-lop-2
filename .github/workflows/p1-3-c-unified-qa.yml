@@ -1,0 +1,56 @@
+name: P1.3-C Unified Resolver QA (TEST only)
+on:
+  push:
+    branches:
+      - 'audit/p1-3-c-unified-resolver-20261119'
+      - 'audit/p1-3-c1-fallback-hardening-20261119'
+    paths:
+      - '89_Asset_Unified_Resolver_TEST.html'
+      - 'qa/p1-3/p1-3-c1-browser-smoke.html'
+      - 'qa/p1-3/**'
+      - '.github/workflows/p1-3-c-unified-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unified-resolver-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: P1.3-A 288 PNG provenance regression
+        run: node qa/p1-3/test_png_master_288.cjs
+      - name: P1.3-B 35 character source SHA256 regression
+        run: node qa/p1-3/test_p1_3_b_characters.cjs
+      - name: P1.3-B.2 manifest and semantic governance
+        run: node qa/p1-3/test_p1_3_b2_governance.cjs
+      - name: P1.3-B.3 runtime compatibility
+        run: node qa/p1-3/test_p1_3_b3_runtime_fallback.cjs
+      - name: Unified resolver, renderer boundary and fallback matrix
+        run: node qa/p1-3/test_p1_3_c_unified_resolver.cjs
+      - name: Fluent error guard regression (DOM unit tests)
+        run: node qa/p1-3/test_p1_3_c1_fluent_hardening.cjs
+      - name: Headless Chrome browser — real IMG load/error and integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          browser=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          test -n "$browser"
+          "$browser" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=3500 --dump-dom "file://$PWD/qa/p1-3/p1-3-c1-browser-smoke.html" > /tmp/p13-c1-browser-result.html 2>/tmp/p13-c1-browser-stderr.log
+          grep -q 'P13_C1_BROWSER_RESULT' /tmp/p13-c1-browser-result.html
+          grep -q 'data-p13-c1="PASS"' /tmp/p13-c1-browser-result.html
+          grep 'P13_C1_BROWSER_RESULT' /tmp/p13-c1-browser-result.html | tail -1
+      - name: Archive headless browser result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p1-3-c1-headless-chrome-evidence
+          path: |
+            /tmp/p13-c1-browser-result.html
+            /tmp/p13-c1-browser-stderr.log
+          if-no-files-found: warn

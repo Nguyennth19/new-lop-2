@@ -1,0 +1,945 @@
+{
+  "schemaVersion": "P1_3_DRIVE_PNG_SOURCE_DIRECTORY_V1",
+  "scope": "SH01_SH12",
+  "source": "LIVE_DRIVE_LIST_FOLDER_2026_11_18",
+  "records": [
+    {
+      "group": "SH01",
+      "folderId": "1a1dyZxKxluPXv2fixcjwxQHemZ3OhGcB",
+      "files": [
+        {
+          "fileId": "1x-If-Nv0tu8jRbWNyCIP4j5ukgtA9wlc",
+          "name": "KL-SH01-01.png",
+          "mime": "image/png",
+          "bytes": 233029
+        },
+        {
+          "fileId": "1x--W6asdDvHhD32k8-EQcW2xpcvwpUsW",
+          "name": "KL-SH01-02.png",
+          "mime": "image/png",
+          "bytes": 262517
+        },
+        {
+          "fileId": "19yhBDcarjZSljleLYiy0bWJ933EX3b_3",
+          "name": "KL-SH01-03.png",
+          "mime": "image/png",
+          "bytes": 221754
+        },
+        {
+          "fileId": "1LY_eT3dLvfCoNP7wRLTJEfCPM7xORS4w",
+          "name": "KL-SH01-04.png",
+          "mime": "image/png",
+          "bytes": 241305
+        },
+        {
+          "fileId": "1ElgqlJgEcwkSxfM-lOCDk11vFYTeW4po",
+          "name": "KL-SH01-05.png",
+          "mime": "image/png",
+          "bytes": 342659
+        },
+        {
+          "fileId": "11cS7xZhgSF5rQjRLR9c2rT7aCuadVs9W",
+          "name": "KL-SH01-06.png",
+          "mime": "image/png",
+          "bytes": 305486
+        },
+        {
+          "fileId": "1aDyPk0TwCqg-aYZ9qrHchJMbOEVDICm9",
+          "name": "KL-SH01-07.png",
+          "mime": "image/png",
+          "bytes": 265489
+        },
+        {
+          "fileId": "1a6-qSGB-p-3nnLnOzYMHI6RkCRCE1UQS",
+          "name": "KL-SH01-08.png",
+          "mime": "image/png",
+          "bytes": 241314
+        },
+        {
+          "fileId": "1FOnl1moK0HluFCdK710g5_Ze-QuLSdBf",
+          "name": "KL-SH01-09.png",
+          "mime": "image/png",
+          "bytes": 313972
+        },
+        {
+          "fileId": "1_XQDfKakKRBOsncGNIf1odKiG0A3nVF_",
+          "name": "KL-SH01-10.png",
+          "mime": "image/png",
+          "bytes": 300414
+        },
+        {
+          "fileId": "1WWXpF-lFk3vhnMCLkVQrIJ2o3kxz8pyK",
+          "name": "KL-SH01-11.png",
+          "mime": "image/png",
+          "bytes": 300535
+        },
+        {
+          "fileId": "1ZBi8muX5AyZCNkfMEVOqRnLvA34kagpf",
+          "name": "KL-SH01-12.png",
+          "mime": "image/png",
+          "bytes": 289199
+        }
+      ]
+    },
+    {
+      "group": "SH02",
+      "folderId": "16D9e0kWrgqhCBIm0UGtSs2Q4pwPph4_U",
+      "files": [
+        {
+          "fileId": "1PrhXiKrlg5G3kveVj7MuDdpJ06TqGPzk",
+          "name": "KL-SH02-01.png",
+          "mime": "image/png",
+          "bytes": 201656
+        },
+        {
+          "fileId": "133xoLLZXsuKGt5GC9Od0Q8SYY3EZ-Sdh",
+          "name": "KL-SH02-02.png",
+          "mime": "image/png",
+          "bytes": 231889
+        },
+        {
+          "fileId": "1TDGNqI-b6WZrwa6F-2S_JVKd4F3dSn4i",
+          "name": "KL-SH02-03.png",
+          "mime": "image/png",
+          "bytes": 262838
+        },
+        {
+          "fileId": "1JLeU51fNEc4LPIY9hCCopDQQcv5m8Etr",
+          "name": "KL-SH02-04.png",
+          "mime": "image/png",
+          "bytes": 349204
+        },
+        {
+          "fileId": "1CtdLyu4MlOwENO6NCG9xdwcVy8TElBcU",
+          "name": "KL-SH02-05.png",
+          "mime": "image/png",
+          "bytes": 254781
+        },
+        {
+          "fileId": "1j6-MvcmB5shkTI049M6hKnkWXBsGB8oB",
+          "name": "KL-SH02-06.png",
+          "mime": "image/png",
+          "bytes": 313313
+        },
+        {
+          "fileId": "1aKfzOuyCtWMSR1ZDwa6HuvuBZXNtVZGh",
+          "name": "KL-SH02-07.png",
+          "mime": "image/png",
+          "bytes": 213722
+        },
+        {
+          "fileId": "1t_IcPf2a6sm7Yt2-Bx-IxEPBMqxadhoi",
+          "name": "KL-SH02-08.png",
+          "mime": "image/png",
+          "bytes": 225953
+        },
+        {
+          "fileId": "1ZES6WwLn6LoAhBD5O8OqKRJm_tByWy3X",
+          "name": "KL-SH02-09.png",
+          "mime": "image/png",
+          "bytes": 331243
+        },
+        {
+          "fileId": "1ymsXl6jC9fKmGhcwWUdZlkbMD8LQ29Uk",
+          "name": "KL-SH02-10.png",
+          "mime": "image/png",
+          "bytes": 200330
+        },
+        {
+          "fileId": "1TCisbvSZfAxJ1MQVv-CCy36Fyagp-35G",
+          "name": "KL-SH02-11.png",
+          "mime": "image/png",
+          "bytes": 288743
+        },
+        {
+          "fileId": "1JZV7eGeDdh-WqS0JJCzOrzMBdwgHGPrs",
+          "name": "KL-SH02-12.png",
+          "mime": "image/png",
+          "bytes": 243877
+        }
+      ]
+    },
+    {
+      "group": "SH03",
+      "folderId": "1pk8Wk6nLRFZMcxKPSfWgMtZa9hh7uLO-",
+      "files": [
+        {
+          "fileId": "1k1vEDhQ39AcoJibz36va1aMZqZlOTPbw",
+          "name": "KL-SH03-01.png",
+          "mime": "image/png",
+          "bytes": 221782
+        },
+        {
+          "fileId": "1i3goc2fKZe71-I7tnT_57hm3BiYF_LzI",
+          "name": "KL-SH03-02.png",
+          "mime": "image/png",
+          "bytes": 201456
+        },
+        {
+          "fileId": "1snK8C0JnU9t2W-9QLlLIMXQJVquGBoZ8",
+          "name": "KL-SH03-03.png",
+          "mime": "image/png",
+          "bytes": 200528
+        },
+        {
+          "fileId": "1KVusqJAY6L9_hA6tDV1tLpSwHJOIfQq4",
+          "name": "KL-SH03-04.png",
+          "mime": "image/png",
+          "bytes": 232915
+        },
+        {
+          "fileId": "1euCJqhLyC7hvd6opZ8VnIu5DVCKX-BJN",
+          "name": "KL-SH03-05.png",
+          "mime": "image/png",
+          "bytes": 351264
+        },
+        {
+          "fileId": "1x6zrt53ZjfS9BB60vsuVRhVDlMFlx2Fy",
+          "name": "KL-SH03-06.png",
+          "mime": "image/png",
+          "bytes": 328808
+        },
+        {
+          "fileId": "1UnKp59D8YWk8wTiLZNZhJF8b_xh2nUWS",
+          "name": "KL-SH03-07.png",
+          "mime": "image/png",
+          "bytes": 343739
+        },
+        {
+          "fileId": "1D9bWMM2_wEGCk1SMBpHyrgZCuWVFSsD-",
+          "name": "KL-SH03-08.png",
+          "mime": "image/png",
+          "bytes": 241709
+        },
+        {
+          "fileId": "17mEvVfcml_OJnNwNffeDP4ej6CRv0-ka",
+          "name": "KL-SH03-09.png",
+          "mime": "image/png",
+          "bytes": 210032
+        },
+        {
+          "fileId": "10VpAdx8ek9uH1S9sLHjHhBxGpwrs4maj",
+          "name": "KL-SH03-10.png",
+          "mime": "image/png",
+          "bytes": 167324
+        },
+        {
+          "fileId": "1hgd7Dyr9P2rsQvLGAn2WmSc2eLdBBEXr",
+          "name": "KL-SH03-11.png",
+          "mime": "image/png",
+          "bytes": 195101
+        },
+        {
+          "fileId": "10zMx3Am-1nxsW6Ec9XofkB0Z9xjSDgmi",
+          "name": "KL-SH03-12.png",
+          "mime": "image/png",
+          "bytes": 175178
+        }
+      ]
+    },
+    {
+      "group": "SH04",
+      "folderId": "117XGQx3DmVcuKFxmgvxQKKoEWQ-zytj1",
+      "files": [
+        {
+          "fileId": "1_CP0Dnkb6ZJhR0rz1_1auWnGEheL8ArV",
+          "name": "KL-SH04-01.png",
+          "mime": "image/png",
+          "bytes": 303372
+        },
+        {
+          "fileId": "1WIPCwj0xsU_iQKnE-qkXZNk6sbR0xgio",
+          "name": "KL-SH04-02.png",
+          "mime": "image/png",
+          "bytes": 335399
+        },
+        {
+          "fileId": "1wr6ng27XlgXHMvNHiqGrJLO0djqgvg6A",
+          "name": "KL-SH04-03.png",
+          "mime": "image/png",
+          "bytes": 376138
+        },
+        {
+          "fileId": "1KqQ9VQ0V8RrpidlfRuwMF0BqoOMQF7a_",
+          "name": "KL-SH04-04.png",
+          "mime": "image/png",
+          "bytes": 273257
+        },
+        {
+          "fileId": "1iMJm3t_tyGq7rjxcED0uCvtM9HKE30xh",
+          "name": "KL-SH04-05.png",
+          "mime": "image/png",
+          "bytes": 310305
+        },
+        {
+          "fileId": "1vL7UA_XW673wIr8l9jRQr4c-EtUcg1Il",
+          "name": "KL-SH04-06.png",
+          "mime": "image/png",
+          "bytes": 263931
+        },
+        {
+          "fileId": "140Gd6yqL4b9M8BlGiv3TKfLVi5bloCxt",
+          "name": "KL-SH04-07.png",
+          "mime": "image/png",
+          "bytes": 293518
+        },
+        {
+          "fileId": "1VW-i1tNymZU-VzxXCAk9ZrbbFGFxVLwV",
+          "name": "KL-SH04-08.png",
+          "mime": "image/png",
+          "bytes": 128814
+        },
+        {
+          "fileId": "1iEqcqnkw3PZRWUHqDZMYedG-AgFoNd9b",
+          "name": "KL-SH04-09.png",
+          "mime": "image/png",
+          "bytes": 288416
+        },
+        {
+          "fileId": "1nrRkQXwxrgc0B4vwgsKzrpJmwJnfTzlY",
+          "name": "KL-SH04-10.png",
+          "mime": "image/png",
+          "bytes": 211323
+        },
+        {
+          "fileId": "1vErMvbeQD87PyuEjtPb6gnJoORKCcZgM",
+          "name": "KL-SH04-11.png",
+          "mime": "image/png",
+          "bytes": 176251
+        },
+        {
+          "fileId": "1Mt6wo4J5qc5MIOYvlFm9J3JDJeaZzYIf",
+          "name": "KL-SH04-12.png",
+          "mime": "image/png",
+          "bytes": 242065
+        }
+      ]
+    },
+    {
+      "group": "SH05",
+      "folderId": "1e-dJzjof1w4xzaOzRcJZjxexMpRLxPA0",
+      "files": [
+        {
+          "fileId": "1cM3OIN2IH0PVw0JD7xpZHCqPA1bV08is",
+          "name": "KL-SH05-01.png",
+          "mime": "image/png",
+          "bytes": 320769
+        },
+        {
+          "fileId": "1Rb_PMmvSp5w43Ut62n9--0Crk894ZKyG",
+          "name": "KL-SH05-02.png",
+          "mime": "image/png",
+          "bytes": 363352
+        },
+        {
+          "fileId": "1E98NJ8CW4lZomrxOp-0ZrMOHacSXK4A3",
+          "name": "KL-SH05-03.png",
+          "mime": "image/png",
+          "bytes": 271923
+        },
+        {
+          "fileId": "1l7kXSgRF1aziLzqPDlcgC9Dg5mcqg7l3",
+          "name": "KL-SH05-04.png",
+          "mime": "image/png",
+          "bytes": 272602
+        },
+        {
+          "fileId": "1wdg0zns5KabfXq1U-GoxCD2C8m9Im6tj",
+          "name": "KL-SH05-05.png",
+          "mime": "image/png",
+          "bytes": 235025
+        },
+        {
+          "fileId": "1Re6hoaqqM1mFyOuY3qh-GWVzc0unjaE3",
+          "name": "KL-SH05-06.png",
+          "mime": "image/png",
+          "bytes": 264319
+        },
+        {
+          "fileId": "13sSaHBXkGR5ludf0JD2iI5XpPMmzAJbX",
+          "name": "KL-SH05-07.png",
+          "mime": "image/png",
+          "bytes": 261364
+        },
+        {
+          "fileId": "1NkJgyyIM-uaIwOsYAvq28cYO8aVscOuY",
+          "name": "KL-SH05-08.png",
+          "mime": "image/png",
+          "bytes": 326182
+        },
+        {
+          "fileId": "1wQnDlyhJIXkgWi6GFw5I0SXxg7ePrbdn",
+          "name": "KL-SH05-09.png",
+          "mime": "image/png",
+          "bytes": 286520
+        },
+        {
+          "fileId": "1UXRxulTyNr31LBPM3XXTj8AUsiC7fUiI",
+          "name": "KL-SH05-10.png",
+          "mime": "image/png",
+          "bytes": 352323
+        },
+        {
+          "fileId": "1lAcNLsothkYEDSG7JIRWhNBTSEwa8U_6",
+          "name": "KL-SH05-11.png",
+          "mime": "image/png",
+          "bytes": 309781
+        },
+        {
+          "fileId": "15AUVxtD_Tmu7Igrnx1OqAGrVyfDRY_Q8",
+          "name": "KL-SH05-12.png",
+          "mime": "image/png",
+          "bytes": 364106
+        }
+      ]
+    },
+    {
+      "group": "SH06",
+      "folderId": "1CLdKt50T7GK6GGz3qTlbANDw7PlrVT5n",
+      "files": [
+        {
+          "fileId": "1nXDc3k1IhIZBUffWn4KdZxhD_NVm7gH2",
+          "name": "KL-SH06-01.png",
+          "mime": "image/png",
+          "bytes": 176880
+        },
+        {
+          "fileId": "1tpeAz2zkxHqWfTLo1zeGHV9PUUBp9Mii",
+          "name": "KL-SH06-02.png",
+          "mime": "image/png",
+          "bytes": 219703
+        },
+        {
+          "fileId": "1MXoyu9LaCMgIJgqpKPXFJarn6t9OUQSo",
+          "name": "KL-SH06-03.png",
+          "mime": "image/png",
+          "bytes": 258338
+        },
+        {
+          "fileId": "1YyHKKdmxbEoxBFw7uHBWhIs_vX-A5S8Q",
+          "name": "KL-SH06-04.png",
+          "mime": "image/png",
+          "bytes": 237441
+        },
+        {
+          "fileId": "1BNnwu2cvkzytRt4KjWumEQ1MP6UvjCs_",
+          "name": "KL-SH06-05.png",
+          "mime": "image/png",
+          "bytes": 242532
+        },
+        {
+          "fileId": "1Mq5ERAb1q8PVg7ltNnLZfwehP2oRga-I",
+          "name": "KL-SH06-06.png",
+          "mime": "image/png",
+          "bytes": 368370
+        },
+        {
+          "fileId": "1SSuI5wMF00QRWYlv0CiRP2upVGdLS0Es",
+          "name": "KL-SH06-07.png",
+          "mime": "image/png",
+          "bytes": 287151
+        },
+        {
+          "fileId": "1TKhzbR6iivOTsaC-dEnhFGD5rRP50uDt",
+          "name": "KL-SH06-08.png",
+          "mime": "image/png",
+          "bytes": 268918
+        },
+        {
+          "fileId": "1gH52adiRH6ImZFvnAOT1tDV71Dic6E35",
+          "name": "KL-SH06-09.png",
+          "mime": "image/png",
+          "bytes": 239085
+        },
+        {
+          "fileId": "1VuNa_2REfT3dPIpEKNKVRLB4bMASMOEE",
+          "name": "KL-SH06-10.png",
+          "mime": "image/png",
+          "bytes": 188239
+        },
+        {
+          "fileId": "1WcnH1weTU4SSmclYkQP1LOnNL_I7gQpZ",
+          "name": "KL-SH06-11.png",
+          "mime": "image/png",
+          "bytes": 213713
+        },
+        {
+          "fileId": "1OTuHfyskFHtESWU45wy-2ibnkmid6vaM",
+          "name": "KL-SH06-12.png",
+          "mime": "image/png",
+          "bytes": 398842
+        }
+      ]
+    },
+    {
+      "group": "SH07",
+      "folderId": "1aBDHrA6-AzUt6SXM7RyIKNxDRwtzlRH7",
+      "files": [
+        {
+          "fileId": "1ejivpXdhQE__H8oq0i-p7Qr62chPc4_9",
+          "name": "KL-SH07-01.png",
+          "mime": "image/png",
+          "bytes": 331557
+        },
+        {
+          "fileId": "18oFObI3mHyHtTakW6OL5isVcH7YAhhj4",
+          "name": "KL-SH07-02.png",
+          "mime": "image/png",
+          "bytes": 338148
+        },
+        {
+          "fileId": "1QmLg544mioah5H8eRoSr_BiIelbKjpsp",
+          "name": "KL-SH07-03.png",
+          "mime": "image/png",
+          "bytes": 278395
+        },
+        {
+          "fileId": "1KQgYZqSAdJgKt1PFlTX1mDwgEIqxl-sh",
+          "name": "KL-SH07-04.png",
+          "mime": "image/png",
+          "bytes": 298868
+        },
+        {
+          "fileId": "1X6DAjHvcUsQJjN6mo4V-i-sI4UzX623x",
+          "name": "KL-SH07-05.png",
+          "mime": "image/png",
+          "bytes": 244147
+        },
+        {
+          "fileId": "1CID9M-0VUw11O0zg4hBzjJzFBK1Cg-C0",
+          "name": "KL-SH07-06.png",
+          "mime": "image/png",
+          "bytes": 251848
+        },
+        {
+          "fileId": "10Xws-SYqP-OwXO3_-ygaJuc_9QtXbiNe",
+          "name": "KL-SH07-07.png",
+          "mime": "image/png",
+          "bytes": 228853
+        },
+        {
+          "fileId": "1BW94lsnzwJIa1IbsZZ8lH-MXzqDtUOlw",
+          "name": "KL-SH07-08.png",
+          "mime": "image/png",
+          "bytes": 256698
+        },
+        {
+          "fileId": "1NGg9uoxK25Z_4ab60AW5UvBRFz7a-u2D",
+          "name": "KL-SH07-09.png",
+          "mime": "image/png",
+          "bytes": 308903
+        },
+        {
+          "fileId": "16MtgYS2dHbnZyDE_t_bZUxvedSZ6t_NO",
+          "name": "KL-SH07-10.png",
+          "mime": "image/png",
+          "bytes": 231023
+        },
+        {
+          "fileId": "1-z3gUwc7hwxzBvHHDxvm0VxT9eiTeT0v",
+          "name": "KL-SH07-11.png",
+          "mime": "image/png",
+          "bytes": 310886
+        },
+        {
+          "fileId": "1Bela7nBk3KmbcQSvN4lMQpIEG3kV5YKq",
+          "name": "KL-SH07-12.png",
+          "mime": "image/png",
+          "bytes": 177814
+        }
+      ]
+    },
+    {
+      "group": "SH08",
+      "folderId": "1JXg7ssQ8Jzqso6FhBGT2Sdi1YSYRCZdy",
+      "files": [
+        {
+          "fileId": "1fCcwbCR307qSAOHShvitzne5FF1tpULL",
+          "name": "KL-SH08-01.png",
+          "mime": "image/png",
+          "bytes": 329208
+        },
+        {
+          "fileId": "1-D16KtJoMFAjNuFlWEWhc7gMOi4ZxZWA",
+          "name": "KL-SH08-02.png",
+          "mime": "image/png",
+          "bytes": 245001
+        },
+        {
+          "fileId": "1ckPgpwu1y9R-2VfL2RPmSESgdOWxe5lm",
+          "name": "KL-SH08-03.png",
+          "mime": "image/png",
+          "bytes": 327618
+        },
+        {
+          "fileId": "1gZLc706t2kO0TqWOLJFKyrfXP8Ck4tDv",
+          "name": "KL-SH08-04.png",
+          "mime": "image/png",
+          "bytes": 425284
+        },
+        {
+          "fileId": "1ig4tCA4mZEETgTBxRFTASR42HEr-2AcG",
+          "name": "KL-SH08-05.png",
+          "mime": "image/png",
+          "bytes": 204094
+        },
+        {
+          "fileId": "1s1Fi7CJlSa2Q4ZPnhA5i6nnKRmOaXbBt",
+          "name": "KL-SH08-06.png",
+          "mime": "image/png",
+          "bytes": 228748
+        },
+        {
+          "fileId": "1oi81QU_ei6Fytz0WZRT9hZZOwj-B5RKI",
+          "name": "KL-SH08-07.png",
+          "mime": "image/png",
+          "bytes": 322064
+        },
+        {
+          "fileId": "1n5tXmSAXXGMzQJ9fk4YOrbOh5uuj1-J9",
+          "name": "KL-SH08-08.png",
+          "mime": "image/png",
+          "bytes": 303957
+        },
+        {
+          "fileId": "12NnGxuNj1POkP7_WKMeUAkTaYsghXDw1",
+          "name": "KL-SH08-09.png",
+          "mime": "image/png",
+          "bytes": 243206
+        },
+        {
+          "fileId": "1XrZqcLfbAK0Gt4sWLAbwcKOd4WZvI6ub",
+          "name": "KL-SH08-10.png",
+          "mime": "image/png",
+          "bytes": 286250
+        },
+        {
+          "fileId": "1bxO2pUN6BkPtLesxMicCDP8A3E1b3KFO",
+          "name": "KL-SH08-11.png",
+          "mime": "image/png",
+          "bytes": 254520
+        },
+        {
+          "fileId": "1HPjukW8xIIIJ06fKpnmmMg5NGe8CHpKy",
+          "name": "KL-SH08-12.png",
+          "mime": "image/png",
+          "bytes": 286627
+        }
+      ]
+    },
+    {
+      "group": "SH09",
+      "folderId": "1TAmS1GjVGPFkQmORXr-I8RSCIFL0__u3",
+      "files": [
+        {
+          "fileId": "1BqVzYNxNdJKAcoFY-qlt1pbHedwwjIUe",
+          "name": "KL-SH09-01.png",
+          "mime": "image/png",
+          "bytes": 270517
+        },
+        {
+          "fileId": "1I7xW586qltB7sEs40l0LYd-SvD8-rd64",
+          "name": "KL-SH09-02.png",
+          "mime": "image/png",
+          "bytes": 247977
+        },
+        {
+          "fileId": "1RdjZus_EYkp2kMPubHdY1rHq9jOC24gm",
+          "name": "KL-SH09-03.png",
+          "mime": "image/png",
+          "bytes": 346807
+        },
+        {
+          "fileId": "19llbP856pjl2-gnucEyTN6m0Vxnnquew",
+          "name": "KL-SH09-04.png",
+          "mime": "image/png",
+          "bytes": 251135
+        },
+        {
+          "fileId": "1IlMchpkDwPxO1pBIUtxPSxCPe7Ia6Rm2",
+          "name": "KL-SH09-05.png",
+          "mime": "image/png",
+          "bytes": 324469
+        },
+        {
+          "fileId": "1HU7lD7MJiUnOGrXGXQs5G7tJBna2Qujq",
+          "name": "KL-SH09-06.png",
+          "mime": "image/png",
+          "bytes": 299865
+        },
+        {
+          "fileId": "1Kqpuufdf_NQEECTusVufpvwvSus41NhW",
+          "name": "KL-SH09-07.png",
+          "mime": "image/png",
+          "bytes": 395629
+        },
+        {
+          "fileId": "1WYzyHI28zrGysv9S2_i3RIH9E3XHpLqn",
+          "name": "KL-SH09-08.png",
+          "mime": "image/png",
+          "bytes": 332026
+        },
+        {
+          "fileId": "1FpyshYVC19I5XWcmR3DvmAoUyqcseUHk",
+          "name": "KL-SH09-09.png",
+          "mime": "image/png",
+          "bytes": 291572
+        },
+        {
+          "fileId": "1-7_qop6Pdj8lYX78RZFWq_sb650H3zK6",
+          "name": "KL-SH09-10.png",
+          "mime": "image/png",
+          "bytes": 277767
+        },
+        {
+          "fileId": "1D2w2Lw0Xec1sBnHVnc-xUOE7AWXJNAsA",
+          "name": "KL-SH09-11.png",
+          "mime": "image/png",
+          "bytes": 169753
+        },
+        {
+          "fileId": "1_yZepa-bAwkkwMyr3f4QD8RPhWd8i_PK",
+          "name": "KL-SH09-12.png",
+          "mime": "image/png",
+          "bytes": 284684
+        }
+      ]
+    },
+    {
+      "group": "SH10",
+      "folderId": "1Zfb2UI0xdTfEjWhC8EqCZ6TxschvavSM",
+      "files": [
+        {
+          "fileId": "1uN1Nt8Zxe9XE6zJIIUaJAnlADugDVTJI",
+          "name": "KL-SH10-01.png",
+          "mime": "image/png",
+          "bytes": 256929
+        },
+        {
+          "fileId": "1AgEX-z0o1tCjhnKPVhyF38Plv9mYCrK9",
+          "name": "KL-SH10-02.png",
+          "mime": "image/png",
+          "bytes": 269773
+        },
+        {
+          "fileId": "1Wt_QEm6J9H5MXB6-Xh9b607x6SUjWjS_",
+          "name": "KL-SH10-03.png",
+          "mime": "image/png",
+          "bytes": 205562
+        },
+        {
+          "fileId": "11CBhVZEVSYKat2LsPXuV_9JwWaB8qDnm",
+          "name": "KL-SH10-04.png",
+          "mime": "image/png",
+          "bytes": 293097
+        },
+        {
+          "fileId": "18FmMT7q5KAasc89KJR1x-qbWk9UwwV5Y",
+          "name": "KL-SH10-05.png",
+          "mime": "image/png",
+          "bytes": 199863
+        },
+        {
+          "fileId": "1DRRlRsuS32uZY7Ksmap_U9YBoSHDjyKv",
+          "name": "KL-SH10-06.png",
+          "mime": "image/png",
+          "bytes": 340851
+        },
+        {
+          "fileId": "1fAAlb2satLT0ZOl8S-JuNfEc9bHY0QLv",
+          "name": "KL-SH10-07.png",
+          "mime": "image/png",
+          "bytes": 295359
+        },
+        {
+          "fileId": "19twk4W135mt68r-KJTMNsgUER1H3PT4c",
+          "name": "KL-SH10-08.png",
+          "mime": "image/png",
+          "bytes": 188114
+        },
+        {
+          "fileId": "1aN9CRqFg7zwsRj-f8VV1HarKy0_LQxUz",
+          "name": "KL-SH10-09.png",
+          "mime": "image/png",
+          "bytes": 193281
+        },
+        {
+          "fileId": "1Wb3-C9YuXTJ34YOJRofviwcxb9bgAOvN",
+          "name": "KL-SH10-10.png",
+          "mime": "image/png",
+          "bytes": 155370
+        },
+        {
+          "fileId": "1dJ9PTBhC1uR_2QDb2m07HfRooD2wh9h1",
+          "name": "KL-SH10-11.png",
+          "mime": "image/png",
+          "bytes": 223576
+        },
+        {
+          "fileId": "1TcSrms9shPIrizWwPxl_uCc6lL1qrI7V",
+          "name": "KL-SH10-12.png",
+          "mime": "image/png",
+          "bytes": 245646
+        }
+      ]
+    },
+    {
+      "group": "SH11",
+      "folderId": "1CTIUmt14IXQtC4ORPE9_9jnSOjL22MJf",
+      "files": [
+        {
+          "fileId": "1bzDSf-fKS0GyYkBPb4-XrayGLIw0_Sh7",
+          "name": "KL-SH11-01.png",
+          "mime": "image/png",
+          "bytes": 282581
+        },
+        {
+          "fileId": "1P07nzApdptbs5F-HylLtTOypzNsRkQZZ",
+          "name": "KL-SH11-02.png",
+          "mime": "image/png",
+          "bytes": 274285
+        },
+        {
+          "fileId": "1k-j-Id5a7VXhdhFn7Rl9ivfOA0R5OgZT",
+          "name": "KL-SH11-03.png",
+          "mime": "image/png",
+          "bytes": 154125
+        },
+        {
+          "fileId": "1AtXafqIQJpFWbI5W3ao8a6nkgyxJ40ne",
+          "name": "KL-SH11-04.png",
+          "mime": "image/png",
+          "bytes": 251646
+        },
+        {
+          "fileId": "1l1Y1L0I6EPdgtzPFhVePk6UXwqOj6hI9",
+          "name": "KL-SH11-05.png",
+          "mime": "image/png",
+          "bytes": 325070
+        },
+        {
+          "fileId": "1V6P0cSXAEe4ZEfWWkFxI0p-uOiwO7qal",
+          "name": "KL-SH11-06.png",
+          "mime": "image/png",
+          "bytes": 273015
+        },
+        {
+          "fileId": "1CGqT1p-hC_bpvEnIcfxlt1d8jzMO2SeV",
+          "name": "KL-SH11-07.png",
+          "mime": "image/png",
+          "bytes": 339230
+        },
+        {
+          "fileId": "1CalX6ojb4nNqbCQvFPQNArWUgAhACZ2f",
+          "name": "KL-SH11-08.png",
+          "mime": "image/png",
+          "bytes": 261295
+        },
+        {
+          "fileId": "1HE0qN8dcIPitM87B0YfykX2CUBtxOixx",
+          "name": "KL-SH11-09.png",
+          "mime": "image/png",
+          "bytes": 206708
+        },
+        {
+          "fileId": "15Lx95erB8fT-ocoW0iAzGbUq9fW8-Vt7",
+          "name": "KL-SH11-10.png",
+          "mime": "image/png",
+          "bytes": 289915
+        },
+        {
+          "fileId": "1LGHxv3pTPSKGu2dpU6DeryjQqjFf8kfq",
+          "name": "KL-SH11-11.png",
+          "mime": "image/png",
+          "bytes": 201104
+        },
+        {
+          "fileId": "1qJlKKu0a9ndMjGTsI8B7QURWTWoX_H4k",
+          "name": "KL-SH11-12.png",
+          "mime": "image/png",
+          "bytes": 363168
+        }
+      ]
+    },
+    {
+      "group": "SH12",
+      "folderId": "1oXQP9N6EGBEV1_O9mRWgUltN52RVPrRV",
+      "files": [
+        {
+          "fileId": "1WBbn2qBIb5GkHsMcNMIlN2DMB_fuHqew",
+          "name": "KL-SH12-01.png",
+          "mime": "image/png",
+          "bytes": 405430
+        },
+        {
+          "fileId": "1jpU9N7tCYbNk5DN-4PulneJw0qlNFFKS",
+          "name": "KL-SH12-02.png",
+          "mime": "image/png",
+          "bytes": 312202
+        },
+        {
+          "fileId": "1ZHx6SQtFNSGeKD8LWlaak8YS7tR2UF43",
+          "name": "KL-SH12-03.png",
+          "mime": "image/png",
+          "bytes": 327769
+        },
+        {
+          "fileId": "1iq5zmd0-U_pAvA7-bOfr8wgnAkkK24BT",
+          "name": "KL-SH12-04.png",
+          "mime": "image/png",
+          "bytes": 183243
+        },
+        {
+          "fileId": "1_kaO2uqRLDYBzVOSYx6e4GQLnqQP2Pp9",
+          "name": "KL-SH12-05.png",
+          "mime": "image/png",
+          "bytes": 290525
+        },
+        {
+          "fileId": "16af2YT3AvaMjOq10MKmiPNhpv4y3ijDJ",
+          "name": "KL-SH12-06.png",
+          "mime": "image/png",
+          "bytes": 327377
+        },
+        {
+          "fileId": "1gZVKyyLALkv7UZkaou9f1qQRJFJSD6HU",
+          "name": "KL-SH12-07.png",
+          "mime": "image/png",
+          "bytes": 215385
+        },
+        {
+          "fileId": "1xf4lAO2jyBRK6Zvmj3T1X7INy4n6UfUR",
+          "name": "KL-SH12-08.png",
+          "mime": "image/png",
+          "bytes": 197761
+        },
+        {
+          "fileId": "1Kab1DWt5ZVNnzg16gMi8W6gTy9eB_Ijq",
+          "name": "KL-SH12-09.png",
+          "mime": "image/png",
+          "bytes": 258423
+        },
+        {
+          "fileId": "1pGBp-EFg2cKFKBa6R0yOV9ksZ6A8u4Tj",
+          "name": "KL-SH12-10.png",
+          "mime": "image/png",
+          "bytes": 351409
+        },
+        {
+          "fileId": "16-JPR9DDju9zHJfxFH9aWOSSSqM8DbA_",
+          "name": "KL-SH12-11.png",
+          "mime": "image/png",
+          "bytes": 315592
+        },
+        {
+          "fileId": "1AZPlTs247qcQF0TZfoVr3yN-rXGaKoVf",
+          "name": "KL-SH12-12.png",
+          "mime": "image/png",
+          "bytes": 263893
+        }
+      ]
+    }
+  ],
+  "total": 144,
+  "errors": []
+}

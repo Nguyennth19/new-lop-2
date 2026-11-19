@@ -1,0 +1,33 @@
+name: P1.3 Character & PNG Source QA (no deployment)
+on:
+  push:
+    branches:
+      - 'audit/p1-3-png-master-character-manifest-20261118'
+    paths:
+      - 'qa/p1-3/**'
+      - 'hinh-anh/nguon-drive/v1/png-master/**'
+      - '.github/workflows/p1-3-assets-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: QA character WebP 30 plus 5 source sheets and semantic restrictions
+        run: node qa/p1-3/test_characters_30.cjs
+      - name: Verify 288 source PNG Git bytes and generate SHA-256 inventory
+        run: node qa/p1-3/test_png_master_288.cjs
+      - name: Upload Git-side SHA-256 inventory for independent Drive comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: p1-3-github-png-sha256
+          path: qa/p1-3/output/png-master-github-sha256.json
+          if-no-files-found: error

@@ -1,0 +1,60 @@
+{
+  "part": "shared",
+  "offset": 31,
+  "rows": [
+    {
+      "fileId": "1D9bWMM2_wEGCk1SMBpHyrgZCuWVFSsD-",
+      "name": "KL-SH03-08.png",
+      "mime": "image/png",
+      "bytes": 241709,
+      "group": "SH03",
+      "blobSha": "bd7f22ce0ac5613fc5931e7c5413376f04824c1e",
+      "modified": "2026-10-29T05:00:00.636Z"
+    },
+    {
+      "fileId": "17mEvVfcml_OJnNwNffeDP4ej6CRv0-ka",
+      "name": "KL-SH03-09.png",
+      "mime": "image/png",
+      "bytes": 210032,
+      "group": "SH03",
+      "blobSha": "0ed8c296421e7653386189d5a21972b32f6d7a6e",
+      "modified": "2026-10-29T05:00:02.744Z"
+    },
+    {
+      "fileId": "10VpAdx8ek9uH1S9sLHjHhBxGpwrs4maj",
+      "name": "KL-SH03-10.png",
+      "mime": "image/png",
+      "bytes": 167324,
+      "group": "SH03",
+      "blobSha": "47137b887dca1696e3e1f830213ea8d9d275c14a",
+      "modified": "2026-10-29T04:59:41.884Z"
+    },
+    {
+      "fileId": "1hgd7Dyr9P2rsQvLGAn2WmSc2eLdBBEXr",
+      "name": "KL-SH03-11.png",
+      "mime": "image/png",
+      "bytes": 195101,
+      "group": "SH03",
+      "blobSha": "e7bf4d660ed90fe793fab138c219d700a2f8066f",
+      "modified": "2026-10-29T04:59:44.164Z"
+    },
+    {
+      "fileId": "10zMx3Am-1nxsW6Ec9XofkB0Z9xjSDgmi",
+      "name": "KL-SH03-12.png",
+      "mime": "image/png",
+      "bytes": 175178,
+      "group": "SH03",
+      "blobSha": "3a4d1829420a603556d25cb5b4032d52c2986112",
+      "modified": "2026-10-29T04:59:46.203Z"
+    },
+    {
+      "fileId": "1_CP0Dnkb6ZJhR0rz1_1auWnGEheL8ArV",
+      "name": "KL-SH04-01.png",
+      "mime": "image/png",
+      "bytes": 303372,
+      "group": "SH04",
+      "blobSha": "fa2d36d98851822e5d6f9bb62e1cba66b4bbd541",
+      "modified": "2026-10-29T05:00:19.986Z"
+    }
+  ]
+}
