@@ -230,6 +230,15 @@
       "sourceStatus": "OWNER_SIGNOFF_PENDING",
       "integrationAndReleaseGate": "Do not bind D5/D9 or mental official manifest",
       "decision": "NO_GRANT"
+    },
+    {
+      "id": "GRADING_G3B_ISOLATED",
+      "sourceRef": "test/data-b-g3b-b20-trusted-gas-e2e-20261117@5db6634b3424d5f48a54716c45f069c0aefa4a45",
+      "currentPaths": "G3ATrustedTest.gs, G3B_BrowserSmoke.html, qa/g3b (TEST branch only); NOT PRESENT IN BE-HOC ACTIVE ROUTE",
+      "pinOrScope": "G3B CI at exact HEAD https://github.com/Nguyennth19/new-lop-2/actions/runs/44120558044; 51 B20 test source records; original G3A baseline retained",
+      "sourceStatus": "SYNTHETIC_AND_MOCK_BROWSER_CI_SUCCESS_IN_SCOPE",
+      "integrationAndReleaseGate": "REAL_GAS_TEST_NOT_RUN; AUTHENTICATED_DEPLOYMENT_NOT_VERIFIED; BE-HOC_LEGACY_CLIENT_ANSWER_EXPOSURE_UNCHANGED",
+      "decision": "PREFERRED_TEST_SECURITY_REFERENCE_ONLY; NEVER_DIRECT_CHERRY_PICK_TO_STUDENT_APP"
     }
   ],
   "notes": [
