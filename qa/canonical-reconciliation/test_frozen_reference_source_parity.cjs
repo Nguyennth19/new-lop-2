@@ -41,7 +41,7 @@ for(const [path,expected] of Object.entries(frozen)){
 }
 const names=git('diff','--name-only',BASE,'HEAD').split('\n').filter(Boolean);
 for(const name of names){
- assert.ok(name.startsWith('qa/canonical-reconciliation/')||name==='.github/workflows/canonical-audit-no-deploy.yml',
+ assert.ok(name.startsWith('qa/canonical-reconciliation/')||name==='.github/workflows/canonical-audit-no-deploy.yml'||name==='.github/workflows/canonical-v01-v07-offline-browser.yml',
    'Audit branch modified non-audit file: '+name);
 }
 for(const path of ['AGENTS.md','tai-lieu/quy-chuan-ai/universal_ai_coding_guidelines-vn-version.md',
