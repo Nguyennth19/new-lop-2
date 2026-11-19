@@ -51,7 +51,44 @@ jobs:
           git merge-base --is-ancestor 59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff HEAD
           git diff --name-status 59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff HEAD > /tmp/p14-layer-a-delta.tsv
           if grep -E '^(D|R|C)[[:space:]]' /tmp/p14-layer-a-delta.tsv; then echo UNAUTHORIZED_DELETION; exit 1; fi
-          if grep -E '^M[[:space:]]' /tmp/p14-layer-a-delta.tsv | cut -f2 | grep -vE '^(19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|GiaoDien.html|qa/be-hoc-tts-v2/tts-v2.test.cjs|\.github/workflows/be-hoc-layer-a-no-deploy.yml|\.github/workflows/be-hoc-visual-no-deploy.yml)$'; then
+          if grep -E '^M[[:space:]]' /tmp/p14-layer-a-delta.tsv | cut -f2 | grep -vE '^(19_KhongGianHocToan.html|41_HienThiCauHoiToan.html|43_CSS_ThanhPhanBaiToan.html|GiaoDien.html|qa/be-hoc-tts-v2/tts-v2.test.cjs|\.github/workflows/be-hoc-layer-a-no-deploy.yml|\.github/workflows/be-hoc-visual-no-deploy.yml|qa/be-hoc-visual/visual-contract.test.cjs|\.github/workflows/be-hoc-p1-4-b-p12-structural.yml); then
+            echo UNAUTHORIZED_EXISTING_SOURCE_CHANGE; exit 1
+          fi
+          if grep -E '^A[[:space:]]' /tmp/p14-layer-a-delta.tsv | cut -f2 | grep -vE '^(hinh-anh/nguon-drive/v1/png-master/|du-lieu/bai-hoc/toan/|qa/p1-2/|qa/p1-2-b/|qa/p1-3/|qa/p1-4/|qa/be-hoc-ui/|\.github/workflows/(p1-3-|be-hoc-p1-4-)|89_Asset_Unified_Resolver_TEST.html$|90_C2_Test_Integration_Bridge.html$|P13_C2_CauHinhTEST.gs$)'; then
+            echo UNAUTHORIZED_IMPORTED_PATH; exit 1
+          fi
+          for f in MayChu.gs 26_ChamCauHoiToan.html ThanhTichMayChu.gs appsscript.json KhoBaiHoc.gs; do
+            test "$(git hash-object "$f")" = "$(git show 59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff:"$f" | git hash-object --stdin)"
+          done
+          test "$(git hash-object 41_HienThiCauHoiToan.html)" = 25c2f0529c1612a385f8838df4cc6c5de1d08f37
+          test "$(git hash-object 43_CSS_ThanhPhanBaiToan.html)" = 4c8392db8d09d688180b825e61fea5dd5438a2b3
+          if grep -q "data-ml-speak-question" 41_HienThiCauHoiToan.html; then echo MENTAL_SPEECH_REGRESSION; exit 1; fi
+          grep -q 'data-ml-speak-theory' 19_KhongGianHocToan.html
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs
+      - name: Assert exact imported source blob hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object qa/be-hoc-lop-a/refs/column-v12-core.js)" = 16ae440618bcb3cf90706cdad2ccd11cbadc222a
+          test "$(git hash-object qa/be-hoc-lop-a/refs/column-v12-view.js)" = 214b615d0c595dfd76695c75e5443cefc36a921d
+          test "$(git hash-object qa/be-hoc-lop-a/refs/structured-diagram-core.cjs)" = b6a1712cd2051ba417f011b653ff8184ce9f6f9e
+          test "$(git hash-object qa/be-hoc-lop-a/refs/tts-math-normalizer-v2.js)" = 605a8ed9b335526af82c8870dca4753bd511b913
+          test "$(git hash-object qa/be-hoc-lop-a/refs/b20-variant-adapter.html)" = e14a0c831837a91125a59dd5ce2d65288d056038
+      - name: Math display, scoped CSS, D2, SVG and TTS QA
+        run: |
+          node --check qa/be-hoc-lop-a/layer-a.test.cjs
+          node qa/be-hoc-lop-a/layer-a.test.cjs
+      - name: Archive no-deploy evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BE-HOC-LAYER-A-SCOPED-QA-NO-GAS-DEPLOY
+          path: |
+            qa/be-hoc-lop-a/*.json
+            docs/kiem-dinh/BE_HOC_LAYER_A_INTEGRATION_20261116.md
+          retention-days: 30
+; then
             echo UNAUTHORIZED_EXISTING_SOURCE_CHANGE; exit 1
           fi
           if grep -E '^A[[:space:]]' /tmp/p14-layer-a-delta.tsv | cut -f2 | grep -vE '^(hinh-anh/nguon-drive/v1/png-master/|du-lieu/bai-hoc/toan/|qa/p1-2/|qa/p1-2-b/|qa/p1-3/|qa/p1-4/|qa/be-hoc-ui/|\.github/workflows/(p1-3-|be-hoc-p1-4-)|89_Asset_Unified_Resolver_TEST.html$|90_C2_Test_Integration_Bridge.html$|P13_C2_CauHinhTEST.gs$)'; then
