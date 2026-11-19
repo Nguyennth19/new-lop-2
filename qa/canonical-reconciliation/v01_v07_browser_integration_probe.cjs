@@ -94,7 +94,7 @@ async function open(page,file){
   // No test action should send real data, even if a test unexpectedly triggers a submit.
   window.__qaNoNetwork=true;
  },fixture);
- await page.route(/^https?:/route=>route.abort());
+ await page.route(/^https?:/,route=>route.abort());
  page.on('pageerror',e=>{if(errors.length<30)errors.push(String(e).slice(0,500))});
  await page.goto('file://'+file,{waitUntil:'domcontentloaded',timeout:30000});
  await page.waitForTimeout(150);
