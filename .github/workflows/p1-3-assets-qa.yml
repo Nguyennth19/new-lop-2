@@ -23,3 +23,11 @@ jobs:
           node-version: '20'
       - name: QA character WebP 30 plus 5 source sheets and semantic restrictions
         run: node qa/p1-3/test_characters_30.cjs
+      - name: Verify 288 source PNG Git bytes and generate SHA-256 inventory
+        run: node qa/p1-3/test_png_master_288.cjs
+      - name: Upload Git-side SHA-256 inventory for independent Drive comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: p1-3-github-png-sha256
+          path: qa/p1-3/output/png-master-github-sha256.json
+          if-no-files-found: error
