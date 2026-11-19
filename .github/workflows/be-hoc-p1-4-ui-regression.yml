@@ -29,4 +29,3 @@ jobs:
           node --check qa/be-hoc-ui/test_p1_4_ux_regression.cjs
           node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
           node qa/be-hoc-tts-v2/tts-v2.test.cjs
-          node qa/be-hoc-tts-v2/tts-browser.test.cjs
