@@ -1,0 +1,516 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lop2:math:lesson-package:v1",
+  "title": "Lớp 2 Math LessonPackage V1 - source indexed, not playable",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "packageId",
+    "lessonId",
+    "grade",
+    "subject",
+    "title",
+    "ownerBatch",
+    "provenance",
+    "skills",
+    "questions",
+    "technicalReviewCandidates",
+    "variantPool",
+    "reviewGates",
+    "summary",
+    "rollback"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "LOP2_LESSON_PACKAGE_V1"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^LOP2_MATH_B[0-9]{3}_LPV1$"
+    },
+    "lessonId": {
+      "type": "string",
+      "pattern": "^MATH_B0(0[1-9]|1[0-9]|2[0-4])$"
+    },
+    "legacyLessonIds": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "grade": {
+      "const": 2
+    },
+    "subject": {
+      "const": "MATH"
+    },
+    "volume": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2
+    },
+    "curriculumId": {
+      "const": "KNTT_MATH_G2"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ownerBatch": {
+      "type": "string",
+      "pattern": "^BQA-[0-9]{2}$"
+    },
+    "packageStatus": {
+      "const": "INDEXED_NOT_PLAYABLE"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "c1Workbook",
+        "masterWorkbook",
+        "sourceJoin"
+      ]
+    },
+    "skills": {
+      "type": "object",
+      "required": [
+        "lessonCandidate",
+        "perQuestionApproved"
+      ],
+      "properties": {
+        "lessonCandidate": {
+          "type": "array",
+          "minItems": 1
+        },
+        "perQuestionApproved": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "levelPolicy": {
+      "type": "object",
+      "required": [
+        "LV1",
+        "LV2",
+        "LV3"
+      ]
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceQuestion"
+      }
+    },
+    "technicalReviewCandidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/g2Candidate"
+      }
+    },
+    "variantPool": {
+      "type": "object",
+      "required": [
+        "mode",
+        "candidates",
+        "droppedSourceIds",
+        "playableCount",
+        "publicVariantReadyCount"
+      ],
+      "properties": {
+        "mode": {
+          "const": "REVIEW_TEMPLATE_CANDIDATES_ONLY"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/previewCandidate"
+          }
+        },
+        "droppedSourceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "playableCount": {
+          "const": 0
+        },
+        "publicVariantReadyCount": {
+          "const": 0
+        }
+      }
+    },
+    "reviewGates": {
+      "type": "object",
+      "required": [
+        "sourceIndependent",
+        "rendererPolicy",
+        "trustedGrading",
+        "studentRelease"
+      ],
+      "properties": {
+        "sourceIndependent": {
+          "const": "NOT_SIGNED"
+        },
+        "rendererPolicy": {
+          "const": "DENY"
+        },
+        "trustedGrading": {
+          "const": "NOT_VERIFIED"
+        },
+        "studentRelease": {
+          "const": "NO_GO"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "c1SourceCandidates",
+        "g2ReviewCandidates",
+        "adaptationCaseChecks",
+        "keptUnique",
+        "droppedUnique",
+        "playable",
+        "studentRelease"
+      ],
+      "properties": {
+        "c1SourceCandidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "g2ReviewCandidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "adaptationCaseChecks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "keptUnique": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "droppedUnique": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "playable": {
+          "const": 0
+        },
+        "studentRelease": {
+          "const": "NO_GO"
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "required": [
+        "baseSha",
+        "productionChanged"
+      ],
+      "properties": {
+        "productionChanged": {
+          "const": false
+        },
+        "baseSha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sourceQuestion": {
+      "type": "object",
+      "required": [
+        "questionId",
+        "originExerciseId",
+        "lessonId",
+        "recordRole",
+        "source",
+        "skillId",
+        "lessonSkillCandidate",
+        "questionType",
+        "seed",
+        "rendererCandidate",
+        "visualIntent",
+        "assetId",
+        "semanticMapping",
+        "publicVariant",
+        "variant",
+        "approval",
+        "generatorAdmission",
+        "grading"
+      ],
+      "properties": {
+        "recordRole": {
+          "const": "C1_SOURCE_CANDIDATE"
+        },
+        "questionId": {
+          "type": "string",
+          "minLength": 7
+        },
+        "originExerciseId": {
+          "type": "string"
+        },
+        "lessonId": {
+          "type": "string",
+          "pattern": "^MATH_B[0-9]{3}$"
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "track",
+            "level",
+            "evidenceURL",
+            "sourceSHA256Recorded"
+          ],
+          "properties": {
+            "track": {
+              "enum": [
+                "SGK",
+                "VBT"
+              ]
+            },
+            "level": {
+              "enum": [
+                "LV1",
+                "LV2"
+              ]
+            },
+            "sourceSHA256Recorded": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "evidenceURL": {
+              "type": "string",
+              "pattern": "^https://drive.google.com/"
+            }
+          }
+        },
+        "skillId": {
+          "type": "null"
+        },
+        "lessonSkillCandidate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questionType": {
+          "type": "null"
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "rendererCandidate": {
+          "type": "null"
+        },
+        "visualIntent": {
+          "type": "null"
+        },
+        "assetId": {
+          "type": "null"
+        },
+        "semanticMapping": {
+          "type": "null"
+        },
+        "publicVariant": {
+          "type": "null"
+        },
+        "variant": {
+          "type": "object",
+          "required": [
+            "mode",
+            "seed",
+            "publicVariant"
+          ],
+          "properties": {
+            "mode": {
+              "const": "NOT_MATERIALIZED"
+            },
+            "publicVariant": {
+              "type": "null"
+            }
+          }
+        },
+        "approval": {
+          "type": "object",
+          "required": [
+            "studentRelease",
+            "renderer",
+            "publicVariant"
+          ],
+          "properties": {
+            "studentRelease": {
+              "const": "NO_GO"
+            },
+            "renderer": {
+              "const": "DENY"
+            },
+            "publicVariant": {
+              "const": "DENY"
+            }
+          }
+        },
+        "generatorAdmission": {
+          "const": "EXCLUDED_NO_VERIFIED_QUESTION_CONTENT"
+        },
+        "grading": {
+          "type": "object",
+          "required": [
+            "serverRequired",
+            "ready",
+            "publicAnswerKey"
+          ],
+          "properties": {
+            "serverRequired": {
+              "const": true
+            },
+            "ready": {
+              "const": false
+            },
+            "publicAnswerKey": {
+              "const": false
+            }
+          }
+        }
+      }
+    },
+    "g2Candidate": {
+      "type": "object",
+      "required": [
+        "questionId",
+        "originExerciseId",
+        "lessonId",
+        "recordRole",
+        "source",
+        "skillId",
+        "questionType",
+        "visualIntent",
+        "assetId",
+        "rendererCandidate",
+        "publicVariant",
+        "seed",
+        "approval",
+        "generatorAdmission"
+      ],
+      "properties": {
+        "recordRole": {
+          "const": "G2_PRIMARY_PAGE_TECHNICAL_CANDIDATE"
+        },
+        "lessonId": {
+          "type": "string",
+          "pattern": "^MATH_B[0-9]{3}$"
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "track",
+            "printedPageEvidence",
+            "primaryPDFSHA256"
+          ],
+          "properties": {
+            "track": {
+              "enum": [
+                "SGK",
+                "VBT"
+              ]
+            },
+            "primaryPDFSHA256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "skillId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questionType": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "visualIntent": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "assetId": {
+          "type": "null"
+        },
+        "rendererCandidate": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "publicVariant": {
+          "type": "null"
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "approval": {
+          "type": "object",
+          "required": [
+            "studentRelease"
+          ],
+          "properties": {
+            "studentRelease": {
+              "const": "NO_GO"
+            }
+          }
+        },
+        "generatorAdmission": {
+          "enum": [
+            "DROP_EXCLUDED",
+            "TEMPLATE_CANDIDATE_NONPLAYABLE",
+            "EXCLUDED_NO_APPROVED_ADAPTATION"
+          ]
+        }
+      }
+    },
+    "previewCandidate": {
+      "type": "object",
+      "required": [
+        "originExerciseId",
+        "lessonId",
+        "skillId",
+        "questionType",
+        "seed",
+        "familyId",
+        "rendererCandidate",
+        "variantId",
+        "publicVariant",
+        "playable",
+        "studentRelease"
+      ],
+      "properties": {
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "publicVariant": {
+          "type": "null"
+        },
+        "playable": {
+          "const": false
+        },
+        "studentRelease": {
+          "const": "DENY"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,2422 @@
+{
+  "schemaVersion": "LOP2_P12B_C4_DEV27_CONTENT_HYDRATION_REF_V1",
+  "date": "2026-11-18",
+  "status": "27_EXISTING_DEV_ITEMS_LINKED_CONTENT_NOT_COPIED_TO_PUBLIC_GITHUB",
+  "referenceSource": {
+    "workbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+    "tab": "C4_REAL_JSON",
+    "indexTab": "C4_CONTENT_INDEX",
+    "sourceGitCommit": "1a550444a188697cef5ae1ce007e4c7f8b11946d",
+    "privateWorkbookReadOnly": true,
+    "verifiedSourcePdfFileIDs": true,
+    "pdfVisualIndependentQA": false
+  },
+  "counts": {
+    "c4Items": 27,
+    "parts": 121,
+    "lessonDistribution": {
+      "B001": 24,
+      "B002": 3,
+      "B003": 0,
+      "B004": 0
+    },
+    "partKinds": {
+      "INTEGER": 87,
+      "CHOICE_SINGLE": 17,
+      "MATCHING": 5,
+      "CHOICE_MULTI": 7,
+      "ORDERED_SEQUENCE": 5
+    },
+    "privateAnswerKeysExported": 0,
+    "sourceIndependentSignoffs": 0,
+    "studentPlayables": 0,
+    "policyConflicts": 2
+  },
+  "knownPolicyConflicts": [
+    {
+      "id": "SGK_B001_L2_E01",
+      "issue": "ESTIMATION_NO_AUTO_GRADE_CONFLICT_WITH_GENERIC_SCORING_FLAG",
+      "currentC4QA": "NO_AUTO_GRADE",
+      "currentPrivateScoringFlag": true,
+      "effectivePolicyForP12": "FORCE_NO_AUTO_GRADE_PENDING_AUTHORIZED_PATCH",
+      "sourceChanged": false
+    },
+    {
+      "id": "SGK_B001_L2_E02",
+      "issue": "ESTIMATION_NO_AUTO_GRADE_CONFLICT_WITH_GENERIC_SCORING_FLAG",
+      "currentC4QA": "NO_AUTO_GRADE",
+      "currentPrivateScoringFlag": true,
+      "effectivePolicyForP12": "FORCE_NO_AUTO_GRADE_PENDING_AUTHORIZED_PATCH",
+      "sourceChanged": false
+    }
+  ],
+  "records": [
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_K1_E01",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 5,
+      "c1EnvelopeRow": 5,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 2,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_K1_E01"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 7,
+        "printedPageCandidate": 6,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "r2_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r2_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r2_number",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_read",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_number",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_read",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 10,
+        "partTypeSummary": [
+          "INTEGER",
+          "CHOICE_SINGLE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/B001_E01_source.png",
+        "sceneNodeCount": 4,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-INDEX-001",
+        "c4IndexRow": 5,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_2",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_K1_E02",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 6,
+      "c1EnvelopeRow": 6,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 3,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_K1_E02"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 7,
+        "printedPageCandidate": 6,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "rabbit_carrots",
+            "kind": "MATCHING",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "MATCHING"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/B001_E02_source.png",
+        "sceneNodeCount": 4,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-INDEX-001",
+        "c4IndexRow": 6,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_3",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_K1_E03",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 7,
+      "c1EnvelopeRow": 7,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 4,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_K1_E03"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 8,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "r2_number",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_number",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_read",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_read",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 6,
+        "partTypeSummary": [
+          "INTEGER",
+          "CHOICE_SINGLE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_K1_E03_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 7,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_4",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_K1_E04",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 8,
+      "c1EnvelopeRow": 8,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 5,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_K1_E04"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 8,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "a",
+            "kind": "CHOICE_MULTI",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b",
+            "kind": "CHOICE_MULTI",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c",
+            "kind": "CHOICE_MULTI",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 3,
+        "partTypeSummary": [
+          "CHOICE_MULTI"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_K1_E04_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 8,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_5",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L1_E01",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 9,
+      "c1EnvelopeRow": 9,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 6,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L1_E01"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 8,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "r2_unit",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r2_sum",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_sum",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_sum_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_sum_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 8,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L1_E01_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 9,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_6",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L1_E02",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 10,
+      "c1EnvelopeRow": 10,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 7,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L1_E02"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 8,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "ascending",
+            "kind": "ORDERED_SEQUENCE",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "descending",
+            "kind": "ORDERED_SEQUENCE",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 2,
+        "partTypeSummary": [
+          "ORDERED_SEQUENCE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L1_E02_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 10,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_7",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L1_E03",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 11,
+      "c1EnvelopeRow": 11,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 8,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L1_E03"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 9,
+        "printedPageCandidate": 8,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "r53_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r53_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r47_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r47_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r80_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r80_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r66_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r66_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 8,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L1_E03_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 11,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_8",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L1_E04",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 12,
+      "c1EnvelopeRow": 12,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 9,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L1_E04"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 9,
+        "printedPageCandidate": 8,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "all_numbers",
+            "kind": "CHOICE_MULTI",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "CHOICE_MULTI"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L1_E04_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 12,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_9",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L2_E03",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 3,
+      "c1EnvelopeRow": 3,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 10,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L2_E03"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 10,
+        "printedPageCandidate": 9,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "b_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b_sum_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b_sum_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c_number",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c_sum_tens",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c_sum_ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 9,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L2_E03_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 3,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_10",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L2_E04",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 4,
+      "c1EnvelopeRow": 4,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 11,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L2_E04"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 10,
+        "printedPageCandidate": 9,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "tiles",
+            "kind": "MATCHING",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "largest_order",
+            "kind": "ORDERED_SEQUENCE",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 2,
+        "partTypeSummary": [
+          "MATCHING",
+          "ORDERED_SEQUENCE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L2_E04_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN2-20261109",
+        "c4IndexRow": 4,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_11",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L2_E01",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 13,
+      "c1EnvelopeRow": 13,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 12,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L2_E01"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 9,
+        "printedPageCandidate": 8,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "exact_count",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L2_E01_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN3-20261109",
+        "c4IndexRow": 13,
+        "c4OriginalScoringPolicy": "NO_AUTO_GRADE",
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_12",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "NO_AUTO_GRADE_REQUIRED_FIX_C4_FLAG",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "SGK_B001_L2_E02",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 2,
+      "c1EnvelopeRow": 2,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 13,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B001_L2_E02"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 10,
+        "printedPageCandidate": 9,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "exact_count",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B001_L2_E02_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN3-20261109",
+        "c4IndexRow": 2,
+        "c4OriginalScoringPolicy": "NO_AUTO_GRADE",
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_13",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "NO_AUTO_GRADE_REQUIRED_FIX_C4_FLAG",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T01_E01",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 14,
+      "c1EnvelopeRow": 14,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 14,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T01_E01"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 5,
+        "printedPageCandidate": 5,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "r2_chuc",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r2_donvi",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r2_so",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r2_doc",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_chuc",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_donvi",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_so",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r3_doc",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_chuc",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_donvi",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_so",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r4_doc",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 12,
+        "partTypeSummary": [
+          "INTEGER",
+          "CHOICE_SINGLE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T01_E01_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 14,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_14",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T01_E02",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 15,
+      "c1EnvelopeRow": 15,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 15,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T01_E02"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 5,
+        "printedPageCandidate": 5,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "cat41",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "cat67",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "cat32",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 3,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T01_E02_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 15,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_15",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T01_E03",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 16,
+      "c1EnvelopeRow": 16,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 16,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T01_E03"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 6,
+        "printedPageCandidate": 6,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "r55",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r55read",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r82chuc",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r82ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r82read",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r91chuc",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r91ones",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "r91",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 8,
+        "partTypeSummary": [
+          "INTEGER",
+          "CHOICE_SINGLE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T01_E03_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 16,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_16",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T01_E04",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 17,
+      "c1EnvelopeRow": 17,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 17,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T01_E04"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 6,
+        "printedPageCandidate": 6,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "a",
+            "kind": "CHOICE_MULTI",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "bmax",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "bmin",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c",
+            "kind": "CHOICE_MULTI",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 4,
+        "partTypeSummary": [
+          "CHOICE_MULTI",
+          "CHOICE_SINGLE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T01_E04_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 17,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_17",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T02_E01",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 18,
+      "c1EnvelopeRow": 18,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 18,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T02_E01"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 6,
+        "printedPageCandidate": 6,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "54t",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "54o",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "88t",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "88o",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "36t",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "36o",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 6,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T02_E01_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 18,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_18",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T02_E02",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 19,
+      "c1EnvelopeRow": 19,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 19,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T02_E02"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 7,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "asc",
+            "kind": "ORDERED_SEQUENCE",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "desc",
+            "kind": "ORDERED_SEQUENCE",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 2,
+        "partTypeSummary": [
+          "ORDERED_SEQUENCE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T02_E02_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 19,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_19",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T02_E03",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 20,
+      "c1EnvelopeRow": 20,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 20,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T02_E03"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 7,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "62t",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "62o",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "77t",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "77o",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "80t",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "80o",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "89t",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "89o",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 8,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T02_E03_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 20,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_20",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T02_E04",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 21,
+      "c1EnvelopeRow": 21,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 21,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T02_E04"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 7,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "numbers",
+            "kind": "CHOICE_MULTI",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "CHOICE_MULTI"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T02_E04_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN4-20261109",
+        "c4IndexRow": 21,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "VBT_ORIGINAL_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_21",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T03_E01",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 22,
+      "c1EnvelopeRow": 22,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 22,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T03_E01"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 7,
+        "printedPageCandidate": 7,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "exact_count",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T03_E01_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN5-20261109",
+        "c4IndexRow": 22,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "ORIGINAL_BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_22",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T03_E02",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 23,
+      "c1EnvelopeRow": 23,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 23,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T03_E02"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 8,
+        "printedPageCandidate": 8,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "exact_count",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T03_E02_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN5-20261109",
+        "c4IndexRow": 23,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "ORIGINAL_BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_23",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T03_E03",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 24,
+      "c1EnvelopeRow": 24,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 24,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T03_E03"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 8,
+        "printedPageCandidate": 8,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "pairs",
+            "kind": "MATCHING",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "MATCHING"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T03_E03_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN5-20261109",
+        "c4IndexRow": 24,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "ORIGINAL_BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_24",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B001",
+      "sourceId": "VBT_B001_T03_E04",
+      "track": "VBT",
+      "level": "LV2",
+      "c1SourceRegistryRow": 25,
+      "c1EnvelopeRow": 25,
+      "c1OriginalBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 25,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "VBT_B001_T03_E04"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1YIWc2IJtyQQ-e5w6-Zrzwwik7-EEyqoW",
+        "pdfPageCandidate": 9,
+        "printedPageCandidate": 9,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "tile_map",
+            "kind": "MATCHING",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "E_min",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "G_min",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "H_min",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "K_min",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 5,
+        "partTypeSummary": [
+          "MATCHING",
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/VBT_B001_T03_E04_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN5-20261109",
+        "c4IndexRow": 25,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "ORIGINAL_BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_25",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B002",
+      "sourceId": "SGK_B002_H1_E01",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 26,
+      "c1EnvelopeRow": 26,
+      "c1OriginalBlobSha": "47fbe73c780d996160daba94ef3e82b30b9f13ff",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 26,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B002_H1_E01"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 12,
+        "printedPageCandidate": 11,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "a1",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "a2",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "a3",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "a4",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "a5",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b1",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b2",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b3",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b4",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b5",
+            "kind": "INTEGER",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 10,
+        "partTypeSummary": [
+          "INTEGER"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B002_H1_E01_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN5-20261109",
+        "c4IndexRow": 26,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "ORIGINAL_BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_26",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B002",
+      "sourceId": "SGK_B002_H1_E02",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 27,
+      "c1EnvelopeRow": 27,
+      "c1OriginalBlobSha": "47fbe73c780d996160daba94ef3e82b30b9f13ff",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 27,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B002_H1_E02"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 12,
+        "printedPageCandidate": 11,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "balloons",
+            "kind": "MATCHING",
+            "publicChoicesInPrivateSource": false,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 1,
+        "partTypeSummary": [
+          "MATCHING"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B002_H1_E02_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN5-20261109",
+        "c4IndexRow": 27,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "ORIGINAL_BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_27",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    },
+    {
+      "lessonId": "MATH_B002",
+      "sourceId": "SGK_B002_H1_E03",
+      "track": "SGK",
+      "level": "LV1",
+      "c1SourceRegistryRow": 28,
+      "c1EnvelopeRow": 28,
+      "c1OriginalBlobSha": "47fbe73c780d996160daba94ef3e82b30b9f13ff",
+      "c4WorkbookId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "c4PrivateRef": {
+        "tab": "C4_REAL_JSON",
+        "row": 28,
+        "identifierColumn": "A",
+        "recordColumn": "D",
+        "assertSourceId": "SGK_B002_H1_E03"
+      },
+      "c4SourcePageEvidence": {
+        "sourceFileId": "1Zfiw7VMZ_34cW1ZfaY3iuoRJLmaEuvfr",
+        "pdfPageCandidate": 12,
+        "printedPageCandidate": 11,
+        "sourcePageIndependentSigned": false
+      },
+      "devContent": {
+        "exists": true,
+        "promptReference": "PRIVATE_C4_REAL_JSON_ONLY",
+        "parts": [
+          {
+            "partId": "a",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "b",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "c",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "d",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "e",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          },
+          {
+            "partId": "g",
+            "kind": "CHOICE_SINGLE",
+            "publicChoicesInPrivateSource": true,
+            "answerMaterialRemoved": true
+          }
+        ],
+        "partsCount": 6,
+        "partTypeSummary": [
+          "CHOICE_SINGLE"
+        ],
+        "interactionEnabled": true
+      },
+      "figure": {
+        "sourceCropRef": "assets/SGK_B002_H1_E03_source.png",
+        "sceneNodeCount": 1,
+        "figureDependent": true,
+        "assetIdApproved": null,
+        "sourceCropByteVerifiedInP12": false,
+        "visualSemanticIndependentApproved": false
+      },
+      "qaInherited": {
+        "status": "C4_DEV_RENDERED",
+        "c4Checkpoint": "C4-RUN5-20261109",
+        "c4IndexRow": 28,
+        "c4OriginalScoringPolicy": null,
+        "nodeBrowserQAFromIndex": "SCORED_CHROME_DESKTOP_MOBILE",
+        "figureHistory": "ORIGINAL_BOOK_CROP_INCLUDED"
+      },
+      "score": {
+        "privateAnswerLocation": "C4_REAL_JSON_D_ROW_28",
+        "answerMaterialOnGithub": false,
+        "policyForP12": "PRIVATE_TRUSTED_ONLY_NOT_CONNECTED",
+        "trustedGASApproved": false
+      },
+      "sourceStatus": "C4_DEV_SOURCE_REFERENCE_NOT_INDEPENDENT_SGK_SIGNED",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": "NO_GO"
+    }
+  ],
+  "safeguards": [
+    "C4 source JSON contains 'expected' fields and original prompts; only QA metadata & private locators are copied to GitHub.",
+    "Private workbook must be read by trusted server using sourceId exact match; NEVER return C4 original JSON directly to browser.",
+    "C4 DEV playable and publish.eligible true in DEV do not grant production/publicVariant.",
+    "Two estimators must be NO_AUTO_GRADE despite generic scoring flag in current C4 private source.",
+    "Source crop refs are references, not proven available or license approved GitHub binaries.",
+    "C1 page and source ID parity is cross-ledger consistency, NOT independently signed PDF pixel/page QA."
+  ],
+  "rollback": {
+    "sourceV1Sha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9",
+    "sourceV2Sha": "1a550444a188697cef5ae1ce007e4c7f8b11946d",
+    "C4SheetModified": false,
+    "old27DevTestScopePreserved": true
+  }
+}
