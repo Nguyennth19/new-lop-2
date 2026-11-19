@@ -34,6 +34,10 @@ assert.equal(uni.resolve({assetId:'FLUENT:books',visualIntent:'EXACT_COUNT',coun
 assert.equal(uni.resolve({canonicalObject:'quả táo',visualIntent:'DECORATIVE'}).reason,'AMBIGUOUS_SEMANTIC_MATCH');deny++;
 const primary={assetId:'KL2_ROBOT_01_STAND',visualIntent:'DECORATIVE'};
 assert.equal(uni.resolve({...primary,fallback:{assetId:'KL2_ROBOT_02_WAVE'}}).ok,true);
+assert.equal(uni.resolve({...primary,fallback:{assetId:'KL2_BOY_HOME_01_STAND'}}).reason,'FALLBACK_CHARACTER_GROUP_MISMATCH');deny++;
+assert.equal(uni.resolve({...primary,fallback:{assetId:'KL_SH01_001'}}).reason,'FALLBACK_FAMILY_MISMATCH');deny++;
+assert.equal(uni.resolve({assetId:'FLUENT:chicken',visualIntent:'DECORATIVE',fallback:{assetId:'FLUENT:rooster'}}).reason,'FALLBACK_FLUENT_EQUIVALENCE_UNAPPROVED');deny++;
+assert.equal(uni.resolve({assetId:'KL_SH01_001',visualIntent:'DECORATIVE',fallback:{assetId:'KL_SH01_002'}}).reason,'FALLBACK_SEMANTIC_MISMATCH');deny++;
 assert.equal(uni.resolve({...primary,fallback:{assetId:'KL2_ROBOT_02_WAVE',visualIntent:'CHOICE'}}).ok,false);deny++;
 assert.equal(uni.resolve({...primary,fallback:{assetId:'KL2_ROBOT_01_STAND'}}).reason,'FALLBACK_CYCLE');deny++;
 assert.equal(uni.resolve({...primary,fallback:{assetId:'KL_UNKNOWN'}}).ok,false);deny++;
