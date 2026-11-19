@@ -1,0 +1,51 @@
+name: LOP2 Universal Learning Template V1 – Independent LAB (NO DEPLOY)
+on:
+  push:
+    branches: [lab/universal-learning-template-v1-20261119]
+    paths:
+      - 'qa/universal-template-v1/**'
+      - '.github/workflows/universal-template-lab-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lab-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build immutable be-hoc sourced LAB + two public packages
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-v1/fixture-packs.cjs
+          node --check qa/universal-template-v1/lab-runtime.js
+          node --check qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/build.cjs
+      - name: Source contracts and no-private-answer-shipping, trusted mock PASS/FAIL
+        run: |
+          node qa/universal-template-v1/contracts.test.cjs
+      - name: Enforce no application changes from frozen base
+        run: |
+          set -euo pipefail
+          test "$(git merge-base 1b69e277f8de6cb156f46a1d85af33bdad70c0ef HEAD)" = 1b69e277f8de6cb156f46a1d85af33bdad70c0ef
+          if git diff --name-only 1b69e277f8de6cb156f46a1d85af33bdad70c0ef HEAD | grep -v -E '^(qa/universal-template-v1/|\.github/workflows/universal-template-lab-v1\.yml$)'; then
+            echo "Forbidden application source delta" >&2; exit 1
+          fi
+      - name: Upload standalone LAB and A/B public JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: LOP2_UNIVERSAL_TEMPLATE_V1_LAB
+          path: qa/universal-template-v1/dist/
+          if-no-files-found: warn
+      - name: Disclose LAB-only scope
+        if: always()
+        run: |
+          echo 'TEST LAB source only: no GAS, no students, no release.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'NO official source/skill mapping or trusted authenticated grading release in this workflow.' >> "$GITHUB_STEP_SUMMARY"
