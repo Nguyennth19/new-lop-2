@@ -1,0 +1,49 @@
+name: P1.4-B Cross-Branch Canonical No-Loss QA (no deploy)
+on:
+  push:
+    branches: [integration/p1-4-b-p13-source-20261119]
+  pull_request:
+    branches: [be-hoc]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  crossbranch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing approved learner UX
+        run: |
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/be-hoc-tts-v2/tts-v2.test.cjs
+      - name: Existing visual orchestrator and data trust boundaries
+        run: |
+          node qa/be-hoc-orchestrator/orchestrator-contract.test.cjs
+          node qa/be-hoc-orchestrator/fluent-46.test.cjs
+          node qa/be-hoc-orchestrator/semantic-character-contract.test.cjs
+          node qa/be-hoc-orchestrator/structured-auto-binding.test.cjs
+          node qa/be-hoc-orchestrator/structured-source-ingestion.test.cjs
+          node qa/be-hoc-orchestrator/drive-png-master-pins.test.cjs
+      - name: P1.3 source fingerprints, resolver, TEST flag and dry-run rollback
+        run: |
+          node qa/p1-3/test_png_master_288.cjs
+          node qa/p1-3/test_p1_3_b_characters.cjs
+          node qa/p1-3/test_p1_3_b2_governance.cjs
+          node qa/p1-3/test_p1_3_b3_runtime_fallback.cjs
+          node qa/p1-3/test_p1_3_c_unified_resolver.cjs
+          node qa/p1-3/test_p1_3_c1_fluent_hardening.cjs
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs
+          node qa/p1-3/test_p1_3_c3_rollback_drill.cjs
+          node --check qa/p1-3/test_p1_3_c3_live_gas.cjs
+      - name: Compile actual GAS template for OFF/ON headless Chromium
+        run: npm install --no-save --no-package-lock playwright-core@1.57.0
+      - name: Offline Chrome desktop/mobile (NOT real GAS)
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: node qa/p1-3/test_p1_3_c2_desktop_mobile.cjs
