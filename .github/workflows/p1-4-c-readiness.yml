@@ -1,0 +1,45 @@
+name: P1.4-C Locked Source & Readiness (no LIVE claims, no deploy)
+on:
+  push:
+    branches: [audit/p1-4-c-live-gas-acceptance-20261119]
+    paths:
+      - 'qa/p1-4-c/**'
+      - '.github/workflows/p1-4-c-readiness.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-readiness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Lock exact immutable be-hoc source and deny runtime drift
+        run: node qa/p1-4-c/test_p1_4_c_pinned_source.cjs
+      - name: Existing learner UX and source integrity
+        run: |
+          node qa/be-hoc-ui/test_p1_4_ux_regression.cjs
+          node qa/p1-4/test_p1_4_b_final_source_lock.cjs
+          node qa/be-hoc-lop-a/layer-a.test.cjs
+          node qa/be-hoc-tts-v2/tts-v2.test.cjs
+      - name: Original renderer/orchestrator and fallback isolation
+        run: |
+          node qa/be-hoc-orchestrator/orchestrator-contract.test.cjs
+          node qa/be-hoc-orchestrator/structured-source-ingestion.test.cjs
+          node qa/p1-3/test_png_master_288.cjs
+          node qa/p1-3/test_p1_3_b_characters.cjs
+          node qa/p1-3/test_p1_3_c_unified_resolver.cjs
+          node qa/p1-3/test_p1_3_c1_fluent_hardening.cjs
+      - name: Simulated OFF ON OFF only — NO live deployment
+        run: |
+          node qa/p1-3/test_p1_3_c2_gas_gate.cjs
+          node qa/p1-3/test_p1_3_c3_rollback_drill.cjs
+          node --check qa/p1-3/test_p1_3_c3_live_gas.cjs
+      - name: Nonplayable B001-B024 must remain DENY
+        run: node qa/p1-2/test_layered_packages.cjs
