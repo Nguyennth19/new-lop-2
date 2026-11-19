@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - 'audit/p1-3-b-character-provenance-20261119'
+      - 'audit/p1-3-b2-character-manifest-governance-20261119'
     paths:
       - 'qa/p1-3/**'
       - '.github/workflows/p1-3-b-character-qa.yml'
@@ -26,6 +27,8 @@ jobs:
         run: node qa/p1-3/test_p1_3_b_characters.cjs
       - name: Preserve existing character semantics tests
         run: node qa/p1-3/test_characters_30.cjs
+      - name: Validate P1.3-B.2 manifest and fail-closed runtime semantic contract
+        run: node qa/p1-3/test_p1_3_b2_governance.cjs
       - name: Upload P1.3-B GitHub character SHA256 manifest
         uses: actions/upload-artifact@v4
         with:
