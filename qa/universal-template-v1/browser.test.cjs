@@ -4,22 +4,14 @@
  * no GAS, no actual student accounts. Screenshots as CI artifact.
  */
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
-const {chromium}=require('playwright'),privateServer=require('./trusted-grade-lab.cjs');
+const {chromium}=require('playwright'),{handleGradeRequest}=require('../universal-template-v12/http-grade-boundary.cjs');
 const dir=path.join(__dirname,'dist'),html=fs.readFileSync(path.join(dir,'LOP2_UNIVERSAL_TEMPLATE_V1_LAB.html'));
 const report={suite:'ULT_V1_LAB_BROWSER_NO_GAS',viewportRuns:[],samples:[],screenshots:[],
   scriptErrors:[],serverGrade:{},networkErrors:[]};
 const ctype={'/lab':'text/html; charset=utf-8','/LAB_MATH_A.json':'application/json','/LAB_MATH_B.json':'application/json'};
 const server=http.createServer((req,res)=>{
  const u=req.url.split('?')[0];
- if(req.method==='POST'&&u==='/api/lab-grade'){
-  let raw='';req.on('data',chunk=>{raw+=chunk;if(raw.length>32768)req.destroy()});
-  req.on('end',()=>{
-   let answer;try{answer=privateServer.evaluateSubmission(JSON.parse(raw))}catch(_){answer={status:'REJECTED',reason:'BAD_JSON'}}
-   res.setHeader('Content-Type','application/json');
-   res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');
-   res.end(JSON.stringify(answer));
-  });return;
- }
+ if(handleGradeRequest(req,res))return;
  if(req.method!=='GET'||!ctype[u]){res.statusCode=404;res.end('NO_PUBLIC_RESOURCE');return}
  res.setHeader('Content-Type',ctype[u]);res.setHeader('Cache-Control','no-store');
  res.end(u==='/lab'?html:fs.readFileSync(path.join(dir,u.slice(1)))); 
