@@ -35,6 +35,8 @@ for(const name of styles){
  css+='\n/* '+file+' */\n'+code;
 }
 const packA=makePack('A'),packB=makePack('B');
+// Publish only route capability flags; the private synthetic fixture rubric stays Node-only.
+const gradeCapabilities=require('../universal-template-v12/trusted-grader.cjs').capabilities();
 const ownCSS=[
 ':root{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#173354;background:#f5f8fc}',
 '*{box-sizing:border-box}body{margin:0}button,select,input{font:inherit}button{cursor:pointer}',
@@ -64,7 +66,8 @@ const ownCSS=[
 '.ml-word-card.ml-word-structured{padding:18px;border:1px solid #d5e4f7;border-radius:12px}',
 '@media(max-width:750px){.ul-app{padding:10px}.ul-main{grid-template-columns:1fr}.ul-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.ul-side{padding:12px}.ul-questions{grid-template-columns:repeat(2,minmax(0,1fr))}.ul-question{font-size:.78rem}.ul-head{padding:14px}}'
 ].join('\n');
-const boot='window.__ULTLAB_PACKS__='+JSON.stringify({A:packA,B:packB}).replace(/</g,'\\u003c')+';\n'+
+const boot='window.__ULTLAB_GRADE_CAPABILITIES__='+JSON.stringify(gradeCapabilities)+';\n'+
+ 'window.__ULTLAB_PACKS__='+JSON.stringify({A:packA,B:packB}).replace(/</g,'\\u003c')+';\n'+
  'window.__ULTLAB_TRUSTED_ENDPOINT__=location.protocol==="http:"&&location.hostname==="127.0.0.1"?"/api/lab-grade":null;';
 const htmlParts=[
 '<!doctype html><html lang="vi"><head><meta charset="utf-8">',
