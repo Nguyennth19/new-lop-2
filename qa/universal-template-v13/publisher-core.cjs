@@ -83,19 +83,23 @@ function validateRequest(r){
 function proposeDeterministic(r){
  const chk=validateRequest(r);if(!chk.ok)return chk;
  // Reproducible synthetic exercises, not official textbook content.
- const seed=Number.parseInt(hash(r.request_id).slice(0,6),16);
- const questions=[],seen=new Set(),num=chk.count;
+ const seed=Number.parseInt(hash(r.request_id).slice(0,8),16)>>>0;
+ const questions=[],num=chk.count;
+ const pool=[];
+ // Finite prevalidated pool; no retry loops, no duplicate pairs and no
+ // dependence on any LLM for arithmetic.
+ for(let a=20;a<=79;a++)for(let b=11;b<=39;b++){
+  if(a+b<=99&&a%10+b%10>=10)pool.push({a,b});
+ }
+ if(num>pool.length)return fail('INSUFFICIENT_VALID_VARIANTS');
+ let state=seed;
+ for(let j=pool.length-1;j>0;j--){
+  state=(Math.imul(state,1664525)+1013904223)>>>0;
+  const pick=state%(j+1);
+  [pool[j],pool[pick]]=[pool[pick],pool[j]];
+ }
  for(let i=0;i<num;i++){
-  let a=31+((i*7+seed)%48),b=11+((i*11+seed)%20);
-  // A last digit of zero can never generate a decimal carry, so avoid
-  // unbounded increments / infinite loops in malformed arithmetic recipes.
-  if(a%10===0)a++;
-  const requiredOnes=10-(a%10);
-  b+=(requiredOnes-(b%10)+10)%10;
-  for(let n=0;a+b>99&&n<4;n++)a-=10;
-  if(a<10||a+b>99||a%10+b%10<10)return fail('GENERATOR_ARITHMETIC_BOUNDS');
-  const key=[a,b].join(':');if(seen.has(key))return fail('DUPLICATE_VARIANT');
-  seen.add(key);
+  const {a,b}=pool[i];
   questions.push({
    lessonId:r.lesson_id,
    questionId:r.request_id+'_Q'+String(i+1).padStart(3,'0'),
