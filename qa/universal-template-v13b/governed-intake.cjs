@@ -135,6 +135,9 @@ function emit(result=processReceipt()){
   fs.writeFileSync(path.join(reportDir,item.requestId+'_PUBLISH_PLAN_TEST_ONLY.json'),
    JSON.stringify(item.plan,null,2)+'\n');
  }
+ for(const item of result.candidates){
+  console.log('ULT_V13B_CANDIDATE_SHA256',item.requestId,item.qa.digest);
+ }
  const proof={
   schema:'LOP2_ULT_V13B_CANDIDATE_INTAKE_RECEIPT',
   capturedDate:'2026-11-20',sourceSpreadsheetId:result.sourceSpreadsheetId,
