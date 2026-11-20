@@ -1,0 +1,81 @@
+name: ULT V1.3-B – Governed Sheet TEST Intake (NO DEPLOY)
+on:
+  push:
+    branches: [lab/universal-learning-template-v13b-sheet-test-20261120]
+    paths:
+      - 'qa/universal-template-v13b/**'
+      - '.github/workflows/universal-template-v13b-sheet-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ult-v13b-sheet-test-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  governed-intake:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static boundary checks and exact source receipt validation
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-v13b/governed-intake.cjs
+          node --check qa/universal-template-v13b/governed-intake.test.cjs
+          node qa/universal-template-v13b/governed-intake.cjs
+          node qa/universal-template-v13b/governed-intake.test.cjs
+      - name: Original V1.3 publisher and accepted renderer contracts (NO CODE EDITS)
+        run: |
+          set -euo pipefail
+          node qa/universal-template-v13/dry-run.cjs
+          node qa/universal-template-v13/publisher.test.cjs
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+          node qa/universal-template-v12/trusted-grader.test.cjs
+      - name: Prepare isolated browser test
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Browser regression of 12 original routes
+        run: node qa/universal-template-v1/browser.test.cjs
+      - name: Browser intake from captured native Google Sheet 20 x 2 D2 on mobile and desktop
+        run: |
+          node --check qa/universal-template-v13b/sheet-candidate-browser.test.cjs
+          node qa/universal-template-v13b/sheet-candidate-browser.test.cjs
+      - name: Enforce TEST-only file scope and immutable application
+        run: |
+          set -euo pipefail
+          baseline=7af2dd4d98f9e39989a13b8f9144d3f472df37b2
+          test "$(git merge-base "$baseline" HEAD)" = "$baseline"
+          git diff --name-only "$baseline" HEAD
+          if git diff --name-only "$baseline" HEAD | grep -v -E '^(qa/universal-template-v13b/|\.github/workflows/universal-template-v13b-sheet-test\.yml$)'; then
+            echo 'FAIL: changes outside governed TEST scope' >&2
+            exit 1
+          fi
+      - name: Upload only read-only snapshot / staged candidate QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ULT_V13B_GOVERNED_SHEET_TEST_INTAKE_EVIDENCE
+          path: |
+            qa/universal-template-v13b/dist/
+            qa/universal-template-v13b/SHEET_TEST_READ_RECEIPT_20261120.json
+          if-no-files-found: warn
+      - name: Explicit external sync and production disclaimer
+        if: always()
+        run: |
+          echo 'TEST Sheet was read through a connected tool and captured; GitHub CI does not poll live Google Sheets.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No production Google Sheet, GAS, real student, private grading, or manifest ACTIVE is touched.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'All candidates are synthetic. Owner sign-off, source lesson and architectural review gates remain pending.' >> "$GITHUB_STEP_SUMMARY"
