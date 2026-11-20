@@ -1,0 +1,122 @@
+{
+  "contract": "LOP2_ULT_V13B_GOVERNED_SHEET_TEST_READ_RECEIPT_V1",
+  "mode": "CAPTURED_LIVE_CONNECTOR_READ_ONLY_NO_AUTOMATED_POLLING",
+  "capturedDate": "2026-11-20",
+  "source": {
+    "spreadsheetId": "1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs",
+    "sourceUrl": "https://docs.google.com/spreadsheets/d/1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs/edit",
+    "tab": "11_YeuCau_Data",
+    "range": "A1:M3",
+    "valueRenderOption": "FORMULA"
+  },
+  "catalogSource": {
+    "tab": "10_DanhMuc_Bai",
+    "range": "A1:H4"
+  },
+  "tabNames": [
+    "10_DanhMuc_Bai",
+    "11_YeuCau_Data",
+    "12_KetQua_Validator",
+    "13_PheDuyet",
+    "14_PhienBan_JSON",
+    "15_NhatKy_HanhDong",
+    "16_Rollback"
+  ],
+  "readOnly": true,
+  "ownerApprovalGranted": false,
+  "realLessonsEligible": false,
+  "controls": [
+    [
+      "request_id",
+      "lesson_id",
+      "level",
+      "renderer_id",
+      "skill_id",
+      "question_count",
+      "generator_mode",
+      "generator_rule",
+      "visual_intent",
+      "count_unit",
+      "source_status",
+      "requested_by_ref",
+      "request_status"
+    ],
+    [
+      "LAB_PILOT_A",
+      "LAB_MATH_PILOT_A",
+      "LV2",
+      "D2",
+      "COLUMN_ADD",
+      "20",
+      "DETERMINISTIC",
+      "D2_PV100_ADD_WITH_CARRY_V1",
+      "DECORATIVE",
+      "",
+      "SYNTHETIC_QA_ONLY",
+      "QA_TEST_OPERATOR",
+      "REQUESTED"
+    ],
+    [
+      "LAB_PILOT_B",
+      "LAB_MATH_PILOT_B",
+      "LV2",
+      "D2",
+      "COLUMN_ADD",
+      "20",
+      "DETERMINISTIC",
+      "D2_PV100_ADD_WITH_CARRY_V1",
+      "DECORATIVE",
+      "",
+      "SYNTHETIC_QA_ONLY",
+      "QA_TEST_OPERATOR",
+      "REQUESTED"
+    ]
+  ],
+  "catalog": [
+    [
+      "lesson_id",
+      "subject",
+      "grade",
+      "lesson_title",
+      "source_ref",
+      "source_status",
+      "owner_policy_version",
+      "release_eligible"
+    ],
+    [
+      "LAB_MATH_PILOT_A",
+      "MATH",
+      "2",
+      "Toán 2 – QA synthetic A",
+      "ULT_V13B_TEST_FIXTURE",
+      "SYNTHETIC_QA_ONLY",
+      "LAB_POLICY_V1",
+      "FALSE"
+    ],
+    [
+      "LAB_MATH_PILOT_B",
+      "MATH",
+      "2",
+      "Toán 2 – QA synthetic B",
+      "ULT_V13B_TEST_FIXTURE",
+      "SYNTHETIC_QA_ONLY",
+      "LAB_POLICY_V1",
+      "FALSE"
+    ],
+    [
+      "MATH_B020",
+      "MATH",
+      "2",
+      "Bài 20 – Chỉ thử cổng nguồn",
+      "P1.2_STRUCTURAL_CANDIDATE",
+      "STRUCTURED_SOURCE_AND_TEMPLATE_INDEX_NOT_STUDENT_PLAYABLE",
+      "E04_PENDING",
+      "FALSE"
+    ]
+  ],
+  "unsafeFieldsNotRead": [
+    "04_Cau_hoi.answer",
+    "04_Cau_hoi.solution_prompt"
+  ],
+  "sourceNote": "Snapshot from connector live range read. Continuous Google Sheets sync not yet enabled; re-capture and compare revision/digest before future runs."
+}
