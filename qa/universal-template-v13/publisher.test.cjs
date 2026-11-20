@@ -51,6 +51,8 @@ for(const r of [a,b]){
  eq(plan.planSha256.length,64);
  const altered=structuredClone(first.pack);altered.questions[0].publicVariant.answerKey=1;
  eq(x.validateBatch(r,altered).reason,'BAD_PUBLIC_PACK_SCHEMA_OR_PRIVATE_DATA');
+ const added=structuredClone(first.pack);added.questions[0].publicVariant.ownerApproval='FAKE';
+ eq(x.validateBatch(r,added).reason,'PUBLIC_MATH_POLICY_FAIL');
  const changed=structuredClone(first.pack);changed.questions[0].rendererId='D10';
  eq(x.validateBatch(r,changed).reason,'QUESTION_POLICY_MISMATCH');
  const bad=structuredClone(first.pack);bad.questions[0].skillId='WORD_PROBLEM';
@@ -73,7 +75,7 @@ const bc=x.proposeDeterministic(b020);
 eq(bc.ok,true);
 const v=x.validateBatch(b020,bc.pack);eq(v.ok,true);
 const bg=x.makePlan(b020,v,{lessonId:'MATH_B020',revision:'REV0001',activePointer:'NONE'});
-eq(bg.reviewGate.state,'BLOCKED_SOURCE');eq(bg.proposed.publicJsonUri.startsWith('staging://'),true);
+eq(bg.reviewGate.state,'BLOCKED_SOURCE');eq(bg.proposed,null,'real B20 must not even receive a stage URI');
 eq(bg.allowedToWriteActual,false);eq(bg.activePointerAfter,'NONE');
 eq(x.evaluateGate(b020,v,[{signature:'FAKE_OWNER'}]).studentReleaseAllowed,false);
 const ai={requestId:'LAB_PILOT_A',state:'AI_CANDIDATE_ONLY',questions:inputA.questions};
