@@ -39,10 +39,10 @@ assert.notDeepEqual(pa.questions.map(q=>q.publicVariant),pb.questions.map(q=>q.p
  'A/B must be materially different public data');
 const d2=pa.questions.find(x=>x.rendererId==='D2'),d4=pa.questions.find(x=>x.rendererId==='D4');
 function grade(packId,questionId,submission){return server.evaluateSubmission({packId,questionId,submission})}
-assert.equal(grade(pa.packId,d2.questionId,{result_ones:'3',result_tens:'5'}).pass,true);
-assert.equal(grade(pa.packId,d2.questionId,{result_ones:'4',result_tens:'5'}).pass,false);
-assert.equal(grade(pa.packId,d4.questionId,{selectedOptionIds:['opt2']}).pass,true);
-assert.equal(grade(pa.packId,d4.questionId,{selectedOptionIds:['opt1']}).pass,false);
+assert.equal(grade(pa.packId,d2.questionId,{variantId:d2.publicVariant.variantId,result_ones:'3',result_tens:'5'}).pass,true);
+assert.equal(grade(pa.packId,d2.questionId,{variantId:d2.publicVariant.variantId,result_ones:'4',result_tens:'5'}).pass,false);
+assert.equal(grade(pa.packId,d4.questionId,{questionId:d4.publicVariant.questionId,selectedOptionIds:['opt2']}).pass,true);
+assert.equal(grade(pa.packId,d4.questionId,{questionId:d4.publicVariant.questionId,selectedOptionIds:['opt1']}).pass,false);
 assert.equal(grade(pa.packId,pa.questions.find(x=>x.rendererId==='D5').questionId,{}).status,'NOT_AUTHORIZED');
 assert.equal(grade('MATH_LAB_C',d2.questionId,{}).status,'REJECTED');
 const contents=fs.readFileSync(path.join(__dirname,'dist/LOP2_UNIVERSAL_TEMPLATE_V1_LAB.html'),'utf8');
