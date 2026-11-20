@@ -87,8 +87,13 @@ function proposeDeterministic(r){
  const questions=[],seen=new Set(),num=chk.count;
  for(let i=0;i<num;i++){
   let a=31+((i*7+seed)%48),b=11+((i*11+seed)%20);
-  while((a%10+b%10)<10)b++;
-  if(a+b>99)a-=10;
+  // A last digit of zero can never generate a decimal carry, so avoid
+  // unbounded increments / infinite loops in malformed arithmetic recipes.
+  if(a%10===0)a++;
+  const requiredOnes=10-(a%10);
+  b+=(requiredOnes-(b%10)+10)%10;
+  for(let n=0;a+b>99&&n<4;n++)a-=10;
+  if(a<10||a+b>99||a%10+b%10<10)return fail('GENERATOR_ARITHMETIC_BOUNDS');
   const key=[a,b].join(':');if(seen.has(key))return fail('DUPLICATE_VARIANT');
   seen.add(key);
   questions.push({
