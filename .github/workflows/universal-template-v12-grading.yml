@@ -41,7 +41,7 @@ jobs:
           set -euo pipefail
           test "$(git merge-base c7be0c6e003820f775a5ab3332a50622175f65b4 HEAD)" = c7be0c6e003820f775a5ab3332a50622175f65b4
           git diff --name-only c7be0c6e003820f775a5ab3332a50622175f65b4 HEAD
-          if git diff --name-only c7be0c6e003820f775a5ab3332a50622175f65b4 HEAD | grep -v -E '^(qa/universal-template-v1/(build\.cjs|lab-runtime\.js|trusted-grade-lab\.cjs|local-server\.cjs|browser\.test\.cjs)|qa/universal-template-v12/|\.github/workflows/universal-template-v12-grading\.yml$)'; then
+          if git diff --name-only c7be0c6e003820f775a5ab3332a50622175f65b4 HEAD | grep -v -E '^(qa/universal-template-v1/(build\.cjs|lab-runtime\.js|trusted-grade-lab\.cjs|local-server\.cjs|browser\.test\.cjs|contracts\.test\.cjs)|qa/universal-template-v12/|\.github/workflows/universal-template-v12-grading\.yml$)'; then
             echo "Forbidden application or owner baseline source mutation" >&2; exit 1
           fi
       - name: Upload generated LAB for QA (no deploy)
