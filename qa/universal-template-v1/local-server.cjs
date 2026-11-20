@@ -1,7 +1,7 @@
 'use strict';
-/** Local-only LAB preview/server. Test grading D2/D4 ONLY. NOT GAS/PROD. */
+/** Local-only LAB preview/server. Synthetic grading for approved LAB routes ONLY. NOT GAS/PROD. */
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
-const {evaluateSubmission}=require('./trusted-grade-lab.cjs');
+const {handleGradeRequest}=require('../universal-template-v12/http-grade-boundary.cjs');
 const dist=path.resolve(__dirname,'dist');
 const names=Object.freeze({
  '/':'LOP2_UNIVERSAL_TEMPLATE_V1_LAB.html',
@@ -14,15 +14,7 @@ if(!Number.isInteger(port)||port<1024||port>65535)throw Error('PORT_BAD');
 const srv=http.createServer((req,res)=>{
  res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');
  res.setHeader('Content-Security-Policy',"default-src 'none'; img-src data: https://raw.githubusercontent.com; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self';");
- if(req.url==='/api/lab-grade'&&req.method==='POST'){
-  let text='';req.on('data',d=>{text+=d;if(text.length>32000)req.destroy()});
-  req.on('end',()=>{
-   let result;try{result=evaluateSubmission(JSON.parse(text))}
-   catch(e){result={status:'REJECTED',reason:'INVALID_JSON'}}
-   res.setHeader('Content-Type','application/json; charset=utf-8');
-   res.end(JSON.stringify(result));
-  });return;
- }
+ if(handleGradeRequest(req,res))return;
  const file=names[req.url];
  if(!file||req.method!=='GET'){res.statusCode=404;res.end('NOT_FOUND');return}
  const p=path.join(dist,file);
@@ -32,5 +24,5 @@ const srv=http.createServer((req,res)=>{
 });
 srv.listen(port,'127.0.0.1',()=>{
  console.log('ULT LAB ONLY http://127.0.0.1:'+port+'/lab');
- console.log('No student data, no GAS, no cloud deploy. D2/D4 synthetic grade only.');
+ console.log('No student data, no GAS, no cloud deploy. Seven synthetic grader routes; five routes explicitly NO_GRANT.');
 });
