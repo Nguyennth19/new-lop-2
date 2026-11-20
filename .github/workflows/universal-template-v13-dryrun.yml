@@ -36,6 +36,21 @@ jobs:
           node qa/universal-template-v1/build.cjs
           node qa/universal-template-v1/contracts.test.cjs
           node qa/universal-template-v12/trusted-grader.test.cjs
+      - name: Prepare system Chromium for offline data-swap QA
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Retest unchanged renderer LAB V1 with original 12 routes
+        run: node qa/universal-template-v1/browser.test.cjs
+      - name: Verify user-imported JSON A/B and 80 real D2 inputs on mobile/desktop
+        run: |
+          node --check qa/universal-template-v13/publisher-browser.test.cjs
+          node qa/universal-template-v13/publisher-browser.test.cjs
       - name: Reject any change to user-accepted LAB or current app
         run: |
           set -euo pipefail
