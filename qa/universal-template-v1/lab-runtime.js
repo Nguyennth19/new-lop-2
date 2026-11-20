@@ -44,7 +44,7 @@
   grade:doc.getElementById('ulGrade'),level:doc.getElementById('ulLevel')
  };
  let pack=null,question=null,controller=null,activeSnapshot=null;
- let memory=Object.create(null),outputVersion=0;
+ let memory=Object.create(null),outputVersion=0,packTrusted=false;
  const errors=[];
  function deepPublic(value,depth=0){
   if(depth>15)return false;
@@ -159,7 +159,7 @@
   ui.list.querySelectorAll('[data-question]').forEach(b=>b.classList.toggle('active',b.dataset.question===id));
   status('LAB / '+pack.packId+' / '+q.level+' · renderer '+q.rendererId+
    ' · KHÔNG phát hành và không chấm phía trình duyệt');
-  const hasLabGradeGrant=q.rendererId==='D2'||q.rendererId==='D4';
+  const hasLabGradeGrant=packTrusted&&global.__ULTLAB_GRADE_CAPABILITIES__?.[q.rendererId]?.enabled===true;
   ui.grade.disabled=global.location.protocol==='file:'||!global.__ULTLAB_TRUSTED_ENDPOINT__||!hasLabGradeGrant;
   ui.grade.title=!hasLabGradeGrant?'Dạng này chưa có hợp đồng chấm LAB qua máy chủ':
     ui.grade.disabled?'Chưa nối máy chủ chấm thử riêng của LAB':'Gửi bản nháp tới trusted LAB server';
@@ -177,7 +177,8 @@
  }
  function setData(data){
   const check=validate(data);if(!check.ok){status('JSON bị từ chối: '+check.reason,'error');return check;}
-  destroy();pack=JSON.parse(JSON.stringify(data));question=null;
+  destroy();packTrusted=(data===global.__ULTLAB_PACKS__?.A||data===global.__ULTLAB_PACKS__?.B);
+  pack=JSON.parse(JSON.stringify(data));question=null;
   memory=Object.create(null);outputVersion++;
   ui.current.textContent='0/'+pack.questions.length+' câu đã thao tác (không phải điểm)';
   ui.level.value='ALL';drawList();
@@ -187,7 +188,9 @@
   return r.ok?{ok:true,packId:pack.packId,count:check.count,version:outputVersion}:r;
  }
  async function grade(){
-  if(!question||!global.__ULTLAB_TRUSTED_ENDPOINT__||global.location.protocol==='file:')
+  if(!packTrusted||!question||global.__ULTLAB_GRADE_CAPABILITIES__?.[question.rendererId]?.enabled!==true)
+   return {status:'NOT_AUTHORIZED',reason:'PACK_OR_ROUTE_NOT_APPROVED_FOR_LAB_GRADING'};
+  if(!global.__ULTLAB_TRUSTED_ENDPOINT__||global.location.protocol==='file:')
    return {ok:false,reason:'TRUSTED_SERVER_UNAVAILABLE'};
   if(!global.__ULTLAB_TRUSTED_ENDPOINT__.startsWith('/api/lab-grade'))
    return {ok:false,reason:'UNTRUSTED_GRADE_ENDPOINT'};
@@ -199,7 +202,8 @@
   if(!response.ok)return {ok:false,reason:'TRUSTED_SERVER_REJECTED'};
   const data=await response.json();
   status(data.status==='CHECKED'?'Kết quả kiểm tra máy chủ LAB: '+(data.pass?'Đạt':'Chưa đạt'):
-   'Máy chủ không chấm dạng bài này: '+(data.reason||'CHƯA CẤP QUYỀN'),'note');
+   data.status==='INCOMPLETE'?'Chưa hoàn thành tất cả ô cần trả lời.':
+   'Máy chủ LAB không chấm: '+(data.reason||'CHƯA CẤP QUYỀN'),'note');
   // No score/stars/progress persistence and no answer key in response.
   return data;
  }
@@ -224,7 +228,7 @@
   question?.publicVariant?.prompt||ui.title.textContent));
  global.ULTLAB=Object.freeze({VERSION,ROUTES,validate,setData,openQuestion,grade,
   getState:()=>({packId:pack?.packId||null,questionId:question?.questionId||null,
-   rendererId:question?.rendererId||null,stageChildren:ui.stage.children.length,
+   rendererId:question?.rendererId||null,trustedData:packTrusted,stageChildren:ui.stage.children.length,
    errors:[...errors],changeCount:Object.keys(memory).length}),
   getDraft:()=>activeSnapshot?JSON.parse(JSON.stringify(activeSnapshot)):null
  });
