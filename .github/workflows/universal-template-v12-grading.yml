@@ -36,6 +36,22 @@ jobs:
         run: |
           set -euo pipefail
           node qa/universal-template-v12/trusted-grader.test.cjs
+      - name: Prepare isolated Chrome browser
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Retest owner-approved LAB all 12 renderer routes and previous grading
+        run: node qa/universal-template-v1/browser.test.cjs
+      - name: V1.2 end-to-end seven scorer routes and hardened HTTP denial cases
+        run: |
+          node --check qa/universal-template-v12/browser-grading.test.cjs
+          node qa/universal-template-v12/browser-grading.test.cjs
       - name: Protect owner-approved LAB and original learning application
         run: |
           set -euo pipefail
