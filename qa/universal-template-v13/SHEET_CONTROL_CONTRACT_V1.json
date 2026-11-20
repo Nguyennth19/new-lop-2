@@ -1,0 +1,250 @@
+{
+  "contract": "LOP2_ULT_V13_SHEET_CONTROL_V1",
+  "mode": "DRY_RUN_NO_SHEET_WRITES",
+  "generatedFor": "Sheet-to-JSON publisher interface, not a created Google Sheet",
+  "sourceReadOnly": {
+    "spreadsheetId": "1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8",
+    "observedTabs": {
+      "01_Bai_hoc": [
+        "lesson_id",
+        "subject",
+        "grade",
+        "series",
+        "title",
+        "levels",
+        "source",
+        "chapter_id",
+        "chapter_title",
+        "volume",
+        "start_page",
+        "content_version",
+        "qa_status",
+        "asset_version",
+        "published_at",
+        "lesson_number",
+        "toc_source"
+      ],
+      "02_Cap_do": [
+        "level_id",
+        "lesson_id",
+        "level",
+        "name",
+        "source_role",
+        "section_count",
+        "question_count",
+        "plan_version",
+        "plan_status",
+        "session_count_target",
+        "questions_per_session",
+        "target_questions",
+        "minutes_per_session",
+        "core_skill_ids_draft",
+        "completion_rule_id",
+        "progression_rule",
+        "source_policy",
+        "qa_gate",
+        "implementation_notes"
+      ],
+      "03_Nhom_bai": [
+        "section_id",
+        "level_id",
+        "name",
+        "question_type",
+        "question_count"
+      ],
+      "04_Cau_hoi": [
+        "question_id",
+        "lesson_id",
+        "level",
+        "section_id",
+        "order",
+        "label",
+        "type",
+        "prompt",
+        "n1",
+        "op",
+        "n2",
+        "answer",
+        "unit",
+        "group",
+        "theme",
+        "summary",
+        "solution_prompt",
+        "tts",
+        "svg",
+        "puzzle_json",
+        "metadata_json"
+      ],
+      "05_Cau_hinh": [
+        "setting",
+        "value",
+        "description"
+      ],
+      "06_Ky_nang_B20": [
+        "skill_id",
+        "skill_name",
+        "skill_role",
+        "suggested_level",
+        "content_focus",
+        "learning_outcome",
+        "question_types",
+        "assessment_criteria_draft",
+        "source_evidence",
+        "prerequisites",
+        "qa_status",
+        "lesson_id",
+        "version"
+      ],
+      "06_Anh_xa_Cau_hoi": [
+        "question_id",
+        "lesson_id",
+        "original_level",
+        "section_id",
+        "question_type",
+        "prompt_preview",
+        "primary_skill_id",
+        "suggested_level",
+        "review_flag",
+        "mapping_reason",
+        "qa_status",
+        "mapping_version",
+        "source_row"
+      ],
+      "G24_Cong_Kiem_Dinh": [
+        "phase",
+        "gate_id",
+        "check_name",
+        "acceptance",
+        "status",
+        "finding",
+        "evidence",
+        "next_action"
+      ]
+    },
+    "warning": "The 04_Cau_hoi answer and solution columns are private-infrastructure candidates; NEVER export them into a public lesson JSON. Existing workbook is read-only during V1.3."
+  },
+  "proposedTabs": {
+    "10_DanhMuc_Bai": [
+      "lesson_id",
+      "subject",
+      "grade",
+      "lesson_title",
+      "source_ref",
+      "source_status",
+      "owner_policy_version",
+      "release_eligible"
+    ],
+    "11_YeuCau_Data": [
+      "request_id",
+      "lesson_id",
+      "level",
+      "renderer_id",
+      "skill_id",
+      "question_count",
+      "generator_mode",
+      "generator_rule",
+      "visual_intent",
+      "count_unit",
+      "source_status",
+      "requested_by_ref",
+      "request_status"
+    ],
+    "12_KetQua_Validator": [
+      "batch_id",
+      "validator_version",
+      "public_sha256",
+      "math_status",
+      "schema_status",
+      "skill_status",
+      "asset_status",
+      "source_status",
+      "technical_reviewer_ref",
+      "evidence_ref",
+      "qa_decision"
+    ],
+    "13_PheDuyet": [
+      "batch_id",
+      "approval_type",
+      "decision",
+      "approver_ref",
+      "signed_evidence_ref",
+      "scope_digest",
+      "approved_at",
+      "signature_verification"
+    ],
+    "14_PhienBan_JSON": [
+      "batch_id",
+      "lesson_id",
+      "content_version",
+      "public_sha256",
+      "staging_uri",
+      "manifest_candidate_uri",
+      "state",
+      "previous_release_id",
+      "owner_release_ref"
+    ],
+    "15_NhatKy_HanhDong": [
+      "event_id",
+      "batch_id",
+      "actor_ref",
+      "action",
+      "previous_state",
+      "next_state",
+      "evidence_sha256",
+      "occurred_at"
+    ],
+    "16_Rollback": [
+      "lesson_id",
+      "from_release_id",
+      "target_release_id",
+      "reason",
+      "owner_signed_ref",
+      "qa_signed_ref",
+      "plan_sha256"
+    ]
+  },
+  "roles": {
+    "AI_DATA_BUILDER": [
+      "PROPOSE_CANDIDATE_ONLY"
+    ],
+    "DATA_VALIDATOR": [
+      "VALIDATE_TECHNICAL_ONLY"
+    ],
+    "PEDAGOGICAL_REVIEWER": [
+      "INDEPENDENT_REVIEW"
+    ],
+    "OWNER": [
+      "APPROVE_SCOPED_RELEASE"
+    ],
+    "PUBLISHER_SERVICE": [
+      "APPLY_APPROVED_CAS_MANIFEST_ONLY"
+    ]
+  },
+  "states": [
+    "DRAFT",
+    "CANDIDATE",
+    "VALIDATED_TECHNICAL",
+    "PENDING_PEDAGOGICAL_REVIEW",
+    "PENDING_OWNER_APPROVAL",
+    "APPROVED_FOR_STAGING",
+    "STAGED",
+    "ACTIVE",
+    "REJECTED",
+    "ROLLED_BACK"
+  ],
+  "rules": {
+    "default": "PENDING_OWNER_APPROVAL, NEVER ACTIVE",
+    "sheetWrites": false,
+    "googleDriveWrites": false,
+    "githubWrites": false,
+    "gasWrites": false,
+    "ownerApprovalMustBeExternalVerified": true,
+    "aiSelfApprovalProhibited": true,
+    "privateKeyInPublicDataProhibited": true,
+    "newRendererRequiresNewContract": true,
+    "liveB020CandidateSourceStatus": "STRUCTURED_SOURCE_AND_TEMPLATE_INDEX_NOT_STUDENT_PLAYABLE",
+    "liveB020Eligible": false,
+    "manifestCompareAndSwapRequired": true,
+    "rollbackCompareAndSwapRequired": true
+  }
+}
