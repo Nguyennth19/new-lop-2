@@ -1,0 +1,237 @@
+{
+  "contract": "ULT_V13_RENDERER_AND_GENERATOR_READINESS_MATRIX",
+  "publicationMode": "NO_GO",
+  "ownerApprovedStudentLessons": 0,
+  "reference": "ULT V1.2 / G7.4 source and policy registry",
+  "routes": [
+    {
+      "rendererId": "D1",
+      "skillId": "NUMBER_BOND",
+      "questionType": "bond",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "NO_GRANT",
+      "producerStatus": "TEMPLATE_TESTED_GENERATOR_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D2",
+      "skillId": "COLUMN_ADD",
+      "questionType": "vertical",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "LAB_CHECKED",
+      "producerStatus": "DETERMINISTIC_PV100_ADD_CARRY_DRY_RUN_PASS",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D3",
+      "skillId": "MATCH_PAIRS",
+      "questionType": "matching",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "LAB_CHECKED",
+      "producerStatus": "TEMPLATE_TESTED_GENERATOR_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D4",
+      "skillId": "SELECT_CHOICE",
+      "questionType": "choice",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "LAB_CHECKED",
+      "producerStatus": "AI_ASSISTED_CANDIDATE_ONLY",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D5",
+      "skillId": "SHAPE_TANGRAM",
+      "questionType": "geometry",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "NO_GRANT",
+      "producerStatus": "E04_PEDAGOGY_ORACLE_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D6",
+      "skillId": "ORDER_NUMBERS",
+      "questionType": "ordering",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "LAB_CHECKED",
+      "producerStatus": "TEMPLATE_TESTED_GENERATOR_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D7",
+      "skillId": "COMPARE_NUMBER",
+      "questionType": "comparison",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "LAB_CHECKED",
+      "producerStatus": "DETERMINISTIC_GENERATOR_DESIGN_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D8",
+      "skillId": "MEASURE_RULER",
+      "questionType": "measurement",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "LAB_CHECKED",
+      "producerStatus": "MEASUREMENT_POLICY_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D8A",
+      "skillId": "LITER_CAPACITY",
+      "questionType": "capacity",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "NO_GRANT",
+      "producerStatus": "SIMULATION_NOT_ASSIGNED_GRADE",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D8B",
+      "skillId": "MASS_BALANCE",
+      "questionType": "mass",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "NO_GRANT",
+      "producerStatus": "SIMULATION_NOT_ASSIGNED_GRADE",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D9",
+      "skillId": "PICTOGRAPH",
+      "questionType": "pictograph",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "LAB_CHECKED",
+      "producerStatus": "E04_SOURCE_SKILL_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    },
+    {
+      "rendererId": "D10",
+      "skillId": "WORD_PROBLEM",
+      "questionType": "word_problem",
+      "labRendererQA": "V1.2_CHROMIUM_SOURCE_PASS",
+      "labGrade": "NO_GRANT",
+      "producerStatus": "TRUSTED_G6_COMPOSITE_SCORING_PENDING",
+      "allowedToReleaseToStudents": false,
+      "safeInput": "PUBLIC_VARIANT_ONLY",
+      "privateGradeKey": "SERVER_SIDE_ONLY",
+      "promotionRequires": [
+        "SCHEMA_QA",
+        "MATH_QA",
+        "SOURCE_SKILL_MATCH",
+        "PEDAGOGY_REVIEW",
+        "EXTERNAL_OWNER_APPROVAL",
+        "AUTHENTICATED_TRUSTED_GRADE_IF_ASSESSED"
+      ]
+    }
+  ],
+  "next": "Do not clone D2 semantics into other routes. Add an independently scoped generator and validator for each form, anchored to existing renderer source."
+}
