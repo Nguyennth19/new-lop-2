@@ -1,0 +1,60 @@
+name: ULT V1.3 – Sheet-Driven JSON Publisher DRY RUN (NO DEPLOY)
+on:
+  push:
+    branches: [lab/universal-learning-template-v13-publisher-20261120]
+    paths:
+      - 'qa/universal-template-v13/**'
+      - '.github/workflows/universal-template-v13-dryrun.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ult-v13-dryrun-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  publisher:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check source files and build Sheet-to-JSON staged dry-run output
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-v13/publisher-core.cjs
+          node --check qa/universal-template-v13/dry-run.cjs
+          node --check qa/universal-template-v13/publisher.test.cjs
+          node qa/universal-template-v13/dry-run.cjs
+          node qa/universal-template-v13/publisher.test.cjs
+      - name: Verify original universal LAB can compile byte-identical renderers
+        run: |
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+          node qa/universal-template-v12/trusted-grader.test.cjs
+      - name: Reject any change to user-accepted LAB or current app
+        run: |
+          set -euo pipefail
+          test "$(git merge-base e74a3505c71b579e662b07991132ccfda3fe6e2e HEAD)" = e74a3505c71b579e662b07991132ccfda3fe6e2e
+          git diff --name-only e74a3505c71b579e662b07991132ccfda3fe6e2e HEAD
+          if git diff --name-only e74a3505c71b579e662b07991132ccfda3fe6e2e HEAD | grep -v -E '^(qa/universal-template-v13/|\.github/workflows/universal-template-v13-dryrun\.yml$)'; then
+            echo 'Forbidden owner-approved source or application edit' >&2
+            exit 1
+          fi
+      - name: Upload only generated DRY-RUN package and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ULT_V13_SHEET_TO_JSON_DRY_RUN_ONLY
+          path: qa/universal-template-v13/dist/
+          if-no-files-found: warn
+      - name: Clarify No-Go boundaries
+        if: always()
+        run: |
+          echo 'This CI does not access or edit Google Sheets, Drive, GAS or a public release manifest.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'MATH_B020 source candidate is blocked even if deterministic math is structurally valid.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'AI is a proposer; only externally verified owner + independent QA may authorize production publishing.' >> "$GITHUB_STEP_SUMMARY"
