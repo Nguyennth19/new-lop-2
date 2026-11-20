@@ -1,0 +1,58 @@
+name: ULT V1.2 – Independent Trusted Grading Contract QA (NO DEPLOY)
+on:
+  push:
+    branches: [lab/universal-learning-template-v12-grading-20261120]
+    paths:
+      - 'qa/universal-template-v1/*.cjs'
+      - 'qa/universal-template-v1/*.js'
+      - 'qa/universal-template-v12/**'
+      - '.github/workflows/universal-template-v12-grading.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ult-v12-qa-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Strict original be-hoc source locks and public LAB A/B build
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-v12/trusted-grader.cjs
+          node --check qa/universal-template-v12/http-grade-boundary.cjs
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+      - name: Server-only policy grants + correct, wrong, incomplete, forged and missing inputs
+        run: |
+          set -euo pipefail
+          node qa/universal-template-v12/trusted-grader.test.cjs
+      - name: Protect owner-approved LAB and original learning application
+        run: |
+          set -euo pipefail
+          test "$(git merge-base c7be0c6e003820f775a5ab3332a50622175f65b4 HEAD)" = c7be0c6e003820f775a5ab3332a50622175f65b4
+          git diff --name-only c7be0c6e003820f775a5ab3332a50622175f65b4 HEAD
+          if git diff --name-only c7be0c6e003820f775a5ab3332a50622175f65b4 HEAD | grep -v -E '^(qa/universal-template-v1/(build\.cjs|lab-runtime\.js|trusted-grade-lab\.cjs|local-server\.cjs|browser\.test\.cjs)|qa/universal-template-v12/|\.github/workflows/universal-template-v12-grading\.yml$)'; then
+            echo "Forbidden application or owner baseline source mutation" >&2; exit 1
+          fi
+      - name: Upload generated LAB for QA (no deploy)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ULT_V12_TRUSTED_LAB_TEST_ONLY
+          path: qa/universal-template-v1/dist/
+          if-no-files-found: warn
+      - name: Explain scope
+        if: always()
+        run: |
+          echo 'Trusted grading means server-side synthetic checks for LAB QA only; source bank is visible, not secret.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No real student authentication, no GAS, no Google Sheets write, no official SGK scoring approval.' >> "$GITHUB_STEP_SUMMARY"
