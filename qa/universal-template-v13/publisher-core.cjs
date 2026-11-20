@@ -105,7 +105,7 @@ function proposeDeterministic(r){
    questionId:r.request_id+'_Q'+String(i+1).padStart(3,'0'),
    rendererId:'D2',skillId:'COLUMN_ADD',questionType:'vertical',
    level:r.level,visualIntent:'DECORATIVE',countUnit:null,assetId:null,
-   publicVariant:{variantId:r.request_id+'_V'+String(i+1).padStart(3,'0'),
+   publicVariant:{variantId:'COL_'+r.request_id+'_V'+String(i+1).padStart(3,'0'),
     profile:'PV100',operation:'ADD',level:r.level,a,b,carryPolicy:'OPTIONAL_HINT',assetId:null}
   });
  }
