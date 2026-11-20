@@ -125,8 +125,15 @@ function acceptAICandidateEnvelope(envelope){
   envelope.approvalState||envelope.manifestUri)return fail('AI_CANNOT_APPROVE');
  return {ok:true,stage:'PROPOSE_ONLY',candidates:envelope.questions.length,approved:false};
 }
+function exactKeys(object,keys){
+ return object&&typeof object==='object'&&!Array.isArray(object)&&
+  Object.keys(object).sort().join('|')===keys.slice().sort().join('|');
+}
 function validatePublicPack(pack,{maxQuestions=50}={}){
- if(!pack||!secureTree(pack)||pack.schemaVersion!=='LOP2_UNIVERSAL_LAB_PUBLIC_V1'||
+ if(!pack||!secureTree(pack)||
+  !exactKeys(pack,['schemaVersion','packId','status','lesson','questions'])||
+  !exactKeys(pack.lesson,['id','subject','title','grade','studentRelease','sourceStatus'])||
+  pack.schemaVersion!=='LOP2_UNIVERSAL_LAB_PUBLIC_V1'||
   !REQUEST_ID.test(pack.packId||'')||pack.status!=='LAB_FIXTURE_ONLY_NO_GAS_RELEASE'||
   !pack.lesson||!ID.test(pack.lesson.id||'')||pack.lesson.studentRelease!==false||
   pack.lesson.subject!=='MATH'||pack.lesson.grade!==2||
@@ -134,14 +141,19 @@ function validatePublicPack(pack,{maxQuestions=50}={}){
   pack.questions.length>maxQuestions)return fail('BAD_PUBLIC_PACK_SCHEMA_OR_PRIVATE_DATA');
  const seen=new Set(),core=loadOriginalD2();let withCarry=0;
  for(const q of pack.questions){
-  if(!q||q.lessonId!==pack.lesson.id||!REQUEST_ID.test(q.questionId||'')||
+  if(!q||
+    !exactKeys(q,['lessonId','questionId','rendererId','skillId','questionType',
+      'level','visualIntent','countUnit','assetId','publicVariant'])||
+    q.lessonId!==pack.lesson.id||!REQUEST_ID.test(q.questionId||'')||
     seen.has(q.questionId)||q.rendererId!=='D2'||q.skillId!=='COLUMN_ADD'||
     q.questionType!=='vertical'||!levels.has(q.level)||
     q.visualIntent!=='DECORATIVE'||q.assetId!==null||q.countUnit!==null)
    return fail('QUESTION_POLICY_MISMATCH');
   seen.add(q.questionId);
   const p=q.publicVariant;
-  if(!p||p.profile!=='PV100'||p.operation!=='ADD'||
+  if(!p||
+   !exactKeys(p,['variantId','profile','operation','level','a','b','carryPolicy','assetId'])||
+   p.profile!=='PV100'||p.operation!=='ADD'||
    p.level!==q.level||p.carryPolicy!=='OPTIONAL_HINT'||p.assetId!==null||
    !Number.isInteger(p.a)||!Number.isInteger(p.b)||
    p.a<0||p.b<0||p.a+p.b>99||p.a+p.b<0)return fail('PUBLIC_MATH_POLICY_FAIL');
@@ -207,7 +219,8 @@ function makePlan(request,validation,observed,signatures=[]){
   sourceStatus:request.source_status,validation:validation?.ok?'PASS':'FAIL',
   validationDigest:dig,reviewGate:gate,
   observedManifest:{revision:observed.revision,activePointer:observed.activePointer},
-  proposed:paths,allowedToWriteActual:false,studentReleaseAllowed:false,
+  proposed:gate.labStagingAllowed?paths:null,
+  allowedToWriteActual:false,studentReleaseAllowed:false,
   candidateState:gate.labStagingAllowed?'STAGED_QA_ONLY':gate.state,
   activePointerAfter:observed.activePointer,writeOperations:0,
   rollbackPlan:{mode:'PLAN_ONLY',requiresOwnerAndQA:true,rollbackTarget:observed.activePointer,
