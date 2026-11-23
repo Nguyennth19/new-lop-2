@@ -1,0 +1,71 @@
+name: ULT N4-C.3-B isolated device LAB package and risk probes (NO DEPLOY)
+on:
+  push:
+    branches: ['lab/ult-n4c3b-controlled-device-acceptance-20261123']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  device-lab-package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source freeze, controlled baseline and static LAB build
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-n4-prep/n4c3b-device-risk-probes.cjs
+          node qa/universal-template-v1/build.cjs
+          test -s qa/universal-template-v1/dist/LOP2_UNIVERSAL_TEMPLATE_V1_LAB.html
+          test "$(git merge-base f6acdbba1e96f8d70110a1512a88d648286fe7dd HEAD)" = "f6acdbba1e96f8d70110a1512a88d648286fe7dd"
+      - name: Install Chrome browser QA tools
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Observational D1 scroll and technical labels / D10 operator probes
+        run: node qa/universal-template-n4-prep/n4c3b-device-risk-probes.cjs
+      - name: Assemble immutable synthetic-only HTML for private LAN physical phones
+        run: |
+          set -euo pipefail
+          OUT=qa/universal-template-n4-prep/dist/N4C3B_DEVICE_PACKAGE
+          cp qa/universal-template-v1/dist/LOP2_UNIVERSAL_TEMPLATE_V1_LAB.html "$OUT/index.html"
+          cp qa/universal-template-n4-prep/N4C3B_DEVICE_HANDOFF.md "$OUT/README_DEVICE_HANDOFF.md"
+          printf '%s\n' "$(git rev-parse HEAD)" > "$OUT/SOURCE_SHA.txt"
+          cp qa/universal-template-v1/dist/SOURCE_PROVENANCE.json "$OUT/PROVENANCE_RENDERERS.json"
+          (
+            cd "$OUT"
+            sha256sum index.html README_DEVICE_HANDOFF.md SOURCE_SHA.txt PROVENANCE_RENDERERS.json N4C3B_TARGETED_RISK_LEDGER.json > SHA256SUMS.txt
+            test "$(wc -l < SHA256SUMS.txt)" -eq 5
+          )
+      - name: Strict modified-files-only QA scope
+        if: always()
+        run: |
+          set -euo pipefail
+          BASE=f6acdbba1e96f8d70110a1512a88d648286fe7dd
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/n4c3b-.*|qa/universal-template-n4-prep/N4C3B_DEVICE_HANDOFF.md|\.github/workflows/ult-n4c3b-controlled-device-lab.yml)$'; then
+            echo 'SOURCE_SCOPE_BREACH' >&2; exit 1
+          fi
+      - name: Archive reviewable device artifact (NO AUTOMATIC HOSTING)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N4C3B_PINNED_PRIVATE_LAN_DEVICE_LAB_AND_RISK_EVIDENCE
+          path: qa/universal-template-n4-prep/dist/N4C3B_DEVICE_PACKAGE/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Explicit no-go
+        if: always()
+        run: |
+          echo 'Chrome observation is NOT an actual Android/iPhone physical QA.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Private LAN operator setup only; no GitHub Pages, GAS, Sheet, PR merge, or production deploy.' >> "$GITHUB_STEP_SUMMARY"
