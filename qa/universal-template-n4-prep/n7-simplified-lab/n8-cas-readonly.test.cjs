@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),cryp
 const dir=__dirname;
 const source=['N7_GAS_TEST_SingleWriter.gs','N8_CAS_ReadOnly.gs'].map(n=>fs.readFileSync(path.join(dir,n),'utf8')).join('\n');
 const context={};
-vm.runInNewContext(source+'\n;globalThis.api={read:n8ReadSnapshot_,compare:n8CompareSnapshots_};',context);
+vm.runInNewContext(source+'\n;globalThis.api={read:n8ReadSnapshot_,compare:n8CompareSnapshots_,drill:n8ControlledDrill_,retry:n8ClassifyRetry_};',context);
 const api=context.api;
 const header=['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'];
 const id='1zA7ab0tpcgn68BJd8bizNR8LfuFG57yzsm1YM-SEF9I';
@@ -76,4 +76,52 @@ test('N8 rejects invalid baseline/failed snapshot comparison',()=>{
 test('N8 rejects blank event IDs',()=>{
  const f=fixture();f.cells[2][0]='';
  assert.equal(api.read(f.deps,cfg()).reason,'BLANK_EVENT_ID');
+});
+
+test('N8 live snapshot recognizes N7 same-event replay without a write',()=>{
+ const f=fixture(),r=api.drill(f.deps,cfg());
+ assert.equal(r.ok,true);assert.equal(r.mode,'READ_ONLY_AND_RAM_SIMULATION');
+ assert.equal(r.idempotentReplay,true);assert.equal(r.writes,0);
+ assert.equal(r.observedEventCount,1);assert.equal(f.cells.length,4);
+});
+test('N8 fake second payload is refused without altering live Sheet',()=>{
+ const f=fixture(),r=api.drill(f.deps,cfg());
+ assert.equal(r.alteredPayloadDenied,true);assert.equal(r.simulatedEditDriftDetected,true);
+ assert.equal(r.liveSnapshotUnchanged,true);
+ assert.equal(f.cells[3][5],'PROJECTED_PENDING');
+ assert.equal(f.cells[3][6],rows()[3][6]);
+});
+test('N8 pre-N7 baseline is stale with three live event rows',()=>{
+ const f=fixture(),r=api.drill(f.deps,cfg());
+ assert.equal(r.stalePreN7BaselineDenied,true);
+ assert.equal(r.dataRows,3);assert.equal(r.atomicCasProven,false);
+});
+test('N8 drill fails closed without ever reading if grant or write is active',()=>{
+ const f=fixture();
+ assert.equal(api.drill(f.deps,{...cfg(),writesEnabled:true}).reason,'READ_ONLY_GUARD');
+ assert.equal(api.drill(f.deps,{...cfg(),approvedGrantId:'GRANT_X'}).reason,'READ_ONLY_GUARD');
+ assert.equal(f.state.openCount,0);
+});
+test('N8 replay detector refuses altered payload, missing key, duplicate IDs',()=>{
+ const f=fixture(),v=f.cells.slice(1);
+ assert.equal(api.retry(v,'N7_LAB_N7_KEY_001',rows()[3][6]).idempotent,true);
+ assert.equal(api.retry(v,'N7_LAB_N7_KEY_001','f'.repeat(64)).reason,'IDEMPOTENCY_CONFLICT');
+ assert.equal(api.retry(v,'N7_NO_SUCH_EVENT',rows()[3][6]).reason,'UNKNOWN_EVENT_NO_WRITE');
+ assert.equal(api.retry([...v,[...v[2]]],'N7_LAB_N7_KEY_001',rows()[3][6]).reason,'DUPLICATE_EVENT_IDS');
+});
+test('N8 live drill refuses drift introduced between snapshot and retry read',()=>{
+ const f=fixture();let calls=0;
+ const original=f.deps.spreadsheetApp.openById;
+ f.deps.spreadsheetApp.openById=id=>{
+  calls++;
+  if(calls===2)f.cells[3][5]='OUTSIDE_EDIT_DURING_DRILL';
+  return original(id);
+ };
+ assert.equal(api.drill(f.deps,cfg()).reason,'JOURNAL_DRIFT_RECONCILE_REQUIRED');
+});
+test('N8 dry run refuses missing existing event and does not append',()=>{
+ const f=fixture();f.cells[3][0]='N7_DIFFERENT_KEY';
+ const res=api.drill(f.deps,cfg());
+ assert.equal(res.reason,'UNKNOWN_EVENT_NO_WRITE');
+ assert.equal(f.cells.length,4);
 });
