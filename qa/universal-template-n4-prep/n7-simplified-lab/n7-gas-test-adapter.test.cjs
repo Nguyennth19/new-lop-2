@@ -105,7 +105,7 @@ test('N7 journal rows check rejects stale parallel input',()=>{
  const e=runtime(),s={...settings(),writesEnabled:true};
  call(intent(),e,s);
  const other={...intent(),requestId:'LAB_REQ_002',idempotencyKey:'LAB_KEY_002',executionId:'LAB_EXEC_002'};
- assert.equal(call(other,e,{...s,approvedIntentDigest:digestOf(other)}).reason,'STALE_JOURNAL_READ');
+ assert.equal(call(other,e,{...s,approvedIntentDigest:digestOf(other)}).reason,'N8_SNAPSHOT_CONFLICT_RECONCILE_REQUIRED');
  assert.equal(e.cells.length,2);
 });
 test('N7 lock contention and header drift deny without write',()=>{
