@@ -1,11 +1,13 @@
-<!-- Google Drive canonical edited Doc: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit -->
-<!-- Source base commit: 1ad172bae5b15a5e83012fe2538e3082fff0347c -->
+# N4-C.7 Drive canonical source snapshot
+
+> Google Doc: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+> Source Docs revision: AHj4eMQmjK6bCcZmNtSJzlYm5-63knOFRo0GmCYGs5yh9B-530rwBUETQiEs2M1Dkdu9q5yK32Pl_5hyomfIlTkfjAvxeat-Id1u6xAfGA
+> NON-AUTHORITATIVE read-only mirror; human signatures must be recorded by their own authenticated accounts on Drive/GitHub.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
 TRẠNG THÁI TỔNG: LAB TECHNICAL PASS IN SCOPED CI; N0-S HUMAN ACK OPEN; W1-05 FINAL OPEN; NO MERGE, NO GAS, NO RELEASE.
 Quy tắc: Không đồng nhất TECH_PASS / OWNER_CHAT_ACCEPTED / HUMAN_QA_SIGNED / CLOSED / RELEASE_APPROVED. Chỉ thay trạng thái khi có bằng chứng kèm người, tài khoản, thời điểm, commit và scope.
-
 00. NƠI LƯU TRỮ — SINGLE SOURCE OF TRUTH
 Kho di sản tài nguyên: https://drive.google.com/drive/folders/16uf-v_CVwm0R9RdY3OLv7WnhqFeBSAe8
 Cây quản trị master-be-hoc: https://drive.google.com/drive/folders/1Ezox_EkVV7PHdZNQbW9VlIKYh2Es17Rh
@@ -15,14 +17,12 @@ Sổ ký nhận duy nhất (KHÔNG tạo bản sao để ký): https://docs.goog
 Chính sách D1/D10 cần duyệt: https://docs.google.com/document/d/1eauNbzFV_niR5G3bylb1CIDiSktrZRYt2cZXVBTP4vo/edit
 Phản biện ngoài N4-C.6: https://docs.google.com/document/d/1yTEOBpIndT-88LRgrS4mHpbbNhHREu4xXRXHND73SYQ/edit
 Biên bản N4-C.5: https://docs.google.com/document/d/1INKboI8U_3obKISo_wTnOz8lLTECVSE_MFTu9lzmlxY/edit
-
 01. KHÓA NGUỒN / PHẠM VI
 be-hoc frozen@1b69e277f8de6cb156f46a1d85af33bdad70c0ef; R1/R2@fe15c79b21b9f056694f8127330934d997affd45; V1.3-B@af02456fcc2b3be856091edc899c699890d74da0.
 N0-S ruleset 27874759 VERIFIED ACTIVE, PR mandatory, review count 0 (KHÔNG phải human approval).
 N0-S checksum raw 10495 bytes / SHA256 d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b; human A3/A4 identity+time PENDING.
 N0-S evidence folder: https://drive.google.com/drive/folders/11UtNJJClteMxoAAYXM6Gc0LX1Jwmo63q
 GitHub Issue #15: https://github.com/Nguyennth19/new-lop-2/issues/15
-
 02. CI VÀ NHẬT KÝ DỰ ÁN — G7.4/G7.6 → N0/N1/N4
 Kho lịch sử G7.x tại LOP 2, chưa coi toàn bộ tiền sử có manifest kiểm toán 100% ở phiên này.
 N1 / W1-01..03: PR #14, head 3bd6224d3d99644c0d303fc493612a8fddafdd91; CI 45108466189 SUCCESS ở phạm vi N1. RTM closure PENDING.
@@ -40,7 +40,6 @@ N4-C.5 Gate decision: https://docs.google.com/document/d/1INKboI8U_3obKISo_wTnOz
 N4-C.6 human intake: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
 N4-C.6 policy: https://docs.google.com/document/d/1eauNbzFV_niR5G3bylb1CIDiSktrZRYt2cZXVBTP4vo/edit
 N4-C.7 single index / per-row RTM gate reconciliation: see GitHub draft PR #21 and Drive sibling folder above.
-
 03. DEPENDENCY PR MAP (ALL DRAFT/UNMERGED @ 2026-11-23)
 PR #14 R1/R2 → N1
 PR #16 N1 → N0S/N4 QA prep
@@ -50,7 +49,6 @@ PR #19 N4-B → N4-C.3
 PR #20 N4-C.3 → N4-C.3-B
 N4-C.7 documentation branch extends #20; no runtime changes permitted. Do not retarget/rebase/squash or merge simply to simplify counts.
 Single reviewer signature and N0-S receipt still PENDING; human QA distinct from repo admin.
-
 04. QUYẾT ĐỊNH, OPEN ITEMS, ROLLBACK
 BLOCKED: N0S-A3/A4 independent checksum receipt; independent QA identity/signature; phone device OS/browser/scope trace; D1 learner-facing internal labels (t1_split1 / TEST), D10 ASCII minus vs U+2212 trusted-grading contract; separate RTM closure W1-01..05 and DB-01..05.
 D1 long scroll accepted in Owner positive LAB UX scope but watchlist; D2 PNG hash mismatch with exact RGBA parity is technical note, not release blocker.
@@ -58,3 +56,9 @@ D1 proposal: semantic presentation adapter plus DOM/accessibility learner valida
 D10 proposal: '+' → ADD, '-' and '−' → SUB in explicit allowlist; server independent validation, answer key protected; do not implement until approved and tested.
 Rollback for LAB-only: stop private LAN server/remove unpacked bundle; source rollback to frozen SHA. Never modify be-hoc/main/GAS/Sheet.
 Status at N4-C.7: CONDITIONAL_GO_EVIDENCE_INTAKE_ONLY / NO_GO_W1_05_FINAL_MERGE_PRODUCTION.
+N4-C.7 — DUAL ARCHIVE CHECKPOINT / 23-11-2026
+Draft PR #21: https://github.com/Nguyennth19/new-lop-2/pull/21
+GitHub immutable governance branch: https://github.com/Nguyennth19/new-lop-2/tree/lab/ult-n4c7-governance-evidence-index-20261123/qa/universal-template-n4-prep/governance
+Master QA Index (Drive canonical): https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Checkpoint (Drive canonical): https://docs.google.com/document/d/1hmEmyZLoW64wwGM0anHUiEHb6XQI2khLVzAcf3knDy0/edit
+Không tự nhận đã có chữ ký/human QA. W1-05, N0-S và learner release tiếp tục NO-GO.
