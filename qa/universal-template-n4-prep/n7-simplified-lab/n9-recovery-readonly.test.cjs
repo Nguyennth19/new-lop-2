@@ -22,13 +22,13 @@ const expectedLiveSha='b2c3b85fcf882fb5f8d84f4da89f8eb889fe8fdefce1757900eb48be8
 assert.ok(source.includes(expectedLiveSha));
 source=source.replace(expectedLiveSha,localDigest); // VM-specific fixture, never modify GAS source file
 const ctx={};
-vm.runInNewContext(source+'\n;globalThis.N9={drill:n9RecoveryDrill_,uncertain:n9ClassifyUncertain_,rollback:n9RollbackDecision_,assess:n9AssessRecovery_,restore:n9SimulateNonDestructiveRestore_,controlled:n9ControlledRestoreDrill_};',ctx);
+vm.runInNewContext(source+'\n;globalThis.N9={drill:n9RecoveryDrill_,uncertain:n9ClassifyUncertain_,rollback:n9RollbackDecision_,assess:n9AssessRecovery_,restore:n9SimulateNonDestructiveRestore_,controlled:n9ControlledRestoreDrill_,finalGate:n9FinalClosureGate_};',ctx);
 const api=ctx.N9;
 const settings=()=>({writesEnabled:false,approvedGrantId:'',approvedIntentDigest:'',approvedJournalSnapshotDigest:'',
  isolatedSpreadsheetId:id,forbiddenSheetIds:['GOVERNED_SHEET','LEARNER_SHEET'],journalTab:'15_NhatKy_HanhDong'});
 function fixture(){
  const live=liveRows(),backup=live.slice(0,3).map(r=>r.slice());
- const state={reads:0,opens:0,writes:0,restore:0,changedDuringRead:false};
+ const state={reads:0,opens:0,writes:0,restore:0,changedDuringRead:false,rollbackRows:0,corruptRollbackHeader:false};
  const tab=rows=>({getLastRow:()=>rows.length,getRange:()=>({getDisplayValues:()=>{
   state.reads++;
   const result=rows.map(r=>r.slice());
@@ -37,7 +37,16 @@ function fixture(){
  }})});
  const deps={spreadsheetApp:{openById:target=>{
   state.opens++;assert.ok(target===id||target===backupId);
-  return{getSheetByName:name=>name==='15_NhatKy_HanhDong'?tab(target===id?live:backup):null};
+  return{getSheetByName:name=>{
+   if(name==='15_NhatKy_HanhDong')return tab(target===id?live:backup);
+   if(name==='16_Rollback'&&target===id)return {
+    getLastRow:()=>1+state.rollbackRows,
+    getRange:()=>({getDisplayValues:()=>[state.corruptRollbackHeader?
+      ['broken','from_release_id','target_release_id','reason','owner_signed_ref','qa_signed_ref','plan_sha256']:
+      ['lesson_id','from_release_id','target_release_id','reason','owner_signed_ref','qa_signed_ref','plan_sha256']]})
+   };
+   return null;
+  }};
  }},utilities:{DigestAlgorithm:{SHA_256:'SHA_256'},
  computeDigest:(_,s)=>[...crypto.createHash('sha256').update(s).digest()].map(x=>x>127?x-256:x)}};
  return {live,backup,state,deps};
@@ -160,4 +169,28 @@ test('N9 rollback remains plan-only even with simulated approvals',()=>{
 test('N9 refuses different actor in accepted event even if event ID/SHA unchanged',()=>{
  const f=fixture();f.live[3][2]='DIFFERENT';
  assert.equal(api.controlled(f.deps,settings(),backupId).reason,'N9_LIVE_SNAPSHOT_DRIFT_RECONCILE_REQUIRED');
+});
+
+test('N9 final closure gate explicitly BLOCKS no-real-restore/no-independent-QA',()=>{
+ const f=fixture(),v=api.finalGate(f.deps,settings(),backupId);
+ assert.equal(v.ok,true);assert.equal(v.mode,'N9_FINAL_GATE_READ_ONLY');
+ assert.equal(v.rollbackRegisterRows,0);assert.equal(v.rollbackEvidencePresent,false);
+ assert.equal(v.recoveryReadOnlyAccepted,true);assert.equal(v.ramReplayAccepted,true);
+ assert.equal(v.independentQAVerified,false);assert.equal(v.realRestoreExecuted,false);
+ assert.equal(v.readyToCloseN9,false);assert.equal(v.writes,0);assert.equal(v.restores,0);
+});
+test('N9 typed rollback register row never authenticates human QA',()=>{
+ const f=fixture();f.state.rollbackRows=1;
+ const v=api.finalGate(f.deps,settings(),backupId);
+ assert.equal(v.ok,true);assert.equal(v.rollbackEvidencePresent,true);
+ assert.equal(v.independentQAVerified,false);assert.equal(v.readyToCloseN9,false);
+});
+test('N9 final gate rejects rollback register schema drift',()=>{
+ const f=fixture();f.state.corruptRollbackHeader=true;
+ assert.equal(api.finalGate(f.deps,settings(),backupId).reason,'ROLLBACK_REGISTER_HEADER_DRIFT');
+});
+test('N9 final gate rejects write authority and never opens the workbook',()=>{
+ const f=fixture(),s={...settings(),writesEnabled:true};
+ assert.equal(api.finalGate(f.deps,s,backupId).reason,'READ_ONLY_GUARD');
+ assert.equal(f.state.opens,0);
 });
