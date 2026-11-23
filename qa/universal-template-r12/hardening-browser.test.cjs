@@ -144,7 +144,12 @@ async function testModePack(page,viewport){
  const variants=[
   ['books',p=>{p.questions.find(q=>q.questionId==='R2_C_D9_COUNT_ASSET').publicVariant.rows[0].assetId='FLUENT:books'},'D9_ASSET_POLICY_FLUENT_UNIT_NOT_APPROVED'],
   ['wrongUnit',p=>{p.questions.find(q=>q.questionId==='R2_C_D9_COUNT_ASSET').countUnit='con'},'D9_ASSET_POLICY_FLUENT_UNIT_NOT_APPROVED'],
-  ['wrongSymbolValue',p=>{p.questions.find(q=>q.questionId==='R2_C_D9_COUNT_ASSET').publicVariant.rows[0].symbolValue=2},'D9_EXACT_SYMBOL_UNIT_REQUIRED']
+  ['wrongSymbolValue',p=>{p.questions.find(q=>q.questionId==='R2_C_D9_COUNT_ASSET').publicVariant.rows[0].symbolValue=2},'D9_EXACT_SYMBOL_UNIT_REQUIRED'],
+  ['choiceUnsafeBooks',p=>{
+    const q=p.questions.find(q=>q.rendererId==='D4');
+    q.visualIntent='EXACT_COUNT';q.countUnit='quyển';q.exactQuantity=1;
+    q.publicVariant.options[0].content={type:'ASSET',assetId:'FLUENT:books',alt:'Chồng sách'};
+   },'NESTED_ASSET_POLICY_FLUENT_UNIT_NOT_APPROVED']
  ];
  for(const [name,mutate,reason] of variants){
   const p=clone(base);mutate(p);
@@ -153,6 +158,19 @@ async function testModePack(page,viewport){
   assert.equal(await page.evaluate(()=>window.ULTLAB.getState().packId),'LAB_R2_C');
   report.checks.push({viewport,kind:'SEMANTIC_NEGATIVE',name,reason,pass:true});
  }
+ const choice=clone(base);
+ const pick=choice.questions.find(q=>q.rendererId==='D4');
+ pick.visualIntent='CHOICE';
+ pick.publicVariant.options[0].content={type:'ASSET',assetId:'FLUENT:red_apple',alt:'Quả táo'};
+ const allowed=await page.evaluate(d=>window.ULTLAB.setData(d),choice);
+ assert.equal(allowed.ok,true,'choice/asset role must be allowed for a non-counted illustration');
+ await choose(page,'R2_C_D4');
+ const image=page.locator(scope('.g74-choice-asset')).first();
+ assert.equal(await image.count(),1,'D4 choice image should be rendered after semantic preflight');
+ assert.equal(await page.locator('#ulGrade').isDisabled(),true);
+ report.checks.push({viewport,kind:'D4_CHOICE_ASSET_POSITIVE',pass:true});
+ // Restore original C so later tests cannot inherit altered semantics.
+ await page.evaluate(d=>window.ULTLAB.setData(d),base);
  const r=await page.evaluate(()=>window.ULTLAB.grade());
  assert.equal(r.status,'NOT_AUTHORIZED','untrusted C must never borrow A/B grade grant');
 }
