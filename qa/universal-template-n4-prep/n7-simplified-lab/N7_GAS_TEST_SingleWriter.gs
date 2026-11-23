@@ -83,6 +83,7 @@ function n7TestExecute_(intent,deps,settings) {
   if (!/^[a-f0-9]{64}$/.test(settings.approvedIntentDigest||'')||
       settings.approvedIntentDigest!==digest||
       !Number.isFinite(expiry)||!Number.isFinite(now)||now>=expiry||
+      expiry-now>15*60*1000||
       !Number.isSafeInteger(settings.approvedBaselineRows)||
       settings.approvedBaselineRows<0||
       intent.expectedJournalRows!==settings.approvedBaselineRows) {
