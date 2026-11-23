@@ -1,10 +1,9 @@
-# N4-FINAL-B final acceptance and controlled N5 handover
+# N4 Final B — read-only mirrored Google Drive evidence
 
-Drive canonical document: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
-Revision: AHj4eMT968fDxOmrjnSeAHrQzIH0PGCkEFQI7I_IPwF0O8tQ7Oi6fkXb0JPsL_ikYHu8OlXfFCaLRoHjvGlq9QfkpkzeA8YPXcl0oIiwXg
-GitHub Draft PR #25: https://github.com/Nguyennth19/new-lop-2/pull/25
-Status: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING / CONDITIONAL_N5_LAB_ONLY / RELEASE_NO_GO
-**AI summary; no human signature.**
+Canonical Drive: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
+Source Drive revision: AHj4eMR7mFEEJIQdaKG1qyL2nxQzbdiuVrR1DXysMgpyakb6IDwijjezn4X4ltLsRG2pbQgxrTXzwAb4o8Hgx_99zhrFbaLFEFXZ2UBgWQ
+Status: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_ONLY; NO_RELEASE.
+Third party review is advisory AI verification, not human signoff. No identity-bound approvals are mirrored.
 
 N4-FINAL-B — FINAL ACCEPTANCE DECISION & CONTROLLED N5 HANDOVER
 Dự án Lớp 2 – Universal Learning Template V1 | LAB-only
@@ -76,3 +75,11 @@ Draft PR #25: https://github.com/Nguyennth19/new-lop-2/pull/25
 GitHub Markdown: https://github.com/Nguyennth19/new-lop-2/blob/lab/ult-n4-final-b-n5-handover-20261123/qa/universal-template-n4-prep/governance/N4_FINAL_B_ACCEPTANCE_N5_HANDOVER_20261123.md
 Master QA Index: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
 Status khóa: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_PREPARATION_GO; N4_CLOSED_NOT_GRANTED; RELEASE_NO_GO.
+10. PHẢN BIỆN BÊN THỨ BA VÀ KẾT LUẬN KIỂM SOÁT SAU N4-FINAL-B — 23/11/2026
+Nguồn đối soát: https://docs.google.com/document/d/1Y7BKPNpjkAT-1pNty8qUoNH9Ubyskn2W9uapzYWf3LY/edit
+Phân loại: AI_INDEPENDENT_VERIFICATION_ONLY, không phải chữ ký QA độc lập. Chấp nhận kiến nghị phiên ký nhận tập trung trước khi mở rộng N5, nhưng không biến khuyến nghị ngắn hạn thành cam kết rằng QA độc lập đủ sức ký toàn chuỗi PR trong một phiên.
+Đã xác minh nguồn có quyền anyone:reader, còn Sổ ký nhận N4-C.6 Restricted. Chuyển quyền nguồn sang Restricted cần quyết định của Owner; không tự sửa quyền.
+Điểm cần cập nhật: Master QA Index phải nêu đủ PR #14,#16..#25, HEAD, CI thử nghiệm ban đầu và CI trên HEAD (PR #23: 45130344244 → 45130767674; PR #24: 45131772681 → 45132282477). Đã lập phụ lục chính xác trong Master QA Index, không sửa các đoạn lịch sử trước đó để tránh xóa truy vết.
+Hợp đồng tương lai cần quy định blank D1: "" tương đương trường vắng (undefined) trong ngữ nghĩa chưa trả lời; tuyệt đối khác số 0 hoặc "0". Chỉ là kiến nghị giao diện trusted-server, chưa có phê duyệt/implementation.
+Thứ tự khuyến nghị: (1) Owner tự xác nhận thiết bị và phê duyệt có phạm vi D1 A+B/D10 allowlist; (2) người nhận RTM xác thực độc lập A3/A4 + thời điểm, phân công QA có thẩm quyền; (3) QA review W1-01..05 trên SHA và tài liệu một lần; (4) chuẩn bị N5 scope/manifest trên LAB. Không tăng danh sách PR hoặc bắt đầu code tích hợp N5 khi chưa đủ người kiểm soát.
+Tình trạng không đổi: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_PREPARATION_CONDITIONAL_GO; N4_CLOSED/RELEASE_NO_GO.
