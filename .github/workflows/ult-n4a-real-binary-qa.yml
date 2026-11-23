@@ -39,7 +39,7 @@ jobs:
         run: |
           BASE=3c86cc57ca354f2771340f68438eae84d1896e22
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
-          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/.*|\.github/workflows/ult-n4a-real-binary-qa\.yml)$'; then
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/.*|\.github/workflows/ult-n4a-(real-binary-qa|live-origin-smoke)\.yml)$'; then
             echo 'FORBIDDEN SOURCE OR BASELINE CHANGE' >&2; exit 1
           fi
       - name: Preserve N4-A real binary outputs
