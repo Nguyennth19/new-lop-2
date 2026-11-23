@@ -1,0 +1,57 @@
+name: ULT N4-A REAL local WebP/SVG browser QA (NO RELEASE)
+on:
+  push:
+    branches:
+      - 'lab/ult-n4a-real-binary-qa-20261123'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-binary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Immutable 36 original sources and LAB build
+        run: |
+          node qa/universal-template-v1/build.cjs
+          node --check qa/universal-template-n4-prep/n4a-binary-browser.test.cjs
+          node qa/universal-template-n4-prep/n4-preflight.cjs
+      - name: Install browser runner
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: W1-04 real SVG/WebP local HTTP binary Chromium desktop and mobile
+        run: node qa/universal-template-n4-prep/n4a-binary-browser.test.cjs
+      - name: Strict scope allowlist (N0-S/N4 only)
+        if: always()
+        run: |
+          BASE=3c86cc57ca354f2771340f68438eae84d1896e22
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/.*|\.github/workflows/ult-n4a-(real-binary-qa|live-origin-smoke)\.yml)$'; then
+            echo 'FORBIDDEN SOURCE OR BASELINE CHANGE' >&2; exit 1
+          fi
+      - name: Preserve N4-A real binary outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N4A_REAL_BINARY_LOCAL_ONLY_LIVE_ORIGIN_NOT_ATTESTED
+          path: qa/universal-template-n4-prep/dist/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Explicit release boundary
+        if: always()
+        run: |
+          echo 'Local real binary Chromium tests are NOT external CDN smoke, human device signoff, N0-S human ACK, or W1-05 visual parity.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'NO MERGE; NO GAS; NO SHEET; NO REAL STUDENT RELEASE.' >> "$GITHUB_STEP_SUMMARY"
