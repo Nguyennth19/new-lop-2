@@ -1,0 +1,21 @@
+name: N6 Synthetic DB Contract LAB (no external writes)
+on:
+  push:
+    branches:
+      - lab/ult-n4-final-b-n5-handover-20261123
+    paths:
+      - 'qa/universal-template-n4-prep/n6-synthetic-lab/**'
+      - '.github/workflows/n6-synthetic-db-contract-lab.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-db-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify synthetic-only DB-T01..15 harness
+        run: node --test qa/universal-template-n4-prep/n6-synthetic-lab/n6-failure-contract.test.cjs

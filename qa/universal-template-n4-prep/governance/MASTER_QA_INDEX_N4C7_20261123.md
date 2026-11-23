@@ -1,8 +1,10 @@
-# Master QA Index — Drive Canonical Snapshot
+# Master QA Index – Drive canonical governance snapshot
 
-Drive https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Revision AHj4eMR-MxjRpwgU_8pXUQ5msDhsbWBAEi7MBubMWwI2uVMYg4fSrS2d9DFEgKYKwTGsxoRJ0uZ6DP97J4Zkv8GLLbRl_nFTjPBMIHzqVw
-Read-only mirrored history. Later appendices supersede earlier states; no human signoff claimed.
+Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Revision: AHj4eMSpInArN5BpkutIKWXqLLIvqKt9umLmfZsI3bUhZPPKfzHNQK8tLcVXvP22nwBqeYWjyxcND7H65aAbZ_UL4c2WkntYwuoDyOdzAg
+Source frozen N4 Final-A: 08942daadf92027903cf2d1eeecf7293e27f68bc
+Status: N4_GOVERNANCE_BASELINE_LOCKED_WITH_ACCESS_EXCEPTIONS, N5_STARTED_SCOPE_AND_EVIDENCE_INTAKE_ONLY, HUMAN_QA_PENDING, RELEASE_NO_GO.
+This mirror is read-only. No GitHub reviewer or independent Owner signature inferred.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -97,3 +99,58 @@ CI: https://github.com/Nguyennth19/new-lop-2/actions/runs/45131772681
 Evidence ZIP: https://drive.google.com/file/d/1FjZuZwpJE5MwItuQZpUKwbeh23rP9ixt/view
 Drive checkpoint: https://drive.google.com/drive/folders/1YrLny7mAGYg5FAscrmPWxBaKElog1yTE
 FINAL-A = TECHNICAL_CONSOLIDATED / FINAL-B HUMAN_GATE_RECHECK_NEXT / NO MERGE, GAS, SHEET WRITE, RELEASE.
+N4-FINAL-B — FINAL ACCEPTANCE AND CONTROLLED N5 HANDOVER (23/11/2026)
+N4 condition after verifying PRs #14/#16/#17..#24 all DRAFT/UNMERGED and green CI: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N4 NOT CLOSED. GO only for N5 isolated LAB scope/source-contract preparation; no merge, production, GAS/Sheet, student release or trusted grading.
+Final-B canonical Drive report: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
+Drive flat sibling archive: https://drive.google.com/drive/folders/1hfHW0b6ulzsr4zYC1FlAmvZO9WjW0U6l
+Human ACK ledger: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
+Confirmed still missing: N0-S A3/A4 dated identity-bound receipt, independent QA reviews, D1 learner labels policy, D10 trusted grader operator policy, W1 formal closure/owner scope. CI green is scoped; DB rows remain OPEN/BLOCKED.
+N5 allowed starting contract: define N5 source-backed scope and responsibilities, compatibility matrix/manifest and synthetic fixtures in independent LAB; N5 integration/release requires new explicit authorization after W1/DB gates.
+No N4-C.8 or FINAL-C created: this is the single final decision; reopen only on new evidence/approval, not for administrative step proliferation.
+N4-FINAL-B — ĐỐI SOÁT PHẢN BIỆN BÊN THỨ BA VÀ PR↔HEAD↔CI (23/11/2026)
+Báo cáo nguồn (AI independent verification, KHÔNG phải QA ký): https://docs.google.com/document/d/1Y7BKPNpjkAT-1pNty8qUoNH9Ubyskn2W9uapzYWf3LY/edit
+Danh sách CHÍNH XÁC PR mở tuần tự: #14 → #16 → #17 → #18 → #19 → #20 → #21 → #22 → #23 → #24 → #25. Tất cả Draft/Unmerged tại mốc đối soát; khác nhau giữa CI chạy mã test gốc và CI trên commit bao gồm báo cáo Markdown là bình thường nhưng phải công khai.
+PR #22 HEAD 49d17dc5a2fba70a46faac9a0540f30b1f4f3eec – CI minh chứng W1-01 45129448098 SUCCESS (trên SHA test 78c88797918ff2508f69e3bb80a9c22ea7a2c648); commit đầu chứa hồ sơ có thể khác SHA CI này.
+PR #23 HEAD ed4c89704a2568903d5e24d836a9ef538898a56f – CI gốc 45130344244 SUCCESS và CI cuối trên HEAD 45130767674 SUCCESS.
+PR #24 HEAD 08942daadf92027903cf2d1eeecf7293e27f68bc – CI gốc 45131772681 SUCCESS và CI cuối trên HEAD 45132282477 SUCCESS.
+PR #25 HEAD kiểm nghiệm N4-FINAL-B cần tra GitHub khi đối soát mới; lưu báo cáo quản trị, KHÔNG cấp quyền merge/release.
+Quy ước N4/Trusted grader cần bổ sung vào hợp đồng sau khi kiểm schema: với giá trị ô D1 tùy chọn/không nhập, chuỗi rỗng "" và thuộc tính không hiện diện (undefined) đều diễn đạt chưa trả lời; số 0 hoặc chuỗi "0" là giá trị tường minh khác ô rỗng; không tự chấp nhận null hoặc chuỗi không hợp lệ nếu chưa duyệt. Đây là đề xuất hợp đồng, chưa là trusted-grader implementation PASS.
+Sổ duy nhất vẫn pending chứng cứ người thật: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
+Cảnh báo phân quyền: báo cáo bên thứ ba 1Y7BKPNpjkAT-1pNty8qUoNH9Ubyskn2W9uapzYWf3LY có anyone:reader. Khuyến nghị Owner chuyển Restricted nếu đây là QA nội bộ, nhưng hành động quyền chưa được thực hiện.
+Ưu tiên vận hành: phiên Owner xác nhận device/OS/browser/route/time và policy D1/D10, A3/A4 do người nhận RTM tự ký, QA độc lập phân công và review; N5 preparation LAB vẫn có GO có điều kiện, N4_CLOSED và release vẫn NO-GO.
+N0-S / QA-CLOSURE — NHẬT KÝ ĐỐI SOÁT RTM VÀ CHỮ KÝ ĐỘC LẬP (23/11/2026)
+RTM CSV bản thô lấy lại từ Drive 10.495 bytes, SHA-256 trực tiếp d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b: PASS byte integrity. N0-S A3/A4 signature account/time vẫn PENDING, không đồng nhất kỹ thuật với người nhận độc lập.
+W1 matrix: W1-01 CI 45129448098, W1-02 CI cuối 45130767674, W1-03 CI cuối 45132282477, W1-04 CI 45114546368 / 45114449881, W1-05 CI 45115735605 + ảnh parity + Owner 12 routes tự xác nhận. Tất cả 5/5 SCOPED_TECH_PASS; 0/5 QA_SIGNED và 0/5 RTM_CLOSED.
+Đã truy vấn 11 PR #14,#16,#17,#18,#19,#20,#21,#22,#23,#24,#25: đều OPEN/DRAFT/UNMERGED, reviews API mỗi PR đều rỗng. Reviewer cần Owner chỉ định GitHub username có thẩm quyền, không được tự gán.
+Ma trận canonical (nội bộ, không đưa tài khoản cá nhân lên GitHub): https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit mục 10; biên bản bàn giao https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit mục 11.
+D1/D10 Owner approved-in-chat-in-principle; QA/security/grader authorization pending. Chỉ GO chuẩn bị N5 LAB isolated; NO GO merge/GAS/Sheet/trusted grading/release.
+N4-GOVERNANCE-LOCK → N5-START (23/11/2026) — CHỐT BASELINE KHÔNG ĐỒNG NGHĨA N4 CLOSED
+Nguồn lộ trình gốc N0–N11 https://docs.google.com/document/d/1OXxKt3d7pXXGASRew89R9T8y5QKUzf3QbRaaVWtoyRE/edit: N5 = “Đóng kỹ thuật 5 việc W1 bằng RTM”; điều kiện PASS “0 W1 blocker còn mở”; N6 mới kiểm DB-01..05, N7 writer, N8 CAS/idempotency, N9 recovery, N10 signed audit, N11 GO/NO-GO V1.3-C. Không gán nhầm N5 thành phát triển dữ liệu hay sửa Sheet.
+N5-START canonical contract: https://docs.google.com/document/d/17I4dRJSXRuyiDWh2gD-T6_umP4m4FRc6rmNY02pH74U/edit; GitHub mirror trong cùng Draft PR #25.
+Nguồn frozen be-hoc 1b69e277f8de6cb156f46a1d85af33bdad70c0ef, R1/R2 fe15c79b21b9f056694f8127330934d997affd45, N4-FINAL-A exact CI HEAD 08942daadf92027903cf2d1eeecf7293e27f68bc tại run 45132282477 SUCCESS. N4 source/CI proof preserved, không yêu cầu chạy lại trên docs-only commit.
+RTM CSV RAW 10.495 bytes SHA256 d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b. W1 5/5 technical SCOPED_PASS, QA signed 0/5, RTM CLOSED 0/5; QA reviewer vẫn chưa được chỉ định; N0-S A3/A4 con người PENDING. D1/D10 Owner APPROVED_IN_CHAT_IN_PRINCIPLE; không phải release approval.
+DRIVE ACCESS EXCEPTION REGISTER: Đã xác minh mẹ QA archive 1r6nUv4 và folder Final-B 1hfHW0b6 Restricted, Final-B canonical, Master Index và Sổ ký Restricted. Nhưng 3 tệp có permission trực tiếp: 1Y7BKPN... report bên 3 anyone:reader, 1yTEOB... báo cáo N4-C6 anyone:reader, 1xz-9tx... RTM N0-S receipt anyone:commenter. Chưa sửa quyền; Owner phải cho phép/sắp xếp quyền người đọc đã biết. Không công bố ALL_RESTRICTED.
+N4 GOVERNANCE_LOCK = BASELINE_LOCKED_WITH_THREE_ACCESS_EXCEPTIONS_AND_HUMAN_SIGNOFF_PENDING. N5_STARTED_SCOPE_READINESS_ONLY; không phải N5 PASS, NO_GO merge/GAS/Sheet/trusted grade/learner.
+
+## N5-W1-CLOSURE — RTM evidence & independent QA readiness / 2026-11-23
+Decision: **N5_TECHNICALLY_READY_HUMAN_GATES_PENDING**, W1 5/5 technical scoped PASS; 0/5 independent QA signed; 0/5 RTM formally CLOSED. No release grant. Canonical detailed 12-column matrix: [N5 W1 closure](N5_W1_CLOSURE_RTM_INDEPENDENT_QA_READINESS_20261123.md), documentation commit 59abe46552f6018af578d220338869e37f9fd291 (subsequent docs-only commits do not invalidate previously tested runtime SHA). Drive counterpart: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit; N5 START: https://docs.google.com/document/d/17I4dRJSXRuyiDWh2gD-T6_umP4m4FRc6rmNY02pH74U/edit. Issue #15 https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7095719691 ; PR #25 https://github.com/Nguyennth19/new-lop-2/pull/25#issuecomment-7095720483.
+W1-01 CI45129448098/78c88797, W1-02 CI45130767674/ed4c8970, W1-03 CI45132282477/08942daad, W1-04 CI45114546368/5e09b4a4 and CI45114449881/88a7b26f, W1-05 CI45115735605/b467befb. N0-S A3/A4 pending recipient signed verification. Owner 12 routes on Samsung Android tablet Chrome/Samsung by chat; timestamp unknown. QA independently review all 11 Draft PR and sign existing single register; DB-01 BLOCKED, DB-02..05 OPEN. NO MERGE/GAS/SHEET/TRUSTED GRADING/STUDENT RELEASE.
+
+
+## N6 — DB-01..05 READ-ONLY AUDIT CHECKPOINT / 2026-11-23
+Decision: `N6_READONLY_AUDIT_COMPLETED_REMEDIATION_READY_HUMAN_GATES_PENDING`. No TEST writes, no DB remediation PASS and no change to frozen renderer/main/be-hoc. Full detailed source-locked report: [N6 DB01..05 read-only audit](N6_DB01_DB05_READONLY_AUDIT_REMEDIATION_READINESS_20261123.md), initial report commit `6e870fd3b862a53e89a3b0b974c3aa316310f6e8`. Drive readback/mirror [N5/N6 landing](https://docs.google.com/document/d/17I4dRJSXRuyiDWh2gD-T6_umP4m4FRc6rmNY02pH74U/edit) and [Master QA Index](https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit). [Issue #15 checkpoint](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7095798913), [PR #25](https://github.com/Nguyennth19/new-lop-2/pull/25#issuecomment-7095799983).
+Direct read-only Sheet TEST 7 tabs (2026-11-23): 2 D2 LV2 synthetic requests, 2 QA-pending validators, no approval or rollback rows, no ACTIVE version. Code `af02456fcc2b3be856091edc899c699890d74da0` uses 2026-11-20 captured snapshot, no live CAS or write. DB-01 BLOCKED sequencing; DB-02 schema/generator coverage OPEN; DB-03 idempotent append-only writes OPEN; DB-04 stale snapshot/TOCTOU/CAS OPEN; DB-05 signatures/AI trust boundary OPEN. All DB-T01..15 proposed, not executed. N5 0/5 independent QA signed and 0/5 RTM CLOSED. NO MERGE, GAS, SHEET WRITE, TRUSTED GRADING OR LEARNER RELEASE.
+
+
+## N6 — SYNTHETIC LAB CONTRACT & FAILURE TEST PACK (2026-11-23)
+**Verdict:** `N6_SYNTHETIC_LAB_CONTRACT_PASS`, **NOT** DB remediation / production PASS. [Full evidence report](N6_SYNTHETIC_LAB_CONTRACT_FAILURE_TEST_PACK_20261123.md), source [DB-T01..15 Node tests](../n6-synthetic-lab/n6-failure-contract.test.cjs) commit `9bc9a9318da353a7ac72962434ba78d1b7e64c18`, CI workflow `97505d3162bf2e4b0f4348ba895cafab3f5f783e`, [GitHub Actions run 45142063620](https://github.com/Nguyennth19/new-lop-2/actions/runs/45142063620) **SUCCESS 16/16** (15 RTM IDs + global invariant). CI job ID `137582237251`. Report commit `dc4e1cbb7b60125d1727ba281ab22b0bd4a291c1`. Drive mirror [N5/N6 handover](https://docs.google.com/document/d/17I4dRJSXRuyiDWh2gD-T6_umP4m4FRc6rmNY02pH74U/edit) and [canonical Master QA Index](https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit) updated.
+All tests are synthetic in-memory; fake signatures and fake writer/manifest, no external write, no renderer changes. DB-01 BLOCKED (N5 human W1 0/5 signed); DB-02..05 OPEN, N0-S A3/A4 PENDING. No Sheet, GAS, main, be-hoc, trusted grading, or learner release writes. Actual DB remediation gates need separate explicit human authority and integrated TEST environment per N7–N11.
+
+
+## N5 HUMAN CLOSURE → N7 WRITE AUTHORITY DESIGN READINESS (2026-11-23)
+Evidence design: [N5 Human Closure + N7 Single Writer / TEST Write Authority Design](N5_HUMAN_CLOSURE_N7_WRITE_AUTHORITY_DESIGN_20261123.md), initial report commit `01a779939a72d31b22aba8233d929e64c8836a4e`. All 11 Draft PR #14,#16–#25 verified unmerged / 0 recorded review submissions at this checkpoint. N5 W1 5/5 scoped technical PASS, 0/5 signed QA, 0/5 CLOSED. N0-S A3/A4 placeholder still unverified, no independent recipient-authenticated checksum ACK. N7 `DESIGN_READY_FOR_INDEPENDENT_REVIEW`; `WRITE_AUTHORITY_NOT_GRANTED`; `RUNTIME_NOT_IMPLEMENTED`. DB-01 BLOCKED, DB-02..05 OPEN.
+Design reuses [N6 synthetic evidence](N6_SYNTHETIC_LAB_CONTRACT_FAILURE_TEST_PACK_20261123.md) CI `45142063620` SUCCESS 16/16 at `97505d3162bf2e4b0f4348ba895cafab3f5f783e` only as MOCK contract proof, not real writer/CAS/signature proof. No Sheet/GAS code/data writes, no credentials, no merge, no trusted grading, no learner release. Drive mirror: https://docs.google.com/document/d/17I4dRJSXRuyiDWh2gD-T6_umP4m4FRc6rmNY02pH74U/edit ; canonical Master QA Index: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit ; sole signoff register: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit.
+
+
+## N7 INDEPENDENT ARCHITECTURE CHALLENGE + CONSOLIDATED N5 HUMAN APPROVAL PACKET (2026-11-23)
+[Adversarial desk review and single N5/N7 human decision agenda](N7_INDEPENDENT_ARCHITECTURE_CHALLENGE_HUMAN_APPROVAL_PACKET_20261123.md), first report commit `455df30ac9c41b630c36ef4edc48ae89c44e9076`. Review explicitly **AI-assisted desk challenge, NOT independent human QA signature**. Findings `N7-F01..F12`: 4 BLOCKERS, 6 HIGH, 2 MEDIUM, covering dual-write atomicity/outbox, bypass by Sheet editors, idempotency key+payload binding, authentic signer/nonce/revocation, N5 evidence staleness, API permission granularity, TOCTOU, append-only journal, rollback, AI/data, grant TTL and synthetic-vs-real proof. New `N7-T01..T08` are specified only (NOT RUN). N5 H-00..H-09 is a single human approval session using **existing N4-C.6 register** and N0-S recipient receipt; no competing signer document or fabricated reviewer. N5 W1 0/5 independently QA signed/closed, A3/A4 pending; PR #25 Draft, 0 PR reviewer submissions, no requested reviewers on checkpoint. Decision `N7_ADVERSARIAL_DESK_REVIEW_COMPLETED_CHANGES_REQUIRED`; `N7_INDEPENDENT_HUMAN_SECURITY_REVIEW_PENDING`; `N7_WRITE_AUTHORITY_NOT_GRANTED`. DB-01 BLOCKED, DB-02..05 OPEN. No TEST/MAIN Sheet, GAS, renderer, be-hoc, service credentials or release writes.
