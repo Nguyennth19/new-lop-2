@@ -29,7 +29,7 @@ N1 / W1-01..03: PR #14, head 3bd6224d3d99644c0d303fc493612a8fddafdd91; CI 451084
 N4 prep PR #16, head 3c86cc57ca354f2771340f68438eae84d1896e22, CI 45109505809; chỉ QA prep.
 N4-A PR #17 head 5e09b4a45e6b3d075c6770bb91facf8289c08f6c; local CI 45114546368 PASS, live-origin smoke 45114449881 PASS trên asset mẫu, chưa kiểm live 100% asset.
 N4-B PR #18 head b467befbf5532c7dd3c1e04222d71aed7519a73d; CI 45115735605 PASS tạo 24 pairs / 48 PNG / 24 diff. 20 pairs RGBA exact parity, 4 changes D1/D10 Owner image accepted via chat.
-N4-C.1: https://docs.google.com/document/d/1V0gNmUbT7ZAf8y18siwuMCEGLBmB8i6_Oegp-53qZ5E/edit (xem nguồn đối chiếu N4-B bên dưới).
+N4-C.1: https://docs.google.com/document/d/1VozIBDbT7ZAf8y18siwuMCEGLBmB8i6_Oegp-53qZ5E/edit (xem nguồn đối chiếu N4-B bên dưới).
 N4-C.1 signed-review intake: https://docs.google.com/document/d/1V0gNmUbJNh8SziLqc52sttXINK97BhhB2_Eod8uOG18/edit
 N4-C.2 20 pairs review: https://docs.google.com/document/d/1vQ5oMFP_scSgkqh0pwvyVpKIml5mL6_O7vvPQl3ecLs/edit
 N4-C.3 PR #19 head f6acdbba1e96f8d70110a1512a88d648286fe7dd; CI 45118577956 SUCCESS (R1/R2 48; D1/D10 31; N1-A 8 cases).
