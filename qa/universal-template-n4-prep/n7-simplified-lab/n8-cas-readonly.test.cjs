@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),cryp
 const dir=__dirname;
 const source=['N7_GAS_TEST_SingleWriter.gs','N8_CAS_ReadOnly.gs'].map(n=>fs.readFileSync(path.join(dir,n),'utf8')).join('\n');
 const context={};
-vm.runInNewContext(source+'\n;globalThis.api={read:n8ReadSnapshot_,compare:n8CompareSnapshots_,drill:n8ControlledDrill_,retry:n8ClassifyRetry_};',context);
+vm.runInNewContext(source+'\n;globalThis.api={read:n8ReadSnapshot_,compare:n8CompareSnapshots_,drill:n8ControlledDrill_,retry:n8ClassifyRetry_,verify:n8VerifyWriterGuardReadOnly_};',context);
 const api=context.api;
 const header=['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'];
 const id='1zA7ab0tpcgn68BJd8bizNR8LfuFG57yzsm1YM-SEF9I';
@@ -124,4 +124,16 @@ test('N8 dry run refuses missing existing event and does not append',()=>{
  const res=api.drill(f.deps,cfg());
  assert.equal(res.reason,'UNKNOWN_EVENT_NO_WRITE');
  assert.equal(f.cells.length,4);
+});
+
+test('N8 real-runtime parity check matches the N7 locked snapshot digest',()=>{
+ const f=fixture(),v=api.verify(f.deps,cfg());
+ assert.equal(v.ok,true);assert.equal(v.mode,'N7_N8_GUARD_READ_ONLY_MATCH');
+ assert.equal(v.dataRows,3);assert.equal(v.n7EventCount,1);
+ assert.equal(v.writes,0);assert.equal(v.atomicCasProven,false);
+});
+test('N8 guard parity check refuses missing grant-off precondition',()=>{
+ const f=fixture();
+ assert.equal(api.verify(f.deps,{...cfg(),writesEnabled:true}).reason,'READ_ONLY_GUARD');
+ assert.equal(f.state.openCount,0);
 });
