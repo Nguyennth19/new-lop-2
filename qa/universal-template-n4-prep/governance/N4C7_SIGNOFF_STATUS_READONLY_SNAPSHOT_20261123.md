@@ -1,8 +1,8 @@
-# ULT N4-C.6 – Human Evidence Intake & Signoff Register – 20261123
+# N4-C.7 Drive canonical source snapshot
 
-> REDACTED READ-ONLY AUDIT MIRROR. Editable canonical signoff/policy on restricted Drive: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
-> Source Google Docs revision at mirror: AHj4eMQ0bT4EL37za5CU4yVnarDdV2M4d7Y2nl__sf1XCQDt9TSHnHksGQX4iriF7Y_ooUEHpNK6XYx3FxZFep_nZlYyEt9stc6vIQjwdg
-> Mirrored for third-party status review; GitHub text IS NOT a human-signed receipt and MUST NOT be edited to forge signature.
+> Google Doc: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
+> Source Docs revision: AHj4eMTRLvpn232dnQVK4hgYEgiMOOJrittsztXw6jw8pb0z5AjKfspNJzw9pi15zMyyc_FKtUY0QYbC7ZXrkq7aL-kJ3zVYQnl-69NwCA
+> NON-AUTHORITATIVE read-only mirror; human signatures must be recorded by their own authenticated accounts on Drive/GitHub.
 
 N4-C.6 – HUMAN EVIDENCE INTAKE & SIGNOFF REGISTER
 Dự án Lớp 2 / Universal Learning Template V1 | LAB-only
@@ -61,3 +61,9 @@ Không giả mạo dấu ký, không coi AI review là ký nhận.
 GO: tiếp tục thu thập ACK và phản hồi; kiểm nghiệm/chốt chính sách; sửa phạm vi LAB theo PR tách biệt nếu có blocker thật, có CI và rollback.
 NO-GO: tự chấp nhận rủi ro D1/D10 khi chưa được phê duyệt; đóng W1-05 hoặc N0-S; merge #18/#19/#20; kết nối GAS hoặc Sheet sản phẩm; chấm học sinh hay phát hành.
 Bước kế tiếp phù hợp: N4-C.7 – Verified Human ACK, Policy Approval & Gate Recheck. Chỉ chuyển trạng thái từng ô nếu chứng cứ xuất hiện, không tạo thành công giả.
+N4-C.7 — DUAL ARCHIVE CHECKPOINT / 23-11-2026
+Draft PR #21: https://github.com/Nguyennth19/new-lop-2/pull/21
+GitHub immutable governance branch: https://github.com/Nguyennth19/new-lop-2/tree/lab/ult-n4c7-governance-evidence-index-20261123/qa/universal-template-n4-prep/governance
+Master QA Index (Drive canonical): https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Checkpoint (Drive canonical): https://docs.google.com/document/d/1hmEmyZLoW64wwGM0anHUiEHb6XQI2khLVzAcf3knDy0/edit
+Không tự nhận đã có chữ ký/human QA. W1-05, N0-S và learner release tiếp tục NO-GO.
