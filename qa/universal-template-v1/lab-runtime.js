@@ -4,7 +4,8 @@
  */
 (function(global){
  'use strict';
- const VERSION='LOP2_UNIVERSAL_LAB_V1';
+ const VERSION='LOP2_UNIVERSAL_LAB_V1_R2';
+ const HARDEN=global.ULTLAB_HARDENING;
  const ROUTES=Object.freeze({
   D1:{family:'Tách–gộp và điền số',core:'G74Type1C2',kind:'D1'},
   D2:{family:'Đặt tính',core:'KLColumnV12',view:'KLColumnViewV12',kind:'COLUMN'},
@@ -19,19 +20,13 @@
   D9:{family:'Biểu đồ tranh',core:'KLPictographV11',view:'KLPictographViewV11'},
   D10:{family:'Giải toán lời văn',core:'KLWordUnificationV11',view:'KLWordUnificationAdapterV11',kind:'WORD'}
  });
- const QA_GRANTS=Object.freeze({
-  D1:{type:'bond',skillId:'NUMBER_BOND'},D2:{type:'vertical',skillId:'COLUMN_ADD'},
-  D3:{type:'matching',skillId:'MATCH_PAIRS'},D4:{type:'choice',skillId:'SELECT_CHOICE'},
-  D5:{type:'geometry',skillId:'SHAPE_TANGRAM'},D6:{type:'ordering',skillId:'ORDER_NUMBERS'},
-  D7:{type:'comparison',skillId:'COMPARE_NUMBER'},D8:{type:'measurement',skillId:'MEASURE_RULER'},
-  D8A:{type:'capacity',skillId:'LITER_CAPACITY'},D8B:{type:'mass',skillId:'MASS_BALANCE'},
-  D9:{type:'pictograph',skillId:'PICTOGRAPH'},D10:{type:'word_problem',skillId:'WORD_PROBLEM'}
- });
+ // Capability matrix lives in versioned LAB adapter, with explicit mode/skill grants.
  const deniedKeys=new Set([
   '__proto__','prototype','constructor','answer','answers','answerKey','correct','correctAnswer',
   'correctOptionId','correctOptionIds','correctStatementId','isCorrect','expected','expectedResult',
   'expectedDigits','expectedCarry','solution','solutionPrompt','teacherSolution','gradingKey','studentId',
-  'score','stars','starCredit','privateVariant','privateAnswer','expectedValue'
+  'score','stars','starCredit','privateVariant','privateAnswer','expectedValue','ownerApproved',
+  'approvalState','privateKeyRef','releaseApproved','teacherSigned','ownerSigned'
  ]);
  const idPattern=/^[A-Za-z0-9_-]{3,90}$/;
  const doc=global.document;
@@ -70,8 +65,7 @@
       !idPattern.test(q.questionType||'')||!['LV1','LV2','LV3'].includes(q.level)||
       !q.publicVariant||!deepPublic(q.publicVariant))return {ok:false,reason:'BAD_QUESTION_META'};
    if(q.lessonId!==candidate.lesson.id)return {ok:false,reason:'LESSON_ID_MISMATCH'};
-   const grant=QA_GRANTS[q.rendererId];
-   if(!grant||q.questionType!==grant.type||q.skillId!==grant.skillId)
+   if(!HARDEN?.grant(q))
      return {ok:false,reason:'SKILL_TYPE_POLICY_MISMATCH'};
    seen.add(q.questionId);
    if(!['DECORATIVE','CHOICE','EXACT_COUNT'].includes(q.visualIntent||'DECORATIVE'))
@@ -84,6 +78,8 @@
    if(q.rendererId==='D1'){if(!core.validPublic(q.publicVariant))return {ok:false,reason:'INVALID_D1_PUBLIC'};}
    else if(q.rendererId==='D2'){const r=core.publicPlan(q.publicVariant);if(!r.ok)return {ok:false,reason:'INVALID_D2_'+r.reason};}
    else {const r=core.compile(q.publicVariant);if(!r.ok)return {ok:false,reason:'INVALID_'+q.rendererId+'_'+r.reason};}
+   const assets=HARDEN.validateAssets(q);
+   if(!assets.ok)return {ok:false,reason:assets.reason};
   }
   return {ok:true,count:candidate.questions.length};
  }
@@ -97,9 +93,14 @@
   const u=new global.SpeechSynthesisUtterance(normalized);u.lang='vi-VN';
   u.rate=0.9;global.speechSynthesis.speak(u);return {ok:true};
  }
- function onChange(s){if(!question)return;activeSnapshot=s;memory[question.questionId]=s;
+ function onChange(s){if(!question)return;activeSnapshot=JSON.parse(JSON.stringify(s));memory[question.questionId]=activeSnapshot;
   ui.current.textContent='Đã thao tác (không phải điểm): '+Object.keys(memory).length+'/'+pack.questions.length;}
- function destroy(){if(controller?.destroy)try{controller.destroy()}catch(e){errors.push(String(e))}controller=null;activeSnapshot=null;
+ function destroy(){
+  if(question&&controller&&activeSnapshot&&typeof controller.snapshot==='function'){
+   memory[question.questionId]=JSON.parse(JSON.stringify(controller.snapshot()));
+  }
+  if(controller?.destroy)try{controller.destroy()}catch(e){errors.push(String(e))}
+  controller=null;activeSnapshot=null;
   if(global.speechSynthesis?.cancel)global.speechSynthesis.cancel();}
  function wordHost(host,q){
   // D10 adapter is an enhancement of G6, never a replacement or a second card.
@@ -120,34 +121,39 @@
   return card;
  }
  function mountRoute(q){
-  const route=ROUTES[q.rendererId],core=global[route.core],view=route.view?global[route.view]:null;
+  const route=ROUTES[q.rendererId],core=global[route.core];
+  let view=route.view?global[route.view]:null;
   const host=ui.stage;host.replaceChildren();
   let result;
   if(route.kind==='D1'){
-   result=core.mount(host,q.publicVariant,{onChange});
+   result=HARDEN.wrapD1(core,host,q.publicVariant,onChange);
   }else if(route.kind==='COLUMN'){
    const plan=core.publicPlan(q.publicVariant);
    if(!plan.ok)return plan;
-   result=view.mount(host,[plan],{onChange:(_index,s)=>onChange(s),
-    onSpeak:(_plan)=>speechText('Em hãy đặt tính rồi tính theo thứ tự từ hàng đơn vị.')});
-   // The D2 standalone renderer does not expose a snapshot getter.
+   result=HARDEN.wrapD2(view,host,plan,onChange,
+    (_plan)=>speechText('Em hãy đặt tính rồi tính theo thứ tự từ hàng đơn vị.'));
   }else if(route.kind==='WORD'){
    const plan=core.compile(q.publicVariant);if(!plan.ok)return plan;
    const card=wordHost(host,q);
-   result=view.mount(card,plan.plan,{onChange,
-    speechAdapter:{speak:speechText,stop:()=>global.speechSynthesis?.cancel()}});
+   result=HARDEN.wrapD10(view,card,plan.plan,onChange,
+    {speak:speechText,stop:()=>global.speechSynthesis?.cancel()});
   }else{
    const compiled=core.compile(q.publicVariant);if(!compiled.ok)return compiled;
-   const opts={onChange,resolveAsset:assetId=>{
-    if(!assetId)return null;
-    const a=global.BE_HOC_VISUAL_SEMANTIC?.plan({assetId,visualIntent:'DECORATIVE'});
-    return a?.ok?a:null;
-   },speechAdapter:{speak:speechText,stop:()=>global.speechSynthesis?.cancel()}};
+   if(q.rendererId==='D5'&&compiled.plan.mode==='SHAPE_SELECT')
+    view=global.KLGeometryTangramViewV11;
+   const opts={onChange,resolveAsset:assetId=>HARDEN.resolveAsset(q,assetId),
+    speechAdapter:{speak:speechText,stop:()=>global.speechSynthesis?.cancel()}};
    result=view?.mount(host,compiled.plan,opts)||{ok:false,reason:'VIEW_MISSING'};
   }
-  if(result?.ok){controller=result;
-   // Restore is a local unsent draft only, and the data switch resets draft memory.
-   if(memory[q.questionId]&&typeof result.restore==='function')result.restore(memory[q.questionId]);
+  if(result?.ok){
+   controller=result;
+   if(memory[q.questionId]&&typeof result.restore==='function'){
+    const restored=result.restore(memory[q.questionId]);
+    if(!restored?.ok)return {ok:false,reason:'INVALID_SAVED_DRAFT'};
+    activeSnapshot=result.snapshot?.()||null;
+   }
+   HARDEN.watchImageErrors(host,reason=>status('Ảnh chưa tải được: '+reason+
+     '. Không tự dùng ảnh thay thế sai ngữ nghĩa.','error'));
   }
   return result||{ok:false,reason:'MOUNT_FAILED'};
  }
@@ -184,7 +190,7 @@
   ui.level.value='ALL';drawList();
   const r=openQuestion(pack.questions[0].questionId);
   if(r.ok)status('Đã nạp '+pack.packId+' — '+check.count+
-    ' câu trong 12 route; TEMPLATE LAB, không phải bài SGK được duyệt.');
+    ' câu; bản nháp trước đó đã được xóa theo chính sách khi đổi gói. TEST LAB, không phải bài SGK được duyệt.');
   return r.ok?{ok:true,packId:pack.packId,count:check.count,version:outputVersion}:r;
  }
  async function grade(){
@@ -230,7 +236,12 @@
   getState:()=>({packId:pack?.packId||null,questionId:question?.questionId||null,
    rendererId:question?.rendererId||null,trustedData:packTrusted,stageChildren:ui.stage.children.length,
    errors:[...errors],changeCount:Object.keys(memory).length}),
-  getDraft:()=>activeSnapshot?JSON.parse(JSON.stringify(activeSnapshot)):null
+  getDraft:()=>activeSnapshot?JSON.parse(JSON.stringify(activeSnapshot)):null,
+  getCapabilityMatrix:()=>HARDEN.CAPABILITIES,
+  clearCurrentDraft:()=>{if(!controller)return {ok:false,reason:'NO_ACTIVE_HANDLE'};
+   const cleared=controller.clear?.()||{ok:false,reason:'CLEAR_UNSUPPORTED'};
+   if(cleared.ok){delete memory[question.questionId];activeSnapshot=null;}
+   return cleared;}
  });
  if(global.__ULTLAB_PACKS__?.A)setData(global.__ULTLAB_PACKS__.A);
 })(window);
