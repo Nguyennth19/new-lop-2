@@ -32,6 +32,7 @@ jobs:
           node --check qa/universal-template-r12/lab-hardening.js
           node --check qa/universal-template-v1/lab-runtime.js
           node --check qa/universal-template-n1/n1-browser.test.cjs
+          node --check qa/universal-template-n1/n1a-browser.test.cjs
           node qa/universal-template-v1/build.cjs
           node qa/universal-template-v1/contracts.test.cjs
       - name: Trusted grading and publisher regression (TEST only)
@@ -52,6 +53,8 @@ jobs:
           fi
       - name: N1 strict red-green tests (Chromium desktop / 390px)
         run: node qa/universal-template-n1/n1-browser.test.cjs
+      - name: N1-A independent addendum PV1000 borrow draft identity lifecycle
+        run: node qa/universal-template-n1/n1a-browser.test.cjs
       - name: Full baseline browser regression
         run: |
           node qa/universal-template-v1/browser.test.cjs
