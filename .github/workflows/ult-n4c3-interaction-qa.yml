@@ -1,0 +1,66 @@
+name: ULT N4-C.3 browser interaction gate (physical devices PENDING)
+on:
+  push:
+    branches: ['lab/ult-n4c3-interaction-device-qa-20261123']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  n4c3-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source freeze and build
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-n4-prep/n4c3-interaction-browser.test.cjs
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+      - name: Prepare real Chrome runner
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: N4-C.3 twelve original routes touch and round-trip regression
+        run: node qa/universal-template-r12/hardening-browser.test.cjs
+      - name: N4-C.3 D1 and D10 focused mobile desktop interaction
+        run: node qa/universal-template-n4-prep/n4c3-interaction-browser.test.cjs
+      - name: N1-A column carry borrow and trusted draft lifecycle
+        run: node qa/universal-template-n1/n1a-browser.test.cjs
+      - name: Scope guard and frozen source baseline
+        if: always()
+        run: |
+          set -euo pipefail
+          BASE=b467befbf5532c7dd3c1e04222d71aed7519a73d
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/n4c3-.*|\.github/workflows/ult-n4c3-interaction-qa\.yml)$'; then
+            echo 'N4C3_SCOPE_BREACH' >&2; exit 1
+          fi
+          echo 'Frozen renderer/CSS integrity checked by build.cjs against be-hoc SHA'
+      - name: Archive all observable browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N4C3_CHROMIUM_INTERACTION_EVIDENCE_DEVICE_NOT_ATTESTED
+          path: |
+            qa/universal-template-n4-prep/dist/N4C3_INTERACTION_QA/
+            qa/universal-template-r12/dist/
+            qa/universal-template-n1/dist/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Mandatory no release note
+        if: always()
+        run: |
+          echo 'Desktop/mobile headless Chrome and mobile emulation only. Physical Android/iOS device PASS NOT CLAIMED.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'NO GAS, Sheet, main merge or student deployment.' >> "$GITHUB_STEP_SUMMARY"
