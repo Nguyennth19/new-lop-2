@@ -1,0 +1,130 @@
+{
+  "schema": "ULT_N4A_TEST_PREPARATION_V1",
+  "state": "PREPARED_NOT_EXECUTED",
+  "gate": "W1-04_OPEN",
+  "referenceSource": {
+    "fluentCommit": "83bb8a1784fabead2cd31b497044a1274f8bf1a1",
+    "webpReleaseCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+    "manifestFile": "qa/be-hoc-visual/g7-webp-binary-pins.v1.json",
+    "resolutionFile": "85_Fluent_Asset_46.html",
+    "sourceBranch": "be-hoc",
+    "base": "1b69e277f8de6cb156f46a1d85af33bdad70c0ef"
+  },
+  "assets": [
+    {
+      "id": "FLUENT:red_apple",
+      "path": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/FLAT/red_apple.svg",
+      "sourceCommit": "83bb8a1784fabead2cd31b497044a1274f8bf1a1",
+      "contentType": "image/svg+xml",
+      "expectedSha256": "bc69f7c89a3621fb564482f9e13818019c6eac3a9d16fe996852514f3b19a073",
+      "approvedCountUnit": "quả",
+      "symbolValue": 1,
+      "role": "EXACT_COUNT",
+      "expected": "ALLOW"
+    },
+    {
+      "id": "FLUENT:tangerine",
+      "path": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/FLAT/tangerine.svg",
+      "sourceCommit": "83bb8a1784fabead2cd31b497044a1274f8bf1a1",
+      "contentType": "image/svg+xml",
+      "expectedSha256": "c820b266373b52bb1854213b08801c8d582d60dae06d380fdb4beaf89d569ea3",
+      "approvedCountUnit": "quả",
+      "symbolValue": 1,
+      "role": "EXACT_COUNT",
+      "expected": "ALLOW"
+    },
+    {
+      "id": "FLUENT:books",
+      "path": "hinh-anh/svg-fallback/fluent-emoji-flat/v1/FLAT/books.svg",
+      "sourceCommit": "83bb8a1784fabead2cd31b497044a1274f8bf1a1",
+      "contentType": "image/svg+xml",
+      "expectedSha256": "41e2686cdc526bfa41ea599e2a74378f3a02788ff7e8cd1b9ad0a39ea157000c",
+      "approvedCountUnit": null,
+      "symbolValue": 1,
+      "role": "EXACT_COUNT",
+      "expected": "REJECT"
+    },
+    {
+      "id": "KL_SH01_001",
+      "path": "hinh-anh/webp-g7/v1/WEBP/SH01/KL-SH01-01.webp",
+      "sourceCommit": "653bfbc73002a188dcea0b714247b84cc28a4fed",
+      "contentType": "image/webp",
+      "expectedGitBlobSha": "e9e2679555d3799e589c6d0d1f882f490ee7e251",
+      "bytes": 25280,
+      "expected": "ALLOW_BINARY_DECODE",
+      "expectedSha256": null,
+      "requiresPinAtImplementation": true
+    }
+  ],
+  "tests": [
+    {
+      "id": "N4A-01A-SVG-BINARY",
+      "kind": "CI_OFFLINE",
+      "check": "Local HTTP server serves pinned source bytes for red_apple and tangerine; Chromium waits img.complete && naturalWidth>0; verify HTTP MIME, byte SHA256 and decoded dimensions",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-01A-WEBP-BINARY",
+      "kind": "CI_OFFLINE",
+      "check": "Local HTTP server serves WebP KL_SH01_001, verify immutable Git blob/bytes/sourceCommit, SHA256 output and browser decode",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-01A-D9-14-SYMBOLS",
+      "kind": "CI_OFFLINE",
+      "check": "Render actual synthetic D9 fixture 6 red_apple + 8 tangerine icons; all 14 img.complete && naturalWidth>0; no wrong-unit or generic fallback",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-01A-D4-CHOICE",
+      "kind": "CI_OFFLINE",
+      "check": "Render D4 CHOICE red_apple through real semantic resolver; decoded image, not event('error') simulated",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-NEG-BOOKS",
+      "kind": "CI_OFFLINE",
+      "check": "FLUENT:books with EXACT_COUNT rejected before rendering",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-NEG-UNIT",
+      "kind": "CI_OFFLINE",
+      "check": "countUnit=con with red_apple rejected",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-NEG-SYMBOL",
+      "kind": "CI_OFFLINE",
+      "check": "D9 symbolValue >1 or !=1 rejected unless separately approved contract",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-NEG-404",
+      "kind": "CI_OFFLINE",
+      "check": "Missing binary returns 404, error visible, no silent semantic substitution",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4A-01B-LIVE-SMOKE",
+      "kind": "PRE_RELEASE_NETWORK",
+      "check": "Against pinned raw.githubusercontent.com URL independently verify HTTP 200, MIME, CORS policy as applicable, SHA256 matches pinned bytes and img.decode in browser",
+      "status": "NOT_EXECUTED"
+    }
+  ],
+  "acceptance": {
+    "offlineMandatory": true,
+    "originSmokeMandatoryBeforeRelease": true,
+    "expectedSourceShaChangePolicy": "FAIL_CLOSED",
+    "qaReviewer": "UNASSIGNED",
+    "ownerApproval": "PENDING",
+    "realRelease": "NO_GO"
+  },
+  "constraints": [
+    "Use actual binary data, not test stubs or data URLs",
+    "No network dependencies inside deterministic CI",
+    "Origin smoke isolated from CI, no invented reliability claims",
+    "Do not call a HEAD screenshot proof of live CDN",
+    "DO NOT modify be-hoc frozen sources, Sheet TEST or GAS"
+  ]
+}
