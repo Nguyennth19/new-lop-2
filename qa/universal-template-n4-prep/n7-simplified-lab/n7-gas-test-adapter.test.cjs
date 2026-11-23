@@ -16,7 +16,7 @@ const digestOf=i=>crypto.createHash('sha256').update(JSON.stringify(FIELDS
  .filter(k=>k!=='executionId'&&k!=='expectedJournalRows').map(k=>[k,i[k]]))).digest('hex');
 const settings=()=>({writesEnabled:false,isolatedSpreadsheetId:COPY,
  allowedOwnerEmail:'lab-owner@example.invalid',approvedGrantId:'GRANT_001',
- approvedIntentDigest:digestOf(intent()),grantExpiresAt:'2030-01-01T00:00:00Z',
+ approvedIntentDigest:digestOf(intent()),grantExpiresAt:'2026-11-23T16:10:00Z',
  approvedBaselineRows:0,
  forbiddenSheetIds:['1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs',
  '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8'],journalTab:'15_NhatKy_HanhDong'});
@@ -121,6 +121,7 @@ test('N7-D4 missing/expired/mismatched grant cannot authorize a write',()=>{
   {...s,approvedIntentDigest:'a'.repeat(64)},
   {...s,grantExpiresAt:''},
   {...s,grantExpiresAt:'2025-01-01T00:00:00Z'},
+  {...s,grantExpiresAt:'2026-11-23T17:00:00Z'},
   {...s,approvedBaselineRows:-1},
   {...s,approvedBaselineRows:1},
   {...s,approvedGrantId:''}
