@@ -65,6 +65,18 @@ async function testOriginalDraftRoundTrips(page,viewport){
   if(route==='D1'){
    assert.equal(before.values.t1_split1,'0');
    assert.equal(before.values.t1_split2,'3');
+   const style=await page.evaluate(()=>{
+    const columns=document.querySelector('#ulStage .g74t1-columns');
+    const pad=document.querySelector('#ulStage .g74t1-pad-grid');
+    const key=document.querySelector('#ulStage .g74t1-pad-key');
+    return {columns:getComputedStyle(columns).display,
+      pad:getComputedStyle(pad).display,
+      minKey:Math.round(key.getBoundingClientRect().height),
+      overflow:document.documentElement.scrollWidth>innerWidth+3};
+   });
+   assert.equal(style.columns,'grid');assert.equal(style.pad,'grid');
+   assert(style.minKey>=44,'D1 keypad touch-target is too small');
+   assert.equal(style.overflow,false,'D1 has horizontal overflow');
   }
   if(route==='D2'){
    assert.equal(before.result_ones,'3');
@@ -168,6 +180,9 @@ async function testModePack(page,viewport){
  const image=page.locator(scope('.g74-choice-asset')).first();
  assert.equal(await image.count(),1,'D4 choice image should be rendered after semantic preflight');
  assert.equal(await page.locator('#ulGrade').isDisabled(),true);
+ const assetShot='R2_'+viewport+'_D4_CHOICE_ASSET.png';
+ await page.screenshot({path:path.join(output,assetShot),fullPage:false,animations:'disabled'});
+ report.screenshots.push(assetShot);
  report.checks.push({viewport,kind:'D4_CHOICE_ASSET_POSITIVE',pass:true});
  // Restore original C so later tests cannot inherit altered semantics.
  await page.evaluate(d=>window.ULTLAB.setData(d),base);
