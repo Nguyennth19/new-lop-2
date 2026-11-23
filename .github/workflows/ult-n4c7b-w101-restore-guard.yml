@@ -1,0 +1,58 @@
+name: ULT N4-C.7-B W1-01 isolated restore guard verification
+on:
+  push:
+    branches: ['lab/ult-n4c7-w101-restore-guard-evidence-20261123']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w101-lab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Strict frozen source and browser syntax
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-n4-prep/n4c7-w101-restore-callback.test.cjs
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+      - name: Chrome runner for actual browser callbacks
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: W1-01 direct D1 and D2 callback-spy smoke
+        run: node qa/universal-template-n4-prep/n4c7-w101-restore-callback.test.cjs
+      - name: Full N1-A regression 8 cases
+        run: node qa/universal-template-n1/n1a-browser.test.cjs
+      - name: Source change containment
+        if: always()
+        run: |
+          set -euo pipefail
+          BASE=fa60dfc61ba9d6d6ae28c029be079193c06aabbf
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/n4c7-.*|\.github/workflows/ult-n4c7b-w101-restore-guard\.yml)$'; then
+            echo 'N4C7B_SOURCE_SCOPE_BREACH' >&2; exit 1
+          fi
+          echo 'LAB-only test files. W1-01 human closure NOT granted.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N4C7B_W101_CALLBACK_GUARD_PROOFS_QA_NOT_SIGNED
+          path: |
+            qa/universal-template-n4-prep/dist/N4C7_W101/
+            qa/universal-template-n1/dist/
+          if-no-files-found: warn
+          retention-days: 90
