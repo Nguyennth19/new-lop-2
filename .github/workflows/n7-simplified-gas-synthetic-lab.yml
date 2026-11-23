@@ -1,0 +1,22 @@
+name: N7 Simplified GAS Synthetic LAB (no Sheets writes)
+on:
+  push:
+    branches:
+      - lab/ult-n7-simplified-gas-rebase-20261123
+    paths:
+      - 'qa/universal-template-n4-prep/n7-simplified-lab/**'
+      - '.github/workflows/n7-simplified-gas-synthetic-lab.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  n7-gas-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout frozen LAB branch without persistent credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Execute N7-F01..12 synthetic contracts
+        run: node --test qa/universal-template-n4-prep/n7-simplified-lab/n7-gas-only-contract.test.cjs
