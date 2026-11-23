@@ -179,6 +179,16 @@ async function testModePack(page,viewport){
  await choose(page,'R2_C_D4');
  const image=page.locator(scope('.g74-choice-asset')).first();
  assert.equal(await image.count(),1,'D4 choice image should be rendered after semantic preflight');
+ // Binary network errors must be visible as failures, never silently recast
+ // the counted asset into unrelated emoji/illustrative content.
+ const failed=await page.evaluate(()=>{
+  const img=document.querySelector('#ulStage .g74-choice-asset');
+  if(img.dataset.ultAssetLoadFailed!=='true')img.dispatchEvent(new Event('error'));
+  return {flag:img.dataset.ultAssetLoadFailed,
+   error:document.querySelector('#ulStatus').dataset.kind};
+ });
+ assert.equal(failed.flag,'true');
+ assert.equal(failed.error,'error','asset load failure must be reported, not silently ignored');
  assert.equal(await page.locator('#ulGrade').isDisabled(),true);
  const assetShot='R2_'+viewport+'_D4_CHOICE_ASSET.png';
  await page.screenshot({path:path.join(output,assetShot),fullPage:false,animations:'disabled'});
