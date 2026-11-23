@@ -1,8 +1,9 @@
-# Master QA Index — Drive canonical snapshot
+# Master QA Index — read-only mirrored Google Drive evidence
 
-Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Revision: AHj4eMTLsyvE6QOc8j5SwgEMlEV-TpO8AzFBiIV87jJ_SNk50auxkIZyqXVHi2ukCuQRakLweEHMl2YmmB8hKFlt-u-jDRAuby1PLVANSg
-Read-only audit mirror. Append-only state deltas; no human signoff inferred.
+Canonical Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Source Drive revision: AHj4eMQjLiq7LHJeXg3hcqLmgB02APdApBpL9rM7LlATY0QrWor5fclwWe3LPwmD3Rh1GP16lbKAHgl3Q35wDAG3WgM2BKgxykrNNhI48w
+Status: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_ONLY; NO_RELEASE.
+Third party review is advisory AI verification, not human signoff. No identity-bound approvals are mirrored.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -105,3 +106,14 @@ Human ACK ledger: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjc
 Confirmed still missing: N0-S A3/A4 dated identity-bound receipt, independent QA reviews, D1 learner labels policy, D10 trusted grader operator policy, W1 formal closure/owner scope. CI green is scoped; DB rows remain OPEN/BLOCKED.
 N5 allowed starting contract: define N5 source-backed scope and responsibilities, compatibility matrix/manifest and synthetic fixtures in independent LAB; N5 integration/release requires new explicit authorization after W1/DB gates.
 No N4-C.8 or FINAL-C created: this is the single final decision; reopen only on new evidence/approval, not for administrative step proliferation.
+N4-FINAL-B — ĐỐI SOÁT PHẢN BIỆN BÊN THỨ BA VÀ PR↔HEAD↔CI (23/11/2026)
+Báo cáo nguồn (AI independent verification, KHÔNG phải QA ký): https://docs.google.com/document/d/1Y7BKPNpjkAT-1pNty8qUoNH9Ubyskn2W9uapzYWf3LY/edit
+Danh sách CHÍNH XÁC PR mở tuần tự: #14 → #16 → #17 → #18 → #19 → #20 → #21 → #22 → #23 → #24 → #25. Tất cả Draft/Unmerged tại mốc đối soát; khác nhau giữa CI chạy mã test gốc và CI trên commit bao gồm báo cáo Markdown là bình thường nhưng phải công khai.
+PR #22 HEAD 49d17dc5a2fba70a46faac9a0540f30b1f4f3eec – CI minh chứng W1-01 45129448098 SUCCESS (trên SHA test 78c88797918ff2508f69e3bb80a9c22ea7a2c648); commit đầu chứa hồ sơ có thể khác SHA CI này.
+PR #23 HEAD ed4c89704a2568903d5e24d836a9ef538898a56f – CI gốc 45130344244 SUCCESS và CI cuối trên HEAD 45130767674 SUCCESS.
+PR #24 HEAD 08942daadf92027903cf2d1eeecf7293e27f68bc – CI gốc 45131772681 SUCCESS và CI cuối trên HEAD 45132282477 SUCCESS.
+PR #25 HEAD kiểm nghiệm N4-FINAL-B cần tra GitHub khi đối soát mới; lưu báo cáo quản trị, KHÔNG cấp quyền merge/release.
+Quy ước N4/Trusted grader cần bổ sung vào hợp đồng sau khi kiểm schema: với giá trị ô D1 tùy chọn/không nhập, chuỗi rỗng "" và thuộc tính không hiện diện (undefined) đều diễn đạt chưa trả lời; số 0 hoặc chuỗi "0" là giá trị tường minh khác ô rỗng; không tự chấp nhận null hoặc chuỗi không hợp lệ nếu chưa duyệt. Đây là đề xuất hợp đồng, chưa là trusted-grader implementation PASS.
+Sổ duy nhất vẫn pending chứng cứ người thật: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
+Cảnh báo phân quyền: báo cáo bên thứ ba 1Y7BKPNpjkAT-1pNty8qUoNH9Ubyskn2W9uapzYWf3LY có anyone:reader. Khuyến nghị Owner chuyển Restricted nếu đây là QA nội bộ, nhưng hành động quyền chưa được thực hiện.
+Ưu tiên vận hành: phiên Owner xác nhận device/OS/browser/route/time và policy D1/D10, A3/A4 do người nhận RTM tự ký, QA độc lập phân công và review; N5 preparation LAB vẫn có GO có điều kiện, N4_CLOSED và release vẫn NO-GO.
