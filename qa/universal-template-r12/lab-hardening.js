@@ -151,19 +151,38 @@
   return global.BE_HOC_VISUAL_SEMANTIC?.plan(intent)||fail('SEMANTIC_RESOLVER_MISSING');
  }
  function validateAssets(q){
-  if(q.assetId){
-   const result=assetIntent(q,q.assetId,q.exactQuantity);
-   if(!result.ok)return fail('ASSET_POLICY_'+result.reason);
+  const pv=q.publicVariant||{};
+  const test=(assetId,scope,quantity)=>{
+   if(!assetId)return ok();
+   const result=assetIntent(q,assetId,quantity);
+   return result.ok?ok():fail(scope+'_ASSET_POLICY_'+result.reason);
+  };
+  let r=test(q.assetId,'QUESTION',q.exactQuantity);if(!r.ok)return r;
+  const nodes=[];
+  if(q.rendererId==='D3'){
+   for(const item of [...(pv.leftItems||[]),...(pv.rightItems||[])])
+    nodes.push(item.content?.assetId);
   }
+  if(q.rendererId==='D4'){
+   nodes.push(pv.prompt?.assetId);
+   for(const option of pv.options||[])nodes.push(option.content?.assetId);
+  }
+  if(q.rendererId==='D6'||q.rendererId==='D8A'||q.rendererId==='D8B'){
+   for(const item of [...(pv.items||[]),...(pv.containers||[]),...(pv.pans||[])])
+    nodes.push(item.assetId);
+  }
+  if(q.rendererId==='D7'){
+   for(const row of pv.rows||[])nodes.push(row.left?.assetId,row.right?.assetId);
+  }
+  for(const asset of nodes){r=test(asset,'NESTED',q.exactQuantity);if(!r.ok)return r;}
   if(q.rendererId==='D9'){
-   for(const row of q.publicVariant.rows||[]){
+   for(const row of pv.rows||[]){
     if(row.contentType!=='ASSET')continue;
     if(q.visualIntent!=='EXACT_COUNT'||!q.countUnit||row.symbolValue!==undefined&&row.symbolValue!==1)
       return fail('D9_EXACT_SYMBOL_UNIT_REQUIRED');
-    // One rendered pictograph <img> stands for exactly one item; the row's
-    // itemCount controls the number of image instances, never a guessed 1 total.
-    const result=assetIntent(q,row.assetId,1);
-    if(!result.ok)return fail('D9_ASSET_POLICY_'+result.reason);
+    // Each pictograph IMG represents one counted unit; itemCount controls
+    // the total symbol instances. Never guess total quantity from one icon.
+    r=test(row.assetId,'D9',1);if(!r.ok)return r;
    }
   }
   return ok();
