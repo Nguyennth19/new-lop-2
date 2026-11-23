@@ -1,0 +1,59 @@
+name: ULT N4-C.7-C W1-02 five-part DraftKey and 12-route lifecycle gate
+on:
+  push:
+    branches: ['lab/ult-n4c7c-w102-draftkey-lifecycle-20261123']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w102-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate original source freeze and test syntax
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-n4-prep/n4c7c-w102-draftkey-lifecycle.test.cjs
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+      - name: Browser dependencies
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: W1-02 all-route composite key and full lifecycle
+        run: node qa/universal-template-n4-prep/n4c7c-w102-draftkey-lifecycle.test.cjs
+      - name: Original N1-A regression
+        run: node qa/universal-template-n1/n1a-browser.test.cjs
+      - name: LAB-only scope containment
+        if: always()
+        run: |
+          set -euo pipefail
+          BASE=49d17dc5a2fba70a46faac9a0540f30b1f4f3eec
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/n4c7c-.*|qa/universal-template-n4-prep/governance/(N4C7C_.*|MASTER_QA_INDEX_N4C7_20261123\.md)|\.github/workflows/ult-n4c7c-w102-draftkey\.yml)$'; then
+            echo 'N4C7C_SCOPE_BREACH' >&2; exit 1
+          fi
+          echo 'No frozen renderer/CSS, GAS, Sheet, trusted-grader or learner changes.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Human QA remains PENDING; W1-02 formal closure not granted.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N4C7C_W102_FIVE_COMPONENT_12_RENDERER_QA_NO_HUMAN_SIGNOFF
+          path: |
+            qa/universal-template-n4-prep/dist/N4C7C_W102/
+            qa/universal-template-n1/dist/
+          if-no-files-found: warn
+          retention-days: 90

@@ -1,7 +1,8 @@
-# Master QA Index — Drive Canonical Snapshot
-Drive https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Revision AHj4eMRCdBtG0sne2WtMoxRUFADpshUOt2DfpevhQYEEjWun6HRPSQHMoNJ_ZzPrKMAQYn4xMoNTNZXyJdptzIQ8kN0_GKK2F5dXq3-Tnw
-AI-maintained read-only mirror; prior statuses superseded by later appendices.
+# Master QA Index – Drive canonical snapshot
+
+Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Revision: AHj4eMTX2Mh-Is_oJ3BEZaoyxX4suBMLzjOQ-7fTIs3mY8-pyGuPsMkaoRkU67B__nZDR0EzYgRlPGJXKxeUX3rkQu1QL1Q0Hn3cSqtypg
+Read-only redacted GitHub mirror; human QA signoff must occur under authenticated identity on restricted Drive/GitHub. Latest appendices supersede earlier status labels.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -82,3 +83,9 @@ Báo cáo Drive canonical: https://docs.google.com/document/d/1-dYdMZxEuFeIw1r1M
 Bằng chứng ZIP Drive: https://drive.google.com/file/d/1XJFVg0AxDrEAfWRB4CZfW3by3yD44sGk/view
 Phạm vi: D1/D2 callback spy 24 assertion groups / desktop+mobile Chrome emulation; N1-A 8 cases PASS; nguồn đóng băng không sửa. Trước đó CI 45129199895 và 45129337463 FAIL do harness fixture/blank semantics, log giữ nguyên.
 W1-01: TECHNICAL_SCOPED_PASS, QA_INDEPENDENT_PENDING, W1_01_CLOSURE_PENDING; W1-02..05/DB-01..05 còn OPEN theo RTM nguồn. N0-S A3/A4, D1/D10 policy, W1-05 cuối và release NO-GO.
+N4-C.7-C — W1-02 12-ROUTE DRAFTKEY CHECKPOINT (23/11/2026)
+W1-02 technical CI scope: PASS. CI 45130344244 SUCCESS: 50 browser check groups, 144 distinct-key variant comparisons, 12 routes × desktop/mobile, 8 N1-A regression cases PASS. Code does not alter renderer/CSS core. Important: setData clears ephemeral memory as separate defense, so avoid claiming persistence across browser refresh or independent durable-store isolation.
+Google Drive report: https://docs.google.com/document/d/1iZirPPk81QlgVV4AQQrdmJIeMWSyfJaEEVtLIkiIaeA/edit
+Google Drive artifact: https://drive.google.com/file/d/146jf464cFbFElXpDPHXteGlZTjmMdOxm/view
+GitHub Draft PR #23: https://github.com/Nguyennth19/new-lop-2/pull/23
+Conclusion: W1_02_SCOPED_TECH_PASS / INDEPENDENT_QA_PENDING / W1_02_FORMAL_CLOSURE_PENDING; N0-S, D1/D10 policies, remaining RTM and release still NO-GO.
