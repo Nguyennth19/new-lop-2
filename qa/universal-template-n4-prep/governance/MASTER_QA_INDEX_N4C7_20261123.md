@@ -1,9 +1,10 @@
-# Master QA Index — Drive read-only audit snapshot
+# Master QA Index – Drive canonical governance snapshot
 
-Google Drive canonical: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Drive revision: AHj4eMRPx1_QA4f1eGXB-oM9ij3JoNzdtdKwqSSuYff9cF6LwfomI2ohpDWl5ZPH5Sm4fVae249SCD7aV9oAqH12swKyXMnIArIH00Ty4A
-Status: CSV_BYTE_SHA256_PASS / N0S_A3_A4_HUMAN_ACK_PENDING / W1_TECH_SCOPED_5_OF_5_PASS / W1_INDEPENDENT_QA_SIGNED_0_OF_5 / RELEASE_NO_GO.
-Note: private signer/account fields are NOT copied to GitHub. Source of truth for human signoff is the existing restricted register; never infer QA signatures from this snapshot.
+Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Revision: AHj4eMSpInArN5BpkutIKWXqLLIvqKt9umLmfZsI3bUhZPPKfzHNQK8tLcVXvP22nwBqeYWjyxcND7H65aAbZ_UL4c2WkntYwuoDyOdzAg
+Source frozen N4 Final-A: 08942daadf92027903cf2d1eeecf7293e27f68bc
+Status: N4_GOVERNANCE_BASELINE_LOCKED_WITH_ACCESS_EXCEPTIONS, N5_STARTED_SCOPE_AND_EVIDENCE_INTAKE_ONLY, HUMAN_QA_PENDING, RELEASE_NO_GO.
+This mirror is read-only. No GitHub reviewer or independent Owner signature inferred.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -123,3 +124,10 @@ W1 matrix: W1-01 CI 45129448098, W1-02 CI cuối 45130767674, W1-03 CI cuối 45
 Đã truy vấn 11 PR #14,#16,#17,#18,#19,#20,#21,#22,#23,#24,#25: đều OPEN/DRAFT/UNMERGED, reviews API mỗi PR đều rỗng. Reviewer cần Owner chỉ định GitHub username có thẩm quyền, không được tự gán.
 Ma trận canonical (nội bộ, không đưa tài khoản cá nhân lên GitHub): https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit mục 10; biên bản bàn giao https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit mục 11.
 D1/D10 Owner approved-in-chat-in-principle; QA/security/grader authorization pending. Chỉ GO chuẩn bị N5 LAB isolated; NO GO merge/GAS/Sheet/trusted grading/release.
+N4-GOVERNANCE-LOCK → N5-START (23/11/2026) — CHỐT BASELINE KHÔNG ĐỒNG NGHĨA N4 CLOSED
+Nguồn lộ trình gốc N0–N11 https://docs.google.com/document/d/1OXxKt3d7pXXGASRew89R9T8y5QKUzf3QbRaaVWtoyRE/edit: N5 = “Đóng kỹ thuật 5 việc W1 bằng RTM”; điều kiện PASS “0 W1 blocker còn mở”; N6 mới kiểm DB-01..05, N7 writer, N8 CAS/idempotency, N9 recovery, N10 signed audit, N11 GO/NO-GO V1.3-C. Không gán nhầm N5 thành phát triển dữ liệu hay sửa Sheet.
+N5-START canonical contract: https://docs.google.com/document/d/17I4dRJSXRuyiDWh2gD-T6_umP4m4FRc6rmNY02pH74U/edit; GitHub mirror trong cùng Draft PR #25.
+Nguồn frozen be-hoc 1b69e277f8de6cb156f46a1d85af33bdad70c0ef, R1/R2 fe15c79b21b9f056694f8127330934d997affd45, N4-FINAL-A exact CI HEAD 08942daadf92027903cf2d1eeecf7293e27f68bc tại run 45132282477 SUCCESS. N4 source/CI proof preserved, không yêu cầu chạy lại trên docs-only commit.
+RTM CSV RAW 10.495 bytes SHA256 d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b. W1 5/5 technical SCOPED_PASS, QA signed 0/5, RTM CLOSED 0/5; QA reviewer vẫn chưa được chỉ định; N0-S A3/A4 con người PENDING. D1/D10 Owner APPROVED_IN_CHAT_IN_PRINCIPLE; không phải release approval.
+DRIVE ACCESS EXCEPTION REGISTER: Đã xác minh mẹ QA archive 1r6nUv4 và folder Final-B 1hfHW0b6 Restricted, Final-B canonical, Master Index và Sổ ký Restricted. Nhưng 3 tệp có permission trực tiếp: 1Y7BKPN... report bên 3 anyone:reader, 1yTEOB... báo cáo N4-C6 anyone:reader, 1xz-9tx... RTM N0-S receipt anyone:commenter. Chưa sửa quyền; Owner phải cho phép/sắp xếp quyền người đọc đã biết. Không công bố ALL_RESTRICTED.
+N4 GOVERNANCE_LOCK = BASELINE_LOCKED_WITH_THREE_ACCESS_EXCEPTIONS_AND_HUMAN_SIGNOFF_PENDING. N5_STARTED_SCOPE_READINESS_ONLY; không phải N5 PASS, NO_GO merge/GAS/Sheet/trusted grade/learner.
