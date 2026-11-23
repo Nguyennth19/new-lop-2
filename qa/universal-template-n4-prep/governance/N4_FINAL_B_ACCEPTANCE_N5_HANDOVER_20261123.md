@@ -1,9 +1,9 @@
-# N4 Final B — read-only mirrored Google Drive evidence
+# N4-FINAL-B — Drive read-only audit snapshot
 
-Canonical Drive: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
-Source Drive revision: AHj4eMR7mFEEJIQdaKG1qyL2nxQzbdiuVrR1DXysMgpyakb6IDwijjezn4X4ltLsRG2pbQgxrTXzwAb4o8Hgx_99zhrFbaLFEFXZ2UBgWQ
-Status: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_ONLY; NO_RELEASE.
-Third party review is advisory AI verification, not human signoff. No identity-bound approvals are mirrored.
+Google Drive canonical: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
+Drive revision: AHj4eMSfuaco5xv0ZzMKfzgrBypOTpB3FFZIWcW66coJEFmeFcTz-H6P-oK6SYSWmQITAtoXFNaAozD1pUdNmVqbararV8lKUCnAZXOfEQ
+Status: CSV_BYTE_SHA256_PASS / N0S_A3_A4_HUMAN_ACK_PENDING / W1_TECH_SCOPED_5_OF_5_PASS / W1_INDEPENDENT_QA_SIGNED_0_OF_5 / RELEASE_NO_GO.
+Note: private signer/account fields are NOT copied to GitHub. Source of truth for human signoff is the existing restricted register; never infer QA signatures from this snapshot.
 
 N4-FINAL-B — FINAL ACCEPTANCE DECISION & CONTROLLED N5 HANDOVER
 Dự án Lớp 2 – Universal Learning Template V1 | LAB-only
@@ -83,3 +83,9 @@ Phân loại: AI_INDEPENDENT_VERIFICATION_ONLY, không phải chữ ký QA độ
 Hợp đồng tương lai cần quy định blank D1: "" tương đương trường vắng (undefined) trong ngữ nghĩa chưa trả lời; tuyệt đối khác số 0 hoặc "0". Chỉ là kiến nghị giao diện trusted-server, chưa có phê duyệt/implementation.
 Thứ tự khuyến nghị: (1) Owner tự xác nhận thiết bị và phê duyệt có phạm vi D1 A+B/D10 allowlist; (2) người nhận RTM xác thực độc lập A3/A4 + thời điểm, phân công QA có thẩm quyền; (3) QA review W1-01..05 trên SHA và tài liệu một lần; (4) chuẩn bị N5 scope/manifest trên LAB. Không tăng danh sách PR hoặc bắt đầu code tích hợp N5 khi chưa đủ người kiểm soát.
 Tình trạng không đổi: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_PREPARATION_CONDITIONAL_GO; N4_CLOSED/RELEASE_NO_GO.
+11. N0-S / QA-CLOSURE — BÀN GIAO MA TRẬN VÀ QA ĐỘC LẬP (23/11/2026)
+Tính lại từ file CSV RAW ở Drive: SHA-256 d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b, 10.495 bytes — BYTE_INTEGRITY_PASS. Đóng A3/A4 cần đúng người nhận ký bằng tài khoản/thời điểm có chứng cứ. Mẫu còn placeholder, không tự điền.
+W1-01..W1-05: 5/5 TECHNICAL_SCOPED_PASS theo bộ bằng chứng từng hàng tại Sổ ký nhận N4-C.6 mục 10; 0/5 QA SIGNED; 0/5 RTM CLOSED. GitHub: 11/11 Draft PR #14,#16..#25 đều chưa merge và API reviews của 11 PR đều rỗng.
+Owner đã quyết định D1 A+B và D10 ADD/SUB về nguyên tắc qua chat; chưa đồng nghĩa QA độc lập hoặc cấp quyền chấm học sinh.
+Người QA độc lập: OWNER_ASSIGNMENT_REQUIRED (cần GitHub username, phạm vi và quyền tài liệu; không tự gán reviewer). Sau phân công, QA review toàn chuỗi PR và đối chiếu 5 hàng W1 theo required_new_tests và close_gate trong CSV nguồn. Việc này có thể dùng một reviewer bao quát hoặc phân tách chuyên môn accessibility/asset/security; chữ ký phải xác thực.
+Handover: chỉ GO N5 isolated LAB scope/contract preparation theo N4-FINAL-B; giữ tất cả NO-GO merge, GAS, Sheet, W1/DB closure, trusted grading, learner release.
