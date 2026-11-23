@@ -182,3 +182,44 @@ function N9_DienTapKhoiPhucKhongGhi(){
   },N7_TEST_SETTINGS_,N9_PREWRITE_BACKUP_ID_);
   console.log(JSON.stringify(result,null,2));
 }
+
+/**
+ * N9 final authority/evidence gate. READ ONLY: check the existing rollback
+ * register, NEVER interpret typed cells as independent authorization.
+ * Only explicit external Owner+independent QA checks could authorize an
+ * isolated synthetic test; this gate cannot issue or execute a grant.
+ */
+function n9FinalClosureGate_(deps,settings,backupId){
+  const reconciled=n9ControlledRestoreDrill_(deps,settings,backupId);
+  if(!reconciled.ok)return reconciled;
+  const wb=deps.spreadsheetApp.openById(settings.isolatedSpreadsheetId);
+  const tab=wb.getSheetByName('16_Rollback');
+  if(!tab)return n9Deny_('ROLLBACK_REGISTER_MISSING');
+  const required=['lesson_id','from_release_id','target_release_id',
+    'reason','owner_signed_ref','qa_signed_ref','plan_sha256'];
+  const headers=tab.getRange(1,1,1,required.length).getDisplayValues()[0];
+  if(headers.join('|')!==required.join('|'))
+    return n9Deny_('ROLLBACK_REGISTER_HEADER_DRIFT');
+  const rows=tab.getLastRow()-1;
+  if(rows<0)return n9Deny_('ROLLBACK_REGISTER_INVALID');
+  // Typed signatures in a Sheet are not independently authenticated.
+  // Nonempty records require external verification and cannot auto-close.
+  const rollbackEvidencePresent=rows>0;
+  return {ok:true,mode:'N9_FINAL_GATE_READ_ONLY',
+    recoveryReadOnlyAccepted:true,ramReplayAccepted:true,
+    liveDataRows:reconciled.reconstructedDataRows,
+    snapshotDigest:reconciled.reconstructedDigest,
+    rollbackRegisterRows:rows,rollbackEvidencePresent:rollbackEvidencePresent,
+    independentQAVerified:false,
+    realRestoreExecuted:false,
+    writeGrantIssued:false,
+    readyToCloseN9:false,
+    gate:'BLOCKED_PENDING_INDEPENDENT_QA_AND_REAL_RESTORE_EVIDENCE',
+    writes:0,restores:0,release:false};
+}
+function N9_KiemTraCongDongCuoiChiDoc(){
+  const result=n9FinalClosureGate_({
+    spreadsheetApp:SpreadsheetApp,utilities:Utilities
+  },N7_TEST_SETTINGS_,N9_PREWRITE_BACKUP_ID_);
+  console.log(JSON.stringify(result,null,2));
+}
