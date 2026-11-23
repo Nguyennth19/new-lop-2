@@ -1,10 +1,10 @@
-# N4-FINAL-B — Conditional final acceptance and N5 handover
+# N4-FINAL-B final acceptance and controlled N5 handover
 
-Google Docs canonical: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
-Google Docs revision: AHj4eMS8GQ6S-pZlruVV8TjiPCAkPxP_hhoRfGX1sotQ1JYS5Y0i_uv7I5bXTAuNpkTbgwTPHtpaoyjVsGL2ioZUnQNYrYjw8LH_jbUt2Q
-Source base: 08942daadf92027903cf2d1eeecf7293e27f68bc (N4-FINAL-A)
-N4 decision: TECHNICALLY_READY_HUMAN_GATES_PENDING, NOT CLOSED.
-**AI-maintained read-only audit mirror. No human approval or release grant.**
+Drive canonical document: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
+Revision: AHj4eMT968fDxOmrjnSeAHrQzIH0PGCkEFQI7I_IPwF0O8tQ7Oi6fkXb0JPsL_ikYHu8OlXfFCaLRoHjvGlq9QfkpkzeA8YPXcl0oIiwXg
+GitHub Draft PR #25: https://github.com/Nguyennth19/new-lop-2/pull/25
+Status: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING / CONDITIONAL_N5_LAB_ONLY / RELEASE_NO_GO
+**AI summary; no human signature.**
 
 N4-FINAL-B — FINAL ACCEPTANCE DECISION & CONTROLLED N5 HANDOVER
 Dự án Lớp 2 – Universal Learning Template V1 | LAB-only
@@ -71,3 +71,8 @@ Người thứ ba bắt đầu từ Master QA Index → báo cáo N4-FINAL-A →
 8. ĐIỀU KIỆN KÍCH HOẠT QUYẾT ĐỊNH N4 CLOSED SAU NÀY
 Chỉ sau khi nhận đủ signoff theo RTM W1-01..05, N0-S A3/A4, QA độc lập, phê duyệt learner D1 / D10 private grader và các yêu cầu device/rollback cần thiết: đối soát lại revision + tài khoản + SHA ở một điểm quyết định. Cập nhật riêng trạng thái N4 CLOSED hoặc CHANGES_REQUIRED. Không chạy lại các CI đã PASS khi frozen SHA không đổi trừ khi chính sách yêu cầu phạm vi mới.
 Tại lần đối soát này không đủ bằng chứng để cấp N4 CLOSED; đây là kết luận hoàn tất đợt N4-FINAL-B, không phải yêu cầu mở N4-FINAL-C hay một loạt N4-C.x.
+9. CHECKPOINT LƯU ĐỒNG THỜI SAU KHI TẠO DRAFT PR
+Draft PR #25: https://github.com/Nguyennth19/new-lop-2/pull/25
+GitHub Markdown: https://github.com/Nguyennth19/new-lop-2/blob/lab/ult-n4-final-b-n5-handover-20261123/qa/universal-template-n4-prep/governance/N4_FINAL_B_ACCEPTANCE_N5_HANDOVER_20261123.md
+Master QA Index: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Status khóa: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_PREPARATION_GO; N4_CLOSED_NOT_GRANTED; RELEASE_NO_GO.
