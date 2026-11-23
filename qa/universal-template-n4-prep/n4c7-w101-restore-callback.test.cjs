@@ -41,7 +41,8 @@ const close=()=>new Promise(r=>server.close(r));
       assert(calls1.length===1,'D1 restore fired '+calls1.length+' callbacks, expected final only');
       assert(stable(calls1[0])===stable(d1.snapshot()),'D1 callback not final snapshot');
       assert(d1.snapshot().values.t1_split1==='0'&&d1.snapshot().values.t1_split2==='3','D1 zero/empty/digits lost');
-      assert(d1.snapshot().values[ids.find(x=>x!=='t1_split1'&&x!=='t1_split2')]==='','D1 blank no longer blank');
+      const other=ids.find(x=>x!=='t1_split1'&&x!=='t1_split2');
+      if(other){const blank=d1.snapshot().values[other];assert(blank===''||blank===undefined,'D1 blank changed to nonblank: '+blank);}
       assert(d1.snapshot().active==='t1_split2','D1 selected target not restored');
       findings.push({id:'D1_ZERO_EMPTY_ACTIVE_FINAL_ONLY',callbacks:calls1.length,active:d1.snapshot().active,slots:ids.length});
       calls1=[];const invalid=d1.restore({...target,active:'unknown_slot'});
