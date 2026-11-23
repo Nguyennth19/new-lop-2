@@ -9,8 +9,15 @@ const sandbox={};
 vm.runInNewContext(source+'\n;globalThis.__N7={validate:n7TestValidate_,execute:n7TestExecute_,status:n7TestStatus_};',sandbox,{filename:file});
 const n7=sandbox.__N7;
 const COPY='N7_LAB_COPY_NOT_REAL';
+const FIELDS=['contract','environment','requestId','idempotencyKey','executionId',
+ 'lessonId','candidateSha256','sourceReceiptSha256','sourceRevision',
+ 'targetSpreadsheetId','action','tab','rowsDigest','grantId','expectedJournalRows'];
+const digestOf=i=>crypto.createHash('sha256').update(JSON.stringify(FIELDS
+ .filter(k=>k!=='executionId'&&k!=='expectedJournalRows').map(k=>[k,i[k]]))).digest('hex');
 const settings=()=>({writesEnabled:false,isolatedSpreadsheetId:COPY,
  allowedOwnerEmail:'lab-owner@example.invalid',approvedGrantId:'GRANT_001',
+ approvedIntentDigest:digestOf(intent()),grantExpiresAt:'2030-01-01T00:00:00Z',
+ approvedBaselineRows:0,
  forbiddenSheetIds:['1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs',
  '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8'],journalTab:'15_NhatKy_HanhDong'});
 const intent=()=>({contract:'N7_GAS_TEST_INTENT_V1',environment:'TEST',requestId:'LAB_REQ_001',
@@ -20,7 +27,7 @@ const intent=()=>({contract:'N7_GAS_TEST_INTENT_V1',environment:'TEST',requestId
  rowsDigest:'c'.repeat(64),grantId:'GRANT_001',expectedJournalRows:0});
 function runtime(){
  const header=['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'];
- const cells=[header];const state={locked:false,busy:false,failAppend:false,failReadback:false,identity:'lab-owner@example.invalid',released:0};
+ const cells=[header];const state={locked:false,busy:false,failAppend:false,failReadback:false,failFlush:false,flushed:0,identity:'lab-owner@example.invalid',released:0};
  const tab={
   getLastRow:()=>cells.length,
   getRange:(row,col,count,cols)=>({getValues:()=>{
@@ -30,10 +37,13 @@ function runtime(){
   appendRow:r=>{if(state.failAppend)throw Error('UNCERTAIN_APPEND');cells.push(r);}
  };
  const deps={
-  spreadsheetApp:{openById:id=>{assert.equal(id,COPY);return{getSheetByName:n=>n==='15_NhatKy_HanhDong'?tab:null};}},
+  spreadsheetApp:{
+   openById:id=>{assert.equal(id,COPY);return{getSheetByName:n=>n==='15_NhatKy_HanhDong'?tab:null};},
+   flush:()=>{state.flushed++;if(state.failFlush)throw Error('UNCERTAIN_FLUSH');}
+  },
   lockService:{getScriptLock:()=>({tryLock:()=>!state.busy,releaseLock:()=>state.released++})},
   session:{getEffectiveUser:()=>({getEmail:()=>state.identity})},
-  utilities:{DigestAlgorithm:{SHA_256:'SHA_256'},computeDigest:(_,s)=>[...crypto.createHash('sha256').update(s).digest()].map(n=>n>127?n-256:n),formatDate:()=> '2026-11-23T23:00:00+07:00'}
+  utilities:{DigestAlgorithm:{SHA_256:'SHA_256'},computeDigest:(_,s)=>[...crypto.createHash('sha256').update(s).digest()].map(n=>n>127?n-256:n),formatDate:()=> '2026-11-23T23:00:00+07:00'},now:()=>Date.parse('2026-11-23T16:00:00Z')
  };
  return{deps,cells,state};
 }
@@ -66,7 +76,7 @@ test('N7 isolated single-tab journal append verifies readback and never grants r
  const e=runtime(),s={...settings(),writesEnabled:true},r=call(intent(),e,s);
  assert.equal(r.ok,true);assert.equal(r.release,false);assert.equal(r.writes,1);
  assert.equal(e.cells.length,2);assert.equal(e.cells[1][0],'N7_LAB_KEY_001');
- assert.equal(e.state.released,1);
+ assert.equal(e.state.released,1);assert.equal(e.state.flushed,1);
 });
 test('N7 same key/digest returns same event without another physical append',()=>{
  const e=runtime(),s={...settings(),writesEnabled:true};
@@ -78,14 +88,16 @@ test('N7 same key/digest returns same event without another physical append',()=
 test('N7 same idempotency key with altered payload denies conflict',()=>{
  const e=runtime(),s={...settings(),writesEnabled:true};
  call(intent(),e,s);
- assert.equal(call({...intent(),rowsDigest:'d'.repeat(64)},e,s).reason,'IDEMPOTENCY_CONFLICT');
+ const mutated={...intent(),rowsDigest:'d'.repeat(64)};
+ assert.equal(call(mutated,e,s).reason,'GRANT_SCOPE_OR_EXPIRY_DENIED');
+ assert.equal(call(mutated,e,{...s,approvedIntentDigest:digestOf(mutated)}).reason,'IDEMPOTENCY_CONFLICT');
  assert.equal(e.cells.length,2);
 });
 test('N7 journal rows check rejects stale parallel input',()=>{
  const e=runtime(),s={...settings(),writesEnabled:true};
  call(intent(),e,s);
  const other={...intent(),requestId:'LAB_REQ_002',idempotencyKey:'LAB_KEY_002',executionId:'LAB_EXEC_002'};
- assert.equal(call(other,e,s).reason,'STALE_JOURNAL_READ');
+ assert.equal(call(other,e,{...s,approvedIntentDigest:digestOf(other)}).reason,'STALE_JOURNAL_READ');
  assert.equal(e.cells.length,2);
 });
 test('N7 lock contention and header drift deny without write',()=>{
@@ -101,6 +113,37 @@ test('N7 uncertain append or failed readback stops at RECONCILE_REQUIRED',()=>{
  assert.equal(call(intent(),y,s).reason,'RECONCILE_REQUIRED');assert.equal(y.cells.length,2);
  // No blind second append despite readback uncertainty.
  assert.equal(y.cells[1][4],'PREPARED');
+});
+test('N7-D4 missing/expired/mismatched grant cannot authorize a write',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};
+ for(const bad of [
+  {...s,approvedIntentDigest:''},
+  {...s,approvedIntentDigest:'a'.repeat(64)},
+  {...s,grantExpiresAt:''},
+  {...s,grantExpiresAt:'2025-01-01T00:00:00Z'},
+  {...s,approvedBaselineRows:-1},
+  {...s,approvedBaselineRows:1},
+  {...s,approvedGrantId:''}
+ ])assert.equal(call(intent(),e,bad).ok,false);
+ assert.equal(e.cells.length,1);assert.equal(e.state.flushed,0);
+});
+test('N7-D4 flush is required under lock before reporting one-write success',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};
+ e.state.failFlush=true;
+ assert.equal(call(intent(),e,s).reason,'RECONCILE_REQUIRED');
+ assert.equal(e.cells.length,2);
+ assert.equal(e.state.flushed,1);assert.equal(e.state.released,1);
+ e.state.failFlush=false;
+ const duplicate=call(intent(),e,s);
+ assert.equal(duplicate.writes,0);assert.equal(e.cells.length,2);
+});
+test('N7-D4 one bound request cannot authorize a second request',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};
+ assert.equal(call(intent(),e,s).writes,1);
+ const second={...intent(),requestId:'LAB_REQ_002',idempotencyKey:'LAB_KEY_002',
+  executionId:'LAB_EXEC_002',expectedJournalRows:1};
+ assert.equal(call(second,e,s).reason,'GRANT_SCOPE_OR_EXPIRY_DENIED');
+ assert.equal(e.cells.length,2);
 });
 test('N7 contract requires a strict value digest and safe idempotency identifiers',()=>{
  const e=runtime(),s={...settings(),writesEnabled:true};
