@@ -1,8 +1,7 @@
-# N4-C.7 Drive Canonical Snapshot — updated RTM row mapping
-
-Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Google Docs revision: AHj4eMQX7RvxyP4tkKdICiTCQrjyhCrqUZdNgefJ7jtKqrXqH9HJu8RHrtXcPTPwWk48BAFKVqKe4Q1_ybVa7h9YoZwjQdZHWdP3q9P-pw
-No private signer identities; read-only mirror. Existing historical statements superseded by the appended N4-C.7-A correction.
+# Master QA Index — Drive Canonical Snapshot
+Drive https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Revision AHj4eMRCdBtG0sne2WtMoxRUFADpshUOt2DfpevhQYEEjWun6HRPSQHMoNJ_ZzPrKMAQYn4xMoNTNZXyJdptzIQ8kN0_GKK2F5dXq3-Tnw
+AI-maintained read-only mirror; prior statuses superseded by later appendices.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -76,3 +75,10 @@ DB-04 [OPEN]: TOCTOU từ stale snapshot, cần live re-read và expectedRevisio
 DB-05 [OPEN]: Signed approval & AI candidate trust boundary; bảng phê duyệt/rollback chưa đủ bằng chứng nhận chữ ký, AI_CANDIDATE_ONLY không được cấp chấm/phát hành (DB-T13..15). KHÔNG phải đơn thuần “Readback+Rollback Drill”.
 TIÊU CHUẨN: Source RTM exact canonical_requirement luôn ưu tiên hơn tên gợi nhớ trong báo cáo. Mọi đóng cổng phải liên kết dòng CSV + assertion + CI SHA + reviewer + decision. Chưa có chữ ký mới: N0-S A3/A4, Independent QA, D1/D10 policy vẫn PENDING; Issue #15 chưa có comment độc lập.
 QUYẾT ĐỊNH: N4-C.7 RTM_RECONCILIATION_CORRECTED; 0/10 RTM hàng được ký CLOSED qua bước này. NO MERGE / NO GAS / NO SHEET WRITE / NO STUDENT RELEASE.
+N4-C.7-B — W1-01 DIRECT CALLBACK QA (23/11/2026)
+CI 45129448098 SUCCESS: https://github.com/Nguyennth19/new-lop-2/actions/runs/45129448098
+Draft PR #22: https://github.com/Nguyennth19/new-lop-2/pull/22
+Báo cáo Drive canonical: https://docs.google.com/document/d/1-dYdMZxEuFeIw1r1MOzycRQx32EcelDzREHC2yiTIlk/edit
+Bằng chứng ZIP Drive: https://drive.google.com/file/d/1XJFVg0AxDrEAfWRB4CZfW3by3yD44sGk/view
+Phạm vi: D1/D2 callback spy 24 assertion groups / desktop+mobile Chrome emulation; N1-A 8 cases PASS; nguồn đóng băng không sửa. Trước đó CI 45129199895 và 45129337463 FAIL do harness fixture/blank semantics, log giữ nguyên.
+W1-01: TECHNICAL_SCOPED_PASS, QA_INDEPENDENT_PENDING, W1_01_CLOSURE_PENDING; W1-02..05/DB-01..05 còn OPEN theo RTM nguồn. N0-S A3/A4, D1/D10 policy, W1-05 cuối và release NO-GO.
