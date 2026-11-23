@@ -28,7 +28,7 @@ function n7TestDeny_(reason) {
   return {ok:false,reason:reason,writes:0,release:false};
 }
 function n7TestValidate_(i,settings) {
-  if (!i || Object.getPrototypeOf(i)!==Object.prototype ||
+  if (!i || Object.prototype.toString.call(i)!=='[object Object]' ||
       Object.keys(i).sort().join('|')!==N7_TEST_DIGEST_FIELDS_.slice().sort().join('|')) {
     return n7TestDeny_('INTENT_SCHEMA');
   }
