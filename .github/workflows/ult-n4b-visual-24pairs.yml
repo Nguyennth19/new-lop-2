@@ -1,0 +1,60 @@
+name: ULT N4-B 24-pair before-after visual evidence (LAB only)
+on:
+  push:
+    branches:
+      - 'lab/ult-n4b-visual-24pairs-20261123'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  n4b-paired-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify baseline SHA and manifest pair contract
+        run: |
+          node --check qa/universal-template-n4-prep/n4b-visual-24pairs.test.cjs
+          node qa/universal-template-n4-prep/n4-preflight.cjs
+          test "$(git rev-parse af02456fcc2b3be856091edc899c699890d74da0)" = "af02456fcc2b3be856091edc899c699890d74da0"
+      - name: Install real Chromium and pure JS PNG compare library
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1 pngjs@7.0.0
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: N4-B generate independently 24 paired snapshots and diff/ledger
+        run: node qa/universal-template-n4-prep/n4b-visual-24pairs.test.cjs
+      - name: Guard all frozen sources and worktree provenance
+        if: always()
+        run: |
+          set -euo pipefail
+          BASE=5e09b4a45e6b3d075c6770bb91facf8289c08f6c
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          node qa/universal-template-v1/build.cjs
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/.*|\.github/workflows/ult-n4b-visual-24pairs\.yml)$'; then
+            echo 'SOURCE_BREACH_N4B' >&2;exit 1
+          fi
+          test "$(git rev-parse af02456fcc2b3be856091edc899c699890d74da0)" = "af02456fcc2b3be856091edc899c699890d74da0"
+      - name: Preserve all before/after/difference and ledger files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N4B_12_ROUTES_24_PAIRS_48_IMAGES_DIFF_LEDGER_OWNER_PENDING
+          path: qa/universal-template-n4-prep/dist/N4B_VISUAL_24_PAIRS/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Mandatory NO-GO boundary
+        if: always()
+        run: |
+          echo 'This CI captures screenshots; it does NOT mean 24/24 human visual parity approved.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No merge, no GAS, no Sheets, no real devices and no student release.' >> "$GITHUB_STEP_SUMMARY"
