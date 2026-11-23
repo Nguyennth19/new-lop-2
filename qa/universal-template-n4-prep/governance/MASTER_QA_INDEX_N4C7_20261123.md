@@ -1,8 +1,8 @@
-# N4-C.7 Drive canonical source snapshot
+# N4-C.7 Drive Canonical Snapshot — updated RTM row mapping
 
-> Google Doc: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-> Source Docs revision: AHj4eMQmjK6bCcZmNtSJzlYm5-63knOFRo0GmCYGs5yh9B-530rwBUETQiEs2M1Dkdu9q5yK32Pl_5hyomfIlTkfjAvxeat-Id1u6xAfGA
-> NON-AUTHORITATIVE read-only mirror; human signatures must be recorded by their own authenticated accounts on Drive/GitHub.
+Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Google Docs revision: AHj4eMQX7RvxyP4tkKdICiTCQrjyhCrqUZdNgefJ7jtKqrXqH9HJu8RHrtXcPTPwWk48BAFKVqKe4Q1_ybVa7h9YoZwjQdZHWdP3q9P-pw
+No private signer identities; read-only mirror. Existing historical statements superseded by the appended N4-C.7-A correction.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -62,3 +62,17 @@ GitHub immutable governance branch: https://github.com/Nguyennth19/new-lop-2/tre
 Master QA Index (Drive canonical): https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
 Checkpoint (Drive canonical): https://docs.google.com/document/d/1hmEmyZLoW64wwGM0anHUiEHb6XQI2khLVzAcf3knDy0/edit
 Không tự nhận đã có chữ ký/human QA. W1-05, N0-S và learner release tiếp tục NO-GO.
+N4-C.7-A — ĐÍNH CHÍNH RTM THEO 10 HÀNG NGUỒN GỐC (23/11/2026)
+Nguồn chuẩn: CSV đã khóa https://drive.google.com/file/d/1yLORfhubf3zRN654RPH9CObJ2U-DJcn4/view, 10.495 bytes, SHA256 d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b. Phần này thay thế cách gọi DB-01..05 suy diễn ở mục 2/những báo cáo trước, KHÔNG sửa CSV gốc.
+W1-01 [OPEN]: Restore guard D1/D2; không tạo onChange trung gian, giữ focus/active và phân biệt 0 với rỗng. Bằng chứng N1-A n1a-browser.test.cjs dòng 28–85 kiểm D2 PV100/PV1000/borrow, focus, zero/empty, callbacks=1 ở restore và clear. Test tự mô tả đây là “intermediate callbacks”; cần xác định đó có phải thông báo cuối được phép hay sự kiện trung gian bị cấm. Chưa chứng minh callback spy D1 và tiêu chí W1-T01 hoàn tất.
+W1-02 [OPEN]: DraftKey composite năm phần packId/contentVersion/lessonId/questionId/rendererVersion và thống nhất lifecycle 12 route. N1-A lines 88–132 kiểm key isolation và phiên bản, các đoạn 156–185 kiểm clear/destroy/remount 12 route. Có bằng chứng TECH_PARTIAL_PASS nhưng còn cần đối chiếu đầy đủ RTM W1-T03/W1-T04 theo cùng checkpoint và người QA ký.
+W1-03 [OPEN]: D10 phương trình ngang một phép toán và Đáp số phù hợp trẻ, giữ nguyên 5 field và câu lời giải. N1-A lines 198–209 và N4-C1 Owner xác nhận ảnh qua chat; chưa có signed independent UX/a11y và grading vẫn NO_GRANT.
+W1-04 [OPEN – technical evidence strong]: tải ảnh nhị phân thật và exact-count semantics cả positive/negative. N4-A CI local 45114546368 và live sample 45114449881 PASS; cần QA đối chiếu W1-T06A/B/C, ảnh decode thực, asset FLUENT:red_apple, negative sách/sai countUnit/symbolValue trước closure.
+W1-05 [OPEN – technical evidence strong]: before/after 24 cặp cùng fixtures/viewport, Owner 4 ảnh D1/D10 accepted via chat, tương tác Chrome PASS; chưa có human signoff có tài khoản/ngày giờ/scope và device matrix đầy đủ.
+DB-01 [BLOCKED]: Sequencing drift, điều kiện W1 technical/human closure phải trước V1.3-C. KHÔNG phải “Single Writer”. Cần gate checker DB-T01 không cho V1.3-C khi thiếu approvals.
+DB-02 [OPEN]: Schema & generator coverage limited to D2 LV2; yêu cầu kiểm multi-family D2, D5/D8, D9 exact-count, D10, assetId/countUnit/symbolValue (DB-T02..05). KHÔNG phải “Revision/CAS”.
+DB-03 [OPEN]: Repeat writeback overwrite, thiếu idempotency/append-only, race và audit journal (DB-T06..08). Đây là nơi Single Writer/idempotency liên quan, không phải nhãn đầy đủ DB-03 đơn lẻ.
+DB-04 [OPEN]: TOCTOU từ stale snapshot, cần live re-read và expectedRevision/CAS, external writer conflict và rollback (DB-T09..12). KHÔNG phải “Multi-store Journal” theo tên chuẩn.
+DB-05 [OPEN]: Signed approval & AI candidate trust boundary; bảng phê duyệt/rollback chưa đủ bằng chứng nhận chữ ký, AI_CANDIDATE_ONLY không được cấp chấm/phát hành (DB-T13..15). KHÔNG phải đơn thuần “Readback+Rollback Drill”.
+TIÊU CHUẨN: Source RTM exact canonical_requirement luôn ưu tiên hơn tên gợi nhớ trong báo cáo. Mọi đóng cổng phải liên kết dòng CSV + assertion + CI SHA + reviewer + decision. Chưa có chữ ký mới: N0-S A3/A4, Independent QA, D1/D10 policy vẫn PENDING; Issue #15 chưa có comment độc lập.
+QUYẾT ĐỊNH: N4-C.7 RTM_RECONCILIATION_CORRECTED; 0/10 RTM hàng được ký CLOSED qua bước này. NO MERGE / NO GAS / NO SHEET WRITE / NO STUDENT RELEASE.
