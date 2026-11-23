@@ -9,6 +9,9 @@ const N7_TEST_SETTINGS_ = Object.freeze({
   isolatedSpreadsheetId: '',           // new copy ID, NEVER original TEST or learner Sheet
   allowedOwnerEmail: '',                // Owner-operated manual allowlist
   approvedGrantId: '',                  // separately issued for a particular TEST copy
+  approvedIntentDigest: '',              // SHA-256 bound to one exact logical intent
+  grantExpiresAt: '',                    // absolute ISO-8601 instant, never inferred
+  approvedBaselineRows: -1,              // exact journal data-row count before ONE write
   forbiddenSheetIds: [
     '1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs',
     '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8'
@@ -72,6 +75,19 @@ function n7TestExecute_(intent,deps,settings) {
   if (!settings.allowedOwnerEmail||email!==settings.allowedOwnerEmail) {
     return n7TestDeny_('OWNER_IDENTITY_DENIED');
   }
+  // A grant is valid for exactly one pre-reviewed payload and baseline. A typed
+  // APPROVED sheet cell or knowledge of a grant ID never creates authority.
+  const digest=n7TestDigest_(intent,deps.utilities);
+  const expiry=Date.parse(settings.grantExpiresAt||'');
+  const now=deps.now();
+  if (!/^[a-f0-9]{64}$/.test(settings.approvedIntentDigest||'')||
+      settings.approvedIntentDigest!==digest||
+      !Number.isFinite(expiry)||!Number.isFinite(now)||now>=expiry||
+      !Number.isSafeInteger(settings.approvedBaselineRows)||
+      settings.approvedBaselineRows<0||
+      intent.expectedJournalRows!==settings.approvedBaselineRows) {
+    return n7TestDeny_('GRANT_SCOPE_OR_EXPIRY_DENIED');
+  }
   const lock=deps.lockService.getScriptLock();
   if (!lock.tryLock(10000))return n7TestDeny_('LOCK_BUSY');
   try {
@@ -81,7 +97,6 @@ function n7TestExecute_(intent,deps,settings) {
     const head=tab.getRange(1,1,1,N7_TEST_HEADERS_.length).getValues()[0];
     if (head.join('|')!==N7_TEST_HEADERS_.join('|'))return n7TestDeny_('HEADER_DRIFT');
     const eventId='N7_'+intent.idempotencyKey;
-    const digest=n7TestDigest_(intent,deps.utilities);
     const last=tab.getLastRow();
     const rows=last>1?tab.getRange(2,1,last-1,8).getValues():[];
     const duplicates=rows.filter(function(row){return row[0]===eventId;});
@@ -98,6 +113,11 @@ function n7TestExecute_(intent,deps,settings) {
     }catch(e) {
       return n7TestDeny_('RECONCILE_REQUIRED');
     }
+    // Flush buffered Spreadsheet writes while still holding the script lock.
+    // An exception does NOT establish that append failed; reconcile manually.
+    try {
+      deps.spreadsheetApp.flush();
+    }catch(e){return n7TestDeny_('RECONCILE_REQUIRED');}
     // A timeout after append may have committed. NEVER retry automatically.
     try {
       const after=tab.getLastRow();
@@ -112,13 +132,16 @@ function n7TestExecute_(intent,deps,settings) {
 function n7TestAppendJournal_(intent) {
   return n7TestExecute_(intent,{
     spreadsheetApp:SpreadsheetApp,lockService:LockService,
-    session:Session,utilities:Utilities
+    session:Session,utilities:Utilities,now:function(){return Date.now();}
   },N7_TEST_SETTINGS_);
 }
 /** Read-only safe check, without opening any spreadsheet. */
 function n7TestStatus_() {
   return {writesEnabled:N7_TEST_SETTINGS_.writesEnabled,
     isolatedCopyConfigured:!!N7_TEST_SETTINGS_.isolatedSpreadsheetId,
-    grantConfigured:!!N7_TEST_SETTINGS_.approvedGrantId,
+    grantConfigured:!!N7_TEST_SETTINGS_.approvedGrantId &&
+      !!N7_TEST_SETTINGS_.approvedIntentDigest &&
+      !!N7_TEST_SETTINGS_.grantExpiresAt &&
+      N7_TEST_SETTINGS_.approvedBaselineRows>=0,
     releaseAllowed:false};
 }
