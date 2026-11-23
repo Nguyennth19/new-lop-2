@@ -19,4 +19,4 @@ jobs:
         with:
           persist-credentials: false
       - name: Execute N7-F01..12 synthetic contracts
-        run: node --test qa/universal-template-n4-prep/n7-simplified-lab/n7-gas-only-contract.test.cjs
+        run: node --test qa/universal-template-n4-prep/n7-simplified-lab/*.test.cjs
