@@ -130,3 +130,31 @@ function N8_DienTapXungDotChiDoc(){
   },N7_TEST_SETTINGS_);
   console.log(JSON.stringify(result,null,2));
 }
+
+/**
+ * Real-runtime read-only verification that the future N7 append guard and
+ * N8 snapshot use the SAME digest encoding. Never performs an append.
+ */
+function n8VerifyWriterGuardReadOnly_(deps,settings){
+  const n8=n8ReadSnapshot_(deps,settings);
+  if(!n8.ok)return n8;
+  if(typeof n7TestJournalSnapshot_!=='function')
+    return n8Deny_('N7_SNAPSHOT_GUARD_NOT_INSTALLED');
+  const wb=deps.spreadsheetApp.openById(settings.isolatedSpreadsheetId);
+  const tab=wb.getSheetByName(settings.journalTab);
+  if(!tab)return n8Deny_('JOURNAL_TAB_MISSING');
+  const n7=n7TestJournalSnapshot_(tab,settings,deps.utilities);
+  if(!n7.ok)return n7;
+  if(n8.digest!==n7.digest||n8.dataRows!==n7.dataRows)
+    return n8Deny_('SNAPSHOT_ENCODING_MISMATCH_OR_DRIFT');
+  return {ok:true,mode:'N7_N8_GUARD_READ_ONLY_MATCH',
+    journalDigest:n7.digest,dataRows:n7.dataRows,
+    n7EventCount:n8.observedEventCount,writes:0,release:false,
+    atomicCasProven:false};
+}
+function N8_XacMinhGuardMoiChiDoc(){
+  const result=n8VerifyWriterGuardReadOnly_({
+    spreadsheetApp:SpreadsheetApp,utilities:Utilities
+  },N7_TEST_SETTINGS_);
+  console.log(JSON.stringify(result,null,2));
+}
