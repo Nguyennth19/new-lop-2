@@ -38,6 +38,7 @@ jobs:
           node qa/universal-template-v12/trusted-grader.test.cjs
           node qa/universal-template-v13/dry-run.cjs
           node qa/universal-template-v13/publisher.test.cjs
+          node qa/universal-template-v13b/governed-intake.cjs
           node qa/universal-template-v13b/governed-intake.test.cjs
       - name: Prepare Chromium
         run: |
