@@ -1,0 +1,83 @@
+name: ULT R1-R2 – State and Visual Integration Hardening (LAB ONLY)
+on:
+  push:
+    branches: [lab/ult-r1-r2-hardening-20261123]
+    paths:
+      - 'qa/universal-template-r12/**'
+      - 'qa/universal-template-v1/build.cjs'
+      - 'qa/universal-template-v1/lab-runtime.js'
+      - '.github/workflows/ult-r12-hardening.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ult-r12-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  baseline-and-hardening:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pin source modules and compile all public LAB packs
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-r12/lab-hardening.js
+          node --check qa/universal-template-r12/fixture-modes.cjs
+          node --check qa/universal-template-v1/lab-runtime.js
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+      - name: Preserve trusted TEST scorer and governed publisher dry-run
+        run: |
+          node qa/universal-template-v12/trusted-grader.test.cjs
+          node qa/universal-template-v13/dry-run.cjs
+          node qa/universal-template-v13/publisher.test.cjs
+      - name: Prepare real Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: Full 12-route A/B owner-accepted LAB browser regression
+        run: node qa/universal-template-v1/browser.test.cjs
+      - name: Private TEST grading 7 routes across 2 devices
+        run: node qa/universal-template-v12/browser-grading.test.cjs
+      - name: Governed publisher JSON A/B import and 80 D2 interactions
+        run: node qa/universal-template-v13/publisher-browser.test.cjs
+      - name: R1-R2 full draft roundtrip, additional modes, semantic asset rejection
+        run: |
+          node --check qa/universal-template-r12/hardening-browser.test.cjs
+          node qa/universal-template-r12/hardening-browser.test.cjs
+      - name: Assert only LAB adapter+CSS changes, no original renderer or Sheet mutations
+        run: |
+          set -euo pipefail
+          BASE=af02456fcc2b3be856091edc899c699890d74da0
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          git diff --name-only "$BASE" HEAD
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-r12/|qa/universal-template-v1/(lab-runtime\.js|build\.cjs)$|\.github/workflows/ult-r12-hardening\.yml$)'; then
+            echo 'FORBIDDEN production/source/publisher mutation' >&2;exit 1
+          fi
+      - name: Upload immutable evidence for QA and owner review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ULT_R1_R2_LAB_HARDENING_QA_ONLY
+          path: |
+            qa/universal-template-v1/dist/
+            qa/universal-template-v13/dist/
+            qa/universal-template-r12/dist/
+          if-no-files-found: warn
+      - name: No-Go boundary
+        if: always()
+        run: |
+          echo 'Only independent LAB under source locks. No GAS, no live student grades, no publisher activation.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Mode C fixtures are synthetic, not SGK/E04-approved; no real learner acceptance is implied.' >> "$GITHUB_STEP_SUMMARY"
