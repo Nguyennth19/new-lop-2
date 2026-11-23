@@ -8,7 +8,7 @@ const sha=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex')
 const TEST_SHEET='1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs';
 const grant=()=>({id:'GR_TEST_001',environment:'TEST',sheet:TEST_SHEET,expiresAt:500,revoked:false,actor:'GAS_GATEWAY',tabs:['12_KetQua_Validator','13_PheDuyet','14_PhienBan_JSON','15_NhatKy_HanhDong','16_Rollback'],limit:2});
 const intent=()=>({requestId:'LAB0001',idempotencyKey:'KEY0001',lessonId:'LAB_MATH_PILOT_A',environment:'TEST',sheet:TEST_SHEET,tab:'12_KetQua_Validator',action:'APPEND_TEST_METADATA',candidateSha:'a'.repeat(64),sourceSha:'b'.repeat(64),expectedRevision:1,rowsDigest:'c'.repeat(64),grantId:'GR_TEST_001'});
-function digest(i){const {expectedRevision,...data}=i;return sha(data)}
+function digest(i){return sha(i)}
 const deny=reason=>({ok:false,reason,writeCount:0});
 class MockScriptGateway{
  constructor(){this.rev=1;this.active='NONE';this.journal=new Map();this.projection=new Map();this.status=new Map();this.grant=grant();this.lock=false;this.outsideChanged=false;}
