@@ -77,7 +77,7 @@ async function imgReady(page,selector,expected){
     const imgs=await imgReady(page,'.g74-picto-art img',14);
     assert.equal(imgs.filter(x=>x.src.includes('red_apple.svg')).length,6);
     assert.equal(imgs.filter(x=>x.src.includes('tangerine.svg')).length,8);
-    assert.equal(await page.locator('#ulStatus').getAttribute('data-kind'),'info');
+    assert.equal(await page.locator('#ulStatus').getAttribute('data-kind'),'note');
     const shot='N4A_'+device+'_D9_14_REAL_BINARY.png';
     await page.screenshot({path:path.join(out,shot),animations:'disabled'});
     report.screenshots.push(shot);
