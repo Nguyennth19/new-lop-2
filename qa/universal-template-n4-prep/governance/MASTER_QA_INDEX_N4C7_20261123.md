@@ -1,8 +1,8 @@
-# Master QA Index – Drive canonical snapshot
+# Master QA Index — Drive Canonical Snapshot
 
-Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Revision: AHj4eMTX2Mh-Is_oJ3BEZaoyxX4suBMLzjOQ-7fTIs3mY8-pyGuPsMkaoRkU67B__nZDR0EzYgRlPGJXKxeUX3rkQu1QL1Q0Hn3cSqtypg
-Read-only redacted GitHub mirror; human QA signoff must occur under authenticated identity on restricted Drive/GitHub. Latest appendices supersede earlier status labels.
+Drive https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Revision AHj4eMR-MxjRpwgU_8pXUQ5msDhsbWBAEi7MBubMWwI2uVMYg4fSrS2d9DFEgKYKwTGsxoRJ0uZ6DP97J4Zkv8GLLbRl_nFTjPBMIHzqVw
+Read-only mirrored history. Later appendices supersede earlier states; no human signoff claimed.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -89,3 +89,11 @@ Google Drive report: https://docs.google.com/document/d/1iZirPPk81QlgVV4AQQrdmJI
 Google Drive artifact: https://drive.google.com/file/d/146jf464cFbFElXpDPHXteGlZTjmMdOxm/view
 GitHub Draft PR #23: https://github.com/Nguyennth19/new-lop-2/pull/23
 Conclusion: W1_02_SCOPED_TECH_PASS / INDEPENDENT_QA_PENDING / W1_02_FORMAL_CLOSURE_PENDING; N0-S, D1/D10 policies, remaining RTM and release still NO-GO.
+N4-FINAL-A CONSOLIDATED TECHNICAL & POLICY DECISION — 23/11/2026
+New D10 pedagogical/a11y observable CI 45131772681 SUCCESS: 8 D10 '+'/'-'/'−'/two-step-reject scoped cases (desktop + mobile Chromium), N1-A 8/8, R1/R2 48 checks/20 screenshots, source freeze PASS. W1-03 = TECHNICAL_SCOPED_PASS, no trusted grading and no real VoiceOver/TalkBack proof. W1-04 = existing binary-origin/semantic CI scoped PASS (45114546368, 45114449881); full manifest and W1-T06 human QA review pending. W1-05 = 24 matched image pairs + Owner 4 visuals/one-phone chat accepted; human signoff/device provenance still pending. No W1-03..05 RTM CLOSED.
+Selected technical policies for human signoff: D1 learner-mode semantic slot labels + fail-closed DOM/accessible name gate, LAB debug retained, no frozen source change. D10 allowlist '+'→ADD, ASCII '-' and mathematical '−'→SUB, invalid other dashes rejected; trusted server independently validates, no browser grading grant, no answer-key exposure. Both NOT implemented, Owner/independent QA approval pending. 
+Drive FINAL-A report: https://docs.google.com/document/d/1jV-dsKvpqbsZcwP4RJFj4bv7-1GAOBOh24gGm42lPrE/edit
+CI: https://github.com/Nguyennth19/new-lop-2/actions/runs/45131772681
+Evidence ZIP: https://drive.google.com/file/d/1FjZuZwpJE5MwItuQZpUKwbeh23rP9ixt/view
+Drive checkpoint: https://drive.google.com/drive/folders/1YrLny7mAGYg5FAscrmPWxBaKElog1yTE
+FINAL-A = TECHNICAL_CONSOLIDATED / FINAL-B HUMAN_GATE_RECHECK_NEXT / NO MERGE, GAS, SHEET WRITE, RELEASE.
