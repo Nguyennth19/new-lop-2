@@ -12,6 +12,7 @@ const N7_TEST_SETTINGS_ = Object.freeze({
   approvedIntentDigest: '',              // SHA-256 bound to one exact logical intent
   grantExpiresAt: '',                    // absolute ISO-8601 instant, never inferred
   approvedBaselineRows: -1,              // exact journal data-row count before ONE write
+  approvedJournalSnapshotDigest: '',      // full A:H baseline, locked before append
   forbiddenSheetIds: [
     '1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs',
     '1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8'
@@ -67,6 +68,26 @@ function n7TestDigest_(i,utilities) {
     .filter(function(k){return k!=='executionId' && k!=='expectedJournalRows';})
     .map(function(k){return [k,i[k]];})),utilities);
 }
+function n7TestJournalSnapshot_(tab,settings,utilities) {
+  const last=tab.getLastRow();
+  if(last<1||last>151)return n7TestDeny_('JOURNAL_BOUNDS');
+  const cells=tab.getRange(1,1,last,8).getDisplayValues();
+  if(tab.getLastRow()!==last||cells.length!==last)return n7TestDeny_('SNAPSHOT_MOVED');
+  if(cells[0].join('|')!==N7_TEST_HEADERS_.join('|'))return n7TestDeny_('HEADER_DRIFT');
+  if(!cells.every(function(row){return row.length===8&&
+      row.every(function(value){return typeof value==='string';});}))
+    return n7TestDeny_('MALFORMED_ROWS');
+  const events=cells.slice(1),unique=new Set();
+  for(const row of events){
+    if(!row[0])return n7TestDeny_('BLANK_EVENT_ID');
+    if(unique.has(row[0]))return n7TestDeny_('DUPLICATE_EVENT_IDS');
+    unique.add(row[0]);
+  }
+  return {ok:true,dataRows:events.length,digest:n7TestSha256_(JSON.stringify({
+    schema:'N8_JOURNAL_DISPLAY_SNAPSHOT_V1',sheet:settings.isolatedSpreadsheetId,
+    tab:settings.journalTab,columns:cells[0],rows:events
+  }),utilities)};
+}
 function n7TestExecute_(intent,deps,settings) {
   const valid=n7TestValidate_(intent,settings);
   if (!valid.ok)return valid;
@@ -80,7 +101,8 @@ function n7TestExecute_(intent,deps,settings) {
   const digest=n7TestDigest_(intent,deps.utilities);
   const expiry=Date.parse(settings.grantExpiresAt||'');
   const now=deps.now();
-  if (!/^[a-f0-9]{64}$/.test(settings.approvedIntentDigest||'')||
+  if (!/^[a-f0-9]{64}$/.test(settings.approvedJournalSnapshotDigest||'')||
+      !/^[a-f0-9]{64}$/.test(settings.approvedIntentDigest||'')||
       settings.approvedIntentDigest!==digest||
       !Number.isFinite(expiry)||!Number.isFinite(now)||now>=expiry||
       expiry-now>15*60*1000||
@@ -98,6 +120,13 @@ function n7TestExecute_(intent,deps,settings) {
     const head=tab.getRange(1,1,1,N7_TEST_HEADERS_.length).getValues()[0];
     if (head.join('|')!==N7_TEST_HEADERS_.join('|'))return n7TestDeny_('HEADER_DRIFT');
     const eventId='N7_'+intent.idempotencyKey;
+    // Optimistic compare under the same GAS ScriptLock, before any append.
+    // External Sheet editors bypass this lock; provider-level atomic CAS is not claimed.
+    const snapshot=n7TestJournalSnapshot_(tab,settings,deps.utilities);
+    if(!snapshot.ok)return snapshot;
+    if(snapshot.digest!==settings.approvedJournalSnapshotDigest||
+       snapshot.dataRows!==settings.approvedBaselineRows)
+      return n7TestDeny_('N8_SNAPSHOT_CONFLICT_RECONCILE_REQUIRED');
     const last=tab.getLastRow();
     const rows=last>1?tab.getRange(2,1,last-1,8).getValues():[];
     const duplicates=rows.filter(function(row){return row[0]===eventId;});
@@ -142,6 +171,7 @@ function n7TestStatus_() {
     isolatedCopyConfigured:!!N7_TEST_SETTINGS_.isolatedSpreadsheetId,
     grantConfigured:!!N7_TEST_SETTINGS_.approvedGrantId &&
       !!N7_TEST_SETTINGS_.approvedIntentDigest &&
+      !!N7_TEST_SETTINGS_.approvedJournalSnapshotDigest &&
       !!N7_TEST_SETTINGS_.grantExpiresAt &&
       N7_TEST_SETTINGS_.approvedBaselineRows>=0,
     releaseAllowed:false};
