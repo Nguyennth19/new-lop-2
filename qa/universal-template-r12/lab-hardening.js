@@ -196,7 +196,8 @@
  }
  function watchImageErrors(host,onError){
   for(const img of host.querySelectorAll('img')){
-   const mark=()=>{img.dataset.ultAssetLoadFailed='true';
+   const mark=()=>{if(!host.contains(img))return;
+     img.dataset.ultAssetLoadFailed='true';
      if(typeof onError==='function')onError('ASSET_BINARY_LOAD_FAILED')};
    img.addEventListener('error',mark,{once:true});
    if(img.complete&&img.naturalWidth===0)mark();
