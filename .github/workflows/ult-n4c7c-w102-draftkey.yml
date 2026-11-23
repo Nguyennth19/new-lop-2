@@ -42,7 +42,7 @@ jobs:
           set -euo pipefail
           BASE=49d17dc5a2fba70a46faac9a0540f30b1f4f3eec
           test "$(git merge-base "$BASE" HEAD)" = "$BASE"
-          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/n4c7c-.*|qa/universal-template-n4-prep/governance/N4C7C_.*|\.github/workflows/ult-n4c7c-w102-draftkey\.yml)$'; then
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n4-prep/n4c7c-.*|qa/universal-template-n4-prep/governance/(N4C7C_.*|MASTER_QA_INDEX_N4C7_20261123\.md)|\.github/workflows/ult-n4c7c-w102-draftkey\.yml)$'; then
             echo 'N4C7C_SCOPE_BREACH' >&2; exit 1
           fi
           echo 'No frozen renderer/CSS, GAS, Sheet, trusted-grader or learner changes.' >> "$GITHUB_STEP_SUMMARY"
