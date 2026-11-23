@@ -1,9 +1,9 @@
-# Master QA Index — read-only mirrored Google Drive evidence
+# Master QA Index — Drive read-only audit snapshot
 
-Canonical Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Source Drive revision: AHj4eMQjLiq7LHJeXg3hcqLmgB02APdApBpL9rM7LlATY0QrWor5fclwWe3LPwmD3Rh1GP16lbKAHgl3Q35wDAG3WgM2BKgxykrNNhI48w
-Status: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N5_LAB_ONLY; NO_RELEASE.
-Third party review is advisory AI verification, not human signoff. No identity-bound approvals are mirrored.
+Google Drive canonical: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Drive revision: AHj4eMRPx1_QA4f1eGXB-oM9ij3JoNzdtdKwqSSuYff9cF6LwfomI2ohpDWl5ZPH5Sm4fVae249SCD7aV9oAqH12swKyXMnIArIH00Ty4A
+Status: CSV_BYTE_SHA256_PASS / N0S_A3_A4_HUMAN_ACK_PENDING / W1_TECH_SCOPED_5_OF_5_PASS / W1_INDEPENDENT_QA_SIGNED_0_OF_5 / RELEASE_NO_GO.
+Note: private signer/account fields are NOT copied to GitHub. Source of truth for human signoff is the existing restricted register; never infer QA signatures from this snapshot.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -117,3 +117,9 @@ Quy ước N4/Trusted grader cần bổ sung vào hợp đồng sau khi kiểm s
 Sổ duy nhất vẫn pending chứng cứ người thật: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
 Cảnh báo phân quyền: báo cáo bên thứ ba 1Y7BKPNpjkAT-1pNty8qUoNH9Ubyskn2W9uapzYWf3LY có anyone:reader. Khuyến nghị Owner chuyển Restricted nếu đây là QA nội bộ, nhưng hành động quyền chưa được thực hiện.
 Ưu tiên vận hành: phiên Owner xác nhận device/OS/browser/route/time và policy D1/D10, A3/A4 do người nhận RTM tự ký, QA độc lập phân công và review; N5 preparation LAB vẫn có GO có điều kiện, N4_CLOSED và release vẫn NO-GO.
+N0-S / QA-CLOSURE — NHẬT KÝ ĐỐI SOÁT RTM VÀ CHỮ KÝ ĐỘC LẬP (23/11/2026)
+RTM CSV bản thô lấy lại từ Drive 10.495 bytes, SHA-256 trực tiếp d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b: PASS byte integrity. N0-S A3/A4 signature account/time vẫn PENDING, không đồng nhất kỹ thuật với người nhận độc lập.
+W1 matrix: W1-01 CI 45129448098, W1-02 CI cuối 45130767674, W1-03 CI cuối 45132282477, W1-04 CI 45114546368 / 45114449881, W1-05 CI 45115735605 + ảnh parity + Owner 12 routes tự xác nhận. Tất cả 5/5 SCOPED_TECH_PASS; 0/5 QA_SIGNED và 0/5 RTM_CLOSED.
+Đã truy vấn 11 PR #14,#16,#17,#18,#19,#20,#21,#22,#23,#24,#25: đều OPEN/DRAFT/UNMERGED, reviews API mỗi PR đều rỗng. Reviewer cần Owner chỉ định GitHub username có thẩm quyền, không được tự gán.
+Ma trận canonical (nội bộ, không đưa tài khoản cá nhân lên GitHub): https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit mục 10; biên bản bàn giao https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit mục 11.
+D1/D10 Owner approved-in-chat-in-principle; QA/security/grader authorization pending. Chỉ GO chuẩn bị N5 LAB isolated; NO GO merge/GAS/Sheet/trusted grading/release.
