@@ -114,3 +114,71 @@ function N9_KiemTraPhucHoiChiDoc(){
   },N7_TEST_SETTINGS_,N9_PREWRITE_BACKUP_ID_);
   console.log(JSON.stringify(result,null,2));
 }
+
+/**
+ * Controlled restore drill: recreate the already-accepted journal in RAM.
+ * Backup prefix + validated append-only suffix; NEVER remove N7 evidence.
+ * Rollback decision remains human-gated, not executed by this file.
+ */
+function n9SimulateNonDestructiveRestore_(live,backup,settings,utilities){
+  const accepted=n9AssessRecovery_(live,backup,settings,utilities);
+  if(!accepted.ok)return accepted;
+  const prefix=backup.rows.map(function(row){return row.slice();});
+  const suffix=live.rows.slice(prefix.length).map(function(row){return row.slice();});
+  if(suffix.length!==1||suffix[0][0]!==N9_ACCEPTED_EVENT_ID_||
+     suffix[0][6]!==N9_ACCEPTED_EVENT_SHA_)
+    return n9Deny_('RESTORE_SUFFIX_NOT_APPROVED');
+  const reconstructed=prefix.concat(suffix);
+  const reconstructedDigest=n8SnapshotDigest_(reconstructed,settings,utilities);
+  if(reconstructedDigest!==accepted.journalDigest||
+     JSON.stringify(reconstructed)!==JSON.stringify(live.rows))
+    return n9Deny_('RESTORE_REPLAY_MISMATCH');
+  // Demonstrate that raw prewrite backup cannot replace the accepted journal.
+  const destructiveDigest=n8SnapshotDigest_(prefix,settings,utilities);
+  if(destructiveDigest===accepted.journalDigest)
+    return n9Deny_('DESTRUCTIVE_RESTORE_NOT_DETECTED');
+  const noOwner=n9RollbackDecision_(accepted,false,true);
+  const noQA=n9RollbackDecision_(accepted,true,false);
+  if(noOwner.reason!=='OWNER_AND_QA_APPROVAL_REQUIRED'||
+     noQA.reason!=='OWNER_AND_QA_APPROVAL_REQUIRED')
+    return n9Deny_('ROLLBACK_APPROVAL_BYPASS');
+  return {ok:true,mode:'N9_RAM_RESTORE_REPLAY_ONLY',
+    backupDataRows:prefix.length-1,replayedAcceptedEvents:suffix.length,
+    reconstructedDataRows:reconstructed.length-1,
+    reconstructedDigest:reconstructedDigest,
+    matchesLive:true,destructiveRestoreDenied:true,
+    independentApprovalsRequired:true,writes:0,restores:0,
+    release:false,qaSigned:false,rollbackExecuted:false};
+}
+function n9ControlledRestoreDrill_(deps,settings,backupId){
+  if(settings.writesEnabled||settings.approvedGrantId||
+     settings.approvedIntentDigest||settings.approvedJournalSnapshotDigest||
+     settings.grantExpiresAt||settings.approvedBaselineRows>=0||
+     !settings.isolatedSpreadsheetId||
+     settings.forbiddenSheetIds.includes(settings.isolatedSpreadsheetId)||
+     !backupId||backupId===settings.isolatedSpreadsheetId||
+     settings.forbiddenSheetIds.includes(backupId))
+    return n9Deny_('READ_ONLY_GUARD');
+  const before=n8ReadSnapshot_(deps,settings);
+  if(!before.ok)return before;
+  const live=n9ReadJournal_(deps.spreadsheetApp,
+    settings.isolatedSpreadsheetId,settings.journalTab);
+  if(!live.ok)return live;
+  const backup=n9ReadJournal_(deps.spreadsheetApp,backupId,settings.journalTab);
+  if(!backup.ok)return backup;
+  const result=n9SimulateNonDestructiveRestore_(live,backup,settings,deps.utilities);
+  if(!result.ok)return result;
+  const after=n8ReadSnapshot_(deps,settings);
+  if(!after.ok||before.digest!==after.digest||
+     before.digest!==result.reconstructedDigest)
+    return n9Deny_('LIVE_CHANGED_DURING_RESTORE_DRILL');
+  return Object.assign({},result,{liveUnchanged:true,
+    note:'DRY_RUN_ONLY_NO_PROVIDER_RESTORE_OR_QA_SIGNATURE'});
+}
+/** Safe Owner entrypoint: two real Sheets read, all restore changes RAM only. */
+function N9_DienTapKhoiPhucKhongGhi(){
+  const result=n9ControlledRestoreDrill_({
+    spreadsheetApp:SpreadsheetApp,utilities:Utilities
+  },N7_TEST_SETTINGS_,N9_PREWRITE_BACKUP_ID_);
+  console.log(JSON.stringify(result,null,2));
+}
