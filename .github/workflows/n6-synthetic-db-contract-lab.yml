@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - lab/ult-n4-final-b-n5-handover-20261123
+      - lab/ult-n7-simplified-gas-rebase-20261123
     paths:
       - 'qa/universal-template-n4-prep/n6-synthetic-lab/**'
       - '.github/workflows/n6-synthetic-db-contract-lab.yml'
