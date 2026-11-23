@@ -1,9 +1,10 @@
-# N4-FINAL-B — Drive read-only audit snapshot
+# N4-FINAL-B Handover – Drive canonical governance snapshot
 
-Google Drive canonical: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
-Drive revision: AHj4eMSfuaco5xv0ZzMKfzgrBypOTpB3FFZIWcW66coJEFmeFcTz-H6P-oK6SYSWmQITAtoXFNaAozD1pUdNmVqbararV8lKUCnAZXOfEQ
-Status: CSV_BYTE_SHA256_PASS / N0S_A3_A4_HUMAN_ACK_PENDING / W1_TECH_SCOPED_5_OF_5_PASS / W1_INDEPENDENT_QA_SIGNED_0_OF_5 / RELEASE_NO_GO.
-Note: private signer/account fields are NOT copied to GitHub. Source of truth for human signoff is the existing restricted register; never infer QA signatures from this snapshot.
+Drive: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
+Revision: AHj4eMSy-qfzFkBaxDSpyuOdZep1FcYkuvV6MkbOtvmxreOU7D9eKTV1YRZSlmVbz3ODyTpJPGo-fJwwkEwGfdeGS0JQiDSL-I2ZJ2VONQ
+Source frozen N4 Final-A: 08942daadf92027903cf2d1eeecf7293e27f68bc
+Status: N4_GOVERNANCE_BASELINE_LOCKED_WITH_ACCESS_EXCEPTIONS, N5_STARTED_SCOPE_AND_EVIDENCE_INTAKE_ONLY, HUMAN_QA_PENDING, RELEASE_NO_GO.
+This mirror is read-only. No GitHub reviewer or independent Owner signature inferred.
 
 N4-FINAL-B — FINAL ACCEPTANCE DECISION & CONTROLLED N5 HANDOVER
 Dự án Lớp 2 – Universal Learning Template V1 | LAB-only
@@ -89,3 +90,9 @@ W1-01..W1-05: 5/5 TECHNICAL_SCOPED_PASS theo bộ bằng chứng từng hàng t�
 Owner đã quyết định D1 A+B và D10 ADD/SUB về nguyên tắc qua chat; chưa đồng nghĩa QA độc lập hoặc cấp quyền chấm học sinh.
 Người QA độc lập: OWNER_ASSIGNMENT_REQUIRED (cần GitHub username, phạm vi và quyền tài liệu; không tự gán reviewer). Sau phân công, QA review toàn chuỗi PR và đối chiếu 5 hàng W1 theo required_new_tests và close_gate trong CSV nguồn. Việc này có thể dùng một reviewer bao quát hoặc phân tách chuyên môn accessibility/asset/security; chữ ký phải xác thực.
 Handover: chỉ GO N5 isolated LAB scope/contract preparation theo N4-FINAL-B; giữ tất cả NO-GO merge, GAS, Sheet, W1/DB closure, trusted grading, learner release.
+12. N4-GOVERNANCE-LOCK AND N5-START (23/11/2026)
+Chốt GOVERNANCE_BASELINE_LOCKED_WITH_ACCESS_EXCEPTIONS: N4 không CLOSED; frozen be-hoc 1b69e277..., R1/R2 fe15c79b..., N4-FINAL-A exact CI HEAD 08942daadf... / 45132282477 SUCCESS; N4-FINAL-B chỉ chỉnh tài liệu, không sản xuất mã.
+Quyền Drive: restricted ở archive parent, folder Final-B, canonical Final-B report, Master QA Index, Signoff Register. Nhưng 1Y7BKPN... anyone:reader, 1yTEOB... anyone:reader, 1xz-9tx... anyone:commenter; chưa thay permission. Cần Owner xác nhận chủ trương Restricted và cấp lại quyền theo tài khoản trước khi khép SECURITY_ACCESS_AUDIT.
+N5-START theo chính xác hàng đợi N0–N11 nguồn https://docs.google.com/document/d/1OXxKt3d7pXXGASRew89R9T8y5QKUzf3QbRaaVWtoyRE/edit: N5 đóng 5 W1 bằng RTM, CI đúng HEAD, nghiệm thu thiết bị; PASS chỉ khi 0 W1 blocker còn mở. N6 sửa/đề xuất DB; N7–N9 writer/CAS/recovery; N10 phê duyệt; N11 quyết định V1.3-C. Không tự phát triển JSON/Sheet/BigData trong N5.
+N5-START nguồn canonical: https://docs.google.com/document/d/17I4dRJSXRuyiDWh2gD-T6_umP4m4FRc6rmNY02pH74U/edit
+W1 matrix vẫn 5/5 scoped technical PASS; QA SIGNED 0/5, RTM CLOSED 0/5, N0-S A3/A4 pending. N5 chỉ được tiếp nhận và đối soát bằng chứng, N4 và N5 release NO-GO.
