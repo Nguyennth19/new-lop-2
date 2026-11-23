@@ -1,0 +1,31 @@
+name: N0-S / N4 A-B preflight only (NO W1 ACCEPTANCE)
+on:
+  push:
+    branches:
+      - 'lab/ult-n0s-n4-qa-prep-20261123'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  n4-preparation:
+    name: Verify source pins and visual pair inventory only
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Node syntax and manifest preflight (no browser/real CDN)
+        run: |
+          node --check qa/universal-template-n4-prep/n4-preflight.cjs
+          node qa/universal-template-n4-prep/n4-preflight.cjs
+      - name: Immutable original 36 source byte check
+        run: node qa/universal-template-v1/build.cjs
+      - name: Capture preparation evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: N4_SOURCE_AND_PAIR_PREP_ONLY_NOT_W1_PASS
+          if-no-files-found: warn
+          retention-days: 90
+          path: qa/universal-template-n4-prep/dist/N4_PREP_PREFLIGHT_EVIDENCE.json
