@@ -1,10 +1,8 @@
-# N4-C.7-C — W1-02 Composite DraftKey and lifecycle audit
+# N4-C.7-C W1-02 Audit – Drive canonical snapshot
 
-Canonical Google Docs: https://docs.google.com/document/d/1iZirPPk81QlgVV4AQQrdmJIeMWSyfJaEEVtLIkiIaeA/edit
-Drive revision at snapshot: AHj4eMRPshN5Ca6fyhbPnnRQPZD5fcPJb3iO-QZ6Ey11GYXFN-o7JG6K8BWpnGwPo0oljGXpxVWY9K8ujjXKryD3q5IzDOpvnhEmg7xXDw
-CI: https://github.com/Nguyennth19/new-lop-2/actions/runs/45130344244
-Artifact: https://drive.google.com/file/d/146jf464cFbFElXpDPHXteGlZTjmMdOxm/view
-This Markdown is a redacted read-only audit mirror; actual independent QA and Owner signoff remain PENDING.
+Drive: https://docs.google.com/document/d/1iZirPPk81QlgVV4AQQrdmJIeMWSyfJaEEVtLIkiIaeA/edit
+Revision: AHj4eMTX6DSfpopNnXgi7g70SbPMI5fTimklWgXUmi546x6ovR2hIlevpEeIwYMXgtoHItvIi5iD4k5h9uPCY9eQSqJj4IwnIaNXI8Stog
+Read-only redacted GitHub mirror; human QA signoff must occur under authenticated identity on restricted Drive/GitHub. Latest appendices supersede earlier status labels.
 
 N4-C.7-C — W1-02 COMPOSITE DRAFTKEY & 12-RENDERER LIFECYCLE QA
 Dự án Lớp 2 / ULT V1 | LAB độc lập | 23/11/2026 GMT+7
@@ -60,3 +58,7 @@ Khuyến nghị ghi W1-02 = TECHNICAL_TEST_PASS_SCOPED_CHROMIUM; chưa CLOSED ch
 Mọi quyết định chính sách D1 learner labels và D10 minus/trusted-grader vẫn PENDING; N0-S A3/A4 còn PENDING; W1-05 cuối và phát hành NO-GO.
 6. QUY TẮC LƯU VÀ CHUYỂN GIAO
 Bản Google Docs trên Drive để cộng tác/bình luận; bản Markdown trên GitHub có revision nguồn và commit để đối chiếu. Sổ ký nhận duy nhất là N4-C.6, không tạo biểu mẫu song song. Sửa đổi sau này phải giữ log và đồng bộ hai nơi; nếu lệch phải ghi SYNC_PENDING.
+7. ĐỒNG BỘ CHECKPOINT SAU KHI TẠO PR
+Draft PR #23: https://github.com/Nguyennth19/new-lop-2/pull/23
+GitHub governance Markdown: https://github.com/Nguyennth19/new-lop-2/blob/lab/ult-n4c7c-w102-draftkey-lifecycle-20261123/qa/universal-template-n4-prep/governance/N4C7C_W102_DRAFTKEY_12_ROUTE_QA_20261123.md
+Trạng thái: W1_02_SCOPED_TECH_PASS / QA_INDEPENDENT_PENDING / HUMAN_ACK_PENDING / RELEASE_NO_GO. Khi tài liệu thay đổi, bản Markdown snapshot cần cập nhật revision tương ứng.
