@@ -4,7 +4,7 @@
  */
 (function(global){
  'use strict';
- const VERSION='LOP2_UNIVERSAL_LAB_V1_R2';
+ const VERSION='LOP2_UNIVERSAL_LAB_V1_N1';
  const HARDEN=global.ULTLAB_HARDENING;
  const ROUTES=Object.freeze({
   D1:{family:'Tách–gộp và điền số',core:'G74Type1C2',kind:'D1'},
@@ -39,8 +39,38 @@
   grade:doc.getElementById('ulGrade'),level:doc.getElementById('ulLevel')
  };
  let pack=null,question=null,controller=null,activeSnapshot=null;
- let memory=Object.create(null),outputVersion=0,packTrusted=false;
+ let memory=Object.create(null),outputVersion=0,packTrusted=false,activeContentVersion=null;
+ const FROZEN_RENDERER_SHA='1b69e277f8de6cb156f46a1d85af33bdad70c0ef';
+ const N1_HOST_VERSION='N1_LAB_DRAFT_HOST_V1';
  const errors=[];
+ // This local FNV64 tag only separates ephemeral draft keys. It is NOT a
+ // cryptographic approval digest, server grade authorization or publisher CAS.
+ function fallbackLocalVersion(data){
+  const text=JSON.stringify(data);
+  let h=14695981039346656037n;
+  for(let i=0;i<text.length;i++){
+   h=BigInt.asUintN(64,(h^BigInt(text.charCodeAt(i)))*1099511628211n);
+  }
+  return 'LAB_FNV64_'+h.toString(16).padStart(16,'0');
+ }
+ function draftIdentity(q=question){
+  if(!pack||!q)return null;
+  const route=ROUTES[q.rendererId];
+  if(!route)return null;
+  const rendererVersion=[
+   FROZEN_RENDERER_SHA,N1_HOST_VERSION,route.core,route.view||'NO_VIEW',
+   q.rendererId==='D5'?(q.publicVariant?.mode||'TANGRAM'):''
+  ].filter(Boolean).join(':');
+  const fields=[pack.packId,activeContentVersion,q.lessonId,q.questionId,rendererVersion];
+  return {packId:fields[0],contentVersion:fields[1],
+   lessonId:fields[2],questionId:fields[3],rendererVersion:fields[4],
+   key:fields.map(x=>encodeURIComponent(String(x))).join('|')};
+ }
+ function activeFocus(q=question){
+  const el=doc.activeElement;
+  return q?.rendererId==='D2'&&ui.stage.contains(el)&&
+   el?.dataset?.answer?.startsWith('result_')?el.dataset.answer:null;
+ }
  function deepPublic(value,depth=0){
   if(depth>15)return false;
   if(value===null||typeof value==='string'||typeof value==='boolean')return true;
@@ -58,6 +88,8 @@
     !Array.isArray(candidate.questions)||candidate.questions.length<1||candidate.questions.length>50)
    return {ok:false,reason:'INVALID_LAB_PACKAGE'};
   if(!deepPublic(candidate))return {ok:false,reason:'PRIVATE_FIELD_OR_UNSAFE_NESTED_STRUCTURE'};
+  if(candidate.contentVersion!==undefined&&!idPattern.test(candidate.contentVersion))
+   return {ok:false,reason:'INVALID_CONTENT_VERSION'};
   const seen=new Set();
   for(const q of candidate.questions){
    if(!q||!idPattern.test(q.questionId||'')||seen.has(q.questionId)||
@@ -65,6 +97,8 @@
       !idPattern.test(q.questionType||'')||!['LV1','LV2','LV3'].includes(q.level)||
       !q.publicVariant||!deepPublic(q.publicVariant))return {ok:false,reason:'BAD_QUESTION_META'};
    if(q.lessonId!==candidate.lesson.id)return {ok:false,reason:'LESSON_ID_MISMATCH'};
+   if(q.rendererId==='D10'&&q.publicVariant.calculationSteps!==1)
+    return {ok:false,reason:'D10_ONE_STEP_ONLY'};
    if(!HARDEN?.grant(q))
      return {ok:false,reason:'SKILL_TYPE_POLICY_MISMATCH'};
    seen.add(q.questionId);
@@ -93,11 +127,20 @@
   const u=new global.SpeechSynthesisUtterance(normalized);u.lang='vi-VN';
   u.rate=0.9;global.speechSynthesis.speak(u);return {ok:true};
  }
- function onChange(s){if(!question)return;activeSnapshot=JSON.parse(JSON.stringify(s));memory[question.questionId]=activeSnapshot;
-  ui.current.textContent='Đã thao tác (không phải điểm): '+Object.keys(memory).length+'/'+pack.questions.length;}
+ function onChange(s){
+  if(!question)return;
+  const id=draftIdentity(question);if(!id)return;
+  activeSnapshot=JSON.parse(JSON.stringify(s));
+  memory[id.key]={draft:activeSnapshot,focusInput:activeFocus(question)};
+  ui.current.textContent='Đã thao tác (không phải điểm): '+Object.keys(memory).length+'/'+pack.questions.length;
+ }
  function destroy(){
   if(question&&controller&&activeSnapshot&&typeof controller.snapshot==='function'){
-   memory[question.questionId]=JSON.parse(JSON.stringify(controller.snapshot()));
+   const id=draftIdentity(question);
+   if(id)memory[id.key]={
+    draft:JSON.parse(JSON.stringify(controller.snapshot())),
+    focusInput:activeFocus(question)
+   };
   }
   if(controller?.destroy)try{controller.destroy()}catch(e){errors.push(String(e))}
   controller=null;activeSnapshot=null;
@@ -111,12 +154,25 @@
   const summary=el('div','ml-word-summary','Tóm tắt: '+pv.summary);
   const graph=el('div','ml-graph-paper');
   const p=el('p','','Em chọn câu lời giải trước khi điền phép tính.');graph.append(p);
+  // One-operation D10 only: keep the exact five G6 data-ml-field names,
+  // but display them as the primary-school arithmetic equation and answer.
+  const a11y={n1:'Số thứ nhất',op:'Dấu phép tính cộng hoặc trừ',
+   n2:'Số thứ hai',sum:'Kết quả phép tính',answer:'Đáp số'};
+  const inputs=Object.create(null);
   for(const f of global.KLWordUnificationV11.G6_FIELDS){
-   const row=el('label','ul-word-field',f+': ');
-   const input=el('input');input.setAttribute('data-ml-field',pv.questionId+':'+f);
-   input.setAttribute('aria-label','Ô '+f);input.autocomplete='off';input.inputMode='text';
-   row.append(input);graph.append(row);
+   const input=el('input','ul-word-input');
+   input.setAttribute('data-ml-field',pv.questionId+':'+f);
+   input.setAttribute('aria-label',a11y[f]||'Ô trả lời');
+   input.autocomplete='off';input.inputMode=f==='op'?'text':'numeric';
+   inputs[f]=input;
   }
+  const equation=el('div','ul-word-equation');
+  equation.setAttribute('role','group');equation.setAttribute('aria-label','Phép tính một bước');
+  equation.append(inputs.n1,inputs.op,inputs.n2,el('span','ul-word-equals','='),inputs.sum);
+  const answer=el('label','ul-word-answer');
+  answer.append(el('span','ul-word-answer-caption','Đáp số: '),inputs.answer);
+  if(pv.unit)answer.append(el('span','ul-word-unit',String(pv.unit)));
+  graph.append(equation,answer);
   card.append(head,summary,graph);host.append(card);
   return card;
  }
@@ -146,11 +202,23 @@
    result=view?.mount(host,compiled.plan,opts)||{ok:false,reason:'VIEW_MISSING'};
   }
   if(result?.ok){
-   controller=result;
-   if(memory[q.questionId]&&typeof result.restore==='function'){
-    const restored=result.restore(memory[q.questionId]);
+   // Normalize all 12 original routes to one LAB facade; never modify or
+   // monkeypatch the frozen renderer handles in their own source files.
+   const methods=['snapshot','restore','clear','destroy'];
+   if(methods.some(fn=>typeof result[fn]!=='function'))
+    return {ok:false,reason:'LAB_RENDER_HANDLE_INCOMPLETE'};
+   controller=Object.freeze({ok:true,
+    snapshot:()=>result.snapshot(),
+    restore:(draft,focusInput)=>result.restore(draft,focusInput),
+    clear:()=>result.clear(),
+    destroy:()=>result.destroy()
+   });
+   const id=draftIdentity(q);
+   const saved=id&&memory[id.key];
+   if(saved){
+    const restored=controller.restore(saved.draft,saved.focusInput);
     if(!restored?.ok)return {ok:false,reason:'INVALID_SAVED_DRAFT'};
-    activeSnapshot=result.snapshot?.()||null;
+    activeSnapshot=controller.snapshot();
    }
    HARDEN.watchImageErrors(host,reason=>status('Ảnh chưa tải được: '+reason+
      '. Không tự dùng ảnh thay thế sai ngữ nghĩa.','error'));
@@ -185,6 +253,7 @@
   const check=validate(data);if(!check.ok){status('JSON bị từ chối: '+check.reason,'error');return check;}
   destroy();packTrusted=(data===global.__ULTLAB_PACKS__?.A||data===global.__ULTLAB_PACKS__?.B);
   pack=JSON.parse(JSON.stringify(data));question=null;
+  activeContentVersion=pack.contentVersion||fallbackLocalVersion(pack);
   memory=Object.create(null);outputVersion++;
   ui.current.textContent='0/'+pack.questions.length+' câu đã thao tác (không phải điểm)';
   ui.level.value='ALL';drawList();
@@ -237,10 +306,17 @@
    rendererId:question?.rendererId||null,trustedData:packTrusted,stageChildren:ui.stage.children.length,
    errors:[...errors],changeCount:Object.keys(memory).length}),
   getDraft:()=>activeSnapshot?JSON.parse(JSON.stringify(activeSnapshot)):null,
+  getDraftIdentity:()=>draftIdentity(),
+  getHandleContract:()=>controller?{
+   ok:true,snapshot:typeof controller.snapshot==='function',
+   restore:typeof controller.restore==='function',
+   clear:typeof controller.clear==='function',
+   destroy:typeof controller.destroy==='function'
+  }:null,
   getCapabilityMatrix:()=>HARDEN.CAPABILITIES,
   clearCurrentDraft:()=>{if(!controller)return {ok:false,reason:'NO_ACTIVE_HANDLE'};
    const cleared=controller.clear?.()||{ok:false,reason:'CLEAR_UNSUPPORTED'};
-   if(cleared.ok){delete memory[question.questionId];activeSnapshot=null;}
+   if(cleared.ok){const id=draftIdentity(question);if(id)delete memory[id.key];activeSnapshot=null;}
    return cleared;}
  });
  if(global.__ULTLAB_PACKS__?.A)setData(global.__ULTLAB_PACKS__.A);

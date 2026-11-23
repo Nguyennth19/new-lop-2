@@ -38,9 +38,11 @@ const packA=makePack('A'),packB=makePack('B');
 const LAB_DIR=path.resolve(__dirname,'../universal-template-r12');
 const overlayCSS=fs.readFileSync(path.join(LAB_DIR,'d1-scoped.css'),'utf8');
 const adapterJS=fs.readFileSync(path.join(LAB_DIR,'lab-hardening.js'),'utf8');
+const n1CSS=fs.readFileSync(path.join(root,'qa/universal-template-n1/d10-equation.css'),'utf8');
 provenance.labOverlay={adapter:'ULT_R2_ADAPTER_V1',
  files:{'qa/universal-template-r12/d1-scoped.css':crypto.createHash('sha256').update(overlayCSS).digest('hex'),
-        'qa/universal-template-r12/lab-hardening.js':crypto.createHash('sha256').update(adapterJS).digest('hex')}};
+        'qa/universal-template-r12/lab-hardening.js':crypto.createHash('sha256').update(adapterJS).digest('hex'),
+         'qa/universal-template-n1/d10-equation.css':crypto.createHash('sha256').update(n1CSS).digest('hex')}};
 
 // Publish only route capability flags; the private synthetic fixture rubric stays Node-only.
 const gradeCapabilities=require('../universal-template-v12/trusted-grader.cjs').capabilities();
@@ -80,7 +82,7 @@ const htmlParts=[
 '<!doctype html><html lang="vi"><head><meta charset="utf-8">',
 '<meta name="viewport" content="width=device-width, initial-scale=1">',
 '<title>LOP2 – Universal Learning Template V1 · Independent LAB</title>',
-'<style>',css,'\n',ownCSS,'\n',overlayCSS,'</style></head><body>',
+'<style>',css,'\n',ownCSS,'\n',overlayCSS,'\n',n1CSS,'</style></head><body>',
 '<main id="mathFullScreen" class="ul-app">',
 '<header class="ul-head"><div><h1>LOP2 – UNIVERSAL LEARNING TEMPLATE V1</h1>',
 '<p>Toán 2 · 10 dạng / 12 đường dựng · Thay bộ dữ liệu không sửa renderer</p></div>',

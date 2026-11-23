@@ -33,14 +33,15 @@
  }
  function wrapD1(core,host,plan,onChange){
   const allowed=new Set(plan.slots.map(x=>x.id));
-  let raw=null;
+  let raw=null,isRestoring=false;
   function snapshot(){
    const fields=raw?.collect?.().fields||{};
    const active=host.querySelector('.g74t1-slot.active[data-slot]')?.dataset.slot||
      plan.slots[0].id;
    return {variantId:plan.caseId,values:{...fields},active};
   }
-  const handle=core.mount(host,plan,{onChange:()=>onChange(snapshot())});
+  const notify=()=>{if(!isRestoring&&raw)onChange(snapshot());};
+  const handle=core.mount(host,plan,{onChange:notify});
   if(!handle?.ok)return handle;
   raw=handle;
   return {ok:true,snapshot,
@@ -51,48 +52,69 @@
       !/^\d{0,4}$/.test(d.values[k])||
       d.values[k].length>Number(raw.slots.get(k).dataset.maxlength)))
       return fail('INVALID_D1_DRAFT');
-    raw.reset();
-    for(const [id,value] of Object.entries(d.values)){
-     raw.select(id);
-     if(value===''){raw.input('CLR');continue}
-     for(const digit of value)raw.input(digit);
-    }
-    raw.select(d.active);onChange(snapshot());return ok();
+    // Suppress renderer-originated intermediate callbacks while replaying digits.
+    // The public D1 renderer remains frozen and unmodified.
+    isRestoring=true;
+    try{
+     raw.reset();
+     for(const [id,value] of Object.entries(d.values)){
+      raw.select(id);
+      if(value===''){raw.input('CLR');continue}
+      for(const digit of value)raw.input(digit);
+     }
+     raw.select(d.active);
+    }finally{isRestoring=false;}
+    notify();return ok();
    },
-   clear(){raw.reset();onChange(snapshot());return ok()},
+   clear(){
+    isRestoring=true;try{raw.reset()}finally{isRestoring=false;}
+    notify();return ok();
+   },
    destroy(){host.replaceChildren()}
   };
  }
  function wrapD2(view,host,plan,onChange,onSpeak){
-  const handle=view.mount(host,[plan],{onChange:(_i,s)=>onChange(s),onSpeak});
+  let isRestoring=false;
+  const handle=view.mount(host,[plan],{
+   onChange:(_i,s)=>{if(!isRestoring)onChange(s)},onSpeak
+  });
   if(!handle?.ok)return handle;
   const slots=plan.answerSlots.map(s=>s.id);
   const transitions=plan.transitionSlots.map(s=>s.id);
   function snapshot(){return handle.collect(0)}
-  function restore(d){
+  function restore(d,activeInput){
    if(!d||d.variantId!==plan.variantId||
      Object.keys(d).some(k=>k!=='variantId'&&!slots.includes(k)&&!transitions.includes(k))||
      slots.some(k=>typeof d[k]!=='string'||!/^[0-9]?$/.test(d[k]))||
-     transitions.some(k=>typeof d[k]!=='boolean'))
+     transitions.some(k=>typeof d[k]!=='boolean')||
+     (activeInput!==undefined&&activeInput!==null&&!slots.includes(activeInput)))
     return fail('INVALID_D2_DRAFT');
-   handle.reset();
-   const EventClass=host.ownerDocument.defaultView.Event;
-   for(const id of slots){
-    const input=host.querySelector('[data-answer="'+id+'"]');
-    if(!input)return fail('D2_MISSING_INPUT');
-    input.value=d[id];input.dispatchEvent(new EventClass('input',{bubbles:true}));
-   }
-   for(const id of transitions){
-    if(d[id]){
-     const button=host.querySelector('[data-transition="'+id+'"]');
-     if(!button)return fail('D2_MISSING_TRANSITION');
-     button.click();
+   // Verify all targets before modifying any state.
+   const inputs=new Map(slots.map(id=>[id,host.querySelector('[data-answer="'+id+'"]')]));
+   if([...inputs.values()].some(input=>!input))return fail('D2_MISSING_INPUT');
+   const buttons=new Map(transitions.map(id=>[id,host.querySelector('[data-transition="'+id+'"]')]));
+   if(transitions.some(id=>d[id]&&!buttons.get(id)))return fail('D2_MISSING_TRANSITION');
+   // Native D2 dispatches input and auto-advances focus; only one final callback
+   // may escape the adapter when restoring a stored draft.
+   isRestoring=true;
+   try{
+    handle.reset();
+    const EventClass=host.ownerDocument.defaultView.Event;
+    for(const id of slots){
+     const input=inputs.get(id);
+     input.value=d[id];input.dispatchEvent(new EventClass('input',{bubbles:true}));
     }
-   }
+    for(const id of transitions)if(d[id])buttons.get(id).click();
+    const target=activeInput||'result_ones';
+    handle.focus(0,target.slice('result_'.length));
+   }finally{isRestoring=false;}
    onChange(snapshot());return ok();
   }
   return {ok:true,snapshot,restore,
-   clear(){handle.reset();onChange(snapshot());return ok()},
+   clear(){
+    isRestoring=true;try{handle.reset()}finally{isRestoring=false;}
+    onChange(snapshot());return ok();
+   },
    destroy(){host.replaceChildren()}
   };
  }
