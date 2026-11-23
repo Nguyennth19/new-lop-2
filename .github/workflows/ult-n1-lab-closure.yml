@@ -1,0 +1,81 @@
+name: ULT N1 - W1-01/02/03 Restore Draft D10 LAB (NO DEPLOY)
+on:
+  push:
+    branches: [lab/ult-n1-w1-restore-draft-d10-20261123]
+    paths:
+      - 'qa/universal-template-n1/**'
+      - 'qa/universal-template-r12/lab-hardening.js'
+      - 'qa/universal-template-v1/lab-runtime.js'
+      - '.github/workflows/ult-n1-lab-closure.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ult-n1-isolated-lab
+  cancel-in-progress: false
+jobs:
+  n1-strict-no-deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static source freeze and package build
+        run: |
+          set -euo pipefail
+          node --check qa/universal-template-r12/lab-hardening.js
+          node --check qa/universal-template-v1/lab-runtime.js
+          node --check qa/universal-template-n1/n1-browser.test.cjs
+          node qa/universal-template-v1/build.cjs
+          node qa/universal-template-v1/contracts.test.cjs
+      - name: Trusted grading and publisher regression (TEST only)
+        run: |
+          node qa/universal-template-v12/trusted-grader.test.cjs
+          node qa/universal-template-v13/dry-run.cjs
+          node qa/universal-template-v13/publisher.test.cjs
+          node qa/universal-template-v13b/governed-intake.test.cjs
+      - name: Prepare Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+            echo 'ULT_SYSTEM_CHROME=1' >> "$GITHUB_ENV"
+          else
+            npx playwright install --with-deps chromium
+          fi
+      - name: N1 strict red-green tests (Chromium desktop / 390px)
+        run: node qa/universal-template-n1/n1-browser.test.cjs
+      - name: Full baseline browser regression
+        run: |
+          node qa/universal-template-v1/browser.test.cjs
+          node qa/universal-template-v12/browser-grading.test.cjs
+          node qa/universal-template-v13/publisher-browser.test.cjs
+          node qa/universal-template-r12/hardening-browser.test.cjs
+      - name: Strict scope guard
+        run: |
+          set -euo pipefail
+          BASE=fe15c79b21b9f056694f8127330934d997affd45
+          test "$(git merge-base "$BASE" HEAD)" = "$BASE"
+          if git diff --name-only "$BASE" HEAD | grep -v -E '^(qa/universal-template-n1/|qa/universal-template-r12/lab-hardening\.js|qa/universal-template-v1/lab-runtime\.js|\.github/workflows/ult-n1-lab-closure\.yml)$'; then
+            echo 'N1 SOURCE FREEZE VIOLATED' >&2;exit 1
+          fi
+          echo '36 original renderer/CSS files are byte checked by build.cjs against be-hoc@1b69e277'
+      - name: Preserve QA artifacts even if a red-stage assertion fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ULT_N1_STRICT_LAB_W1_01_02_03_EVIDENCE
+          path: |
+            qa/universal-template-n1/dist/
+            qa/universal-template-r12/dist/
+          if-no-files-found: warn
+      - name: Mandatory no-release boundary
+        if: always()
+        run: |
+          echo 'N1 LAB only. 36 be-hoc files unchanged. NO GAS, NO Sheet writes, NO active manifest, NO production grading.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Technical CI success does not grant Owner device UX approval or W1 final closure.' >> "$GITHUB_STEP_SUMMARY"
