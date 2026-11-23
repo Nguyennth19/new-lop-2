@@ -124,9 +124,6 @@ function n7TestExecute_(intent,deps,settings) {
     // External Sheet editors bypass this lock; provider-level atomic CAS is not claimed.
     const snapshot=n7TestJournalSnapshot_(tab,settings,deps.utilities);
     if(!snapshot.ok)return snapshot;
-    if(snapshot.digest!==settings.approvedJournalSnapshotDigest||
-       snapshot.dataRows!==settings.approvedBaselineRows)
-      return n7TestDeny_('N8_SNAPSHOT_CONFLICT_RECONCILE_REQUIRED');
     const last=tab.getLastRow();
     const rows=last>1?tab.getRange(2,1,last-1,8).getValues():[];
     const duplicates=rows.filter(function(row){return row[0]===eventId;});
@@ -135,7 +132,10 @@ function n7TestExecute_(intent,deps,settings) {
       if (duplicates[0][6]!==digest)return n7TestDeny_('IDEMPOTENCY_CONFLICT');
       return {ok:true,duplicate:true,writes:0,release:false,eventId:eventId};
     }
-    if (last-1!==intent.expectedJournalRows)return n7TestDeny_('STALE_JOURNAL_READ');
+    if(snapshot.digest!==settings.approvedJournalSnapshotDigest)
+      return n7TestDeny_('N8_SNAPSHOT_CONFLICT_RECONCILE_REQUIRED');
+    if(snapshot.dataRows!==settings.approvedBaselineRows||
+       last-1!==intent.expectedJournalRows)return n7TestDeny_('STALE_JOURNAL_READ');
     const stamp=deps.utilities.formatDate(new Date(),'Asia/Ho_Chi_Minh',"yyyy-MM-dd'T'HH:mm:ssXXX");
     try {
       tab.appendRow([eventId,intent.requestId,email,'N7_TEST_METADATA_ONLY',
