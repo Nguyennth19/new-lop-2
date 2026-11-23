@@ -14,7 +14,13 @@ const FIELDS=['contract','environment','requestId','idempotencyKey','executionId
  'targetSpreadsheetId','action','tab','rowsDigest','grantId','expectedJournalRows'];
 const digestOf=i=>crypto.createHash('sha256').update(JSON.stringify(FIELDS
  .filter(k=>k!=='executionId'&&k!=='expectedJournalRows').map(k=>[k,i[k]]))).digest('hex');
+const snapshotDigest=(cells,target=COPY)=>crypto.createHash('sha256').update(JSON.stringify({
+ schema:'N8_JOURNAL_DISPLAY_SNAPSHOT_V1',sheet:target,tab:'15_NhatKy_HanhDong',
+ columns:cells[0],rows:cells.slice(1)
+})).digest('hex');
+const HEADERS=['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'];
 const settings=()=>({writesEnabled:false,isolatedSpreadsheetId:COPY,
+ approvedJournalSnapshotDigest:snapshotDigest([HEADERS]),
  allowedOwnerEmail:'lab-owner@example.invalid',approvedGrantId:'GRANT_001',
  approvedIntentDigest:digestOf(intent()),grantExpiresAt:'2026-11-23T16:10:00Z',
  approvedBaselineRows:0,
@@ -30,7 +36,9 @@ function runtime(){
  const cells=[header];const state={locked:false,busy:false,failAppend:false,failReadback:false,failFlush:false,flushed:0,identity:'lab-owner@example.invalid',released:0};
  const tab={
   getLastRow:()=>cells.length,
-  getRange:(row,col,count,cols)=>({getValues:()=>{
+  getRange:(row,col,count,cols)=>({
+   getDisplayValues:()=>cells.slice(row-1,row-1+count).map(r=>r.slice(col-1,col-1+cols).map(String)),
+   getValues:()=>{
     if(state.failReadback&&row===2)throw Error('SIMULATED_READBACK_FAILURE');
     return cells.slice(row-1,row-1+count).map(r=>r.slice(col-1,col-1+cols));
   }}),
@@ -144,6 +152,40 @@ test('N7-D4 one bound request cannot authorize a second request',()=>{
  const second={...intent(),requestId:'LAB_REQ_002',idempotencyKey:'LAB_KEY_002',
   executionId:'LAB_EXEC_002',expectedJournalRows:1};
  assert.equal(call(second,e,s).reason,'GRANT_SCOPE_OR_EXPIRY_DENIED');
+ assert.equal(e.cells.length,2);
+});
+test('N8 locked baseline denies changed content even when row count is unchanged',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};
+ e.cells.push(['EXTERNAL_EVENT','LAB_OUTSIDE','EDITOR','TEST','PREPARED','PENDING','a'.repeat(64),'NOW']);
+ const expected=snapshotDigest(e.cells);
+ e.cells[1][3]='OTHER_ACTION';
+ const before=e.cells.length;
+ const intentUpdated={...intent(),expectedJournalRows:1};
+ const candidate={...s,approvedIntentDigest:digestOf(intentUpdated),approvedBaselineRows:1,approvedJournalSnapshotDigest:expected};
+ assert.equal(call(intentUpdated,e,candidate).reason,'N8_SNAPSHOT_CONFLICT_RECONCILE_REQUIRED');
+ assert.equal(e.cells.length,before);assert.equal(e.state.flushed,0);
+});
+test('N8 missing baseline digest must be denied before acquiring lock',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true,approvedJournalSnapshotDigest:''};
+ assert.equal(call(intent(),e,s).reason,'GRANT_SCOPE_OR_EXPIRY_DENIED');
+ assert.equal(e.state.released,0);assert.equal(e.cells.length,1);
+});
+test('N8 changes of header, duplicate IDs and blank IDs always fail closed',()=>{
+ const s={...settings(),writesEnabled:true};
+ const a=runtime();a.cells[0][0]='WRONG';
+ assert.equal(call(intent(),a,s).reason,'HEADER_DRIFT');
+ const b=runtime();b.cells.push(['','LAB_X','A','T','P','N','0'.repeat(64),'NOW']);
+ assert.equal(call(intent(),b,s).reason,'BLANK_EVENT_ID');
+ const c=runtime();c.cells.push(['DUPE','LAB_X','A','T','P','N','0'.repeat(64),'NOW']);
+ c.cells.push([...c.cells[1]]);
+ assert.equal(call(intent(),c,s).reason,'DUPLICATE_EVENT_IDS');
+});
+test('N8 existing event can be read idempotently without any second write',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};
+ const original=intent();assert.equal(call(original,e,s).writes,1);
+ assert.equal(e.cells.length,2);
+ const again=call({...original,executionId:'LAB_EXEC_002'},e,s);
+ assert.equal(again.duplicate,true);assert.equal(again.writes,0);
  assert.equal(e.cells.length,2);
 });
 test('N7 contract requires a strict value digest and safe idempotency identifiers',()=>{
