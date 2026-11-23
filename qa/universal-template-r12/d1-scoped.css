@@ -1,0 +1,30 @@
+/* ULT-R2-CSS-D1 V1. Scoped only to independent LAB #ulStage.
+ * No original renderer stylesheet or approved student app CSS is changed.
+ */
+#ulStage .g74t1-stage{width:100%;max-width:100%;min-width:0;display:grid;gap:14px}
+#ulStage .g74t1-title{font-weight:800;font-size:1.1rem;color:#183e6e;margin:0 0 10px}
+#ulStage .g74t1-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+#ulStage .g74t1-card{min-width:0;border:1px solid #d3e2f4;border-radius:14px;background:#fafcff;padding:14px}
+#ulStage .g74t1-card h3{font-size:1rem;line-height:1.4;margin:0 0 12px;color:#22538a}
+#ulStage .g74t1-bond{background:#eaf5ff;border-radius:12px;padding:12px;margin-bottom:12px;display:grid;gap:9px}
+#ulStage .g74t1-bond-top,#ulStage .g74t1-bond-children{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-size:1.2rem;font-weight:750}
+#ulStage .g74t1-equation,#ulStage .g74t1-unit{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:6px 0;font-weight:650}
+#ulStage .g74t1-slot{min-width:44px;min-height:44px;padding:7px 10px;background:#fff;border:2px solid #95b7e2;color:#153f76;border-radius:10px;font-weight:800;font-size:1.1rem}
+#ulStage .g74t1-slot.active,#ulStage .g74t1-slot:focus-visible{border-color:#165baa;outline:2px solid #a7d2ff;outline-offset:1px;background:#eaf4ff}
+#ulStage .g74t1-slot[data-empty="true"]{color:#7187a5}
+#ulStage .g74t1-steps{display:grid;gap:5px}
+#ulStage .g74t1-tip{margin:8px 0;color:#5b7391;font-size:.84rem}
+#ulStage .g74t1-numpad{background:#f5f9fe;border:1px solid #d9e7f5;border-radius:13px;padding:12px;margin-top:14px}
+#ulStage .g74t1-status{font-size:.85rem;color:#30577e;font-weight:750;margin:0 0 8px}
+#ulStage .g74t1-pad-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:340px}
+#ulStage .g74t1-pad-key{min-height:46px;border:1px solid #a6c4e4;border-radius:10px;background:#fff;color:#174778;font-size:1.12rem;font-weight:750}
+#ulStage .g74t1-pad-key:hover,#ulStage .g74t1-pad-key:focus-visible{background:#e4f2ff;outline:2px solid #9bc8f6}
+#ulStage .g74t1-controls{margin:10px 0;display:grid;justify-items:start;gap:8px}
+#ulStage .g74t1-controls button{background:#eaf2fd;border:1px solid #a8c8eb;border-radius:9px;color:#1f5288;padding:9px 13px;min-height:44px;font-weight:700}
+#ulStage .g74t1-warning{font-size:.82rem;color:#6d7c90;margin:0}
+@media(max-width:620px){
+ #ulStage .g74t1-columns{grid-template-columns:1fr}
+ #ulStage .g74t1-card{padding:11px}
+ #ulStage .g74t1-title{font-size:1rem}
+ #ulStage .g74t1-pad-grid{max-width:100%}
+}
