@@ -22,7 +22,7 @@ const expectedLiveSha='b2c3b85fcf882fb5f8d84f4da89f8eb889fe8fdefce1757900eb48be8
 assert.ok(source.includes(expectedLiveSha));
 source=source.replace(expectedLiveSha,localDigest); // VM-specific fixture, never modify GAS source file
 const ctx={};
-vm.runInNewContext(source+'\n;globalThis.N9={drill:n9RecoveryDrill_,uncertain:n9ClassifyUncertain_,rollback:n9RollbackDecision_,assess:n9AssessRecovery_};',ctx);
+vm.runInNewContext(source+'\n;globalThis.N9={drill:n9RecoveryDrill_,uncertain:n9ClassifyUncertain_,rollback:n9RollbackDecision_,assess:n9AssessRecovery_,restore:n9SimulateNonDestructiveRestore_,controlled:n9ControlledRestoreDrill_};',ctx);
 const api=ctx.N9;
 const settings=()=>({writesEnabled:false,approvedGrantId:'',approvedIntentDigest:'',approvedJournalSnapshotDigest:'',
  isolatedSpreadsheetId:id,forbiddenSheetIds:['GOVERNED_SHEET','LEARNER_SHEET'],journalTab:'15_NhatKy_HanhDong'});
@@ -116,4 +116,48 @@ test('N9 detects extra rows, missing legacy rows, and duplicate events',()=>{
 test('N9 refuses otherwise plausible unexpected edit that changes full snapshot',()=>{
  const f=fixture();f.live[3][2]='OTHER_OWNER_ACTOR';
  assert.equal(api.drill(f.deps,settings(),backupId).reason,'N9_LIVE_SNAPSHOT_DRIFT_RECONCILE_REQUIRED');
+});
+
+test('N9 controlled restore dry-run rebuilds exact approved live journal in RAM',()=>{
+ const f=fixture(),r=api.controlled(f.deps,settings(),backupId);
+ assert.equal(r.ok,true);assert.equal(r.mode,'N9_RAM_RESTORE_REPLAY_ONLY');
+ assert.equal(r.backupDataRows,2);assert.equal(r.replayedAcceptedEvents,1);
+ assert.equal(r.reconstructedDataRows,3);assert.equal(r.matchesLive,true);
+ assert.equal(r.liveUnchanged,true);assert.equal(r.writes,0);assert.equal(r.restores,0);
+ assert.equal(f.live.length,4);assert.equal(f.backup.length,3);
+});
+test('N9 controlled dry-run refuses destructive backup-only restore',()=>{
+ const f=fixture(),r=api.controlled(f.deps,settings(),backupId);
+ assert.equal(r.destructiveRestoreDenied,true);
+ assert.equal(r.independentApprovalsRequired,true);
+ assert.equal(r.qaSigned,false);assert.equal(r.rollbackExecuted,false);
+});
+test('N9 controlled restore refuses wrong approved event SHA',()=>{
+ const f=fixture();f.live[3][6]='a'.repeat(64);
+ assert.equal(api.controlled(f.deps,settings(),backupId).reason,'N7_EVENT_INTEGRITY_RECONCILE_REQUIRED');
+});
+test('N9 controlled restore refuses backup corruption and missing suffix',()=>{
+ const f=fixture();f.backup[2][7]='DIFFERENT';
+ assert.equal(api.controlled(f.deps,settings(),backupId).reason,'BACKUP_PREFIX_MISMATCH_RECONCILE_REQUIRED');
+ const g=fixture();g.live.pop();
+ assert.equal(api.controlled(g.deps,settings(),backupId).reason,'UNEXPECTED_ROW_COUNT_RECONCILE_REQUIRED');
+});
+test('N9 controlled restore refuses active, partial, expired-but-nonempty grant',()=>{
+ const f=fixture(),s=settings();
+ for(const bad of [{...s,writesEnabled:true},{...s,approvedGrantId:'GRANT'},
+  {...s,approvedIntentDigest:'a'.repeat(64)},
+  {...s,approvedJournalSnapshotDigest:'a'.repeat(64)},
+  {...s,grantExpiresAt:'2026-11-23T00:00:00Z'},
+  {...s,approvedBaselineRows:2}]){
+  assert.equal(api.controlled(f.deps,bad,backupId).reason,'READ_ONLY_GUARD');
+ }
+ assert.equal(f.state.opens,0);
+});
+test('N9 rollback remains plan-only even with simulated approvals',()=>{
+ const p=api.rollback({ok:true},true,true);
+ assert.equal(p.executed,false);assert.equal(p.restores,0);assert.equal(p.release,false);
+});
+test('N9 refuses different actor in accepted event even if event ID/SHA unchanged',()=>{
+ const f=fixture();f.live[3][2]='DIFFERENT';
+ assert.equal(api.controlled(f.deps,settings(),backupId).reason,'N9_LIVE_SNAPSHOT_DRIFT_RECONCILE_REQUIRED');
 });
