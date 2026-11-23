@@ -25,6 +25,7 @@ const close=()=>new Promise(r=>server.close(r));
     await page.waitForFunction(()=>window.ULTLAB&&window.ULTLAB_HARDENING&&window.G74Type1C2&&window.KLColumnV12);
     const result=await page.evaluate(pack=>{
       const findings=[];
+      const assert=(ok,message)=>{if(!ok)throw new Error(message||'browser assertion failed')};
       const stable=x=>JSON.stringify(x);
       // D1 direct harness, no test bypass, renderer callback observer.
       const q1=pack.questions.find(q=>q.rendererId==='D1'),host1=document.createElement('div');
