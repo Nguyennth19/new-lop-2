@@ -1,4 +1,5 @@
 'use strict';
+const {validateMultiFamilyPack}=require('./multi-family-contract.cjs');
 // N6 SYNTHETIC CONTRACT LAB ONLY. No connector, network, renderer, Sheet or GAS writes.
 // This harness models invariants; it is not a production writer, signature provider or CAS.
 const test=require('node:test'),assert=require('node:assert/strict'),crypto=require('node:crypto');
@@ -6,16 +7,32 @@ const deny=(reason)=>({ok:false,reason,writes:0});
 const ok=(more={})=>({ok:true,writes:0,...more});
 const sha=(v)=>crypto.createHash('sha256').update(JSON.stringify(v)).digest('hex');
 const ids=['W1-01','W1-02','W1-03','W1-04','W1-05'];
-function w1Gate(rows,{recipient=false,owner=false}={}){
+const N5_OWNER_SHA='d238fabe7085c9ada3f2dcc2a7c6a6675b688917b2a69175544a35a4e109ef3b';
+function w1Gate(rows,{recipient=false,owner=false,policy='INDEPENDENT_QA_V1',ownerSelfQa=null}={}){
+ // N5-only owner self-QA is a signed-scope policy change, NOT N10/11 authority.
  if(!recipient)return deny('ACK_MISSING');
  if(!Array.isArray(rows)||rows.length!==5)return deny('W1_INCOMPLETE');
+ if(!['INDEPENDENT_QA_V1','OWNER_SELF_QA_N5_ONLY'].includes(policy))return deny('UNKNOWN_N5_POLICY');
+ const self=policy==='OWNER_SELF_QA_N5_ONLY';
+ if(self&&(!ownerSelfQa||
+  ownerSelfQa.policy!=='OWNER_SELF_QA_INTERNAL_ACCEPTANCE'||
+  ownerSelfQa.scope!=='N5_W1_LAB_ONLY'||
+  ownerSelfQa.receiptSha256!==N5_OWNER_SHA||
+  ownerSelfQa.receiptAt!=='2026-11-23T22:49:00+07:00'||
+  ownerSelfQa.csvBytes!==10495||
+  ownerSelfQa.ownerDecisionRef!=='N4C6_OWNER_SIGNOFF'||!ownerSelfQa.acceptedMissingDeviceTestTime))
+  return deny('OWNER_SELF_QA_RECEIPT_OR_SCOPE_MISSING');
  for(const id of ids){
   const matches=rows.filter(r=>r.id===id);
   if(matches.length!==1)return deny('W1_DUPLICATE_OR_MISSING');
   const r=matches[0];
-  if(r.status!=='CLOSED'||!r.ciPass||!r.sha||r.sha!==r.ciSha||!r.qaAccount||!r.qaAt||!r.ownerAck||!r.deviceEvidence)return deny('HUMAN_GATE_OR_SHA');
+  if(r.status!=='CLOSED'||!r.ciPass||!r.sha||r.sha!==r.ciSha||
+    !r.ownerAck||!r.deviceEvidence)return deny('HUMAN_GATE_OR_SHA');
+  if(self&&(r.ownerDecision!=='APPROVED_SCOPED'||r.ownerPolicy!=='OWNER_SELF_QA_N5_ONLY'||
+     r.acknowledgedLimitations!==true))return deny('OWNER_ROW_DECISION_MISSING');
+  if(!self&&(!r.qaAccount||!r.qaAt))return deny('INDEPENDENT_QA_MISSING');
  }
- return owner?ok({release:false}):deny('OWNER_RELEASE_MISSING');
+ return owner?ok({release:false,eligibleForN6ReadOnly:true,authorityVerified:false}):deny('OWNER_RELEASE_MISSING');
 }
 const proofs=()=>ids.map(id=>({id,status:'CLOSED',ciPass:true,sha:id,ciSha:id,qaAccount:'QA_LAB_SYNTH',qaAt:'SYNTH',ownerAck:true,deviceEvidence:true}));
 const policies={D2:['COLUMN_ADD','vertical'],D5:['SHAPE_COMPOSE','shape'],D9:['EXACT_COUNT','pictograph'],D10:['WORD_ONE_OPERATION','word_problem']};
@@ -88,6 +105,56 @@ test('DB-T01 missing signed W1, wrong SHA and N0-S receipt fail-closed',()=>{
  const p=proofs();p[0].ciSha='BAD';
  assert.equal(w1Gate(p,{recipient:true,owner:true}).ok,false);
  assert.equal(w1Gate(proofs(),{recipient:true,owner:true}).release,false);
+});
+test('DB-01 N5 Owner Self-QA scoped acceptance, spoof and missing receipt fail-closed',()=>{
+ const ownerSelfQa={policy:'OWNER_SELF_QA_INTERNAL_ACCEPTANCE',scope:'N5_W1_LAB_ONLY',
+  receiptSha256:N5_OWNER_SHA,receiptAt:'2026-11-23T22:49:00+07:00',csvBytes:10495,
+  ownerDecisionRef:'N4C6_OWNER_SIGNOFF',acceptedMissingDeviceTestTime:true};
+ const rows=proofs().map(r=>({...r,qaAccount:undefined,qaAt:undefined,
+  ownerDecision:'APPROVED_SCOPED',ownerPolicy:'OWNER_SELF_QA_N5_ONLY',acknowledgedLimitations:true}));
+ const opts={recipient:true,owner:true,policy:'OWNER_SELF_QA_N5_ONLY',ownerSelfQa};
+ const accepted=w1Gate(rows,opts);
+ assert.equal(accepted.ok,true);assert.equal(accepted.release,false);
+ assert.equal(accepted.authorityVerified,false);assert.equal(accepted.eligibleForN6ReadOnly,true);
+ assert.equal(w1Gate(rows,{...opts,ownerSelfQa:{...ownerSelfQa,receiptSha256:'BAD'}}).ok,false);
+ assert.equal(w1Gate(rows,{...opts,ownerSelfQa:{...ownerSelfQa,ownerDecisionRef:'USER_TYPED_APPROVED'}}).ok,false);
+ assert.equal(w1Gate(rows,{...opts,policy:'UNKNOWN'}).ok,false);
+ assert.equal(w1Gate(rows,{...opts,recipient:false}).ok,false);
+ assert.equal(w1Gate(rows,{...opts,owner:false}).ok,false);
+ assert.equal(w1Gate(rows.map((r,i)=>i===1?{...r,ownerDecision:'PENDING'}:r),opts).ok,false);
+ assert.equal(w1Gate(rows.map((r,i)=>i===4?{...r,ciSha:'STALE'}:r),opts).ok,false);
+});
+test('DB-02 contract accepts four LAB public candidate families and denies wrong semantics',()=>{
+ const lessonId='LAB_MATH_FAKE';
+ const common=(id,rendererId,skillId,questionType,visualIntent,publicVariant,assetId=null,countUnit=null)=>
+  ({lessonId,questionId:id,rendererId,skillId,questionType,level:'LV2',visualIntent,countUnit,assetId,publicVariant});
+ const pack={schemaVersion:'LOP2_N6_MULTIFAMILY_LAB_V1',packId:'LAB_PACK_01',status:'LAB_CANDIDATE_ONLY',
+  lesson:{id:lessonId,subject:'MATH',grade:2,sourceStatus:'SYNTHETIC_QA_ONLY',studentRelease:false},
+  questions:[
+   common('QUEST_0001','D2','COLUMN_ADD','vertical','DECORATIVE',
+     {variantId:'VARIANT_01',a:38,b:27,operation:'ADD',profile:'PV100',carryPolicy:'OPTIONAL_HINT'}),
+   common('QUEST_0002','D5','SHAPE_COMPOSE','shape','GEOMETRY',
+     {variantId:'VARIANT_02',shapes:['triangle','square']}),
+   common('QUEST_0003','D9','EXACT_COUNT','pictograph','EXACT_COUNT',
+     {variantId:'VARIANT_03',count:5,symbolValue:1},'FLUENT:red_apple','apple'),
+   common('QUEST_0004','D10','WORD_ONE_OPERATION','word_problem','NONE',
+     {variantId:'VARIANT_04',a:8,b:3,operation:'SUB',steps:1})
+  ]};
+ const pass=validateMultiFamilyPack(pack);
+ assert.equal(pass.ok,true);assert.equal(pass.release,false);assert.equal(pass.writes,0);
+ assert.deepEqual(pass.families,['D10','D2','D5','D9']);
+ const bad=(fn)=>{const p=JSON.parse(JSON.stringify(pack));fn(p);assert.equal(validateMultiFamilyPack(p).ok,false);};
+ bad(p=>p.questions[1].skillId='WRONG');
+ bad(p=>p.questions[2].publicVariant.symbolValue=2);
+ bad(p=>p.questions[2].assetId='FLUENT:books');
+ bad(p=>p.questions[3].publicVariant.steps=2);
+ bad(p=>p.questions[0].publicVariant.answerKey=65);
+ bad(p=>p.questions[0].publicVariant.b=20);
+ bad(p=>p.questions[3].questionId='QUEST_0001');
+ bad(p=>p.lesson.id='MATH_B020');
+ bad(p=>p.lesson.studentRelease=true);
+ bad(p=>p.questions[3].rendererId='D11');
+ bad(p=>p.questions[0].level='LV3');
 });
 test('DB-T02 D2 valid and wrong skill/arithmetic rejected',()=>{
  assert.equal(family(samples.D2).ok,true);
