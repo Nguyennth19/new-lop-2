@@ -131,45 +131,61 @@ async function identityAndIsolation(page){
  return {components:['packId','contentVersion','lessonId','questionId','rendererVersion'],
   isolation:true,contentVersionFallback:result.internalVersionIsStable};
 }
-async function fullLifecycle(page){
- const result=await page.evaluate(()=>{
-  const api=window.ULTLAB,pack=window.__ULTLAB_PACKS__.A;
-  api.setData(pack);
-  const ids=pack.questions.map(q=>({route:q.rendererId,id:q.questionId}));
-  const list=[];
-  for(const item of ids){
-   const a=api.openQuestion(item.id);
-   const before=api.getHandleContract();
-   // A fresh route must have a valid snapshot even before student input.
-   const clear=api.clearCurrentDraft();
-   const removed=api.getDraft();
-   const countAfterClear=api.getState().changeCount;
-   const b=api.openQuestion(item.id);
-   const remounted=api.getHandleContract();
-   // Route navigation must destroy previous route's DOM and replace it.
-   const other=ids.find(x=>x.id!==item.id);
-   const changed=api.openQuestion(other.id);
-   const stale=Array.from(document.querySelectorAll('#ulStage [data-variant-id]'))
-    .some(node=>node.dataset.variantId===item.id);
-   const again=api.openQuestion(item.id);
-   list.push({route:item.route,mount:a.ok,hasSnapshot:!!before?.snapshot,
-    handle:before,clear:clear.ok,removed:removed===null,countAfterClear,
-    remount:b.ok,remounted,other:changed.ok,again:again.ok,stale});
-  }
-  return list;
- });
- assert.equal(result.length,12);
- for(const r of result){
-  for(const key of ['mount','hasSnapshot','clear','removed','remount','other','again'])
-   assert.equal(r[key],true,r.route+' '+key);
-  assert.equal(r.stale,false,r.route+' stale DOM');
-  for(const method of ['snapshot','restore','clear','destroy']){
-   assert.equal(r.handle[method],true,r.route+':'+method);
-   assert.equal(r.remounted[method],true,r.route+' remounted:'+method);
-  }
+async function interact(page,route){
+ const loc=s=>page.locator('#ulStage '+s).first();
+ switch(route){
+  case 'D1':await loc('.g74t1-pad-key[data-key="1"]').click();break;
+  case 'D2':await loc('[data-answer="result_ones"]').fill('3');break;
+  case 'D3':await loc('.g74-match-card.left').click();await loc('.g74-match-card.right').click();break;
+  case 'D4':await loc('.g74-choice-answer').click();break;
+  case 'D5':await loc('.g74-tangram-piece').click();break;
+  case 'D6':await loc('.g74-ds-card').click();await loc('.g74-ds-target').click();break;
+  case 'D7':await loc('.g74-cmp-sign').click();break;
+  case 'D8':await loc('.g74-ruler-panel input').fill('7');break;
+  case 'D8A':case 'D8B':await loc('.g74-cw-btn').click();break;
+  case 'D9':await loc('.g74-picto-item').click();break;
+  case 'D10':await loc('.g74-word-option-select').click();break;
+  default:throw Error('UNEXPECTED_ROUTE '+route);
  }
- return {routes:result.map(r=>r.route),count:result.length,
-  note:'LAB facade lifecycle plus clear/destroy through UI navigation; underlying callback spies tested separately'};
+}
+async function fullLifecycle(page){
+ const entries=await page.evaluate(()=>{
+  window.ULTLAB.setData(window.__ULTLAB_PACKS__.A);
+  return window.__ULTLAB_PACKS__.A.questions.map(q=>({route:q.rendererId,id:q.questionId}));
+ });
+ assert.equal(entries.length,12);
+ const records=[];
+ for(const {id,route} of entries){
+  const mounted=await page.evaluate(id=>window.ULTLAB.openQuestion(id),id);
+  assert.equal(mounted.ok,true,'mount '+route);
+  const initial=await page.evaluate(()=>window.ULTLAB.getHandleContract());
+  for(const fn of ['snapshot','restore','clear','destroy'])
+   assert.equal(initial?.[fn],true,route+':'+fn);
+  await interact(page,route);
+  const before=await page.evaluate(()=>window.ULTLAB.getDraft());
+  assert(before&&typeof before==='object',route+' did not produce a real draft');
+  const clear=await page.evaluate(()=>window.ULTLAB.clearCurrentDraft());
+  assert.equal(clear.ok,true,route+' clear did not succeed');
+  assert.equal(await page.evaluate(()=>window.ULTLAB.getDraft()),null,route+' draft survives clear');
+  const stateAfterClear=await page.evaluate(()=>window.ULTLAB.getState());
+  assert.equal(stateAfterClear.changeCount,0,route+' clear retained an old entry');
+  const sentinel=await page.evaluate(()=>{
+   window.__N1A_STALE_NODE=document.getElementById('ulStage').firstElementChild;
+   return !!window.__N1A_STALE_NODE;
+  });
+  assert(sentinel,route+' missing mounted root');
+  const other=entries.find(x=>x.id!==id);
+  const switched=await page.evaluate(x=>window.ULTLAB.openQuestion(x),other.id);
+  assert.equal(switched.ok,true,route+' could not navigate');
+  const disconnected=await page.evaluate(()=>!window.__N1A_STALE_NODE?.isConnected);
+  assert.equal(disconnected,true,route+' stale DOM remains after destroy');
+  const opened=await page.evaluate(x=>window.ULTLAB.openQuestion(x),id);
+  assert.equal(opened.ok,true,route+' failed clean remount');
+  const after=await page.evaluate(()=>window.ULTLAB.getDraft());
+  assert.equal(after,null,route+' old draft reappeared after clear/destroy/remount');
+  records.push({route,interacted:true,snapshot:true,clear:true,destroyDetachedRoot:true,remountClean:true});
+ }
+ return {routes:records,count:records.length};
 }
 async function d10Scope(page){
  const r=await page.evaluate(()=>{
