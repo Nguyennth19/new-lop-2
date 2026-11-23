@@ -63,3 +63,70 @@ function N8_KiemTraCASChiDoc(){
   const comparison=n8CompareSnapshots_(before,after);
   console.log(JSON.stringify({before:before,after:after,comparison:comparison},null,2));
 }
+
+/**
+ * N8 controlled drill: classify a hypothetical retry from a live snapshot.
+ * No append, mutation, grant, doPost or real CAS. Test mutations stay in RAM.
+ */
+function n8ClassifyRetry_(rows,eventId,expectedSha){
+  const matches=rows.filter(function(row){return row[0]===eventId;});
+  if(matches.length>1)return n8Deny_('DUPLICATE_EVENT_IDS');
+  if(matches.length===0)return n8Deny_('UNKNOWN_EVENT_NO_WRITE');
+  if(matches[0][6]!==expectedSha)return n8Deny_('IDEMPOTENCY_CONFLICT');
+  return {ok:true,idempotent:true,writes:0,release:false,
+    note:'EXISTING_EVENT_ONLY_NOT_NEW_WRITE_AUTHORIZATION'};
+}
+function n8SnapshotDigest_(rows,settings,utilities){
+  return n7TestSha256_(JSON.stringify({
+    schema:'N8_JOURNAL_DISPLAY_SNAPSHOT_V1',
+    sheet:settings.isolatedSpreadsheetId,tab:settings.journalTab,
+    columns:rows[0],rows:rows.slice(1)
+  }),utilities);
+}
+/** Real read + local-only simulated conflict cases. Never touches Sheet values. */
+function n8ControlledDrill_(deps,settings){
+  const before=n8ReadSnapshot_(deps,settings);
+  if(!before.ok)return before;
+  const sheet=deps.spreadsheetApp.openById(settings.isolatedSpreadsheetId)
+    .getSheetByName(settings.journalTab);
+  if(!sheet)return n8Deny_('JOURNAL_TAB_MISSING');
+  const last=sheet.getLastRow();
+  if(last!==before.dataRows+1)return n8Deny_('JOURNAL_DRIFT_RECONCILE_REQUIRED');
+  const live=sheet.getRange(1,1,last,8).getDisplayValues();
+  if(live.length!==last||sheet.getLastRow()!==last||
+     n8SnapshotDigest_(live,settings,deps.utilities)!==before.digest){
+    return n8Deny_('JOURNAL_DRIFT_RECONCILE_REQUIRED');
+  }
+  const eventId='N7_LAB_N7_KEY_001';
+  const expectedSha='b1e999e4afaedd5d566940bbb3e9e74e75e7cdcd3ea30e7a37915352fc03d40b';
+  const existing=n8ClassifyRetry_(live.slice(1),eventId,expectedSha);
+  if(!existing.ok)return existing;
+  // Synthetic deviations exist solely in memory, never on the connected Sheet.
+  const changedPayload=n8ClassifyRetry_(live.slice(1),eventId,'f'.repeat(64));
+  const otherWriter=live.map(function(row){return row.slice();});
+  const ix=otherWriter.findIndex(function(row){return row[0]===eventId;});
+  if(ix<=0)return n8Deny_('EVENT_NOT_FOUND');
+  otherWriter[ix][5]='SIMULATED_CONFLICT_RAM_ONLY';
+  const hypothetical={ok:true,digest:n8SnapshotDigest_(otherWriter,settings,deps.utilities),
+    dataRows:otherWriter.length-1};
+  const drift=n8CompareSnapshots_(before,hypothetical);
+  const staleBaseline=before.dataRows!==2;
+  const after=n8ReadSnapshot_(deps,settings);
+  const unchanged=n8CompareSnapshots_(before,after);
+  if(changedPayload.reason!=='IDEMPOTENCY_CONFLICT'||
+     drift.reason!=='JOURNAL_DRIFT_RECONCILE_REQUIRED'||
+     !staleBaseline||!unchanged.ok)return n8Deny_('DRILL_CHECK_FAILED');
+  return {ok:true,mode:'READ_ONLY_AND_RAM_SIMULATION',
+    idempotentReplay:existing.idempotent===true,
+    alteredPayloadDenied:true,simulatedEditDriftDetected:true,
+    stalePreN7BaselineDenied:true,liveSnapshotUnchanged:unchanged.unchanged===true,
+    dataRows:after.dataRows,observedEventCount:after.observedEventCount,
+    snapshotDigest:after.digest,writes:0,release:false,
+    atomicCasProven:false};
+}
+function N8_DienTapXungDotChiDoc(){
+  const result=n8ControlledDrill_({
+    spreadsheetApp:SpreadsheetApp,utilities:Utilities
+  },N7_TEST_SETTINGS_);
+  console.log(JSON.stringify(result,null,2));
+}
