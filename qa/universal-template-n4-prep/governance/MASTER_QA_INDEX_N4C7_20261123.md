@@ -1,8 +1,8 @@
-# Master QA Index — Drive Canonical Snapshot
+# Master QA Index — Drive canonical snapshot
 
-Drive https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
-Revision AHj4eMR-MxjRpwgU_8pXUQ5msDhsbWBAEi7MBubMWwI2uVMYg4fSrS2d9DFEgKYKwTGsxoRJ0uZ6DP97J4Zkv8GLLbRl_nFTjPBMIHzqVw
-Read-only mirrored history. Later appendices supersede earlier states; no human signoff claimed.
+Drive: https://docs.google.com/document/d/1FAbWq6Si-ZI6qLEUR-hr2Pw-2zf3Y6mnAvl2phBaV2Y/edit
+Revision: AHj4eMTLsyvE6QOc8j5SwgEMlEV-TpO8AzFBiIV87jJ_SNk50auxkIZyqXVHi2ukCuQRakLweEHMl2YmmB8hKFlt-u-jDRAuby1PLVANSg
+Read-only audit mirror. Append-only state deltas; no human signoff inferred.
 
 MASTER QA INDEX — DỰ ÁN LỚP 2 / ULT V1
 Phiên bản 2026-11-23 N4-C.7, chỉ mục duy nhất; giữ nguyên kho bằng chứng gốc và các đường dẫn cũ.
@@ -97,3 +97,11 @@ CI: https://github.com/Nguyennth19/new-lop-2/actions/runs/45131772681
 Evidence ZIP: https://drive.google.com/file/d/1FjZuZwpJE5MwItuQZpUKwbeh23rP9ixt/view
 Drive checkpoint: https://drive.google.com/drive/folders/1YrLny7mAGYg5FAscrmPWxBaKElog1yTE
 FINAL-A = TECHNICAL_CONSOLIDATED / FINAL-B HUMAN_GATE_RECHECK_NEXT / NO MERGE, GAS, SHEET WRITE, RELEASE.
+N4-FINAL-B — FINAL ACCEPTANCE AND CONTROLLED N5 HANDOVER (23/11/2026)
+N4 condition after verifying PRs #14/#16/#17..#24 all DRAFT/UNMERGED and green CI: N4_TECHNICALLY_READY_HUMAN_GATES_PENDING; N4 NOT CLOSED. GO only for N5 isolated LAB scope/source-contract preparation; no merge, production, GAS/Sheet, student release or trusted grading.
+Final-B canonical Drive report: https://docs.google.com/document/d/1MJ4g3MboEq_IB-LNJs09wIeZTG3nJW1zIJYweCA88W0/edit
+Drive flat sibling archive: https://drive.google.com/drive/folders/1hfHW0b6ulzsr4zYC1FlAmvZO9WjW0U6l
+Human ACK ledger: https://docs.google.com/document/d/1_owTNZsMmIA97-t971YCEABnjcCSXac9XmJsos12in4/edit
+Confirmed still missing: N0-S A3/A4 dated identity-bound receipt, independent QA reviews, D1 learner labels policy, D10 trusted grader operator policy, W1 formal closure/owner scope. CI green is scoped; DB rows remain OPEN/BLOCKED.
+N5 allowed starting contract: define N5 source-backed scope and responsibilities, compatibility matrix/manifest and synthetic fixtures in independent LAB; N5 integration/release requires new explicit authorization after W1/DB gates.
+No N4-C.8 or FINAL-C created: this is the single final decision; reopen only on new evidence/approval, not for administrative step proliferation.
