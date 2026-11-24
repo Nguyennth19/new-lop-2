@@ -28,6 +28,8 @@
  window.LOP2_PREVIEW_DIAGNOSTICS=Object.freeze({snapshot:()=>({calls:[...calls],denied:[...denied],providerWrites:0,mode:'SYNTHETIC_ONLY'})});
  document.addEventListener('DOMContentLoaded',()=>{
   const dlg=document.getElementById('lop2ReviewDialog'),list=document.getElementById('lop2ReviewList');
+  const notice=document.getElementById('lop2PreviewNotice'),home=document.getElementById('home');
+  if(home&&notice)home.parentNode.insertBefore(notice,home);
   for(const v of window.LOP2_REVIEW_VARIANTS){const section=document.createElement('section');section.dataset.lesson=v.lessonId;section.style.cssText='padding:8px 0;border-bottom:1px solid #ddd';const p=document.createElement('p');p.textContent=v.lessonId+' · '+v.prompt;section.append(p);for(const c of v.choices){const label=document.createElement('span');label.style.cssText='display:inline-block;margin:3px;padding:5px;border:1px solid #ccc;border-radius:5px';label.textContent=c.text;section.append(label);}list.append(section);}
   document.getElementById('lop2ReviewOpen').addEventListener('click',()=>dlg.showModal());document.getElementById('lop2ReviewClose').addEventListener('click',()=>dlg.close());
  });

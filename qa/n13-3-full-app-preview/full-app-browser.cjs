@@ -23,6 +23,7 @@ const {compile}=require('./build-preview.cjs');
    ok(await page.locator('#achievements').isVisible(),device+' achievements');
    await page.locator('[data-view="home"]:visible').first().click();ok(await page.locator('#schoolweek').locator(':scope > *').count()>=7,device+' attendance');
    ok(await page.evaluate(()=>window.BE_HOC_VISUAL_ORCHESTRATOR.allRendererIds.length===12&&window.BE_HOC_C2_TEST_BRIDGE.ready===true),device+' 12 routes and resolver');
+   await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
    await page.locator('#lop2ReviewOpen').click();ok(await page.locator('#lop2ReviewDialog[open] [data-lesson="MATH_B001"]').count()===8,device+' B001 review');ok(await page.locator('#lop2ReviewDialog[open] [data-lesson="MATH_B002"]').count()===8,device+' B002 review');await page.locator('#lop2ReviewClose').click();
    await page.locator('#subjectGrid [data-subject="Toán 2"]').click();
    await page.locator('#mathFullScreen [data-ml-field]').first().waitFor();
