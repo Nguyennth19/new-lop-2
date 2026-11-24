@@ -33,4 +33,4 @@ function session(plan){
  const values=Object.create(null);
  return {set(id,v){const f=plan.fields.find(x=>x.id===id);if(!f||typeof v!=='string'||!(/^(?:0|[1-9][0-9]{0,2})?$/.test(v))||v!==''&&!int(Number(v),0,f.max))return false;values[id]=v;return true;},clear(){for(const k of Object.keys(values))delete values[k];},snapshot(){return {...values};}};
 }
-module.exports={compile,session};
+if(typeof module==='object'&&module.exports)module.exports={compile,session};else window.N13SemanticCore={compile,session};
