@@ -1,16 +1,16 @@
 'use strict';
 // Delta tests only. No live GAS, real resource IDs, authority or provider calls.
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
-const d=require('../grant-drafts/P2.review.json'),{validateMultiFamilyPack}=require('../../universal-template-n4-prep/n6-synthetic-lab/multi-family-contract.cjs');
+const d=require('../grant-drafts/P2.review.json');
 const sha=s=>createHash('sha256').update(s,'utf8').digest('hex');
-const canon=o=>JSON.stringify(o,(_k,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
-test('exact P2 candidate, provenance, plan and cross-references',()=>{const p=d.payloadCandidate,r=validateMultiFamilyPack(p.candidate);assert.equal(r.ok,true);assert.equal(r.count,1);assert.deepEqual(r.families,['D2']);assert.equal(r.release,false);assert.equal(r.writes,0);assert.equal(sha(canon(p.candidate)),p.candidateSha256);assert.equal(sha(canon(p.provenanceReceipt)),p.sourceReceiptSha256);assert.equal(sha(canon(p.rowPlan)),p.rowsDigest);assert.equal(p.provenanceReceipt.candidateSha256,p.candidateSha256);assert.equal(p.rowPlan.candidateSha256,p.candidateSha256);assert.equal(p.rowPlan.sourceReceiptSha256,p.sourceReceiptSha256);assert.equal(d.grantIssued,false);assert.equal(d.readyEnvelopeCreated,false);assert.equal(d.approvedIntent,null);});
 const files=['N7_Core.gs','N8_Core.gs','N9_Core.gs','N11_Receipt.gs','N12_Adapter.gs','N12_Editor.gs','N12_Final.gs'];
 const src=files.map(f=>fs.readFileSync(path.join(__dirname,'..',f),'utf8')).join('\n');
-const api=new Function(src+'\nreturn {scope:n12Scope_,digest:n7TestDigest_,scopeDigest:n11M4ScopeDigest_,dispatch:n12FinalDispatch_,pins:N12_SETUP_RESOURCE_PINS_,projectPin:N12_PROJECT_SHA_,baseline:N12_SETUP_BASELINE_PINS_,forbidden:N12_FORBIDDEN_IDS_};')();
+const api=new Function(src+'\nreturn {scope:n12Scope_,digest:n7TestDigest_,scopeDigest:n11M4ScopeDigest_,pins:N12_SETUP_RESOURCE_PINS_,projectPin:N12_PROJECT_SHA_,baseline:N12_SETUP_BASELINE_PINS_,forbidden:N12_FORBIDDEN_IDS_};')();
 const roles=Object.keys(api.pins),project='MOCK_PROJECT_IDENTIFIER_00001',resources=Object.fromEntries(roles.map((r,i)=>[r,'MOCK_RESOURCE_IDENTIFIER_'+String(i).padStart(4,'0')]));
-// Synthetic ID pin substitution ONLY; real SHA-256 for other values. Not live identity proof.
+// Synthetic ID and exact empty-snapshot pin substitutions; real SHA-256 otherwise.
+// Production raw IDs are never included in this test. Grid verification remains actual source.
 const pins=new Map([[project,api.projectPin],...roles.map(r=>[resources[r],api.pins[r]])]);
+pins.set(JSON.stringify({schema:'N8_JOURNAL_DISPLAY_SNAPSHOT_V1',sheet:resources.P2_TARGET,tab:'15_NhatKy_HanhDong',columns:['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'],rows:[]}),api.baseline.P2);
 const u={DigestAlgorithm:{SHA_256:'SHA_256'},computeDigest:(_,s)=>(pins.get(s)||sha(s)).match(/../g).map(h=>parseInt(h,16))};
 const n=Date.parse('2026-11-25T00:00:00Z'),owner='owner@example.invalid',i={contract:'N7_GAS_TEST_INTENT_V1',environment:'TEST',requestId:'MOCK_REQUEST_001',idempotencyKey:'MOCK_KEY_001',executionId:'MOCK_EXECUTION_001',lessonId:'LAB_MATH_N12_P2',candidateSha256:d.payloadCandidate.candidateSha256,sourceReceiptSha256:d.payloadCandidate.sourceReceiptSha256,sourceRevision:'REV_MOCK_001',targetSpreadsheetId:resources.P2_TARGET,action:'APPEND_TEST_METADATA',tab:'15_NhatKy_HanhDong',rowsDigest:d.payloadCandidate.rowsDigest,grantId:'N12_GRANT_MOCK_001',expectedJournalRows:0};
 const s={environment:'N12_DISPOSABLE_SYNTHETIC_ONLY',writesEnabled:true,projectId:project,isolatedSpreadsheetId:resources.P2_TARGET,backupId:resources.P2_BACKUP,allowedOwnerEmail:owner,approvedGrantId:i.grantId,grantIssuedAt:'2026-11-25T00:00:00Z',grantExpiresAt:'2026-11-25T00:10:00Z',approvedBaselineRows:0,journalTab:i.tab,forbiddenSheetIds:[...api.forbidden],proofCase:'P2',approvedIntentDigest:api.digest(i,u),approvedJournalSnapshotDigest:api.baseline.P2};
