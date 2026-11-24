@@ -1,0 +1,200 @@
+{
+  "base": "a624d947985b0ec860734a36f93d755a5af32bd5",
+  "sourceExact": false,
+  "pdfBytesReverified": false,
+  "pdfAcl": "ANYONE_WRITER_METADATA_OBSERVED",
+  "sourceRecords": [
+    {
+      "id": "SGK_B001_L1_E01",
+      "lessonId": "MATH_B001",
+      "level": "LV1",
+      "printedPage": 7,
+      "pdfPage": 8,
+      "c4": {
+        "row": 6,
+        "partIds": [
+          "r2_unit",
+          "r2_sum",
+          "r3_tens",
+          "r3_sum",
+          "r4_tens",
+          "r4_ones",
+          "r4_sum_tens",
+          "r4_sum_ones"
+        ],
+        "partTypes": [
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER"
+        ],
+        "liveReadback": "ID_AND_PART_METADATA_MATCH"
+      },
+      "prototype": "N13B1_SYNTH_1",
+      "status": "HOLD",
+      "sourceExactApproved": false,
+      "skillIdApproved": null,
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false
+    },
+    {
+      "id": "VBT_B001_T02_E01",
+      "lessonId": "MATH_B001",
+      "level": "LV2",
+      "printedPage": 6,
+      "pdfPage": 7,
+      "c4": {
+        "row": 18,
+        "partIds": [
+          "54t",
+          "54o",
+          "88t",
+          "88o",
+          "36t",
+          "36o"
+        ],
+        "partTypes": [
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER"
+        ],
+        "liveReadback": "ID_AND_PART_METADATA_MATCH"
+      },
+      "prototype": "N13B1_SYNTH_2",
+      "status": "HOLD",
+      "sourceExactApproved": false,
+      "skillIdApproved": null,
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false
+    },
+    {
+      "id": "SGK_B002_H1_E01",
+      "lessonId": "MATH_B002",
+      "level": "LV1",
+      "printedPage": 11,
+      "pdfPage": 12,
+      "c4": {
+        "row": 26,
+        "partIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4",
+          "a5",
+          "b1",
+          "b2",
+          "b3",
+          "b4",
+          "b5"
+        ],
+        "partTypes": [
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER",
+          "INTEGER"
+        ],
+        "liveReadback": "ID_AND_PART_METADATA_MATCH"
+      },
+      "prototype": "N13B1_SYNTH_3",
+      "status": "HOLD",
+      "sourceExactApproved": false,
+      "skillIdApproved": null,
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false
+    },
+    {
+      "id": "SGK_B002_H1_E02",
+      "lessonId": "MATH_B002",
+      "level": "LV1",
+      "printedPage": 11,
+      "pdfPage": 12,
+      "c4": {
+        "row": 27,
+        "partIds": [
+          "balloons"
+        ],
+        "partTypes": [
+          "MATCHING"
+        ],
+        "liveReadback": "ID_AND_PART_METADATA_MATCH"
+      },
+      "prototype": "N13B1_SYNTH_4",
+      "status": "HOLD",
+      "sourceExactApproved": false,
+      "skillIdApproved": null,
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false
+    },
+    {
+      "id": "VBT_B002_T01_E01",
+      "lessonId": "MATH_B002",
+      "level": "LV2",
+      "printedPage": 10,
+      "pdfPage": 11,
+      "c4": null,
+      "prototype": "N13B1_SYNTH_5",
+      "status": "HOLD",
+      "sourceExactApproved": false,
+      "skillIdApproved": null,
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false
+    },
+    {
+      "id": "VBT_B002_T01_E03",
+      "lessonId": "MATH_B002",
+      "level": "LV2",
+      "printedPage": 10,
+      "pdfPage": 11,
+      "c4": null,
+      "prototype": "N13B1_SYNTH_6",
+      "status": "HOLD",
+      "sourceExactApproved": false,
+      "skillIdApproved": null,
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false
+    },
+    {
+      "id": "VBT_B002_T02_E04",
+      "lessonId": "MATH_B002",
+      "level": "LV2",
+      "printedPage": 12,
+      "pdfPage": 13,
+      "c4": null,
+      "prototype": "N13B1_SYNTH_7",
+      "status": "HOLD",
+      "sourceExactApproved": false,
+      "skillIdApproved": null,
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false
+    }
+  ],
+  "estimationHoldIds": [
+    "SGK_B001_L2_E02",
+    "SGK_B001_L2_E01",
+    "VBT_B001_T03_E01",
+    "VBT_B001_T03_E02"
+  ],
+  "priorCandidates": 31,
+  "additionalSynthetic": 7,
+  "lv3": "NO_APPROVED_REFERENCE"
+}

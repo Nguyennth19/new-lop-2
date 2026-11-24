@@ -1,0 +1,468 @@
+[
+  {
+    "id": "N13B1_SYNTH_1",
+    "lessonId": "MATH_B001",
+    "levelCandidate": "LV1",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "SGK_B001_L1_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "assetId": null,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "parts": [
+      {
+        "id": "a",
+        "kind": "EXPANDED",
+        "model": {
+          "number": 43,
+          "slots": [
+            {
+              "id": "branchT",
+              "role": "BRANCH_TENS",
+              "value": 40
+            },
+            {
+              "id": "b1",
+              "role": "BRANCH_ONES",
+              "value": null
+            },
+            {
+              "id": "sumT",
+              "role": "SUM_TENS",
+              "value": 40
+            },
+            {
+              "id": "s1",
+              "role": "SUM_ONES",
+              "value": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "b",
+        "kind": "EXPANDED",
+        "model": {
+          "number": 76,
+          "slots": [
+            {
+              "id": "b2",
+              "role": "BRANCH_TENS",
+              "value": null
+            },
+            {
+              "id": "branchO",
+              "role": "BRANCH_ONES",
+              "value": 6
+            },
+            {
+              "id": "s2",
+              "role": "SUM_TENS",
+              "value": null
+            },
+            {
+              "id": "sumO",
+              "role": "SUM_ONES",
+              "value": 6
+            }
+          ]
+        }
+      },
+      {
+        "id": "c",
+        "kind": "EXPANDED",
+        "model": {
+          "number": 28,
+          "slots": [
+            {
+              "id": "b3",
+              "role": "BRANCH_TENS",
+              "value": null
+            },
+            {
+              "id": "b4",
+              "role": "BRANCH_ONES",
+              "value": null
+            },
+            {
+              "id": "s3",
+              "role": "SUM_TENS",
+              "value": null
+            },
+            {
+              "id": "s4",
+              "role": "SUM_ONES",
+              "value": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "N13B1_SYNTH_2",
+    "lessonId": "MATH_B001",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B001_T02_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "assetId": null,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "parts": [
+      {
+        "id": "r0",
+        "kind": "EXPANDED",
+        "model": {
+          "number": 32,
+          "slots": [
+            {
+              "id": "t",
+              "role": "SUM_TENS",
+              "value": null
+            },
+            {
+              "id": "o",
+              "role": "SUM_ONES",
+              "value": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "r1",
+        "kind": "EXPANDED",
+        "model": {
+          "number": 81,
+          "slots": [
+            {
+              "id": "t",
+              "role": "SUM_TENS",
+              "value": null
+            },
+            {
+              "id": "o",
+              "role": "SUM_ONES",
+              "value": null
+            }
+          ]
+        }
+      },
+      {
+        "id": "r2",
+        "kind": "EXPANDED",
+        "model": {
+          "number": 46,
+          "slots": [
+            {
+              "id": "t",
+              "role": "SUM_TENS",
+              "value": null
+            },
+            {
+              "id": "o",
+              "role": "SUM_ONES",
+              "value": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "N13B1_SYNTH_3",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV1",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "SGK_B002_H1_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "assetId": null,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "parts": [
+      {
+        "id": "a",
+        "kind": "SEMANTIC",
+        "model": {
+          "kind": "NUMBER_LINE",
+          "model": {
+            "start": 0,
+            "step": 1,
+            "ticks": [
+              0,
+              null,
+              null,
+              null,
+              null,
+              null,
+              6
+            ]
+          }
+        }
+      },
+      {
+        "id": "b",
+        "kind": "SEMANTIC",
+        "model": {
+          "kind": "NUMBER_LINE",
+          "model": {
+            "start": 20,
+            "step": 2,
+            "ticks": [
+              20,
+              null,
+              null,
+              null,
+              null,
+              null,
+              32
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "N13B1_SYNTH_4",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV1",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "SGK_B002_H1_E02",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "assetId": null,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "parts": [
+      {
+        "id": "a",
+        "kind": "COORD_MATCH",
+        "model": {
+          "start": 0,
+          "step": 2,
+          "tickCount": 4,
+          "labels": [
+            {
+              "id": "l1",
+              "text": "2 + 4"
+            },
+            {
+              "id": "l2",
+              "text": "0"
+            },
+            {
+              "id": "l3",
+              "text": "6 - 2"
+            },
+            {
+              "id": "l4",
+              "text": "2"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "N13B1_SYNTH_5",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B002_T01_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "assetId": null,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "parts": [
+      {
+        "id": "a",
+        "kind": "SEMANTIC",
+        "model": {
+          "kind": "NUMBER_LINE",
+          "model": {
+            "start": 30,
+            "step": 1,
+            "ticks": [
+              30,
+              null,
+              32,
+              null,
+              34
+            ]
+          }
+        }
+      },
+      {
+        "id": "b",
+        "kind": "D4",
+        "model": {
+          "questionId": "b",
+          "selectionMode": "MULTIPLE",
+          "prompt": {
+            "type": "TEXT",
+            "text": "Chọn các số lớn hơn 30 và bé hơn 34."
+          },
+          "options": [
+            {
+              "id": "x",
+              "content": {
+                "type": "TEXT",
+                "text": "30"
+              }
+            },
+            {
+              "id": "y",
+              "content": {
+                "type": "TEXT",
+                "text": "31"
+              }
+            },
+            {
+              "id": "z",
+              "content": {
+                "type": "TEXT",
+                "text": "33"
+              }
+            },
+            {
+              "id": "w",
+              "content": {
+                "type": "TEXT",
+                "text": "34"
+              }
+            }
+          ],
+          "speechEnabled": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "N13B1_SYNTH_6",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B002_T01_E03",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "assetId": null,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "parts": [
+      {
+        "id": "a",
+        "kind": "D4",
+        "model": {
+          "questionId": "a",
+          "selectionMode": "SINGLE",
+          "prompt": {
+            "type": "TEXT",
+            "text": "Số liền sau của 38 là 39."
+          },
+          "options": [
+            {
+              "id": "x",
+              "content": {
+                "type": "TEXT",
+                "text": "Đúng"
+              }
+            },
+            {
+              "id": "y",
+              "content": {
+                "type": "TEXT",
+                "text": "Sai"
+              }
+            }
+          ],
+          "speechEnabled": true
+        }
+      },
+      {
+        "id": "b",
+        "kind": "SEMANTIC",
+        "model": {
+          "kind": "INEQUALITY_INPUT",
+          "model": {
+            "lower": 35,
+            "upper": 40
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "N13B1_SYNTH_7",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B002_T02_E04",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "assetId": null,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "parts": [
+      {
+        "id": "a",
+        "kind": "SEMANTIC",
+        "model": {
+          "kind": "NEIGHBOR_TABLE",
+          "model": {
+            "rows": [
+              {
+                "previous": null,
+                "given": 16,
+                "next": null
+              },
+              {
+                "previous": 68,
+                "given": null,
+                "next": 70
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+]
