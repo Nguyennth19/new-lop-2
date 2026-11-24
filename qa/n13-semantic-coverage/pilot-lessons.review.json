@@ -1,8 +1,8 @@
 {
   "contract": "N13_PILOT_LESSONS_REVIEW_V1",
   "base": "ca744b89bc34a48f3a0a07b61d118313329fba53",
-  "sourceBytesReverified": false,
-  "sourceAcl": "UNLOCKED_LAST_OBSERVED",
+  "sourceBytesReverified": true,
+  "sourceAcl": "ANYONE_WRITER_STILL_OBSERVED_NO_CHANGE",
   "studentRelease": false,
   "gradingAuthority": "DENY",
   "sourceRoutingHolds": [
@@ -43,7 +43,8 @@
             "printedPage": 7,
             "pdfPage": 8,
             "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "3dfaf9a3f48fbacac26f86a99ab808afa5583313aa0e591aa5745a51af0b30d4"
           },
           "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
           "visualIntent": {
@@ -164,7 +165,8 @@
             "printedPage": 6,
             "pdfPage": 7,
             "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "e6926136f1f91d86392f154d384495ec41946c14e435986469d3650636d1edb7"
           },
           "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
           "visualIntent": {
@@ -255,7 +257,8 @@
             "printedPage": 6,
             "pdfPage": 7,
             "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "ed754420ad5c0f6ddc7199816b35a24b163537851fc9d3879002adaf3b077e1d"
           },
           "reuseRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
           "visualIntent": {
@@ -325,12 +328,13 @@
           "sourceExerciseId": null,
           "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
           "sourceAnchor": {
-            "id": "SGK_B001_L1_E01",
+            "id": "SGK_B001_L1_E03",
             "track": "SGK",
-            "printedPage": 7,
-            "pdfPage": 8,
+            "printedPage": 8,
+            "pdfPage": 9,
             "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "31d0861696a8dcdffa72101026d1959898d350b484f815fa19b5726078b470e8"
           },
           "reuseRef": "qa/n13-semantic-coverage/candidates.review.json",
           "visualIntent": {
@@ -368,7 +372,8 @@
                 }
               }
             ]
-          }
+          },
+          "inheritedConceptAnchor": "SGK_B001_L1_E01"
         },
         {
           "variantId": "N13B_SYNTH_2",
@@ -378,12 +383,13 @@
           "sourceExerciseId": null,
           "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
           "sourceAnchor": {
-            "id": "VBT_B001_T02_E01",
+            "id": "VBT_B001_T02_E03",
             "track": "VBT",
-            "printedPage": 6,
-            "pdfPage": 7,
+            "printedPage": 7,
+            "pdfPage": 8,
             "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "c3673d4a2aab8f5839eab0df87ae7418dde55e2c184243ce392bb957270c7655"
           },
           "reuseRef": "qa/n13-semantic-coverage/candidates.review.json",
           "visualIntent": {
@@ -421,7 +427,8 @@
                 }
               }
             ]
-          }
+          },
+          "inheritedConceptAnchor": "VBT_B001_T02_E01"
         }
       ]
     },
@@ -446,7 +453,8 @@
             "printedPage": 11,
             "pdfPage": 12,
             "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "468d71fb416a442e6620f65fa644c7d1f5c5d68876bc05be2d3215b40b7023ad"
           },
           "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
           "visualIntent": {
@@ -519,7 +527,8 @@
             "printedPage": 11,
             "pdfPage": 12,
             "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "468d71fb416a442e6620f65fa644c7d1f5c5d68876bc05be2d3215b40b7023ad"
           },
           "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
           "visualIntent": {
@@ -578,7 +587,8 @@
             "printedPage": 10,
             "pdfPage": 11,
             "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "776bf6e448849cebce415b2f4e65c6bb1e3bc8ef8e4af52cbbdb8c3cb35e67f8"
           },
           "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
           "visualIntent": {
@@ -672,7 +682,8 @@
             "printedPage": 10,
             "pdfPage": 11,
             "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "776bf6e448849cebce415b2f4e65c6bb1e3bc8ef8e4af52cbbdb8c3cb35e67f8"
           },
           "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
           "visualIntent": {
@@ -745,7 +756,8 @@
             "printedPage": 12,
             "pdfPage": 13,
             "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
-            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+            "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+            "renderSha256": "08b3fc2d7736db2f0044cfb400fc5966a3252fc01e5b60d552df16a0d8e75fe9"
           },
           "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
           "visualIntent": {
@@ -787,5 +799,7 @@
         }
       ]
     }
-  ]
+  ],
+  "sourceVisualEvidenceRef": "qa/n13-semantic-coverage/source-visual-closure.review.json",
+  "sourceExactApproved": false
 }

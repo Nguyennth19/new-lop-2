@@ -1,0 +1,191 @@
+{
+  "contract": "N13_SOURCE_VISUAL_RECONCILIATION_V1",
+  "date": "2026-11-24",
+  "scope": "AI_VISUAL_CURRENT_PDF_ONLY_NO_HUMAN_SIGNOFF",
+  "sourceBooks": {
+    "SGK": {
+      "fileId": "1lpsU8dsk_ieYzECqpZ6kwTaVgj20rETE",
+      "sha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
+      "pdfPages": 142,
+      "bytesVerified": true,
+      "acl": "ANYONE_WRITER_OBSERVED",
+      "priorBytesEquivalence": false
+    },
+    "VBT": {
+      "fileId": "1k_g7n1THQSSCw1YsYWBZ3wIDhSLe4bYm",
+      "sha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
+      "pdfPages": 137,
+      "bytesVerified": true,
+      "acl": "ANYONE_WRITER_OBSERVED",
+      "priorBytesEquivalence": false
+    }
+  },
+  "render": {
+    "engine": "PyMuPDF 1.26.7",
+    "matrix": [
+      1.7,
+      1.7
+    ],
+    "alpha": false,
+    "hashes": {
+      "SGK": {
+        "7": "ed754420ad5c0f6ddc7199816b35a24b163537851fc9d3879002adaf3b077e1d",
+        "8": "3dfaf9a3f48fbacac26f86a99ab808afa5583313aa0e591aa5745a51af0b30d4",
+        "9": "31d0861696a8dcdffa72101026d1959898d350b484f815fa19b5726078b470e8",
+        "10": "0871b0f930bec32da37f83e3301dc5dfb846109eb1259a84408d96aa2daf9ca5",
+        "12": "468d71fb416a442e6620f65fa644c7d1f5c5d68876bc05be2d3215b40b7023ad"
+      },
+      "VBT": {
+        "7": "e6926136f1f91d86392f154d384495ec41946c14e435986469d3650636d1edb7",
+        "8": "c3673d4a2aab8f5839eab0df87ae7418dde55e2c184243ce392bb957270c7655",
+        "9": "b9513382c4660d34bf8b641c023392d95543922f56e1cbf087d311954d8a4ff4",
+        "11": "776bf6e448849cebce415b2f4e65c6bb1e3bc8ef8e4af52cbbdb8c3cb35e67f8",
+        "13": "08b3fc2d7736db2f0044cfb400fc5966a3252fc01e5b60d552df16a0d8e75fe9"
+      }
+    }
+  },
+  "routing": [
+    {
+      "id": "SGK_B001_L1_E01",
+      "track": "SGK",
+      "pdfPage": 8,
+      "printedPage": 7,
+      "renderSha256": "3dfaf9a3f48fbacac26f86a99ab808afa5583313aa0e591aa5745a51af0b30d4",
+      "finding": "4 trees including 1 worked example; 8 actual blanks. C4 8 part IDs but the final sum shows both terms blank in source while C4 labels give one term in each prompt. Original variant retains 8 independent inputs; not exact.",
+      "sourceExactApproved": false,
+      "rendererGrant": "DENY"
+    },
+    {
+      "id": "VBT_B001_T02_E01",
+      "track": "VBT",
+      "pdfPage": 7,
+      "printedPage": 6,
+      "renderSha256": "e6926136f1f91d86392f154d384495ec41946c14e435986469d3650636d1edb7",
+      "finding": "4 robots including 1 worked example; 3 remaining robots each have two empty hand positions AND two empty sum boxes = 12 positions, C4 records only 6 formula parts. Synthetic variant covers sums only. Source-exact HOLD; never silently fill hands.",
+      "sourceExactApproved": false,
+      "rendererGrant": "DENY"
+    },
+    {
+      "id": "SGK_B002_H1_E01",
+      "track": "SGK",
+      "pdfPage": 12,
+      "printedPage": 11,
+      "renderSha256": "468d71fb416a442e6620f65fa644c7d1f5c5d68876bc05be2d3215b40b7023ad",
+      "finding": "Two lines each 11 ticks, unit step, 5 missing per line = 10 slots. Synthetic variant has 7 ticks per line and a step-2 example; original practice only.",
+      "sourceExactApproved": false,
+      "rendererGrant": "DENY"
+    },
+    {
+      "id": "SGK_B002_H1_E02",
+      "track": "SGK",
+      "pdfPage": 12,
+      "printedPage": 11,
+      "renderSha256": "468d71fb416a442e6620f65fa644c7d1f5c5d68876bc05be2d3215b40b7023ad",
+      "finding": "19 ticks 0..18, six balloons including one linked example; five remaining links. Existing four-label/four-tick matching prototype cannot reproduce source sparse-target geometry; exact route HOLD.",
+      "sourceExactApproved": false,
+      "rendererGrant": "DENY"
+    },
+    {
+      "id": "VBT_B002_T01_E01",
+      "track": "VBT",
+      "pdfPage": 11,
+      "printedPage": 10,
+      "renderSha256": "776bf6e448849cebce415b2f4e65c6bb1e3bc8ef8e4af52cbbdb8c3cb35e67f8",
+      "finding": "Six missing tick labels plus an open written interval-list task. Existing variant uses fewer blanks plus multiple choice; source-exact HOLD.",
+      "sourceExactApproved": false,
+      "rendererGrant": "DENY"
+    },
+    {
+      "id": "VBT_B002_T01_E03",
+      "track": "VBT",
+      "pdfPage": 11,
+      "printedPage": 10,
+      "renderSha256": "776bf6e448849cebce415b2f4e65c6bb1e3bc8ef8e4af52cbbdb8c3cb35e67f8",
+      "finding": "Four true/false statements including zero boundary plus one numeric inequality input; existing variant is one statement and one interval input. No exact source admission.",
+      "sourceExactApproved": false,
+      "rendererGrant": "DENY"
+    },
+    {
+      "id": "VBT_B002_T02_E04",
+      "track": "VBT",
+      "pdfPage": 13,
+      "printedPage": 12,
+      "renderSha256": "08b3fc2d7736db2f0044cfb400fc5966a3252fc01e5b60d552df16a0d8e75fe9",
+      "finding": "Three incomplete rows with two blank neighbors each = 6 blanks, plus a worked row. Existing variant has 3 blanks across 2 rows including a missing middle value; original variant only.",
+      "sourceExactApproved": false,
+      "rendererGrant": "DENY"
+    }
+  ],
+  "estimation": [
+    {
+      "id": "SGK_B001_L2_E01",
+      "track": "SGK",
+      "pdfPage": 9,
+      "printedPage": 8,
+      "renderSha256": "31d0861696a8dcdffa72101026d1959898d350b484f815fa19b5726078b470e8",
+      "finding": "Marbles: estimate tens then count individual marbles.",
+      "sourceExactApproved": false,
+      "scoringPolicy": "ESTIMATION_AND_EXACT_COUNT_NOT_AUTO_GRADED_PENDING_POLICY",
+      "studentRelease": false
+    },
+    {
+      "id": "SGK_B001_L2_E02",
+      "track": "SGK",
+      "pdfPage": 10,
+      "printedPage": 9,
+      "renderSha256": "0871b0f930bec32da37f83e3301dc5dfb846109eb1259a84408d96aa2daf9ca5",
+      "finding": "Tomatoes: estimate tens then count individual tomatoes.",
+      "sourceExactApproved": false,
+      "scoringPolicy": "ESTIMATION_AND_EXACT_COUNT_NOT_AUTO_GRADED_PENDING_POLICY",
+      "studentRelease": false
+    },
+    {
+      "id": "VBT_B001_T03_E01",
+      "track": "VBT",
+      "pdfPage": 8,
+      "printedPage": 7,
+      "renderSha256": "c3673d4a2aab8f5839eab0df87ae7418dde55e2c184243ce392bb957270c7655",
+      "finding": "Seat diagram, one symbol denotes one seat; estimate and exact count are distinct.",
+      "sourceExactApproved": false,
+      "scoringPolicy": "ESTIMATION_AND_EXACT_COUNT_NOT_AUTO_GRADED_PENDING_POLICY",
+      "studentRelease": false
+    },
+    {
+      "id": "VBT_B001_T03_E02",
+      "track": "VBT",
+      "pdfPage": 9,
+      "printedPage": 8,
+      "renderSha256": "b9513382c4660d34bf8b641c023392d95543922f56e1cbf087d311954d8a4ff4",
+      "finding": "Counting sticks, not shapes: triangle and square use different unit values; estimation and exact count separate.",
+      "sourceExactApproved": false,
+      "scoringPolicy": "ESTIMATION_AND_EXACT_COUNT_NOT_AUTO_GRADED_PENDING_POLICY",
+      "studentRelease": false
+    }
+  ],
+  "additionalAnchors": [
+    {
+      "id": "SGK_B001_K1_E02",
+      "track": "SGK",
+      "pdfPage": 7,
+      "printedPage": 6,
+      "finding": "Matching tens and ones to numbers; selected D4 is concept-only variant, not exact matching."
+    },
+    {
+      "id": "SGK_B001_L1_E03",
+      "track": "SGK",
+      "pdfPage": 9,
+      "printedPage": 8,
+      "finding": "Table with number, tens digit and units digit; corrected anchor for N13B_SYNTH_1."
+    },
+    {
+      "id": "VBT_B001_T02_E03",
+      "track": "VBT",
+      "pdfPage": 8,
+      "printedPage": 7,
+      "finding": "Table with number, tens digit and units digit; corrected anchor for N13B_SYNTH_2."
+    }
+  ],
+  "sourceExactApproved": false,
+  "studentRelease": false,
+  "notes": "Source images not committed. Original C4, 40 crosswalk IDs, prior 38 candidates and all HOLD records preserved. Corrected concept references in new pack only, unchanged question DTOs. Source ACL still writable; lock ACL and recheck hashes immediately before admission. Human pedagogy/skill/renderer/grade authority OPEN."
+}
