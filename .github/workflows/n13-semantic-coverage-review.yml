@@ -12,10 +12,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - run: node --test qa/n13-semantic-coverage/pilot-lessons.test.cjs
+      - run: node qa/n13-semantic-coverage/build-pilot-gas.cjs --check
+      - run: node --test qa/n13-semantic-coverage/pilot-gas.test.cjs
 
-      - name: Install isolated Playwright Chromium
-        run: |
-          npm install --no-save --no-package-lock playwright@1.56.1
-          npx playwright install --with-deps chromium
-      - run: node qa/n13-semantic-coverage/pilot-http.test.cjs
