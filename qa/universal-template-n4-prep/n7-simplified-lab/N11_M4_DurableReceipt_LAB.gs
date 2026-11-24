@@ -18,7 +18,9 @@ function n11M4Scope_(s){
     s.forbiddenSheetIds.includes(s.backupId)||typeof s.allowedOwnerEmail!=='string'||
     !/^[a-z0-9._-]+@example\.invalid$/.test(s.allowedOwnerEmail)||
     typeof s.approvedGrantId!=='string'||!/^M4_GRANT_[A-Z0-9_]+$/.test(s.approvedGrantId)||
-    !hex.test(s.approvedIntentDigest)||!hex.test(s.approvedJournalSnapshotDigest)||
+    ![s.approvedIntentDigest,s.approvedJournalSnapshotDigest].every(function(v){
+      return typeof v==='string'&&hex.test(v);
+    })||
     !Number.isSafeInteger(s.approvedBaselineRows)||s.approvedBaselineRows<0||s.approvedBaselineRows>=150||
     typeof s.grantExpiresAt!=='string'||!Number.isFinite(Date.parse(s.grantExpiresAt)))
     throw Error('M4_SYNTHETIC_SCOPE_REQUIRED');
@@ -96,7 +98,7 @@ function n11M4Ledger_(deps,s,c,intent){
     get:function(k){
       if(k!==key||!n11M4GrantCurrent_(deps,c))throw Error('M4_GRANT_NOT_CURRENT');
       const b=read();
-      if(b.state==='READY')n11M4Backup_(deps,s,c);
+      n11M4Backup_(deps,s,c);
       return b.attempt?b.attempt.record:undefined;
     },
     putIfAbsent:function(k,record){
@@ -104,8 +106,13 @@ function n11M4Ledger_(deps,s,c,intent){
       n11M4Backup_(deps,s,c);
       persist({contract:'N11_M4_ATTEMPT_V1',scopeSha256:c.sha,state:'RESERVED',
         attempt:{key:k,record:record}});
-      // Revocation/expiry after reservation must not result in an append.
-      return n11M4GrantCurrent_(deps,c);
+      // Detect observed drift/expiry after reservation. This is still cooperative
+      // readback, not an atomic condition on the subsequent provider write.
+      const tab=deps.spreadsheetApp.openById(c.scope.target).getSheetByName(c.scope.tab);
+      if(!tab)return false;
+      const fresh=n7TestJournalSnapshot_(tab,s,c.u);
+      return fresh.ok&&fresh.dataRows===c.scope.baselineRows&&
+        fresh.digest===c.scope.baselineDigest&&n11M4GrantCurrent_(deps,c);
     },
     markVerified:function(k,record){
       const b=read();
@@ -122,6 +129,8 @@ function n11M4Execute_(intent,deps,s){
   try{
     c=n11M4Context_(deps,s);
     if(!n11M4GrantCurrent_(deps,c))return n7TestDeny_('M4_GRANT_NOT_CURRENT');
+    const validated=n7TestValidate_(intent,s);
+    if(!validated.ok)return validated;
   }catch(e){return n7TestDeny_('M4_SCOPE_OR_AUTHORITY_DENIED');}
   // Never auto-provision an empty ledger. N7 owns the physical mock append.
   return n7TestExecute_(intent,Object.assign({},deps,{attemptLedger:n11M4Ledger_(deps,s,c,intent)}),s);

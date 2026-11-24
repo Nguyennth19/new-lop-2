@@ -42,6 +42,9 @@ function fixture(dir,opts={}){
   assert.equal(state.locked,true);state.ledgerWrites++;
   if(opts.failReservation&&state.ledgerWrites===1)throw Error('MOCK_STORE_WRITE_FAIL');
   write(dir,'ledger',v);
+  if(opts.driftAfterReserve&&state.ledgerWrites===1){
+   const rows=read(dir,'live');rows[1][5]='EXTERNAL_DRIFT';write(dir,'live',rows);
+  }
   if(opts.failAfterReserve&&state.ledgerWrites===1)throw Error('MOCK_STORE_ACK_LOST');
   if(opts.failVerified&&state.ledgerWrites===2)throw Error('MOCK_VERIFIED_ACK_LOST');
  }};
@@ -148,6 +151,21 @@ test('M4 backup mismatch before append and history drift after append cannot aut
   assert.deepEqual(read(dir,'live'),rows);assert.deepEqual(read(dir,'backup'),baseRows());
  });
 });
+test('M4 invalid intent, store failure and post-reservation baseline drift do not append',()=>{
+ withDir(dir=>{const f=fixture(dir);assert.equal(f.a.execute(null,f.deps,f.s).reason,'INTENT_SCHEMA');
+  assert.equal(f.state.appends,0);assert.equal(f.state.ledgerWrites,0);});
+ withDir(dir=>{const r=run(dir,{failReservation:true});assert.equal(r.result.commitState,'COMMIT_UNKNOWN');
+  assert.equal(r.state.appends,0);assert.equal(ledger(dir).state,'READY');assert.deepEqual(read(dir,'live'),baseRows());});
+ withDir(dir=>{const r=run(dir,{driftAfterReserve:true});assert.equal(r.result.commitState,'COMMIT_UNKNOWN');
+  assert.equal(r.state.appends,0);assert.equal(ledger(dir).state,'RESERVED');
+  const again=run(dir);assert.equal(again.result.commitState,'COMMIT_UNKNOWN');assert.equal(again.state.appends,0);});
+});
+test('M4 stale READY envelope with existing event cannot fabricate a receipt or append',()=>withDir(dir=>{
+ const old=read(dir,'ledger');assert.equal(run(dir).result.ok,true);
+ write(dir,'ledger',old);const r=run(dir);assert.equal(r.result.commitState,'COMMIT_UNKNOWN');
+ assert.equal(r.result.reason,'LEGACY_RECEIPT_RECONCILE_REQUIRED');assert.equal(r.state.appends,0);
+ assert.equal(read(dir,'live').length,5);
+}));
 test('M4 flush/readback/verified-receipt acknowledgement failures reconcile without another append',()=>{
  for(const opts of [{failFlush:true},{failReadback:true},{failVerified:true}])withDir(dir=>{
   const x=child(dir,opts);assert.equal(x.result.commitState,'COMMIT_UNKNOWN');assert.equal(x.result.writes,null);
