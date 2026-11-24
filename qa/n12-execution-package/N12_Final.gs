@@ -1,13 +1,19 @@
 /** Final sprint source only. Both reviewed configurations remain null. No authority provisioning. */
 const N12_FINAL_REVIEWED_CASE_=null;
 const N12_FINAL_P5_=null;
-function n12FinalPhase_(phase,s,intent,raw){
+function n12FinalPhase_(phase,s,intent,raw,authorityCheck){
  if(!s||!intent||!['INITIAL','REPLAY'].includes(phase)||s.writesEnabled!==true||phase==='REPLAY'&&s.proofCase!=='P2')return n7TestDeny_('N12_PHASE_DENIED');
  let c;
  try{
   c=n12Context_(raw,s);
   if(!n7TestValidate_(intent,s).ok||!n11M4GrantCurrent_(c.deps,c))return n7TestDeny_('N12_GRANT_OR_INTENT_DENIED');
  }catch(e){return n7TestDeny_('N12_SCOPE_OR_AUTHORITY_DENIED');}
+ // P2 public dispatch supplies a binding check; recheck on every grant read, including under ScriptLock.
+ if(authorityCheck){
+  if(!authorityCheck())return n7TestDeny_('P2_EXECUTION_BINDING_DENIED');
+  const readGrant=c.deps.readGrant;
+  c.deps.readGrant=()=>authorityCheck()?readGrant():{scopeSha256:c.sha,revoked:true};
+ }
  const l=n11M4Ledger_(c.deps,s,c,intent);
  const ledger=Object.assign({},l,{get:function(k){
   const record=l.get(k); // under N7 ScriptLock
@@ -22,9 +28,10 @@ function n12FinalDispatch_(phase,c,raw){
  if(!c||!n11M4Exact_(c,['settings','intent','secondExecutionId'])||!['INITIAL','REPLAY','RECONCILE'].includes(phase))return n7TestDeny_('N12_FINAL_HARD_OFF');
  const s=c.settings,i=c.intent;
  if(!s||s.writesEnabled!==true||!i||!n12EditorPinned_(s,i,raw)||typeof c.secondExecutionId!=='string'||!(/^[A-Z0-9_]{6,70}$/).test(c.secondExecutionId)||c.secondExecutionId===i.executionId)return n7TestDeny_('N12_FINAL_PIN_DENIED');
- if(phase==='INITIAL')return n12FinalPhase_(phase,s,i,raw);
+ const authorityCheck=s.proofCase==='P2'?()=>typeof n12P2ExecutionAllowed_==='function'&&n12P2ExecutionAllowed_(phase,c,raw):null;
+ if(phase==='INITIAL')return n12FinalPhase_(phase,s,i,raw,authorityCheck);
  const next=Object.assign({},i,{executionId:c.secondExecutionId});
- if(phase==='REPLAY')return n12FinalPhase_(phase,s,next,raw);
+ if(phase==='REPLAY')return n12FinalPhase_(phase,s,next,raw,authorityCheck);
  if(!['P3','P4'].includes(s.proofCase))return n7TestDeny_('N12_RECONCILE_PHASE_DENIED');
  try{
   const g=JSON.parse(raw.propertiesService.getScriptProperties().getProperty('N12_GRANT_'+s.approvedScopeSha256));

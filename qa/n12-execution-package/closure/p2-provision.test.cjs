@@ -11,22 +11,23 @@ const roles=Object.keys(api.pins),project='MOCK_PROJECT_IDENTIFIER_00001',resour
 // Production raw IDs are never included in this test. Grid verification remains actual source.
 const pins=new Map([[project,api.projectPin],...roles.map(r=>[resources[r],api.pins[r]])]);
 pins.set(JSON.stringify({schema:'N8_JOURNAL_DISPLAY_SNAPSHOT_V1',sheet:resources.P2_TARGET,tab:'15_NhatKy_HanhDong',columns:['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'],rows:[]}),api.baseline.P2);
-const u={DigestAlgorithm:{SHA_256:'SHA_256'},computeDigest:(_,s)=>(pins.get(s)||sha(s)).match(/../g).map(h=>parseInt(h,16))};
+const u={formatDate:()=> '2026-11-25T07:00:00+07:00',DigestAlgorithm:{SHA_256:'SHA_256'},computeDigest:(_,s)=>(pins.get(s)||sha(s)).match(/../g).map(h=>parseInt(h,16))};
 const n=Date.parse('2026-11-25T00:00:00Z'),owner='owner@example.invalid',i={contract:'N7_GAS_TEST_INTENT_V1',environment:'TEST',requestId:'MOCK_REQUEST_001',idempotencyKey:'MOCK_KEY_001',executionId:'MOCK_EXECUTION_001',lessonId:'LAB_MATH_N12_P2',candidateSha256:d.payloadCandidate.candidateSha256,sourceReceiptSha256:d.payloadCandidate.sourceReceiptSha256,sourceRevision:'REV_MOCK_001',targetSpreadsheetId:resources.P2_TARGET,action:'APPEND_TEST_METADATA',tab:'15_NhatKy_HanhDong',rowsDigest:d.payloadCandidate.rowsDigest,grantId:'N12_GRANT_MOCK_001',expectedJournalRows:0};
 const s={environment:'N12_DISPOSABLE_SYNTHETIC_ONLY',writesEnabled:true,projectId:project,isolatedSpreadsheetId:resources.P2_TARGET,backupId:resources.P2_BACKUP,allowedOwnerEmail:owner,approvedGrantId:i.grantId,grantIssuedAt:'2026-11-25T00:00:00Z',grantExpiresAt:'2026-11-25T00:10:00Z',approvedBaselineRows:0,journalTab:i.tab,forbiddenSheetIds:[...api.forbidden],proofCase:'P2',approvedIntentDigest:api.digest(i,u),approvedJournalSnapshotDigest:api.baseline.P2};
 s.approvedScopeSha256=api.scopeDigest(api.scope(s),u);const c={settings:s,intent:i,secondExecutionId:'MOCK_EXECUTION_002'};
 // Source-only provisioner, exact GAS property keys and envelope; never import into live GAS.
 const reviewSource=fs.readFileSync(path.join(__dirname,'N12_P2_Provision.review.gs'),'utf8');
-const q=new Function(src+'\n'+reviewSource+'\nreturn {binding:n12P2Binding_,provision:n12P2Provision_,context:n12Context_,read:n11M4ReadEnvelope_,current:n11M4GrantCurrent_};')();
+const q=new Function(src+'\n'+reviewSource+'\nreturn {binding:n12P2Binding_,provision:n12P2Provision_,context:n12Context_,read:n11M4ReadEnvelope_,current:n11M4GrantCurrent_,dispatch:n12FinalDispatch_};')();
 const auth={epoch:'N12_P2_EPOCH_MOCK_001',sourceSha256:sha('review-source'),bindingSha256:''};
 auth.bindingSha256=q.binding(c,auth,u);
 function fixture({failAfter=0,drift=false,denied=false,busy=false,clock=n,actor=owner}={}){
  let map=new Map([['N12_SETUP_CONFIG',JSON.stringify({environment:s.environment,projectId:project,ownerEmail:owner,resources})]]),writes=[],opens=[],releases=0;
  const hdr=['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'];
- const grid=[hdr,...Array.from({length:150},()=>Array(8).fill(''))];if(drift)grid[1][0]='DRIFT';
- const tab={getMaxRows:()=>151,getMaxColumns:()=>8,getFrozenRows:()=>1,getName:()=>s.journalTab,getRange:()=>({getValues:()=>grid,getDisplayValues:()=>grid,getFormulas:()=>grid.map(r=>r.map(()=>'')),getNumberFormats:()=>grid.map(r=>r.map(()=> '@')),setValue:()=>{throw Error('no sheet writes')}})};
- const raw={utilities:u,now:()=>clock,scriptApp:{getScriptId:()=>project},session:{getEffectiveUser:()=>({getEmail:()=>actor})},propertiesService:{getScriptProperties:()=>({getProperty:k=>map.has(k)?map.get(k):null,setProperty:(k,v)=>{writes.push(k);map.set(k,v);if(failAfter&&writes.length===failAfter)throw Error('ack lost');}})},lockService:{getScriptLock:()=>({tryLock:()=>!busy,releaseLock:()=>{releases++;}})},spreadsheetApp:{openById:id=>{opens.push(id);return {getId:()=>id,getSheets:()=>[tab]};}},verifyP2Authority:(action,digest,source)=>!denied&&['ISSUE','REVOKE'].includes(action)&&digest===auth.bindingSha256&&source===auth.sourceSha256};
- return {raw,map,writes,opens,releases:()=>releases};
+ const grids=Object.fromEntries([resources.P2_TARGET,resources.P2_BACKUP].map(id=>[id,[hdr.slice(),...Array.from({length:150},()=>Array(8).fill(''))]]));if(drift)grids[resources.P2_TARGET][1][0]='DRIFT';
+ let appends=0,held=false;
+ const sheet=id=>{const grid=grids[id];const last=()=>grid.reduce((n,r,i)=>r.some(x=>x!=='')?i+1:n,0);return {getMaxRows:()=>151,getMaxColumns:()=>8,getFrozenRows:()=>1,getName:()=>s.journalTab,getLastRow:last,getLastColumn:()=>8,getRange:(row,col,count)=>{const cells=()=>grid.slice(row-1,row-1+count).map(r=>r.slice());return {getValues:cells,getDisplayValues:cells,getFormulas:()=>cells().map(r=>r.map(()=>'')),getNumberFormats:()=>cells().map(r=>r.map(()=> '@'))};},appendRow:r=>{assert.equal(id,resources.P2_TARGET);assert.equal(held,true);grid[last()]=[...r];appends++;}};};
+ const raw={utilities:u,now:()=>clock,scriptApp:{getScriptId:()=>project},session:{getEffectiveUser:()=>({getEmail:()=>actor})},propertiesService:{getScriptProperties:()=>({getProperty:k=>map.has(k)?map.get(k):null,setProperty:(k,v)=>{assert.equal(held,true);writes.push(k);map.set(k,v);if(failAfter&&writes.length===failAfter)throw Error('ack lost');}})},lockService:{getScriptLock:()=>({tryLock:()=>{held=!busy;return held;},releaseLock:()=>{held=false;releases++;}})},spreadsheetApp:{openById:id=>{opens.push(id);return {getId:()=>id,getSheets:()=>[sheet(id)],getSheetByName:()=>sheet(id)};},flush:()=>{}},p2Binding:auth,verifyP2Authority:(action,digest,source)=>!denied&&['ISSUE','REVOKE','INITIAL','REPLAY'].includes(action)&&digest===auth.bindingSha256&&source===auth.sourceSha256};
+ return {raw,map,writes,opens,releases:()=>releases,appends:()=>appends,grids};
 }
 const keys=['N12_P2_EPOCH','N12_ATTEMPT_'+s.approvedScopeSha256,'N12_GRANT_'+s.approvedScopeSha256];
 const issue=(f,v=c,a=auth)=>q.provision('ISSUE',v,a,f.raw);
@@ -36,3 +37,29 @@ test('exact READY envelope and grant read by existing N12/M4, grant last',()=>{c
 test('changed binding, authority, actor, lock, clock, drift and existing epoch refuse all mutations',()=>{for(const opts of [{denied:true},{actor:'other@example.invalid'},{busy:true},{clock:n+600000},{drift:true}]){const f=fixture(opts);assert.equal(issue(f).ok,false);assert.deepEqual(f.writes,[]);}let f=fixture();assert.equal(issue(f,{...c,secondExecutionId:'MOCK_EXECUTION_003'}).ok,false);assert.deepEqual(f.writes,[]);for(const key of keys){f=fixture();f.map.set(key,'existing');assert.equal(issue(f).ok,false);assert.deepEqual(f.writes,[]);}});
 test('lost ack after each property write stops without retry, preserves epoch, grant last',()=>{for(const j of [1,2,3]){let f=fixture({failAfter:j}),r=issue(f);assert.equal(r.reason,'P2_PROPERTY_ACK_UNKNOWN');assert.equal(r.retryAllowed,false);assert.deepEqual(f.writes,keys.slice(0,j));assert.equal(f.map.has(keys[2]),j===3);assert.equal(issue(f).ok,false);assert.equal(f.writes.length,j);if(j===3){assert.equal(revoke(f).ok,true);assert.equal(JSON.parse(f.map.get(keys[2])).revoked,true);}}});
 test('revoke even with corrupted/missing attempt and expiry; repeat zero writes',()=>{for(const bad of [null,'corrupt']){let f=fixture();assert.equal(issue(f).ok,true);if(bad===null)f.map.delete(keys[1]);else f.map.set(keys[1],bad);f.raw.now=()=>n+700000;const epoch=f.map.get(keys[0]);assert.equal(revoke(f).ok,true);assert.equal(f.map.get(keys[0]),epoch);assert.equal(f.map.has(keys[1])?f.map.get(keys[1]):null,bad);assert.equal(JSON.parse(f.map.get(keys[2])).revoked,true);assert.equal(revoke(f).propertyWrites,0);assert.deepEqual(f.writes,keys.concat(keys[2]));assert.equal(q.current(q.context(f.raw,s).deps,q.context(f.raw,s)),false);}});
+
+test('actual P2 final dispatcher denies grant without exact authority and epoch before sheet or property mutation',()=>{
+ for(const mode of ['missing-verifier','wrong-second-id','missing-epoch','changed-epoch','wrong-source','wrong-action']){
+  const f=fixture();assert.equal(issue(f).ok,true);
+  const before=[f.writes.length,f.opens.length];let v=c;
+  if(mode==='missing-verifier')delete f.raw.verifyP2Authority;
+  if(mode==='wrong-second-id')v={...c,secondExecutionId:'MOCK_EXECUTION_003'};
+  if(mode==='missing-epoch')f.map.delete(keys[0]);
+  if(mode==='changed-epoch')f.map.set(keys[0],'{}');
+  if(mode==='wrong-source')f.raw.p2Binding={...auth,sourceSha256:sha('wrong')};
+  if(mode==='wrong-action')f.raw.verifyP2Authority=action=>action==='ISSUE';
+  const r=q.dispatch('INITIAL',v,f.raw);assert.equal(r.reason,'P2_EXECUTION_BINDING_DENIED',mode);assert.equal(r.writes,0);assert.deepEqual([f.writes.length,f.opens.length],before);assert.equal(f.appends(),0);
+ }
+});
+test('provision to actual dispatcher INITIAL and REPLAY same original batch, no second append, revoke stops',()=>{
+ const f=fixture();assert.equal(issue(f).ok,true);
+ const first=q.dispatch('INITIAL',c,f.raw);assert.equal(first.commitState,'COMMITTED_VERIFIED');assert.equal(first.writes,1);assert.equal(first.receipt.batch_id,i.executionId);
+ const before=f.writes.length;const second=q.dispatch('REPLAY',c,f.raw);assert.equal(second.commitState,'COMMITTED_VERIFIED');assert.equal(second.writes,0);assert.equal(second.receipt.batch_id,i.executionId);assert.equal(second.receipt.executionId,c.secondExecutionId);assert.equal(f.appends(),1);assert.equal(f.writes.length,before);assert.equal(before,5);
+ assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(revoke(f).ok,true);assert.equal(q.dispatch('REPLAY',c,f.raw).ok,false);assert.equal(f.appends(),1);assert.equal(f.writes.length,before+1);
+});
+test('authority lost after reservation: no append, no retry, preserve RESERVED',()=>{
+ const f=fixture();assert.equal(issue(f).ok,true);
+ const verify=f.raw.verifyP2Authority;
+ f.raw.verifyP2Authority=(action,...args)=>!(action==='INITIAL'&&JSON.parse(f.map.get(keys[1])).body.state==='RESERVED')&&verify(action,...args);
+ const r=q.dispatch('INITIAL',c,f.raw);assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(f.appends(),0);assert.equal(JSON.parse(f.map.get(keys[1])).body.state,'RESERVED');assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(f.appends(),0);
+});

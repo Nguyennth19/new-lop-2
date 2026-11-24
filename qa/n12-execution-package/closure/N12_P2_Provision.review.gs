@@ -57,3 +57,17 @@ function n12P2Provision_(action,c,a,raw){
  }catch(e){return attempted?unknown():deny('P2_PREWRITE_DENIED');}
  finally{if(held)lock.releaseLock();}
 }
+
+/** Only called from final dispatcher for P2. A stored grant is insufficient authority. */
+function n12P2ExecutionAllowed_(phase,c,raw){
+ try{
+  if(!['INITIAL','REPLAY'].includes(phase)||!raw||typeof raw.verifyP2Authority!=='function')return false;
+  const a=raw.p2Binding,s=c.settings;
+  if(!n11M4Exact_(a,['epoch','sourceSha256','bindingSha256'])||!/^N12_P2_EPOCH_[A-Z0-9_]{3,40}$/.test(a.epoch)||
+    ![a.sourceSha256,a.bindingSha256].every(x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x))||
+    s.proofCase!=='P2'||!n12EditorPinned_(s,c.intent,raw)||n12P2Binding_(c,a,raw.utilities)!==a.bindingSha256)return false;
+  const epoch=raw.propertiesService.getScriptProperties().getProperty('N12_P2_EPOCH');
+  return epoch===JSON.stringify({epoch:a.epoch,scopeSha256:s.approvedScopeSha256,bindingSha256:a.bindingSha256})&&
+    raw.verifyP2Authority(phase,a.bindingSha256,a.sourceSha256)===true;
+ }catch(e){return false;}
+}
