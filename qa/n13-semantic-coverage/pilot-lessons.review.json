@@ -1,0 +1,791 @@
+{
+  "contract": "N13_PILOT_LESSONS_REVIEW_V1",
+  "base": "ca744b89bc34a48f3a0a07b61d118313329fba53",
+  "sourceBytesReverified": false,
+  "sourceAcl": "UNLOCKED_LAST_OBSERVED",
+  "studentRelease": false,
+  "gradingAuthority": "DENY",
+  "sourceRoutingHolds": [
+    "SGK_B001_L1_E01",
+    "VBT_B001_T02_E01",
+    "SGK_B002_H1_E01",
+    "SGK_B002_H1_E02",
+    "VBT_B002_T01_E01",
+    "VBT_B002_T01_E03",
+    "VBT_B002_T02_E04"
+  ],
+  "estimationHolds": [
+    "SGK_B001_L2_E02",
+    "SGK_B001_L2_E01",
+    "VBT_B001_T03_E01",
+    "VBT_B001_T03_E02"
+  ],
+  "lv3": "DENY",
+  "lessons": [
+    {
+      "lessonId": "MATH_B001",
+      "title": "Ôn tập các số đến 100",
+      "lessonBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69",
+      "skillIdCandidate": "NUMBER_SENSE",
+      "skillIdApproved": null,
+      "state": "AUTHORING_REVIEW_ONLY",
+      "questions": [
+        {
+          "variantId": "N13B1_SYNTH_1",
+          "lessonId": "MATH_B001",
+          "level": "LV1",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "SGK_B001_L1_E01",
+            "track": "SGK",
+            "printedPage": 7,
+            "pdfPage": 8,
+            "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "EXPANDED",
+            "EXPANDED",
+            "EXPANDED"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "EXPANDED",
+                "model": {
+                  "number": 43,
+                  "slots": [
+                    {
+                      "id": "branchT",
+                      "role": "BRANCH_TENS",
+                      "value": 40
+                    },
+                    {
+                      "id": "b1",
+                      "role": "BRANCH_ONES",
+                      "value": null
+                    },
+                    {
+                      "id": "sumT",
+                      "role": "SUM_TENS",
+                      "value": 40
+                    },
+                    {
+                      "id": "s1",
+                      "role": "SUM_ONES",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b",
+                "kind": "EXPANDED",
+                "model": {
+                  "number": 76,
+                  "slots": [
+                    {
+                      "id": "b2",
+                      "role": "BRANCH_TENS",
+                      "value": null
+                    },
+                    {
+                      "id": "branchO",
+                      "role": "BRANCH_ONES",
+                      "value": 6
+                    },
+                    {
+                      "id": "s2",
+                      "role": "SUM_TENS",
+                      "value": null
+                    },
+                    {
+                      "id": "sumO",
+                      "role": "SUM_ONES",
+                      "value": 6
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "c",
+                "kind": "EXPANDED",
+                "model": {
+                  "number": 28,
+                  "slots": [
+                    {
+                      "id": "b3",
+                      "role": "BRANCH_TENS",
+                      "value": null
+                    },
+                    {
+                      "id": "b4",
+                      "role": "BRANCH_ONES",
+                      "value": null
+                    },
+                    {
+                      "id": "s3",
+                      "role": "SUM_TENS",
+                      "value": null
+                    },
+                    {
+                      "id": "s4",
+                      "role": "SUM_ONES",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "N13B1_SYNTH_2",
+          "lessonId": "MATH_B001",
+          "level": "LV2",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "VBT_B001_T02_E01",
+            "track": "VBT",
+            "printedPage": 6,
+            "pdfPage": 7,
+            "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "EXPANDED",
+            "EXPANDED",
+            "EXPANDED"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "r0",
+                "kind": "EXPANDED",
+                "model": {
+                  "number": 32,
+                  "slots": [
+                    {
+                      "id": "t",
+                      "role": "SUM_TENS",
+                      "value": null
+                    },
+                    {
+                      "id": "o",
+                      "role": "SUM_ONES",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "r1",
+                "kind": "EXPANDED",
+                "model": {
+                  "number": 81,
+                  "slots": [
+                    {
+                      "id": "t",
+                      "role": "SUM_TENS",
+                      "value": null
+                    },
+                    {
+                      "id": "o",
+                      "role": "SUM_ONES",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "r2",
+                "kind": "EXPANDED",
+                "model": {
+                  "number": 46,
+                  "slots": [
+                    {
+                      "id": "t",
+                      "role": "SUM_TENS",
+                      "value": null
+                    },
+                    {
+                      "id": "o",
+                      "role": "SUM_ONES",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "PV_B001_PLACE_VALUE_S1031",
+          "lessonId": "MATH_B001",
+          "level": "LV1",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "SGK_B001_K1_E02",
+            "track": "SGK",
+            "printedPage": 6,
+            "pdfPage": 7,
+            "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "NO_VISUAL"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "D4"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "D4",
+                "model": {
+                  "questionId": "PV_B001_PLACE_VALUE_S1031",
+                  "selectionMode": "SINGLE",
+                  "prompt": {
+                    "type": "TEXT",
+                    "text": "Số gồm 4 chục và 5 đơn vị là số nào?"
+                  },
+                  "options": [
+                    {
+                      "id": "c1",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "44"
+                      }
+                    },
+                    {
+                      "id": "c2",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "54"
+                      }
+                    },
+                    {
+                      "id": "c3",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "45"
+                      }
+                    },
+                    {
+                      "id": "c4",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "46"
+                      }
+                    }
+                  ],
+                  "speechEnabled": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "N13B_SYNTH_1",
+          "lessonId": "MATH_B001",
+          "level": "LV1",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "SGK_B001_L1_E01",
+            "track": "SGK",
+            "printedPage": 7,
+            "pdfPage": 8,
+            "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/candidates.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "PLACE_VALUE"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "SEMANTIC",
+                "model": {
+                  "kind": "PLACE_VALUE",
+                  "model": {
+                    "rows": [
+                      {
+                        "number": 47,
+                        "tens": null,
+                        "ones": null
+                      },
+                      {
+                        "number": null,
+                        "tens": 6,
+                        "ones": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "N13B_SYNTH_2",
+          "lessonId": "MATH_B001",
+          "level": "LV2",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "VBT_B001_T02_E01",
+            "track": "VBT",
+            "printedPage": 6,
+            "pdfPage": 7,
+            "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/candidates.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "PLACE_VALUE"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "SEMANTIC",
+                "model": {
+                  "kind": "PLACE_VALUE",
+                  "model": {
+                    "rows": [
+                      {
+                        "number": 82,
+                        "tens": null,
+                        "ones": 2
+                      },
+                      {
+                        "number": 35,
+                        "tens": 3,
+                        "ones": null
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "lessonId": "MATH_B002",
+      "title": "Tia số. Số liền trước, số liền sau",
+      "lessonBlobSha": "47fbe73c780d996160daba94ef3e82b30b9f13ff",
+      "skillIdCandidate": "NUMBER_SENSE",
+      "skillIdApproved": null,
+      "state": "AUTHORING_REVIEW_ONLY",
+      "questions": [
+        {
+          "variantId": "N13B1_SYNTH_3",
+          "lessonId": "MATH_B002",
+          "level": "LV1",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "SGK_B002_H1_E01",
+            "track": "SGK",
+            "printedPage": 11,
+            "pdfPage": 12,
+            "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "NUMBER_LINE",
+            "NUMBER_LINE"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "SEMANTIC",
+                "model": {
+                  "kind": "NUMBER_LINE",
+                  "model": {
+                    "start": 0,
+                    "step": 1,
+                    "ticks": [
+                      0,
+                      null,
+                      null,
+                      null,
+                      null,
+                      null,
+                      6
+                    ]
+                  }
+                }
+              },
+              {
+                "id": "b",
+                "kind": "SEMANTIC",
+                "model": {
+                  "kind": "NUMBER_LINE",
+                  "model": {
+                    "start": 20,
+                    "step": 2,
+                    "ticks": [
+                      20,
+                      null,
+                      null,
+                      null,
+                      null,
+                      null,
+                      32
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "N13B1_SYNTH_4",
+          "lessonId": "MATH_B002",
+          "level": "LV1",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "SGK_B002_H1_E02",
+            "track": "SGK",
+            "printedPage": 11,
+            "pdfPage": 12,
+            "bookSha256": "f3ccd34900f2047afbcf88fa5f9e89dd8908ac09a44b4f266d4282375aeb7ff5",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "COORD_MATCH"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "COORD_MATCH",
+                "model": {
+                  "start": 0,
+                  "step": 2,
+                  "tickCount": 4,
+                  "labels": [
+                    {
+                      "id": "l1",
+                      "text": "2 + 4"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "0"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "6 - 2"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "2"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "N13B1_SYNTH_5",
+          "lessonId": "MATH_B002",
+          "level": "LV2",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "VBT_B002_T01_E01",
+            "track": "VBT",
+            "printedPage": 10,
+            "pdfPage": 11,
+            "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "NUMBER_LINE",
+            "D4"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "SEMANTIC",
+                "model": {
+                  "kind": "NUMBER_LINE",
+                  "model": {
+                    "start": 30,
+                    "step": 1,
+                    "ticks": [
+                      30,
+                      null,
+                      32,
+                      null,
+                      34
+                    ]
+                  }
+                }
+              },
+              {
+                "id": "b",
+                "kind": "D4",
+                "model": {
+                  "questionId": "b",
+                  "selectionMode": "MULTIPLE",
+                  "prompt": {
+                    "type": "TEXT",
+                    "text": "Chọn các số lớn hơn 30 và bé hơn 34."
+                  },
+                  "options": [
+                    {
+                      "id": "x",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "30"
+                      }
+                    },
+                    {
+                      "id": "y",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "31"
+                      }
+                    },
+                    {
+                      "id": "z",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "33"
+                      }
+                    },
+                    {
+                      "id": "w",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "34"
+                      }
+                    }
+                  ],
+                  "speechEnabled": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "N13B1_SYNTH_6",
+          "lessonId": "MATH_B002",
+          "level": "LV2",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "VBT_B002_T01_E03",
+            "track": "VBT",
+            "printedPage": 10,
+            "pdfPage": 11,
+            "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "D4",
+            "INEQUALITY_INPUT"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "D4",
+                "model": {
+                  "questionId": "a",
+                  "selectionMode": "SINGLE",
+                  "prompt": {
+                    "type": "TEXT",
+                    "text": "Số liền sau của 38 là 39."
+                  },
+                  "options": [
+                    {
+                      "id": "x",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "Đúng"
+                      }
+                    },
+                    {
+                      "id": "y",
+                      "content": {
+                        "type": "TEXT",
+                        "text": "Sai"
+                      }
+                    }
+                  ],
+                  "speechEnabled": true
+                }
+              },
+              {
+                "id": "b",
+                "kind": "SEMANTIC",
+                "model": {
+                  "kind": "INEQUALITY_INPUT",
+                  "model": {
+                    "lower": 35,
+                    "upper": 40
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "variantId": "N13B1_SYNTH_7",
+          "lessonId": "MATH_B002",
+          "level": "LV2",
+          "skillIdCandidate": "NUMBER_SENSE",
+          "sourceExerciseId": null,
+          "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+          "sourceAnchor": {
+            "id": "VBT_B002_T02_E04",
+            "track": "VBT",
+            "printedPage": 12,
+            "pdfPage": 13,
+            "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
+            "review": "INHERITED_PAGE_LOCATION_NOT_INDEPENDENT_SIGNOFF"
+          },
+          "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+          "visualIntent": {
+            "visualMode": "REPRESENTATIVE",
+            "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+          },
+          "assetId": null,
+          "semanticMapping": [
+            "NEIGHBOR_TABLE"
+          ],
+          "rendererGrant": "DENY",
+          "publicVariant": null,
+          "studentRelease": false,
+          "reviewDto": {
+            "parts": [
+              {
+                "id": "a",
+                "kind": "SEMANTIC",
+                "model": {
+                  "kind": "NEIGHBOR_TABLE",
+                  "model": {
+                    "rows": [
+                      {
+                        "previous": null,
+                        "given": 16,
+                        "next": null
+                      },
+                      {
+                        "previous": 68,
+                        "given": null,
+                        "next": 70
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
