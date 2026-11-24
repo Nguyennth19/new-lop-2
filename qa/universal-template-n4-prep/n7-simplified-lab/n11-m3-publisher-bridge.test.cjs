@@ -91,3 +91,86 @@ test('M3 old deterministic D2 publisher still works, real B020 cannot stage and 
  assert.equal(blocked.reviewGate.state,'BLOCKED_SOURCE');assert.equal(blocked.proposed,null);
  assert.equal(publisher.validatePublicPack(pack()).ok,false);
 });
+
+const {V2}=require('./n11-m3-publisher-bridge.cjs');
+const {makePack}=require('../../universal-template-v1/fixture-packs.cjs');
+function packV2(tag='A'){
+ const p=pack(tag),legacy=makePack(tag);
+ p.schemaVersion=V2;
+ const d5=p.questions[1];
+ d5.skillId='SHAPE_TANGRAM';d5.questionType='geometry';
+ d5.publicVariant={variantId:d5.publicVariant.variantId,geometryRef:'ULT_V1_'+tag+'_TANGRAM'};
+ const d8=legacy.questions.find(q=>q.rendererId==='D8');
+ p.questions.push({lessonId:p.lesson.id,questionId:'M3_'+tag+'_D8',rendererId:'D8',
+  skillId:'MEASURE_RULER',questionType:'measurement',level:'LV2',visualIntent:'DECORATIVE',
+  countUnit:null,assetId:null,publicVariant:{variantId:'VAR_'+tag+'_D8',model:d8.publicVariant.model}});
+ return p;
+}
+test('M3.1 A/B five families map to actual R2 registry and original cores, source gate remains closed',()=>{
+ for(const tag of ['A','B']){
+  const p=packV2(tag),before=JSON.stringify(p),r=prepare(p);
+  assert.equal(r.ok,true,r.reason);assert.equal(r.labMappingComplete,true);
+  assert.equal(r.rendererIntegrationComplete,false);assert.equal(r.sourceSkillMappingApproved,false);
+  assert.deepEqual(r.families,['D10','D2','D5','D8','D9']);
+  assert.equal(r.rendererChecks.length,5);
+  assert.ok(r.rendererChecks.every(x=>x.status==='ORIGINAL_CORE_COMPILE_PASS'));
+  assert.equal(r.rendererPayloads.length,5);
+  const by=id=>r.rendererPayloads.find(q=>q.rendererId===id);
+  assert.equal(by('D5').skillId,'SHAPE_TANGRAM');assert.equal(by('D5').questionType,'geometry');
+  const original=makePack(tag).questions.find(q=>q.rendererId==='D5').publicVariant;
+  assert.deepEqual(by('D5').publicVariant,{...original,exerciseId:p.questions[1].publicVariant.variantId});
+  assert.equal(by('D8').publicVariant.mode,'RULER');assert.equal(by('D8').publicVariant.model.unit,'cm');
+  assert.equal(by('D9').skillId,'PICTOGRAPH');assert.equal(by('D9').countUnit,'quả');
+  assert.equal(by('D9').assetId,null);assert.equal(by('D9').publicVariant.rows[0].assetId,'FLUENT:red_apple');
+  assert.equal(by('D9').publicVariant.rows[0].itemCount,p.questions[2].publicVariant.count);
+  assert.equal(by('D10').skillId,'WORD_PROBLEM');assert.equal(by('D10').publicVariant.calculationSteps,1);
+  assert.equal(by('D10').publicVariant.mode,'GUIDED');
+  assert.equal(r.rendererPayloadSha256,publisher.hash(r.rendererPayloads));
+  assert.equal(r.candidateSha256,publisher.hash(p));assert.equal(JSON.stringify(p),before);
+  assert.equal(r.writes,0);assert.equal(r.proposed,null);assert.equal(r.release,false);
+  assert.deepEqual(prepare(p),r);
+ }
+ assert.notEqual(prepare(packV2('A')).rendererPayloadSha256,prepare(packV2('B')).rendererPayloadSha256);
+});
+test('M3.1 D5 no inferred shape-to-Tangram, explicit trusted fixture only',()=>{
+ for(const mutate of [
+  q=>q.skillId='SHAPE_COMPOSE',q=>q.questionType='shape',
+  q=>q.publicVariant.geometryRef='UNKNOWN',q=>q.publicVariant.geometryRef='__proto__',
+  q=>q.publicVariant.shapes=['triangle','square'],q=>q.publicVariant.answerKey='roof',
+  q=>q.publicVariant.geometryRef='../../arbitrary'
+ ]){
+  const p=packV2();mutate(p.questions[1]);assert.equal(prepare(p).ok,false);
+ }
+ const old=prepare(pack());assert.equal(old.ok,true);assert.equal(old.labMappingComplete,false);
+ assert.equal(old.rendererPayloads.some(q=>q.rendererId==='D5'),false);
+});
+test('M3.1 D8 bounded ruler only, no clock, other unit or hidden data',()=>{
+ for(const mutate of [
+  q=>q.skillId='READ_CLOCK',q=>q.publicVariant.mode='CLOCK',
+  q=>q.publicVariant.model.unit='m',q=>q.publicVariant.model.segmentEnd=171,
+  q=>q.publicVariant.model.rulerUnits=2,q=>q.publicVariant.model.pixelsPerUnit=0,
+  q=>q.publicVariant.model.segmentStart=0,q=>q.publicVariant.model.rulerUnits=11,
+  q=>q.publicVariant.model.expectedLength=7,q=>q.publicVariant.model.unknown=1
+ ]){
+  const p=packV2();mutate(p.questions[4]);assert.equal(prepare(p).ok,false);
+ }
+});
+test('M3.1 reject version bypass, mixed identities and source promotion',()=>{
+ for(const mutate of [
+  p=>p.schemaVersion='UNKNOWN',p=>p.lesson.sourceStatus='SGK_APPROVED',
+  p=>p.lesson.id='MATH_B020',p=>p.lesson.studentRelease=true,
+  p=>p.questions[4].questionId=p.questions[0].questionId,
+  p=>p.questions[4].publicVariant.variantId=p.questions[0].publicVariant.variantId,
+  p=>p.questions[4].lessonId='LAB_MATH_M3_B',
+  p=>p.questions[2].skillId='PICTOGRAPH',p=>p.questions[3].skillId='WORD_PROBLEM',
+  p=>p.questions[1].publicVariant.ownerApproved=true,p=>p.approved=true
+ ]){
+  const p=packV2();mutate(p);assert.equal(prepare(p).ok,false);
+ }
+});
+test('M3.1 subset reuse supports D5/D8-only candidate without invented N6 question',()=>{
+ const p=packV2();p.questions=p.questions.filter(q=>['D5','D8'].includes(q.rendererId));
+ const r=prepare(p);assert.equal(r.ok,true,r.reason);assert.deepEqual(r.families,['D5','D8']);
+ assert.equal(r.rendererPayloads.length,2);assert.equal(r.labMappingComplete,true);
+ assert.equal(r.sourceSkillMappingApproved,false);assert.equal(r.stagingAllowed,false);
+});
