@@ -10,4 +10,4 @@ function fullAppDeny_(){throw Error('FULL APP TEST: không ghi điểm, sao, ti�
 function ghiNhanKetQuaToan20(){return fullAppDeny_();}
 function d2ChamTinCayTest(){return fullAppDeny_();}
 function phuHuynhTrangThai(){return fullAppDeny_();}
-function kiemTraFullAppTest_(){const t=fullAppTestRead_();const out={environment:'SYNTHETIC_ONLY',tabs:Object.keys(t).length,questions:t['04_Cau_hoi'].length,baseline:'MATCH',writes:'DENY'};console.log(JSON.stringify(out));return out;}
+function kiemTraFullAppTest(){const t=fullAppTestRead_();const out={environment:'SYNTHETIC_ONLY',tabs:Object.keys(t).length,questions:t['04_Cau_hoi'].length,baseline:'MATCH',writes:'DENY'};console.log(JSON.stringify(out));return out;}

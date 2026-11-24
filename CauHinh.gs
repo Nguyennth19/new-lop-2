@@ -425,20 +425,41 @@ const FULL_APP_TEST_EXPECTED_={
  ]
 };
 function fullAppHash_(s){return Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,s,Utilities.Charset.UTF_8).map(b=>('0'+(b&255).toString(16)).slice(-2)).join('');}
+/** Advanced Sheets API v4: spreadsheets.get supports spreadsheets.readonly. */
+function fullAppTestShape_(book,id,names){
+ if(!book||book.spreadsheetId!==id)throw Error('FULL_APP_TEST_ID_DENIED');
+ const tabs=book.sheets||[];
+ if(tabs.length!==names.length||tabs.some((s,i)=>s.properties?.title!==names[i]))throw Error('FULL_APP_TEST_TAB_DENIED');
+ for(const tab of tabs){
+  const p=tab.properties,e=FULL_APP_TEST_EXPECTED_[p.title];
+  if(p.gridProperties?.rowCount!==50||p.gridProperties?.columnCount!==e[0].length||p.sheetType!=='GRID')throw Error('FULL_APP_TEST_GRID_DENIED: '+p.title);
+ }
+ return tabs;
+}
 function fullAppTestRead_(){
  const p=PropertiesService.getScriptProperties(),id=p.getProperty('FULL_APP_TEST_SHEET_ID');
  if(p.getProperty('LOP2_ENVIRONMENT')!=='GAS_TEST'||!id||fullAppHash_(id)!==FULL_APP_TEST_PIN_)throw Error('FULL_APP_TEST_CONFIG_DENIED: cần đúng ID Sheet TEST, không fallback.');
- const wb=SpreadsheetApp.openById(id);
- if(wb.getId()!==id)throw Error('FULL_APP_TEST_ID_DENIED');
- const names=Object.keys(FULL_APP_TEST_EXPECTED_),tabs=wb.getSheets();
- if(tabs.length!==names.length||tabs.some((sh,i)=>sh.getName()!==names[i]))throw Error('FULL_APP_TEST_TAB_DENIED');
- const result={};
- for(const name of names){
-  const sh=wb.getSheetByName(name),expected=FULL_APP_TEST_EXPECTED_[name],cols=expected[0].length;
-  if(sh.getMaxRows()!==50||sh.getMaxColumns()!==cols)throw Error('FULL_APP_TEST_GRID_DENIED: '+name);
-  const range=sh.getRange(1,1,50,cols),values=range.getDisplayValues(),raw=range.getValues(),formats=range.getNumberFormats(),formulas=range.getFormulas();
-  const padded=Array.from({length:50},(_,i)=>expected[i]||Array(cols).fill(''));
-  if(JSON.stringify(values)!==JSON.stringify(padded)||JSON.stringify(raw)!==JSON.stringify(padded)||formulas.some(r=>r.some(Boolean))||formats.some(r=>r.some(v=>v!=='@')))throw Error('FULL_APP_TEST_BASELINE_DENIED: '+name);
+ if(typeof Sheets==='undefined')throw Error('FULL_APP_TEST_SERVICE_DISABLED: bật Google Sheets API v4 trong Dịch vụ.');
+ const names=Object.keys(FULL_APP_TEST_EXPECTED_);
+ const shape='spreadsheetId,sheets(properties(title,sheetType,gridProperties(rowCount,columnCount)))';
+ // Check dimensions before fetching cells; only fixed, bounded synthetic ranges.
+ fullAppTestShape_(Sheets.Spreadsheets.get(id,{fields:shape}),id,names);
+ const ranges=names.map(n=>"'"+n+"'!A1:"+(FULL_APP_TEST_EXPECTED_[n][0].length===27?'AA':String.fromCharCode(64+FULL_APP_TEST_EXPECTED_[n][0].length))+'50');
+ const fields='spreadsheetId,sheets(properties(title,sheetType,gridProperties(rowCount,columnCount)),data(startRow,startColumn,rowData(values(userEnteredValue,formattedValue,userEnteredFormat(numberFormat)))) )'.replace(/ /g,'');
+ const tabs=fullAppTestShape_(Sheets.Spreadsheets.get(id,{ranges,fields}),id,names),result={};
+ for(const tab of tabs){
+  const name=tab.properties.title,expected=FULL_APP_TEST_EXPECTED_[name],cols=expected[0].length,d=tab.data;
+  if(!Array.isArray(d)||d.length!==1||(d[0].startRow||0)!==0||(d[0].startColumn||0)!==0||!Array.isArray(d[0].rowData)||d[0].rowData.length!==50)throw Error('FULL_APP_TEST_GRID_DATA_DENIED: '+name);
+  const values=[];
+  for(let i=0;i<50;i++){
+   const row=d[0].rowData[i]?.values;
+   if(!Array.isArray(row)||row.length!==cols)throw Error('FULL_APP_TEST_GRID_DATA_DENIED: '+name);
+   values.push(row.map((c,j)=>{
+    const want=expected[i]?.[j]??'',raw=c?.userEnteredValue,fmt=c?.userEnteredFormat?.numberFormat;
+    if((raw&&(Object.keys(raw).length!==1||typeof raw.stringValue!=='string'))||(raw?.stringValue??'')!==want||(c?.formattedValue??'')!==want||fmt?.type!=='TEXT'||fmt?.pattern!=='@')throw Error('FULL_APP_TEST_BASELINE_DENIED: '+name+' R'+(i+1)+'C'+(j+1));
+    return want;
+   }));
+  }
   result[name]=values.slice(1,expected.length).map(row=>Object.fromEntries(expected[0].map((h,i)=>[h,row[i]])));
  }
  return result;
