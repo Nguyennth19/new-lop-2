@@ -55,7 +55,16 @@ function n12BoundSheets_(app,c){
    },appendRow:function(row){
     if(id!==c.scope.target||c.scope.proofCase==='P4'||!Array.isArray(row)||row.length!==8||
        !row.every(v=>typeof v==='string'&&!/^[=+@-]/.test(v)))throw Error('N12_APPEND_DENIED');
-    return tab.appendRow(row);
+    // Preformatted destination must preserve the exact display digest, especially ISO timestamp.
+    const next=tab.getLastRow()+1;
+    if(next>tab.getMaxRows()||!tab.getRange(next,1,1,8).getNumberFormats()[0].every(v=>v==='@'))
+      throw Error('N12_DESTINATION_TEXT_FORMAT_REQUIRED');
+    const result=tab.appendRow(row);
+    if(c.scope.proofCase==='P3'){
+      app.flush(); // Controlled loss AFTER actual provider append/flush; not a real outage.
+      throw Error('N12_P3_INJECTED_ACK_LOSS');
+    }
+    return result;
    }};
   }};
  },flush:()=>app.flush()};
@@ -68,7 +77,9 @@ function n12Context_(raw,s){
  const attemptKey='N12_ATTEMPT_'+sha,grantKey='N12_GRANT_'+sha;
  const store={getProperty:function(k){
   if(k!==N11_M4_STORE_KEY_)throw Error('N12_PROPERTY_KEY_DENIED');
-  return props.getProperty(attemptKey);
+  const v=props.getProperty(attemptKey);
+  if(v!==null&&(typeof v!=='string'||v.length>8192||!/^[\x20-\x7e]+$/.test(v)))throw Error('N12_PROPERTY_READ_DENIED');
+  return v;
  },setProperty:function(k,v){
   if(k!==N11_M4_STORE_KEY_||s.writesEnabled!==true||typeof v!=='string'||v.length>8192||
     !/^[\x20-\x7e]+$/.test(v))throw Error('N12_PROPERTY_WRITE_DENIED');
@@ -78,7 +89,9 @@ function n12Context_(raw,s){
  c.deps={utilities:u,session:raw.session,lockService:raw.lockService,now:raw.now,
   spreadsheetApp:n12BoundSheets_(raw.spreadsheetApp,c),attemptStore:store,
   readGrant:function(){
-   const g=JSON.parse(props.getProperty(grantKey)||'null'),now=raw.now();
+   const text=props.getProperty(grantKey);
+   if(typeof text!=='string'||text.length>1024||!/^[\x20-\x7e]+$/.test(text))throw Error('N12_GRANT_PROPERTY_BOUNDS');
+   const g=JSON.parse(text),now=raw.now();
    if(!n11M4Exact_(g,['scopeSha256','issuedAt','expiresAt','revoked'])||
     g.scopeSha256!==sha||g.issuedAt!==scope.issuedAt||g.expiresAt!==scope.expiresAt||
     g.revoked!==false||!Number.isFinite(now)||now<Date.parse(scope.issuedAt)||now>=Date.parse(scope.expiresAt))
@@ -96,7 +109,7 @@ function n12Execute_(intent,raw,s){
   if(!n11M4GrantCurrent_(c.deps,c))return n7TestDeny_('N12_GRANT_NOT_CURRENT');
  }catch(e){return n7TestDeny_('N12_SCOPE_OR_AUTHORITY_DENIED');}
  // P4 intentionally reserves then stops before append through the guarded sheet facade.
- // No runtime fault injection for P3; separately reviewed test harness required.
+ // P3 deliberately throws after provider append+flush, only for the pinned P3 scope.
  return n7TestExecute_(intent,Object.assign({},c.deps,{attemptLedger:n11M4Ledger_(c.deps,s,c,intent)}),s);
 }
 function n12Reconcile_(intent,deps,s){
