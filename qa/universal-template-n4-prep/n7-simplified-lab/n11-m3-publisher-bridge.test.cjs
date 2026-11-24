@@ -136,6 +136,7 @@ test('M3.1 D5 no inferred shape-to-Tangram, explicit trusted fixture only',()=>{
  for(const mutate of [
   q=>q.skillId='SHAPE_COMPOSE',q=>q.questionType='shape',
   q=>q.publicVariant.geometryRef='UNKNOWN',q=>q.publicVariant.geometryRef='__proto__',
+  q=>q.publicVariant.geometryRef=['ULT_V1_A_TANGRAM'],
   q=>q.publicVariant.shapes=['triangle','square'],q=>q.publicVariant.answerKey='roof',
   q=>q.publicVariant.geometryRef='../../arbitrary'
  ]){

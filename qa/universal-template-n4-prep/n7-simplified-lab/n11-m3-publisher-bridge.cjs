@@ -33,7 +33,7 @@ function validateV2(pack){
   if(q.rendererId==='D5'){
    if(q.skillId!=='SHAPE_TANGRAM'||q.questionType!=='geometry'||q.visualIntent!=='GEOMETRY'||
     q.assetId!==null||q.countUnit!==null||!exact(p,['variantId','geometryRef'])||
-    !Object.hasOwn(fixtureTags,p.geometryRef))return fail('D5_EXPLICIT_TANGRAM_REFERENCE_REQUIRED');
+    typeof p.geometryRef!=='string'||!Object.hasOwn(fixtureTags,p.geometryRef))return fail('D5_EXPLICIT_TANGRAM_REFERENCE_REQUIRED');
   }else if(q.rendererId==='D8'){
    if(q.skillId!=='MEASURE_RULER'||q.questionType!=='measurement'||q.visualIntent!=='DECORATIVE'||
     q.assetId!==null||q.countUnit!==null||!exact(p,['variantId','model'])||
