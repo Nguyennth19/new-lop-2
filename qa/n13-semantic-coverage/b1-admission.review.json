@@ -252,7 +252,17 @@
         "rationale": "Phân tích số thành giá trị chục và đơn vị; nhiều ô độc lập, giữ hỗ trợ LV1.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "PLACE_VALUE_DECOMPOSITION",
+          "levelPolicy": "RETAIN_LV1_WITH_PROGRESSIVE_SCAFFOLD",
+          "rationale": "2,2,4 blanks; one skill, gradual removal of givens. Review-only.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B1_SYNTH_2",
@@ -277,7 +287,17 @@
         "rationale": "Ba số, giảm hỗ trợ; kiểm tra phân cấp LV2 không chỉ tăng số lượng ô.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "PLACE_VALUE_DECOMPOSITION",
+          "levelPolicy": "RETAIN_LV2_AS_INDEPENDENT_PRACTICE_CANDIDATE",
+          "rationale": "3 numbers, two blanks per number, no branch scaffold; not empirical difficulty proof.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "PV_B001_PLACE_VALUE_S1031",
@@ -300,7 +320,17 @@
         "rationale": "Một đáp án trong các phương án khác nhau; D4 tương thích ở mức tương tác, không đổi skill giáo trình thành SELECT_CHOICE.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "PLACE_VALUE_COMPOSITION",
+          "levelPolicy": "RETAIN_LV1",
+          "rationale": "Single D4 selection; 4 chục + 5 đơn vị; existing interaction D4, not a new curriculum skill.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B_SYNTH_1",
@@ -323,7 +353,17 @@
         "rationale": "Bảng chục/đơn vị, ô 0 hợp lệ; không thay bằng D1/D2.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "PLACE_VALUE_COMPOSITION_DECOMPOSITION",
+          "levelPolicy": "RETAIN_LV1",
+          "rationale": "Two rows, includes zero ones; retain independent canonical cell fields.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B_SYNTH_2",
@@ -346,7 +386,17 @@
         "rationale": "Bảng có số đã cho và một chữ số thiếu; độ khó LV2 cần đối chiếu với LV1 do số thao tác ít hơn.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "PLACE_VALUE_DECOMPOSITION",
+          "levelPolicy": "HOLD_LEVEL_DECISION",
+          "rationale": "Two partial rows, fewer blanks than LV1 variant; keep existing ID/LV candidate, do not claim higher difficulty. Reviewer choose supported LV2 intent or reclassify with versioned admission change.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B1_SYNTH_3",
@@ -370,7 +420,17 @@
         "rationale": "Có tia số bước 1 và đoạn cách đều bước 2; không đồng nhất bản gốc SGK.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "NUMBER_LINE_SEQUENCE",
+          "levelPolicy": "HOLD_STEP2_LV1_DECISION",
+          "rationale": "Step1 and step2 in one question; step2 as original practice not source-exact. Approve only if qualified reviewer confirms already taught and visible end labels provide sufficient support; otherwise restrict to step1 or reclassify by reviewed delta.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B1_SYNTH_4",
@@ -393,7 +453,17 @@
         "rationale": "Nối biểu thức vào vạch cách 2, có thêm thao tác tính; không đánh đồng D3 plain match hoặc source-exact.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "NUMBER_LINE_POSITION",
+          "levelPolicy": "HOLD_STEP2_AND_ARITHMETIC_LV1_DECISION",
+          "rationale": "Step2 position and evaluate expressions add prerequisite; D3 state reused, not same as plain matching. Prefer LV2 if reviewer finds combined demand inconsistent with one-skill LV1; no automatic reclassification.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B1_SYNTH_5",
@@ -417,7 +487,17 @@
         "rationale": "Phần tia số độc lập với chọn nhiều phương án trong khoảng; làm rõ 'Trong các số sau' nếu Owner đồng ý. Không thêm đáp án 32 vào phương án đã khóa.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "NUMBER_LINE_AND_RANGE_SELECTION",
+          "levelPolicy": "RETAIN_LV2_WITH_PROMPT_CLARIFICATION",
+          "rationale": "Approve only after explicit subset-choice prompt 'Trong các số sau, chọn những số lớn hơn 30 và bé hơn 34.'; keep existing options, keys and IDs; separate minimal text delta then TTS/HTTP regression.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B1_SYNTH_6",
@@ -441,7 +521,17 @@
         "rationale": "Phần đúng/sai độc lập; ô nhập có tập giá trị hợp lệ, không ép đáp án duy nhất nếu contract chưa được duyệt.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "SUCCESSOR_AND_OPEN_INTERVAL",
+          "levelPolicy": "RETAIN_LV2_WITH_BOUNDED_MULTIPLE_VALID_POLICY",
+          "rationale": "One integer input in strict interval; accept all valid integers, reject endpoints/invalid format; one deterministic predicate, no learner-facing rubric. Approve explicit exception to V16 unique-answer wording for this kind only.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       },
       {
         "variantId": "N13B1_SYNTH_7",
@@ -464,7 +554,17 @@
         "rationale": "Ô số giữa và hai ô liền kề; giữ câu dẫn đã sửa tại 61849fc4.",
         "sourceExactApproved": false,
         "publicVariant": null,
-        "studentRelease": false
+        "studentRelease": false,
+        "decisionRecommendation": {
+          "curriculumSemanticIntent": "PREDECESSOR_SUCCESSOR",
+          "levelPolicy": "RETAIN_LV2",
+          "rationale": "Two rows including middle missing; prior prompt and TTS regression retained.",
+          "admissionProposal": "ISOLATED_OWNER_TEST_ONLY_AFTER_QUALIFIED_REVIEW",
+          "curriculumSkillId": "NUMBER_SENSE",
+          "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
+          "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
+          "approved": false
+        }
       }
     ],
     "sourceRoutingHolds": [
@@ -486,6 +586,27 @@
     "trustedGrading": "DENY",
     "ownerApproval": null,
     "independentQaApproval": null,
-    "studentRelease": false
+    "studentRelease": false,
+    "decisionRecommendation": {
+      "status": "AI_RECOMMENDATION_NOT_SIGNOFF",
+      "reviewScope": "10 original variants as isolated review pack, not a full lesson bank; no sourceExact/learner release",
+      "skillPolicy": "Use NUMBER_SENSE candidate plus per-variant semantic intent above, not D3/D4 interaction IDs as curriculum IDs. Qualified reviewer and Owner must approve actual registration before dispatch into full app.",
+      "rendererPolicy": "Reuse exact compiler/view from sourceCommit and existing D3/D4 interaction implementations; authorize only exact pack routes in TEST after independent review. Do not register arbitrary renderer IDs or publish.",
+      "intervalOracleDelta": {
+        "variantId": "N13B1_SYNTH_6",
+        "partId": "b",
+        "source": "semantic-core.cjs + trusted-oracle.qa-only.cjs exact retrieved at pinned source",
+        "checks": 12,
+        "pass": 12,
+        "scope": "QA-only predicate, not trusted live GAS",
+        "result": "Four canonical integer strings accepted; endpoints, out-of-range, invalid format, missing and numeric type rejected."
+      },
+      "ownerApproval": null,
+      "qualifiedReviewerApproval": null,
+      "independentQaApproval": null,
+      "rendererGrant": "DENY",
+      "trustedGradeGrant": "DENY",
+      "studentRelease": false
+    }
   }
 }
