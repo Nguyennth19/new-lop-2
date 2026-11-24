@@ -168,6 +168,8 @@ function n7TestExecute_(intent,deps,settings) {
       if(duplicates.length!==1||!record.batch_id||duplicates[0][1]!==record.batch_id||
          snapshot.digest!==record.journalDigest)
         return unknown('RECONCILE_REQUIRED');
+      if(typeof ledger.markVerified==='function'&&ledger.markVerified(key,record)!==true)
+        return unknown('RECONCILE_REQUIRED');
       return n7TestVerified_(intent,eventId,digest,record,true);
     }
     // Legacy/untracked event: preserve the row; never invent a historical receipt.
@@ -191,6 +193,8 @@ function n7TestExecute_(intent,deps,settings) {
     deps.spreadsheetApp.flush();
     const after=n7TestJournalSnapshot_(tab,settings,deps.utilities);
     if(!after.ok||after.digest!==record.journalDigest)
+      return unknown('RECONCILE_REQUIRED');
+    if(typeof ledger.markVerified==='function'&&ledger.markVerified(key,record)!==true)
       return unknown('RECONCILE_REQUIRED');
     return n7TestVerified_(intent,eventId,digest,record,false);
   }catch(e){
