@@ -1,9 +1,9 @@
 {
   "contract": "N12_UNSIGNED_APPROVAL_DOSSIER_V1",
   "proofCase": "P2",
-  "status": "DRAFT_NOT_A_GRANT",
-  "sourceCommit": "a20f22fbc246f29eb58d0fac27b86dea27fb5f79",
-  "sourceCI": 45417270511,
+  "status": "UNSIGNED_PAYLOAD_CANDIDATE_REVIEW_ONLY",
+  "sourceCommit": "f4668e7774b5bbebf907fc9fbb059c01da19a5e8",
+  "sourceCI": 45422732859,
   "sourceHashes": {
     "N11_Receipt.gs": "203902c3dc1ec6dcab366f26d6305e2b87cbfa04fa9e88b9e198e6873ac70987",
     "N12_Adapter.gs": "282198afd8e14113d1e2303b80ce9323fa35b548fb4f1ada11145f3cbf4df879",
@@ -11,7 +11,8 @@
     "N7_Core.gs": "92452674cf019b310e927f0ccdc78bce4e5f2818bfcddbc9e9414a139b32f339",
     "N8_Core.gs": "7a668c31626c360a9ce649e35cd3b29b7c888039fd58657b0e77aafcf4e34598",
     "N9_Core.gs": "d0bbca1ac2767f5fe5a2da64ce831e0e64d991e6ddd8e9ca21eb75a5312e191f",
-    "appsscript.json": "2c068e556b27a420ce3628775d80513328cfd1cf4c7960807223cd74d28d9066"
+    "appsscript.json": "2c068e556b27a420ce3628775d80513328cfd1cf4c7960807223cd74d28d9066",
+    "N12_Final.gs": "7cf4205393dc58d3813b0ebb9eb5c45b57268f76079ef508798bfcfcd637e877"
   },
   "projectIdSha256": "086d4594aed0c10276abb1e28b69a1b33be4dce2934b52223d85118311a29879",
   "targetRole": "P2_TARGET",
@@ -34,12 +35,102 @@
   "expiresAt": null,
   "ownerApproval": null,
   "independentQaApproval": null,
-  "liveSourceParity": false,
+  "liveSourceParity": "OWNER_ACCEPTED_NORMALIZED_8_OF_8_ONLY_AT_BASE_NOT_RAW_BYTE_EQUALITY",
   "readyEnvelopeCreated": false,
   "grantIssued": false,
   "revocation": "Owner revokes; preserve evidence and immutable attempt; never reset",
   "stop": "mismatched identity/hash, missing or expired approval, drift, ambiguous ack; no blind retry",
   "rollback": "preserve original journal; reconcile read-only; restore only P5 separate approved copy",
   "acceptance": "actual separate invocation log, before/after digest, journal row count, durable attempt and receipt, revoke evidence; no mock substitution",
-  "p5Block": null
+  "p5Block": null,
+  "historicalSource": {
+    "sourceCommit": "a20f22fbc246f29eb58d0fac27b86dea27fb5f79",
+    "sourceCI": 45417270511,
+    "sourceHashes": {
+      "N11_Receipt.gs": "203902c3dc1ec6dcab366f26d6305e2b87cbfa04fa9e88b9e198e6873ac70987",
+      "N12_Adapter.gs": "282198afd8e14113d1e2303b80ce9323fa35b548fb4f1ada11145f3cbf4df879",
+      "N12_Editor.gs": "cc43d19d9ff32eb957d747d4d65466c34c4c9b7a2dec14b7f43f71a2c6587fa7",
+      "N7_Core.gs": "92452674cf019b310e927f0ccdc78bce4e5f2818bfcddbc9e9414a139b32f339",
+      "N8_Core.gs": "7a668c31626c360a9ce649e35cd3b29b7c888039fd58657b0e77aafcf4e34598",
+      "N9_Core.gs": "d0bbca1ac2767f5fe5a2da64ce831e0e64d991e6ddd8e9ca21eb75a5312e191f",
+      "appsscript.json": "2c068e556b27a420ce3628775d80513328cfd1cf4c7960807223cd74d28d9066"
+    }
+  },
+  "p1": {
+    "status": "P1_OWNER_ACCEPTED_SCOPED_HARD_OFF",
+    "receipt": "7138481683",
+    "otherLiveDenials": "OPEN"
+  },
+  "payloadCandidate": {
+    "canonicalization": "UTF-8 JSON recursively sorted object keys, no insignificant whitespace; arrays preserve order",
+    "candidate": {
+      "lesson": {
+        "grade": 2,
+        "id": "LAB_MATH_N12_P2",
+        "sourceStatus": "SYNTHETIC_QA_ONLY",
+        "studentRelease": false,
+        "subject": "MATH"
+      },
+      "packId": "N12_P2_SYNTH_PACK_001",
+      "questions": [
+        {
+          "assetId": null,
+          "countUnit": null,
+          "lessonId": "LAB_MATH_N12_P2",
+          "level": "LV2",
+          "publicVariant": {
+            "a": 38,
+            "b": 27,
+            "carryPolicy": "OPTIONAL_HINT",
+            "operation": "ADD",
+            "profile": "PV100",
+            "variantId": "COL_N12_P2_SYNTH_001"
+          },
+          "questionId": "N12_P2_SYNTH_D2_001",
+          "questionType": "vertical",
+          "rendererId": "D2",
+          "skillId": "COLUMN_ADD",
+          "visualIntent": "DECORATIVE"
+        }
+      ],
+      "schemaVersion": "LOP2_N6_MULTIFAMILY_LAB_V1",
+      "status": "LAB_CANDIDATE_ONLY"
+    },
+    "candidateSha256": "8ca32f894ca460a7e6a5f9d498d811fc175504e3b4b4c4f3916c4e50c9f589a2",
+    "provenanceReceipt": {
+      "candidateSha256": "8ca32f894ca460a7e6a5f9d498d811fc175504e3b4b4c4f3916c4e50c9f589a2",
+      "contract": "N12_P2_SYNTHETIC_PROVENANCE_REVIEW_V1",
+      "sourceCommit": "281d445bd1cb3bdf441639be5b44d67985b8aeee",
+      "sourceExactApproved": false,
+      "sourceFixture": "pack(A), D2 only, reidentified for P2",
+      "sourcePath": "qa/universal-template-n4-prep/n7-simplified-lab/n11-m3-publisher-bridge.test.cjs",
+      "state": "UNSIGNED_REVIEW_ONLY",
+      "studentRelease": false
+    },
+    "sourceReceiptSha256": "62808894d91e5454d40e00bfeaf6118b2143f66041f0642e2814ae475abed13a",
+    "rowPlan": {
+      "action": "APPEND_TEST_METADATA",
+      "baselineRows": 0,
+      "candidateSha256": "8ca32f894ca460a7e6a5f9d498d811fc175504e3b4b4c4f3916c4e50c9f589a2",
+      "contract": "N12_P2_METADATA_ROW_PLAN_REVIEW_V1",
+      "expectedAction": "N7_TEST_METADATA_ONLY",
+      "lessonId": "LAB_MATH_N12_P2",
+      "maxAppends": 1,
+      "nextState": "PROJECTED_PENDING",
+      "previousState": "PREPARED",
+      "sourceReceiptSha256": "62808894d91e5454d40e00bfeaf6118b2143f66041f0642e2814ae475abed13a",
+      "state": "UNSIGNED_REVIEW_ONLY",
+      "tab": "15_NhatKy_HanhDong"
+    },
+    "rowsDigest": "1aae21ea8c53a932a59b1de1189ecc8a5b40afb511b417c1a786598abedda15c",
+    "limitations": "Derived single D2 fixture, reidentified, not previously tested as this pack. Proposed provenance is not an authority signature. Row plan digest is NOT the final 8-column event or journal digest. N7 validates digest shape and binds intent, not provenance content; independent review must approve canonicalization and payload meaning before intent binding."
+  },
+  "bindingBlockers": [
+    "ADR_N11_E_P1_ACTOR_TARGET_SCOPE_EXPIRY_REVOKE_LIVE_EVIDENCE_OR_FORMAL_SCOPE_DECISION",
+    "INDEPENDENT_REVIEW_AND_AUTHORITY",
+    "EXACT_PAYLOAD_SCHEMA_AND_DIGEST_REVIEW",
+    "FINAL_INTENT_WITH_PRIVATE_TARGET_AND_UNIQUE_GRANT_EPOCH",
+    "REVIEWED_SOURCE_DELTA_AND_LIVE_PARITY",
+    "CONTROLLED_GRANT_READY_PROVISIONING_AND_REVOCATION"
+  ]
 }
