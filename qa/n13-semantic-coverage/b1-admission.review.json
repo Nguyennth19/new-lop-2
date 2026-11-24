@@ -196,5 +196,296 @@
   ],
   "priorCandidates": 31,
   "additionalSynthetic": 7,
-  "lv3": "NO_APPROVED_REFERENCE"
+  "lv3": "NO_APPROVED_REFERENCE",
+  "finalAdmissionDelta": {
+    "contract": "N13_10_VARIANT_ADMISSION_REVIEW_V1",
+    "state": "AI_REVIEW_ONLY_NOT_AUTHORITY",
+    "sourceCommit": "61849fc47f31d94370b6d6c62ed99d71c627a7bd",
+    "pilotPackBlob": "bca781df58ce143a2579e2b6510d27e517606ab9",
+    "rendererMatrixBlob": "0f90755d9f167dff961fc5dcf6f8881ec8363c1d",
+    "previousCompileEvidence": "https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7139569274",
+    "sourceAclSupersession": "Historical fields above remain unchanged; 7136173193 later confirmed reader + owner; no fresh ACL check in this delta.",
+    "governance": {
+      "bankThreshold": "Governance Master V16: <8 per level CONTENT_BANK_INSUFFICIENT; apply as full release warning, not a reason to manufacture extra pilot questions",
+      "bankCounts": [
+        {
+          "lessonId": "MATH_B001",
+          "LV1": 3,
+          "LV2": 2,
+          "LV3": 0,
+          "status": "CONTENT_BANK_INSUFFICIENT_FOR_FULL_LESSON"
+        },
+        {
+          "lessonId": "MATH_B002",
+          "LV1": 2,
+          "LV2": 3,
+          "LV3": 0,
+          "status": "CONTENT_BANK_INSUFFICIENT_FOR_FULL_LESSON"
+        }
+      ],
+      "scope": "10 original review variants only, not full lesson bank",
+      "skillRegistry": "NUMBER_SENSE is index-only candidate; D3/D4 interaction skill labels are not curriculum authority",
+      "sourceExact": "DENY",
+      "multipleAcceptedInput": "N13B1_SYNTH_6 part b has four valid integers in strict interval; existing grader explicitly allows set. V16 unique-answer rule needs explicit bounded exception or a reviewed prompt/model change; preserve current DTO and do not grant."
+    },
+    "rows": [
+      {
+        "variantId": "N13B1_SYNTH_1",
+        "lessonId": "MATH_B001",
+        "level": "LV1",
+        "sourceAnchor": "SGK_B001_L1_E01",
+        "printedPage": 7,
+        "pdfPage": 8,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "EXPANDED",
+          "EXPANDED",
+          "EXPANDED"
+        ],
+        "interactionRoute": "EXPANDED_COMPOSITE",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "LEVEL_REVIEW",
+        "rationale": "Phân tích số thành giá trị chục và đơn vị; nhiều ô độc lập, giữ hỗ trợ LV1.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B1_SYNTH_2",
+        "lessonId": "MATH_B001",
+        "level": "LV2",
+        "sourceAnchor": "VBT_B001_T02_E01",
+        "printedPage": 6,
+        "pdfPage": 7,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "EXPANDED",
+          "EXPANDED",
+          "EXPANDED"
+        ],
+        "interactionRoute": "EXPANDED_COMPOSITE",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "LEVEL_REVIEW",
+        "rationale": "Ba số, giảm hỗ trợ; kiểm tra phân cấp LV2 không chỉ tăng số lượng ô.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "PV_B001_PLACE_VALUE_S1031",
+        "lessonId": "MATH_B001",
+        "level": "LV1",
+        "sourceAnchor": "SGK_B001_K1_E02",
+        "printedPage": 6,
+        "pdfPage": 7,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "D4"
+        ],
+        "interactionRoute": "D4",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "REVIEW_ONLY",
+        "rationale": "Một đáp án trong các phương án khác nhau; D4 tương thích ở mức tương tác, không đổi skill giáo trình thành SELECT_CHOICE.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B_SYNTH_1",
+        "lessonId": "MATH_B001",
+        "level": "LV1",
+        "sourceAnchor": "SGK_B001_L1_E03",
+        "printedPage": 8,
+        "pdfPage": 9,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "PLACE_VALUE"
+        ],
+        "interactionRoute": "PLACE_VALUE",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "REVIEW_ONLY",
+        "rationale": "Bảng chục/đơn vị, ô 0 hợp lệ; không thay bằng D1/D2.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B_SYNTH_2",
+        "lessonId": "MATH_B001",
+        "level": "LV2",
+        "sourceAnchor": "VBT_B001_T02_E03",
+        "printedPage": 7,
+        "pdfPage": 8,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "PLACE_VALUE"
+        ],
+        "interactionRoute": "PLACE_VALUE",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "LEVEL_REVIEW",
+        "rationale": "Bảng có số đã cho và một chữ số thiếu; độ khó LV2 cần đối chiếu với LV1 do số thao tác ít hơn.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B1_SYNTH_3",
+        "lessonId": "MATH_B002",
+        "level": "LV1",
+        "sourceAnchor": "SGK_B002_H1_E01",
+        "printedPage": 11,
+        "pdfPage": 12,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "NUMBER_LINE",
+          "NUMBER_LINE"
+        ],
+        "interactionRoute": "NUMBER_LINE_COMPOSITE",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "STEP2_LV1_REVIEW",
+        "rationale": "Có tia số bước 1 và đoạn cách đều bước 2; không đồng nhất bản gốc SGK.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B1_SYNTH_4",
+        "lessonId": "MATH_B002",
+        "level": "LV1",
+        "sourceAnchor": "SGK_B002_H1_E02",
+        "printedPage": 11,
+        "pdfPage": 12,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "COORD_MATCH"
+        ],
+        "interactionRoute": "COORD_MATCH_D3_STATE",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "STEP2_LV1_REVIEW",
+        "rationale": "Nối biểu thức vào vạch cách 2, có thêm thao tác tính; không đánh đồng D3 plain match hoặc source-exact.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B1_SYNTH_5",
+        "lessonId": "MATH_B002",
+        "level": "LV2",
+        "sourceAnchor": "VBT_B002_T01_E01",
+        "printedPage": 10,
+        "pdfPage": 11,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "NUMBER_LINE",
+          "D4"
+        ],
+        "interactionRoute": "NUMBER_LINE_PLUS_D4",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "PROMPT_REVIEW",
+        "rationale": "Phần tia số độc lập với chọn nhiều phương án trong khoảng; làm rõ 'Trong các số sau' nếu Owner đồng ý. Không thêm đáp án 32 vào phương án đã khóa.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B1_SYNTH_6",
+        "lessonId": "MATH_B002",
+        "level": "LV2",
+        "sourceAnchor": "VBT_B002_T01_E03",
+        "printedPage": 10,
+        "pdfPage": 11,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "D4",
+          "INEQUALITY_INPUT"
+        ],
+        "interactionRoute": "D4_PLUS_INEQUALITY_INPUT",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "MULTIPLE_VALID_INPUT_POLICY_REVIEW",
+        "rationale": "Phần đúng/sai độc lập; ô nhập có tập giá trị hợp lệ, không ép đáp án duy nhất nếu contract chưa được duyệt.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      },
+      {
+        "variantId": "N13B1_SYNTH_7",
+        "lessonId": "MATH_B002",
+        "level": "LV2",
+        "sourceAnchor": "VBT_B002_T02_E04",
+        "printedPage": 12,
+        "pdfPage": 13,
+        "origin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+        "semanticMapping": [
+          "NEIGHBOR_TABLE"
+        ],
+        "interactionRoute": "NEIGHBOR_TABLE",
+        "curriculumSkillCandidate": "NUMBER_SENSE",
+        "skillIdApproved": null,
+        "rendererIdApproved": null,
+        "rendererGrant": "DENY",
+        "pedagogyState": "OWNER_AND_QUALIFIED_REVIEW_PENDING",
+        "reviewFocus": "REVIEW_ONLY",
+        "rationale": "Ô số giữa và hai ô liền kề; giữ câu dẫn đã sửa tại 61849fc4.",
+        "sourceExactApproved": false,
+        "publicVariant": null,
+        "studentRelease": false
+      }
+    ],
+    "sourceRoutingHolds": [
+      "SGK_B001_L1_E01",
+      "VBT_B001_T02_E01",
+      "SGK_B002_H1_E01",
+      "SGK_B002_H1_E02",
+      "VBT_B002_T01_E01",
+      "VBT_B002_T01_E03",
+      "VBT_B002_T02_E04"
+    ],
+    "estimationHolds": [
+      "SGK_B001_L2_E02",
+      "SGK_B001_L2_E01",
+      "VBT_B001_T03_E01",
+      "VBT_B001_T03_E02"
+    ],
+    "lv3": "DENY",
+    "trustedGrading": "DENY",
+    "ownerApproval": null,
+    "independentQaApproval": null,
+    "studentRelease": false
+  }
 }
