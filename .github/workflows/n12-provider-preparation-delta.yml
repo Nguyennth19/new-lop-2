@@ -1,0 +1,16 @@
+name: N12 Provider preparation delta (mock only)
+on:
+  push:
+    branches: [prep/n12-n13-provider-data-20261124]
+    paths: ['qa/n12-n13-preparation/N12_Provider_Adapter_PREP.gs','qa/n12-n13-preparation/n12-provider-adapter.test.cjs','.github/workflows/n12-provider-preparation-delta.yml']
+permissions:
+  contents: read
+jobs:
+  delta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: node --test qa/n12-n13-preparation/n12-provider-adapter.test.cjs
