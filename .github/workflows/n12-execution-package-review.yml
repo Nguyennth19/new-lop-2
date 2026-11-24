@@ -1,0 +1,17 @@
+name: N12 execution package source-only delta
+on:
+  push:
+    branches: [prep/n12-execution-package-20261124]
+permissions:
+  contents: read
+jobs:
+  source-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: node qa/n12-execution-package/source-lock.test.cjs
+      - run: node --test qa/n12-execution-package/package.mock.test.cjs

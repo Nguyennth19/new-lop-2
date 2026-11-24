@@ -1,0 +1,87 @@
+{
+  "stage": "SOURCE_REVIEW_ONLY",
+  "base": "8e5ae3dbb51c61225ff42e24339168ced6b473b0",
+  "lab": "281d445bd1cb3bdf441639be5b44d67985b8aeee",
+  "pins": [
+    {
+      "path": "qa/universal-template-n4-prep/n7-simplified-lab/N7_GAS_TEST_SingleWriter.gs",
+      "blob": "129dc79193b4d057c4ccf97730e8420b629f306a",
+      "dest": "N7_Core.gs",
+      "constants": [
+        "N7_TEST_HEADERS_",
+        "N7_TEST_DIGEST_FIELDS_"
+      ],
+      "functions": [
+        "n7TestDeny_",
+        "n7TestUnknown_",
+        "n7TestReceipt_",
+        "n7TestVerified_",
+        "n7TestValidate_",
+        "n7TestSha256_",
+        "n7TestDigest_",
+        "n7TestJournalSnapshot_",
+        "n7TestSnapshotDigest_",
+        "n7TestExecute_"
+      ]
+    },
+    {
+      "path": "qa/universal-template-n4-prep/n7-simplified-lab/N8_CAS_ReadOnly.gs",
+      "blob": "f295334917882a37d638edc0772b1dee85f730b8",
+      "dest": "N8_Core.gs",
+      "constants": [],
+      "functions": [
+        "n8Deny_",
+        "n8CompareSnapshots_",
+        "n8SnapshotDigest_"
+      ]
+    },
+    {
+      "path": "qa/universal-template-n4-prep/n7-simplified-lab/N9_Recovery_ReadOnly.gs",
+      "blob": "2341531e80797c7fb22edea163981c0f4ebff185",
+      "dest": "N9_Core.gs",
+      "constants": [],
+      "functions": [
+        "n9Deny_",
+        "n9ReadJournal_",
+        "n9ClassifyUncertain_",
+        "n9RollbackDecision_"
+      ]
+    },
+    {
+      "path": "qa/universal-template-n4-prep/n7-simplified-lab/N11_M4_DurableReceipt_LAB.gs",
+      "blob": "bfbe61b08da5d2f867835737f169287fcf0f1077",
+      "dest": "N11_Receipt.gs",
+      "constants": [
+        "N11_M4_STORE_KEY_"
+      ],
+      "functions": [
+        "n11M4Exact_",
+        "n11M4ScopeDigest_",
+        "n11M4Seal_",
+        "n11M4ReadEnvelope_",
+        "n11M4GrantCurrent_",
+        "n11M4Backup_",
+        "n11M4Ledger_"
+      ]
+    },
+    {
+      "path": "qa/n12-n13-preparation/N12_Provider_Adapter_PREP.gs",
+      "blob": "d7f125ea330e69d11e3af57b5d95917d0c3d3a6e",
+      "dest": "N12_Adapter.gs",
+      "exact": true
+    }
+  ],
+  "setupPin": {
+    "path": "qa/n12-n13-preparation/n12-readiness-only/Code.gs",
+    "blob": "51c4c17ea100a81d94088098aae3ec78c4de6c6e"
+  },
+  "manifestScopes": [
+    "spreadsheets",
+    "userinfo.email"
+  ],
+  "projectIdSha256": "086d4594aed0c10276abb1e28b69a1b33be4dce2934b52223d85118311a29879",
+  "liveSourceParity": "OPEN",
+  "grant": "NOT_ISSUED",
+  "ready": "NOT_CREATED",
+  "P5": "NO_WRITER_PREPARED"
+}
