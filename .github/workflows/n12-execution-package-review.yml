@@ -13,4 +13,5 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - run: node --test qa/n12-execution-package/closure/closure.test.cjs
+      - run: node qa/n12-execution-package/source-lock.test.cjs
+      - run: node --test qa/n12-execution-package/package.mock.test.cjs qa/n12-execution-package/closure/closure.test.cjs
