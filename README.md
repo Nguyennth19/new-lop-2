@@ -1,53 +1,81 @@
-# Lớp 2 – Dự án Google Apps Script V2.1 (đã sửa đường dẫn)
+# LỚP 2 — SỔ BÀN GIAO ĐỘC LẬP N12–N13 / N14 ENTRY
+Phiên bản R1 | 25/11/2026 (GMT+7) | Tài liệu bàn giao, KHÔNG phải grant, chữ ký QA hoặc quyền triển khai.
 
-Mã nguồn dùng cho **Google Apps Script gắn với Google Sheets**, lấy từ giao diện Demo Lớp 2 V2.1. Các tệp `.gs` / `.html` / `appsscript.json` **nằm tại thư mục gốc repository**, không có tiền tố `apps-script/`.
+> ĐIỂM TIẾP TỤC: N12.3-P2 FINAL GRANT BINDING & CONTROLLED EXECUTION (chưa được phép thực thi) song song N13.2–N13.4 FINAL CLOSURE. N12 OPEN; N13 OPEN; N14 ENTRY NO-GO. P1_OWNER_ACCEPTED_SCOPED_HARD_OFF. Không cần lịch sử chat để sử dụng sổ này.
 
-## Khắc phục lỗi “Không tìm thấy tệp HTML có tên GiaoDien”
+## 1. Đọc trước khi làm
+Mục tiêu dự án là ứng dụng học Lớp 2 với dữ liệu bài học có cấu trúc, biến thể, renderer/asset/reader tái sử dụng và quản trị ghi/chấm có kiểm soát. Giai đoạn hiện tại chỉ đóng các tồn đọng N12 (provider disposable) và N13 (dữ liệu và B001/B002), không phát triển ngoài phạm vi, không phát hành MAIN hoặc sử dụng dữ liệu học sinh. Đây là sổ phục hồi công việc ở checkpoint hiện tại, không phải toàn bộ lịch sử phát triển P0–N11; các mốc cũ và bằng chứng gốc tiếp tục tra ở Master QA Index và Issue #15.
+Bất kỳ bên thứ 2, 3, 4, 5 nào cũng có thể đọc, phản biện và kiểm thử theo cùng quy trình. Mặc định tiếp nhận READ-ONLY. Owner quyết định phạm vi; reviewer độc lập tự ký nhận kết quả của mình; người vận hành chỉ thao tác sau quyền riêng; AI không tự ký hay tự cấp grant. Phân tách tài khoản/nhân sự phê duyệt và thực thi theo chính sách thực tế; không coi quyền admin GitHub là thẩm quyền sư phạm/QA. Không chia sẻ password, OTP, token, email riêng, giá trị Script Properties, raw resource IDs, private rubric hoặc dữ liệu học sinh trong GitHub công khai hay báo cáo gửi nhiều bên.
+CẢNH BÁO: nhánh handover chỉ phục vụ tài liệu, không đồng bộ vào GAS. README lịch sử V2.1 còn hướng dẫn root clasp push / deploy; KHÔNG áp dụng cho N12/N13. [README cũ tại checkpoint](https://github.com/Nguyennth19/new-lop-2/blob/f4668e7774b5bbebf907fc9fbb059c01da19a5e8/README.md). Không merge nhánh handover vào MAIN.
 
-Apps Script chỉ tìm `createTemplateFromFile('GiaoDien')` khi tên dự án thực tế là **GiaoDien** (không phải `apps-script/GiaoDien`). Bản này chuyển tất cả tệp ứng dụng lên root, giữ nguyên lệnh trong `MayChu.gs`. Khi đồng bộ lại GitHub, kiểm tra danh sách tệp trong Apps Script không còn `apps-script/`; nếu còn, xóa các tệp phiên bản cũ để tránh khai báo `doGet` trùng.
+## 2. Nguồn chuẩn và checkpoint khóa
+- N12: prep/n12-execution-package-20261124 — f4668e7774b5bbebf907fc9fbb059c01da19a5e8; [gói nguồn](https://github.com/Nguyennth19/new-lop-2/tree/f4668e7774b5bbebf907fc9fbb059c01da19a5e8/qa/n12-execution-package); [CI 45422732859](https://github.com/Nguyennth19/new-lop-2/actions/runs/45422732859) SUCCESS 22/22 mock, job 138546339616.
+- N13: prep/n13-semantic-coverage-20261124 — 61849fc47f31d94370b6d6c62ed99d71c627a7bd; [gói nguồn](https://github.com/Nguyennth19/new-lop-2/tree/61849fc47f31d94370b6d6c62ed99d71c627a7bd/qa/n13-semantic-coverage); [CI 45435375196](https://github.com/Nguyennth19/new-lop-2/actions/runs/45435375196) SUCCESS 13/13 VM + 10/10 HTTP Chromium, job 138591597341.
+- Full App TEST: integration/full-app-gas-test — d7445a35fdf4c091b28d49beb504fd1f65085f7d; [Owner setup](https://github.com/Nguyennth19/new-lop-2/blob/d7445a35fdf4c091b28d49beb504fd1f65085f7d/qa/full-app-gas-test/OWNER_SETUP.md); [CI 45400566614](https://github.com/Nguyennth19/new-lop-2/actions/runs/45400566614) SUCCESS 121 contract checks, job 138467744396, VM không phải GAS thật.
+- be-hoc baseline: 1b69e277f8de6cb156f46a1d85af33bdad70c0ef; MAIN: 1d9bb77420e367d1739d2077f9e8c928a0417185 tại lần đọc HEAD khi tạo sổ. Chỉ tham chiếu, không sửa.
+- Nhánh legacy preview integration/n13-3-full-app-preview-20261124 — c4fa0d7aec5f580b3fa003a9e4bd6890aeed0525. [CI 45390885858](https://github.com/Nguyennth19/new-lop-2/actions/runs/45390885858) ở 60c757f overall FAILURE dù 34/34 integrated checks; 4 lỗi D2 lịch sử còn giữ. Báo cáo local 48/48 chỉ là mock preview, không thay thế Full App modular, không trusted grade. Không ghép/deploy đè.
+- [Issue #15 — nhật ký nối tiếp](https://github.com/Nguyennth19/new-lop-2/issues/15); [receipt P1 mới nhất 7138481683](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7138481683). Master QA Index LOP2_MASTER_QA_INDEX_N4C7_20261123 là sổ chứng cứ hiện có, Owner cấp đường dẫn và quyền đọc. Bản Google Docs R1 là bản bàn giao đồng nội dung, không phải nguồn cấp quyền.
+Khi mở phiên mới: đọc HEAD thực tế, xác minh SHA/CI, đọc comment mới sau receipt trên và phần cuối Master QA Index. Nếu có checkpoint mới được phê duyệt thì dùng checkpoint mới, ghi rõ supersedes; nếu khác không giải thích được, STOP và báo Owner. Không coi nhánh mới nhất theo thời gian là nguồn chuẩn.
 
-## Ảnh bìa ba môn học
+## 3. Việc đã hoàn thành và phạm vi bằng chứng
+### N0–N11: kế thừa, không đóng lại
+N0-S A3/A4 và W1: xác nhận checksum/người nhận độc lập, phê duyệt con người và các ngoại lệ vẫn theo RTM/ADR hiện hành; không tự chuyển CLOSED. N5 Owner Self-QA nội bộ không đồng nghĩa independent QA. N6 synthetic 16/16 đã ghi nhận; N7–N9 Single Writer, idempotency, CAS/readback/rollback trong phạm vi LAB. N11 Owner nghiệm thu M1–M4 LAB-only tại 281d445bd1cb3bdf441639be5b44d67985b8aeee, CI 100/100 theo hồ sơ Owner; không mở M5, không cấp Provider Execution/Internal Pilot/Release. DB-01..05 không được đóng bằng CI hay xác nhận nội bộ. Kiểm lại ADR/RTM và sổ ký trước khi quyết định quyền thật.
+### N12: P1 đã nghiệm thu giới hạn
+- P1_OWNER_ACCEPTED_SCOPED_HARD_OFF: Owner xác nhận 6/6 hàm GAS thật đúng HARD OFF, NOT_ATTEMPTED, writes:0, release:false; thời điểm chạy chưa xác định, chưa có receipt runtime độc lập.
+- [Nguồn staged 8/8](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7137327199): 7 .gs + appsscript.json; raw khác CRLF và thiếu LF cuối, normalized SHA256 MATCH 8/8; VM OFF 8/8 (6 public + 2 private). [Owner chấp nhận normalization](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7138286795), không phải raw-byte equality.
+- Inventory: N7_Core.gs, N8_Core.gs, N9_Core.gs, N11_Receipt.gs, N12_Adapter.gs, N12_Editor.gs, N12_Final.gs, appsscript.json. Không Code.gs cũ. Bốn const null: N12_PROVIDER_SETTINGS_, N12_EDITOR_REVIEWED_CASE_, N12_FINAL_REVIEWED_CASE_, N12_FINAL_P5_. Nguồn OFF, không có grant/READY.
+- GAS LOP2_N12_PROVIDER_TEST_DISPOSABLE đã Restricted, metadata Owner-only xác minh trực tiếp. Owner xác nhận chỉ N12_SETUP_CONFIG, không grant/attempt, dùng Owner, không Trigger/Deployment hoạt động. Hai scope spreadsheets + userinfo.email; spreadsheets rộng, không phải OAuth hạn chế 7 ID. Effective actor/consent/trigger/property inventory chỉ có Owner attestation, không phải log độc lập. Không Drive/Gmail.
+- [Prestate](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7138369174) và [Poststate](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7138437380): P2/P3/P4 TARGET/BACKUP và P5_RECOVERY, 7/7 Owner-only, mỗi bảng 151x8 frozen header, 8456/8456 ô TEXT @ raw/effective/display khớp, không formula/event/drift, modifiedTime không đổi.
+- 6 hàm: N12_ExecuteReviewedProof và N12_ReconcileReviewedProof -> N12_EDITOR_HARD_OFF; N12_FinalInitial, N12_FinalReplay, N12_FinalReconcile -> N12_FINAL_HARD_OFF; N12_FinalRestoreP5 -> P5_HARD_OFF. [Owner runtime acceptance](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7138481683). Không chạy lại trong luồng đóng hiện tại; reviewer độc lập có thể kiểm chứng lại riêng nếu được cấp quyền read-only/HARD OFF rõ ràng. Các deny path khác chưa live-verified.
+### N13: dữ liệu/QA đã có, admission chưa đóng
+- N13.1–N13.2: kế thừa hợp đồng dữ liệu, JSON/ID/semantic mapping, 40 ID/27 C4 refs/24 ứng viên, 38 review-only, 7 routing HOLD + 4 estimation HOLD; không đưa HOLD vào bài học. Dữ liệu biến thể 10 câu chọn từ 38: 5 B001, 5 B002, 5 LV1 + 5 LV2; AI review toán học 10/10, không phải ký sư phạm. NUMBER_SENSE chỉ index-only, không tự gắn skillId/renderer.
+- Owner B1 8/8 trực quan/âm thanh theo báo cáo; thiết bị/browser/time/build provenance thiếu. 13/13 VM + HTTP 10/10 cuối, sửa hướng dẫn ô giữa NEIGHBOR_TABLE: “Điền số thích hợp vào ô trống.” DTO/answer/ID/grade core giữ nguyên. [Evidence 7137456831](https://github.com/Nguyennth19/new-lop-2/issues/15#issuecomment-7137456831).
+- Hai PDF SGK/VBT đã chuyển anyone:writer sang reader + Owner, hash nguồn đã kiểm tra 2/2 trong nhật ký. Không tự cấp quyền mới. B002 N13B1_SYNTH_3 và _4 dùng bước 2 so với SGK bước 1: cần Owner/QA sư phạm duyệt là biến thể luyện tập, không source-exact. LV3 DENY.
+- N13PilotGrade.gs dùng core và QA grader tái sử dụng; config null, VM-only, không trả rubric qua client, chưa có trusted GAS authority. Đọc [PILOT_FINAL.md](https://github.com/Nguyennth19/new-lop-2/blob/61849fc47f31d94370b6d6c62ed99d71c627a7bd/qa/n13-semantic-coverage/PILOT_FINAL.md), pilot-lessons.review.json, b1-admission.review.json, source-visual-closure.review.json. Không dùng oracle QA làm public payload.
+### Full App TEST: chưa live
+Modular branch riêng, giữ frontend renderer/asset/reader; synthetic B20 9 câu (3/LV), Sheet 5 tabs, dashboard mock, reward/parent endpoints deny, không dữ liệu học sinh. Read-only Advanced Sheets API v4 và exact ID/hash pin; kiemTraFullAppTest là probe dành Owner. B001/B002 16 review items trong Full App cũ không đồng nhất 10 câu N13 final; phải map chính thức, không trộn. Không dùng preview monolithic hoặc root fallback. C2 opt-in OFF. Actual /dev, thiết bị, audio, B001/B002 trusted grade chưa nghiệm thu.
 
-Ảnh gốc lấy từ [thư mục Drive của dự án](https://drive.google.com/drive/folders/12R_DKbSSO6XPTv2gYFztVuSOHmHqwX4m). Đã đưa bản sao PNG lên `hinh-anh/`:
+## 4. Việc đang làm — P2 FINAL GRANT BINDING (NO-GO thực thi)
+[Grant draft P2](https://github.com/Nguyennth19/new-lop-2/blob/f4668e7774b5bbebf907fc9fbb059c01da19a5e8/qa/n12-execution-package/grant-drafts/P2.review.json) và [case-intent](https://github.com/Nguyennth19/new-lop-2/blob/f4668e7774b5bbebf907fc9fbb059c01da19a5e8/qa/n12-execution-package/closure/case-intent.review.json) là UNSIGNED/DRAFT_NOT_A_GRANT, vẫn pin a20f22fbc246f29eb58d0fac27b86dea27fb5f79 / 7 tệp; chưa hợp lệ cho staged-final 8 tệp. [FINAL_EXECUTION.md](https://github.com/Nguyennth19/new-lop-2/blob/f4668e7774b5bbebf907fc9fbb059c01da19a5e8/qa/n12-execution-package/FINAL_EXECUTION.md) là mô tả module cuối; lịch sử cũ không được dùng để bỏ qua gate.
+1. Xác minh ADR/RTM, thẩm quyền QA/Owner và các điều kiện DB/alternate writer. ScriptLock chỉ hợp tác trong cùng writer, không chứng minh cross-writer CAS; hash envelope do Owner quản trị không phải chữ ký độc lập. Không tự phê duyệt hoặc tự hạ gate.
+2. Chốt synthetic payload thật dùng APPEND_TEST_METADATA, lessonId LAB_MATH_N12_P2; candidateSha256/sourceReceiptSha256/rowsDigest từ dữ liệu đã pin; requestId/idempotencyKey và 2 executionId khác nhau. Scope khóa exact project/target/backup private signoff, intentDigest, baselineDigest, grantId, epoch, issuedAt/expiresAt <=900s, scope SHA256. Baseline P2 zero data rows, d39b1f632d93644ffa68b392fb3eb498af1fee2f6172b21bb2978b049f2b08b1. Không dùng placeholder/mock digest.
+3. Review delta source cần thiết cho N12_FINAL_REVIEWED_CASE_ và phương thức provision grant/READY được kiểm soát. Hiện không có initializer đã review; không tự thêm/chỉnh Properties, không bật N12_PROVIDER_SETTINGS_ hoặc N12_EDITOR_REVIEWED_CASE_, không thay đổi N12_FINAL_P5_. Lưu rollback/source diff; chạy QA delta đúng phạm vi, xác minh live parity mới. Không mở chức năng ngoài phạm vi.
+4. Chỉ sau các gate trên và quyết định riêng của Owner + QA theo chính sách mới được cấp P2 grant. READY/grant phải được provision đúng contract và readback, không tạo bằng cách sửa trực tiếp tùy tiện. P1 không cấp quyền này. Chỉ P2_TARGET Tab15 append tối đa 1; P2_BACKUP read-only; không Tab16, không P3/P4/P5.
+5. Khi được cấp quyền: chụp prestate mới, INITIAL -> RESERVED -> VERIFIED (2 mutations sau READY), receipt COMMITTED_VERIFIED/writes:1/release:false; REPLAY cùng logical intent, executionId mới, trước revoke -> COMMITTED_VERIFIED/writes:0, giữ batch gốc, không append hoặc đổi VERIFIED. Thu execution logs/timestamps, ledger receipt và grid digest; revoke và kiểm poststate, không xóa attempt/journal.
+6. STOP nếu mismatch, expiry, lock, authority, drift, mất ack, COMMIT_UNKNOWN: giữ mọi bằng chứng; không retry mù, không reset READY, không xóa event; revoke theo quy trình, chỉ read-only reconciliation được review. Nếu P2 không đủ điều kiện, trạng thái BLOCKED. Người nhận không được tự đánh PASS để rút ngắn.
 
-| Môn | Ảnh GitHub | Biến JS |
-|---|---|---|
-| Toán | `hinh-anh/Toan-2.png` | `ANH_TOAN` |
-| Tiếng Việt | `hinh-anh/Tieng-Viet-2.png` | `ANH_TIENG_VIET` |
-| Tiếng Anh | `hinh-anh/Tieng-Anh-2.png` | `ANH_TIENG_ANH` |
+## 5. Việc sẽ làm — P3/P4/P5 và đóng N12
+Mỗi case phải cấp grant riêng, scope/epoch/digests riêng, prestate/poststate và receipt riêng; không reuse grant P2. Chỉ thực hiện theo thứ tự khi gate đạt.
+- P3: target/backup P3, append tối đa 1. Fault injection sau append + flush (mô phỏng mất ack, không phải outage thật); COMMIT_UNKNOWN, durable RESERVED; revoke rồi read-only RECONCILE với executionId mới. Chỉ xác minh batch gốc/backup prefix/readback, không replay, không ghi/promote ledger.
+- P4: target/backup P4, reserve rồi chặn append; 0 sự kiện, RESERVED; revoke, reconcile read-only, absent event vẫn COMMIT_UNKNOWN; không retry/reset.
+- P5: chỉ P5_RECOVERY độc lập; offline immutable snapshot 151x8, đúng một drift A1 = N12_P5_SYNTHETIC_DRIFT (tạo drift cần quyền riêng). Restore A1 về event_id bằng grant recovery riêng, verify toàn grid raw/display/TEXT/formula, exact digests, 1 cell write và 0 journal append; không chạm original hoặc các backup. Mất ack giữ RESERVED, không retry. Không coi mock P5 22/22 là proof rollback thật.
+N12 CLOSED chỉ khi đủ bằng chứng P1 scoped, P2–P5 theo grant riêng, receipt/revocation/rollback và Owner/QA quyết định theo ADR/RTM; bảo lưu các DB ngoài phạm vi.
 
-Tệp `AnhMonToan.html`, `AnhMonTiengViet.html` và `AnhMonTiengAnh.html` khai báo URL `raw.githubusercontent.com`. Ảnh được tải qua Internet từ repository công khai; không yêu cầu người xem đăng nhập Drive.
+## 6. Luồng song song — N13.2–N13.4
+- N13.2: nghiệm thu 10 câu B001/B002 là biến thể LV1/LV2, kiểm nguồn, skill/renderer admission, hai biến thể bước 2, phân loại độ khó không tuyên bố empirical. Owner/QA ký riêng; 7 routing + 4 estimation HOLD, LV3 DENY. Không tự cấp source-exact.
+- N13.3: mở dự án Full App GAS TEST modular mới, riêng với N12 và legacy preview; kiểm 5 root .gs CauHinh, FullAppTestMayChu, KhoBaiHoc, MayChu, P13_C2_CauHinhTEST cùng manifest/HTML module đúng OWNER_SETUP. Không sync root từ nhánh khác, không nhập qa/ HTML; chỉ scope spreadsheets.readonly, Advanced Sheets API v4, đúng ID pin. Owner chạy kiemTraFullAppTest, kỳ vọng 5 tabs/9 câu/baseline MATCH/writes DENY; chỉ /dev Owner-only sau quyền TEST riêng. Không /exec, không public, không triggers, không C2 tự bật. OAuth write/Drive/Gmail -> STOP.
+- Khi pedagogy/skill/renderer/trusted grading và quyền tích hợp đạt: review delta hợp đồng nối đúng 10 câu JSON/DTO B001/B002, server-side rubric, giữ renderer/assets/TTS đã nghiệm thu; không dùng client legacy answer key làm trusted grade. Kiểm browser/device thực, hiển thị, audio, tương tác, chấm đúng/sai, input bất hợp lệ, không rò rubric, không ghi dữ liệu học sinh, rollback. Ghi device/OS/browser/build SHA/GMT+7 và PASS/FAIL/NOT_TESTABLE. Đừng suy diễn 121 VM checks là live.
+- N13.4: đối chiếu từng gate và receipt, reviewer độc lập và Owner nghiệm thu; giữ HOLD/DENY; nếu chưa đủ, N13 OPEN. Rollback theo delta trên nhánh TEST hoặc bỏ /dev riêng, không thay đổi be-hoc/MAIN.
 
-## Sơ đồ tệp tại thư mục gốc
+## 7. N14 ENTRY — quyết định, không mặc định GO
+DB-01: W1 sequencing/closure; sequence unblocked trong phạm vi đã duyệt không phải final DB acceptance. DB-02: schema/generator đa family D2, D5/D8, D9 exact-count, D10 và assetId/countUnit/symbolValue. DB-03: idempotency, append-only, concurrency, journal/receipt. DB-04: stale snapshot/TOCTOU, live re-read/CAS, external writer conflict, rollback. DB-05: signed approval/trust anchor, AI_CANDIDATE_ONLY, fake APPROVED/invalid signature. Tất cả final acceptance OPEN; không tự đổi nghĩa hoặc trạng thái RTM.
+Kiểm N12/N13 closure, ADR/RTM, QA độc lập, rollback, DB evidence, data/privacy và authority. Ghi GO/NO-GO theo phạm vi và điều kiện còn mở, xin Owner quyết định. N14 entry không đồng nghĩa Internal Pilot hoặc Release. Hiện NO-GO. MAIN không phát hành.
 
-| Loại | Tệp |
-|---|---|
-| Máy chủ GAS | `MayChu.gs`, `CauHinh.gs`, `DocDuLieuSheet.gs` |
-| Trang HTML chính | `GiaoDien.html` |
-| CSS | `01_CSS_NenTang.html`, `02_CSS_TrangChu.html`, `03_CSS_ThanhTich.html`, `04_CSS_LoTrinh.html` |
-| Material SVG | `07_BieuTuongMUI.html` |
-| Ảnh môn | `AnhMonToan.html`, `AnhMonTiengViet.html`, `AnhMonTiengAnh.html` |
-| Điều hướng / dữ liệu | `10_DanhSachMonHoc.html`, `11_TrangChuDieuHuong.html`, `12_DuLieuLoTrinh.html` |
-| Lộ trình / bài tập / thành tích | `13_HienThiLoTrinh.html`, `14_BaiTapTuongTac.html`, `15_ThanhTichHoatDong.html` |
-| Apps Script manifest | `appsscript.json` |
+## 8. Quy trình kiểm thử độc lập cho bên thứ 2–5
+Owner gửi đúng revision R1 + checkpoint + quyền đọc cần thiết. Mỗi reviewer lập kết luận riêng, không sao chép chữ ký hoặc đồng thuận từ reviewer trước. Có thể phân vai: bên 2 source/CI provenance; bên 3 security/provider/ledger; bên 4 data/sư phạm/renderer/device; bên 5 audit đối soát chéo và N14. Đây là phân vai đề xuất, không phải bổ nhiệm hay cấp quyền.
+1. Đọc README, receipt gốc và Master QA Index; verify HEAD, CI run conclusion, commit, source lock; không tin summary khi source khác. Ghi thiếu quyền là NOT_TESTABLE.
+2. Ưu tiên kiểm bằng chứng đã PASS, không lặp bộ QA một cách máy móc. Independent re-test riêng nếu Owner phê duyệt môi trường/phạm vi; dùng synthetic disposable, không overwrite kết quả chuẩn. Đối chiếu negative cases chưa live-verified; đề xuất test cụ thể, không chạy writer khi chưa grant.
+3. Tách loại bằng chứng: SOURCE_VERIFIED, CI_MOCK_PASS, VM_PASS, HTTP_BROWSER_PASS, OWNER_ATTESTED, LIVE_RECEIPT_VERIFIED, INDEPENDENT_QA_SIGNED, OPEN/BLOCKED/NOT_TESTABLE. Không nâng cấp nhãn khi thiếu bằng chứng. AI desk review không phải independent human signature.
+4. Kết luận theo từng gate; finding phải có severity, bước tái hiện an toàn, expected/actual, nguồn, ảnh/log đã che bí mật, ảnh hưởng, đề xuất fix tối thiểu và điều kiện retest. Không bắt buộc ảnh cho attestation đã được Owner chấp nhận; không biến attestation thành log độc lập.
+5. Nếu Cloud Browser không có, thao tác Owner trực tiếp GAS Editor theo checklist, reviewer chỉ quan sát/đối chiếu khi được phép. Không yêu cầu Owner mở public editor, không xin credential. Không sử dụng production làm môi trường kiểm thử.
+6. Cập nhật Issue #15 và Master QA Index theo từng mốc thực tế; lưu checkpoint/CI/receipt/time/actor/scope/decision/next gate. Nếu lỗi/treo, bắt đầu từ receipt gần nhất, reconcile kết quả chưa chắc chắn trước khi lặp. Không ghi đè nhật ký cũ; xung đột thì STOP. README chỉ cập nhật tài liệu handover và dẫn tới receipt mới, không sửa baseline kỹ thuật.
 
-## Hai cách đồng bộ
+## 9. Mẫu báo cáo trả về cho từng reviewer
+Reviewer / tổ chức: [tự điền] | vai trò: [tự điền] | thời điểm GMT+7: [tự điền] | build/commit: [exact SHA] | quyền được cấp: [read-only/khác, receipt].
+Gate/test ID | loại bằng chứng | expected | actual | PASS/FAIL/OPEN/NOT_TESTABLE | link log/hash | hạn chế.
+Finding ID | severity | ảnh hưởng | nguồn | cách tái hiện không ghi | đề xuất khắc phục | tiêu chí retest.
+Kết luận riêng N12 / N13 / N14; điều kiện còn chặn; việc không thực hiện; chữ ký hoặc xác nhận thực của reviewer, không tự điền tên khác. Owner quyết định riêng, không lấy đa số reviewer làm grant.
+Mỗi reviewer gửi báo cáo riêng cho Owner; không chứa raw property values, tokens, dữ liệu học sinh, private rubric. Owner lưu receipt tại nguồn chuẩn.
 
-**Cách 1 – Tích hợp GitHub trong Apps Script (như ảnh bạn gửi):** Chọn nhánh `main`, đồng bộ lại repository sau khi merge. Đảm bảo `GiaoDien.html` / `MayChu.gs` nằm tại root. Không để đồng thời bản cũ có tiền tố `apps-script/` trong Apps Script.
-
-**Cách 2 – clasp:** Tạo dự án Apps Script gắn Sheet, copy `.clasp.example.json` → `.clasp.json`, thay Script ID. Từ **thư mục root của repository** chạy:
-```bash
-npm install -g @google/clasp
-clasp login
-clasp show-file-status
-clasp push
-```
-Khi sửa GitHub thì dùng `git pull` rồi `clasp push`, không dùng `clasp pull` để gửi mã lên Apps Script. Sao lưu các tệp Apps Script cũ trước khi push.
-
-Sau khi đồng bộ: chọn chạy `doGet` để kiểm tra không còn lỗi thiếu template; tiếp theo triển khai ứng dụng web trong Apps Script. `doGet` kiểm tra việc tạo trang, **không phải** phép thử đầy đủ trình duyệt.
-
-## Giới hạn bản demo
-
-Giao diện vẫn dùng dữ liệu mẫu V2.1 và lưu tiến độ trong localStorage, chưa đồng bộ theo tài khoản. Bộ API đọc Sheets chỉ là hàm hỗ trợ, chưa dùng trực tiếp để sinh bài học. Không triển khai công khai với học sinh thật trước khi QA phân quyền, lưu dữ liệu và đối chiếu kiến thức từ SGK.
-
-Xem thêm `tai-lieu/HUONG_DAN_TRIEN_KHAI.md` và `tai-lieu/KIEM_THU.md`.
+## 10. Prompt bàn giao dùng ngay
+“Tiếp nhận LOP2 N12–N13 FINAL CLOSURE — N14 ENTRY GATE theo README R1 và Master QA Index. Đọc nguồn trực tiếp, kiểm HEAD/CI/receipt mới nhất. Độc lập đánh giá phần được giao, phân biệt mock/VM/HTTP, Owner attestation, live receipt và independent QA. P1 scoped accepted; P2 chưa grant; không thực thi writer, không sửa GAS/Sheet/Properties/ACL, không deploy hoặc MAIN, không tự ký. Tiếp tục P2 FINAL GRANT BINDING song song N13 admission nếu được giao quyền, báo từng blocker và đề xuất hành động tối thiểu. Chỉ thực thi sau grant riêng đúng gate. Ghi nhật ký thật, trả báo cáo theo mẫu mục 9, không làm lại QA đã PASS trừ independent retest được phép. Nếu thiếu công cụ/quyền, ghi NOT_TESTABLE. Mục tiêu N12 CLOSED, N13 CLOSED, N14 ENTRY DECISION, không mặc định GO.”
