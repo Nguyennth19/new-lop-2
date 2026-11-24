@@ -1,11 +1,12 @@
 name: N12 execution package source-only delta
 on:
   push:
-    branches: [prep/n12-execution-package-20261124]
+    branches: [prep/n12-execution-package-20261124, review/n12-p2-final-binding-20261125]
 permissions:
   contents: read
 jobs:
   source-review:
+    if: github.ref == 'refs/heads/prep/n12-execution-package-20261124'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -15,3 +16,12 @@ jobs:
           persist-credentials: false
       - run: node qa/n12-execution-package/source-lock.test.cjs
       - run: node --test qa/n12-execution-package/package.mock.test.cjs qa/n12-execution-package/closure/closure.test.cjs
+  p2-review-delta:
+    if: github.ref == 'refs/heads/review/n12-p2-final-binding-20261125'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: node --test qa/n12-execution-package/closure/p2-authority.test.cjs qa/n12-execution-package/closure/p2-no-write.test.cjs qa/n12-execution-package/closure/p2-provision.test.cjs
