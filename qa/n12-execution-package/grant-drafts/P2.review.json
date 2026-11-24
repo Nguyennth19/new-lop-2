@@ -1,7 +1,7 @@
 {
   "contract": "N12_UNSIGNED_APPROVAL_DOSSIER_V1",
   "proofCase": "P2",
-  "status": "UNSIGNED_PAYLOAD_CANDIDATE_REVIEW_ONLY",
+  "status": "UNSIGNED_PAYLOAD_TECHNICALLY_VALIDATED_REVIEW_ONLY",
   "sourceCommit": "f4668e7774b5bbebf907fc9fbb059c01da19a5e8",
   "sourceCI": 45422732859,
   "sourceHashes": {
@@ -123,14 +123,52 @@
       "tab": "15_NhatKy_HanhDong"
     },
     "rowsDigest": "1aae21ea8c53a932a59b1de1189ecc8a5b40afb511b417c1a786598abedda15c",
-    "limitations": "Derived single D2 fixture, reidentified, not previously tested as this pack. Proposed provenance is not an authority signature. Row plan digest is NOT the final 8-column event or journal digest. N7 validates digest shape and binds intent, not provenance content; independent review must approve canonicalization and payload meaning before intent binding."
+    "limitations": "Derived single D2 fixture, reidentified, not previously tested as this pack. Proposed provenance is not an authority signature. Row plan digest is NOT the final 8-column event or journal digest. N7 validates digest shape and binds intent, not provenance content; independent review must approve canonicalization and payload meaning before intent binding.",
+    "validation": {
+      "status": "EXACT_N6_VALIDATOR_PASS",
+      "validatorBlob": "59efa948439a289ff80eaf8c04efb8bd986632b9",
+      "result": {
+        "ok": true,
+        "stage": "PROPOSE_ONLY",
+        "release": false,
+        "writes": 0,
+        "families": [
+          "D2"
+        ],
+        "count": 1
+      },
+      "canonicalSha256Match": 3,
+      "canonicalSha256Total": 3,
+      "independentAuthority": "OPEN"
+    }
   },
   "bindingBlockers": [
     "ADR_N11_E_P1_ACTOR_TARGET_SCOPE_EXPIRY_REVOKE_LIVE_EVIDENCE_OR_FORMAL_SCOPE_DECISION",
     "INDEPENDENT_REVIEW_AND_AUTHORITY",
-    "EXACT_PAYLOAD_SCHEMA_AND_DIGEST_REVIEW",
+    "INDEPENDENT_PAYLOAD_SEMANTICS_AND_DIGEST_APPROVAL_TECH_VALIDATED",
     "FINAL_INTENT_WITH_PRIVATE_TARGET_AND_UNIQUE_GRANT_EPOCH",
     "REVIEWED_SOURCE_DELTA_AND_LIVE_PARITY",
     "CONTROLLED_GRANT_READY_PROVISIONING_AND_REVOCATION"
-  ]
+  ],
+  "deltaTests": {
+    "ref": "a78d0adf4ac952e2e893e8cf73cbcb21ba10105a",
+    "execution": "V8 isolated harness with actual retrieved source and Node API shims; not native Node CI or live GAS",
+    "candidateAndDigest": 1,
+    "dispatcherDenyNoWrite": 10,
+    "mockAuthorityPlan": 7,
+    "actualProviderCalls": 0,
+    "actualPropertyWrites": 0,
+    "actualGrantIssued": false,
+    "sourceRuntimeUnchanged": true,
+    "testPaths": [
+      "closure/p2-no-write.test.cjs",
+      "closure/p2-authority.test.cjs"
+    ],
+    "limitations": [
+      "Synthetic ID pin substitution for negative dispatcher tests; no live actor/scope proof",
+      "Mock-only grant plan, no real authority verifier or GAS provisioner",
+      "READY and grant last ordering tested with in-memory fault injection; no remote CAS",
+      "Row plan digest and provenance meaning still require independent approval; do not treat hash as signature"
+    ]
+  }
 }
