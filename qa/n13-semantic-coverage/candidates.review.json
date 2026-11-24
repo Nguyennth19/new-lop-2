@@ -1,0 +1,236 @@
+[
+  {
+    "variantId": "N13B_SYNTH_1",
+    "lessonId": "MATH_B001",
+    "levelCandidate": "LV1",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "SGK_B001_L1_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererIdCandidate": "N13B_PLACE_VALUE_REVIEW_V1",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "gradingRoute": "TRUSTED_SERVER_NOT_CONNECTED",
+    "preview": {
+      "kind": "PLACE_VALUE",
+      "model": {
+        "rows": [
+          {
+            "number": 47,
+            "tens": null,
+            "ones": null
+          },
+          {
+            "number": null,
+            "tens": 6,
+            "ones": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "variantId": "N13B_SYNTH_2",
+    "lessonId": "MATH_B001",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B001_T02_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererIdCandidate": "N13B_PLACE_VALUE_REVIEW_V1",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "gradingRoute": "TRUSTED_SERVER_NOT_CONNECTED",
+    "preview": {
+      "kind": "PLACE_VALUE",
+      "model": {
+        "rows": [
+          {
+            "number": 82,
+            "tens": null,
+            "ones": 2
+          },
+          {
+            "number": 35,
+            "tens": 3,
+            "ones": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "variantId": "N13B_SYNTH_3",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV1",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "SGK_B002_H1_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererIdCandidate": "N13B_NUMBER_LINE_REVIEW_V1",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "gradingRoute": "TRUSTED_SERVER_NOT_CONNECTED",
+    "preview": {
+      "kind": "NUMBER_LINE",
+      "model": {
+        "start": 0,
+        "step": 1,
+        "ticks": [
+          0,
+          null,
+          2,
+          null,
+          4
+        ]
+      }
+    }
+  },
+  {
+    "variantId": "N13B_SYNTH_4",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV1",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "SGK_B002_H1_E02",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererIdCandidate": "N13B_NUMBER_LINE_POSITION_REVIEW_V1",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "gradingRoute": "TRUSTED_SERVER_NOT_CONNECTED",
+    "preview": {
+      "kind": "NUMBER_LINE_POSITION",
+      "model": {
+        "start": 0,
+        "step": 2,
+        "ticks": [
+          0,
+          2,
+          4,
+          6,
+          8
+        ],
+        "target": 6
+      }
+    }
+  },
+  {
+    "variantId": "N13B_SYNTH_5",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B002_T01_E01",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererIdCandidate": "N13B_NUMBER_LINE_REVIEW_V1",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "gradingRoute": "TRUSTED_SERVER_NOT_CONNECTED",
+    "preview": {
+      "kind": "NUMBER_LINE",
+      "model": {
+        "start": 10,
+        "step": 1,
+        "ticks": [
+          10,
+          null,
+          12,
+          null,
+          14
+        ]
+      }
+    }
+  },
+  {
+    "variantId": "N13B_SYNTH_6",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B002_T01_E03",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererIdCandidate": "N13B_INEQUALITY_INPUT_REVIEW_V1",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "gradingRoute": "TRUSTED_SERVER_NOT_CONNECTED",
+    "preview": {
+      "kind": "INEQUALITY_INPUT",
+      "model": {
+        "lower": 21,
+        "upper": 25
+      }
+    }
+  },
+  {
+    "variantId": "N13B_SYNTH_7",
+    "lessonId": "MATH_B002",
+    "levelCandidate": "LV2",
+    "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+    "sourceExerciseId": null,
+    "conceptAnchorReviewOnly": "VBT_B002_T02_E04",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "rendererIdCandidate": "N13B_NEIGHBOR_TABLE_REVIEW_V1",
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "SEMANTIC_STRUCTURED_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "gradingRoute": "TRUSTED_SERVER_NOT_CONNECTED",
+    "preview": {
+      "kind": "NEIGHBOR_TABLE",
+      "model": {
+        "rows": [
+          {
+            "previous": null,
+            "given": 1,
+            "next": null
+          },
+          {
+            "previous": 98,
+            "given": null,
+            "next": 100
+          }
+        ]
+      }
+    }
+  }
+]
