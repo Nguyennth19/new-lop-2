@@ -1,0 +1,59 @@
+name: N13.3 Full App Preview no deploy
+on:
+  push:
+    branches: [integration/n13-3-full-app-preview-20261124]
+    paths: ['qa/n13-3-full-app-preview/**','.github/workflows/n13-3-full-app-preview.yml']
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing contracts (no deploy)
+        shell: bash
+        run: |
+          set +e
+          failed=0
+          for f in qa/be-hoc-ui/test_p1_4_ux_regression.cjs qa/be-hoc-lop-a/layer-a.test.cjs qa/be-hoc-tts-v2/tts-v2.test.cjs qa/be-hoc-visual/visual-contract.test.cjs qa/be-hoc-visual/binary-integrity.test.cjs qa/be-hoc-orchestrator/*contract.test.cjs qa/be-hoc-orchestrator/fluent-46.test.cjs qa/be-hoc-orchestrator/structured-*.test.cjs qa/be-hoc-orchestrator/drive-png-master-pins.test.cjs qa/p1-3/test_p1_3_c_unified_resolver.cjs qa/p1-3/test_p1_3_c1_fluent_hardening.cjs qa/p1-3/test_p1_3_c2_gas_gate.cjs qa/p1-3/test_p1_3_c3_rollback_drill.cjs qa/be-hoc-d2-v12/d2-contract.test.cjs qa/be-hoc-d2-gas/trusted-gas.test.cjs qa/be-hoc-d2-manual/manual-contract.test.cjs qa/be-hoc-d2-auto/d2-auto.test.cjs; do
+            echo "SUITE_START $f"
+            if node "$f"; then echo "SUITE_PASS $f"; else echo "SUITE_FAIL $f"; failed=1; fi
+          done
+          exit "$failed"
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build preview
+        run: node qa/n13-3-full-app-preview/build-preview.cjs
+      - name: Install Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Full app + existing browser suites
+        shell: bash
+        run: |
+          set +e
+          failed=0
+          for f in qa/n13-3-full-app-preview/full-app-browser.cjs qa/be-hoc-orchestrator/orchestrator-browser.test.cjs qa/be-hoc-visual/visual-browser.test.cjs qa/be-hoc-tts-v2/tts-browser.test.cjs qa/be-hoc-d2-gas/browser-lesson.test.cjs qa/be-hoc-d2-v12/d2-browser.test.cjs qa/be-hoc-d2-manual/manual-browser.test.cjs qa/be-hoc-d2-auto/d2-auto.browser.test.cjs; do
+            echo "SUITE_START $f"
+            if node "$f"; then echo "SUITE_PASS $f"; else echo "SUITE_FAIL $f"; failed=1; fi
+          done
+          exit "$failed"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: N13-3-FullApp-preview
+          path: qa/n13-3-full-app-preview/output/
