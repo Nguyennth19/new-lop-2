@@ -77,7 +77,7 @@ function thHienThi(d){
  if(typeof capNhatLichHoc==='function')capNhatLichHoc(d);
  if(typeof capNhatChuoiNgayHoc==='function')capNhatChuoiNgayHoc(d);
  thHuyHieu(d);thChart(d);thThemBieuDo(d);thHoatDong();
- thSet('achvStatus','Dữ liệu thực từ Google Sheet · Sao có thể dùng: '+d.balance+' ★ · Không bao gồm kết quả demo và dữ liệu nháp cũ.');
+ thSet('achvStatus','Dữ liệu giả lập FULL APP TEST · Sao có thể dùng: '+d.balance+' ★ · Không bao gồm kết quả demo và dữ liệu nháp cũ.');
 }
 function taiThanhTich(force=false){
  const frame=document.getElementById('achievements');if(!frame)return;
@@ -85,7 +85,7 @@ function taiThanhTich(force=false){
  if(thanhTichDangTai)return;
  if(!force&&thanhTichDaTai&&thanhTichDuLieu){thHienThi(thanhTichDuLieu);return;}
  if(!window.google?.script?.run){thSet('achvStatus','Cần mở Web App Google Apps Script để đồng bộ thành tích.');return;}
- thanhTichDangTai=true;thSet('achvStatus','Đang tải số liệu thực...');
+ thanhTichDangTai=true;thSet('achvStatus','Đang tải số liệu giả lập...');
  google.script.run.withSuccessHandler(data=>{thanhTichDangTai=false;thanhTichDaTai=true;thHienThi(data)})
   .withFailureHandler(e=>{thanhTichDangTai=false;thSet('achvStatus','Không đọc được thành tích: '+(e?.message||'Lỗi kết nối')+'. Vui lòng thử mở lại trang.');})
   .layTongQuanThanhTich();
