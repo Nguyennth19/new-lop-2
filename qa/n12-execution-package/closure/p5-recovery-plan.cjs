@@ -1,0 +1,7 @@
+'use strict';
+// Pure offline plan, no Apps Script adapter. Does not authorize a perturbation or restore.
+const crypto=require('node:crypto'),hash=x=>crypto.createHash('sha256').update(JSON.stringify(x),'utf8').digest('hex');
+const headers=['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'];
+const grid=x=>Array.isArray(x)&&x.length===151&&x.every(r=>Array.isArray(r)&&r.length===8&&r.every(c=>typeof c==='string'));
+function plan(input){const deny=reason=>({ok:false,reason,writes:0,restoreAuthorized:false});if(!input||input.role!=='P5_RECOVERY'||!grid(input.baseline)||!grid(input.observed))return deny('SHAPE_OR_ROLE');const b=input.baseline,o=input.observed;if(JSON.stringify(b[0])!==JSON.stringify(headers)||b.slice(1).some(r=>r.some(c=>c!==''))||o.slice(1).some(r=>r.some(c=>c!=='')))return deny('NOT_EMPTY_JOURNAL_BASELINE');if(input.baselineSha256!==hash(b)||input.observedSha256!==hash(o))return deny('DIGEST_DRIFT');const diff=[];for(let i=0;i<151;i++)for(let j=0;j<8;j++)if(b[i][j]!==o[i][j])diff.push([i,j]);if(diff.length!==1||diff[0][0]!==0||diff[0][1]!==0||o[0][0]!=='N12_P5_SYNTHETIC_DRIFT')return deny('UNAPPROVED_DIFF');const after=o.map(r=>r.slice());after[0][0]=b[0][0];if(hash(after)!==input.baselineSha256)return deny('RECONSTRUCTION_MISMATCH');return {ok:true,scope:'OFFLINE_PLAN_ONLY',writes:0,restoreAuthorized:false,cell:'A1',maxProposedCellWrites:1,expectedBeforeSha256:hash(o),expectedAfterSha256:hash(after),journalEvents:0};}
+module.exports={plan,hash,headers};
