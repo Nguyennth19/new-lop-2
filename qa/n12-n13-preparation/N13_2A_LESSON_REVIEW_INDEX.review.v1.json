@@ -1,0 +1,967 @@
+{
+  "contract": "N13_2A_LESSON_REVIEW_INDEX_V1",
+  "stage": "ORIGINAL_VARIANTS_REVIEW_ONLY_NOT_RUNTIME_PUBLISH",
+  "base": "fe75a7dbc03a5c3984074f6045df3530705cd330",
+  "priorProfileRef": "qa/n12-n13-preparation/N13_2_LESSON_PILOT_PREPARATION.review.v1.json",
+  "sourcePins": [
+    {
+      "path": "du-lieu/bai-hoc/toan/v2/B001.layered.json",
+      "blobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69"
+    },
+    {
+      "path": "du-lieu/bai-hoc/toan/v2/B002.layered.json",
+      "blobSha": "47fbe73c780d996160daba94ef3e82b30b9f13ff"
+    },
+    {
+      "path": "qa/p1-2-b/P12B_PRIMARY_PDF_HASH_AND_PAGE_79.review.v1.json",
+      "blobSha": "17d41368654026a04380411c8c184901f6dded4d"
+    },
+    {
+      "path": "qa/p1-2-b/P12B_C4_27_CONTENT_HYDRATION_REFS.review.v1.json",
+      "blobSha": "a17df60a3a08d836742171c3aef2e437c67f1fc1"
+    },
+    {
+      "path": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "blobSha": "b1229f099ab678cba2e34ccf96a1db5371aeddf3"
+    }
+  ],
+  "sourceCrosswalkCount": 40,
+  "selectedSourceIds": [
+    "SGK_B001_K1_E02",
+    "SGK_B001_L1_E01",
+    "SGK_B001_L1_E02",
+    "VBT_B001_T02_E01",
+    "VBT_B001_T02_E02",
+    "VBT_B001_T03_E03",
+    "SGK_B002_H1_E01",
+    "SGK_B002_H1_E02",
+    "SGK_B002_H1_E03",
+    "VBT_B002_T01_E01",
+    "VBT_B002_T01_E03",
+    "VBT_B002_T02_E04"
+  ],
+  "originalPreviewReferences": [
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_PLACE_VALUE",
+      "variantId": "PV_B001_PLACE_VALUE_S1031",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_PLACE_VALUE",
+      "variantId": "PV_B001_PLACE_VALUE_S2047",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_PLACE_VALUE",
+      "variantId": "PV_B001_PLACE_VALUE_S3091",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_PLACE_VALUE",
+      "variantId": "PV_B001_PLACE_VALUE_S4057",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_EXPANDED_FORM",
+      "variantId": "PV_B001_EXPANDED_FORM_S1031",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_EXPANDED_FORM",
+      "variantId": "PV_B001_EXPANDED_FORM_S2047",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_EXPANDED_FORM",
+      "variantId": "PV_B001_EXPANDED_FORM_S3091",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B001",
+      "familyId": "B001_EXPANDED_FORM",
+      "variantId": "PV_B001_EXPANDED_FORM_S4057",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_PREDECESSOR",
+      "variantId": "PV_B002_PREDECESSOR_S1031",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_PREDECESSOR",
+      "variantId": "PV_B002_PREDECESSOR_S2047",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_PREDECESSOR",
+      "variantId": "PV_B002_PREDECESSOR_S3091",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_PREDECESSOR",
+      "variantId": "PV_B002_PREDECESSOR_S4057",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_SUCCESSOR",
+      "variantId": "PV_B002_SUCCESSOR_S1031",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_SUCCESSOR",
+      "variantId": "PV_B002_SUCCESSOR_S2047",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_SUCCESSOR",
+      "variantId": "PV_B002_SUCCESSOR_S3091",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "familyId": "B002_SUCCESSOR",
+      "variantId": "PV_B002_SUCCESSOR_S4057",
+      "difficultyCandidate": "LV1_CANDIDATE",
+      "previewRecordRef": "qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json",
+      "rendererCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "publicVariant": null,
+      "rendererGrant": "DENY",
+      "studentRelease": false
+    }
+  ],
+  "newOriginalReviewCandidates": [
+    {
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_MATCH_LV2_1",
+      "familyId": "B001_MATCH_PLACE_VALUE",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B001_T03_E03",
+      "rendererRouteCandidate": "D3",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "MATCH_PAIRS",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "PV_B001_MATCH_LV2_1",
+        "variantId": "PV_B001_MATCH_LV2_1",
+        "typeId": "D3",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Ghép mỗi cách viết với số tương ứng.",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "exerciseId": "PV_B001_MATCH_LV2_1",
+              "relationMode": "SINGLE_RELATION",
+              "leftItems": [
+                {
+                  "id": "l1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "3 chục và 4 đơn vị"
+                  }
+                },
+                {
+                  "id": "l2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "6 chục và 2 đơn vị"
+                  }
+                },
+                {
+                  "id": "l3",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "8 chục và 7 đơn vị"
+                  }
+                }
+              ],
+              "rightItems": [
+                {
+                  "id": "r1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "87"
+                  }
+                },
+                {
+                  "id": "r2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "34"
+                  }
+                },
+                {
+                  "id": "r3",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "62"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    },
+    {
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_MATCH_LV2_2",
+      "familyId": "B001_MATCH_PLACE_VALUE",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B001_T03_E03",
+      "rendererRouteCandidate": "D3",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "MATCH_PAIRS",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "PV_B001_MATCH_LV2_2",
+        "variantId": "PV_B001_MATCH_LV2_2",
+        "typeId": "D3",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Ghép mỗi cách viết với số tương ứng.",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "exerciseId": "PV_B001_MATCH_LV2_2",
+              "relationMode": "SINGLE_RELATION",
+              "leftItems": [
+                {
+                  "id": "l1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "1 chục và 9 đơn vị"
+                  }
+                },
+                {
+                  "id": "l2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "5 chục và 0 đơn vị"
+                  }
+                },
+                {
+                  "id": "l3",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "9 chục và 6 đơn vị"
+                  }
+                }
+              ],
+              "rightItems": [
+                {
+                  "id": "r1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "96"
+                  }
+                },
+                {
+                  "id": "r2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "19"
+                  }
+                },
+                {
+                  "id": "r3",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "50"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    },
+    {
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_ORDER_LV2_1",
+      "familyId": "B001_ORDER_NUMBERS",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B001_T02_E02",
+      "rendererRouteCandidate": "D6",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "ORDER_NUMBERS",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "PV_B001_ORDER_LV2_1",
+        "variantId": "PV_B001_ORDER_LV2_1",
+        "typeId": "D6",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Sắp xếp các số từ bé đến lớn.",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "exerciseId": "PV_B001_ORDER_LV2_1",
+              "mode": "ORDER",
+              "prompt": "Sắp xếp các số từ bé đến lớn.",
+              "items": [
+                {
+                  "id": "i1",
+                  "label": "72"
+                },
+                {
+                  "id": "i2",
+                  "label": "29"
+                },
+                {
+                  "id": "i3",
+                  "label": "90"
+                },
+                {
+                  "id": "i4",
+                  "label": "41"
+                }
+              ],
+              "slotCount": 4
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    },
+    {
+      "lessonId": "MATH_B001",
+      "variantId": "PV_B001_ORDER_LV2_2",
+      "familyId": "B001_ORDER_NUMBERS",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B001_T02_E02",
+      "rendererRouteCandidate": "D6",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "ORDER_NUMBERS",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B001",
+        "questionId": "PV_B001_ORDER_LV2_2",
+        "variantId": "PV_B001_ORDER_LV2_2",
+        "typeId": "D6",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Sắp xếp các số từ lớn đến bé.",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "exerciseId": "PV_B001_ORDER_LV2_2",
+              "mode": "ORDER",
+              "prompt": "Sắp xếp các số từ lớn đến bé.",
+              "items": [
+                {
+                  "id": "i1",
+                  "label": "38"
+                },
+                {
+                  "id": "i2",
+                  "label": "85"
+                },
+                {
+                  "id": "i3",
+                  "label": "50"
+                },
+                {
+                  "id": "i4",
+                  "label": "16"
+                }
+              ],
+              "slotCount": 4
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    },
+    {
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_NEIGHBOR_LV2_1",
+      "familyId": "B002_NEIGHBOR_STATEMENT",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B002_T01_E03",
+      "rendererRouteCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "PV_B002_NEIGHBOR_LV2_1",
+        "variantId": "PV_B002_NEIGHBOR_LV2_1",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền trước của 60 là 59. Đúng hay sai?",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "questionId": "PV_B002_NEIGHBOR_LV2_1",
+              "selectionMode": "SINGLE",
+              "prompt": {
+                "type": "TEXT",
+                "text": "Số liền trước của 60 là 59. Đúng hay sai?"
+              },
+              "options": [
+                {
+                  "id": "c1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "Sai"
+                  }
+                },
+                {
+                  "id": "c2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "Đúng"
+                  }
+                }
+              ],
+              "speechEnabled": false
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    },
+    {
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_NEIGHBOR_LV2_2",
+      "familyId": "B002_NEIGHBOR_STATEMENT",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B002_T01_E03",
+      "rendererRouteCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "PV_B002_NEIGHBOR_LV2_2",
+        "variantId": "PV_B002_NEIGHBOR_LV2_2",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Số liền sau của 79 là 81. Đúng hay sai?",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "questionId": "PV_B002_NEIGHBOR_LV2_2",
+              "selectionMode": "SINGLE",
+              "prompt": {
+                "type": "TEXT",
+                "text": "Số liền sau của 79 là 81. Đúng hay sai?"
+              },
+              "options": [
+                {
+                  "id": "c1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "Đúng"
+                  }
+                },
+                {
+                  "id": "c2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "Sai"
+                  }
+                }
+              ],
+              "speechEnabled": false
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    },
+    {
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_INTERVAL_LV2_1",
+      "familyId": "B002_INTERVAL",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B002_T01_E01",
+      "rendererRouteCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "PV_B002_INTERVAL_LV2_1",
+        "variantId": "PV_B002_INTERVAL_LV2_1",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Chọn tất cả các số lớn hơn 24 và bé hơn 29.",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "questionId": "PV_B002_INTERVAL_LV2_1",
+              "selectionMode": "MULTIPLE",
+              "prompt": {
+                "type": "TEXT",
+                "text": "Chọn tất cả các số lớn hơn 24 và bé hơn 29."
+              },
+              "options": [
+                {
+                  "id": "c1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "24"
+                  }
+                },
+                {
+                  "id": "c2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "27"
+                  }
+                },
+                {
+                  "id": "c3",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "30"
+                  }
+                },
+                {
+                  "id": "c4",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "25"
+                  }
+                },
+                {
+                  "id": "c5",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "29"
+                  }
+                },
+                {
+                  "id": "c6",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "28"
+                  }
+                }
+              ],
+              "speechEnabled": false
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    },
+    {
+      "lessonId": "MATH_B002",
+      "variantId": "PV_B002_INTERVAL_LV2_2",
+      "familyId": "B002_INTERVAL",
+      "difficultyCandidate": "LV2_CANDIDATE",
+      "sourceOrigin": "ORIGINAL_SYNTHETIC_NOT_SGK_VBT",
+      "sourceExerciseId": null,
+      "conceptAnchorReviewOnly": "VBT_B002_T01_E01",
+      "rendererRouteCandidate": "D4",
+      "curriculumSkillCandidate": "NUMBER_SENSE",
+      "routeSkillCandidate": "SELECT_CHOICE",
+      "visualIntent": {
+        "visualMode": "REPRESENTATIVE",
+        "renderStrategy": "NO_VISUAL"
+      },
+      "previewState": "DEV_REVIEW_ONLY_NOT_PUBLIC_VARIANT",
+      "rendererGrant": "DENY",
+      "publicVariant": null,
+      "studentRelease": false,
+      "gradingRoute": "TRUSTED_GAS_NOT_CONNECTED",
+      "previewEnvelope": {
+        "schemaVersion": "g76.public-envelope.v1",
+        "lessonId": "MATH_B002",
+        "questionId": "PV_B002_INTERVAL_LV2_2",
+        "variantId": "PV_B002_INTERVAL_LV2_2",
+        "typeId": "D4",
+        "mode": "PRACTICE",
+        "display": {
+          "prompt": "Chọn tất cả các số lớn hơn 0 và bé hơn 4.",
+          "publicParameters": {
+            "reviewOnly": true,
+            "rendererReviewInput": {
+              "questionId": "PV_B002_INTERVAL_LV2_2",
+              "selectionMode": "MULTIPLE",
+              "prompt": {
+                "type": "TEXT",
+                "text": "Chọn tất cả các số lớn hơn 0 và bé hơn 4."
+              },
+              "options": [
+                {
+                  "id": "c1",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "4"
+                  }
+                },
+                {
+                  "id": "c2",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "0"
+                  }
+                },
+                {
+                  "id": "c3",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "2"
+                  }
+                },
+                {
+                  "id": "c4",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "1"
+                  }
+                },
+                {
+                  "id": "c5",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "5"
+                  }
+                },
+                {
+                  "id": "c6",
+                  "content": {
+                    "type": "TEXT",
+                    "text": "3"
+                  }
+                }
+              ],
+              "speechEnabled": false
+            }
+          }
+        },
+        "visualIntent": {
+          "visualMode": "REPRESENTATIVE",
+          "renderStrategy": "NO_VISUAL"
+        },
+        "speech": {
+          "enabled": false,
+          "visiblePromptOnly": true
+        }
+      }
+    }
+  ],
+  "holds": [
+    {
+      "lessonId": "MATH_B001",
+      "originExerciseId": "SGK_B001_L1_E01",
+      "reason": "D1 existing renderer combines make-ten addition and length conversion; not a general tens/ones diagram. Keep all 8 C4 parts. Need semantic adapter decision, no route grant."
+    },
+    {
+      "lessonId": "MATH_B001",
+      "originExerciseId": "VBT_B001_T02_E01",
+      "reason": "D1 incompatible for general expanded form; preserve six C4 parts."
+    },
+    {
+      "lessonId": "MATH_B002",
+      "originExerciseId": "SGK_B002_H1_E01",
+      "reason": "Number line has no approved route. Keep 10 C4 parts, uniform ticks, direction, independently blank fields; no D8 substitute."
+    },
+    {
+      "lessonId": "MATH_B002",
+      "originExerciseId": "SGK_B002_H1_E02",
+      "reason": "D3 cannot preserve number-line coordinates by plain matching; hold composite."
+    },
+    {
+      "lessonId": "MATH_B002",
+      "originExerciseId": "VBT_B002_T01_E01",
+      "reason": "Interval subset choice preview is not a substitute for number-line part; retain both."
+    },
+    {
+      "lessonId": "MATH_B002",
+      "originExerciseId": "VBT_B002_T01_E03",
+      "reason": "D4 true/false preview does not cover numeric inequality part; retain both."
+    },
+    {
+      "lessonId": "MATH_B002",
+      "originExerciseId": "VBT_B002_T02_E04",
+      "reason": "Predecessor / given / successor table requires independent cells, no D1/D2 substitution."
+    }
+  ],
+  "estimationHoldIds": [
+    "SGK_B001_L2_E02",
+    "SGK_B001_L2_E01",
+    "VBT_B001_T03_E01",
+    "VBT_B001_T03_E02"
+  ],
+  "lessons": [
+    {
+      "lessonId": "MATH_B001",
+      "lv1OriginalPreviewRefs": 8,
+      "lv2NewOriginalCandidates": 4,
+      "lv3": "NO_APPROVED_REFERENCE",
+      "sourceExactApproved": false,
+      "skillApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "lv1OriginalPreviewRefs": 8,
+      "lv2NewOriginalCandidates": 4,
+      "lv3": "NO_APPROVED_REFERENCE",
+      "sourceExactApproved": false,
+      "skillApproved": false,
+      "studentRelease": false
+    }
+  ],
+  "policy": "Concept anchors reference a reviewed topic only, not a source-exact mapping or LV2 pedagogic signoff. No asset required for these text/math candidates; no fictitious asset IDs. New review inputs compile against frozen D3/D4/D6; original preview refs retain their IDs and unchanged envelopes; local QA oracle only, no answer values in JSON, no new runtime schema, no grade grant. N13.2-A remains OPEN pending source/skill/pedagogic review and missing routes."
+}
