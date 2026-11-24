@@ -5,11 +5,11 @@ const ROOT=path.resolve(__dirname,'../..'),read=f=>fs.readFileSync(path.join(ROO
 function compile(on=false){
  let html=read('GiaoDien.html');
  html=html.replace(/<\? if \(p13C2GASTestEnabled_\(\)\) \{ \?>([\s\S]*?)<\? \} \?>/g,(_,s)=>on?s:'');
- html=html.replace(/<\?!= napThanhPhan\('([^']+)'\) \?>/g,(_,n)=>read(n+'.html'));
+ html=html.replace(/<\?!= napThanhPhan\('([^']+)'\) \?>/g,(_,n)=>n==='38_KhoiTaoDuAn'?'/* Preview: do not clear browser storage. */':read(n+'.html'));
  assert(!html.includes('<?'),'leftover GAS template');
  // All browser RPC checks and calls explicitly use an isolated, synthetic bridge.
- html=html.replace(/window\.google\b/g,'window.LOP2_PREVIEW_GOOGLE').replace(/\bgoogle\b(?=\s*(?:\?\.|\.)\s*script\b)/g,'window.LOP2_PREVIEW_GOOGLE');
- assert(!/\bgoogle\s*(?:\?\.|\.)\s*script\b|window\.google\b/.test(html),'real RPC escaped isolation');
+ html=html.replace(/\b(?:window|root|globalThis)\.google\b/g,'window.LOP2_PREVIEW_GOOGLE').replace(/(?<![.\w$])google\b(?=\s*(?:\?\.|\.)\s*script\b)/g,'window.LOP2_PREVIEW_GOOGLE');
+ assert(!/\bgoogle\s*(?:\?\.|\.)\s*script\b|\b(?:window|root|globalThis)\.google\b/.test(html),'real RPC escaped isolation');
  const old=read('qa/p1-2-b/P12B_ORIGINAL_VARIANT_PREVIEWS_32.review.v1.json');
  const variants=JSON.parse(old).variants.filter(x=>['MATH_B001','MATH_B002'].includes(x.lessonId)).map(x=>({lessonId:x.lessonId,id:x.variantId,prompt:x.previewEnvelope.display.prompt,choices:x.previewEnvelope.display.visibleChoices}));
  assert.equal(variants.length,16);
