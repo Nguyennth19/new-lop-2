@@ -1,0 +1,20 @@
+name: N12 setup-only and N13.2A lesson review
+on:
+  push:
+    branches: [prep/n12-n13-provider-data-20261124]
+    paths: ['qa/n12-n13-preparation/**','.github/workflows/n12-n13-review-delta.yml']
+permissions:
+  contents: read
+jobs:
+  scoped-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node qa/n12-n13-preparation/n13-2a-review.test.cjs
+      - run: node qa/n12-n13-preparation/n12-readiness-only/setup.test.cjs

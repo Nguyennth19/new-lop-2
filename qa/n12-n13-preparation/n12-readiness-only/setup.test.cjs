@@ -1,0 +1,21 @@
+'use strict';
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const dir='qa/n12-n13-preparation/n12-readiness-only/';
+const src=fs.readFileSync(dir+'Code.gs','utf8'),m=JSON.parse(fs.readFileSync(dir+'appsscript.json','utf8'));
+const actualHash=s=>crypto.createHash('sha256').update(s).digest('hex');
+let calls=0,mode='good',props={},project='SYNTHETIC_PROJECT_ONLY_001',owner='owner@example.test';
+const ctx={console:{log(){}},ScriptApp:{getScriptId:()=>mode==='project'?'DIFFERENT_PROJECT_001':project},Session:{getEffectiveUser:()=>({getEmail:()=>mode==='actor'?'other@example.test':owner})},PropertiesService:{getScriptProperties:()=>({getProperties:()=>({...props})})},Utilities:{DigestAlgorithm:{SHA_256:'sha'},Charset:{UTF_8:'utf8'},computeDigest:(_,s)=>Array.from(Buffer.from(hash(s),'hex'))},Sheets:{Spreadsheets:{get(id,opts){calls++;return response(id,opts);}}}};
+vm.createContext(ctx);vm.runInContext(src,ctx);const pins=vm.runInContext('N12_SETUP_RESOURCE_PINS_',ctx),digests=vm.runInContext('N12_SETUP_BASELINE_PINS_',ctx),header=vm.runInContext('N12_SETUP_HEADER_',ctx);
+const resources=Object.fromEntries(Object.keys(pins).map(k=>[k,'SYNTHETIC_RESOURCE_'+k]));const conf={environment:'N12_DISPOSABLE_SYNTHETIC_ONLY',projectId:project,ownerEmail:owner,resources};
+const hash=s=>{for(const [k,v] of Object.entries(resources))if(s===v)return pins[k];if(s.startsWith('{"schema":"N8_JOURNAL_DISPLAY_SNAPSHOT_V1"')){const obj=JSON.parse(s);const k=Object.keys(resources).find(x=>resources[x]===obj.sheet);return k?digests[k.slice(0,2)]:actualHash(s);}return actualHash(s);};
+const response=(id,opts)=>{const sh={properties:{title:'15_NhatKy_HanhDong',sheetType:'GRID',gridProperties:{rowCount:mode==='grid'?152:151,columnCount:8,frozenRowCount:1}}};if(opts.ranges){assert.deepEqual(Array.from(opts.ranges),["'15_NhatKy_HanhDong'!A1:H151"]);sh.data=[{rowData:Array.from({length:mode==='truncated'?150:151},(_,i)=>({values:Array.from({length:8},(_,j)=>{const v=i===0?header[j]:'',c={userEnteredFormat:{numberFormat:{type:'TEXT',pattern:'@'}}};if(v){c.userEnteredValue={stringValue:v};c.formattedValue=v;}if(i===1&&j===0){if(mode==='event')c.userEnteredValue={stringValue:'unexpected'};if(mode==='formula')c.userEnteredValue={formulaValue:'=1'};if(mode==='format')c.userEnteredFormat.numberFormat={type:'NUMBER',pattern:'0'};}return c;})}))}];}return {spreadsheetId:mode==='wrongBook'?'other':id,sheets:[sh]};};
+let n=0;function check(f){f();n++}
+check(()=>assert.equal(ctx.n12SetupHash_('abc'),actualHash('abc')));
+check(()=>assert.throws(()=>ctx.kiemTraN12Setup(),/PROPERTIES_DENIED/));
+props={N12_SETUP_CONFIG:JSON.stringify(conf),N12_GRANT_FAKE:'x'};check(()=>assert.throws(()=>ctx.kiemTraN12Setup(),/PROPERTIES_DENIED/));props={N12_SETUP_CONFIG:JSON.stringify(conf)};
+for(const x of ['project','actor']){mode=x;check(()=>assert.throws(()=>ctx.kiemTraN12Setup(),/PROJECT_OR_ACTOR_DENIED/));}mode='good';
+props.N12_SETUP_CONFIG=JSON.stringify({...conf,resources:{...resources,P2_TARGET:'SYNTHETIC_WRONG_ID_001'}});check(()=>assert.throws(()=>ctx.kiemTraN12Setup(),/RESOURCE_DENIED/));check(()=>assert.equal(calls,0));props.N12_SETUP_CONFIG=JSON.stringify(conf);
+for(const x of ['grid','wrongBook','truncated','event','formula','format']){mode=x;check(()=>assert.throws(()=>ctx.kiemTraN12Setup(),/N12_SETUP_(GRID|CELL)/));}mode='good';
+calls=0;const out=ctx.kiemTraN12Setup();check(()=>assert.equal(calls,14));check(()=>assert.equal(out.sheets,7));check(()=>assert.equal(out.cells,8456));check(()=>assert.equal(out.grantIssued,false));check(()=>assert.equal(out.writes,'DENY'));check(()=>assert.equal(out.propertyCount,1));
+check(()=>assert.deepEqual(m.oauthScopes,['https://www.googleapis.com/auth/spreadsheets.readonly','https://www.googleapis.com/auth/userinfo.email']));check(()=>assert(!/\b(?:setProperty|setProperties|deleteProperty|appendRow|setValues|batchUpdate|doGet|doPost)\s*\(/.test(src)));
+console.log('N12_SETUP_ONLY_CONTRACT_PASS',n,'checks, mocked API; no actual grant or writes');
