@@ -161,7 +161,7 @@ function n7TestExecute_(intent,deps,settings) {
     if(!snapshot.ok)return attempted?unknown('RECONCILE_REQUIRED'):snapshot;
     const duplicates=snapshot.rows.filter(function(row){return row[0]===eventId;});
     if(duplicates.length===1 && duplicates[0][6]!==digest)
-      return n7TestDeny_('IDEMPOTENCY_CONFLICT');
+      return attempted?unknown('RECONCILE_REQUIRED'):n7TestDeny_('IDEMPOTENCY_CONFLICT');
     if(attempted) {
       // A missing row is NOT proof of noncommit. Never append again under this key.
       // Verify the entire expected post-append snapshot and original batch identity.

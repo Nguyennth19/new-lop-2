@@ -246,7 +246,7 @@ test('N11 M2 digest drift outside event or batch tampering cannot verify replay'
   const e=runtime();call(intent(),e,s);e.cells[1][index]='TAMPERED';
   const r=call({...intent(),executionId:'LAB_EXEC_002'},e,s);
   assert.equal(r.ok,false);assert.equal(e.state.appends,1);
-  if(index!==6){assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(r.writes,null);}
+  assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(r.writes,null);
  }
 });
 test('N11 M2 no ledger wiring or failed reservation cannot authorize append',()=>{
