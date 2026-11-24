@@ -1,0 +1,974 @@
+{
+  "contract": "N13_1_DATA_ROUTING_PROFILE_V1_REVIEW",
+  "status": "PREPARED_OWNER_REVIEW_REQUIRED",
+  "asOf": "2026-11-24",
+  "baseline": {
+    "commit": "281d445bd1cb3bdf441639be5b44d67985b8aeee",
+    "ciRun": 45372230380,
+    "acceptedScope": "N11_LAB_ONLY"
+  },
+  "scope": "MATH_B001..MATH_B024, reference-only consolidation; not runtime schema or publication authority",
+  "sourceRouting": {
+    "registry": "P1_1_OFFICIAL_SOURCE_ROUTING_19",
+    "commit": "6a05a042bd614f22450ec74e99f5e65aecee3399",
+    "blobSha": "1930790369530aecd4b95ab0ce793dd8d87c6477",
+    "scope": "OWNER_APPROVED_SOURCE_SELECTION_SCOPE_ONLY",
+    "records": [
+      {
+        "domain": "APPLICATION_MAIN",
+        "scope": "MAIN_BASELINE_REFERENCE_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "1d9bb77420e367d1739d2077f9e8c928a0417185",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "APPLICATION_STABLE_TEST_UI",
+        "scope": "GOLDEN_UI_REFERENCE_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "f51a12cc07b44f0f893c2e0de40e387cc17b5c3b",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "BE_HOC_ASSET_RICH_AND_ORCHESTRATOR",
+        "scope": "TEST_ASSET_AND_ORCHESTRATOR_SOURCE",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "BQA_OWNER_B061_B062",
+        "scope": "OWNER_CANONICAL_MAPPING_CORRECTED",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GOOGLE_SHEET",
+          "sha": null,
+          "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "HISTORICAL_SOURCE_REGISTRY_75",
+        "scope": "CANDIDATE_PROVENANCE_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GOOGLE_SHEET",
+          "sha": null,
+          "driveId": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "C1_JSON_ENVELOPES",
+        "scope": "C1_OWNER_APPROVED_SCAFFOLD_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GOOGLE_SHEET",
+          "sha": null,
+          "driveId": "1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "C4_DEV_PLAYABLE_CONTENT",
+        "scope": "DEV_ONLY_27_QUESTIONS_121_PARTS",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GOOGLE_SHEET",
+          "sha": null,
+          "driveId": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "B20_PEDAGOGY_30",
+        "scope": "OWNER_APPROVED_H2_30_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "1dfa16c6dbde8045ab3f9145bc9f18bad08bd008",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "B20_51_LEGACY_APP_SHEET",
+        "scope": "LEGACY_PRIVATE_CONTENT_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GOOGLE_SHEET",
+          "sha": null,
+          "driveId": "1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "P0_6_TECH_CLOSURE",
+        "scope": "P0_6_ISOLATED_TEST_CLOSED",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "c0c5620f30edd92ab45d4ec87a8a07ffa38948e2",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "G7_4_RENDERER_MANIFEST_12",
+        "scope": "TEST_RENDERER_REFERENCE_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "ee20a8b7394e22e6028d6760c49b77c54a2814cc",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "G7_5_APPROVED_VOICE",
+        "scope": "OWNER_APPROVED_V1_2_V2_PROFILES",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "de0c4c9513010f35fd1a7fc286a6d5d4c36e8826",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "G7_6_C086_OWNER_GATES",
+        "scope": "APPROVAL_EVIDENCE_REVIEW_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "733422f11ddb415b2f898e2e38c009f6594401f1",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "G7_3_G7_4_ASSET_LABELS",
+        "scope": "WEBP_288_BINARY_LABEL_SCOPE_ONLY",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "4c7babe832985b29d4540ea6118600bbcebcd750",
+          "driveId": null
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "G3A_TRUSTED_GRADING_CODE",
+        "scope": "G3B_TEST_CODE_ONLY",
+        "selection": "REPLACE_SCOPE_SPECIFIC",
+        "selected": {
+          "kind": "GITHUB_BRANCH",
+          "sha": "5db6634b3424d5f48a54716c45f069c0aefa4a45"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "G2_B_96_EXERCISE_SOURCE_CANDIDATES",
+        "scope": "INDEPENDENT_SOURCE_REVIEW_PENDING",
+        "selection": "KEEP",
+        "selected": {
+          "kind": "GOOGLE_SHEET",
+          "sha": null,
+          "driveId": "1F6LBKvTjmOsRd1QlB0Zj9QStHu6oCb7t-rXEXKXE4Ts"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "B024_ALPHA",
+        "scope": "P1_2_WORKING_PACKAGE_TEST_ONLY",
+        "selection": "REPLACE_SCOPE_SPECIFIC",
+        "selected": {
+          "kind": "GITHUB_FILE",
+          "sha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "DATA_CONTRACT_V2",
+        "scope": "P1_2_SCHEMA_TEST_ONLY",
+        "selection": "REPLACE_SCOPE_SPECIFIC",
+        "selected": {
+          "kind": "GITHUB_FILE",
+          "sha": "c1bd73e5f8606b38ed4497d3b7f23c77a2b93ad9"
+        },
+        "studentReleasePermission": false
+      },
+      {
+        "domain": "PROJECT_RULES_GLOBAL",
+        "scope": "DEV_GUIDANCE_ACTIVE_NOT_POLICY_ADOPTION",
+        "selection": "REPLACE_SCOPE_SPECIFIC",
+        "selected": {
+          "kind": "GITHUB_FILE",
+          "sha": "59187c6fe0e1faadaeaf6f9aa5cacb76861b51ff"
+        },
+        "studentReleasePermission": false
+      }
+    ]
+  },
+  "canonicalByDomain": {
+    "sourceEvidence": {
+      "store": "GOOGLE_DRIVE_PRIMARY_PDF",
+      "ids": {
+        "SGK_T1": "1lpsU8dsk_ieYzECqpZ6kwTaVgj20rETE",
+        "VBT_T1": "1k_g7n1THQSSCw1YsYWBZ3wIDhSLe4bYm"
+      },
+      "verification": "FOLDER_METADATA_ONLY; item/page hashes pending"
+    },
+    "candidateContent": {
+      "store": "GITHUB_PINNED_PRIVATE_QA",
+      "schemaPath": "du-lieu/bai-hoc/toan/v2/lessonpackage.layered.schema.v2.json",
+      "manifestPath": "du-lieu/bai-hoc/toan/v2/manifest.B001-B024.layered.v2.json",
+      "commit": "281d445bd1cb3bdf441639be5b44d67985b8aeee",
+      "manifestBlobSha": "3b37e5838d98d620a834eb38dc3834faffb64f97",
+      "schemaBlobSha": "2a4a1d64487d10b22757ce6d61a10bdf0725aaa2",
+      "legacyV1": "IMMUTABLE_PROVENANCE"
+    },
+    "control": {
+      "store": "GOVERNED_SHEET_TEST",
+      "id": "1HlHOrvAQCt4HzOPlaX0moLdRP69ITnPLtEjy6mt_6zs",
+      "schemaPath": "qa/universal-template-v13/SHEET_CONTROL_CONTRACT_V1.json",
+      "tabs": [
+        "10_DanhMuc_Bai",
+        "11_YeuCau_Data",
+        "12_KetQua_Validator",
+        "13_PheDuyet",
+        "14_PhienBan_JSON",
+        "15_NhatKy_HanhDong",
+        "16_Rollback"
+      ],
+      "writes": false
+    },
+    "authoringEvidence": {
+      "V8": "1VlscK4-xviocaAKxebOpvTL0Kpjpa1ILEGUYdb13Hzo",
+      "C1": "1GPChHRV4sZ4ZplgJmIIkcIFeERLIjUruoY-s3H7_TVM",
+      "C4": "1dHPppAogU3GkfgWwulF1hJGF3Ftl-QojP-YxINAENnU",
+      "legacyB20": "1ZFzjU1HbAOp0ZH4GNmBxMXci8YzLtPQHQixCX9ZITT8",
+      "survey": "19QHzaLa1NChop-IJE_AJQqVlfdgXIgpGmPdk48d0HwQ",
+      "v81Draft": "1Vl4vO1lp6Az1xIDbUieo3fYXDrn4SmyM"
+    },
+    "runtime": {
+      "state": "NO_ACTIVE_APPROVED_PACK",
+      "proposedStore": "VERSIONED_PUBLIC_JSON_FROM_TRUSTED_PUBLISHER",
+      "privateAnswerStore": "SERVER_ONLY_RESTRICTED_NOT_GITHUB_PUBLIC_OR_CLIENT",
+      "publicContract": "REUSE_EXISTING_V13_AND_N11_M3_1_ONLY_WITH_EXPLICIT_SCOPE; NO_REAL_LESSON_GRANT",
+      "rendererRegistryPath": "qa/universal-template-v13/RENDERER_GENERATOR_MATRIX_V1.json",
+      "publicQuestionFields": [
+        "questionId",
+        "lessonId (from pack context, not duplicate field if existing schema forbids)",
+        "skillId",
+        "rendererId",
+        "questionType (existing contract spelling)",
+        "level",
+        "visualIntent",
+        "countUnit",
+        "assetId",
+        "publicVariant"
+      ],
+      "privateFieldsDenied": [
+        "answer",
+        "solution_prompt",
+        "gradingKey",
+        "privateAnswer",
+        "privateVariant",
+        "privateKeyRef",
+        "studentId",
+        "score",
+        "stars"
+      ]
+    }
+  },
+  "observed": {
+    "gitV1BlobMatches": 24,
+    "gitV2BlobMatches": 24,
+    "exactTitleMatches": 23,
+    "titleVariation": 1,
+    "manifestTotals": {
+      "lessons": 24,
+      "c1SourceCandidates": 536,
+      "g2TechnicalCandidates": 96,
+      "templateCandidates": 17,
+      "publicVariantReady": 0,
+      "studentPlayable": 0,
+      "sourceIndependentApproved": 0
+    },
+    "governedTest": {
+      "catalogRows": 3,
+      "requests": 2,
+      "validatorRows": 2,
+      "approvalRows": 0,
+      "versionCandidateRows": 2,
+      "observedJournalRows": 2,
+      "rollbackRows": 0
+    },
+    "historicalC1": {
+      "lessons": 75,
+      "envelopes": 1406,
+      "missingCompletePrompt": 1053,
+      "partialTextOnly": 353,
+      "fullRenderReady": 0
+    },
+    "historicalC4": {
+      "devQuestions": 27,
+      "scoredParts": 121,
+      "deferred": 1379
+    }
+  },
+  "crosswalk": [
+    {
+      "lessonId": "MATH_B001",
+      "legacyId": "toan_b1",
+      "lessonNumber": 1,
+      "gitTitle": "Ôn tập các số đến 100",
+      "sheetTitle": "Bài 1. Ôn tập các số đến 100",
+      "startPageIndex": 6,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B001.lesson.json",
+        "gitBlobSha": "643ce8093f7e2b23edac55113c23f92f8c079f29"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B001.layered.json",
+        "gitBlobSha": "d8c9da0d923572e2fed9b4b45a7442efde7d1c69"
+      },
+      "candidateCounts": {
+        "c1": 24,
+        "g2": 12,
+        "template": 3,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B002",
+      "legacyId": "toan_b2",
+      "lessonNumber": 2,
+      "gitTitle": "Tia số. Số liền trước, số liền sau",
+      "sheetTitle": "Bài 2. Tia số. Số liền trước, số liền sau",
+      "startPageIndex": 10,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B002.lesson.json",
+        "gitBlobSha": "47682a1de9bd42f379961e2c8aac864fc4044caa"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B002.layered.json",
+        "gitBlobSha": "47fbe73c780d996160daba94ef3e82b30b9f13ff"
+      },
+      "candidateCounts": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B003",
+      "legacyId": "toan_b3",
+      "lessonNumber": 3,
+      "gitTitle": "Các thành phần của phép cộng, phép trừ",
+      "sheetTitle": "Bài 3. Các thành phần của phép cộng, phép trừ",
+      "startPageIndex": 13,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B003.lesson.json",
+        "gitBlobSha": "1ca114f9caa2e34fe97c2d38a90df8841f3ba709"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B003.layered.json",
+        "gitBlobSha": "5cdeb76ee58670c985cea875b2ec7a866f0089c2"
+      },
+      "candidateCounts": {
+        "c1": 23,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B004",
+      "legacyId": "toan_b4",
+      "lessonNumber": 4,
+      "gitTitle": "Hơn, kém nhau bao nhiêu",
+      "sheetTitle": "Bài 4. Hơn, kém nhau bao nhiêu",
+      "startPageIndex": 16,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B004.lesson.json",
+        "gitBlobSha": "06b07ac18a6cc2e62c63a69d8b09f9d968043849"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B004.layered.json",
+        "gitBlobSha": "ac9d6b7fb1517f062e01e00a7e7891cc5a3404e4"
+      },
+      "candidateCounts": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B005",
+      "legacyId": "toan_b5",
+      "lessonNumber": 5,
+      "gitTitle": "Ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100",
+      "sheetTitle": "Bài 5. Ôn tập phép cộng, phép trừ (không nhớ) trong phạm vi 100",
+      "startPageIndex": 19,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B005.lesson.json",
+        "gitBlobSha": "4178b868edb6af6bf76c82c04b12bfbf927a261a"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B005.layered.json",
+        "gitBlobSha": "7757d72ffb2be2a2d3108f7ba6230b24a618e5d5"
+      },
+      "candidateCounts": {
+        "c1": 30,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B006",
+      "legacyId": "toan_b6",
+      "lessonNumber": 6,
+      "gitTitle": "Luyện tập chung",
+      "sheetTitle": "Bài 6. Luyện tập chung",
+      "startPageIndex": 23,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B006.lesson.json",
+        "gitBlobSha": "d174461a61f023f38f44b9e14a1f8b14b820cf99"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B006.layered.json",
+        "gitBlobSha": "8a42450d990dec0f6f84fe965640de1424c3e990"
+      },
+      "candidateCounts": {
+        "c1": 18,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B007",
+      "legacyId": "toan_b7",
+      "lessonNumber": 7,
+      "gitTitle": "Phép cộng (qua 10) trong phạm vi 20",
+      "sheetTitle": "Bài 7. Phép cộng (qua 10) trong phạm vi 20",
+      "startPageIndex": 26,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B007.lesson.json",
+        "gitBlobSha": "0141dd38faed4748df529716e92c0c0adcc77c7a"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B007.layered.json",
+        "gitBlobSha": "0f94365d0204c6ef13dc43b50a82a4ee6406e4a6"
+      },
+      "candidateCounts": {
+        "c1": 40,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B008",
+      "legacyId": "toan_b8",
+      "lessonNumber": 8,
+      "gitTitle": "Bảng cộng (qua 10)",
+      "sheetTitle": "Bài 8. Bảng cộng (qua 10)",
+      "startPageIndex": 33,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B008.lesson.json",
+        "gitBlobSha": "cdc0e04e94c49d0cfdb5abccb50cd0b6238d9feb"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B008.layered.json",
+        "gitBlobSha": "0fd194a4305731032423b64f9574be6c125b1a96"
+      },
+      "candidateCounts": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B009",
+      "legacyId": "toan_b9",
+      "lessonNumber": 9,
+      "gitTitle": "Bài toán về thêm, bớt một số đơn vị",
+      "sheetTitle": "Bài 9. Bài toán về thêm, bớt một số đơn vị",
+      "startPageIndex": 36,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B009.lesson.json",
+        "gitBlobSha": "8097dc133f31664217d4c21c5eccb64734ad0539"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B009.layered.json",
+        "gitBlobSha": "c3f78eed049737accbdd84666428896720482334"
+      },
+      "candidateCounts": {
+        "c1": 12,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B010",
+      "legacyId": "toan_b10",
+      "lessonNumber": 10,
+      "gitTitle": "Luyện tập chung",
+      "sheetTitle": "Bài 10. Luyện tập chung",
+      "startPageIndex": 38,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B010.lesson.json",
+        "gitBlobSha": "f5fbdb78c39baf6721a146c94b9c4eda1e6d4616"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B010.layered.json",
+        "gitBlobSha": "750abef0149d7e80c6605e12d8200aeb088dfaa7"
+      },
+      "candidateCounts": {
+        "c1": 14,
+        "g2": 8,
+        "template": 1,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B011",
+      "legacyId": "toan_b11",
+      "lessonNumber": 11,
+      "gitTitle": "Phép trừ (qua 10) trong phạm vi 20",
+      "sheetTitle": "Bài 11. Phép trừ (qua 10) trong phạm vi 20",
+      "startPageIndex": 41,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B011.lesson.json",
+        "gitBlobSha": "a350e8d9428439e2257d358983a86349fc272193"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B011.layered.json",
+        "gitBlobSha": "b6bf17c6a5c9e7befa24d2373172c6036b219cb6"
+      },
+      "candidateCounts": {
+        "c1": 46,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B012",
+      "legacyId": "toan_b12",
+      "lessonNumber": 12,
+      "gitTitle": "Bảng trừ (qua 10)",
+      "sheetTitle": "Bài 12. Bảng trừ (qua 10)",
+      "startPageIndex": 47,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B012.lesson.json",
+        "gitBlobSha": "b1981ccc24c56984dc01e338239d446d989fd2d5"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B012.layered.json",
+        "gitBlobSha": "3656c948b69e3d95a94c798c5192865146aaa61b"
+      },
+      "candidateCounts": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B013",
+      "legacyId": "toan_b13",
+      "lessonNumber": 13,
+      "gitTitle": "Bài toán về nhiều hơn, ít hơn một số đơn vị",
+      "sheetTitle": "Bài 13. Bài toán về nhiều hơn, ít hơn một số đơn vị",
+      "startPageIndex": 50,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B013.lesson.json",
+        "gitBlobSha": "3858ec77d22b0f141993b27228b756161d320eac"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B013.layered.json",
+        "gitBlobSha": "33f490ee4ed73bb35537f0895f66e78ebf24b666"
+      },
+      "candidateCounts": {
+        "c1": 10,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B014",
+      "legacyId": "toan_b14",
+      "lessonNumber": 14,
+      "gitTitle": "Luyện tập chung",
+      "sheetTitle": "Bài 14. Luyện tập chung",
+      "startPageIndex": 53,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B014.lesson.json",
+        "gitBlobSha": "97c8503a07b934e2de74116fd1be395bccb8be10"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B014.layered.json",
+        "gitBlobSha": "d6570a35bbdf52a98090a467130bf851ac8f22b6"
+      },
+      "candidateCounts": {
+        "c1": 26,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B015",
+      "legacyId": "toan_b15",
+      "lessonNumber": 15,
+      "gitTitle": "Ki-lô-gam",
+      "sheetTitle": "Bài 15. Ki-lô-gam",
+      "startPageIndex": 57,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B015.lesson.json",
+        "gitBlobSha": "5f9052d4c079e599f4858a019205f0382336f269"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B015.layered.json",
+        "gitBlobSha": "3a42ae913e7da1d3ef03b8d702464758b0e91144"
+      },
+      "candidateCounts": {
+        "c1": 19,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B016",
+      "legacyId": "toan_b16",
+      "lessonNumber": 16,
+      "gitTitle": "Lít",
+      "sheetTitle": "Bài 16. Lít",
+      "startPageIndex": 62,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B016.lesson.json",
+        "gitBlobSha": "52661a636022e8064510cef73c57fc0dba239688"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B016.layered.json",
+        "gitBlobSha": "f518a489a157ed0f2f74485520b62daed9028a2e"
+      },
+      "candidateCounts": {
+        "c1": 16,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B017",
+      "legacyId": "toan_b17",
+      "lessonNumber": 17,
+      "gitTitle": "Thực hành và trải nghiệm với đơn vị ki-lô-gam, lít",
+      "sheetTitle": "Bài 17. Thực hành và trải nghiệm với các đơn vị ki-lô-gam, lít",
+      "startPageIndex": 66,
+      "titleComparison": "REVIEW_TITLE_VARIATION",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B017.lesson.json",
+        "gitBlobSha": "510a2f82507e003809f0cbe1640695ca0659657e"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B017.layered.json",
+        "gitBlobSha": "97ba97c75413000f876618654121da3939d8112c"
+      },
+      "candidateCounts": {
+        "c1": 15,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B018",
+      "legacyId": "toan_b18",
+      "lessonNumber": 18,
+      "gitTitle": "Luyện tập chung",
+      "sheetTitle": "Bài 18. Luyện tập chung",
+      "startPageIndex": 70,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B018.lesson.json",
+        "gitBlobSha": "ccd8257448f825312dea5a0709adbd393c665adb"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B018.layered.json",
+        "gitBlobSha": "49bb7ec27b0207cb61f30ffa4ad8f62435ad0ac8"
+      },
+      "candidateCounts": {
+        "c1": 8,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B019",
+      "legacyId": "toan_b19",
+      "lessonNumber": 19,
+      "gitTitle": "Phép cộng (có nhớ) số có hai chữ số với số có một chữ số",
+      "sheetTitle": "Bài 19. Phép cộng (có nhớ) số có hai chữ số với số có một chữ số",
+      "startPageIndex": 72,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B019.lesson.json",
+        "gitBlobSha": "11130f138e3af9b15344ecb9139ded4f4f2b90cc"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B019.layered.json",
+        "gitBlobSha": "41a12fe090ac2f0f3e380aefc66a3a3d8afa4c35"
+      },
+      "candidateCounts": {
+        "c1": 24,
+        "g2": 12,
+        "template": 2,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B020",
+      "legacyId": "toan_b20",
+      "lessonNumber": 20,
+      "gitTitle": "Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
+      "sheetTitle": "Bài 20. Phép cộng (có nhớ) số có hai chữ số với số có hai chữ số",
+      "startPageIndex": 76,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B020.lesson.json",
+        "gitBlobSha": "ffb8bed45b2321a669a42ee09f8a233f072e01c6"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B020.layered.json",
+        "gitBlobSha": "caecffb776bffd8d7265947ed70b6fd2aa7c77d7"
+      },
+      "candidateCounts": {
+        "c1": 33,
+        "g2": 16,
+        "template": 3,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B021",
+      "legacyId": "toan_b21",
+      "lessonNumber": 21,
+      "gitTitle": "Luyện tập chung",
+      "sheetTitle": "Bài 21. Luyện tập chung",
+      "startPageIndex": 80,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B021.lesson.json",
+        "gitBlobSha": "b8b469ca83bf826360b45634da60afce8d3c6147"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B021.layered.json",
+        "gitBlobSha": "2cd26950a49edc579b1c0ff9911f310d7a71e102"
+      },
+      "candidateCounts": {
+        "c1": 19,
+        "g2": 0,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B022",
+      "legacyId": "toan_b22",
+      "lessonNumber": 22,
+      "gitTitle": "Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số",
+      "sheetTitle": "Bài 22. Phép trừ (có nhớ) số có hai chữ số cho số có một chữ số",
+      "startPageIndex": 83,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B022.lesson.json",
+        "gitBlobSha": "ec0838624ad0f07ad1a9fb2e3540eaa8ad07072e"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B022.layered.json",
+        "gitBlobSha": "1ade16207160048cd684f91b0dee3c25a1b6d120"
+      },
+      "candidateCounts": {
+        "c1": 34,
+        "g2": 17,
+        "template": 3,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B023",
+      "legacyId": "toan_b23",
+      "lessonNumber": 23,
+      "gitTitle": "Phép trừ (có nhớ) số có hai chữ số cho số có hai chữ số",
+      "sheetTitle": "Bài 23. Phép trừ (có nhớ) số có hai chữ số cho số có hai chữ số",
+      "startPageIndex": 89,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B023.lesson.json",
+        "gitBlobSha": "acf693599bb04f8511b97233410dcabe66a58309"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B023.layered.json",
+        "gitBlobSha": "e5a62e8a34fdca69905d7a756b3f356698e6a3a3"
+      },
+      "candidateCounts": {
+        "c1": 42,
+        "g2": 21,
+        "template": 5,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    },
+    {
+      "lessonId": "MATH_B024",
+      "legacyId": "toan_b24",
+      "lessonNumber": 24,
+      "gitTitle": "Luyện tập chung",
+      "sheetTitle": "Bài 24. Luyện tập chung",
+      "startPageIndex": 95,
+      "titleComparison": "EXACT_TITLE_AFTER_PREFIX",
+      "sourceV1": {
+        "path": "du-lieu/bai-hoc/toan/v1/B024.lesson.json",
+        "gitBlobSha": "c39a76d25fab399aca0acc4e6b300af8995f1306"
+      },
+      "candidateV2": {
+        "path": "du-lieu/bai-hoc/toan/v2/B024.layered.json",
+        "gitBlobSha": "87a20ef82769301a6885ac67962b5b8b5e15c6eb"
+      },
+      "candidateCounts": {
+        "c1": 19,
+        "g2": 10,
+        "template": 0,
+        "playable": 0,
+        "publicVariantReady": 0
+      },
+      "sourceExactApproved": false,
+      "studentRelease": false
+    }
+  ],
+  "gates": {
+    "sourceExact": "OPEN",
+    "skillE04": "OPEN",
+    "publicPrivateRuntime": "OPEN",
+    "provider": "OPEN",
+    "ownerDataContractRatification": "PENDING",
+    "pilot": "NO_GO",
+    "release": "NO_GO"
+  },
+  "limits": [
+    "Crosswalk is catalog identity comparison, not SGK source exact verification.",
+    "V8.1 draft authoring workbook schema not runtime contract; no merge or auto promotion.",
+    "Historical P1.1 registry approved only for P1.2/P1.3; do not silently expand its scope.",
+    "No private answers or student records copied.",
+    "No Sheet/Drive content migration or new ACTIVE manifest."
+  ]
+}
