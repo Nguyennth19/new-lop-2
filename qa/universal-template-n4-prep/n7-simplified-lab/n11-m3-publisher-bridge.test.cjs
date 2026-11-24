@@ -7,7 +7,7 @@ function pack(tag='A'){
  const lessonId='LAB_MATH_M3_'+tag,alt=tag==='B';
  const q=(rendererId,skillId,questionType,visualIntent,publicVariant,assetId=null,countUnit=null)=>
   ({lessonId,questionId:'M3_'+tag+'_'+rendererId,rendererId,skillId,questionType,
-   level:'LV2',visualIntent,countUnit,assetId,publicVariant:{variantId:'VAR_'+tag+'_'+rendererId,...publicVariant}});
+   level:'LV2',visualIntent,countUnit,assetId,publicVariant:{variantId:(rendererId==='D2'?'COL_':'VAR_')+tag+'_'+rendererId,...publicVariant}});
  return {schemaVersion:'LOP2_N6_MULTIFAMILY_LAB_V1',packId:'M3_PACK_'+tag,status:'LAB_CANDIDATE_ONLY',
   lesson:{id:lessonId,subject:'MATH',grade:2,sourceStatus:'SYNTHETIC_QA_ONLY',studentRelease:false},
   questions:[
@@ -44,6 +44,7 @@ test('M3 candidate privacy: reject answer, grading, learner metadata and unknown
 test('M3 D2/D5/D9/D10 negative semantics and out-of-scope routes fail closed',()=>{
  for(const change of [
   p=>p.questions[0].publicVariant.b=20,p=>p.questions[0].publicVariant.a=100,
+  p=>p.questions[0].publicVariant.variantId='VAR_WRONG_D2',
   p=>p.questions[1].skillId='SHAPE_TANGRAM',p=>p.questions[1].publicVariant.shapes=['circle','triangle'],
   p=>p.questions[2].assetId='FLUENT:green_apple',p=>p.questions[2].countUnit='book',
   p=>p.questions[2].publicVariant.symbolValue=2,p=>p.questions[2].publicVariant.count=21,
