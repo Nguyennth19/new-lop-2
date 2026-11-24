@@ -2,7 +2,7 @@
 (function(root){
 'use strict';
 const labels={number:'Số',tens:'Chục',ones:'Đơn vị',previous:'Số liền trước',given:'Số đã cho',next:'Số liền sau'};
-const prompts={PLACE_VALUE:'Điền số vào ô trống: số, chục và đơn vị.',NUMBER_LINE:'Điền số còn thiếu trên tia số.',NUMBER_LINE_POSITION:'Chọn vị trí của số trên tia số.',NEIGHBOR_TABLE:'Điền số liền trước và số liền sau.',INEQUALITY_INPUT:'Điền một số nằm giữa hai số đã cho.'};
+const prompts={PLACE_VALUE:'Điền số vào ô trống: số, chục và đơn vị.',NUMBER_LINE:'Điền số còn thiếu trên tia số.',NUMBER_LINE_POSITION:'Chọn vị trí của số trên tia số.',NEIGHBOR_TABLE:'Điền số thích hợp vào ô trống.',INEQUALITY_INPUT:'Điền một số nằm giữa hai số đã cho.'};
 function el(tag,txt,cls){const e=document.createElement(tag);if(txt!==undefined)e.textContent=txt;if(cls)e.className=cls;return e;}
 function mount(host,preview,{fallback=false,onSpeak=()=>{}}={}){
  const plan=root.N13SemanticCore.compile(preview),session=root.N13SemanticCore.session(plan),m=plan.model,kind=plan.kind;host.replaceChildren();host.className='n13-preview';
