@@ -1,15 +1,3 @@
-/** Máy chủ Apps Script: phục vụ giao diện Lớp 2 V2.2. */
-function doGet() {
-  return HtmlService.createTemplateFromFile('GiaoDien').evaluate()
-    .setTitle('Lớp 2 – V2.2')
-    .addMetaTag('viewport', 'width=device-width, initial-scale=1.0');
-}
-/**
- * Đọc nguyên văn nội dung CSS/JS partial để lồng vào GiaoDien.
- * KHÔNG dùng createHtmlOutputFromFile().getContent() vì các partial JavaScript
- * chứa toán tử < và template literals (HTML động) không phải tài liệu HTML hoàn chỉnh.
- * Chỉ gọi với tên tệp nội bộ cố định, không nhận tên từ dữ liệu người dùng.
- */
-function napThanhPhan(tenTep) {
-  return HtmlService.createTemplateFromFile(tenTep).getRawContent();
-}
+/** Owner-only /dev test. */
+function doGet(){return HtmlService.createTemplateFromFile('GiaoDien').evaluate().setTitle('Lớp 2 | FULL APP GAS TEST').addMetaTag('viewport','width=device-width, initial-scale=1.0');}
+function napThanhPhan_(name){const allowed=["01_CSS_NenTang","02_CSS_TrangChu","03_CSS_ThanhTich","32_CSS_ThanhTichThuc","04_CSS_LoTrinh","18_CSS_HocToan","20_CSS_KhongGianHocToan","22_CSS_BaiHocKetQua","25_CSS_SuaBoCucBaiHoc","43_CSS_ThanhPhanBaiToan","46_CSS_GiongDocToan","50_CSS_D2V12","58_CSS_Visual_Lab","62_CSS_Geometry","63_CSS_Pictograph","82_CSS_OrchestratorModules","84_CSS_Orchestrator","86_CSS_Fluent","29_CSS_BangKetQua_V26","35_CSS_HinhAnhPilot","37_CSS_PhuHuynh","38_KhoiTaoDuAn","07_BieuTuongMUI","AnhMonToan","AnhMonTiengViet","AnhMonTiengAnh","10_DanhSachMonHoc","11_TrangChuDieuHuong","12_DuLieuLoTrinh","13_HienThiLoTrinh","14_BaiTapTuongTac","15_ThanhTichHoatDong","17_HocToanTuSheet","26_ChamCauHoiToan","23_ChonCauHoiToan","27_BoNhoBaiHoc","33_KetNoiThanhTich","39_DongBoTienDo","34_HinhAnhDungChung","42_TaiAnhTheoAssetID","40_DemTuongTacHocTap","41_HienThiCauHoiToan","44_G75_NormalizerToanV2","45_DieuKhienGiongDocToan","47_D2V12_Core","48_D2V12_View","52_D2_ManualCarry","49_D2V12_BaiHoc","53_Geometry_Core","54_Tangram_V12","55_Pictograph_Core","56_Pictograph_View","60_Geometry_Fixtures","61_Pictograph_Fixtures","59_Visual_Public_Assets","64_SVG_Math_Public","57_Visual_Lab_Host","65_D1_Type1","66_D3_Core","67_D3_View","68_D4_Core","69_D4_View","70_D5_View","71_D6_Core","72_D6_View","73_D7_Core","74_D7_View","75_D8_Core","76_D8_View","77_D8A_Core","78_D8A_View","79_D8B_View","80_D10_Core","81_D10_Adapter","85_Fluent_Asset_46","87_Characters_Drive_30","88_Visual_Semantic_Router","83_Visual_Orchestrator","89_Asset_Unified_Resolver_TEST","90_C2_Test_Integration_Bridge","19_KhongGianHocToan","21_LyThuyetToan","16_LichHocChuyenCan","36_CuaVaoPhuHuynh","91_FullAppTest_Review"];if(!allowed.includes(name))throw Error('FULL_APP_TEST_INCLUDE_DENIED');return HtmlService.createTemplateFromFile(name).getRawContent();}

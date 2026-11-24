@@ -97,23 +97,7 @@ function khoRendererPolicies_(lesson){
  return result;
 }
 function khoLayBaiHoc_(lessonId){
- if(!/^[a-z0-9_]{3,64}$/.test(String(lessonId||'')))throw Error('ID bài học không hợp lệ');
- const cache=CacheService.getScriptCache(),key='kho_bai_'+KHO_BAI_HOC_VERSION+'_'+lessonId;
- const hit=cache.get(key);if(hit)return JSON.parse(hit);
- const wb=moBangDuAn_();
- const lesson=khoDocTab_(wb,'01_Bai_hoc').find(x=>x.lesson_id===lessonId);
- if(!lesson)throw Error('Không tìm thấy bài '+lessonId);
- const levels=khoDocTab_(wb,'02_Cap_do').filter(x=>x.lesson_id===lessonId);
- const sections=khoDocTab_(wb,'03_Nhom_bai').filter(x=>levels.some(l=>l.level_id===x.level_id));
- const questions=khoDocTab_(wb,'04_Cau_hoi').filter(x=>x.lesson_id===lessonId).map(khoChuyenCauHoi_);
- const result={lesson:{id:lesson.lesson_id,title:lesson.title,subject:lesson.subject,series:lesson.series,rendererPolicies:khoRendererPolicies_(lesson)},
-  levels:levels.map(x=>({id:x.level_id,level:x.level,name:x.name})),
-  sections:sections.map(x=>({id:x.section_id,levelId:x.level_id,name:x.name,type:x.question_type})),
-  questions,readAt:new Date().toISOString()};
- try{const raw=JSON.stringify(result);if(raw.length<95000)cache.put(key,raw,300)}catch(e){}
- return result;
-}
-function khoLamMoiBai_(lessonId){
- if(!/^[a-z0-9_]{3,64}$/.test(String(lessonId||'')))throw Error('ID bài học không hợp lệ');
- CacheService.getScriptCache().remove('kho_bai_'+KHO_BAI_HOC_VERSION+'_'+lessonId);
+ if(lessonId!=='toan_b20')throw Error('FULL_APP_TEST_LESSON_DENIED');
+ const t=fullAppTestRead_(),l=t['01_Bai_hoc'][0];
+ return {lesson:{id:l.lesson_id,title:l.title,subject:l.subject,series:l.series,rendererPolicies:[]},levels:t['02_Cap_do'].map(x=>({id:x.level_id,level:x.level,name:x.name})),sections:t['03_Nhom_bai'].map(x=>({id:x.section_id,levelId:x.level_id,name:x.name,type:x.question_type})),questions:t['04_Cau_hoi'].map(khoChuyenCauHoi_),readAt:new Date().toISOString(),testOnly:true};
 }

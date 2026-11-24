@@ -3,13 +3,13 @@
  */
 const THANH_TICH_GUI=(function(){
  const CACHE_KEY='lop2_attempt_key_v1', ids={};let pending=new Set();
- try{Object.assign(ids,JSON.parse(sessionStorage.getItem(CACHE_KEY)||'{}'))}catch(e){}
+ try{Object.assign(ids,JSON.parse(window.LOP2_TEST_RAM.getItem(CACHE_KEY)||'{}'))}catch(e){}
  function keyFor(lesson,lv,answers){return lesson+'|'+lv+'|'+JSON.stringify(answers)}
  function idFor(key){
   if(!ids[key]){
    ids[key]='attempt_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,14);
    const keep=Object.keys(ids);if(keep.length>70)keep.slice(0,-70).forEach(k=>delete ids[k]);
-   try{sessionStorage.setItem(CACHE_KEY,JSON.stringify(ids))}catch(e){}
+   try{window.LOP2_TEST_RAM.setItem(CACHE_KEY,JSON.stringify(ids))}catch(e){}
   }
   return ids[key];
  }
@@ -27,7 +27,7 @@ const THANH_TICH_GUI=(function(){
   });
   const key=keyFor(lesson,lv,answers);if(pending.has(key))return;
   const attemptId=idFor(key);
-  pending.add(key);setNote('Đang xác minh bài làm và lưu sao thưởng...');
+  pending.add(key);setNote('Đang kiểm tra giới hạn TEST...');
   google.script.run.withSuccessHandler(result=>{
    pending.delete(key);
    if(!result?.ok){setNote('Máy chủ chưa xác nhận kết quả.',true);return;}
@@ -38,7 +38,7 @@ const THANH_TICH_GUI=(function(){
    if(typeof taiThanhTich==='function')taiThanhTich(true);
   }).withFailureHandler(error=>{
    pending.delete(key);
-   setNote('Không lưu được thành tích: '+(error?.message||'Lỗi kết nối')+'. Bấm Nộp & chấm bài để thử lại.',true);
+   setNote('Không lưu được thành tích: '+(error?.message||'Lỗi kết nối')+'. Đây là hành vi dự kiến.',true);
   }).ghiNhanKetQuaToan20({lessonId:lesson,level:lv,attemptId,answers,activeSeconds});
  }
  return Object.freeze({send});
