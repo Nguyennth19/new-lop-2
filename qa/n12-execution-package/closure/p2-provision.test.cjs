@@ -17,7 +17,7 @@ const s={environment:'N12_DISPOSABLE_SYNTHETIC_ONLY',writesEnabled:true,projectI
 s.approvedScopeSha256=api.scopeDigest(api.scope(s),u);const c={settings:s,intent:i,secondExecutionId:'MOCK_EXECUTION_002'};
 // Source-only provisioner, exact GAS property keys and envelope; never import into live GAS.
 const reviewSource=fs.readFileSync(path.join(__dirname,'N12_P2_Provision.review.gs'),'utf8');
-const q=new Function(src+'\n'+reviewSource+'\nreturn {binding:n12P2Binding_,provision:n12P2Provision_,context:n12Context_,read:n11M4ReadEnvelope_,current:n11M4GrantCurrent_,dispatch:n12FinalDispatch_};')();
+const q=new Function(src+'\n'+reviewSource+'\nreturn {binding:n12P2Binding_,provision:n12P2Provision_,context:n12Context_,read:n11M4ReadEnvelope_,current:n11M4GrantCurrent_,dispatch:n12FinalDispatch_,phase:n12FinalPhase_,pinnedDeps:n12P2PinnedDeps_,reviewedDeps:n12P2ReviewedDeps_,issueEntry:N12_P2_Issue,revokeEntry:N12_P2_Revoke};')();
 const auth={epoch:'N12_P2_EPOCH_MOCK_001',sourceSha256:sha('review-source'),bindingSha256:''};
 auth.bindingSha256=q.binding(c,auth,u);
 function fixture({failAfter=0,drift=false,denied=false,busy=false,clock=n,actor=owner}={}){
@@ -62,4 +62,17 @@ test('authority lost after reservation: no append, no retry, preserve RESERVED',
  const verify=f.raw.verifyP2Authority;
  f.raw.verifyP2Authority=(action,...args)=>!(action==='INITIAL'&&JSON.parse(f.map.get(keys[1])).body.state==='RESERVED')&&verify(action,...args);
  const r=q.dispatch('INITIAL',c,f.raw);assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(f.appends(),0);assert.equal(JSON.parse(f.map.get(keys[1])).body.state,'RESERVED');assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(f.appends(),0);
+});
+
+test('private phase cannot bypass reviewed dispatcher binding; default live wrappers hard OFF',()=>{
+ const f=fixture();assert.equal(issue(f).ok,true);assert.equal(q.phase('INITIAL',s,i,f.raw).reason,'P2_EXECUTION_BINDING_DENIED');assert.equal(f.appends(),0);
+ assert.equal(q.issueEntry().reason,'P2_PROVISION_HARD_OFF');assert.equal(q.revokeEntry().reason,'P2_PROVISION_HARD_OFF');
+ const raw={utilities:u};assert.equal(q.reviewedDeps(raw,c),raw);
+});
+test('source pin binds explicit dual receipt references and exact actions; no signature claim',()=>{
+ const f=fixture(),raw={...f.raw};delete raw.verifyP2Authority;delete raw.p2Binding;
+ const pin={binding:auth,ownerReceiptSha256:sha('mock owner receipt'),qaReceiptSha256:sha('mock independent qa receipt'),actions:['ISSUE','INITIAL','REPLAY','REVOKE']};
+ for(const bad of [null,{...pin,qaReceiptSha256:pin.ownerReceiptSha256},{...pin,actions:['ISSUE']},{...pin,binding:{...auth,bindingSha256:sha('bad')}}])assert.equal(q.pinnedDeps(raw,c,bad),raw);
+ const bound=q.pinnedDeps(raw,c,pin);assert.equal(bound.verifyP2Authority('INITIAL',auth.bindingSha256,auth.sourceSha256),true);assert.equal(bound.verifyP2Authority('REPLAY',sha('bad'),auth.sourceSha256),false);assert.equal(bound.verifyP2Authority('RELEASE',auth.bindingSha256,auth.sourceSha256),false);
+ assert.equal(q.provision('ISSUE',c,auth,bound).ok,true);assert.equal(q.dispatch('INITIAL',c,bound).writes,1);assert.equal(q.dispatch('REPLAY',c,bound).writes,0);assert.equal(q.provision('REVOKE',c,auth,bound).ok,true);assert.equal(f.appends(),1);
 });

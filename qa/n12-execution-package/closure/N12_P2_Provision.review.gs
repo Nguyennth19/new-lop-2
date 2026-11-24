@@ -1,6 +1,7 @@
 /** P2 SOURCE REVIEW ONLY — NOT part of the accepted eight-file GAS package.
- * No public entrypoint; n12ProviderDeps_ has no authority verifier, so default is HARD OFF.
- * An independently reviewed verifier and live parity must be authorized separately.
+ * Public issue/revoke wrappers remain HARD OFF with null reviewed case/receipt pin.
+ * Proposed disposable-only authority: human-verified dual signoff pinned in reviewed source.
+ * NOT a cryptographic signature verifier or protection against a source-editing Owner.
  */
 function n12P2Binding_(c,a,u){
  return n7TestSha256_(JSON.stringify(['N12_P2_PROVISION_V1',a.epoch,a.sourceSha256,c]),u);
@@ -71,3 +72,29 @@ function n12P2ExecutionAllowed_(phase,c,raw){
     raw.verifyP2Authority(phase,a.bindingSha256,a.sourceSha256)===true;
  }catch(e){return false;}
 }
+
+/** Proposed scoped human authority. Pin only after independent evidence verification and exact source review.
+ * The source hash identifies the reviewed package before populating activation slots; activated parity is separate.
+ * Never populate from a Sheet cell, arbitrary property, AI recommendation or caller-supplied live request.
+ */
+const N12_P2_AUTHORITY_PIN_=null;
+function n12P2PinnedDeps_(raw,c,pin){
+ try{
+  if(!c||!c.settings||c.settings.proofCase!=='P2'||!n11M4Exact_(pin,['binding','ownerReceiptSha256','qaReceiptSha256','actions'])||
+   !n11M4Exact_(pin.binding,['epoch','sourceSha256','bindingSha256'])||
+   ![pin.ownerReceiptSha256,pin.qaReceiptSha256,pin.binding.sourceSha256,pin.binding.bindingSha256].every(x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x))||
+   pin.ownerReceiptSha256===pin.qaReceiptSha256||
+   JSON.stringify(pin.actions)!==JSON.stringify(['ISSUE','INITIAL','REPLAY','REVOKE'])||
+   n12P2Binding_(c,pin.binding,raw.utilities)!==pin.binding.bindingSha256)return raw;
+  const b=Object.freeze(Object.assign({},pin.binding)),actions=pin.actions.slice();
+  return Object.assign({},raw,{p2Binding:b,verifyP2Authority:(action,digest,source)=>actions.includes(action)&&digest===b.bindingSha256&&source===b.sourceSha256});
+ }catch(e){return raw;}
+}
+function n12P2ReviewedDeps_(raw,c){return n12P2PinnedDeps_(raw,c,N12_P2_AUTHORITY_PIN_);}
+function n12P2ReviewedProvision_(action){
+ if(!N12_FINAL_REVIEWED_CASE_||!N12_P2_AUTHORITY_PIN_)return n7TestDeny_('P2_PROVISION_HARD_OFF');
+ const raw=n12P2ReviewedDeps_(n12ProviderDeps_(),N12_FINAL_REVIEWED_CASE_);
+ return n12P2Provision_(action,N12_FINAL_REVIEWED_CASE_,raw.p2Binding,raw);
+}
+function N12_P2_Issue(){return n12P2ReviewedProvision_('ISSUE');}
+function N12_P2_Revoke(){return n12P2ReviewedProvision_('REVOKE');}
