@@ -33,18 +33,24 @@ const intent=()=>({contract:'N7_GAS_TEST_INTENT_V1',environment:'TEST',requestId
  rowsDigest:'c'.repeat(64),grantId:'GRANT_001',expectedJournalRows:0});
 function runtime(){
  const header=['event_id','batch_id','actor_ref','action','previous_state','next_state','evidence_sha256','occurred_at'];
- const cells=[header];const state={locked:false,busy:false,failAppend:false,failReadback:false,failFlush:false,flushed:0,identity:'lab-owner@example.invalid',released:0};
+ const cells=[header],attempts=new Map();const state={locked:false,busy:false,failAppend:false,failAfterAppend:false,failReadback:false,failFlush:false,flushed:0,appends:0,identity:'lab-owner@example.invalid',released:0};
  const tab={
   getLastRow:()=>cells.length,
   getRange:(row,col,count,cols)=>({
-   getDisplayValues:()=>cells.slice(row-1,row-1+count).map(r=>r.slice(col-1,col-1+cols).map(String)),
+   getDisplayValues:()=>{
+    if(state.failReadback&&state.appends)throw Error('SIMULATED_READBACK_FAILURE');
+    return cells.slice(row-1,row-1+count).map(r=>r.slice(col-1,col-1+cols).map(String));
+   },
    getValues:()=>{
     if(state.failReadback&&row===2)throw Error('SIMULATED_READBACK_FAILURE');
     return cells.slice(row-1,row-1+count).map(r=>r.slice(col-1,col-1+cols));
   }}),
-  appendRow:r=>{if(state.failAppend)throw Error('UNCERTAIN_APPEND');cells.push(r);}
+  appendRow:r=>{state.appends++;if(state.failAppend)throw Error('UNCERTAIN_APPEND');cells.push(r);if(state.failAfterAppend)throw Error('UNCERTAIN_AFTER_APPEND');}
  };
  const deps={
+  attemptLedger:{get:k=>attempts.get(k),putIfAbsent:(k,v)=>{
+   if(attempts.has(k))return false;attempts.set(k,{...v});return true;
+  }},
   spreadsheetApp:{
    openById:id=>{assert.equal(id,COPY);return{getSheetByName:n=>n==='15_NhatKy_HanhDong'?tab:null};},
    flush:()=>{state.flushed++;if(state.failFlush)throw Error('UNCERTAIN_FLUSH');}
@@ -53,7 +59,7 @@ function runtime(){
   session:{getEffectiveUser:()=>({getEmail:()=>state.identity})},
   utilities:{DigestAlgorithm:{SHA_256:'SHA_256'},computeDigest:(_,s)=>[...crypto.createHash('sha256').update(s).digest()].map(n=>n>127?n-256:n),formatDate:()=> '2026-11-23T23:00:00+07:00'},now:()=>Date.parse('2026-11-23T16:00:00Z')
  };
- return{deps,cells,state};
+ return{deps,cells,state,attempts};
 }
 const call=(i,env,config)=>n7.execute(i,env.deps,config);
 test('N7 adapter defaults to OFF, never writes before authorization',()=>{
@@ -84,6 +90,10 @@ test('N7 isolated single-tab journal append verifies readback and never grants r
  const e=runtime(),s={...settings(),writesEnabled:true},r=call(intent(),e,s);
  assert.equal(r.ok,true);assert.equal(r.release,false);assert.equal(r.writes,1);
  assert.equal(e.cells.length,2);assert.equal(e.cells[1][0],'N7_LAB_KEY_001');
+ assert.equal(e.cells[1][1],'LAB_EXEC_001');assert.equal(r.commitState,'COMMITTED_VERIFIED');
+ assert.equal(r.receipt.batch_id,'LAB_EXEC_001');assert.equal(r.receipt.requestId,'LAB_REQ_001');
+ assert.equal(r.receipt.idempotencyKey,'LAB_KEY_001');assert.equal(r.receipt.executionId,'LAB_EXEC_001');
+ assert.equal(r.receipt.journalDigest,snapshotDigest(e.cells));
  assert.equal(e.state.released,1);assert.equal(e.state.flushed,1);
 });
 test('N7 same key/digest returns same event without another physical append',()=>{
@@ -91,6 +101,10 @@ test('N7 same key/digest returns same event without another physical append',()=
  assert.equal(call(intent(),e,s).writes,1);
  const duplicate=call({...intent(),executionId:'LAB_EXEC_002'},e,s);
  assert.equal(duplicate.ok,true);assert.equal(duplicate.duplicate,true);assert.equal(duplicate.writes,0);
+ assert.equal(duplicate.commitState,'COMMITTED_VERIFIED');
+ assert.equal(duplicate.receipt.batch_id,'LAB_EXEC_001');
+ assert.equal(duplicate.receipt.executionId,'LAB_EXEC_002');
+ assert.equal(duplicate.receipt.intentDigest,digestOf(intent()));
  assert.equal(e.cells.length,2);
 });
 test('N7 same idempotency key with altered payload denies conflict',()=>{
@@ -116,9 +130,20 @@ test('N7 lock contention and header drift deny without write',()=>{
 });
 test('N7 uncertain append or failed readback stops at RECONCILE_REQUIRED',()=>{
  const s={...settings(),writesEnabled:true},x=runtime();x.state.failAppend=true;
- assert.equal(call(intent(),x,s).reason,'RECONCILE_REQUIRED');assert.equal(x.cells.length,1);
+ const unknown=call(intent(),x,s);assert.equal(unknown.reason,'RECONCILE_REQUIRED');
+ assert.equal(unknown.commitState,'COMMIT_UNKNOWN');assert.equal(unknown.writes,null);
+ assert.equal(unknown.retryAllowed,false);assert.equal(x.cells.length,1);
+ x.state.failAppend=false;
+ const absent=call({...intent(),executionId:'LAB_EXEC_002'},x,s);
+ assert.equal(absent.commitState,'COMMIT_UNKNOWN');assert.equal(absent.writes,null);
+ assert.equal(x.state.appends,1);assert.equal(x.cells.length,1);
  const y=runtime();y.state.failReadback=true;
- assert.equal(call(intent(),y,s).reason,'RECONCILE_REQUIRED');assert.equal(y.cells.length,2);
+ const unread=call(intent(),y,s);assert.equal(unread.reason,'RECONCILE_REQUIRED');
+ assert.equal(unread.commitState,'COMMIT_UNKNOWN');assert.equal(unread.writes,null);assert.equal(y.cells.length,2);
+ y.state.failReadback=false;
+ const recovered=call({...intent(),executionId:'LAB_EXEC_003'},y,s);
+ assert.equal(recovered.commitState,'COMMITTED_VERIFIED');assert.equal(recovered.writes,0);
+ assert.equal(recovered.receipt.batch_id,'LAB_EXEC_001');assert.equal(y.state.appends,1);
  // No blind second append despite readback uncertainty.
  assert.equal(y.cells[1][4],'PREPARED');
 });
@@ -195,4 +220,48 @@ test('N7 contract requires a strict value digest and safe idempotency identifier
   const i=intent();mutate(i);assert.equal(call(i,e,s).reason,'INTENT_POLICY');
  }
  assert.equal(e.cells.length,1);
+});
+
+test('N11 M1 historical batch stays unchanged without an authoritative receipt',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};
+ e.cells.push(['N7_LAB_KEY_001','LAB_REQ_001','legacy','N7_TEST_METADATA_ONLY','PREPARED','PROJECTED_PENDING',digestOf(intent()),'NOW']);
+ const before=JSON.stringify(e.cells);
+ const r=call(intent(),e,s);
+ assert.equal(r.reason,'LEGACY_RECEIPT_RECONCILE_REQUIRED');
+ assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(r.writes,null);
+ assert.equal(r.receipt.batch_id,null);assert.equal(JSON.stringify(e.cells),before);
+ assert.equal(e.state.appends,0);
+});
+test('N11 M2 append may commit then throw; reconcile verifies original batch, never appends',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};e.state.failAfterAppend=true;
+ const a=call(intent(),e,s);assert.equal(a.commitState,'COMMIT_UNKNOWN');assert.equal(a.writes,null);
+ assert.equal(a.receipt.batch_id,null);assert.equal(e.cells.length,2);
+ const b=call({...intent(),executionId:'LAB_EXEC_002'},e,s);
+ assert.equal(b.commitState,'COMMITTED_VERIFIED');assert.equal(b.writes,0);
+ assert.equal(b.receipt.batch_id,'LAB_EXEC_001');assert.equal(e.state.appends,1);
+});
+test('N11 M2 digest drift outside event or batch tampering cannot verify replay',()=>{
+ const s={...settings(),writesEnabled:true};
+ for(const index of [1,2,3,4,5,6,7]){
+  const e=runtime();call(intent(),e,s);e.cells[1][index]='TAMPERED';
+  const r=call({...intent(),executionId:'LAB_EXEC_002'},e,s);
+  assert.equal(r.ok,false);assert.equal(e.state.appends,1);
+  if(index!==6){assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(r.writes,null);}
+ }
+});
+test('N11 M2 no ledger wiring or failed reservation cannot authorize append',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};delete e.deps.attemptLedger;
+ const denied=call(intent(),e,s);assert.equal(denied.reason,'ATTEMPT_LEDGER_UNAVAILABLE');
+ assert.equal(denied.commitState,'NOT_ATTEMPTED');assert.equal(denied.writes,0);
+ e.deps.attemptLedger={get:()=>undefined,putIfAbsent:()=>{throw Error('UNCERTAIN_LEDGER');}};
+ const unknown=call(intent(),e,s);assert.equal(unknown.commitState,'COMMIT_UNKNOWN');
+ assert.equal(unknown.writes,null);assert.equal(e.state.appends,0);
+});
+test('N11 M1 request identifiers must be strings and a changed request is not a replay',()=>{
+ const e=runtime(),s={...settings(),writesEnabled:true};
+ assert.equal(call({...intent(),executionId:123456},e,s).reason,'INTENT_POLICY');
+ call(intent(),e,s);
+ const changed={...intent(),requestId:'LAB_REQ_002',executionId:'LAB_EXEC_002'};
+ assert.equal(call(changed,e,{...s,approvedIntentDigest:digestOf(changed)}).reason,'IDEMPOTENCY_CONFLICT');
+ assert.equal(e.state.appends,1);
 });
