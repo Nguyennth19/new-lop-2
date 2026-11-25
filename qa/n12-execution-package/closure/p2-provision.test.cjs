@@ -94,3 +94,5 @@ test('source pin binds explicit dual receipt references and exact actions; no si
  const bound=q.pinnedDeps(raw,c,pin);assert.equal(bound.verifyP2Authority('INITIAL',auth.bindingSha256,auth.sourceSha256),true);assert.equal(bound.verifyP2Authority('REPLAY',sha('bad'),auth.sourceSha256),false);assert.equal(bound.verifyP2Authority('RELEASE',auth.bindingSha256,auth.sourceSha256),false);
  assert.equal(q.provision('ISSUE',c,auth,bound).ok,true);assert.equal(q.dispatch('INITIAL',c,bound).writes,1);assert.equal(q.dispatch('REPLAY',c,bound).writes,0);assert.equal(q.provision('REVOKE',c,auth,bound).ok,true);assert.equal(f.appends(),1);
 });
+
+test('explicit revoke acknowledgement loss is reported UNCONFIRMED and can be inspected without ledger repair',()=>{const f=fixture({failAfter:4});assert.equal(issue(f).ok,true);const r=revoke(f);assert.equal(r.reason,'P2_PROPERTY_ACK_UNKNOWN');assert.equal(r.revocationState,'UNCONFIRMED');assert.equal(r.executionAllowed,false);assert.equal(JSON.parse(f.map.get(keys[1])).body.state,'READY');assert.equal(JSON.parse(f.map.get(keys[2])).revoked,true);assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(f.appends(),0);});

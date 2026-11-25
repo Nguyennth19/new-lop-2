@@ -13,7 +13,7 @@ function n12P2Provision_(action,c,a,raw){
  const unknown=()=>{
   // An ISSUE acknowledgement may be lost after the grant actually persisted.
   // Try the separately authorized revocation under the same lock, never reissue/reset.
-  let revocationState='NOT_REQUIRED_BEFORE_GRANT_WRITE';
+  let revocationState=action==='REVOKE'?'UNCONFIRMED':'NOT_REQUIRED_BEFORE_GRANT_WRITE';
   if(emergencyRevoke){try{revocationState=emergencyRevoke();}catch(e){revocationState='UNCONFIRMED';}}
   return {ok:false,reason:'P2_PROPERTY_ACK_UNKNOWN',commitState:'NOT_ATTEMPTED',writes:0,propertyWrites:null,retryAllowed:false,executionAllowed:false,revocationState,release:false};
  };
