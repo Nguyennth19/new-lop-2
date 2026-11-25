@@ -9,8 +9,14 @@ function n12P2Binding_(c,a,u){
 function n12P2Provision_(action,c,a,raw){
  const deny=n7TestDeny_;
  if(!raw||typeof raw.verifyP2Authority!=='function')return deny('P2_PROVISION_HARD_OFF');
- let lock,held=false,attempted=false;
- const unknown=()=>({ok:false,reason:'P2_PROPERTY_ACK_UNKNOWN',commitState:'NOT_ATTEMPTED',writes:0,propertyWrites:null,retryAllowed:false,release:false});
+ let lock,held=false,attempted=false,emergencyRevoke=null;
+ const unknown=()=>{
+  // An ISSUE acknowledgement may be lost after the grant actually persisted.
+  // Try the separately authorized revocation under the same lock, never reissue/reset.
+  let revocationState='NOT_REQUIRED_BEFORE_GRANT_WRITE';
+  if(emergencyRevoke){try{revocationState=emergencyRevoke();}catch(e){revocationState='UNCONFIRMED';}}
+  return {ok:false,reason:'P2_PROPERTY_ACK_UNKNOWN',commitState:'NOT_ATTEMPTED',writes:0,propertyWrites:null,retryAllowed:false,executionAllowed:false,revocationState,release:false};
+ };
  try{
   if(!['ISSUE','REVOKE'].includes(action)||!n11M4Exact_(c,['settings','intent','secondExecutionId'])||
    !n11M4Exact_(a,['epoch','sourceSha256','bindingSha256'])||!/^N12_P2_EPOCH_[A-Z0-9_]{3,40}$/.test(a.epoch)||
@@ -27,13 +33,14 @@ function n12P2Provision_(action,c,a,raw){
   const issued=Date.parse(ctx.scope.issuedAt),expires=Date.parse(ctx.scope.expiresAt);
   const current=()=>Number.isFinite(raw.now())&&raw.now()>=issued&&raw.now()<expires&&authorized();
   const grant={scopeSha256:sha,issuedAt:ctx.scope.issuedAt,expiresAt:ctx.scope.expiresAt,revoked:false};
+  const exactGrant=g=>n11M4Exact_(g,Object.keys(grant))&&g.scopeSha256===sha&&g.issuedAt===grant.issuedAt&&
+   g.expiresAt===grant.expiresAt&&typeof g.revoked==='boolean';
   lock=raw.lockService.getScriptLock();held=lock.tryLock(10000);
   if(!held||!authorized())return deny('P2_LOCK_OR_AUTHORITY_DENIED');
   if(action==='REVOKE'){
    // Revocation is independent of ledger integrity or expiry. Preserve epoch and attempt.
    const g=JSON.parse(p.getProperty(grantKey));
-   if(!n11M4Exact_(g,Object.keys(grant))||g.scopeSha256!==sha||g.issuedAt!==grant.issuedAt||
-    g.expiresAt!==grant.expiresAt||typeof g.revoked!=='boolean')return deny('P2_GRANT_IDENTITY_DENIED');
+   if(!exactGrant(g))return deny('P2_GRANT_IDENTITY_DENIED');
    if(g.revoked)return {ok:true,provisionState:'REVOKED',propertyWrites:0,writes:0,release:false};
    g.revoked=true;write(grantKey,JSON.stringify(g));
    return {ok:true,provisionState:'REVOKED',propertyWrites:1,writes:0,release:false};
@@ -52,7 +59,15 @@ function n12P2Provision_(action,c,a,raw){
   if(!current())return unknown();
   write(attemptKey,n11M4Seal_({contract:'N11_M4_ATTEMPT_V1',scopeSha256:sha,state:'READY',attempt:null},u));
   if(!current()||p.getProperty(grantKey)!==null)return unknown();
-  write(grantKey,JSON.stringify(grant)); // grant last; any unknown acknowledgement requires revoke/reconcile
+  emergencyRevoke=()=>{
+   if(!held||!pinned()||raw.verifyP2Authority('REVOKE',a.bindingSha256,a.sourceSha256)!==true)return 'UNCONFIRMED';
+   const value=p.getProperty(grantKey);
+   if(value===null)return 'NO_GRANT_OBSERVED';
+   const g=JSON.parse(value);if(!exactGrant(g))return 'UNCONFIRMED';
+   if(!g.revoked){g.revoked=true;write(grantKey,JSON.stringify(g));}
+   return 'REVOKED';
+  };
+  write(grantKey,JSON.stringify(grant)); // grant last; on uncertainty attempt authorized fail-safe revoke
   if(!current())return unknown();
   return {ok:true,provisionState:'PROVISIONED',propertyWrites:3,writes:0,release:false};
  }catch(e){return attempted?unknown():deny('P2_PREWRITE_DENIED');}
