@@ -3,7 +3,7 @@
 **Record:** `N13_SYNTH5_OWNER_ACCEPTANCE_RECORD_V1`  
 **Date:** 2026-11-25 (GMT+7)  
 **Scope:** isolated TEST/QA prompt delta only  
-**Disposition:** `TECHNICAL_QA_CLOSED_WITH_DEVICE_TTS_ACCEPTANCE_PENDING`
+**Disposition:** `OWNER_ACCEPTED_ISOLATED_SYNTH5_QA_AND_DEVICE_TTS`
 
 ## 1. Owner decision already on record
 
@@ -47,10 +47,16 @@ Therefore:
 
 - **Owner wording decision:** CONFIRMED by the prior Owner direction.
 - **Isolated technical delta and automated regression:** PASS; closed within this scope.
-- **Real-device audible TTS acceptance:** PENDING direct Owner/device confirmation; not claimed here.
+- **Real-device audible Vietnamese TTS acceptance:** PASS — Owner explicitly confirmed on 2026-11-25 (GMT+7): “đã nghe thử câu hỏi SYNTH_5 bằng TTS tiếng Việt trên thiết bị thực tế và thấy giọng đọc đạt yêu cầu.” This is recorded as Owner confirmation; no independent audio capture or device log is claimed.
 - **Qualified pedagogy review:** NOT PROVIDED.
 - **Formal admission / renderer grant / trusted grading / student release:** NOT APPROVED.
 
-## 5. Non-effects
+## 5. Owner device-TTS confirmation
+
+Owner confirmed that the SYNTH_5 question was played using Vietnamese TTS on a real device and that the spoken output met the acceptance requirement. This closes the outstanding device-audibility confirmation for this isolated SYNTH_5 QA scope.
+
+The confirmation does not change the separate limitation that automated Chromium tests stub SpeechSynthesis; those tests still prove only the browser API call contract. The real-device acceptance above is based on the Owner's direct statement, not on CI evidence.
+
+## 6. Non-effects
 
 No merge, deploy, or change to the pinned source pack, admission file, composite pack, grader, renderer, manifest, GAS, Sheets, ACL, grants, READY, MAIN, Pilot or Release. `SYNTH_3`, `SYNTH_4` and `SYNTH_6` remain HOLD/DENY pending the required qualified pedagogy review. The existing `rendererGrant: DENY`, `publicVariant: null`, and `studentRelease: false` controls remain unchanged.
