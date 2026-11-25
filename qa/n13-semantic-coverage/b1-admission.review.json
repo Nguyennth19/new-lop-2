@@ -262,6 +262,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RETAIN_LV1",
+          "proposedLevel": "LV1",
+          "reason": "Same skill with scaffold decreasing across 43,76,28; retain existing model and keys.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -297,6 +304,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RETAIN_LV2",
+          "proposedLevel": "LV2",
+          "reason": "Independent expanded sums for 32,81,46 without branch/givens; suitable VBT practice, not empirical difficulty evidence.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -330,6 +344,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RETAIN_LV1",
+          "proposedLevel": "LV1",
+          "reason": "One place-value concept and one D4 selection; retain exact options.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -363,6 +384,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RETAIN_LV1",
+          "proposedLevel": "LV1",
+          "reason": "Two place-value rows including zero units, same SGK concept.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -396,6 +424,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "HOLD_LV2_ADMISSION_RECOMMEND_LV1_AFTER_SOURCE_SCOPE_REVIEW",
+          "proposedLevel": "LV1",
+          "reason": "82 and 35 with one missing digit each; less demand than existing LV1 two-direction table. VBT anchor retained, so confirm alignment with SGK-based LV1 policy before reclassification; otherwise leave this question out of the level-based TEST selection, not force LV2 or change values.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -430,6 +465,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RECLASSIFY_LV2_IF_PREREQUISITE_VERIFIED_ELSE_HOLD",
+          "proposedLevel": "LV2",
+          "reason": "Step1 and step2 with endpoints only, no intermediate step2 scaffold. Do not assert taught at LV1 or source-exact; require lesson Explore/source evidence step2 is taught; if absent HOLD rather than silently extending curriculum.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -463,6 +505,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RECLASSIFY_LV2_IF_PREREQUISITES_VERIFIED_ELSE_HOLD",
+          "proposedLevel": "LV2",
+          "reason": "Coordinate matching includes two expressions 2+4 and 6-2 plus step2 line; combined skills not a simple LV1 item. Confirm both prerequisites; preserve model, no source-exact claim.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -497,6 +546,14 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RETAIN_LV2_WITH_APPROVED_TEXT_DELTA",
+          "proposedLevel": "LV2",
+          "reason": "Part b selects within displayed options, not all integers in interval; 32 absent. Proposed prompt: Trong các số sau, chọn những số lớn hơn 30 và bé hơn 34. Keep options and answer keys; targeted TTS/HTTP regression after approval.",
+          "proposedPrompt": "Trong các số sau, chọn những số lớn hơn 30 và bé hơn 34.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -531,6 +588,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RETAIN_LV2_ONLY_WITH_EXPLICIT_BOUNDED_EXCEPTION",
+          "proposedLevel": "LV2",
+          "reason": "Part b asks one integer in a strict interval; accept every valid integer via deterministic bounded predicate. V16 sections 6.1 and 15 require unique answer, so exception needs explicit qualified/Owner approval restricted to this interaction. If denied, HOLD part b/variant until approved unique-answer delta; do not secretly change grading.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       },
       {
@@ -564,6 +628,13 @@
           "skillStatus": "CANDIDATE_INDEX_ONLY_DO_NOT_REGISTER_GLOBALLY",
           "rendererStatus": "PIN_EXISTING_COMPILER_VIEW_ONLY_NO_PRODUCTION_MANIFEST_CHANGE",
           "approved": false
+        },
+        "finalTechnicalPedagogyRecommendation": {
+          "recommend": "RETAIN_LV2",
+          "proposedLevel": "LV2",
+          "reason": "Predecessor/successor table includes missing middle, appropriate independent application. Keep existing repaired instruction.",
+          "state": "PROPOSED_NOT_APPROVED",
+          "sourceExact": false
         }
       }
     ],
@@ -606,6 +677,43 @@
       "independentQaApproval": null,
       "rendererGrant": "DENY",
       "trustedGradeGrant": "DENY",
+      "studentRelease": false
+    },
+    "finalTechnicalPedagogyRecommendation": {
+      "state": "AI_REVIEW_ONLY_NOT_SIGNOFF",
+      "basis": "Exact pilot JSON bca781df58ce143a2579e2b6510d27e517606ab9 and existing source anchors; Governance V16 sections 4,5,6,7,15 and AGENTS source hierarchy. No fresh SGK PDF page verification or human reviewer signature.",
+      "recommendation": "Use 10-case isolated review pack, not a complete lesson or level-balanced bank. Do not stage learner-facing or trusted-grade permission yet.",
+      "proposedCountsIfAllConditionalChangesApproved": {
+        "B001": {
+          "LV1": 4,
+          "LV2": 1,
+          "LV3": 0
+        },
+        "B002": {
+          "LV1": 0,
+          "LV2": 5,
+          "LV3": 0
+        },
+        "total": {
+          "LV1": 4,
+          "LV2": 6,
+          "LV3": 0
+        }
+      },
+      "bankStatus": "CONTENT_BANK_INSUFFICIENT; no B002 LV1 after proposal; cannot claim level-complete admission. Do not manufacture extra questions to preserve original 5/5 split.",
+      "policyDecisions": [
+        "Qualified reviewer confirms B_SYNTH_2 LV1 SGK alignment or HOLD",
+        "Qualified reviewer confirms step2 and arithmetic prerequisites and LV2 reclassification for SYNTH_3/4 or HOLD",
+        "Approve exact SYNTH_5 subset prompt delta with HTTP/TTS retest",
+        "Explicitly approve bounded valid integer input exception for SYNTH_6 or HOLD",
+        "Approve candidate curriculum semantic mapping and exact isolated TEST renderer routes separately; no production registry or trusted grading approval"
+      ],
+      "rendererGrant": "DENY",
+      "trustedGradeGrant": "DENY",
+      "skillApproved": null,
+      "ownerApproval": null,
+      "qualifiedReviewerApproval": null,
+      "independentQaApproval": null,
       "studentRelease": false
     }
   }
