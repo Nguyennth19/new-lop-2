@@ -1,0 +1,113 @@
+{
+  "contract": "N13_SYNTH5_PROMPT_ONLY_DELTA_V1",
+  "baseCommit": "c7f7773c796c7fd853aa3dcb0b47bd1379d7cf41",
+  "baseSourcePath": "qa/n13-semantic-coverage/pilot-lessons.review.json",
+  "baseSourceGitBlobSha": "bca781df58ce143a2579e2b6510d27e517606ab9",
+  "baseGraderPath": "qa/n13-semantic-coverage/pilot-grader.qa-only.cjs",
+  "baseGraderGitBlobSha": "1979906faf8f6b7958d80243c18961e5132a4ab4",
+  "baseAdmissionGitBlobSha": "6f70feadfd08e56a367304e630a1f5d1c199b205",
+  "baseCompositeGitBlobSha": "7a6c2c20a44a544a6f6e89975c4316a5df9747c4",
+  "variantId": "N13B1_SYNTH_5",
+  "lessonId": "MATH_B002",
+  "partId": "b",
+  "change": {
+    "path": "reviewDto.parts[id=b].model.prompt.text",
+    "before": "Chọn các số lớn hơn 30 và bé hơn 34.",
+    "after": "Trong các số sau, chọn những số lớn hơn 30 và bé hơn 34."
+  },
+  "question": {
+    "variantId": "N13B1_SYNTH_5",
+    "lessonId": "MATH_B002",
+    "level": "LV2",
+    "skillIdCandidate": "NUMBER_SENSE",
+    "sourceExerciseId": null,
+    "sourceOrigin": "ORIGINAL_VARIANT_CONCEPT_ANCHORED_NOT_SOURCE_EXACT",
+    "sourceAnchor": {
+      "id": "VBT_B002_T01_E01",
+      "track": "VBT",
+      "printedPage": 10,
+      "pdfPage": 11,
+      "bookSha256": "392c43552a4d60480c22496542984ad6add55bab1744898031adc439947aed94",
+      "review": "AI_VISUAL_CURRENT_PDF_CONCEPT_CHECK_NOT_SIGNOFF",
+      "renderSha256": "776bf6e448849cebce415b2f4e65c6bb1e3bc8ef8e4af52cbbdb8c3cb35e67f8"
+    },
+    "reuseRef": "qa/n13-semantic-coverage/b1-composite.review.json",
+    "visualIntent": {
+      "visualMode": "REPRESENTATIVE",
+      "renderStrategy": "STRUCTURED_MATH_NO_EXTERNAL_ASSET"
+    },
+    "assetId": null,
+    "semanticMapping": [
+      "NUMBER_LINE",
+      "D4"
+    ],
+    "rendererGrant": "DENY",
+    "publicVariant": null,
+    "studentRelease": false,
+    "reviewDto": {
+      "parts": [
+        {
+          "id": "a",
+          "kind": "SEMANTIC",
+          "model": {
+            "kind": "NUMBER_LINE",
+            "model": {
+              "start": 30,
+              "step": 1,
+              "ticks": [
+                30,
+                null,
+                32,
+                null,
+                34
+              ]
+            }
+          }
+        },
+        {
+          "id": "b",
+          "kind": "D4",
+          "model": {
+            "questionId": "b",
+            "selectionMode": "MULTIPLE",
+            "prompt": {
+              "type": "TEXT",
+              "text": "Trong các số sau, chọn những số lớn hơn 30 và bé hơn 34."
+            },
+            "options": [
+              {
+                "id": "x",
+                "content": {
+                  "type": "TEXT",
+                  "text": "30"
+                }
+              },
+              {
+                "id": "y",
+                "content": {
+                  "type": "TEXT",
+                  "text": "31"
+                }
+              },
+              {
+                "id": "z",
+                "content": {
+                  "type": "TEXT",
+                  "text": "33"
+                }
+              },
+              {
+                "id": "w",
+                "content": {
+                  "type": "TEXT",
+                  "text": "34"
+                }
+              }
+            ],
+            "speechEnabled": true
+          }
+        }
+      ]
+    }
+  }
+}

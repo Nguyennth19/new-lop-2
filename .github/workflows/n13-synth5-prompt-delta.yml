@@ -1,0 +1,28 @@
+name: N13 SYNTH_5 prompt-only isolated QA (no deploy)
+on:
+  push:
+    branches: [qa/n13-synth5-prompt-delta-20261125]
+    paths:
+      - 'qa/n13-semantic-coverage/delta-synth5-prompt-only-20261125/**'
+      - '.github/workflows/n13-synth5-prompt-delta.yml'
+permissions:
+  contents: read
+jobs:
+  prompt-only-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert exact one-field delta and immutable review gates
+        run: node --test qa/n13-semantic-coverage/delta-synth5-prompt-only-20261125/synth5-prompt-delta.test.cjs
+      - name: Install isolated Chromium test runtime
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: HTTP, responsive and Vietnamese TTS API regression
+        run: node qa/n13-semantic-coverage/delta-synth5-prompt-only-20261125/synth5-prompt-http.test.cjs
