@@ -99,3 +99,12 @@ test('explicit revoke acknowledgement loss is reported UNCONFIRMED and can be in
 
 test('successful standalone ISSUE still cannot enable standalone INITIAL; combined retry denied; grant remains revocable',()=>{const f=fixture();assert.equal(issue(f).ok,true);assert.equal(q.dispatch('INITIAL',c,f.raw).reason,'P2_EXECUTION_BINDING_DENIED');assert.equal(q.combined(c,auth,f.raw).ok,false);assert.equal(f.appends(),0);assert.equal(revoke(f).ok,true);});
 test('combined issue ack failures never dispatch INITIAL including failed emergency revoke',()=>{for(const j of [1,2,3])for(const unavailable of [false,true]){const f=fixture({failAfter:j,failEmergencyRevoke:unavailable}),r=q.combined(c,auth,f.raw);assert.equal(r.reason,'P2_PROPERTY_ACK_UNKNOWN');assert.equal(f.appends(),0);assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(q.combined(c,auth,f.raw).ok,false);assert.equal(f.appends(),0);}});
+
+test('legacy writer config blocks P2 execution but not revocation of exact issued grant',()=>{
+ const f=fixture();assert.equal(issue(f).ok,true);
+ const altered=src.replace('const N12_PROVIDER_SETTINGS_ = null','const N12_PROVIDER_SETTINGS_ = {}');
+ const a=new Function(altered+'\n'+reviewSource+'\nreturn {dispatch:n12FinalDispatch_,provision:n12P2Provision_};')();
+ const raw={...f.raw,p2IssueConfirmed:auth.bindingSha256};
+ assert.equal(a.dispatch('INITIAL',c,raw).reason,'P2_EXECUTION_BINDING_DENIED');assert.equal(f.appends(),0);
+ assert.equal(a.provision('REVOKE',c,auth,raw).ok,true);assert.equal(JSON.parse(f.map.get(keys[2])).revoked,true);
+});
