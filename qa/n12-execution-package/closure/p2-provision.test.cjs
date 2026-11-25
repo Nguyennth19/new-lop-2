@@ -17,7 +17,7 @@ const s={environment:'N12_DISPOSABLE_SYNTHETIC_ONLY',writesEnabled:true,projectI
 s.approvedScopeSha256=api.scopeDigest(api.scope(s),u);const c={settings:s,intent:i,secondExecutionId:'MOCK_EXECUTION_002'};
 // Source-only provisioner, exact GAS property keys and envelope; never import into live GAS.
 const reviewSource=fs.readFileSync(path.join(__dirname,'N12_P2_Provision.review.gs'),'utf8');
-const q=new Function(src+'\n'+reviewSource+'\nreturn {binding:n12P2Binding_,provision:n12P2Provision_,context:n12Context_,read:n11M4ReadEnvelope_,current:n11M4GrantCurrent_,dispatch:n12FinalDispatch_,phase:n12FinalPhase_,pinnedDeps:n12P2PinnedDeps_,reviewedDeps:n12P2ReviewedDeps_,issueEntry:N12_P2_Issue,revokeEntry:N12_P2_Revoke};')();
+const q=new Function(src+'\n'+reviewSource+'\nreturn {binding:n12P2Binding_,provision:n12P2Provision_,context:n12Context_,read:n11M4ReadEnvelope_,current:n11M4GrantCurrent_,dispatch:n12FinalDispatch_,phase:n12FinalPhase_,pinnedDeps:n12P2PinnedDeps_,reviewedDeps:n12P2ReviewedDeps_,issueEntry:N12_P2_Issue,combinedEntry:N12_P2_IssueAndInitial,combined:n12P2IssueAndInitial_,revokeEntry:N12_P2_Revoke};')();
 const auth={epoch:'N12_P2_EPOCH_MOCK_001',sourceSha256:sha('review-source'),bindingSha256:''};
 auth.bindingSha256=q.binding(c,auth,u);
 function fixture({failAfter=0,failEmergencyRevoke=false,drift=false,denied=false,busy=false,clock=n,actor=owner}={}){
@@ -47,11 +47,11 @@ test('lost ack after each property write stops, grant last, emergency revoke blo
  }
 });
 test('uncertain grant and unavailable emergency revoke are explicitly blocked for operator; preserve evidence',()=>{
- const f=fixture({failAfter:3,failEmergencyRevoke:true}),r=issue(f);
+ const f=fixture({failAfter:3,failEmergencyRevoke:true}),r=q.combined(c,auth,f.raw);
  assert.equal(r.reason,'P2_PROPERTY_ACK_UNKNOWN');assert.equal(r.revocationState,'UNCONFIRMED');assert.equal(r.executionAllowed,false);assert.equal(r.retryAllowed,false);
  assert.equal(f.appends(),0);assert.equal(JSON.parse(f.map.get(keys[1])).body.state,'READY');
  assert.equal(JSON.parse(f.map.get(keys[2])).revoked,false); // Provider remains uncertain; operator MUST NOT execute.
- assert.equal(issue(f).ok,false);assert.equal(f.appends(),0);
+ assert.equal(issue(f).ok,false);assert.equal(q.dispatch('INITIAL',c,f.raw).reason,'P2_EXECUTION_BINDING_DENIED');assert.equal(q.dispatch('REPLAY',c,f.raw).ok,false);assert.equal(f.appends(),0);
 });
 
 test('revoke even with corrupted/missing attempt and expiry; repeat zero writes',()=>{for(const bad of [null,'corrupt']){let f=fixture();assert.equal(issue(f).ok,true);if(bad===null)f.map.delete(keys[1]);else f.map.set(keys[1],bad);f.raw.now=()=>n+700000;const epoch=f.map.get(keys[0]);assert.equal(revoke(f).ok,true);assert.equal(f.map.get(keys[0]),epoch);assert.equal(f.map.has(keys[1])?f.map.get(keys[1]):null,bad);assert.equal(JSON.parse(f.map.get(keys[2])).revoked,true);assert.equal(revoke(f).propertyWrites,0);assert.deepEqual(f.writes,keys.concat(keys[2]));assert.equal(q.current(q.context(f.raw,s).deps,q.context(f.raw,s)),false);}});
@@ -70,21 +70,21 @@ test('actual P2 final dispatcher denies grant without exact authority and epoch 
  }
 });
 test('provision to actual dispatcher INITIAL and REPLAY same original batch, no second append, revoke stops',()=>{
- const f=fixture();assert.equal(issue(f).ok,true);
- const first=q.dispatch('INITIAL',c,f.raw);assert.equal(first.commitState,'COMMITTED_VERIFIED');assert.equal(first.writes,1);assert.equal(first.receipt.batch_id,i.executionId);
+ const f=fixture();
+ const first=q.combined(c,auth,f.raw);assert.equal(first.commitState,'COMMITTED_VERIFIED');assert.equal(first.writes,1);assert.equal(first.receipt.batch_id,i.executionId);
  const before=f.writes.length;const second=q.dispatch('REPLAY',c,f.raw);assert.equal(second.commitState,'COMMITTED_VERIFIED');assert.equal(second.writes,0);assert.equal(second.receipt.batch_id,i.executionId);assert.equal(second.receipt.executionId,c.secondExecutionId);assert.equal(f.appends(),1);assert.equal(f.writes.length,before);assert.equal(before,5);
  assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(revoke(f).ok,true);assert.equal(q.dispatch('REPLAY',c,f.raw).ok,false);assert.equal(f.appends(),1);assert.equal(f.writes.length,before+1);
 });
 test('authority lost after reservation: no append, no retry, preserve RESERVED',()=>{
- const f=fixture();assert.equal(issue(f).ok,true);
+ const f=fixture();
  const verify=f.raw.verifyP2Authority;
  f.raw.verifyP2Authority=(action,...args)=>!(action==='INITIAL'&&JSON.parse(f.map.get(keys[1])).body.state==='RESERVED')&&verify(action,...args);
- const r=q.dispatch('INITIAL',c,f.raw);assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(f.appends(),0);assert.equal(JSON.parse(f.map.get(keys[1])).body.state,'RESERVED');assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(f.appends(),0);
+ const r=q.combined(c,auth,f.raw);assert.equal(r.commitState,'COMMIT_UNKNOWN');assert.equal(f.appends(),0);assert.equal(JSON.parse(f.map.get(keys[1])).body.state,'RESERVED');assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(f.appends(),0);
 });
 
 test('private phase cannot bypass reviewed dispatcher binding; default live wrappers hard OFF',()=>{
  const f=fixture();assert.equal(issue(f).ok,true);assert.equal(q.phase('INITIAL',s,i,f.raw).reason,'P2_EXECUTION_BINDING_DENIED');assert.equal(f.appends(),0);
- assert.equal(q.issueEntry().reason,'P2_PROVISION_HARD_OFF');assert.equal(q.revokeEntry().reason,'P2_PROVISION_HARD_OFF');
+ assert.equal(q.issueEntry().reason,'P2_PROVISION_HARD_OFF');assert.equal(q.combinedEntry().reason,'P2_PROVISION_HARD_OFF');assert.equal(q.revokeEntry().reason,'P2_PROVISION_HARD_OFF');
  const raw={utilities:u};assert.equal(q.reviewedDeps(raw,c),raw);
 });
 test('source pin binds explicit dual receipt references and exact actions; no signature claim',()=>{
@@ -92,7 +92,10 @@ test('source pin binds explicit dual receipt references and exact actions; no si
  const pin={binding:auth,ownerReceiptSha256:sha('mock owner receipt'),qaReceiptSha256:sha('mock independent qa receipt'),actions:['ISSUE','INITIAL','REPLAY','REVOKE']};
  for(const bad of [null,{...pin,qaReceiptSha256:pin.ownerReceiptSha256},{...pin,actions:['ISSUE']},{...pin,binding:{...auth,bindingSha256:sha('bad')}}])assert.equal(q.pinnedDeps(raw,c,bad),raw);
  const bound=q.pinnedDeps(raw,c,pin);assert.equal(bound.verifyP2Authority('INITIAL',auth.bindingSha256,auth.sourceSha256),true);assert.equal(bound.verifyP2Authority('REPLAY',sha('bad'),auth.sourceSha256),false);assert.equal(bound.verifyP2Authority('RELEASE',auth.bindingSha256,auth.sourceSha256),false);
- assert.equal(q.provision('ISSUE',c,auth,bound).ok,true);assert.equal(q.dispatch('INITIAL',c,bound).writes,1);assert.equal(q.dispatch('REPLAY',c,bound).writes,0);assert.equal(q.provision('REVOKE',c,auth,bound).ok,true);assert.equal(f.appends(),1);
+ assert.equal(q.combined(c,auth,bound).writes,1);assert.equal(q.dispatch('REPLAY',c,bound).writes,0);assert.equal(q.provision('REVOKE',c,auth,bound).ok,true);assert.equal(f.appends(),1);
 });
 
 test('explicit revoke acknowledgement loss is reported UNCONFIRMED and can be inspected without ledger repair',()=>{const f=fixture({failAfter:4});assert.equal(issue(f).ok,true);const r=revoke(f);assert.equal(r.reason,'P2_PROPERTY_ACK_UNKNOWN');assert.equal(r.revocationState,'UNCONFIRMED');assert.equal(r.executionAllowed,false);assert.equal(JSON.parse(f.map.get(keys[1])).body.state,'READY');assert.equal(JSON.parse(f.map.get(keys[2])).revoked,true);assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(f.appends(),0);});
+
+test('successful standalone ISSUE still cannot enable standalone INITIAL; combined retry denied; grant remains revocable',()=>{const f=fixture();assert.equal(issue(f).ok,true);assert.equal(q.dispatch('INITIAL',c,f.raw).reason,'P2_EXECUTION_BINDING_DENIED');assert.equal(q.combined(c,auth,f.raw).ok,false);assert.equal(f.appends(),0);assert.equal(revoke(f).ok,true);});
+test('combined issue ack failures never dispatch INITIAL including failed emergency revoke',()=>{for(const j of [1,2,3])for(const unavailable of [false,true]){const f=fixture({failAfter:j,failEmergencyRevoke:unavailable}),r=q.combined(c,auth,f.raw);assert.equal(r.reason,'P2_PROPERTY_ACK_UNKNOWN');assert.equal(f.appends(),0);assert.equal(q.dispatch('INITIAL',c,f.raw).ok,false);assert.equal(q.combined(c,auth,f.raw).ok,false);assert.equal(f.appends(),0);}});

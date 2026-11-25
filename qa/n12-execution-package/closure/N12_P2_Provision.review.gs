@@ -82,6 +82,9 @@ function n12P2ExecutionAllowed_(phase,c,raw){
   if(!n11M4Exact_(a,['epoch','sourceSha256','bindingSha256'])||!/^N12_P2_EPOCH_[A-Z0-9_]{3,40}$/.test(a.epoch)||
     ![a.sourceSha256,a.bindingSha256].every(x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x))||
     s.proofCase!=='P2'||!n12EditorPinned_(s,c.intent,raw)||n12P2Binding_(c,a,raw.utilities)!==a.bindingSha256)return false;
+  // Only this invocation's successful ISSUE can authorize INITIAL; persisted grant alone is insufficient.
+  // The marker is never persisted or accepted as a public argument.
+  if(phase==='INITIAL'&&raw.p2IssueConfirmed!==a.bindingSha256)return false;
   const epoch=raw.propertiesService.getScriptProperties().getProperty('N12_P2_EPOCH');
   return epoch===JSON.stringify({epoch:a.epoch,scopeSha256:s.approvedScopeSha256,bindingSha256:a.bindingSha256})&&
     raw.verifyP2Authority(phase,a.bindingSha256,a.sourceSha256)===true;
@@ -106,10 +109,22 @@ function n12P2PinnedDeps_(raw,c,pin){
  }catch(e){return raw;}
 }
 function n12P2ReviewedDeps_(raw,c){return n12P2PinnedDeps_(raw,c,N12_P2_AUTHORITY_PIN_);}
+function n12P2IssueAndInitial_(c,a,raw){
+ const issued=n12P2Provision_('ISSUE',c,a,raw);
+ if(!issued.ok||issued.provisionState!=='PROVISIONED')return issued;
+ // No standalone INITIAL after ISSUE, even when a previous grant was successfully stored.
+ // Normal dispatcher rechecks binding, actor, TTL, grant and ledger, including under its lock.
+ const result=n12FinalDispatch_('INITIAL',c,Object.assign({},raw,{p2IssueConfirmed:a.bindingSha256}));
+ return Object.assign({},result,{issueState:issued.provisionState,issuePropertyWrites:issued.propertyWrites});
+}
 function n12P2ReviewedProvision_(action){
  if(!N12_FINAL_REVIEWED_CASE_||!N12_P2_AUTHORITY_PIN_)return n7TestDeny_('P2_PROVISION_HARD_OFF');
  const raw=n12P2ReviewedDeps_(n12ProviderDeps_(),N12_FINAL_REVIEWED_CASE_);
+ if(N12_PROVIDER_SETTINGS_!==null||N12_EDITOR_REVIEWED_CASE_!==null)return n7TestDeny_('P2_LEGACY_WRITER_NOT_OFF');
+ if(action==='ISSUE_AND_INITIAL')return n12P2IssueAndInitial_(N12_FINAL_REVIEWED_CASE_,raw.p2Binding,raw);
+ if(action==='ISSUE')return n7TestDeny_('P2_USE_ISSUE_AND_INITIAL');
  return n12P2Provision_(action,N12_FINAL_REVIEWED_CASE_,raw.p2Binding,raw);
 }
 function N12_P2_Issue(){return n12P2ReviewedProvision_('ISSUE');}
+function N12_P2_IssueAndInitial(){return n12P2ReviewedProvision_('ISSUE_AND_INITIAL');}
 function N12_P2_Revoke(){return n12P2ReviewedProvision_('REVOKE');}
